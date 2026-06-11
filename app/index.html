@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#5a9e0f">
+<title>Deutsch A2.2 · Netzwerk neu + Grammatik</title>
+<style>
+:root{
+  --green:#5a9e0f; --green-d:#477f0b; --green-l:#eef7e2;
+  --ink:#1d2733; --ink-2:#54606e; --bg:#f4f6f8; --card:#ffffff;
+  --amber:#f59e0b; --amber-l:#fef3c7;
+  --blue:#2563eb; --blue-l:#e7eefc;
+  --red:#dc2626; --red-l:#fdecec;
+  --ar:#7c3aed; --ar-l:#f3eefe;
+  --radius:16px;
+  --shadow:0 1px 3px rgba(16,24,40,.08),0 4px 14px rgba(16,24,40,.06);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{font-size:16px}
+body{
+  font-family:"Segoe UI",system-ui,-apple-system,"Noto Sans Arabic",Tahoma,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.6;
+  padding-bottom:env(safe-area-inset-bottom);
+}
+#app{max-width:780px;margin:0 auto;padding:0 14px 90px}
+/* ---------- header ---------- */
+header.topbar{
+  position:sticky;top:0;z-index:50;background:var(--green);color:#fff;
+  margin:0 -14px 16px;padding:12px 16px;display:flex;align-items:center;gap:10px;
+  box-shadow:var(--shadow);
+}
+header.topbar .back{
+  background:rgba(255,255,255,.18);border:none;color:#fff;font-size:20px;
+  width:38px;height:38px;border-radius:12px;cursor:pointer;flex:0 0 auto;display:none;
+}
+body.has-back header.topbar .back{display:block}
+header.topbar h1{font-size:17px;font-weight:700;flex:1;line-height:1.3}
+header.topbar h1 small{display:block;font-size:11px;font-weight:400;opacity:.85}
+/* Arabic toggle */
+.ar-toggle{
+  display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.16);
+  border:1.5px solid rgba(255,255,255,.45);border-radius:999px;padding:6px 12px;
+  color:#fff;cursor:pointer;font-size:13px;font-weight:700;user-select:none;flex:0 0 auto;
+}
+.ar-toggle .dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.45);transition:.2s}
+body.show-ar .ar-toggle{background:#fff;color:var(--green-d)}
+body.show-ar .ar-toggle .dot{background:var(--green)}
+/* ---------- Arabic blocks ---------- */
+.ar{display:none;direction:rtl;text-align:right;color:var(--ar);
+  background:var(--ar-l);border-radius:10px;padding:7px 12px;margin-top:6px;
+  font-size:.95em;line-height:1.9}
+body.show-ar .ar{display:block}
+span.ar{display:none;background:none;padding:0 4px;margin:0;border-radius:6px}
+body.show-ar span.ar{display:inline}
+/* ---------- cards & layout ---------- */
+.card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);
+  padding:18px;margin-bottom:14px;overflow:hidden}
+.hero{background:linear-gradient(135deg,var(--green) 0%,#79c22a 100%);color:#fff;
+  border-radius:var(--radius);padding:24px 20px;margin-bottom:18px;box-shadow:var(--shadow)}
+.hero h2{font-size:22px;margin-bottom:6px}
+.hero p{font-size:14px;opacity:.95}
+.hero .ar{background:rgba(255,255,255,.16);color:#fff}
+.section-label{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;
+  color:var(--ink-2);margin:22px 4px 10px}
+/* lesson list */
+.lesson-item{display:flex;align-items:center;gap:14px;background:var(--card);
+  border-radius:var(--radius);box-shadow:var(--shadow);padding:14px 16px;margin-bottom:10px;
+  cursor:pointer;border:2px solid transparent;transition:.15s;width:100%;text-align:left;
+  color:inherit;font:inherit}
+.lesson-item:active{transform:scale(.98)}
+.lesson-item:focus-visible,.tab:focus-visible,.btn:focus-visible,.ar-toggle:focus-visible,
+header.topbar .back:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.lesson-item .num{flex:0 0 auto;width:46px;height:46px;border-radius:14px;background:var(--green-l);
+  color:var(--green-d);font-weight:800;font-size:19px;display:flex;align-items:center;justify-content:center}
+.lesson-item.gram .num{background:var(--blue-l);color:var(--blue)}
+.lesson-item .ttl{flex:1}
+.lesson-item .ttl b{font-size:16px;display:block}
+.lesson-item .ttl span.sub{font-size:12.5px;color:var(--ink-2);display:block}
+.lesson-item .chev{color:#c2cad3;font-size:20px}
+/* ---------- tabs ---------- */
+.tabs{display:flex;gap:6px;overflow-x:auto;padding:4px 0 12px;scrollbar-width:none;position:sticky;top:62px;z-index:40;background:var(--bg)}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;border:none;background:var(--card);box-shadow:var(--shadow);color:var(--ink-2);
+  padding:9px 16px;border-radius:999px;font-size:13.5px;font-weight:700;cursor:pointer}
+.tab.active{background:var(--green);color:#fff}
+/* ---------- vocab ---------- */
+.vocab-row{padding:13px 0;border-bottom:1px solid #edf0f3}
+.vocab-row:last-child{border-bottom:none}
+.vocab-row .w{font-weight:800;font-size:16.5px;color:var(--green-d)}
+.vocab-row .w .art{color:var(--amber);font-weight:700}
+.vocab-row .def{font-size:14px;color:var(--ink);margin-top:2px}
+.vocab-row .def::before{content:"💡 ";font-size:12px}
+.vocab-row .ex{font-size:13.5px;color:var(--ink-2);font-style:italic;margin-top:3px}
+.vocab-row .ex::before{content:"„"}
+.vocab-row .ex::after{content:"“"}
+/* ---------- redemittel ---------- */
+.rm-group{margin-bottom:16px}
+.rm-group h4{background:var(--green-l);color:var(--green-d);display:inline-block;
+  padding:4px 12px;border-radius:8px;font-size:14px;margin-bottom:8px}
+.rm-item{padding:7px 0 7px 14px;border-left:3px solid var(--green-l);margin-bottom:6px;font-size:15px}
+.rm-item .ar{margin-top:3px}
+/* ---------- grammar ---------- */
+.gram-block{margin-bottom:8px}
+.gram-block h3{font-size:17px;color:var(--green-d);margin-bottom:8px;padding-bottom:6px;border-bottom:2px solid var(--green-l)}
+.gram-block h5{font-size:14.5px;margin:14px 0 6px;color:var(--ink)}
+.gram-block p{font-size:14.5px;margin-bottom:8px}
+.exbox{background:var(--green-l);border-radius:10px;padding:10px 14px;margin:8px 0;font-size:14.5px}
+.exbox i,.exbox em{color:var(--green-d);font-style:normal;font-weight:700}
+.notebox{background:var(--amber-l);border-left:4px solid var(--amber);border-radius:8px;
+  padding:9px 13px;margin:10px 0;font-size:13.5px}
+.notebox::before{content:"⚠️ ";}
+table.gt{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px;background:#fff}
+table.gt th{background:var(--green);color:#fff;padding:7px 8px;text-align:left;font-size:12.5px}
+table.gt td{border:1px solid #e3e8ee;padding:6px 8px}
+table.gt tr:nth-child(even) td{background:#f7faf3}
+table.gt b{color:var(--green-d)}
+.gt-wrap{overflow-x:auto;margin:0 -4px}
+/* ---------- speaking ---------- */
+.speak-q{display:flex;gap:10px;align-items:flex-start;background:var(--blue-l);
+  border-radius:12px;padding:11px 14px;margin-bottom:9px;font-size:14.5px}
+.speak-q .qicon{flex:0 0 auto}
+.model-text{background:#fffceb;border:1.5px dashed var(--amber);border-radius:12px;
+  padding:14px 16px;font-size:15px;line-height:1.85;margin-top:10px}
+.model-text b{color:var(--amber);display:block;margin-bottom:6px;font-size:13px;text-transform:uppercase;letter-spacing:.05em}
+/* ---------- flashcards ---------- */
+.fc-bar{display:flex;gap:10px;margin-bottom:14px}
+.btn{border:none;border-radius:12px;padding:11px 18px;font-size:14.5px;font-weight:700;cursor:pointer}
+.btn-green{background:var(--green);color:#fff}
+.btn-ghost{background:var(--card);color:var(--ink-2);box-shadow:var(--shadow)}
+.flashcard{background:var(--card);border-radius:20px;box-shadow:var(--shadow);min-height:230px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  padding:26px;cursor:pointer;margin-bottom:14px;border:2px solid var(--green-l)}
+.flashcard .big{font-size:24px;font-weight:800;color:var(--green-d)}
+.flashcard .hint{font-size:12px;color:#9aa6b2;margin-top:14px}
+.flashcard .fdef{font-size:15.5px;margin-top:8px}
+.flashcard .fex{font-size:14px;color:var(--ink-2);font-style:italic;margin-top:8px}
+.fc-nav{display:flex;gap:10px;justify-content:center;align-items:center}
+.fc-nav .cnt{font-size:13px;color:var(--ink-2);min-width:64px;text-align:center;font-weight:700}
+/* ---------- quiz ---------- */
+.quiz-q{margin-bottom:6px;font-weight:700;font-size:15.5px}
+.quiz-opt{display:block;width:100%;text-align:left;background:#f7f9fb;border:2px solid #e6ebf0;
+  border-radius:12px;padding:11px 14px;font-size:14.5px;margin-bottom:8px;cursor:pointer;font-family:inherit}
+.quiz-opt.correct{background:var(--green-l);border-color:var(--green);color:var(--green-d);font-weight:700}
+.quiz-opt.wrong{background:var(--red-l);border-color:var(--red);color:var(--red)}
+.quiz-fb{font-size:13.5px;margin:4px 0 10px;display:none}
+.quiz-fb.show{display:block}
+.quiz-score{text-align:center;font-size:17px;font-weight:800;color:var(--green-d);padding:10px}
+/* overview */
+.goal-item{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px dashed #e8ecf0;font-size:14.5px}
+.goal-item:last-child{border:none}
+.badge-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.badge{background:var(--green-l);color:var(--green-d);font-size:12px;font-weight:700;border-radius:999px;padding:4px 11px}
+.intro-note{background:var(--blue-l);border-radius:12px;padding:12px 15px;font-size:14px;margin-top:12px}
+.gram-topic-link{display:flex;align-items:center;gap:10px;background:#f7f9fb;border-radius:12px;
+  padding:11px 14px;margin-bottom:8px;cursor:pointer;font-weight:700;font-size:14.5px;border:2px solid transparent}
+.gram-topic-link:active{border-color:var(--green)}
+.gram-topic-link .gnum{background:var(--blue-l);color:var(--blue);border-radius:8px;padding:2px 9px;font-size:12.5px;flex:0 0 auto}
+footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
+@media(min-width:640px){
+  html{font-size:17px}
+  .hero h2{font-size:26px}
+}
+</style>
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <button class="back" id="backBtn" aria-label="zurück">←</button>
+    <h1 id="topTitle">Deutsch A2.2<small>Netzwerk neu + Grammatik · مذكرة وكتاب</small></h1>
+    <button type="button" class="ar-toggle" id="arToggle" role="switch" aria-label="Arabische Übersetzung">
+      <span class="dot"></span><span>عربي</span>
+    </button>
+  </header>
+  <main id="view"></main>
+  <footer class="fnote">Netzwerk neu A2.2 (Kap. 7–12) · Grammatik-Skript A2 (Lektion 1–8)</footer>
+</div>
+
+<script src="data_book1.js"></script>
+<script src="data_book2.js"></script>
+<script src="data_gram.js"></script>
+<script>
+/* ===================== state & helpers ===================== */
+const $ = s => document.querySelector(s);
+const view = $('#view');
+const BOOK = [...window.BOOK1, ...window.BOOK2];
+const GRAM = window.GRAM;
+
+/* Arabic toggle (persisted) */
+function setAr(on){
+  document.body.classList.toggle('show-ar', on);
+  $('#arToggle').setAttribute('aria-checked', String(on));
+  localStorage.setItem('showAr', on ? '1' : '0');
+}
+$('#arToggle').addEventListener('click', () => setAr(!document.body.classList.contains('show-ar')));
+setAr(localStorage.getItem('showAr') !== '0');   // default ON
+
+function ar(txt){ return txt ? `<div class="ar">${txt}</div>` : ''; }
+
+/* ===================== router ===================== */
+function go(hash){ location.hash = hash; }
+window.addEventListener('hashchange', route);
+$('#backBtn').addEventListener('click', () => {
+  const h = location.hash;
+  if(/^#(k|g)\d+\//.test(h)) go(h.split('/')[0]);   // tab -> lesson root? actually lesson root shows tabs
+  else go('');
+});
+
+function route(){
+  const h = location.hash.replace('#','');
+  window.scrollTo(0,0);
+  if(!h){ renderHome(); return; }
+  const m = h.match(/^(k|g)(\d+)(?:\/(\w+))?/);
+  if(!m){ renderHome(); return; }
+  if(m[1]==='k'){
+    const ch = BOOK.find(c => c.num == m[2]);
+    if(ch) renderChapter(ch, m[3]||'ueberblick'); else renderHome();
+  } else {
+    const lk = GRAM.find(l => l.num == m[2]);
+    if(lk) renderLektion(lk, m[3]||'0'); else renderHome();
+  }
+}
+
+function setTop(title, sub, hasBack){
+  $('#topTitle').innerHTML = `${title}<small>${sub}</small>`;
+  document.body.classList.toggle('has-back', !!hasBack);
+}
+
+/* ===================== home ===================== */
+function renderHome(){
+  setTop('Deutsch A2.2','Netzwerk neu + Grammatik · مذكرة وكتاب', false);
+  let html = `
+  <div class="hero">
+    <h2>Hallo! 👋 Lern Deutsch – Schritt für Schritt</h2>
+    <p>Hier findest du alle Lektionen aus dem Buch <b>Netzwerk neu A2.2</b> und aus dem <b>Grammatik-Skript</b>:
+    Wortschatz mit einfachen Erklärungen auf Deutsch, Redemittel zum Sprechen, Grammatik und Quiz.</p>
+    <div class="ar">أهلاً! هنا كل دروس كتاب <b>Netzwerk neu A2.2</b> ومذكرة القواعد: مفردات مشروحة بالألماني، جُمل جاهزة للكلام، شرح قواعد مفصّل، واختبارات قصيرة. فعِّل أو اقفل الترجمة العربية من زرار «عربي» فوق.</div>
+  </div>
+  <div class="section-label">📗 Netzwerk neu A2.2 · Kapitel 7–12</div>`;
+  BOOK.forEach(c => {
+    html += `<button type="button" class="lesson-item" onclick="go('k${c.num}')">
+      <div class="num">${c.num}</div>
+      <div class="ttl"><b>${c.title}</b><span class="sub">${c.subtitle}</span>${ar(c.titleAr)}</div>
+      <div class="chev">›</div></button>`;
+  });
+  html += `<div class="section-label">📘 Grammatik-Skript A2 · Lektion 1–8</div>`;
+  GRAM.forEach(l => {
+    html += `<button type="button" class="lesson-item gram" onclick="go('g${l.num}')">
+      <div class="num">L${l.num}</div>
+      <div class="ttl"><b>${l.topics.map(t=>t.short).join(' · ')}</b><span class="sub">Lektion ${l.num} · ${l.topics.length} Themen</span>${ar(l.titleAr)}</div>
+      <div class="chev">›</div></button>`;
+  });
+  view.innerHTML = html;
+}
+
+/* ===================== chapter (book) ===================== */
+const TABS = [
+  ['ueberblick','📋 Überblick'],
+  ['wortschatz','📖 Wortschatz'],
+  ['redemittel','💬 Redemittel'],
+  ['grammatik','✏️ Grammatik'],
+  ['sprechen','🗣️ Sprechen'],
+  ['quiz','🎯 Quiz'],
+];
+
+function renderChapter(c, tab){
+  setTop(`Kapitel ${c.num}: ${c.title}`, c.subtitle, true);
+  let html = `<div class="tabs">` + TABS.map(([id,lbl]) =>
+    `<button class="tab ${id===tab?'active':''}" onclick="go('k${c.num}/${id}')">${lbl}</button>`).join('') + `</div>`;
+  html += renderChapterTab(c, tab);
+  view.innerHTML = html;
+  if(tab==='wortschatz') initFlash(c);
+  if(tab==='quiz') initQuiz(c.quiz);
+}
+
+function renderChapterTab(c, tab){
+  if(tab==='ueberblick'){
+    let h = `<div class="card">
+      <h3 style="color:var(--green-d);margin-bottom:6px">Worum geht es in diesem Kapitel?</h3>
+      <p style="font-size:15px">${c.intro}</p>${ar(c.introAr)}
+      <div class="badge-row">${c.badges.map(b=>`<span class="badge">${b}</span>`).join('')}</div>
+    </div>
+    <div class="card"><h3 style="color:var(--green-d);margin-bottom:8px">Das lernst du hier 🎯</h3>`;
+    c.goals.forEach(g => h += `<div class="goal-item"><span>✅</span><div>${g.de}${ar(g.ar)}</div></div>`);
+    h += `</div>
+    <div class="intro-note">💡 <b>Tipp:</b> Lies zuerst den Wortschatz, dann die Redemittel. Sprich die Sätze laut!
+    Am Ende mach das Quiz.${ar('نصيحة: ابدأ بالمفردات، وبعدها جُمل الكلام واقرأها بصوت عالي، وبعدين القواعد، وفي الآخر حل الكويز.')}</div>`;
+    return h;
+  }
+  if(tab==='wortschatz'){
+    let h = `<div class="fc-bar">
+      <button class="btn btn-green" id="fcStart">🃏 Mit Karten üben</button>
+      <button class="btn btn-ghost" id="fcStop" style="display:none">📃 Liste zeigen</button>
+    </div>
+    <div id="fcArea"></div>
+    <div class="card" id="vocList">`;
+    c.vocab.forEach(v => {
+      h += `<div class="vocab-row">
+        <div class="w">${fmtWord(v.w)}</div>
+        <div class="def">${v.d}</div>
+        ${v.ex?`<div class="ex">${v.ex}</div>`:''}
+        ${ar(v.ar)}
+      </div>`;
+    });
+    return h + `</div>`;
+  }
+  if(tab==='redemittel'){
+    let h = '';
+    c.redemittel.forEach(g => {
+      h += `<div class="card rm-group"><h4>${g.cat}</h4>${ar(g.catAr)}`;
+      g.items.forEach(i => h += `<div class="rm-item">${i.de}${ar(i.ar)}</div>`);
+      h += `</div>`;
+    });
+    return h;
+  }
+  if(tab==='grammatik'){
+    let h = '';
+    c.grammar.forEach(g => {
+      h += `<div class="card gram-block"><h3>${g.t}</h3>${ar(g.tAr)}${g.body}</div>`;
+    });
+    return h;
+  }
+  if(tab==='sprechen'){
+    let h = `<div class="card">
+      <h3 style="color:var(--green-d);margin-bottom:8px">Sprich über das Thema! 🗣️</h3>
+      <p style="font-size:13.5px;color:var(--ink-2)">Beantworte die Fragen laut. Benutze die Redemittel aus diesem Kapitel.</p>
+      ${ar('جاوب على الأسئلة دي بصوت عالي. استخدم جُمل الكلام (Redemittel) اللي في الفصل. ده أهم تمرين عشان تقدر تتكلم عن الموضوع.')}
+      <div style="margin-top:12px">`;
+    c.speaking.questions.forEach(q => h += `<div class="speak-q"><span class="qicon">❓</span><div>${q.de}${ar(q.ar)}</div></div>`);
+    h += `</div></div>
+    <div class="card">
+      <div class="model-text"><b>🌟 Modelltext – so kannst du sprechen:</b>${c.speaking.model}</div>
+      ${ar(c.speaking.modelAr)}
+    </div>`;
+    return h;
+  }
+  if(tab==='quiz'){
+    return `<div id="quizArea"></div>`;
+  }
+  return '';
+}
+
+function fmtWord(w){
+  return w.replace(/^(der|die|das)\s/, '<span class="art">$1</span> ');
+}
+
+/* ===================== flashcards ===================== */
+let fcState = null;
+function initFlash(c){
+  const start = $('#fcStart'), stop = $('#fcStop'), area = $('#fcArea'), list = $('#vocList');
+  start.addEventListener('click', () => {
+    fcState = {cards:[...c.vocab].sort(()=>Math.random()-.5), i:0, flipped:false};
+    list.style.display='none'; start.style.display='none'; stop.style.display='block';
+    drawFC();
+  });
+  stop.addEventListener('click', () => {
+    fcState=null; list.style.display='block'; start.style.display='block'; stop.style.display='none';
+    area.innerHTML='';
+  });
+}
+function drawFC(){
+  const a = $('#fcArea'); if(!fcState) return;
+  const v = fcState.cards[fcState.i];
+  a.innerHTML = `
+  <div class="flashcard" onclick="flipFC()">
+    ${!fcState.flipped
+      ? `<div class="big">${fmtWord(v.w)}</div><div class="hint">👆 Tippen = Erklärung zeigen</div>`
+      : `<div class="big" style="font-size:19px">${fmtWord(v.w)}</div>
+         <div class="fdef">💡 ${v.d}</div>
+         ${v.ex?`<div class="fex">„${v.ex}“</div>`:''}
+         ${ar(v.ar)}`}
+  </div>
+  <div class="fc-nav">
+    <button class="btn btn-ghost" onclick="navFC(-1)">← zurück</button>
+    <span class="cnt">${fcState.i+1} / ${fcState.cards.length}</span>
+    <button class="btn btn-green" onclick="navFC(1)">weiter →</button>
+  </div>`;
+}
+function flipFC(){ fcState.flipped=!fcState.flipped; drawFC(); }
+function navFC(d){
+  fcState.i = (fcState.i + d + fcState.cards.length) % fcState.cards.length;
+  fcState.flipped=false; drawFC();
+}
+
+/* ===================== quiz ===================== */
+function initQuiz(questions){
+  const area = $('#quizArea');
+  let score=0, answered=0;
+  let h='';
+  questions.forEach((q,qi) => {
+    h += `<div class="card"><div class="quiz-q">${qi+1}. ${q.q}</div>`;
+    q.o.forEach((opt,oi) => {
+      h += `<button class="quiz-opt" data-q="${qi}" data-o="${oi}">${opt}</button>`;
+    });
+    h += `<div class="quiz-fb" id="fb${qi}"></div></div>`;
+  });
+  h += `<div class="card quiz-score" id="qscore">Beantworte alle Fragen! 💪</div>`;
+  area.innerHTML = h;
+  area.querySelectorAll('.quiz-opt').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const qi=+btn.dataset.q, oi=+btn.dataset.o, q=questions[qi];
+      if(btn.parentElement.dataset.done) return;
+      btn.parentElement.dataset.done='1';
+      answered++;
+      const fb = $('#fb'+qi);
+      btn.parentElement.querySelectorAll('.quiz-opt').forEach((b,i)=>{
+        if(i===q.a) b.classList.add('correct');
+      });
+      if(oi===q.a){ score++; fb.innerHTML=`✅ Richtig! ${q.fb||''}${ar(q.fbAr)}`; }
+      else { btn.classList.add('wrong'); fb.innerHTML=`❌ Nicht ganz. ${q.fb||''}${ar(q.fbAr)}`; }
+      fb.classList.add('show');
+      if(answered===questions.length){
+        $('#qscore').innerHTML = `🏆 Dein Ergebnis: ${score} / ${questions.length}` +
+          (score===questions.length?' – Perfekt!':score>=questions.length*0.6?' – Gut gemacht!':' – Wiederhole die Lektion noch einmal!');
+      }
+    });
+  });
+}
+
+/* ===================== grammar lektion (skript) ===================== */
+function renderLektion(l, topicIdx){
+  setTop(`Lektion ${l.num} (Skript)`, l.topics.map(t=>t.short).join(' · '), true);
+  const ti = parseInt(topicIdx)||0;
+  let html = `<div class="tabs">` + l.topics.map((t,i) =>
+    `<button class="tab ${i===ti?'active':''}" onclick="go('g${l.num}/${i}')">${l.num}.${i+1} ${t.short}</button>`).join('') + `</div>`;
+  const t = l.topics[ti];
+  html += `<div class="card gram-block"><h3>${l.num}.${ti+1}. ${t.title}</h3>${ar(t.titleAr)}${t.body}</div>`;
+  if(t.quiz){
+    html += `<div class="section-label">🎯 Mini-Test</div><div id="quizArea"></div>`;
+  }
+  view.innerHTML = html;
+  if(t.quiz) initQuiz(t.quiz);
+}
+
+route();
+</script>
+</body>
+</html>

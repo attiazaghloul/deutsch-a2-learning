@@ -1,0 +1,12 @@
+# Source material and generated extraction files
+*.pdf
+pages/
+*_text.txt
+
+# Local tooling
+.claude/
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
