@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#236b6d">
-<title>Deutsch A2.2 · Netzwerk neu + Grammatik</title>
+<title>Deutsch A2 · Netzwerk neu + Grammatik</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Carlito:wght@400;700&display=swap" rel="stylesheet">
@@ -514,7 +514,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <div id="app">
   <header class="topbar">
     <button class="back" id="backBtn" aria-label="zurück">←</button>
-    <h1 id="topTitle">Deutsch A2.2<small>Netzwerk neu · Buch & Grammatik</small></h1>
+    <h1 id="topTitle">Deutsch A2<small>Netzwerk neu · Buch & Grammatik</small></h1>
     <button type="button" class="listen-toggle" id="listenToggle" aria-pressed="false" title="اضغط ثم اختر أي نص لسماعه">
       🔊 <span>Hören</span>
     </button>
@@ -524,7 +524,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
     </button>
   </header>
   <main id="view"></main>
-  <footer class="fnote">Netzwerk neu A2.2 · Grammatik-Skript A2 · Hören & Sprechen A2</footer>
+  <footer class="fnote">Netzwerk neu A2.1 + A2.2 · Grammatik-Skript A2 · Hören & Sprechen A2</footer>
 </div>
 <div class="speech-status" id="speechStatus" role="status"></div>
 <button type="button" class="translate-trigger" id="translateTrigger">ترجمة في السياق</button>
@@ -583,6 +583,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
   </section>
 </div>
 
+<script src="data_book0.js"></script>
 <script src="data_book1.js"></script>
 <script src="data_book2.js"></script>
 <script src="data_extra.js"></script>
@@ -599,7 +600,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
 const view = $('#view');
-const BOOK = [...window.BOOK1, ...window.BOOK2];
+const BOOK = [...window.BOOK0, ...window.BOOK1, ...window.BOOK2];
 const GRAM = window.GRAM;
 const VERBS = window.A2_VERBS || [];
 const HOEREN = window.HOEREN_BOOK;
@@ -1047,16 +1048,24 @@ function mainTabs(active){
 
 /* ===================== home ===================== */
 function renderHome(){
-  setTop('Deutsch A2.2','Netzwerk neu · Buch & Grammatik', false);
+  setTop('Deutsch A2','Netzwerk neu A2.1 + A2.2 · Buch & Grammatik', false);
   let html = mainTabs('lessons') + `
   <div class="hero">
     <h2>Hallo! 👋 Lern Deutsch – Schritt für Schritt</h2>
-    <p>Hier findest du alle Lektionen aus dem Buch <b>Netzwerk neu A2.2</b> und aus dem <b>Grammatik-Skript</b>:
+    <p>Hier findest du alle zwölf Themen aus <b>Netzwerk neu A2.1 und A2.2</b> sowie das <b>Grammatik-Skript</b>:
     Wortschatz, Redemittel, Grammatik, Quiz und das komplette Hörtraining aus <b>Hören & Sprechen A2</b>.</p>
-    <div class="ar">أهلاً! هنا دروس <b>Netzwerk neu A2.2</b> ومذكرة القواعد، بالإضافة إلى كتاب <b>Hören & Sprechen A2</b> بتسجيلاته وأسئلته وحلوله.</div>
+    <div class="ar">أهلاً! هنا محتوى مستوى A2 كامل: موضوعات <b>Netzwerk neu A2.1 وA2.2</b>، مذكرة القواعد، وكتاب <b>Hören & Sprechen A2</b>.</div>
   </div>
-  <div class="section-label">📗 Netzwerk neu A2.2 · Kapitel 7–12</div>`;
-  BOOK.forEach(c => {
+  <div class="section-label">📙 Netzwerk neu A2.1 · Kapitel 1–6</div>`;
+  window.BOOK0.forEach(c => {
+    html += `<button type="button" class="lesson-item" onclick="go('k${c.num}')">
+      <div class="num">${c.num}</div>
+      ${c.visual?`<img class="lesson-thumb" src="${c.visual.src}" alt="">`:''}
+      <div class="ttl"><b>${c.title}</b><span class="sub">${c.subtitle}</span>${ar(c.titleAr)}</div>
+      <div class="chev">›</div></button>`;
+  });
+  html += `<div class="section-label">📗 Netzwerk neu A2.2 · Kapitel 7–12</div>`;
+  [...window.BOOK1,...window.BOOK2].forEach(c => {
     html += `<button type="button" class="lesson-item" onclick="go('k${c.num}')">
       <div class="num">${c.num}</div>
       ${c.visual?`<img class="lesson-thumb" src="${c.visual.src}" alt="">`:''}
@@ -1378,9 +1387,9 @@ function renderDictionary(){
   const words=BOOK.flatMap(chapter=>chapter.vocab.map(item=>({...item,chapter:chapter.num,title:chapter.title})))
     .sort((a,b)=>a.w.localeCompare(b.w,'de'));
   view.innerHTML=mainTabs('dict')+`
-    <div class="hero"><h2>Wörterbuch A2.2</h2>
-      <p>Suche auf Deutsch oder Arabisch. Alle Wörter kommen direkt aus den Kapiteln 7–12.</p>
-      ${ar('ابحث بالألماني أو العربي. القاموس بيجمع كل كلمات الفصول من 7 إلى 12 مع الشرح والمثال.')}</div>
+    <div class="hero"><h2>Wörterbuch A2</h2>
+      <p>Suche auf Deutsch oder Arabisch. Der Wortschatz deckt jetzt alle Kapitel 1–12 ab.</p>
+      ${ar('ابحث بالألماني أو العربي. القاموس بيجمع كلمات كل الفصول من 1 إلى 12 مع الشرح والمثال.')}</div>
     <div class="search-panel">
       <div class="search-row">
         <input class="library-search" id="dictionarySearch" type="search" placeholder="Deutsch oder Arabisch suchen..." aria-label="Wörter suchen">
@@ -1415,7 +1424,7 @@ function renderVerbs(){
   setTop('A2 Verbwörterbuch','Konjugation, Präteritum & Perfekt',true);
   const pronouns=['ich','du','er/sie/es','wir','ihr','sie/Sie'];
   view.innerHTML=mainTabs('verbs')+`
-    <div class="hero"><h2>Verben A2.2</h2>
+    <div class="hero"><h2>Verben A2</h2>
       <p>Präsens mit allen Personen, Präteritum und Perfekt mit <b>haben</b> oder <b>sein</b>.</p>
       ${ar('قاموس أفعال فيه تصريف المضارع مع كل الضمائر، والماضي البسيط، والـPerfekt مع توضيح الفعل المساعد haben أو sein.')}</div>
     <div class="search-panel">
@@ -1739,8 +1748,11 @@ function vocabVisual(v,chapter){
   const source=`${v.w} ${v.d} ${v.ar||''}`.toLocaleLowerCase('de-DE');
   const icon=(VOCAB_VISUAL_RULES.find(([pattern])=>pattern.test(wordSource))
     ||VOCAB_VISUAL_RULES.find(([pattern])=>pattern.test(source))||[])[1]
-    ||({7:"🚌",8:"📚",9:"🏅",10:"🏠",11:"⏰",12:"🎵"}[chapter]||"💡");
+    ||({1:"👋",2:"🎓",3:"📱",4:"😊",5:"🏙️",6:"💼",7:"🚌",8:"📚",9:"🏅",10:"🏠",11:"⏰",12:"🎵"}[chapter]||"💡");
   const palettes={
+    1:["#e1f1ee","#bedfd9","#287c79"],2:["#e7eef7","#cbd9ea","#4c7194"],
+    3:["#eee7f5","#d8cae9","#76548c"],4:["#f8e5e8","#edc8d0","#a85868"],
+    5:["#e6f0e8","#c8dfce","#4f7d60"],6:["#f6eadf","#e9ceb7","#9a643e"],
     7:["#dff1ef","#b9ddd8","#287c79"],8:["#eee9f5","#d8cbea","#76548c"],
     9:["#e7f3e4","#cbe4c4","#4f7d45"],10:["#f8eadc","#eed0b2","#a66a35"],
     11:["#e8eef5","#cbd9e8","#4c7194"],12:["#f8e8ea","#ecc7ce","#a85868"]
