@@ -2,6 +2,7 @@
 *.pdf
 pages/
 *_text.txt
+Hören und Sprechen A2/
 
 # Local tooling
 .claude/

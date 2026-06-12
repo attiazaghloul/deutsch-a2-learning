@@ -162,7 +162,7 @@ table.gt b{color:var(--green-d)}
 .reading-answer{display:none;background:var(--green-l);border-radius:9px;padding:8px 11px;margin-top:7px;font-size:14px}
 .reading-answer.show{display:block}
 /* ---------- main library tabs, dictionary and expressions ---------- */
-.main-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:0 0 16px}
+.main-tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:0 0 16px}
 .main-tab{border:1px solid var(--line);background:var(--card);color:var(--ink-2);border-radius:13px;
   padding:10px 6px;font:inherit;font-size:13px;font-weight:700;cursor:pointer;box-shadow:var(--shadow)}
 .main-tab.active{background:var(--green-d);border-color:var(--green-d);color:#fff}
@@ -291,6 +291,50 @@ body.listen-mode .speakable{cursor:pointer;outline:1px dashed rgba(40,124,121,.3
 .coverage-point{background:#fff;border:1px solid #d9e4ed;border-radius:999px;padding:4px 9px;font-size:11.5px;color:var(--ink)}
 .coverage-point::before{content:"✓ ";color:var(--green);font-weight:800}
 .script-complete{border-top:2px dashed var(--blue-l);margin-top:16px;padding-top:3px}
+/* ---------- Hören & Sprechen book ---------- */
+.listening-hero{display:grid;grid-template-columns:130px 1fr;gap:18px;align-items:center}
+.listening-cover{width:130px;aspect-ratio:3/4;object-fit:cover;object-position:top;border-radius:12px;
+  box-shadow:0 10px 24px rgba(25,45,48,.18)}
+.listening-stats{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.listening-stat{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);
+  border-radius:999px;padding:4px 9px;font-size:11px;font-weight:700}
+.listen-chapter{border-left:5px solid var(--blue);align-items:stretch}
+.listen-chapter .num{background:var(--blue-l);color:var(--blue)}
+.listen-progress{height:6px;background:#e4eaed;border-radius:999px;overflow:hidden;margin-top:7px}
+.listen-progress span{display:block;height:100%;background:var(--green);border-radius:inherit}
+.listen-lesson-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.listen-lesson-head h2{color:var(--green-d);font-size:22px;line-height:1.25}
+.track-badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.track-badge{background:var(--blue-l);color:var(--blue);border-radius:999px;padding:4px 9px;font-size:11px;font-weight:800}
+.book-task{background:linear-gradient(135deg,var(--green-l),#fff);border:1px solid #d7e9e5;
+  border-radius:14px;padding:13px 15px;margin:14px 0}
+.book-task b{display:block;color:var(--green-d);font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.audio-track{border:1px solid var(--line);background:#fff;border-radius:14px;padding:13px;margin-bottom:10px}
+.audio-track-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:9px}
+.audio-track-title{font-weight:800;color:var(--ink)}
+.audio-track audio{width:100%;height:42px}
+.audio-speeds{display:flex;gap:6px;margin-top:8px}
+.audio-speed{border:1px solid var(--line);background:#fff;color:var(--ink-2);border-radius:8px;padding:4px 8px;
+  font:inherit;font-size:11px;cursor:pointer}
+.audio-speed.active{background:var(--green-d);border-color:var(--green-d);color:#fff}
+.missing-audio{background:var(--amber-l);border-color:#ecd5aa}
+.missing-audio p{font-size:12.5px;color:#755427;margin-bottom:8px}
+.book-page{padding:0;overflow:hidden}
+.book-page img{display:block;width:100%;height:auto;background:#fff}
+.book-page figcaption{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 13px;
+  background:var(--blue-l);font-size:12px;color:var(--blue);font-weight:700}
+.page-zoom{border:0;background:#fff;color:var(--blue);border-radius:8px;padding:5px 9px;font:inherit;font-size:11px;
+  font-weight:700;cursor:pointer}
+.solution-panel{display:none;margin-top:12px}
+.solution-panel.show{display:block}
+.solution-toggle,.lesson-complete{border:0;border-radius:11px;padding:10px 13px;font:inherit;font-weight:700;cursor:pointer}
+.solution-toggle{background:var(--blue);color:#fff}
+.lesson-complete{background:var(--green-l);color:var(--green-d)}
+.lesson-complete.done{background:var(--green-d);color:#fff}
+.listen-actions{display:flex;flex-wrap:wrap;gap:9px;margin:15px 0}
+.book-page-modal .modal-panel{width:min(900px,100%);padding:10px}
+.book-page-modal img{display:block;width:100%;height:auto}
+.book-page-modal .modal-head{padding:6px 8px;margin-bottom:6px}
 .practice-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:20px 4px 10px}
 .practice-head h3{color:var(--green-d);font-size:18px}
 .practice-progress{font-size:12px;color:var(--ink-2);background:var(--card);border:1px solid var(--line);
@@ -376,6 +420,9 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
   .main-tabs{grid-template-columns:repeat(2,1fr)}
   .verb-grid{grid-template-columns:repeat(2,1fr)}
   .voice-gallery{grid-template-columns:1fr}
+  .listening-hero{grid-template-columns:82px 1fr;gap:12px}
+  .listening-cover{width:82px}
+  .listen-lesson-head{display:block}
 }
 </style>
 </head>
@@ -393,7 +440,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
     </button>
   </header>
   <main id="view"></main>
-  <footer class="fnote">Netzwerk neu A2.2 (Kap. 7–12) · Grammatik-Skript A2 (Lektion 1–8)</footer>
+  <footer class="fnote">Netzwerk neu A2.2 · Grammatik-Skript A2 · Hören & Sprechen A2</footer>
 </div>
 <div class="speech-status" id="speechStatus" role="status"></div>
 <button type="button" class="translate-trigger" id="translateTrigger">ترجمة في السياق</button>
@@ -445,6 +492,12 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
     <div class="translation-note">الترجمة بتستخدم الجملة المحيطة لفهم المعنى. لو ترجمة الجهاز غير متاحة، يُرسل سياق النص التعليمي لخدمة الترجمة عبر الإنترنت.</div>
   </section>
 </div>
+<div class="modal-backdrop book-page-modal" id="bookPageModal" aria-hidden="true">
+  <section class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="bookPageTitle">
+    <div class="modal-head"><h2 id="bookPageTitle">Buchseite</h2><button class="modal-close" data-close-modal="bookPageModal" aria-label="Schließen">×</button></div>
+    <img id="bookPageLarge" alt="">
+  </section>
+</div>
 
 <script src="data_book1.js"></script>
 <script src="data_book2.js"></script>
@@ -454,6 +507,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <script src="data_gram.js"></script>
 <script src="data_gram_extra.js"></script>
 <script src="data_gram_complete.js"></script>
+<script src="data_hoeren.js"></script>
 <script>
 /* ===================== state & helpers ===================== */
 const $ = s => document.querySelector(s);
@@ -462,6 +516,7 @@ const view = $('#view');
 const BOOK = [...window.BOOK1, ...window.BOOK2];
 const GRAM = window.GRAM;
 const VERBS = window.A2_VERBS || [];
+const HOEREN = window.HOEREN_BOOK;
 function escapeHtml(value){
   return String(value).replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]));
 }
@@ -856,6 +911,8 @@ function go(hash){ location.hash = hash; }
 window.addEventListener('hashchange', route);
 $('#backBtn').addEventListener('click', () => {
   const h = location.hash;
+  if(/^#listen\/[A-I]\/\d+/.test(h)){ go(h.split('/').slice(0,2).join('/').replace('#','')); return; }
+  if(/^#listen\/[A-I]/.test(h)){ go('listen'); return; }
   if(/^#(k|g)\d+\//.test(h)) go(h.split('/')[0]);   // tab -> lesson root? actually lesson root shows tabs
   else go('');
 });
@@ -867,6 +924,15 @@ function route(){
   if(h==='dict'){ renderDictionary(); return; }
   if(h==='verbs'){ renderVerbs(); return; }
   if(h==='phrases'){ renderExpressions(); return; }
+  if(h==='listen'){ renderListeningHome(); return; }
+  const listenMatch=h.match(/^listen\/([A-I])(?:\/(\d+))?$/);
+  if(listenMatch){
+    const chapter=HOEREN.chapters.find(item=>item.id===listenMatch[1]);
+    if(!chapter){ renderListeningHome(); return; }
+    if(listenMatch[2]===undefined) renderListeningChapter(chapter);
+    else renderListeningExercise(chapter,Number(listenMatch[2]));
+    return;
+  }
   const m = h.match(/^(k|g)(\d+)(?:\/(\w+))?/);
   if(!m){ renderHome(); return; }
   if(m[1]==='k'){
@@ -889,6 +955,7 @@ function mainTabs(active){
     <button class="main-tab ${active==='dict'?'active':''}" onclick="go('dict')">🔎 Wörterbuch</button>
     <button class="main-tab ${active==='verbs'?'active':''}" onclick="go('verbs')">🧩 Verben</button>
     <button class="main-tab ${active==='phrases'?'active':''}" onclick="go('phrases')">💬 Redewendungen</button>
+    <button class="main-tab ${active==='listen'?'active':''}" onclick="go('listen')">🎧 Hören</button>
   </nav>`;
 }
 
@@ -899,8 +966,8 @@ function renderHome(){
   <div class="hero">
     <h2>Hallo! 👋 Lern Deutsch – Schritt für Schritt</h2>
     <p>Hier findest du alle Lektionen aus dem Buch <b>Netzwerk neu A2.2</b> und aus dem <b>Grammatik-Skript</b>:
-    Wortschatz mit einfachen Erklärungen auf Deutsch, Redemittel zum Sprechen, Grammatik und Quiz.</p>
-    <div class="ar">أهلاً! هنا كل دروس كتاب <b>Netzwerk neu A2.2</b> ومذكرة القواعد: مفردات مشروحة بالألماني، جُمل جاهزة للكلام، شرح قواعد مفصّل، واختبارات قصيرة. فعِّل أو اقفل الترجمة العربية من زرار «عربي» فوق.</div>
+    Wortschatz, Redemittel, Grammatik, Quiz und das komplette Hörtraining aus <b>Hören & Sprechen A2</b>.</p>
+    <div class="ar">أهلاً! هنا دروس <b>Netzwerk neu A2.2</b> ومذكرة القواعد، بالإضافة إلى كتاب <b>Hören & Sprechen A2</b> بتسجيلاته وأسئلته وحلوله.</div>
   </div>
   <div class="section-label">📗 Netzwerk neu A2.2 · Kapitel 7–12</div>`;
   BOOK.forEach(c => {
@@ -919,6 +986,156 @@ function renderHome(){
   });
   view.innerHTML = html;
 }
+
+/* ===================== Hören & Sprechen A2 ===================== */
+function listeningProgress(){
+  try{ return JSON.parse(localStorage.getItem('hoerenProgress')||'{}'); }
+  catch(error){ return {}; }
+}
+
+function renderListeningHome(){
+  setTop('Hören & Sprechen A2','Original-Audios mit den Übungen',true);
+  const progress=listeningProgress();
+  const total=HOEREN.chapters.reduce((sum,chapter)=>sum+chapter.exercises.length,0);
+  const done=Object.values(progress).filter(Boolean).length;
+  view.innerHTML=mainTabs('listen')+`
+    <section class="hero listening-hero">
+      <img class="listening-cover" src="assets/listening/pages/cover.webp" alt="Hören und Sprechen A2 Buchcover">
+      <div><h2>Hören & Sprechen A2</h2>
+        <p>Höre die Original-Aufnahmen und bearbeite direkt die passenden Aufgaben aus dem Buch.</p>
+        ${ar('استمع للتسجيلات الأصلية وحل الأسئلة المطابقة من صفحات الكتاب، وبعد المحاولة افتح صفحات الحل.')}
+        <div class="listening-stats"><span class="listening-stat">9 Themen</span><span class="listening-stat">28 Übungen</span>
+          <span class="listening-stat">61 Audiodateien</span><span class="listening-stat">${done}/${total} geschafft</span></div>
+      </div>
+    </section>
+    <article class="audio-track"><div class="audio-track-head">
+      <span class="audio-track-title">Track 1 · Vorwort</span><span class="track-badge">Einführung</span></div>
+      <audio controls preload="metadata" src="assets/listening/audio/track-001.mp3">Audio wird nicht unterstützt.</audio>
+    </article>
+    <div class="section-label">Themen im Buch</div>
+    ${HOEREN.chapters.map(chapter=>{
+      const chapterDone=chapter.exercises.filter(exercise=>progress[exercise.id]).length;
+      const percent=Math.round(chapterDone/chapter.exercises.length*100);
+      const tracks=chapter.exercises.flatMap(exercise=>exercise.tracks);
+      return `<button type="button" class="lesson-item listen-chapter" onclick="go('listen/${chapter.id}')">
+        <div class="num">${chapter.id}</div>
+        <div class="ttl"><b>${chapter.title}</b><span class="sub">${chapter.exercises.length} Übungen · Track ${tracks[0]}–${tracks.at(-1)}</span>
+          ${ar(chapter.titleAr)}<div class="listen-progress"><span style="width:${percent}%"></span></div></div>
+        <div class="chev">›</div></button>`;
+    }).join('')}`;
+}
+
+function renderListeningChapter(chapter){
+  setTop(`${chapter.id} · ${chapter.title}`,`${chapter.exercises.length} Übungen`,true);
+  const progress=listeningProgress();
+  view.innerHTML=`
+    <section class="hero"><h2>${chapter.title}</h2><p>Wähle eine Übung. Jeder Track ist direkt mit seinen Buchseiten verbunden.</p>${ar(chapter.titleAr)}</section>
+    ${chapter.exercises.map((exercise,index)=>`
+      <button type="button" class="lesson-item ${progress[exercise.id]?'completed':''}" onclick="go('listen/${chapter.id}/${index}')">
+        <div class="num">${exercise.id}</div>
+        <div class="ttl"><b>${exercise.title}</b>
+          <span class="sub">Track ${exercise.tracks.join(' · ')} · Buchseite ${exercise.exercisePages.join(', ')}</span>
+          <div class="listen-progress"><span style="width:${progress[exercise.id]?100:0}%"></span></div>
+        </div><div class="chev">›</div>
+      </button>`).join('')}`;
+}
+
+function renderListeningExercise(chapter,index){
+  const exercise=chapter.exercises[index];
+  if(!exercise){ renderListeningChapter(chapter); return; }
+  setTop(`${exercise.id}: ${exercise.title}`,`${chapter.title} · Track ${exercise.tracks.join('–')}`,true);
+  const progress=listeningProgress();
+  view.innerHTML=`
+    <div class="listen-lesson-head">
+      <div><div class="section-label" style="margin-top:2px">${chapter.id} · ${chapter.title}</div>
+        <h2>${exercise.title}</h2>
+        <div class="track-badges">${exercise.tracks.map(track=>`<span class="track-badge">Track ${track}</span>`).join('')}</div>
+      </div>
+      <span class="dictionary-meta">Buch S. ${exercise.exercisePages.join(', ')}</span>
+    </div>
+    <div class="book-task"><b>Deine Aufgabe</b>${exercise.task}${ar(exercise.taskAr)}</div>
+    <div class="section-label">Original-Audios</div>
+    <section>${exercise.tracks.map(track=>renderBookTrack(track,exercise)).join('')}</section>
+    <div class="section-label">Aufgaben im Buch</div>
+    <section>${exercise.exercisePages.map(page=>renderBookPage(page,'Aufgabe')).join('')}</section>
+    <div class="listen-actions">
+      <button type="button" class="solution-toggle" data-solution-pages="${exercise.solutionPages.join(',')}">Lösung anzeigen</button>
+      <button type="button" class="lesson-complete ${progress[exercise.id]?'done':''}" data-listening-complete="${exercise.id}">
+        ${progress[exercise.id]?'Gelernt ✓':'Als gelernt markieren'}
+      </button>
+    </div>
+    <section class="solution-panel" id="listeningSolutions"></section>`;
+  initListeningExercise(exercise);
+}
+
+function renderBookTrack(track,exercise){
+  if(track===47){
+    return `<article class="audio-track missing-audio"><div class="audio-track-head">
+      <span class="audio-track-title">Track 47 · Aussprachetraining</span><span class="track-badge">Ersatz</span></div>
+      <p>Die MP3-Datei 47 fehlt in beiden gelieferten Audio-Ordnern. Der Buchtext kann stattdessen mit der gewählten deutschen Stimme vorgelesen werden.</p>
+      <button type="button" class="people-read" onclick="speakText(${JSON.stringify(exercise.fallbackText)},'de')">Text von Track 47 hören</button>
+      ${ar('ملف التراك 47 غير موجود في المصدرين، لذلك التطبيق يقرأ نصه الموجود في الكتاب بالصوت الألماني المختار.')}
+    </article>`;
+  }
+  return `<article class="audio-track"><div class="audio-track-head">
+      <span class="audio-track-title">Track ${track}</span><span class="track-badge">Original MP3</span></div>
+    <audio controls preload="metadata" src="assets/listening/audio/track-${String(track).padStart(3,'0')}.mp3">Audio wird nicht unterstützt.</audio>
+    <div class="audio-speeds"><button class="audio-speed" data-audio-speed=".75">0.75×</button>
+      <button class="audio-speed active" data-audio-speed="1">1×</button>
+      <button class="audio-speed" data-audio-speed="1.25">1.25×</button></div>
+  </article>`;
+}
+
+function renderBookPage(page,label){
+  return `<figure class="card book-page"><img loading="lazy" src="assets/listening/pages/page-${String(page).padStart(3,'0')}.webp"
+      alt="${label}, Buchseite ${page}">
+    <figcaption><span>${label} · Seite ${page}</span>
+      <button type="button" class="page-zoom" data-book-page="${page}" data-page-label="${label}">Seite vergrößern</button>
+    </figcaption></figure>`;
+}
+
+function initListeningExercise(exercise){
+  const audios=$$('.audio-track audio');
+  audios.forEach(audio=>audio.addEventListener('play',()=>{
+    audios.forEach(other=>{ if(other!==audio) other.pause(); });
+    if(speech) speech.cancel();
+  }));
+  $$('.audio-speed').forEach(button=>button.addEventListener('click',()=>{
+    const card=button.closest('.audio-track');
+    card.querySelector('audio').playbackRate=Number(button.dataset.audioSpeed);
+    card.querySelectorAll('.audio-speed').forEach(item=>item.classList.toggle('active',item===button));
+  }));
+  const solutionButton=$('.solution-toggle');
+  solutionButton.addEventListener('click',()=>{
+    const panel=$('#listeningSolutions');
+    const show=!panel.classList.contains('show');
+    if(show&&!panel.dataset.loaded){
+      panel.innerHTML=`<div class="section-label">Lösung und Hörtext</div>`+
+        exercise.solutionPages.map(page=>renderBookPage(page,'Lösung')).join('');
+      panel.dataset.loaded='1';
+    }
+    panel.classList.toggle('show',show);
+    solutionButton.textContent=show?'Lösung ausblenden':'Lösung anzeigen';
+  });
+  const completeButton=$('[data-listening-complete]');
+  completeButton.addEventListener('click',()=>{
+    const saved=listeningProgress();
+    saved[exercise.id]=!saved[exercise.id];
+    localStorage.setItem('hoerenProgress',JSON.stringify(saved));
+    completeButton.classList.toggle('done',saved[exercise.id]);
+    completeButton.textContent=saved[exercise.id]?'Gelernt ✓':'Als gelernt markieren';
+  });
+}
+
+view.addEventListener('click',event=>{
+  const zoom=event.target.closest('[data-book-page]');
+  if(!zoom) return;
+  const page=zoom.dataset.bookPage;
+  $('#bookPageTitle').textContent=`${zoom.dataset.pageLabel} · Seite ${page}`;
+  $('#bookPageLarge').src=`assets/listening/pages/page-${String(page).padStart(3,'0')}.webp`;
+  $('#bookPageLarge').alt=`Buchseite ${page}`;
+  openModal('bookPageModal');
+});
 
 /* ===================== dictionary and expressions ===================== */
 function renderDictionary(){
