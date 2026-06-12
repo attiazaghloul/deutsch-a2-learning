@@ -82,6 +82,7 @@ body.show-ar span.ar{display:inline}
 header.topbar .back:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
 .lesson-item .num{flex:0 0 auto;width:46px;height:46px;border-radius:14px;background:var(--green-l);
   color:var(--green-d);font-weight:800;font-size:19px;display:flex;align-items:center;justify-content:center}
+.lesson-thumb{width:76px;height:58px;object-fit:cover;border-radius:12px;flex:0 0 auto}
 .lesson-item.gram .num{background:var(--blue-l);color:var(--blue)}
 .lesson-item .ttl{flex:1}
 .lesson-item .ttl b{font-size:16px;display:block}
@@ -143,6 +144,47 @@ table.gt b{color:var(--green-d)}
 .answer-btn{border:1px solid #cad4df;background:#fff;color:var(--green-d);border-radius:9px;padding:6px 10px;font-weight:700;cursor:pointer}
 .reading-answer{display:none;background:var(--green-l);border-radius:9px;padding:8px 11px;margin-top:7px;font-size:14px}
 .reading-answer.show{display:block}
+/* ---------- main library tabs, dictionary and expressions ---------- */
+.main-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 0 16px}
+.main-tab{border:1px solid var(--line);background:var(--card);color:var(--ink-2);border-radius:13px;
+  padding:10px 6px;font:inherit;font-size:13px;font-weight:700;cursor:pointer;box-shadow:var(--shadow)}
+.main-tab.active{background:var(--green-d);border-color:var(--green-d);color:#fff}
+.search-panel{position:sticky;top:72px;z-index:20;background:rgba(246,242,234,.96);backdrop-filter:blur(8px);
+  border:1px solid var(--line);border-radius:16px;padding:10px;margin-bottom:14px;box-shadow:var(--shadow)}
+.search-row{display:flex;gap:8px}
+.library-search,.library-filter{border:2px solid #d7dfe3;background:#fff;border-radius:11px;padding:10px;
+  color:var(--ink);font:inherit;outline:none}
+.library-search{min-width:0;flex:1}
+.library-filter{width:140px}
+.library-search:focus,.library-filter:focus{border-color:var(--green)}
+.result-count{font-size:12px;color:var(--ink-2);margin:7px 3px 0}
+.dictionary-entry{display:grid;grid-template-columns:1fr auto;gap:8px;padding:14px 0;border-bottom:1px solid var(--line)}
+.dictionary-entry:last-child{border-bottom:0}
+.dictionary-word{font-size:17px;font-weight:800;color:var(--green-d)}
+.dictionary-meta{font-size:11px;color:var(--ink-2);background:var(--green-l);border-radius:999px;padding:3px 8px;height:max-content}
+.dictionary-definition{font-size:14px;margin-top:3px}
+.dictionary-example{font-size:13px;color:var(--ink-2);font-style:italic;margin-top:3px}
+.expression-card{border-left:4px solid var(--amber)}
+.expression-de{font-size:18px;font-weight:800;color:var(--green-d)}
+.expression-meaning{font-size:14px;margin-top:6px}
+.expression-example{font-size:13px;color:var(--ink-2);font-style:italic;margin-top:7px}
+.expression-tag{display:inline-block;background:var(--amber-l);color:#8b5b20;border-radius:999px;padding:3px 8px;
+  font-size:11px;font-weight:700;margin-bottom:8px}
+/* ---------- speech ---------- */
+.listen-toggle{border:1.5px solid rgba(255,255,255,.45);background:rgba(255,255,255,.14);color:#fff;
+  border-radius:999px;padding:6px 9px;font:inherit;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap}
+body.listen-mode .listen-toggle{background:#fff;color:var(--green-d)}
+.speakable{position:relative}
+.speak-btn{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border:0;
+  border-radius:50%;background:var(--blue-l);color:var(--blue);font-size:14px;cursor:pointer;margin-inline-start:7px;vertical-align:middle}
+.speak-btn:hover,.speak-btn:focus-visible{background:var(--blue);color:#fff}
+body.listen-mode .speakable{cursor:pointer;outline:1px dashed rgba(40,124,121,.35);outline-offset:3px}
+.speech-status{position:fixed;left:50%;bottom:18px;z-index:90;transform:translate(-50%,120px);
+  background:var(--ink);color:#fff;border-radius:999px;padding:8px 14px;font-size:12px;box-shadow:var(--shadow);
+  transition:.2s;pointer-events:none;max-width:90%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.speech-status.show{transform:translate(-50%,0)}
+.chapter-visual{padding:0}
+.chapter-visual img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover}
 /* ---------- grammar visuals and practice ---------- */
 .grammar-visual{position:relative;padding:0;overflow:hidden}
 .grammar-visual img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover}
@@ -220,6 +262,11 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 @media(max-width:460px){
   .card{padding:16px}
   .practice-head{align-items:flex-start}
+  .lesson-thumb{width:62px;height:52px}
+  .search-row{flex-direction:column}
+  .library-filter{width:100%}
+  .listen-toggle{padding:6px 8px}
+  .listen-toggle span{display:none}
 }
 </style>
 </head>
@@ -228,6 +275,9 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
   <header class="topbar">
     <button class="back" id="backBtn" aria-label="zurück">←</button>
     <h1 id="topTitle">Deutsch A2.2<small>Netzwerk neu + Grammatik · مذكرة وكتاب</small></h1>
+    <button type="button" class="listen-toggle" id="listenToggle" aria-pressed="false" title="اضغط ثم اختر أي نص لسماعه">
+      🔊 <span>استماع</span>
+    </button>
     <button type="button" class="ar-toggle" id="arToggle" role="switch" aria-label="Arabische Übersetzung">
       <span class="dot"></span><span>عربي</span>
     </button>
@@ -235,18 +285,24 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
   <main id="view"></main>
   <footer class="fnote">Netzwerk neu A2.2 (Kap. 7–12) · Grammatik-Skript A2 (Lektion 1–8)</footer>
 </div>
+<div class="speech-status" id="speechStatus" role="status"></div>
 
 <script src="data_book1.js"></script>
 <script src="data_book2.js"></script>
 <script src="data_extra.js"></script>
+<script src="data_enrichment.js"></script>
 <script src="data_gram.js"></script>
 <script src="data_gram_extra.js"></script>
 <script>
 /* ===================== state & helpers ===================== */
 const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
 const view = $('#view');
 const BOOK = [...window.BOOK1, ...window.BOOK2];
 const GRAM = window.GRAM;
+function escapeHtml(value){
+  return String(value).replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]));
+}
 
 /* Arabic toggle (persisted) */
 function setAr(on){
@@ -258,6 +314,96 @@ $('#arToggle').addEventListener('click', () => setAr(!document.body.classList.co
 setAr(localStorage.getItem('showAr') !== '0');   // default ON
 
 function ar(txt){ return txt ? `<div class="ar">${txt}</div>` : ''; }
+
+/* ===================== speech ===================== */
+const speech = window.speechSynthesis;
+const listenToggle = $('#listenToggle');
+let speechStatusTimer = null;
+
+function cleanSpeechText(element){
+  const copy=element.cloneNode(true);
+  copy.querySelectorAll('.ar,.speak-btn,.answer-btn,.exercise-actions').forEach(node=>node.remove());
+  return copy.textContent.replace(/\s+/g,' ').trim();
+}
+
+function showSpeechStatus(text){
+  const status=$('#speechStatus');
+  status.textContent=`🔊 ${text}`;
+  status.classList.add('show');
+  clearTimeout(speechStatusTimer);
+  speechStatusTimer=setTimeout(()=>status.classList.remove('show'),2600);
+}
+
+function speakText(text, lang){
+  const value=(text||'').replace(/\s+/g,' ').trim();
+  if(!value) return;
+  if(!speech){ showSpeechStatus('المتصفح لا يدعم القراءة الصوتية'); return; }
+  speech.cancel();
+  const utterance=new SpeechSynthesisUtterance(value);
+  const isArabic=lang==='ar' || /[\u0600-\u06ff]/.test(value.slice(0,40));
+  utterance.lang=isArabic?'ar-EG':'de-DE';
+  utterance.rate=isArabic ? .92 : .86;
+  const voices=speech.getVoices();
+  utterance.voice=voices.find(v=>v.lang.toLowerCase().startsWith(isArabic?'ar':'de'))||null;
+  utterance.onend=()=>$('#speechStatus').classList.remove('show');
+  speech.speak(utterance);
+  showSpeechStatus(value.slice(0,72));
+}
+
+function enhanceSpeech(root){
+  const selector=[
+    '.vocab-row .w','.vocab-row .def','.vocab-row .ex','.reading-text','.reading-q b',
+    '.reading-answer','.reading-glossary span','.rm-item','.gram-block h3','.gram-block p',
+    '.gram-block li','.gram-block td','.speak-q>div','.model-text','.quiz-q',
+    '.exercise-prompt','.dictionary-word','.dictionary-definition','.dictionary-example',
+    '.expression-de','.expression-meaning','.expression-example','.goal-item>div','.visual-caption',
+    '.card>h3','.card>h4','.card>p','.intro-note'
+  ].join(',');
+  root.querySelectorAll(selector).forEach(element=>{
+    if(element.dataset.speechReady) return;
+    element.dataset.speechReady='1';
+    element.classList.add('speakable');
+    const button=document.createElement('button');
+    button.type='button'; button.className='speak-btn'; button.textContent='🔊';
+    button.setAttribute('aria-label','Vorlesen');
+    button.addEventListener('click',event=>{
+      event.preventDefault(); event.stopPropagation();
+      speakText(cleanSpeechText(element),element.classList.contains('ar')?'ar':'de');
+    });
+    element.appendChild(button);
+  });
+  root.querySelectorAll('.ar').forEach(element=>{
+    if(element.dataset.speechReady || !element.textContent.trim() || element.closest('button')) return;
+    element.dataset.speechReady='1';
+    element.classList.add('speakable');
+    const button=document.createElement('button');
+    button.type='button'; button.className='speak-btn'; button.textContent='🔊';
+    button.setAttribute('aria-label','قراءة النص العربي');
+    button.addEventListener('click',event=>{
+      event.preventDefault(); event.stopPropagation();
+      speakText(cleanSpeechText(element),'ar');
+    });
+    element.appendChild(button);
+  });
+}
+
+listenToggle.addEventListener('click',()=>{
+  const on=!document.body.classList.contains('listen-mode');
+  document.body.classList.toggle('listen-mode',on);
+  listenToggle.setAttribute('aria-pressed',String(on));
+  if(!on && speech) speech.cancel();
+  showSpeechStatus(on?'اضغط على أي نص لسماعه':'تم إيقاف وضع الاستماع');
+});
+
+view.addEventListener('click',event=>{
+  if(!document.body.classList.contains('listen-mode') || event.target.closest('.speak-btn,input,select,.answer-btn,.exercise-check,.exercise-reset')) return;
+  const target=event.target.closest('.speakable,.quiz-opt,.word-token,.tab,.lesson-item,h2,h3,h4,p,li,td,.badge');
+  if(!target) return;
+  event.preventDefault(); event.stopPropagation();
+  speakText(cleanSpeechText(target),target.classList.contains('ar')?'ar':'de');
+},true);
+
+new MutationObserver(()=>enhanceSpeech(view)).observe(view,{childList:true,subtree:true});
 
 /* ===================== router ===================== */
 function go(hash){ location.hash = hash; }
@@ -272,6 +418,8 @@ function route(){
   const h = location.hash.replace('#','');
   window.scrollTo(0,0);
   if(!h){ renderHome(); return; }
+  if(h==='dict'){ renderDictionary(); return; }
+  if(h==='phrases'){ renderExpressions(); return; }
   const m = h.match(/^(k|g)(\d+)(?:\/(\w+))?/);
   if(!m){ renderHome(); return; }
   if(m[1]==='k'){
@@ -288,10 +436,18 @@ function setTop(title, sub, hasBack){
   document.body.classList.toggle('has-back', !!hasBack);
 }
 
+function mainTabs(active){
+  return `<nav class="main-tabs" aria-label="Hauptbereiche">
+    <button class="main-tab ${active==='lessons'?'active':''}" onclick="go('')">📚 الدروس</button>
+    <button class="main-tab ${active==='dict'?'active':''}" onclick="go('dict')">🔎 القاموس</button>
+    <button class="main-tab ${active==='phrases'?'active':''}" onclick="go('phrases')">💬 التعبيرات</button>
+  </nav>`;
+}
+
 /* ===================== home ===================== */
 function renderHome(){
   setTop('Deutsch A2.2','Netzwerk neu + Grammatik · مذكرة وكتاب', false);
-  let html = `
+  let html = mainTabs('lessons') + `
   <div class="hero">
     <h2>Hallo! 👋 Lern Deutsch – Schritt für Schritt</h2>
     <p>Hier findest du alle Lektionen aus dem Buch <b>Netzwerk neu A2.2</b> und aus dem <b>Grammatik-Skript</b>:
@@ -302,6 +458,7 @@ function renderHome(){
   BOOK.forEach(c => {
     html += `<button type="button" class="lesson-item" onclick="go('k${c.num}')">
       <div class="num">${c.num}</div>
+      ${c.visual?`<img class="lesson-thumb" src="${c.visual.src}" alt="">`:''}
       <div class="ttl"><b>${c.title}</b><span class="sub">${c.subtitle}</span>${ar(c.titleAr)}</div>
       <div class="chev">›</div></button>`;
   });
@@ -313,6 +470,83 @@ function renderHome(){
       <div class="chev">›</div></button>`;
   });
   view.innerHTML = html;
+}
+
+/* ===================== dictionary and expressions ===================== */
+function renderDictionary(){
+  setTop('A2 Wörterbuch','كل كلمات الدروس في مكان واحد',true);
+  const words=BOOK.flatMap(chapter=>chapter.vocab.map(item=>({...item,chapter:chapter.num,title:chapter.title})))
+    .sort((a,b)=>a.w.localeCompare(b.w,'de'));
+  view.innerHTML=mainTabs('dict')+`
+    <div class="hero"><h2>Wörterbuch A2.2</h2>
+      <p>Suche auf Deutsch oder Arabisch. Alle Wörter kommen direkt aus den Kapiteln 7–12.</p>
+      ${ar('ابحث بالألماني أو العربي. القاموس بيجمع كل كلمات الفصول من 7 إلى 12 مع الشرح والمثال.')}</div>
+    <div class="search-panel">
+      <div class="search-row">
+        <input class="library-search" id="dictionarySearch" type="search" placeholder="كلمة ألماني أو عربي..." aria-label="Wörter suchen">
+        <select class="library-filter" id="dictionaryChapter" aria-label="Kapitel filtern">
+          <option value="">Alle Kapitel</option>${BOOK.map(c=>`<option value="${c.num}">Kapitel ${c.num}</option>`).join('')}
+        </select>
+      </div>
+      <div class="result-count" id="dictionaryCount"></div>
+    </div>
+    <div class="card" id="dictionaryList">${words.map((v,index)=>`
+      <article class="dictionary-entry" data-index="${index}" data-chapter="${v.chapter}"
+        data-search="${escapeHtml(`${v.w} ${v.d} ${v.ex||''} ${v.ar||''}`.toLocaleLowerCase('de-DE'))}">
+        <div><div class="dictionary-word">${fmtWord(v.w)}</div>
+          <div class="dictionary-definition">${v.d}</div>
+          ${v.ex?`<div class="dictionary-example">„${v.ex}“</div>`:''}${ar(v.ar)}</div>
+        <span class="dictionary-meta">K${v.chapter}</span>
+      </article>`).join('')}</div>`;
+  const search=$('#dictionarySearch'),chapter=$('#dictionaryChapter');
+  const filter=()=>{
+    const query=search.value.trim().toLocaleLowerCase('de-DE');
+    let visible=0;
+    $$('#dictionaryList .dictionary-entry').forEach(entry=>{
+      const show=(!query||entry.dataset.search.includes(query))&&(!chapter.value||entry.dataset.chapter===chapter.value);
+      entry.hidden=!show; if(show) visible++;
+    });
+    $('#dictionaryCount').textContent=`${visible} / ${words.length} Wörter`;
+  };
+  search.addEventListener('input',filter); chapter.addEventListener('change',filter); filter();
+}
+
+function renderExpressions(){
+  setTop('Redewendungen A2','تعبيرات جاهزة وأمثال بسيطة',true);
+  const expressions=window.READY_EXPRESSIONS||[];
+  view.innerHTML=mainTabs('phrases')+`
+    <div class="hero"><h2>Redewendungen & Sprichwörter</h2>
+      <p>Praktische Ausdrücke für Alltag, Prüfung und Gespräche auf A2-Niveau.</p>
+      ${ar('تعبيرات جاهزة وأمثال سهلة لمواقف الحياة والامتحان والمحادثة، مع المعنى ومثال الاستخدام.')}</div>
+    <div class="search-panel">
+      <div class="search-row">
+        <input class="library-search" id="expressionSearch" type="search" placeholder="ابحث في التعبيرات..." aria-label="Ausdrücke suchen">
+        <select class="library-filter" id="expressionChapter" aria-label="Kapitel filtern">
+          <option value="">Alle Themen</option>${BOOK.map(c=>`<option value="${c.num}">Kapitel ${c.num}</option>`).join('')}
+        </select>
+      </div>
+      <div class="result-count" id="expressionCount"></div>
+    </div>
+    <div id="expressionList">${expressions.map((item,index)=>`
+      <article class="card expression-card" data-index="${index}" data-chapter="${item.chapter}"
+        data-search="${escapeHtml(`${item.de} ${item.meaning} ${item.ar} ${item.example}`.toLocaleLowerCase('de-DE'))}">
+        <span class="expression-tag">K${item.chapter} · ${item.cat}</span>
+        <div class="expression-de">${item.de}</div>
+        <div class="expression-meaning">${item.meaning}</div>
+        ${ar(item.ar)}
+        <div class="expression-example">Beispiel: ${item.example}</div>
+      </article>`).join('')}</div>`;
+  const search=$('#expressionSearch'),chapter=$('#expressionChapter');
+  const filter=()=>{
+    const query=search.value.trim().toLocaleLowerCase('de-DE');
+    let visible=0;
+    $$('#expressionList .expression-card').forEach(entry=>{
+      const show=(!query||entry.dataset.search.includes(query))&&(!chapter.value||entry.dataset.chapter===chapter.value);
+      entry.hidden=!show; if(show) visible++;
+    });
+    $('#expressionCount').textContent=`${visible} / ${expressions.length} Ausdrücke`;
+  };
+  search.addEventListener('input',filter); chapter.addEventListener('change',filter); filter();
 }
 
 /* ===================== chapter (book) ===================== */
@@ -338,7 +572,11 @@ function renderChapter(c, tab){
 
 function renderChapterTab(c, tab){
   if(tab==='ueberblick'){
-    let h = `<div class="card">
+    let h = c.visual?`<figure class="card chapter-visual">
+      <img src="${c.visual.src}" alt="${c.visual.alt}">
+      <figcaption class="visual-caption">${c.visual.caption}${ar(c.visual.captionAr)}</figcaption>
+    </figure>`:'';
+    h += `<div class="card">
       <h3 style="color:var(--green-d);margin-bottom:6px">Worum geht es in diesem Kapitel?</h3>
       <p style="font-size:15px">${c.intro}</p>${ar(c.introAr)}
       <div class="badge-row">${c.badges.map(b=>`<span class="badge">${b}</span>`).join('')}</div>
