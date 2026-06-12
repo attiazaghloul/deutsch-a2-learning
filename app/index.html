@@ -224,6 +224,12 @@ body.listen-mode .speakable{cursor:pointer;outline:1px dashed rgba(40,124,121,.3
 .speed-preset.active{background:var(--green-d);color:#fff}
 .voice-select{width:100%;border:2px solid #d7dfe3;background:#fff;border-radius:11px;padding:10px;
   color:var(--ink);font:inherit;margin-top:7px}
+.voice-profiles{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-top:9px}
+.voice-profile{border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 9px;cursor:pointer;
+  font:inherit;color:var(--ink-2);text-align:left}
+.voice-profile b{display:block;color:var(--ink);font-size:13px}
+.voice-profile small{font-size:10px}
+.voice-profile.active{background:var(--green-l);border-color:var(--green);color:var(--green-d)}
 .translate-trigger{position:fixed;z-index:95;display:none;border:0;background:var(--green-d);color:#fff;
   border-radius:999px;padding:8px 12px;font-family:"Cairo","Tahoma",sans-serif;font-size:12px;box-shadow:var(--shadow);
   cursor:pointer;max-width:min(280px,85vw);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -279,13 +285,19 @@ body.listen-mode .speakable{cursor:pointer;outline:1px dashed rgba(40,124,121,.3
 .btn{border:none;border-radius:12px;padding:11px 18px;font-size:14.5px;font-weight:700;cursor:pointer}
 .btn-green{background:var(--green);color:#fff}
 .btn-ghost{background:var(--card);color:var(--ink-2);box-shadow:var(--shadow)}
-.flashcard{background:var(--card);border-radius:20px;box-shadow:var(--shadow);min-height:230px;
+.flashcard{background:var(--card);border-radius:20px;box-shadow:var(--shadow);min-height:390px;
   display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
-  padding:26px;cursor:pointer;margin-bottom:14px;border:2px solid var(--green-l)}
+  padding:22px;cursor:pointer;margin-bottom:14px;border:2px solid var(--green-l);position:relative;overflow:hidden}
+.flashcard::after{content:"";position:absolute;inset:auto -45px -65px auto;width:150px;height:150px;
+  background:var(--green-l);border-radius:50%;opacity:.55;pointer-events:none}
 .flashcard .big{font-size:24px;font-weight:800;color:var(--green-d)}
 .flashcard .hint{font-size:12px;color:#9aa6b2;margin-top:14px}
 .flashcard .fdef{font-size:15.5px;margin-top:8px}
 .flashcard .fex{font-size:14px;color:var(--ink-2);font-style:italic;margin-top:8px}
+.fc-visual{width:min(100%,360px);height:210px;margin:0 auto 16px;display:block;filter:drop-shadow(0 9px 15px rgba(35,70,75,.1))}
+.fc-back-label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-2);font-weight:800;margin-bottom:8px}
+.fc-back-copy{max-width:520px;position:relative;z-index:1}
+.flashcard .ar{font-size:13px;margin-top:12px;text-align:center}
 .fc-nav{display:flex;gap:10px;justify-content:center;align-items:center}
 .fc-nav .cnt{font-size:13px;color:var(--ink-2);min-width:64px;text-align:center;font-weight:700}
 /* ---------- quiz ---------- */
@@ -364,6 +376,16 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
       <div class="ar">الأصوات المتاحة بتختلف حسب الموبايل أو الكمبيوتر والمتصفح. اختار الصوت اللي يناسبك وجربه.</div>
     </div>
     <div class="setting-row">
+      <b>Sprechstil</b>
+      <div class="voice-profiles">
+        <button class="voice-profile" data-profile="clear"><b>Klar</b><small>deutlich & neutral</small></button>
+        <button class="voice-profile" data-profile="calm"><b>Ruhig</b><small>langsamer & weich</small></button>
+        <button class="voice-profile" data-profile="deep"><b>Tief</b><small>tiefer & ruhig</small></button>
+        <button class="voice-profile" data-profile="bright"><b>Hell</b><small>heller & lebendig</small></button>
+      </div>
+      <div class="ar">دي أربع طرق نطق مختلفة بتشتغل حتى لو جهازك فيه صوت ألماني واحد بس.</div>
+    </div>
+    <div class="setting-row">
       <b>Kontextübersetzung</b>
       <p style="font-size:13px;color:var(--ink-2);margin-top:5px">Markiere ein Wort. Seine Übersetzung erscheint sofort; ein Klick öffnet Wort, Satz und Satzübersetzung.</p>
       <div class="ar">حدد كلمة داخل التطبيق، وترجمتها هتظهر فورًا. اضغط على الترجمة عشان تشوف الكلمة والجملة وترجمة الجملة.</div>
@@ -415,6 +437,7 @@ function ar(txt){ return txt ? `<div class="ar">${txt}</div>` : ''; }
 /* ===================== settings and contextual translation ===================== */
 let speechRate=Number(localStorage.getItem('speechRate')||.85);
 let speechVoiceURI=localStorage.getItem('speechVoiceURI')||'';
+let speechProfile=localStorage.getItem('speechProfile')||'clear';
 let pendingTranslation=null;
 let translationRequest=0;
 const translateTrigger=$('#translateTrigger');
@@ -435,7 +458,8 @@ function closeModal(id){
 function updateSpeedUI(){
   $('#speechRate').value=String(speechRate);
   $('#speechRateValue').textContent=`${speechRate.toFixed(2)}×`;
-  $$('.speed-preset').forEach(button=>button.classList.toggle('active',Math.abs(Number(button.dataset.rate)-speechRate)<.01));
+  $$('.speed-preset[data-rate]').forEach(button=>button.classList.toggle('active',Math.abs(Number(button.dataset.rate)-speechRate)<.01));
+  $$('.voice-profile').forEach(button=>button.classList.toggle('active',button.dataset.profile===speechProfile));
 }
 
 function populateVoiceOptions(){
@@ -446,7 +470,7 @@ function populateVoiceOptions(){
   select.innerHTML=`<option value="">Automatisch</option>`+voices.map(voice=>
     `<option value="${escapeHtml(voice.voiceURI)}">${escapeHtml(voice.name)} · ${voice.lang}</option>`).join('');
   if(voices.some(voice=>voice.voiceURI===current)) select.value=current;
-  else if(speechVoiceURI){ speechVoiceURI=''; localStorage.removeItem('speechVoiceURI'); }
+  else if(voices.length&&speechVoiceURI){ speechVoiceURI=''; localStorage.removeItem('speechVoiceURI'); }
 }
 
 function setSpeechRate(value,preview=false){
@@ -461,7 +485,13 @@ $$('[data-close-modal]').forEach(button=>button.addEventListener('click',()=>clo
 $$('.modal-backdrop').forEach(modal=>modal.addEventListener('click',event=>{ if(event.target===modal) closeModal(modal.id); }));
 $('#speechRate').addEventListener('input',event=>setSpeechRate(event.target.value));
 $('#speechRate').addEventListener('change',event=>setSpeechRate(event.target.value,true));
-$$('.speed-preset').forEach(button=>button.addEventListener('click',()=>setSpeechRate(button.dataset.rate,true)));
+$$('.speed-preset[data-rate]').forEach(button=>button.addEventListener('click',()=>setSpeechRate(button.dataset.rate,true)));
+$$('.voice-profile').forEach(button=>button.addEventListener('click',()=>{
+  speechProfile=button.dataset.profile;
+  localStorage.setItem('speechProfile',speechProfile);
+  updateSpeedUI();
+  speakText('Guten Tag! Ich spreche Deutsch mit dir.','de');
+}));
 $('#speechVoice').addEventListener('change',event=>{
   speechVoiceURI=event.target.value;
   localStorage.setItem('speechVoiceURI',speechVoiceURI);
@@ -623,8 +653,15 @@ function speakText(text, lang){
   speech.cancel();
   const utterance=new SpeechSynthesisUtterance(value);
   const isArabic=lang==='ar' || /[\u0600-\u06ff]/.test(value.slice(0,40));
+  const profile={
+    clear:{rate:1,pitch:1},
+    calm:{rate:.82,pitch:.94},
+    deep:{rate:.9,pitch:.72},
+    bright:{rate:1.05,pitch:1.28}
+  }[speechProfile]||{rate:1,pitch:1};
   utterance.lang=isArabic?'ar-EG':'de-DE';
-  utterance.rate=speechRate;
+  utterance.rate=Math.max(.5,Math.min(1.5,speechRate*profile.rate));
+  utterance.pitch=isArabic?1:profile.pitch;
   const voices=speech.getVoices();
   utterance.voice=(!isArabic&&speechVoiceURI?voices.find(v=>v.voiceURI===speechVoiceURI):null)
     ||voices.find(v=>v.lang.toLowerCase().startsWith(isArabic?'ar':'de'))||null;
@@ -1014,11 +1051,125 @@ function toggleReadingAnswer(btn){
 }
 
 /* ===================== flashcards ===================== */
+const VOCAB_VISUAL_RULES = [
+  [/u-bahn|مترو/,"🚇"],[/straßenbahn|ترام/,"🚊"],[/haltestelle|موقف|محطة/,"🚏"],
+  [/bahnsteig|gleis|رصيف|سكة/,"🚉"],[/verspät|تأخير|rechtzeitig|pünktlich|ميعاد/,"⏱️"],
+  [/stau|زحمة/,"🚗🚙"],[/baustelle|أعمال|تصليح طريق/,"🚧"],[/einsteigen|يركب/,"🚪⬆️"],
+  [/aussteigen|ينزل/,"🚪⬇️"],[/umsteigen|يغيّر المواصلة/,"🔄🚆"],[/verpassen|تفوته/,"🏃💨"],
+  [/fahrplan|zeitplan|terminplaner|جدول/,"🗓️"],[/fahrkarte|eintrittskarte|monatskarte|تذكرة|اشتراك/,"🎫"],
+  [/führerschein|رخصة/,"🪪"],[/leihrad|fahrrad|عجلة/,"🚲"],[/kreuzung|تقاطع/,"➕🛣️"],
+  [/ampel|إشارة المرور/,"🚦"],[/abbiegen|umleitung|umleiten|تحويل|ينعطف/,"↪️"],
+  [/geradeaus|مستقيم|على طول/,"⬆️"],[/weg besch|wegbeschreibung|وصف الطريق/,"🗺️"],
+  [/fußgänger|مشاة/,"🚶"],[/ziel|هدف|وجهة/,"🎯"],[/kaution|ضمان|تأمين مالي/,"💶🔒"],
+  [/kundenservice|خدمة العملاء/,"🎧"],[/reservier|يحجز/,"📅✅"],[/versichert|مؤم/,"🛡️"],
+  [/computer|كمبيوتر/,"💻"],[/nähe|قريب|الجوار/,"📍"],[/tarif|تعريفة|السعر/,"💶"],
+  [/kinderwagen|عربة أطفال/,"👶"],[/bistro|restaurant|مطعم/,"🍽️"],[/ausfahrt|مخرج الطريق/,"🛣️➡️"],
+  [/sperrung|إغلاق/,"⛔"],[/abfahrt|مغادرة/,"🚆➡️"],[/ankunft|وصول/,"➡️🏁"],
+  [/strecke|مسار|خط السير|verbindung/,"〰️🗺️"],[/verkehr|مواصلات|مرور/,"🚌"],
+  [/öffentlich|عمومي|عام/,"🏙️"],[/unterwegs|في الطريق|متنقل/,"🧳"],
+  [/vorteil|ميزة/,"👍"],[/nachteil|عيب/,"👎"],[/download|herunterladen|يحمّل/,"📱⬇️"],
+  [/ausleihen|يستعير|zurückgeben|يرجّع/,"🤝📦"],
+
+  [/prüfung|امتحان/,"📝"],[/bestehen|ينجح/,"✅🎓"],[/durchfallen|يرسب/,"❌📝"],
+  [/lernen|lernstoff|stoff|يذاكر|يتعلم|المنهج/,"📚"],[/auswendig|يحفظ/,"🧠"],
+  [/wiederholen|يراجع|يعيد/,"🔁"],[/konzentrier|يركّز/,"🎯👀"],[/vorbereit|يستعد/,"📋"],
+  [/pause|استراحة/,"☕"],[/vokabel|مفردة/,"🔤"],[/karteikarte|فلاش كارد/,"🗂️"],
+  [/wörterbuch|قاموس|nachschlagen|يبحث عن كلمة/,"📖🔎"],[/ratschlag|نصيحة/,"💡"],
+  [/fehler|خطأ|غلطة/,"⚠️"],[/verbessern|يحسّن|يصحح/,"📈"],[/üben|يتدرب|يتمرن/,"✍️"],
+  [/präsentation|vortrag|عرض تقديمي|محاضرة/,"📊"],[/publikum|جمهور/,"👥"],
+  [/thema|موضوع/,"💬"],[/einleitung|مقدمة/,"🚪"],[/hauptteil|الجزء الرئيسي/,"🧱"],
+  [/schluss|خاتمة/,"🏁"],[/deutlich|واضح/,"🔊"],[/nervös|متوتر|prüfungsangst|رهبة/,"😰"],
+  [/notiz|ملاحظة|stichpunkt|نقطة مختصرة/,"🗒️"],[/zertifikat|شهادة/,"📜"],
+  [/erfahrung|خبرة/,"🧭"],[/berufsalltag|روتين.*شغل/,"💼"],[/regel|قاعدة/,"📏"],
+  [/beschriften|يلصق|markieren|علامة|لون/,"🏷️"],[/nachsprechen|يردد/,"🗣️"],
+  [/blickkontakt|بصري/,"👀"],[/gliederung|هيكل|تقسيم/,"🧩"],[/rückmeldung|رأي|تغذية/,"💬✅"],
+  [/folie|شريحة/,"🖥️"],[/lernstrategie|استراتيجية/,"♟️"],[/aussprache|النطق/,"👄"],
+  [/zusammenfassung|ملخص/,"📝"],
+
+  [/sportart|نوع رياضة|sport\b|الرياضة/,"🏅"],[/verein|نادي/,"🏟️"],[/training|trainieren|تمرين|يتدرب/,"🏋️"],
+  [/mannschaft|teamgeist|فريق|روح الفريق/,"🤝⚽"],[/fan|مشجع|zuschauer|مشاهد/,"📣"],
+  [/spiel|مباراة|finale|النهائي/,"⚽"],[/stadion|إستاد/,"🏟️"],[/gewinnen|sieg|فوز|يكسب/,"🏆"],
+  [/verlieren|niederlage|خسر|هزيمة/,"😞"],[/tor\b|جول/,"🥅⚽"],[/wettkampf|مسابقة|منافسة/,"🏁"],
+  [/teilnehmen|يشارك/,"🙋"],[/helm|خوذة/,"⛑️"],[/ausrüstung|معدات|عدّة/,"🎒"],
+  [/mitglied|عضو/,"🪪👤"],[/begeisterung|حماس|jubeln|يهلل|anfeuern|يشجع/,"🙌"],
+  [/hoffnung|hoffen|أمل|يأمل/,"🌟"],[/enttäusch|محبط|خيبة/,"😔"],[/verabred|موعد.*حد/,"🤝🕒"],
+  [/vorschlag|vorschlagen|اقتراح|يقترح/,"💡💬"],[/zustimmen|يوافق/,"👍"],[/ablehnen|يرفض/,"🙅"],
+  [/\bfit\b|لياق/,"💪"],[/bewegung|حركة/,"🏃"],[/schiedsrichter|الحكم/,"🧑‍⚖️⚽"],
+  [/klappen|تنجح|schaffen|ينجز/,"✅"],[/kletter|تسلق/,"🧗"],[/aufgeregt|متحمس/,"😮"],
+  [/mut machen|يشجّع شخص/,"🤗"],[/verletz|يُصاب/,"🤕"],[/aufwärmen|إحماء/,"🔥"],
+  [/durchhalten|يصمد/,"💪⏳"],[/unentschieden|تعادل/,"🤝"],[/ausdauer|تحمّل/,"🏃‍♂️"],
+
+  [/nachbar|الجيرة|الجار/,"🏘️"],[/mieter|مستأجر/,"🔑"],[/vermieter|صاحب البيت|مؤجّر/,"🏠🔑"],
+  [/\bmiete|الإيجار/,"💶🏠"],[/lärm|ضوضاء|دوشة/,"🔊"],[/laut.*leise|عالي الصوت|هادئ/,"🔊🔉"],
+  [/beschwer|يشتكي/,"😠💬"],[/stören|يزعج/,"🚫🔊"],[/entschuldig|يعتذر/,"🙏"],
+  [/gefallen|معروف|خدمة/,"🤝"],[/gießen|يسقي/,"🪴💧"],[/briefkasten|صندوق البريد/,"📬"],
+  [/treppenhaus|بيت السلم/,"🪜"],[/aufzug|أسانسير/,"🛗"],[/keller|بدروم|قبو/,"🏚️⬇️"],
+  [/umziehen|umzug|يعزّل|انتقل.*بيت/,"🚚📦"],[/karton|كرتونة|kiste|صندوق/,"📦"],
+  [/packen|auspacken|يوضّب/,"🧳"],[/einrichten|möbel|يأثث|أثاث/,"🛋️"],[/regal|رف/,"🗄️"],
+  [/haustier|حيوان أليف/,"🐶"],[/füttern|يطعم/,"🥣🐾"],[/hausordnung|قواعد.*عمارة/,"📋🏠"],
+  [/\bruhe|الهدوء|ruhezeit/,"🤫"],[/klingeln|يرن الجرس/,"🔔"],[/vorbeikommen|يزور/,"🚪👋"],
+  [/kümmern|يهتم/,"🤲"],[/abstellen|يركن|يحط/,"🅿️"],[/erlauben|verboten|يسمح|ممنوع/,"✅🚫"],
+  [/fest\b|حفلة|احتفال/,"🎉"],[/heimweh|الحنين/,"🏠💭"],[/wohngemeinschaft|wg-|سكن مشترك/,"🏠👥"],
+  [/mitbewohner|زميل السكن/,"👥"],[/putzplan|التنظيف/,"🧹📅"],[/aufräumen|يرتّب/,"🧹"],
+  [/müll|القمامة/,"🗑️"],[/rücksicht|يراعي|مراعاة/,"🤝"],[/zuverlässig|ملتزم|ثقة/,"✅🤝"],
+  [/nebenkosten|مصاريف إضافية/,"🧾"],[/einziehen|ينتقل للسكن/,"📦🏠"],[/gemeinschaft|مجتمع مترابط/,"🫶"],
+
+  [/\bzeit\b|الوقت/,"⏰"],[/freizeit|وقت الفراغ/,"🌤️"],[/vergehen|يمضي|dauern|يستغرق/,"⌛"],
+  [/verbringen|يقضي.*وقت/,"🕰️"],[/stress|ضغط|مرهق/,"😵‍💫"],[/termin|موعد رسمي/,"📅"],
+  [/kalender|أجندة/,"🗓️"],[/planen|plan\b|خطة|يخطط/,"📝"],[/wunsch|يتمنى|أمنية/,"✨"],
+  [/traum|يحلم|حلم/,"💭"],[/pflicht|واجب|التزام/,"📌"],[/erholen|يستجم|يرتاح/,"🌴"],
+  [/entspannen|يسترخي/,"🧘"],[/feierabend|بعد الشغل/,"🌇"],[/alltag|الحياة اليومية|روتين/,"🔄"],
+  [/gewohnheit|عادة/,"🔁"],[/regelmäßig|بانتظام/,"📆"],[/selten|häufig|نادر|كثير/,"📊"],
+  [/langeweile|ملل|langweilen/,"🥱"],[/genießen|يستمتع/,"😊"],[/ausflug|رحلة قصيرة/,"🚌🌳"],
+  [/eilig|مستعجل/,"🏃⏱️"],[/verschieben|aufschieben|يؤجل/,"➡️📅"],[/wäsche|الغسيل/,"🧺"],
+  [/ärgern|يتضايق/,"😤"],[/warten|يستنى/,"⌛"],[/freuen|فرحان|متشوق/,"😊"],
+  [/sprichwort|مثل|حكمة/,"💬📜"],[/zeitdruck|ضغط الوقت/,"⏱️😣"],[/verschwenden|يضيّع الوقت/,"🗑️⏰"],
+  [/lebensphase|مرحلة.*الحياة/,"🌱➡️🌳"],[/erinnerung|يتذكّر|ذكرى/,"📷💭"],[/priorität|أولوية/,"1️⃣"],
+  [/erledigen|ينجز/,"✅📋"],[/vornehmen|ينوي/,"🎯"],[/verwirklichen|يحقق حلم/,"🌟🏁"],
+
+  [/unterhaltung|ترفيه|تسلية/,"🎭"],[/musik|الموسيقى/,"🎵"],[/musiker|موسيقي/,"🎼"],
+  [/band\b|فرقة موسيقية/,"🎸🥁"],[/lied|أغنية|hit\b/,"🎶"],[/text\b|النص|كلمات الأغنية/,"📄🎵"],
+  [/melodie|اللحن/,"🎼"],[/rhythmus|الإيقاع/,"🥁"],[/konzert|حفلة موسيقية/,"🎤"],
+  [/festival|مهرجان/,"🎪🎵"],[/bühne|مسرح/,"🎭"],[/auftritt|auftreten|عرض.*مسرح/,"🎤✨"],
+  [/instrument|آلة موسيقية/,"🎻"],[/gitarre|جيتار/,"🎸"],[/klavier|بيانو/,"🎹"],
+  [/schlagzeug|طبول|درامز/,"🥁"],[/singen|sänger|يغني|مغني/,"🎤"],[/stimme|الصوت/,"🗣️🎵"],
+  [/berühmt|مشهور/,"⭐"],[/erfolg|نجاح/,"🏆"],[/album|ألبوم/,"💿"],[/musikstil|نوع الموسيقى/,"🎧"],
+  [/rockig|melodisch|روك|لحني/,"🤘🎶"],[/gemälde|لوحة فنية/,"🖼️"],[/maler|رسام/,"🎨"],
+  [/ausstellung|معرض/,"🖼️🏛️"],[/künstler|فنان/,"🧑‍🎨"],[/vordergrund|hintergrund|مقدمة الصورة|خلفية الصورة/,"🏞️"],
+  [/beschreiben|يوصف/,"🗣️🖼️"],[/zeigen|يعرض|يوضح/,"👉"],[/leinwand|شاشة عرض|قماشية/,"🖼️"],
+  [/bildrand|حافة الصورة/,"▣"],[/wirken|انطباع/,"💭"],[/live\b|مباشر/,"🔴"],
+  [/refrain|لازمة/,"🔁🎵"],[/stimmung|الأجواء/,"✨"],[/ausverkauft|نفدت/,"🎫❌"],
+  [/darstellen|يجسّد|يصور/,"🎨"],[/zugabe|أغنية إضافية/,"👏🎵"],[/handlung|حبكة|أحداث/,"🎬"],
+  [/vorstellung|عرض سينمائي|مسرحي/,"🎟️🎭"],[/beeindruckend|مبهر/,"🤩"],[/empfehlen|ينصح|يرشح/,"👍💬"],
+  [/rezension|مراجعة|نقد/,"⭐📝"],[/unterhaltsam|ممتع|مسلي/,"😄🎬"]
+];
+
+function vocabVisual(v,chapter){
+  const wordSource=v.w.toLocaleLowerCase('de-DE');
+  const source=`${v.w} ${v.d} ${v.ar||''}`.toLocaleLowerCase('de-DE');
+  const icon=(VOCAB_VISUAL_RULES.find(([pattern])=>pattern.test(wordSource))
+    ||VOCAB_VISUAL_RULES.find(([pattern])=>pattern.test(source))||[])[1]
+    ||({7:"🚌",8:"📚",9:"🏅",10:"🏠",11:"⏰",12:"🎵"}[chapter]||"💡");
+  const palettes={
+    7:["#dff1ef","#b9ddd8","#287c79"],8:["#eee9f5","#d8cbea","#76548c"],
+    9:["#e7f3e4","#cbe4c4","#4f7d45"],10:["#f8eadc","#eed0b2","#a66a35"],
+    11:["#e8eef5","#cbd9e8","#4c7194"],12:["#f8e8ea","#ecc7ce","#a85868"]
+  };
+  const [light,mid,dark]=palettes[chapter]||palettes[7];
+  return `<svg class="fc-visual" viewBox="0 0 360 210" role="img" aria-label="${escapeHtml(v.w)}">
+    <defs><linearGradient id="fcg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="${light}"/><stop offset="1" stop-color="${mid}"/></linearGradient></defs>
+    <rect x="2" y="2" width="356" height="206" rx="28" fill="url(#fcg)"/>
+    <circle cx="52" cy="45" r="22" fill="${dark}" opacity=".13"/><circle cx="315" cy="168" r="34" fill="${dark}" opacity=".12"/>
+    <path d="M28 165 Q90 120 145 160 T330 145" fill="none" stroke="${dark}" stroke-width="7" opacity=".13" stroke-linecap="round"/>
+    <text x="180" y="126" text-anchor="middle" font-size="76" font-family="Segoe UI Emoji, Apple Color Emoji, sans-serif">${icon}</text>
+  </svg>`;
+}
+
 let fcState = null;
 function initFlash(c){
   const start = $('#fcStart'), stop = $('#fcStop'), area = $('#fcArea'), list = $('#vocList');
   start.addEventListener('click', () => {
-    fcState = {cards:[...c.vocab].sort(()=>Math.random()-.5), i:0, flipped:false};
+    fcState = {cards:[...c.vocab].sort(()=>Math.random()-.5), chapter:c.num, i:0, flipped:false};
     list.style.display='none'; start.style.display='none'; stop.style.display='block';
     drawFC();
   });
@@ -1033,11 +1184,13 @@ function drawFC(){
   a.innerHTML = `
   <div class="flashcard" onclick="flipFC()">
     ${!fcState.flipped
-      ? `<div class="big">${fmtWord(v.w)}</div><div class="hint">👆 Tippen = Erklärung zeigen</div>`
-      : `<div class="big" style="font-size:19px">${fmtWord(v.w)}</div>
+      ? `${vocabVisual(v,fcState.chapter)}<div class="big">${fmtWord(v.w)}</div>
+         <div class="hint">👆 Tippen = Bedeutung & Beispiele</div>`
+      : `<div class="fc-back-copy"><div class="fc-back-label">Bedeutung & Beispiele</div>
+         <div class="big" style="font-size:20px">${fmtWord(v.w)}</div>
          <div class="fdef">💡 ${v.d}</div>
          ${v.ex?`<div class="fex">„${v.ex}“</div>`:''}
-         ${ar(v.ar)}`}
+         ${ar(v.ar)}</div>`}
   </div>
   <div class="fc-nav">
     <button class="btn btn-ghost" onclick="navFC(-1)">← zurück</button>
