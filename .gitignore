@@ -1,6 +1,6 @@
 # Source material and generated extraction files
 *.pdf
-pages/
+/pages/
 *_text.txt
 Hören und Sprechen A2/
 
