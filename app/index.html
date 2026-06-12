@@ -139,6 +139,19 @@ table.gt b{color:var(--green-d)}
 .model-text b{color:var(--amber);display:block;margin-bottom:6px;font-size:13px;text-transform:uppercase;letter-spacing:.05em}
 /* ---------- reading ---------- */
 .reading-card h3{color:var(--green-d);font-size:19px;margin-bottom:2px}
+.reading-card.with-cover{padding:0}
+.reading-cover{position:relative;height:230px;overflow:hidden;background:var(--green-l)}
+.reading-cover img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
+.reading-card:hover .reading-cover img{transform:scale(1.025)}
+.reading-cover::after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(transparent,rgba(15,43,45,.82))}
+.reading-cover-copy{position:absolute;z-index:1;left:18px;right:18px;bottom:16px;color:#fff}
+.reading-cover-copy h3{color:#fff;font-size:21px;text-shadow:0 2px 8px rgba(0,0,0,.25)}
+.reading-cover-copy .reading-kind{color:rgba(255,255,255,.82);margin:0}
+.reading-body{padding:18px 20px 20px}
+.reading-tools{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+.people-read{border:0;background:var(--green-d);color:#fff;border-radius:10px;padding:8px 11px;
+  font:inherit;font-size:12px;font-weight:700;cursor:pointer}
+.people-read:hover,.people-read:focus-visible{background:var(--green)}
 .reading-kind{font-size:12px;color:var(--ink-2);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px}
 .reading-text{font-size:15px;line-height:1.9}
 .reading-glossary{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0}
@@ -257,12 +270,27 @@ body.listen-mode .speakable{cursor:pointer;outline:1px dashed rgba(40,124,121,.3
 .translation-note{font-family:"Cairo","Tahoma",sans-serif;direction:rtl;text-align:right;color:var(--ink-2);font-size:11px;margin-top:8px}
 .chapter-visual{padding:0}
 .chapter-visual img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover}
+.lesson-scene{position:relative;height:142px;border-radius:16px;overflow:hidden;margin-bottom:14px;box-shadow:var(--shadow)}
+.lesson-scene img{width:100%;height:100%;object-fit:cover;display:block}
+.lesson-scene::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,66,68,.78),rgba(18,66,68,.08))}
+.lesson-scene-copy{position:absolute;z-index:1;left:16px;top:50%;transform:translateY(-50%);color:#fff;max-width:62%}
+.lesson-scene-copy b{display:block;font-size:17px}
+.lesson-scene-copy span{display:block;font-size:12px;opacity:.9}
 /* ---------- grammar visuals and practice ---------- */
 .grammar-visual{position:relative;padding:0;overflow:hidden}
 .grammar-visual img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover}
 .visual-caption{padding:12px 16px;background:linear-gradient(90deg,var(--green-l),var(--card));
   color:var(--green-d);font-size:13.5px;font-weight:700}
 .visual-caption .ar{font-weight:400;margin-top:5px}
+.script-coverage{background:linear-gradient(135deg,var(--blue-l),#fff);border:1px solid #d9e4ed;
+  border-radius:14px;padding:14px 15px;margin-bottom:14px}
+.script-coverage-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:9px}
+.script-coverage-head b{color:var(--blue);font-size:14px}
+.source-page{background:#fff;border:1px solid #cddce8;border-radius:999px;padding:3px 9px;color:var(--ink-2);font-size:11px}
+.coverage-points{display:flex;flex-wrap:wrap;gap:6px}
+.coverage-point{background:#fff;border:1px solid #d9e4ed;border-radius:999px;padding:4px 9px;font-size:11.5px;color:var(--ink)}
+.coverage-point::before{content:"✓ ";color:var(--green);font-weight:800}
+.script-complete{border-top:2px dashed var(--blue-l);margin-top:16px;padding-top:3px}
 .practice-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:20px 4px 10px}
 .practice-head h3{color:var(--green-d);font-size:18px}
 .practice-progress{font-size:12px;color:var(--ink-2);background:var(--card);border:1px solid var(--line);
@@ -425,6 +453,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <script src="data_verbs.js"></script>
 <script src="data_gram.js"></script>
 <script src="data_gram_extra.js"></script>
+<script src="data_gram_complete.js"></script>
 <script>
 /* ===================== state & helpers ===================== */
 const $ = s => document.querySelector(s);
@@ -721,6 +750,51 @@ function speakText(text, lang, voiceURIOverride=''){
   showSpeechStatus(`${speaker?`${speaker}: `:''}${value.slice(0,72)}`);
 }
 
+function germanVoices(){
+  if(!speech) return [];
+  const seen=new Set();
+  return speech.getVoices().filter(voice=>{
+    if(!voice.lang.toLowerCase().startsWith('de') || seen.has(voice.voiceURI)) return false;
+    seen.add(voice.voiceURI);
+    return true;
+  });
+}
+
+function speakReadingWithPeople(chapterNumber, readingIndex){
+  const chapter=BOOK.find(item=>item.num===chapterNumber);
+  const reading=chapter?.readings?.[readingIndex];
+  if(!reading || !speech) return;
+  const holder=document.createElement('div');
+  holder.innerHTML=reading.text;
+  const text=holder.textContent.replace(/\s+/g,' ').trim();
+  const voices=germanVoices();
+  if(voices.length<2){
+    showSpeechStatus('Auf diesem Gerät ist nur eine deutsche Person verfügbar.');
+    speakText(text,'de');
+    return;
+  }
+  const preferred=voices.findIndex(voice=>voice.voiceURI===speechVoiceURI);
+  if(preferred>0) voices.unshift(...voices.splice(preferred,1));
+  const parts=text.match(/[^.!?]+[.!?]+|[^.!?]+$/g)?.map(part=>part.trim()).filter(Boolean)||[text];
+  const profile={
+    clear:{rate:1,pitch:1},calm:{rate:.82,pitch:.94},deep:{rate:.9,pitch:.82},bright:{rate:1.05,pitch:1.12}
+  }[speechProfile]||{rate:1,pitch:1};
+  speech.cancel();
+  parts.forEach((part,index)=>{
+    const utterance=new SpeechSynthesisUtterance(part);
+    utterance.lang='de-DE';
+    utterance.voice=voices[index%voices.length];
+    utterance.rate=Math.max(.5,Math.min(1.5,speechRate*profile.rate));
+    utterance.pitch=profile.pitch;
+    utterance.onstart=()=>{
+      const name=utterance.voice.name.replace(/^Microsoft\s+/,'').replace(/\s*-\s*German.*$/i,'');
+      showSpeechStatus(`${name}: ${part.slice(0,64)}`);
+    };
+    utterance.onend=()=>{ if(index===parts.length-1) $('#speechStatus').classList.remove('show'); };
+    speech.speak(utterance);
+  });
+}
+
 function enhanceSpeech(root){
   const selector=[
     '.vocab-row .w','.vocab-row .def','.vocab-row .ex','.reading-text','.reading-q b',
@@ -996,6 +1070,12 @@ function renderChapter(c, tab){
   setTop(`Kapitel ${c.num}: ${c.title}`, c.subtitle, true);
   let html = `<div class="tabs">` + TABS.map(([id,lbl]) =>
     `<button class="tab ${id===tab?'active':''}" onclick="go('k${c.num}/${id}')">${lbl}</button>`).join('') + `</div>`;
+  if(tab!=='ueberblick' && c.visual){
+    html += `<figure class="lesson-scene">
+      <img src="${c.visual.src}" alt="${c.visual.alt}">
+      <figcaption class="lesson-scene-copy"><b>Kapitel ${c.num}: ${c.title}</b><span>${c.subtitle}</span></figcaption>
+    </figure>`;
+  }
   html += renderChapterTab(c, tab);
   view.innerHTML = html;
   if(tab==='wortschatz') initFlash(c);
@@ -1048,19 +1128,26 @@ function renderChapterTab(c, tab){
   }
   if(tab==='lesen'){
     return c.readings.map((r,ri) => `
-      <article class="card reading-card">
-        <h3>${r.title}</h3>
-        <div class="reading-kind">${r.kind}</div>
-        <p class="reading-text">${r.text}</p>
-        ${ar(r.ar)}
-        <div class="reading-glossary">${r.glossary.map(([de,arText])=>`<span><b>${de}</b> · ${arText}</span>`).join('')}</div>
-        <h4 style="margin:12px 0 3px">Leseverstehen</h4>
-        ${r.questions.map(([q,a],qi)=>`
-          <div class="reading-q">
-            <b>${qi+1}. ${q}</b>
-            <button type="button" class="answer-btn" onclick="toggleReadingAnswer(this)">Antwort zeigen</button>
-            <div class="reading-answer">${a}</div>
-          </div>`).join('')}
+      <article class="card reading-card with-cover">
+        <figure class="reading-cover">
+          <img src="assets/readings/chapter-${c.num}-reading.webp" alt="" style="object-position:${ri?'72%':'28%'} center">
+          <figcaption class="reading-cover-copy"><div class="reading-kind">${r.kind}</div><h3>${r.title}</h3></figcaption>
+        </figure>
+        <div class="reading-body">
+          <div class="reading-tools">
+            <button type="button" class="people-read" onclick="speakReadingWithPeople(${c.num},${ri})">Mehrere Sprecher hören</button>
+          </div>
+          <p class="reading-text">${r.text}</p>
+          ${ar(r.ar)}
+          <div class="reading-glossary">${r.glossary.map(([de,arText])=>`<span><b>${de}</b> · ${arText}</span>`).join('')}</div>
+          <h4 style="margin:12px 0 3px">Leseverstehen</h4>
+          ${r.questions.map(([q,a],qi)=>`
+            <div class="reading-q">
+              <b>${qi+1}. ${q}</b>
+              <button type="button" class="answer-btn" onclick="toggleReadingAnswer(this)">Antwort zeigen</button>
+              <div class="reading-answer">${a}</div>
+            </div>`).join('')}
+        </div>
       </article>`).join('');
   }
   if(tab==='grammatik'){
@@ -1302,6 +1389,12 @@ function renderLektion(l, topicIdx){
       <img src="${t.visual.src}" alt="${t.visual.alt}">
       <figcaption class="visual-caption">${t.visual.caption}${ar(t.visual.captionAr)}</figcaption>
     </figure>`;
+  }
+  if(t.coveragePoints?.length){
+    html += `<aside class="script-coverage">
+      <div class="script-coverage-head"><b>Skript vollständig abgedeckt</b><span class="source-page">PDF S. ${t.sourcePage}</span></div>
+      <div class="coverage-points">${t.coveragePoints.map(point=>`<span class="coverage-point">${point}</span>`).join('')}</div>
+    </aside>`;
   }
   html += `<div class="card gram-block"><h3>${l.num}.${ti+1}. ${t.title}</h3>${ar(t.titleAr)}${t.body}</div>`;
   if(t.quiz){
