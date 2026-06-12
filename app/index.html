@@ -298,8 +298,34 @@ body.listen-mode .speakable{cursor:pointer;outline:1px dashed rgba(40,124,121,.3
 .listening-stats{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
 .listening-stat{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);
   border-radius:999px;padding:4px 9px;font-size:11px;font-weight:700}
-.listen-chapter{border-left:5px solid var(--blue);align-items:stretch}
-.listen-chapter .num{background:var(--blue-l);color:var(--blue)}
+.listen-chapter-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin-bottom:18px}
+.listen-chapter-card{display:block;width:100%;padding:0;overflow:hidden;text-align:left;background:var(--card);
+  border:1px solid var(--line);border-radius:17px;box-shadow:var(--shadow);cursor:pointer;font:inherit;color:var(--ink)}
+.listen-chapter-card:active{transform:translateY(1px)}
+.chapter-collage{display:grid;grid-template-columns:repeat(3,1fr);height:118px;position:relative;background:var(--blue-l)}
+.chapter-collage img{display:block;width:100%;height:100%;object-fit:cover;border-right:2px solid rgba(255,255,255,.8)}
+.chapter-collage img:last-child{border-right:0}
+.chapter-letter{position:absolute;left:10px;top:10px;display:grid;place-items:center;width:38px;height:38px;
+  border-radius:12px;background:rgba(29,91,95,.92);color:#fff;font-size:18px;font-weight:800;box-shadow:0 5px 13px rgba(25,55,60,.2)}
+.listen-chapter-copy{padding:12px 13px}
+.listen-chapter-copy b{display:block;color:var(--green-d);font-size:14px;line-height:1.35}
+.listen-chapter-copy .sub{display:block;color:var(--ink-2);font-size:11px;margin-top:3px}
+.listen-chapter-copy .ar{margin-top:5px}
+.listen-exercise-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.listen-exercise-card{display:block;width:100%;padding:0;overflow:hidden;text-align:left;background:var(--card);
+  border:1px solid var(--line);border-radius:17px;box-shadow:var(--shadow);cursor:pointer;font:inherit;color:var(--ink)}
+.listen-exercise-card.completed{border-color:#7db39f;box-shadow:0 8px 22px rgba(39,113,89,.13)}
+.listen-exercise-thumb{position:relative;height:155px;background:var(--blue-l);overflow:hidden}
+.listen-exercise-thumb img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .2s ease}
+.listen-exercise-card:active .listen-exercise-thumb img{transform:scale(1.02)}
+.listen-exercise-id{position:absolute;left:10px;top:10px;background:rgba(29,91,95,.92);color:#fff;border-radius:10px;
+  padding:5px 9px;font-size:11px;font-weight:800}
+.listen-exercise-done{position:absolute;right:10px;top:10px;background:var(--green-d);color:#fff;border-radius:999px;
+  padding:4px 8px;font-size:10px;font-weight:800}
+.listen-exercise-copy{padding:12px 13px 13px}
+.listen-exercise-copy b{display:block;color:var(--green-d);font-size:14px;line-height:1.35;min-height:38px}
+.listen-exercise-meta{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.listen-exercise-meta span{background:var(--blue-l);color:var(--blue);border-radius:999px;padding:3px 7px;font-size:10px;font-weight:700}
 .listen-progress{height:6px;background:#e4eaed;border-radius:999px;overflow:hidden;margin-top:7px}
 .listen-progress span{display:block;height:100%;background:var(--green);border-radius:inherit}
 .listen-lesson-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
@@ -478,6 +504,9 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
   .section-track-badges{justify-content:flex-start}
   .match-row{grid-template-columns:1fr}
   .question-figure img{height:125px}
+  .listen-chapter-grid,.listen-exercise-grid{grid-template-columns:1fr}
+  .chapter-collage{height:125px}
+  .listen-exercise-thumb{height:175px}
 }
 </style>
 </head>
@@ -1050,6 +1079,10 @@ function listeningProgress(){
   catch(error){ return {}; }
 }
 
+function listeningThumbnail(exercise){
+  return `assets/listening/thumbnails/${exercise.id.toLowerCase()}.webp`;
+}
+
 function renderListeningHome(){
   setTop('Hören & Sprechen A2','Original-Audios mit den Übungen',true);
   const progress=listeningProgress();
@@ -1070,16 +1103,19 @@ function renderListeningHome(){
       <audio controls preload="metadata" src="assets/listening/audio/track-001.mp3">Audio wird nicht unterstützt.</audio>
     </article>
     <div class="section-label">Themen im Buch</div>
-    ${HOEREN.chapters.map(chapter=>{
+    <section class="listen-chapter-grid">${HOEREN.chapters.map(chapter=>{
       const chapterDone=chapter.exercises.filter(exercise=>progress[exercise.id]).length;
       const percent=Math.round(chapterDone/chapter.exercises.length*100);
       const tracks=chapter.exercises.flatMap(exercise=>exercise.tracks);
-      return `<button type="button" class="lesson-item listen-chapter" onclick="go('listen/${chapter.id}')">
-        <div class="num">${chapter.id}</div>
-        <div class="ttl"><b>${chapter.title}</b><span class="sub">${chapter.exercises.length} Übungen · Track ${tracks[0]}–${tracks.at(-1)}</span>
-          ${ar(chapter.titleAr)}<div class="listen-progress"><span style="width:${percent}%"></span></div></div>
-        <div class="chev">›</div></button>`;
-    }).join('')}`;
+      const collage=chapter.exercises.slice(0,3);
+      return `<button type="button" class="listen-chapter-card" onclick="go('listen/${chapter.id}')">
+        <div class="chapter-collage" style="grid-template-columns:repeat(${collage.length},1fr)">${collage.map(exercise=>`<img loading="lazy" src="${listeningThumbnail(exercise)}"
+          alt="${escapeHtml(exercise.title)}">`).join('')}<span class="chapter-letter">${chapter.id}</span></div>
+        <div class="listen-chapter-copy"><b>${chapter.title}</b>
+          <span class="sub">${chapter.exercises.length} Übungen · Track ${tracks[0]}–${tracks.at(-1)}</span>
+          ${ar(chapter.titleAr)}<div class="listen-progress"><span style="width:${percent}%"></span></div>
+        </div></button>`;
+    }).join('')}</section>}`;
 }
 
 function renderListeningChapter(chapter){
@@ -1087,14 +1123,18 @@ function renderListeningChapter(chapter){
   const progress=listeningProgress();
   view.innerHTML=`
     <section class="hero"><h2>${chapter.title}</h2><p>Wähle eine Übung. Jeder Track ist direkt mit seinen Buchseiten verbunden.</p>${ar(chapter.titleAr)}</section>
-    ${chapter.exercises.map((exercise,index)=>`
-      <button type="button" class="lesson-item ${progress[exercise.id]?'completed':''}" onclick="go('listen/${chapter.id}/${index}')">
-        <div class="num">${exercise.id}</div>
-        <div class="ttl"><b>${exercise.title}</b>
-          <span class="sub">Track ${exercise.tracks.join(' · ')} · Buchseite ${exercise.exercisePages.join(', ')}</span>
+    <section class="listen-exercise-grid">${chapter.exercises.map((exercise,index)=>`
+      <button type="button" class="listen-exercise-card ${progress[exercise.id]?'completed':''}" onclick="go('listen/${chapter.id}/${index}')">
+        <div class="listen-exercise-thumb"><img loading="lazy" src="${listeningThumbnail(exercise)}" alt="${escapeHtml(exercise.title)}">
+          <span class="listen-exercise-id">${exercise.id}</span>
+          ${progress[exercise.id]?'<span class="listen-exercise-done">Gelernt ✓</span>':''}
+        </div>
+        <div class="listen-exercise-copy"><b>${exercise.title}</b>
+          <div class="listen-exercise-meta"><span>Track ${exercise.tracks.join(' · ')}</span>
+            <span>Seite ${exercise.exercisePages.join(', ')}</span></div>
           <div class="listen-progress"><span style="width:${progress[exercise.id]?100:0}%"></span></div>
-        </div><div class="chev">›</div>
-      </button>`).join('')}`;
+        </div>
+      </button>`).join('')}</section>`;
 }
 
 function renderListeningExercise(chapter,index){
