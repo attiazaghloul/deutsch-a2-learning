@@ -335,6 +335,46 @@ body.listen-mode .speakable{cursor:pointer;outline:1px dashed rgba(40,124,121,.3
 .book-page-modal .modal-panel{width:min(900px,100%);padding:10px}
 .book-page-modal img{display:block;width:100%;height:auto}
 .book-page-modal .modal-head{padding:6px 8px;margin-bottom:6px}
+.interactive-sheet{margin-top:18px}
+.interactive-intro{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 15px;
+  background:linear-gradient(135deg,var(--blue-l),#fff);border:1px solid #d9e4ed;border-radius:14px;margin-bottom:12px}
+.interactive-intro b{display:block;color:var(--blue);font-size:15px}
+.interactive-intro span{font-size:12px;color:var(--ink-2)}
+.interactive-section{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:15px;margin-bottom:14px}
+.interactive-section h3{font-size:16px;color:var(--green-d);margin-bottom:12px}
+.web-question{border:1px solid #dfe6e8;background:#fff;border-radius:13px;padding:13px;margin-bottom:10px}
+.web-question.correct{border-color:#75b69d;background:#f4fbf8}
+.web-question.wrong{border-color:#dc927f;background:#fff7f4}
+.web-question-title{display:flex;gap:8px;align-items:flex-start;font-weight:700;line-height:1.5;margin-bottom:10px}
+.question-number{display:inline-grid;place-items:center;flex:0 0 25px;height:25px;border-radius:50%;background:var(--green-l);
+  color:var(--green-d);font-size:11px}
+.question-figures{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:8px 0 12px}
+.question-figure{margin:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+.question-figure img{display:block;width:100%;height:150px;object-fit:contain;background:#fafafa}
+.question-figure figcaption{font-size:10px;color:var(--ink-2);padding:5px 7px;text-align:center}
+.web-options{display:grid;gap:7px}
+.web-option{display:flex;align-items:flex-start;gap:8px;padding:9px 10px;border:1px solid var(--line);border-radius:10px;
+  cursor:pointer;background:#fff;font-size:13px}
+.web-option:has(input:checked){border-color:var(--blue);background:var(--blue-l)}
+.web-option input{margin-top:2px;accent-color:var(--blue)}
+.web-text-input,.match-select{width:100%;border:1px solid #bfcdd1;border-radius:10px;padding:10px 11px;background:#fff;
+  color:var(--ink);font:inherit;font-size:13px}
+.web-text-input:focus,.match-select:focus{outline:2px solid rgba(39,112,137,.18);border-color:var(--blue)}
+.match-grid{display:grid;gap:8px}
+.match-row{display:grid;grid-template-columns:minmax(120px,1fr) minmax(150px,1.2fr);gap:9px;align-items:center}
+.match-label{font-size:12.5px;font-weight:700}
+.question-feedback{display:none;margin-top:9px;padding-top:8px;border-top:1px dashed var(--line);font-size:12px}
+.web-question.correct .question-feedback,.web-question.wrong .question-feedback{display:block}
+.web-question.correct .question-feedback{color:#28775b}
+.web-question.wrong .question-feedback{color:#a34734}
+.section-check{border:0;border-radius:10px;padding:9px 13px;background:var(--green-d);color:#fff;font:inherit;font-weight:700;cursor:pointer}
+.section-result{font-size:12px;font-weight:700;color:var(--ink-2);margin-left:9px}
+.book-reference{margin:14px 0;border:1px solid var(--line);border-radius:14px;background:var(--card);overflow:hidden}
+.book-reference summary{cursor:pointer;padding:13px 15px;font-weight:700;color:var(--blue);list-style:none}
+.book-reference summary::-webkit-details-marker{display:none}
+.book-reference summary::after{content:"+";float:right}
+.book-reference[open] summary::after{content:"−"}
+.book-reference-pages{padding:0 12px 12px}
 .practice-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:20px 4px 10px}
 .practice-head h3{color:var(--green-d);font-size:18px}
 .practice-progress{font-size:12px;color:var(--ink-2);background:var(--card);border:1px solid var(--line);
@@ -423,6 +463,9 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
   .listening-hero{grid-template-columns:82px 1fr;gap:12px}
   .listening-cover{width:82px}
   .listen-lesson-head{display:block}
+  .interactive-intro{align-items:flex-start;flex-direction:column}
+  .match-row{grid-template-columns:1fr}
+  .question-figure img{height:125px}
 }
 </style>
 </head>
@@ -508,6 +551,8 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <script src="data_gram_extra.js"></script>
 <script src="data_gram_complete.js"></script>
 <script src="data_hoeren.js"></script>
+<script src="data_hoeren_figures.js"></script>
+<script src="data_hoeren_interactive.js"></script>
 <script>
 /* ===================== state & helpers ===================== */
 const $ = s => document.querySelector(s);
@@ -1056,8 +1101,11 @@ function renderListeningExercise(chapter,index){
     <div class="book-task"><b>Deine Aufgabe</b>${exercise.task}${ar(exercise.taskAr)}</div>
     <div class="section-label">Original-Audios</div>
     <section>${exercise.tracks.map(track=>renderBookTrack(track,exercise)).join('')}</section>
-    <div class="section-label">Aufgaben im Buch</div>
-    <section>${exercise.exercisePages.map(page=>renderBookPage(page,'Aufgabe')).join('')}</section>
+    ${renderInteractiveListening(exercise)}
+    <details class="book-reference">
+      <summary>Originalseiten aus dem Buch als Referenz</summary>
+      <div class="book-reference-pages">${exercise.exercisePages.map(page=>renderBookPage(page,'Aufgabe')).join('')}</div>
+    </details>
     <div class="listen-actions">
       <button type="button" class="solution-toggle" data-solution-pages="${exercise.solutionPages.join(',')}">Lösung anzeigen</button>
       <button type="button" class="lesson-complete ${progress[exercise.id]?'done':''}" data-listening-complete="${exercise.id}">
@@ -1066,6 +1114,97 @@ function renderListeningExercise(chapter,index){
     </div>
     <section class="solution-panel" id="listeningSolutions"></section>`;
   initListeningExercise(exercise);
+}
+
+function listeningFigures(exerciseId,question){
+  const all=(window.HOEREN_FIGURES||{})[exerciseId]||[];
+  if(!question) return all;
+  if(question.image) return [{src:question.image,page:question.page||''}];
+  if(Number.isInteger(question.figure)) return all[question.figure]?[all[question.figure]]:[];
+  if(Array.isArray(question.figureRange)) return all.slice(question.figureRange[0],question.figureRange[1]);
+  return [];
+}
+
+function renderListeningFigures(figures){
+  if(!figures.length) return '';
+  return `<div class="question-figures">${figures.map((figure,index)=>`
+    <figure class="question-figure"><img loading="lazy" src="${escapeHtml(figure.src)}" alt="Originalabbildung ${index+1}">
+      <figcaption>Abbildung ${index+1} · Buchseite ${figure.page}</figcaption>
+    </figure>`).join('')}</div>`;
+}
+
+function renderWebQuestion(exerciseId,question,index,sectionIndex){
+  const name=`listen-${exerciseId}-${sectionIndex}-${index}`;
+  const figures=renderListeningFigures(listeningFigures(exerciseId,question));
+  let control='';
+  if(question.type==='text'){
+    control=`<input class="web-text-input" type="text" autocomplete="off" placeholder="Antwort schreiben …">`;
+  }else if(question.type==='choice'){
+    control=`<div class="web-options">${question.options.map((option,optionIndex)=>`
+      <label class="web-option"><input type="radio" name="${name}" value="${optionIndex}"><span>${escapeHtml(option)}</span></label>`).join('')}</div>`;
+  }else if(question.type==='multi'){
+    control=`<div class="web-options">${question.options.map((option,optionIndex)=>`
+      <label class="web-option"><input type="checkbox" value="${optionIndex}"><span>${escapeHtml(option)}</span></label>`).join('')}</div>`;
+  }else if(question.type==='match'){
+    control=`<div class="match-grid">${question.left.map((left,leftIndex)=>`
+      <label class="match-row"><span class="match-label">${escapeHtml(left)}</span>
+        <select class="match-select" data-match-index="${leftIndex}"><option value="">Bitte wählen</option>
+          ${question.options.map((option,optionIndex)=>`<option value="${optionIndex}">${escapeHtml(option)}</option>`).join('')}
+        </select>
+      </label>`).join('')}</div>`;
+  }
+  return `<article class="web-question" data-question-index="${index}">
+    <div class="web-question-title"><span class="question-number">${index+1}</span><span>${escapeHtml(question.prompt)}</span></div>
+    ${figures}${control}<div class="question-feedback"></div>
+  </article>`;
+}
+
+function renderInteractiveListening(exercise){
+  const sections=(window.HOEREN_INTERACTIVE||{})[exercise.id]||[];
+  if(!sections.length) return '';
+  const hasAttachedFigures=sections.some(section=>section.questions.some(question=>question.image||question.figure!==undefined||question.figureRange));
+  const overview=!hasAttachedFigures?renderListeningFigures(listeningFigures(exercise.id)):'';
+  const questionCount=sections.reduce((sum,section)=>sum+section.questions.length,0);
+  return `<section class="interactive-sheet">
+    <div class="interactive-intro"><div><b>Interaktive Aufgaben</b>
+      <span>Direkt auswählen, schreiben und sofort prüfen.</span></div><span>${questionCount} Fragen</span></div>
+    ${overview}
+    ${sections.map((section,sectionIndex)=>`<article class="interactive-section" data-section-index="${sectionIndex}">
+      <h3>${escapeHtml(section.title)}</h3>
+      ${section.questions.map((question,index)=>renderWebQuestion(exercise.id,question,index,sectionIndex)).join('')}
+      <button type="button" class="section-check" data-check-section="${sectionIndex}">Antworten prüfen</button>
+      <span class="section-result" aria-live="polite"></span>
+    </article>`).join('')}
+  </section>`;
+}
+
+function listeningCorrectAnswer(question){
+  if(question.type==='text') return question.answer[0];
+  if(question.type==='choice') return question.options[question.answer];
+  if(question.type==='multi') return question.answer.map(index=>question.options[index]).join(', ');
+  if(question.type==='match') return question.left.map((left,index)=>`${left}: ${question.options[question.answer[index]]}`).join(' · ');
+  return '';
+}
+
+function checkListeningQuestion(card,question){
+  if(question.type==='text'){
+    const value=card.querySelector('.web-text-input').value;
+    return question.answer.some(answer=>normalizeAnswer(value)===normalizeAnswer(answer));
+  }
+  if(question.type==='choice'){
+    const selected=card.querySelector('input:checked');
+    return Boolean(selected)&&Number(selected.value)===question.answer;
+  }
+  if(question.type==='multi'){
+    const selected=[...card.querySelectorAll('input:checked')].map(input=>Number(input.value)).sort((a,b)=>a-b);
+    const answer=[...question.answer].sort((a,b)=>a-b);
+    return selected.length===answer.length&&selected.every((value,index)=>value===answer[index]);
+  }
+  if(question.type==='match'){
+    const selects=[...card.querySelectorAll('.match-select')];
+    return selects.length===question.answer.length&&selects.every((select,index)=>select.value!==''&&Number(select.value)===question.answer[index]);
+  }
+  return false;
 }
 
 function renderBookTrack(track,exercise){
@@ -1104,6 +1243,22 @@ function initListeningExercise(exercise){
     const card=button.closest('.audio-track');
     card.querySelector('audio').playbackRate=Number(button.dataset.audioSpeed);
     card.querySelectorAll('.audio-speed').forEach(item=>item.classList.toggle('active',item===button));
+  }));
+  const sections=(window.HOEREN_INTERACTIVE||{})[exercise.id]||[];
+  $$('[data-check-section]').forEach(button=>button.addEventListener('click',()=>{
+    const sectionIndex=Number(button.dataset.checkSection);
+    const section=sections[sectionIndex];
+    const container=button.closest('.interactive-section');
+    let correct=0;
+    section.questions.forEach((question,index)=>{
+      const card=container.querySelector(`[data-question-index="${index}"]`);
+      const isCorrect=checkListeningQuestion(card,question);
+      card.classList.toggle('correct',isCorrect);
+      card.classList.toggle('wrong',!isCorrect);
+      card.querySelector('.question-feedback').textContent=isCorrect?'Richtig ✓':`Richtige Antwort: ${listeningCorrectAnswer(question)}`;
+      if(isCorrect) correct++;
+    });
+    container.querySelector('.section-result').textContent=`${correct} / ${section.questions.length} richtig`;
   }));
   const solutionButton=$('.solution-toggle');
   solutionButton.addEventListener('click',()=>{

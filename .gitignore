@@ -3,6 +3,7 @@
 /pages/
 *_text.txt
 Hören und Sprechen A2/
+/hoeren_extract/
 
 # Local tooling
 .claude/
