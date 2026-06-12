@@ -123,6 +123,17 @@ table.gt b{color:var(--green-d)}
 .model-text{background:#fffceb;border:1.5px dashed var(--amber);border-radius:12px;
   padding:14px 16px;font-size:15px;line-height:1.85;margin-top:10px}
 .model-text b{color:var(--amber);display:block;margin-bottom:6px;font-size:13px;text-transform:uppercase;letter-spacing:.05em}
+/* ---------- reading ---------- */
+.reading-card h3{color:var(--green-d);font-size:19px;margin-bottom:2px}
+.reading-kind{font-size:12px;color:var(--ink-2);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px}
+.reading-text{font-size:15px;line-height:1.9}
+.reading-glossary{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0}
+.reading-glossary span{background:var(--blue-l);color:#173f8a;border-radius:9px;padding:5px 9px;font-size:12.5px}
+.reading-q{border-top:1px solid #e8ecf0;padding:10px 0}
+.reading-q b{display:block;font-size:14px;margin-bottom:6px}
+.answer-btn{border:1px solid #cad4df;background:#fff;color:var(--green-d);border-radius:9px;padding:6px 10px;font-weight:700;cursor:pointer}
+.reading-answer{display:none;background:var(--green-l);border-radius:9px;padding:8px 11px;margin-top:7px;font-size:14px}
+.reading-answer.show{display:block}
 /* ---------- flashcards ---------- */
 .fc-bar{display:flex;gap:10px;margin-bottom:14px}
 .btn{border:none;border-radius:12px;padding:11px 18px;font-size:14.5px;font-weight:700;cursor:pointer}
@@ -178,6 +189,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 
 <script src="data_book1.js"></script>
 <script src="data_book2.js"></script>
+<script src="data_extra.js"></script>
 <script src="data_gram.js"></script>
 <script>
 /* ===================== state & helpers ===================== */
@@ -257,6 +269,7 @@ function renderHome(){
 const TABS = [
   ['ueberblick','📋 Überblick'],
   ['wortschatz','📖 Wortschatz'],
+  ['lesen','📚 Lesen'],
   ['redemittel','💬 Redemittel'],
   ['grammatik','✏️ Grammatik'],
   ['sprechen','🗣️ Sprechen'],
@@ -313,6 +326,23 @@ function renderChapterTab(c, tab){
     });
     return h;
   }
+  if(tab==='lesen'){
+    return c.readings.map((r,ri) => `
+      <article class="card reading-card">
+        <h3>${r.title}</h3>
+        <div class="reading-kind">${r.kind}</div>
+        <p class="reading-text">${r.text}</p>
+        ${ar(r.ar)}
+        <div class="reading-glossary">${r.glossary.map(([de,arText])=>`<span><b>${de}</b> · ${arText}</span>`).join('')}</div>
+        <h4 style="margin:12px 0 3px">Leseverstehen</h4>
+        ${r.questions.map(([q,a],qi)=>`
+          <div class="reading-q">
+            <b>${qi+1}. ${q}</b>
+            <button type="button" class="answer-btn" onclick="toggleReadingAnswer(this)">Antwort zeigen</button>
+            <div class="reading-answer">${a}</div>
+          </div>`).join('')}
+      </article>`).join('');
+  }
   if(tab==='grammatik'){
     let h = '';
     c.grammar.forEach(g => {
@@ -342,6 +372,13 @@ function renderChapterTab(c, tab){
 
 function fmtWord(w){
   return w.replace(/^(der|die|das)\s/, '<span class="art">$1</span> ');
+}
+
+function toggleReadingAnswer(btn){
+  const answer = btn.nextElementSibling;
+  const show = !answer.classList.contains('show');
+  answer.classList.toggle('show', show);
+  btn.textContent = show ? 'Antwort ausblenden' : 'Antwort zeigen';
 }
 
 /* ===================== flashcards ===================== */
