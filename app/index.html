@@ -99,7 +99,10 @@ header.topbar .back:focus-visible{outline:3px solid var(--amber);outline-offset:
 .vocab-row{padding:13px 0;border-bottom:1px solid #edf0f3}
 .vocab-row:last-child{border-bottom:none}
 .vocab-row .w{font-weight:800;font-size:16.5px;color:var(--green-d)}
-.vocab-row .w .art{color:var(--amber);font-weight:700}
+.art{display:inline-block;border-radius:6px;padding:0 5px;font-weight:800}
+.art-der{background:#e7f0fb;color:#285f9a}
+.art-die{background:#fae9ef;color:#a13f65}
+.art-das{background:#e9f5e8;color:#397548}
 .vocab-row .def{font-size:14px;color:var(--ink);margin-top:2px}
 .vocab-row .def::before{content:"💡 ";font-size:12px}
 .vocab-row .ex{font-size:13.5px;color:var(--ink-2);font-style:italic;margin-top:3px}
@@ -171,9 +174,17 @@ table.gt b{color:var(--green-d)}
 .expression-example{font-size:13px;color:var(--ink-2);font-style:italic;margin-top:7px}
 .expression-tag{display:inline-block;background:var(--amber-l);color:#8b5b20;border-radius:999px;padding:3px 8px;
   font-size:11px;font-weight:700;margin-bottom:8px}
-.verb-card{overflow:visible}
+.verb-card{overflow:visible;cursor:pointer;transition:.15s}
+.verb-card:active{transform:scale(.995)}
 .verb-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:10px}
 .verb-inf{font-size:20px;font-weight:800;color:var(--green-d)}
+.verb-summary{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.verb-summary-line{font-size:14px;color:var(--ink-2)}
+.verb-chevron{font-size:20px;color:var(--blue);transition:.2s}
+.verb-card.open .verb-chevron{transform:rotate(180deg)}
+.verb-details{display:none;border-top:1px solid var(--line);margin-top:12px;padding-top:12px}
+.verb-card.open .verb-details{display:block}
+.verb-tense{font-size:12px;color:var(--green-d);font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin:10px 0 5px}
 .verb-aux{border-radius:999px;padding:4px 10px;font-size:12px;font-weight:800}
 .verb-aux.sein{background:var(--blue-l);color:var(--blue)}
 .verb-aux.haben{background:var(--amber-l);color:#8b5b20}
@@ -211,10 +222,17 @@ body.listen-mode .speakable{cursor:pointer;outline:1px dashed rgba(40,124,121,.3
 .speed-presets{display:flex;gap:7px;margin-top:9px}
 .speed-preset{border:1px solid var(--line);background:#fff;border-radius:9px;padding:6px 10px;cursor:pointer;font:inherit}
 .speed-preset.active{background:var(--green-d);color:#fff}
+.voice-select{width:100%;border:2px solid #d7dfe3;background:#fff;border-radius:11px;padding:10px;
+  color:var(--ink);font:inherit;margin-top:7px}
 .translate-trigger{position:fixed;z-index:95;display:none;border:0;background:var(--green-d);color:#fff;
-  border-radius:999px;padding:8px 12px;font-family:"Cairo","Tahoma",sans-serif;font-size:12px;box-shadow:var(--shadow);cursor:pointer}
+  border-radius:999px;padding:8px 12px;font-family:"Cairo","Tahoma",sans-serif;font-size:12px;box-shadow:var(--shadow);
+  cursor:pointer;max-width:min(280px,85vw);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .translate-trigger.show{display:block}
 .translation-source{background:var(--blue-l);border-radius:11px;padding:10px 12px;font-size:14px;margin-bottom:10px}
+.translation-word{display:flex;align-items:baseline;justify-content:space-between;gap:12px;background:var(--green-l);
+  border-radius:12px;padding:11px 13px;margin-bottom:12px}
+.translation-word b{font-size:19px;color:var(--green-d)}
+.translation-word span{font-family:"Cairo","Tahoma",sans-serif;direction:rtl;text-align:right;color:var(--ar)}
 .translation-context{font-size:12px;color:var(--ink-2);margin-bottom:8px}
 .translation-result{font-family:"Cairo","Tahoma",sans-serif;direction:rtl;text-align:right;background:var(--ar-l);
   border:1px solid #eee7ef;border-radius:12px;padding:12px;font-size:14px;line-height:1.8;min-height:48px}
@@ -340,18 +358,26 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
       <div class="ar">غيّر سرعة النطق، والاختيار بيتحفظ تلقائيًا على الجهاز.</div>
     </div>
     <div class="setting-row">
+      <label for="speechVoice">Deutsche Stimme</label>
+      <select class="voice-select" id="speechVoice"><option value="">Automatisch</option></select>
+      <button class="speed-preset" id="voicePreview" style="margin-top:9px">Stimme testen</button>
+      <div class="ar">الأصوات المتاحة بتختلف حسب الموبايل أو الكمبيوتر والمتصفح. اختار الصوت اللي يناسبك وجربه.</div>
+    </div>
+    <div class="setting-row">
       <b>Kontextübersetzung</b>
-      <p style="font-size:13px;color:var(--ink-2);margin-top:5px">Markiere einen deutschen oder arabischen Text. Danach erscheint eine Schaltfläche für die Übersetzung im Satzkontext.</p>
-      <div class="ar">حدد أي نص داخل التطبيق، وهيظهر زر يترجمه داخل الجملة المحيطة بدل ترجمة الكلمة بشكل حرفي.</div>
+      <p style="font-size:13px;color:var(--ink-2);margin-top:5px">Markiere ein Wort. Seine Übersetzung erscheint sofort; ein Klick öffnet Wort, Satz und Satzübersetzung.</p>
+      <div class="ar">حدد كلمة داخل التطبيق، وترجمتها هتظهر فورًا. اضغط على الترجمة عشان تشوف الكلمة والجملة وترجمة الجملة.</div>
     </div>
   </section>
 </div>
 <div class="modal-backdrop" id="translationModal" aria-hidden="true">
   <section class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="translationTitle">
     <div class="modal-head"><h2 id="translationTitle">Kontextübersetzung</h2><button class="modal-close" data-close-modal="translationModal" aria-label="Schließen">×</button></div>
-    <div class="translation-source" id="translationSource"></div>
-    <div class="translation-context" id="translationContext"></div>
-    <div class="translation-result" id="translationResult">جارٍ الترجمة...</div>
+    <div class="translation-word"><b id="translationWord"></b><span id="translationWordMeaning"></span></div>
+    <div class="translation-context">Satz im Kontext</div>
+    <div class="translation-source" id="translationSentence"></div>
+    <div class="translation-context">ترجمة الجملة</div>
+    <div class="translation-result" id="translationSentenceResult">جارٍ الترجمة...</div>
     <div class="translation-note">الترجمة بتستخدم الجملة المحيطة لفهم المعنى. لو ترجمة الجهاز غير متاحة، يُرسل سياق النص التعليمي لخدمة الترجمة عبر الإنترنت.</div>
   </section>
 </div>
@@ -388,14 +414,16 @@ function ar(txt){ return txt ? `<div class="ar">${txt}</div>` : ''; }
 
 /* ===================== settings and contextual translation ===================== */
 let speechRate=Number(localStorage.getItem('speechRate')||.85);
+let speechVoiceURI=localStorage.getItem('speechVoiceURI')||'';
 let pendingTranslation=null;
+let translationRequest=0;
 const translateTrigger=$('#translateTrigger');
 
 function openModal(id){
   const modal=$('#'+id);
   modal.classList.add('show');
   modal.setAttribute('aria-hidden','false');
-  if(id==='settingsModal') updateSpeedUI();
+  if(id==='settingsModal'){ updateSpeedUI(); populateVoiceOptions(); }
 }
 
 function closeModal(id){
@@ -408,6 +436,17 @@ function updateSpeedUI(){
   $('#speechRate').value=String(speechRate);
   $('#speechRateValue').textContent=`${speechRate.toFixed(2)}×`;
   $$('.speed-preset').forEach(button=>button.classList.toggle('active',Math.abs(Number(button.dataset.rate)-speechRate)<.01));
+}
+
+function populateVoiceOptions(){
+  if(!window.speechSynthesis) return;
+  const select=$('#speechVoice');
+  const current=select.value||speechVoiceURI;
+  const voices=speechSynthesis.getVoices().filter(voice=>voice.lang.toLowerCase().startsWith('de'));
+  select.innerHTML=`<option value="">Automatisch</option>`+voices.map(voice=>
+    `<option value="${escapeHtml(voice.voiceURI)}">${escapeHtml(voice.name)} · ${voice.lang}</option>`).join('');
+  if(voices.some(voice=>voice.voiceURI===current)) select.value=current;
+  else if(speechVoiceURI){ speechVoiceURI=''; localStorage.removeItem('speechVoiceURI'); }
 }
 
 function setSpeechRate(value,preview=false){
@@ -423,12 +462,20 @@ $$('.modal-backdrop').forEach(modal=>modal.addEventListener('click',event=>{ if(
 $('#speechRate').addEventListener('input',event=>setSpeechRate(event.target.value));
 $('#speechRate').addEventListener('change',event=>setSpeechRate(event.target.value,true));
 $$('.speed-preset').forEach(button=>button.addEventListener('click',()=>setSpeechRate(button.dataset.rate,true)));
+$('#speechVoice').addEventListener('change',event=>{
+  speechVoiceURI=event.target.value;
+  localStorage.setItem('speechVoiceURI',speechVoiceURI);
+  speakText('Ich lerne jeden Tag ein bisschen Deutsch.','de');
+});
+$('#voicePreview').addEventListener('click',()=>speakText('Guten Tag! So klingt diese deutsche Stimme.','de'));
 document.addEventListener('keydown',event=>{ if(event.key==='Escape') $$('.modal-backdrop.show').forEach(modal=>closeModal(modal.id)); });
 updateSpeedUI();
+populateVoiceOptions();
+if(window.speechSynthesis) window.speechSynthesis.addEventListener('voiceschanged',populateVoiceOptions);
 
 function selectionContext(selection){
-  const selected=selection.toString().replace(/\s+/g,' ').trim();
-  if(selected.length<2 || selected.length>500 || !selection.rangeCount) return null;
+  const selected=selection.toString().replace(/\s+/g,' ').trim().replace(/^[„“"'.,!?;:()\[\]]+|[„“"'.,!?;:()\[\]]+$/g,'');
+  if(selected.length<2 || selected.length>120 || !selection.rangeCount) return null;
   const range=selection.getRangeAt(0);
   const container=range.commonAncestorContainer.nodeType===1?range.commonAncestorContainer:range.commonAncestorContainer.parentElement;
   if(!container || !view.contains(container) || container.closest('input,textarea,button,.ar')) return null;
@@ -443,14 +490,49 @@ function selectionContext(selection){
   return {selected,context:context.slice(0,650),rect};
 }
 
-function captureSelection(){
+function knownWordTranslation(value){
+  const normalized=value.toLocaleLowerCase('de-DE').replace(/^(der|die|das)\s+/,'').trim();
+  const vocabulary=BOOK.flatMap(chapter=>chapter.vocab);
+  const entry=vocabulary.find(item=>
+    item.w.toLocaleLowerCase('de-DE').replace(/^(der|die|das)\s+/,'').split(',')[0].trim()===normalized);
+  if(entry?.ar) return entry.ar;
+  const verb=VERBS.find(item=>item.inf.toLocaleLowerCase('de-DE').replace(/^sich\s+/,'')===normalized);
+  return verb?.ar||null;
+}
+
+async function requestTranslation(text,sourceLanguage,targetLanguage){
+  return await translateWithBrowser(text,sourceLanguage,targetLanguage)
+    ||await translateWithInternet(text,sourceLanguage,targetLanguage);
+}
+
+async function captureSelection(){
   const selection=window.getSelection();
   const data=selectionContext(selection);
   if(!data){ translateTrigger.classList.remove('show'); return; }
-  pendingTranslation=data;
-  translateTrigger.style.left=`${Math.max(8,Math.min(window.innerWidth-150,data.rect.left))}px`;
+  const requestId=++translationRequest;
+  const hasArabic=/[\u0600-\u06ff]/.test(data.selected);
+  const sourceLanguage=hasArabic?'ar':'de';
+  const targetLanguage=hasArabic?'de':'ar';
+  const known=!hasArabic?knownWordTranslation(data.selected):null;
+  pendingTranslation={...data,sourceLanguage,targetLanguage,wordTranslation:known||'',sentenceTranslation:''};
+  translateTrigger.textContent=known?`↗ ${known}`:'... جاري الترجمة';
+  translateTrigger.style.left=`${Math.max(8,Math.min(window.innerWidth-290,data.rect.left))}px`;
   translateTrigger.style.top=`${Math.max(70,Math.min(window.innerHeight-48,data.rect.bottom+7))}px`;
   translateTrigger.classList.add('show');
+  const wordPromise=known?Promise.resolve(known):requestTranslation(data.selected,sourceLanguage,targetLanguage);
+  const sentencePromise=data.context===data.selected?wordPromise:requestTranslation(data.context,sourceLanguage,targetLanguage);
+  pendingTranslation.sentencePromise=sentencePromise;
+  try{
+    const translated=await wordPromise;
+    if(requestId!==translationRequest || !pendingTranslation) return;
+    pendingTranslation.wordTranslation=translated;
+    translateTrigger.textContent=`↗ ${translated}`;
+  }catch(error){
+    if(requestId===translationRequest) translateTrigger.textContent='تعذرت الترجمة';
+  }
+  sentencePromise.then(translated=>{
+    if(requestId===translationRequest && pendingTranslation) pendingTranslation.sentenceTranslation=translated;
+  }).catch(()=>{});
 }
 
 document.addEventListener('mouseup',event=>{
@@ -485,31 +567,35 @@ async function translateWithInternet(text,sourceLanguage,targetLanguage){
   return data.responseData.translatedText;
 }
 
-async function translateSelection(){
+async function showTranslationDetails(){
   if(!pendingTranslation) return;
   translateTrigger.classList.remove('show');
-  const hasArabic=/[\u0600-\u06ff]/.test(pendingTranslation.selected);
-  const sourceLanguage=hasArabic?'ar':'de';
-  const targetLanguage=hasArabic?'de':'ar';
-  const text=pendingTranslation.context||pendingTranslation.selected;
-  $('#translationSource').textContent=`Auswahl: ${pendingTranslation.selected}`;
-  $('#translationContext').textContent=text!==pendingTranslation.selected?`Kontext: ${text}`:'';
-  $('#translationResult').textContent=targetLanguage==='ar'?'جارٍ الترجمة حسب السياق...':'Übersetzung wird geladen ...';
-  $('#translationResult').style.direction=targetLanguage==='ar'?'rtl':'ltr';
-  $('#translationResult').style.textAlign=targetLanguage==='ar'?'right':'left';
+  const current=pendingTranslation;
+  $('#translationWord').textContent=current.selected;
+  $('#translationWordMeaning').textContent=current.wordTranslation||'جارٍ الترجمة...';
+  $('#translationSentence').textContent=current.context;
+  $('#translationSentenceResult').textContent=current.sentenceTranslation
+    ||(current.targetLanguage==='ar'?'جارٍ ترجمة الجملة...':'Der Satz wird übersetzt ...');
+  $('#translationSentenceResult').style.direction=current.targetLanguage==='ar'?'rtl':'ltr';
+  $('#translationSentenceResult').style.textAlign=current.targetLanguage==='ar'?'right':'left';
   openModal('translationModal');
   try{
-    const result=await translateWithBrowser(text,sourceLanguage,targetLanguage)
-      ||await translateWithInternet(text,sourceLanguage,targetLanguage);
-    $('#translationResult').textContent=result;
+    if(!current.wordTranslation){
+      current.wordTranslation=await requestTranslation(current.selected,current.sourceLanguage,current.targetLanguage);
+      $('#translationWordMeaning').textContent=current.wordTranslation;
+    }
+    if(!current.sentenceTranslation){
+      current.sentenceTranslation=await current.sentencePromise;
+      $('#translationSentenceResult').textContent=current.sentenceTranslation;
+    }
   }catch(error){
-    $('#translationResult').textContent=targetLanguage==='ar'
+    $('#translationSentenceResult').textContent=current.targetLanguage==='ar'
       ?'تعذرت الترجمة الآن. تأكد من الاتصال بالإنترنت وحاول مرة أخرى.'
       :'Die Übersetzung ist gerade nicht verfügbar. Bitte versuche es erneut.';
   }
 }
 
-translateTrigger.addEventListener('click',translateSelection);
+translateTrigger.addEventListener('click',showTranslationDetails);
 
 /* ===================== speech ===================== */
 const speech = window.speechSynthesis;
@@ -540,7 +626,8 @@ function speakText(text, lang){
   utterance.lang=isArabic?'ar-EG':'de-DE';
   utterance.rate=speechRate;
   const voices=speech.getVoices();
-  utterance.voice=voices.find(v=>v.lang.toLowerCase().startsWith(isArabic?'ar':'de'))||null;
+  utterance.voice=(!isArabic&&speechVoiceURI?voices.find(v=>v.voiceURI===speechVoiceURI):null)
+    ||voices.find(v=>v.lang.toLowerCase().startsWith(isArabic?'ar':'de'))||null;
   utterance.onend=()=>$('#speechStatus').classList.remove('show');
   speech.speak(utterance);
   showSpeechStatus(value.slice(0,72));
@@ -727,16 +814,25 @@ function renderVerbs(){
       <div class="result-count" id="verbCount"></div>
     </div>
     <div id="verbList">${VERBS.map((verb,index)=>`
-      <article class="card verb-card" data-index="${index}" data-aux="${verb.aux}"
+      <article class="card verb-card" data-index="${index}" data-aux="${verb.aux}" tabindex="0" role="button" aria-expanded="false"
         data-search="${escapeHtml(`${verb.inf} ${verb.praet} ${verb.part} ${verb.ar} ${verb.example}`.toLocaleLowerCase('de-DE'))}">
-        <div class="verb-head"><div><div class="verb-inf">${verb.inf}</div>${ar(verb.ar)}</div>
-          <span class="verb-aux ${verb.aux}">Perfekt mit ${verb.aux}</span></div>
-        <div class="verb-grid">${verb.forms.map((form,formIndex)=>`
-          <div class="verb-form"><small>${pronouns[formIndex]}</small>${form}</div>`).join('')}</div>
-        <div class="verb-perfect"><small>Perfekt</small> ${verb.aux} ${verb.part}</div>
-        <div class="dictionary-definition"><b>Präteritum:</b> ${verb.praet}</div>
-        <div class="dictionary-example">„${verb.example}“</div>
-        <span class="dictionary-meta">K${verb.chapter}</span>
+        <div class="verb-summary">
+          <div><div class="verb-inf">${verb.inf}</div>
+            <div class="verb-summary-line">${verb.praet} · ${verb.aux} ${verb.part}</div></div>
+          <span class="verb-chevron">⌄</span>
+        </div>
+        <div class="verb-details">
+          <div class="verb-head"><div>${ar(verb.ar)}</div><span class="verb-aux ${verb.aux}">Perfekt mit ${verb.aux}</span></div>
+          <div class="verb-tense">Präsens</div>
+          <div class="verb-grid">${verb.forms.map((form,formIndex)=>`
+            <div class="verb-form"><small>${pronouns[formIndex]}</small>${form}</div>`).join('')}</div>
+          <div class="verb-tense">Präteritum</div>
+          <div class="verb-grid">${verb.praetForms.map((form,formIndex)=>`
+            <div class="verb-form"><small>${pronouns[formIndex]}</small>${form}</div>`).join('')}</div>
+          <div class="verb-perfect"><small>Perfekt</small> ${verb.aux} ${verb.part}</div>
+          <div class="dictionary-example">„${verb.example}“</div>
+          <span class="dictionary-meta">K${verb.chapter}</span>
+        </div>
       </article>`).join('')}</div>`;
   const search=$('#verbSearch'),aux=$('#verbAux');
   const filter=()=>{
@@ -748,6 +844,14 @@ function renderVerbs(){
     });
     $('#verbCount').textContent=`${visible} / ${VERBS.length} Verben`;
   };
+  $$('#verbList .verb-card').forEach(card=>{
+    const toggle=()=>{
+      const open=card.classList.toggle('open');
+      card.setAttribute('aria-expanded',String(open));
+    };
+    card.addEventListener('click',event=>{ if(!event.target.closest('button,input,select')) toggle(); });
+    card.addEventListener('keydown',event=>{ if(event.key==='Enter'||event.key===' '){event.preventDefault();toggle();} });
+  });
   search.addEventListener('input',filter); aux.addEventListener('change',filter); filter();
 }
 
@@ -899,7 +1003,7 @@ function renderChapterTab(c, tab){
 }
 
 function fmtWord(w){
-  return w.replace(/^(der|die|das)\s/, '<span class="art">$1</span> ');
+  return w.replace(/^(der|die|das)\s/, (_,article)=>`<span class="art art-${article}">${article}</span> `);
 }
 
 function toggleReadingAnswer(btn){
