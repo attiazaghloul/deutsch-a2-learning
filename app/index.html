@@ -224,12 +224,24 @@ body.listen-mode .speakable{cursor:pointer;outline:1px dashed rgba(40,124,121,.3
 .speed-preset.active{background:var(--green-d);color:#fff}
 .voice-select{width:100%;border:2px solid #d7dfe3;background:#fff;border-radius:11px;padding:10px;
   color:var(--ink);font:inherit;margin-top:7px}
+.voice-gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:9px}
+.voice-person{display:grid;grid-template-columns:38px 1fr 30px;align-items:center;gap:8px;border:1px solid var(--line);
+  background:#fff;border-radius:12px;padding:8px;text-align:left;color:var(--ink);font:inherit;cursor:pointer}
+.voice-person.active{border-color:var(--green);background:var(--green-l)}
+.voice-avatar{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;
+  background:var(--blue-l);color:var(--blue);font-weight:800}
+.voice-person.active .voice-avatar{background:var(--green-d);color:#fff}
+.voice-person-name{display:block;font-size:12px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.voice-person-meta{display:block;color:var(--ink-2);font-size:9px}
+.voice-person-test{display:flex;align-items:center;justify-content:center;width:29px;height:29px;border:0;border-radius:50%;
+  background:var(--blue-l);color:var(--blue);cursor:pointer}
+.voice-availability{font-size:11px;color:var(--ink-2);margin-top:8px}
 .voice-profiles{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-top:9px}
 .voice-profile{border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 9px;cursor:pointer;
   font:inherit;color:var(--ink-2);text-align:left}
 .voice-profile b{display:block;color:var(--ink);font-size:13px}
 .voice-profile small{font-size:10px}
-.voice-profile.active{background:var(--green-l);border-color:var(--green);color:var(--green-d)}
+  .voice-profile.active{background:var(--green-l);border-color:var(--green);color:var(--green-d)}
 .translate-trigger{position:fixed;z-index:95;display:none;border:0;background:var(--green-d);color:#fff;
   border-radius:999px;padding:8px 12px;font-family:"Cairo","Tahoma",sans-serif;font-size:12px;box-shadow:var(--shadow);
   cursor:pointer;max-width:min(280px,85vw);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -335,6 +347,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
   .listen-toggle span{display:none}
   .main-tabs{grid-template-columns:repeat(2,1fr)}
   .verb-grid{grid-template-columns:repeat(2,1fr)}
+  .voice-gallery{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -370,20 +383,21 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
       <div class="ar">غيّر سرعة النطق، والاختيار بيتحفظ تلقائيًا على الجهاز.</div>
     </div>
     <div class="setting-row">
-      <label for="speechVoice">Deutsche Stimme</label>
-      <select class="voice-select" id="speechVoice"><option value="">Automatisch</option></select>
-      <button class="speed-preset" id="voicePreview" style="margin-top:9px">Stimme testen</button>
-      <div class="ar">الأصوات المتاحة بتختلف حسب الموبايل أو الكمبيوتر والمتصفح. اختار الصوت اللي يناسبك وجربه.</div>
+      <b>Deutsche Sprecher</b>
+      <select class="voice-select" id="speechVoice" aria-label="Deutsche Stimme"><option value="">Automatisch</option></select>
+      <div class="voice-gallery" id="voiceGallery"></div>
+      <div class="voice-availability" id="voiceAvailability"></div>
+      <div class="ar">دي أصوات أشخاص حقيقية من محرك الصوت على جهازك. اضغط على السماعة داخل كل بطاقة للمقارنة، واضغط البطاقة لاختيار الشخص.</div>
     </div>
     <div class="setting-row">
-      <b>Sprechstil</b>
+      <b>Sprechweise <small style="color:var(--ink-2)">(gleiche Person)</small></b>
       <div class="voice-profiles">
         <button class="voice-profile" data-profile="clear"><b>Klar</b><small>deutlich & neutral</small></button>
         <button class="voice-profile" data-profile="calm"><b>Ruhig</b><small>langsamer & weich</small></button>
         <button class="voice-profile" data-profile="deep"><b>Tief</b><small>tiefer & ruhig</small></button>
         <button class="voice-profile" data-profile="bright"><b>Hell</b><small>heller & lebendig</small></button>
       </div>
-      <div class="ar">دي أربع طرق نطق مختلفة بتشتغل حتى لو جهازك فيه صوت ألماني واحد بس.</div>
+      <div class="ar">دي طرق إلقاء مختلفة لنفس الشخص المختار، مش أشخاص مختلفين.</div>
     </div>
     <div class="setting-row">
       <b>Kontextübersetzung</b>
@@ -471,6 +485,24 @@ function populateVoiceOptions(){
     `<option value="${escapeHtml(voice.voiceURI)}">${escapeHtml(voice.name)} · ${voice.lang}</option>`).join('');
   if(voices.some(voice=>voice.voiceURI===current)) select.value=current;
   else if(voices.length&&speechVoiceURI){ speechVoiceURI=''; localStorage.removeItem('speechVoiceURI'); }
+  const gallery=$('#voiceGallery');
+  const cards=[{voiceURI:'',name:'Automatisch',lang:'de-DE'},...voices];
+  gallery.innerHTML=cards.map((voice,index)=>{
+    const cleanName=voice.name.replace(/^Microsoft\s+/,'').replace(/\s*-\s*German.*$/i,'');
+    const initials=cleanName.split(/\s+/).map(part=>part[0]).join('').slice(0,2).toUpperCase()||'DE';
+    const active=voice.voiceURI===speechVoiceURI;
+    return `<button type="button" class="voice-person ${active?'active':''}" data-voice-uri="${escapeHtml(voice.voiceURI)}">
+      <span class="voice-avatar">${escapeHtml(initials)}</span>
+      <span><span class="voice-person-name">${escapeHtml(cleanName)}</span>
+        <span class="voice-person-meta">${index===0?'beste verfügbare Stimme':escapeHtml(voice.lang)}</span></span>
+      <span class="voice-person-test" data-test-voice="${escapeHtml(voice.voiceURI)}" title="Diese Stimme testen">▶</span>
+    </button>`;
+  }).join('');
+  $('#voiceAvailability').textContent=voices.length>1
+    ?`${voices.length} verschiedene deutsche Personen sind auf diesem Gerät verfügbar.`
+    : voices.length===1
+      ?'Dieses Gerät stellt nur eine deutsche Person bereit. Die vier Sprechweisen darunter verändern nur den Vortrag.'
+      :'Keine eigene deutsche Stimme gefunden; der Browser wählt seine Standardsprache.';
 }
 
 function setSpeechRate(value,preview=false){
@@ -495,9 +527,24 @@ $$('.voice-profile').forEach(button=>button.addEventListener('click',()=>{
 $('#speechVoice').addEventListener('change',event=>{
   speechVoiceURI=event.target.value;
   localStorage.setItem('speechVoiceURI',speechVoiceURI);
+  populateVoiceOptions();
   speakText('Ich lerne jeden Tag ein bisschen Deutsch.','de');
 });
-$('#voicePreview').addEventListener('click',()=>speakText('Guten Tag! So klingt diese deutsche Stimme.','de'));
+$('#voiceGallery').addEventListener('click',event=>{
+  const test=event.target.closest('[data-test-voice]');
+  if(test){
+    event.preventDefault(); event.stopPropagation();
+    speakText('Guten Tag! Ich bin eine deutsche Stimme. So klinge ich beim Vorlesen.','de',test.dataset.testVoice);
+    return;
+  }
+  const card=event.target.closest('.voice-person');
+  if(!card) return;
+  speechVoiceURI=card.dataset.voiceUri;
+  localStorage.setItem('speechVoiceURI',speechVoiceURI);
+  $('#speechVoice').value=speechVoiceURI;
+  populateVoiceOptions();
+  speakText('Diese Stimme ist jetzt ausgewählt.','de',speechVoiceURI);
+});
 document.addEventListener('keydown',event=>{ if(event.key==='Escape') $$('.modal-backdrop.show').forEach(modal=>closeModal(modal.id)); });
 updateSpeedUI();
 populateVoiceOptions();
@@ -646,7 +693,7 @@ function showSpeechStatus(text){
   speechStatusTimer=setTimeout(()=>status.classList.remove('show'),2600);
 }
 
-function speakText(text, lang){
+function speakText(text, lang, voiceURIOverride=''){
   const value=(text||'').replace(/\s+/g,' ').trim();
   if(!value) return;
   if(!speech){ showSpeechStatus('المتصفح لا يدعم القراءة الصوتية'); return; }
@@ -663,11 +710,15 @@ function speakText(text, lang){
   utterance.rate=Math.max(.5,Math.min(1.5,speechRate*profile.rate));
   utterance.pitch=isArabic?1:profile.pitch;
   const voices=speech.getVoices();
-  utterance.voice=(!isArabic&&speechVoiceURI?voices.find(v=>v.voiceURI===speechVoiceURI):null)
+  const requestedVoice=voiceURIOverride||speechVoiceURI;
+  utterance.voice=(!isArabic&&requestedVoice?voices.find(v=>v.voiceURI===requestedVoice):null)
     ||voices.find(v=>v.lang.toLowerCase().startsWith(isArabic?'ar':'de'))||null;
   utterance.onend=()=>$('#speechStatus').classList.remove('show');
   speech.speak(utterance);
-  showSpeechStatus(value.slice(0,72));
+  const speaker=!isArabic&&utterance.voice
+    ?utterance.voice.name.replace(/^Microsoft\s+/,'').replace(/\s*-\s*German.*$/i,'')
+    :'';
+  showSpeechStatus(`${speaker?`${speaker}: `:''}${value.slice(0,72)}`);
 }
 
 function enhanceSpeech(root){
