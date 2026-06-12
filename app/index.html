@@ -108,6 +108,23 @@ header.topbar .back:focus-visible{outline:3px solid var(--amber);outline-offset:
 .vocab-row .ex{font-size:13.5px;color:var(--ink-2);font-style:italic;margin-top:3px}
 .vocab-row .ex::before{content:"„"}
 .vocab-row .ex::after{content:"“"}
+.vocab-summary{background:linear-gradient(135deg,var(--green-l),#fff);border:1px solid #dce8dc}
+.vocab-summary h3{color:var(--green-d);font-size:18px;margin-bottom:4px}
+.vocab-summary p{font-size:13.5px;color:var(--ink-2)}
+.vocab-group-title{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  margin:18px -4px 2px;padding:9px 12px;border-radius:10px;background:var(--blue-l);color:#173f8a}
+.vocab-group-title b{font-size:14px}
+.vocab-group-title .ar{margin:0;font-size:12px}
+.scene-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:12px 0 16px}
+.scene-card{position:relative;overflow:hidden;border-radius:15px;min-height:150px;background:var(--green-l);
+  box-shadow:var(--shadow)}
+.scene-card img{display:block;width:100%;height:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .3s ease}
+.scene-card:hover img{transform:scale(1.025)}
+.scene-card figcaption{position:absolute;left:0;right:0;bottom:0;padding:28px 12px 10px;
+  color:#fff;background:linear-gradient(transparent,rgba(14,41,43,.86));font-size:13px;font-weight:800}
+.scene-card figcaption .ar{color:rgba(255,255,255,.9);font-size:11.5px;margin-top:2px}
+.vocab-scenes{grid-template-columns:repeat(3,minmax(0,1fr))}
+.vocab-scenes .scene-card{min-height:110px}
 /* ---------- redemittel ---------- */
 .rm-group{margin-bottom:16px}
 .rm-group h4{background:var(--green-l);color:var(--green-d);display:inline-block;
@@ -507,6 +524,8 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
   .listen-chapter-grid,.listen-exercise-grid{grid-template-columns:1fr}
   .chapter-collage{height:125px}
   .listen-exercise-thumb{height:175px}
+  .scene-gallery{grid-template-columns:1fr}
+  .vocab-scenes{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 </style>
 </head>
@@ -584,6 +603,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 </div>
 
 <script src="data_book0.js"></script>
+<script src="data_book0_expansion.js"></script>
 <script src="data_book1.js"></script>
 <script src="data_book2.js"></script>
 <script src="data_extra.js"></script>
@@ -1532,8 +1552,10 @@ function renderChapter(c, tab){
   let html = `<div class="tabs">` + TABS.map(([id,lbl]) =>
     `<button class="tab ${id===tab?'active':''}" onclick="go('k${c.num}/${id}')">${lbl}</button>`).join('') + `</div>`;
   if(tab!=='ueberblick' && c.visual){
+    const sceneIndex={wortschatz:1,lesen:0,redemittel:2,grammatik:3,sprechen:1,quiz:2}[tab]??0;
+    const tabVisual=c.scenes?.[sceneIndex]||c.visual;
     html += `<figure class="lesson-scene">
-      <img src="${c.visual.src}" alt="${c.visual.alt}">
+      <img src="${tabVisual.src}" alt="${tabVisual.alt}">
       <figcaption class="lesson-scene-copy"><b>Kapitel ${c.num}: ${c.title}</b><span>${c.subtitle}</span></figcaption>
     </figure>`;
   }
@@ -1556,7 +1578,15 @@ function renderChapterTab(c, tab){
     </div>
     <div class="card"><h3 style="color:var(--green-d);margin-bottom:8px">Das lernst du hier 🎯</h3>`;
     c.goals.forEach(g => h += `<div class="goal-item"><span>✅</span><div>${g.de}${ar(g.ar)}</div></div>`);
-    h += `</div>
+    h += `</div>`;
+    if(c.scenes?.length){
+      h += `<div class="scene-gallery">${c.scenes.map(scene=>`
+        <figure class="scene-card">
+          <img src="${scene.src}" alt="${scene.alt}">
+          <figcaption>${scene.caption}${ar(scene.captionAr)}</figcaption>
+        </figure>`).join('')}</div>`;
+    }
+    h += `
     <div class="intro-note">💡 <b>Tipp:</b> Lies zuerst den Wortschatz, dann die Redemittel. Sprich die Sätze laut!
     Am Ende mach das Quiz.${ar('نصيحة: ابدأ بالمفردات، وبعدها جُمل الكلام واقرأها بصوت عالي، وبعدين القواعد، وفي الآخر حل الكويز.')}</div>`;
     return h;
@@ -1567,8 +1597,22 @@ function renderChapterTab(c, tab){
       <button class="btn btn-ghost" id="fcStop" style="display:none">📃 Liste zeigen</button>
     </div>
     <div id="fcArea"></div>
+    ${c.vocabSummary?`<div class="card vocab-summary">
+      <h3>${c.vocabSummary.title}</h3>${ar(c.vocabSummary.titleAr)}
+      <p>${c.vocabSummary.note}</p>${ar(c.vocabSummary.noteAr)}
+    </div>`:''}
+    ${c.scenes?.length?`<div class="scene-gallery vocab-scenes">${c.scenes.slice(0,3).map(scene=>`
+      <figure class="scene-card">
+        <img src="${scene.src}" alt="${scene.alt}">
+        <figcaption>${scene.caption}${ar(scene.captionAr)}</figcaption>
+      </figure>`).join('')}</div>`:''}
     <div class="card" id="vocList">`;
+    let currentCategory='';
     c.vocab.forEach(v => {
+      if(v.cat && v.cat!==currentCategory){
+        currentCategory=v.cat;
+        h += `<div class="vocab-group-title"><b>${v.cat}</b>${ar(v.catAr)}</div>`;
+      }
       h += `<div class="vocab-row">
         <div class="w">${fmtWord(v.w)}</div>
         <div class="def">${v.d}</div>
@@ -1591,7 +1635,7 @@ function renderChapterTab(c, tab){
     return c.readings.map((r,ri) => `
       <article class="card reading-card with-cover">
         <figure class="reading-cover">
-          <img src="assets/readings/chapter-${c.num}-reading.webp" alt="" style="object-position:${ri?'72%':'28%'} center">
+          <img src="${r.visual?.src||`assets/readings/chapter-${c.num}-reading.webp`}" alt="${r.visual?.alt||''}" style="object-position:center">
           <figcaption class="reading-cover-copy"><div class="reading-kind">${r.kind}</div><h3>${r.title}</h3></figcaption>
         </figure>
         <div class="reading-body">
