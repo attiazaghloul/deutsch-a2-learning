@@ -19,7 +19,7 @@
   --amber:#c8893d; --amber-l:#fbefd9;
   --blue:#4c7194; --blue-l:#e9f0f6;
   --red:#b64b4b; --red-l:#f9e8e5;
-  --ar:#76548c; --ar-l:#f3edf6;
+  --ar:#716778; --ar-l:#f7f3f7;
   --line:#e6ded1;
   --radius:18px;
   --shadow:0 8px 24px rgba(49,65,68,.08);
@@ -31,7 +31,7 @@ body{
   background:var(--bg);color:var(--ink);line-height:1.6;
   padding-bottom:env(safe-area-inset-bottom);
 }
-.ar,[dir="rtl"]{font-family:"Cairo","Tahoma",sans-serif}
+.ar,[dir="rtl"],.ar-toggle span{font-family:"Cairo","Tahoma",sans-serif}
 #app{max-width:780px;margin:0 auto;padding:0 14px 90px}
 /* ---------- header ---------- */
 header.topbar{
@@ -57,10 +57,11 @@ body.show-ar .ar-toggle{background:#fff;color:var(--green-d)}
 body.show-ar .ar-toggle .dot{background:var(--green)}
 /* ---------- Arabic blocks ---------- */
 .ar{display:none;direction:rtl;text-align:right;color:var(--ar);
-  background:var(--ar-l);border-radius:10px;padding:7px 12px;margin-top:6px;
-  font-size:.95em;line-height:1.9}
+  background:var(--ar-l);border:1px solid #eee7ef;border-radius:9px;padding:5px 10px;margin-top:5px;
+  font-size:.79em;font-weight:400;line-height:1.75}
+.ar b,.ar strong{font-weight:500}
 body.show-ar .ar{display:block}
-span.ar{display:none;background:none;padding:0 4px;margin:0;border-radius:6px}
+span.ar{display:none;background:none;border:0;padding:0 4px;margin:0;border-radius:6px}
 body.show-ar span.ar{display:inline}
 /* ---------- cards & layout ---------- */
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);
@@ -69,7 +70,7 @@ body.show-ar span.ar{display:inline}
   border-radius:var(--radius);padding:24px 20px;margin-bottom:18px;box-shadow:var(--shadow)}
 .hero h2{font-size:22px;margin-bottom:6px}
 .hero p{font-size:14px;opacity:.95}
-.hero .ar{background:rgba(255,255,255,.16);color:#fff}
+.hero .ar{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.14);color:rgba(255,255,255,.86)}
 .section-label{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;
   color:var(--ink-2);margin:22px 4px 10px}
 /* lesson list */
@@ -190,7 +191,7 @@ body.listen-mode .speakable{cursor:pointer;outline:1px dashed rgba(40,124,121,.3
 .grammar-visual img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover}
 .visual-caption{padding:12px 16px;background:linear-gradient(90deg,var(--green-l),var(--card));
   color:var(--green-d);font-size:13.5px;font-weight:700}
-.visual-caption .ar{font-weight:500;margin-top:5px}
+.visual-caption .ar{font-weight:400;margin-top:5px}
 .practice-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:20px 4px 10px}
 .practice-head h3{color:var(--green-d);font-size:18px}
 .practice-progress{font-size:12px;color:var(--ink-2);background:var(--card);border:1px solid var(--line);
@@ -274,9 +275,9 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <div id="app">
   <header class="topbar">
     <button class="back" id="backBtn" aria-label="zurück">←</button>
-    <h1 id="topTitle">Deutsch A2.2<small>Netzwerk neu + Grammatik · مذكرة وكتاب</small></h1>
+    <h1 id="topTitle">Deutsch A2.2<small>Netzwerk neu · Buch & Grammatik</small></h1>
     <button type="button" class="listen-toggle" id="listenToggle" aria-pressed="false" title="اضغط ثم اختر أي نص لسماعه">
-      🔊 <span>استماع</span>
+      🔊 <span>Hören</span>
     </button>
     <button type="button" class="ar-toggle" id="arToggle" role="switch" aria-label="Arabische Übersetzung">
       <span class="dot"></span><span>عربي</span>
@@ -438,15 +439,15 @@ function setTop(title, sub, hasBack){
 
 function mainTabs(active){
   return `<nav class="main-tabs" aria-label="Hauptbereiche">
-    <button class="main-tab ${active==='lessons'?'active':''}" onclick="go('')">📚 الدروس</button>
-    <button class="main-tab ${active==='dict'?'active':''}" onclick="go('dict')">🔎 القاموس</button>
-    <button class="main-tab ${active==='phrases'?'active':''}" onclick="go('phrases')">💬 التعبيرات</button>
+    <button class="main-tab ${active==='lessons'?'active':''}" onclick="go('')">📚 Lektionen</button>
+    <button class="main-tab ${active==='dict'?'active':''}" onclick="go('dict')">🔎 Wörterbuch</button>
+    <button class="main-tab ${active==='phrases'?'active':''}" onclick="go('phrases')">💬 Redewendungen</button>
   </nav>`;
 }
 
 /* ===================== home ===================== */
 function renderHome(){
-  setTop('Deutsch A2.2','Netzwerk neu + Grammatik · مذكرة وكتاب', false);
+  setTop('Deutsch A2.2','Netzwerk neu · Buch & Grammatik', false);
   let html = mainTabs('lessons') + `
   <div class="hero">
     <h2>Hallo! 👋 Lern Deutsch – Schritt für Schritt</h2>
@@ -474,7 +475,7 @@ function renderHome(){
 
 /* ===================== dictionary and expressions ===================== */
 function renderDictionary(){
-  setTop('A2 Wörterbuch','كل كلمات الدروس في مكان واحد',true);
+  setTop('A2 Wörterbuch','Alle Wörter aus den Lektionen',true);
   const words=BOOK.flatMap(chapter=>chapter.vocab.map(item=>({...item,chapter:chapter.num,title:chapter.title})))
     .sort((a,b)=>a.w.localeCompare(b.w,'de'));
   view.innerHTML=mainTabs('dict')+`
@@ -483,7 +484,7 @@ function renderDictionary(){
       ${ar('ابحث بالألماني أو العربي. القاموس بيجمع كل كلمات الفصول من 7 إلى 12 مع الشرح والمثال.')}</div>
     <div class="search-panel">
       <div class="search-row">
-        <input class="library-search" id="dictionarySearch" type="search" placeholder="كلمة ألماني أو عربي..." aria-label="Wörter suchen">
+        <input class="library-search" id="dictionarySearch" type="search" placeholder="Deutsch oder Arabisch suchen..." aria-label="Wörter suchen">
         <select class="library-filter" id="dictionaryChapter" aria-label="Kapitel filtern">
           <option value="">Alle Kapitel</option>${BOOK.map(c=>`<option value="${c.num}">Kapitel ${c.num}</option>`).join('')}
         </select>
@@ -512,7 +513,7 @@ function renderDictionary(){
 }
 
 function renderExpressions(){
-  setTop('Redewendungen A2','تعبيرات جاهزة وأمثال بسيطة',true);
+  setTop('Redewendungen A2','Fertige Ausdrücke & einfache Sprichwörter',true);
   const expressions=window.READY_EXPRESSIONS||[];
   view.innerHTML=mainTabs('phrases')+`
     <div class="hero"><h2>Redewendungen & Sprichwörter</h2>
@@ -520,7 +521,7 @@ function renderExpressions(){
       ${ar('تعبيرات جاهزة وأمثال سهلة لمواقف الحياة والامتحان والمحادثة، مع المعنى ومثال الاستخدام.')}</div>
     <div class="search-panel">
       <div class="search-row">
-        <input class="library-search" id="expressionSearch" type="search" placeholder="ابحث في التعبيرات..." aria-label="Ausdrücke suchen">
+        <input class="library-search" id="expressionSearch" type="search" placeholder="Ausdruck suchen..." aria-label="Ausdrücke suchen">
         <select class="library-filter" id="expressionChapter" aria-label="Kapitel filtern">
           <option value="">Alle Themen</option>${BOOK.map(c=>`<option value="${c.num}">Kapitel ${c.num}</option>`).join('')}
         </select>
