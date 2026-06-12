@@ -3,30 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#5a9e0f">
+<meta name="theme-color" content="#236b6d">
 <title>Deutsch A2.2 · Netzwerk neu + Grammatik</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Carlito:wght@400;700&display=swap" rel="stylesheet">
 <style>
+@font-face{font-family:"Cairo";font-style:normal;font-weight:400;font-display:swap;src:url("assets/fonts/cairo-400.ttf") format("truetype")}
+@font-face{font-family:"Cairo";font-style:normal;font-weight:500;font-display:swap;src:url("assets/fonts/cairo-500.ttf") format("truetype")}
+@font-face{font-family:"Cairo";font-style:normal;font-weight:600;font-display:swap;src:url("assets/fonts/cairo-600.ttf") format("truetype")}
+@font-face{font-family:"Cairo";font-style:normal;font-weight:700;font-display:swap;src:url("assets/fonts/cairo-700.ttf") format("truetype")}
 :root{
-  --green:#5a9e0f; --green-d:#477f0b; --green-l:#eef7e2;
-  --ink:#1d2733; --ink-2:#54606e; --bg:#f4f6f8; --card:#ffffff;
-  --amber:#f59e0b; --amber-l:#fef3c7;
-  --blue:#2563eb; --blue-l:#e7eefc;
-  --red:#dc2626; --red-l:#fdecec;
-  --ar:#7c3aed; --ar-l:#f3eefe;
-  --radius:16px;
-  --shadow:0 1px 3px rgba(16,24,40,.08),0 4px 14px rgba(16,24,40,.06);
+  --green:#287c79; --green-d:#175b5d; --green-l:#e5f3f0;
+  --ink:#263238; --ink-2:#66757d; --bg:#f6f2ea; --card:#fffdf9;
+  --amber:#c8893d; --amber-l:#fbefd9;
+  --blue:#4c7194; --blue-l:#e9f0f6;
+  --red:#b64b4b; --red-l:#f9e8e5;
+  --ar:#76548c; --ar-l:#f3edf6;
+  --line:#e6ded1;
+  --radius:18px;
+  --shadow:0 8px 24px rgba(49,65,68,.08);
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html{font-size:16px}
 body{
-  font-family:"Segoe UI",system-ui,-apple-system,"Noto Sans Arabic",Tahoma,sans-serif;
+  font-family:"Carlito","Calibri","Segoe UI",system-ui,sans-serif;
   background:var(--bg);color:var(--ink);line-height:1.6;
   padding-bottom:env(safe-area-inset-bottom);
 }
+.ar,[dir="rtl"]{font-family:"Cairo","Tahoma",sans-serif}
 #app{max-width:780px;margin:0 auto;padding:0 14px 90px}
 /* ---------- header ---------- */
 header.topbar{
-  position:sticky;top:0;z-index:50;background:var(--green);color:#fff;
+  position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#175b5d,#328986);color:#fff;
   margin:0 -14px 16px;padding:12px 16px;display:flex;align-items:center;gap:10px;
   box-shadow:var(--shadow);
 }
@@ -54,9 +63,9 @@ body.show-ar .ar{display:block}
 span.ar{display:none;background:none;padding:0 4px;margin:0;border-radius:6px}
 body.show-ar span.ar{display:inline}
 /* ---------- cards & layout ---------- */
-.card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);
-  padding:18px;margin-bottom:14px;overflow:hidden}
-.hero{background:linear-gradient(135deg,var(--green) 0%,#79c22a 100%);color:#fff;
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);
+  padding:20px;margin-bottom:16px;overflow:hidden}
+.hero{background:linear-gradient(135deg,#175b5d 0%,#3b918b 100%);color:#fff;
   border-radius:var(--radius);padding:24px 20px;margin-bottom:18px;box-shadow:var(--shadow)}
 .hero h2{font-size:22px;margin-bottom:6px}
 .hero p{font-size:14px;opacity:.95}
@@ -83,7 +92,7 @@ header.topbar .back:focus-visible{outline:3px solid var(--amber);outline-offset:
 .tabs::-webkit-scrollbar{display:none}
 .tab{flex:0 0 auto;border:none;background:var(--card);box-shadow:var(--shadow);color:var(--ink-2);
   padding:9px 16px;border-radius:999px;font-size:13.5px;font-weight:700;cursor:pointer}
-.tab.active{background:var(--green);color:#fff}
+.tab.active{background:var(--green-d);color:#fff}
 /* ---------- vocab ---------- */
 .vocab-row{padding:13px 0;border-bottom:1px solid #edf0f3}
 .vocab-row:last-child{border-bottom:none}
@@ -134,6 +143,41 @@ table.gt b{color:var(--green-d)}
 .answer-btn{border:1px solid #cad4df;background:#fff;color:var(--green-d);border-radius:9px;padding:6px 10px;font-weight:700;cursor:pointer}
 .reading-answer{display:none;background:var(--green-l);border-radius:9px;padding:8px 11px;margin-top:7px;font-size:14px}
 .reading-answer.show{display:block}
+/* ---------- grammar visuals and practice ---------- */
+.grammar-visual{position:relative;padding:0;overflow:hidden}
+.grammar-visual img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover}
+.visual-caption{padding:12px 16px;background:linear-gradient(90deg,var(--green-l),var(--card));
+  color:var(--green-d);font-size:13.5px;font-weight:700}
+.visual-caption .ar{font-weight:500;margin-top:5px}
+.practice-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:20px 4px 10px}
+.practice-head h3{color:var(--green-d);font-size:18px}
+.practice-progress{font-size:12px;color:var(--ink-2);background:var(--card);border:1px solid var(--line);
+  border-radius:999px;padding:5px 10px;white-space:nowrap}
+.exercise-card{border-left:4px solid var(--blue);overflow:visible}
+.exercise-type{display:inline-block;color:var(--blue);background:var(--blue-l);border-radius:999px;
+  padding:3px 9px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.exercise-prompt{font-size:16px;font-weight:700;margin-bottom:12px}
+.exercise-input{width:100%;border:2px solid #d7dfe3;background:#fff;border-radius:12px;padding:11px 12px;
+  font:inherit;color:var(--ink);outline:none}
+.exercise-input:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(40,124,121,.12)}
+.exercise-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.exercise-check,.exercise-reset{border:0;border-radius:10px;padding:9px 13px;font:inherit;font-weight:700;cursor:pointer}
+.exercise-check{background:var(--green-d);color:#fff}
+.exercise-reset{background:var(--blue-l);color:var(--blue)}
+.exercise-feedback{display:none;border-radius:10px;padding:9px 11px;margin-top:10px;font-size:14px}
+.exercise-feedback.show{display:block}
+.exercise-feedback.correct{background:var(--green-l);color:var(--green-d)}
+.exercise-feedback.wrong{background:var(--red-l);color:var(--red)}
+.token-bank,.order-answer{display:flex;flex-wrap:wrap;gap:7px;min-height:46px;border-radius:12px;padding:9px}
+.token-bank{background:var(--blue-l)}
+.order-answer{background:#fff;border:2px dashed #c8d4dc;margin-top:9px}
+.word-token{border:1px solid #c9d7df;background:#fff;color:var(--ink);border-radius:9px;padding:7px 10px;
+  font:inherit;cursor:pointer;box-shadow:0 2px 5px rgba(30,55,60,.05)}
+.word-token:disabled{opacity:.3;cursor:default}
+.type-label-fill::after{content:"Lückentext"}
+.type-label-order::after{content:"Wörter ordnen"}
+.type-label-correct::after{content:"Fehler korrigieren"}
+.type-label-transform::after{content:"Satz umformen"}
 /* ---------- flashcards ---------- */
 .fc-bar{display:flex;gap:10px;margin-bottom:14px}
 .btn{border:none;border-radius:12px;padding:11px 18px;font-size:14.5px;font-weight:700;cursor:pointer}
@@ -171,6 +215,11 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 @media(min-width:640px){
   html{font-size:17px}
   .hero h2{font-size:26px}
+  .grammar-visual img{aspect-ratio:16/8}
+}
+@media(max-width:460px){
+  .card{padding:16px}
+  .practice-head{align-items:flex-start}
 }
 </style>
 </head>
@@ -191,6 +240,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <script src="data_book2.js"></script>
 <script src="data_extra.js"></script>
 <script src="data_gram.js"></script>
+<script src="data_gram_extra.js"></script>
 <script>
 /* ===================== state & helpers ===================== */
 const $ = s => document.querySelector(s);
@@ -461,12 +511,103 @@ function renderLektion(l, topicIdx){
   let html = `<div class="tabs">` + l.topics.map((t,i) =>
     `<button class="tab ${i===ti?'active':''}" onclick="go('g${l.num}/${i}')">${l.num}.${i+1} ${t.short}</button>`).join('') + `</div>`;
   const t = l.topics[ti];
+  if(t.visual){
+    html += `<figure class="card grammar-visual">
+      <img src="${t.visual.src}" alt="${t.visual.alt}">
+      <figcaption class="visual-caption">${t.visual.caption}${ar(t.visual.captionAr)}</figcaption>
+    </figure>`;
+  }
   html += `<div class="card gram-block"><h3>${l.num}.${ti+1}. ${t.title}</h3>${ar(t.titleAr)}${t.body}</div>`;
   if(t.quiz){
-    html += `<div class="section-label">🎯 Mini-Test</div><div id="quizArea"></div>`;
+    html += `<div class="section-label">🎯 Schnelltest</div><div id="quizArea"></div>`;
+  }
+  if(t.practice?.length){
+    html += `<div class="practice-head"><h3>Interaktive Übungen</h3>
+      <span class="practice-progress" id="practiceProgress">0 / ${t.practice.length} geschafft</span></div>
+      <div id="practiceArea"></div>`;
   }
   view.innerHTML = html;
   if(t.quiz) initQuiz(t.quiz);
+  if(t.practice?.length) initPractice(t.practice, `${l.num}-${ti}`);
+}
+
+function normalizeAnswer(value){
+  return value.toLocaleLowerCase('de-DE').replace(/[.,!?;:„“"']/g,'').replace(/\s+/g,' ').trim();
+}
+
+function exerciseLabel(type){
+  return `<span class="exercise-type type-label-${type}"></span>`;
+}
+
+function initPractice(exercises, practiceId){
+  const area = $('#practiceArea');
+  const saved = JSON.parse(localStorage.getItem(`grammarPractice:${practiceId}`) || '{}');
+  area.innerHTML = exercises.map((ex,i) => {
+    if(ex.type==='order'){
+      return `<div class="card exercise-card" data-ex="${i}">
+        ${exerciseLabel(ex.type)}<div class="exercise-prompt">${ex.prompt}</div>
+        <div class="token-bank">${ex.tokens.map((token,ti)=>`<button class="word-token" data-token="${ti}">${token}</button>`).join('')}</div>
+        <div class="order-answer" aria-label="Deine Antwort"></div>
+        <div class="exercise-actions"><button class="exercise-check">Prüfen</button><button class="exercise-reset">Neu ordnen</button></div>
+        <div class="exercise-feedback"></div></div>`;
+    }
+    return `<div class="card exercise-card" data-ex="${i}">
+      ${exerciseLabel(ex.type)}<div class="exercise-prompt">${ex.prompt}</div>
+      <input class="exercise-input" autocomplete="off" placeholder="Antwort schreiben …">
+      <div class="exercise-actions"><button class="exercise-check">Prüfen</button></div>
+      <div class="exercise-feedback"></div></div>`;
+  }).join('');
+
+  area.querySelectorAll('.exercise-card').forEach(card => {
+    const index = +card.dataset.ex;
+    const exercise = exercises[index];
+    const accepted = Array.isArray(exercise.answer) ? exercise.answer : [exercise.answer];
+    const feedback = card.querySelector('.exercise-feedback');
+    const setFeedback = correct => {
+      feedback.className = `exercise-feedback show ${correct?'correct':'wrong'}`;
+      feedback.innerHTML = correct
+        ? `✓ Richtig!${ar('إجابة صحيحة')}`
+        : `Noch nicht. Musterlösung: <b>${accepted[0]}</b>${exercise.hint?`<br><small>${exercise.hint}</small>`:''}${ar('راجع ترتيب الكلمات أو النهاية ثم حاول مرة ثانية.')}`;
+      if(correct){
+        saved[index]=true;
+        localStorage.setItem(`grammarPractice:${practiceId}`, JSON.stringify(saved));
+        updatePracticeProgress(exercises.length, saved);
+      }
+    };
+
+    if(exercise.type==='order'){
+      const answerBox = card.querySelector('.order-answer');
+      card.querySelectorAll('.word-token').forEach(btn => btn.addEventListener('click', () => {
+        btn.disabled=true;
+        const chosen=document.createElement('button');
+        chosen.className='word-token'; chosen.textContent=btn.textContent;
+        chosen.addEventListener('click',()=>{ btn.disabled=false; chosen.remove(); });
+        answerBox.appendChild(chosen);
+      }));
+      card.querySelector('.exercise-reset').addEventListener('click',()=>{
+        answerBox.innerHTML='';
+        card.querySelectorAll('.token-bank .word-token').forEach(btn=>btn.disabled=false);
+        feedback.className='exercise-feedback';
+      });
+      card.querySelector('.exercise-check').addEventListener('click',()=>{
+        const value=[...answerBox.querySelectorAll('.word-token')].map(btn=>btn.textContent).join(' ');
+        setFeedback(accepted.some(a=>normalizeAnswer(a)===normalizeAnswer(value)));
+      });
+    } else {
+      const input=card.querySelector('.exercise-input');
+      card.querySelector('.exercise-check').addEventListener('click',()=>{
+        setFeedback(accepted.some(a=>normalizeAnswer(a)===normalizeAnswer(input.value)));
+      });
+      input.addEventListener('keydown',event=>{ if(event.key==='Enter') card.querySelector('.exercise-check').click(); });
+    }
+  });
+  updatePracticeProgress(exercises.length, saved);
+}
+
+function updatePracticeProgress(total, saved){
+  const done=Object.values(saved).filter(Boolean).length;
+  const progress=$('#practiceProgress');
+  if(progress) progress.textContent=`${done} / ${total} geschafft`;
 }
 
 route();
