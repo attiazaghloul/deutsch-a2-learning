@@ -526,8 +526,12 @@ body.listen-mode .speakable{cursor:pointer}
   border:7px solid rgba(255,255,255,.72);border-radius:34% 42% 38% 45%;box-shadow:0 14px 30px rgba(31,64,68,.16);
   transform:rotate(var(--sticker-tilt))}
 .sticker-shell::after{content:"";position:absolute;inset:8px;border:2px solid var(--sticker-dark);border-radius:29% 38% 33% 40%;opacity:.14}
-.sticker-glyph{width:76px;height:76px;background:var(--sticker-dark);
+.sticker-glyph{position:absolute;left:27px;top:27px;width:76px;height:76px;background:var(--sticker-dark);
   -webkit-mask:var(--sticker-icon) center/contain no-repeat;mask:var(--sticker-icon) center/contain no-repeat}
+.sticker-accent{position:absolute;left:var(--accent-x);top:var(--accent-y);width:42px;height:42px;border-radius:15px;
+  background:#fff;box-shadow:0 6px 16px rgba(31,64,68,.2);transform:rotate(var(--accent-tilt))}
+.sticker-accent::before{content:"";position:absolute;inset:8px;background:var(--sticker-dark);
+  -webkit-mask:var(--sticker-accent) center/contain no-repeat;mask:var(--sticker-accent) center/contain no-repeat}
 .sticker-category{position:absolute;z-index:2;left:14px;bottom:12px;max-width:72%;overflow:hidden;text-overflow:ellipsis;
   white-space:nowrap;background:rgba(255,255,255,.88);color:var(--sticker-dark);border:1px solid rgba(255,255,255,.9);
   border-radius:999px;padding:4px 9px;font-size:10px;font-weight:800;letter-spacing:.02em}
@@ -2118,6 +2122,55 @@ const VOCAB_VISUAL_RULES = [
 ];
 
 const STICKER_VISUAL_RULES = [
+  [/sich erinnern|erinnerung/,"history"],[/streng/,"shield-alert"],[/\bfair\b/,"scale"],
+  [/praktikum/,"badge"],[/meinung/,"messages-square"],[/sich melden/,"hand"],[/fehlen/,"user-minus"],
+  [/medium|medien/,"radio"],[/vorteil/,"circle-plus"],[/nachteil/,"circle-minus"],
+  [/zuverlässig/,"shield-check"],[/quelle/,"database"],[/hauptfigur/,"person-standing"],
+  [/spannend/,"zap"],[/unterhaltsam/,"popcorn"],[/bewertung/,"chart-no-axes-column-increasing"],
+  [/sich wundern/,"circle-alert"],[/aufgeregt|nervös/,"waves"],[/stolz/,"award"],
+  [/anlass/,"calendar-heart"],[/sich bedanken/,"hand-heart"],[/stattfinden/,"calendar-check"],
+  [/wünschen|wunsch/,"wand-sparkles"],[/ausweis|führerschein/,"id-card"],
+  [/voraussetzung/,"list-checks"],[/rundgang/,"footprints"],[/selbstständig/,"user-cog"],
+  [/anschluss/,"cable"],[/verbinden/,"link"],[/ausleihen/,"hand-coins"],
+  [/ampel/,"signpost"],[/fußgänger/,"person-standing"],[/kaution/,"circle-dollar-sign"],
+  [/nähe/,"locate-fixed"],[/bordbistro/,"sandwich"],[/ausfahrt/,"signpost-big"],
+  [/sich verfahren/,"map-pin-off"],[/sperrung/,"octagon-x"],[/monatskarte/,"ticket-check"],
+  [/abfahrt/,"clock-arrow-down"],[/ankunft/,"clock-arrow-up"],[/umleiten/,"route"],
+  [/der verkehr\b/,"traffic-cone"],[/der stoff\b/,"layers"],[/vokabel/,"whole-word"],[/üben|nachsprechen/,"repeat-2"],
+  [/die präsentation/,"projector"],[/thema/,"tags"],[/einleitung/,"text-cursor-input"],
+  [/hauptteil/,"text"],[/der schluss|deutlich/,"scan-text"],[/regel/,"ruler"],
+  [/rückmeldung/,"message-square-reply"],[/lernstrategie/,"workflow"],
+  [/zusammenfassung/,"notebook-text"],[/markieren/,"highlighter"],
+  [/trainieren/,"biceps-flexed"],[/mannschaft/,"users"],[/der fan/,"fan"],
+  [/das spiel/,"gamepad-2"],[/stadion|das tor/,"goal"],[/verlieren/,"badge-x"],
+  [/niederlage/,"trending-down"],[/helm/,"hard-hat"],[/ausrüstung/,"backpack"],
+  [/begeisterung/,"flame"],[/jubeln/,"party-popper"],[/hoffnung|hoffen/,"sunrise"],
+  [/vorschlag/,"message-square-plus"],[/ablehnen/,"thumbs-down"],[/schiedsrichter/,"badge-alert"],
+  [/schaffen/,"trophy"],[/kletterwettbewerb/,"mountain"],[/mut machen/,"heart-handshake"],
+  [/zuschauer/,"binoculars"],[/sich verletzen/,"bandage"],[/durchhalten/,"battery-full"],
+  [/unentschieden/,"equal"],[/nachbar/,"fence"],[/nachbarschaft/,"building-2"],
+  [/mieter/,"key"],[/vermieter/,"key-square"],[/die miete/,"receipt"],
+  [/lärm/,"volume-2"],[/stören/,"bell-off"],[/sich entschuldigen/,"heart-handshake"],
+  [/gefallen/,"hand-helping"],[/gießen/,"droplets"],[/keller/,"warehouse"],
+  [/einrichten/,"sofa"],[/möbel/,"armchair"],[/regal/,"library"],[/füttern/,"utensils"],
+  [/die ruhe\b/,"volume-off"],[/klingeln/,"bell-ring"],[/vorbeikommen/,"door-open"],
+  [/sich kümmern/,"heart-handshake"],[/erlauben|verboten/,"shield-ban"],
+  [/wohngemeinschaft/,"house-plus"],[/wg-kasse/,"piggy-bank"],[/putzplan/,"clipboard-check"],
+  [/aufräumen/,"spray-can"],[/rücksicht/,"hand-heart"],[/ruhezeit/,"moon"],
+  [/wg-casting/,"users-round"],[/gemeinschaft/,"network"],
+  [/die zeit\b/,"clock"],[/vergehen/,"timer"],[/verbringen/,"hourglass"],
+  [/stress/,"gauge"],[/planen/,"calendar-range"],[/der plan/,"map"],[/traum|träumen/,"cloud-moon"],
+  [/pflicht/,"clipboard-list"],[/alltag/,"sunrise"],[/gewohnheit/,"repeat-2"],
+  [/selten|häufig/,"chart-no-axes-column"],[/langeweile|sich langweilen/,"meh"],
+  [/genießen/,"smile"],[/eilig/,"fast-forward"],[/wäsche/,"washing-machine"],
+  [/warten/,"hourglass"],[/zeit verschwenden/,"clock-alert"],[/sich zeit nehmen/,"alarm-clock-plus"],
+  [/lebensphase/,"milestone"],[/sich vornehmen/,"list-todo"],[/verwirklichen/,"badge-check"],
+  [/unterhaltung/,"messages-square"],[/festival/,"tent"],[/auftreten/,"mic-vocal"],
+  [/klavier/,"piano"],[/schlagzeug/,"drum"],[/singen/,"mic"],[/sänger/,"mic-vocal"],
+  [/\bhit\b/,"disc-3"],[/album/,"album"],[/rockig|melodisch/,"radio-tower"],
+  [/vordergrund.*hintergrund/,"layers-2"],[/leinwand/,"projector"],[/vordergrund/,"scan-line"],
+  [/hintergrund/,"gallery-horizontal"],[/wirken/,"sparkles"],[/\blive\b/,"radio-tower"],
+  [/refrain/,"repeat-2"],[/ausverkauft/,"ticket-x"],[/beeindruckend/,"sparkles"],
   [/freizeit|hobby|erholen|entspannen/,"sun"],
   [/empfehlen|empfehlung|vorschlagen|raten/,"thumbs-up"],
   [/mitbringen|abholen|liefern/,"package"],
@@ -2219,6 +2272,27 @@ const STICKER_FALLBACKS = {
   12:["music","guitar","theater","image","star"]
 };
 
+const STICKER_CHAPTER_ACCENTS = {
+  1:["user-round","users-round","handshake","calendar-check","map-pin","sun","coffee","utensils","chef-hat","receipt","heart","languages"],
+  2:["school","book-open","graduation-cap","notebook-pen","brain","presentation","file-check-2","badge-check","whole-word","ruler","history","lightbulb"],
+  3:["smartphone","laptop","message-circle","wifi","download","upload","save","share-2","film","camera","radio","star"],
+  4:["heart","smile","frown","angry","gift","party-popper","cake-slice","mail","hand-heart","sparkles","calendar-heart","newspaper"],
+  5:["building-2","landmark","file-text","id-card","wallet-cards","banknote","map-pinned","signpost","badge-euro","key-round","search","circle-check"],
+  6:["briefcase-business","factory","users-round","phone-call","headset","train-front","calendar-days","theater","clipboard-check","message-circle","route","clock"],
+  7:["bus-front","train-front","tram-front","bike","car","route","map-pin","signpost-big","traffic-cone","ticket-check","clock-arrow-down","clock-arrow-up"],
+  8:["book-open","brain","notebook-text","whole-word","presentation","projector","highlighter","ruler","repeat-2","file-check-2","message-square-reply","workflow"],
+  9:["dumbbell","medal","trophy","goal","users","flame","heart","sunrise","activity","mountain","battery-full","award"],
+  10:["house","users-round","key","boxes","armchair","sofa","bell-ring","hand-helping","heart-handshake","clipboard-check","volume-off","washing-machine"],
+  11:["clock","timer","hourglass","calendar-range","target","star","cloud-moon","list-todo","milestone","sunrise","plane","alarm-clock-plus"],
+  12:["music","mic-vocal","piano","drum","radio-tower","film","theater","image","projector","star","popcorn","album"]
+};
+
+const STICKER_CARD_IDS = new WeakMap();
+let stickerCardId = 0;
+BOOK.forEach(chapter => chapter.vocab.forEach(card => {
+  STICKER_CARD_IDS.set(card, stickerCardId++);
+}));
+
 function stableWordHash(value){
   return [...value].reduce((hash,char)=>(hash*31+char.codePointAt(0))>>>0,7);
 }
@@ -2231,6 +2305,12 @@ function vocabVisual(v,chapter){
   const fallback=STICKER_FALLBACKS[chapter]||["lightbulb","circle-help","book-marked"];
   const hash=stableWordHash(wordSource);
   const icon=matched?.[1]||fallback[hash%fallback.length];
+  const visualId=STICKER_CARD_IDS.get(v)??hash;
+  const accents=STICKER_CHAPTER_ACCENTS[chapter]||STICKER_CHAPTER_ACCENTS[1];
+  const accent=accents[visualId%accents.length];
+  const layout=visualId%5;
+  const accentPositions=[[82,14],[84,76],[8,78],[10,12],[78,48]];
+  const [accentX,accentY]=accentPositions[layout];
   const palettes={
     1:["#e1f1ee","#bedfd9","#287c79"],2:["#e7eef7","#cbd9ea","#4c7194"],
     3:["#eee7f5","#d8cae9","#76548c"],4:["#f8e5e8","#edc8d0","#a85868"],
@@ -2242,9 +2322,11 @@ function vocabVisual(v,chapter){
   const [light,mid,dark]=palettes[chapter]||palettes[7];
   const tilt=((hash%9)-4)*.7;
   return `<div class="fc-visual" role="img" aria-label="${escapeHtml(v.w)}"
-    style="--sticker-light:${light};--sticker-mid:${mid};--sticker-dark:${dark};--sticker-tilt:${tilt}deg">
+    data-sticker-id="${visualId}" style="--sticker-light:${light};--sticker-mid:${mid};--sticker-dark:${dark};
+    --sticker-tilt:${tilt}deg;--accent-x:${accentX}px;--accent-y:${accentY}px;--accent-tilt:${((visualId%23)-11)*2}deg">
     <div class="sticker-shell">
       <span class="sticker-glyph" style="--sticker-icon:url('assets/stickers/lucide/${icon}.svg')"></span>
+      <span class="sticker-accent" style="--sticker-accent:url('assets/stickers/lucide/${accent}.svg')"></span>
     </div>
     <span class="sticker-category">${escapeHtml(v.cat||`Kapitel ${chapter}`)}</span>
   </div>`;

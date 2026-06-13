@@ -267,9 +267,16 @@
       catAr: "المفردات الأساسية"
     }));
 
+    const knownWords = new Set(
+      chapter.vocab.map(item => item.w.toLocaleLowerCase("de-DE"))
+    );
+
     additions[chapter.num].forEach(group => {
       group.items.forEach(([w, d, ex, ar]) => {
+        const key = w.toLocaleLowerCase("de-DE");
+        if (knownWords.has(key)) return;
         chapter.vocab.push(entry(w, d, ex, ar, group.cat, group.catAr));
+        knownWords.add(key);
       });
     });
 
