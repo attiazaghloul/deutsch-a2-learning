@@ -272,10 +272,12 @@ table.gt b{color:var(--green-d)}
 body.listen-mode .listen-toggle{background:#fff;color:var(--green-d)}
 .settings-toggle{width:35px;height:35px;padding:0;font-size:17px;flex:0 0 auto}
 .speakable{position:relative}
-.speak-btn{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border:0;
-  border-radius:50%;background:var(--blue-l);color:var(--blue);font-size:14px;cursor:pointer;margin-inline-start:7px;vertical-align:middle}
-.speak-btn:hover,.speak-btn:focus-visible{background:var(--blue);color:#fff}
-body.listen-mode .speakable{cursor:pointer;outline:1px dashed rgba(40,124,121,.35);outline-offset:3px}
+.speak-btn{display:none;align-items:center;justify-content:center;width:23px;height:23px;border:1px solid #cbdcdd;
+  border-radius:8px;background:transparent;color:var(--green-d);font-size:10px;cursor:pointer;
+  margin-inline-start:6px;vertical-align:middle;opacity:.72;transition:.15s}
+body.listen-mode .speak-btn{display:inline-flex}
+.speak-btn:hover,.speak-btn:focus-visible{background:var(--green-l);border-color:var(--green);opacity:1;transform:translateY(-1px)}
+body.listen-mode .speakable{cursor:pointer}
 .speech-status{position:fixed;left:50%;bottom:18px;z-index:90;transform:translate(-50%,120px);
   background:var(--ink);color:#fff;border-radius:999px;padding:8px 14px;font-size:12px;box-shadow:var(--shadow);
   transition:.2s;pointer-events:none;max-width:90%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -683,10 +685,10 @@ function escapeHtml(value){
 function setAr(on){
   document.body.classList.toggle('show-ar', on);
   $('#arToggle').setAttribute('aria-checked', String(on));
-  localStorage.setItem('showAr', on ? '1' : '0');
+  localStorage.setItem('showArUserChoice', on ? '1' : '0');
 }
 $('#arToggle').addEventListener('click', () => setAr(!document.body.classList.contains('show-ar')));
-setAr(localStorage.getItem('showAr') !== '0');   // default ON
+setAr(localStorage.getItem('showArUserChoice') === '1');   // default OFF
 
 function ar(txt){ return txt ? `<div class="ar">${txt}</div>` : ''; }
 
@@ -1028,7 +1030,7 @@ function enhanceSpeech(root){
     element.dataset.speechReady='1';
     element.classList.add('speakable');
     const button=document.createElement('button');
-    button.type='button'; button.className='speak-btn'; button.textContent='🔊';
+    button.type='button'; button.className='speak-btn'; button.textContent='▶';
     button.setAttribute('aria-label','Vorlesen');
     button.addEventListener('click',event=>{
       event.preventDefault(); event.stopPropagation();
@@ -1041,7 +1043,7 @@ function enhanceSpeech(root){
     element.dataset.speechReady='1';
     element.classList.add('speakable');
     const button=document.createElement('button');
-    button.type='button'; button.className='speak-btn'; button.textContent='🔊';
+    button.type='button'; button.className='speak-btn'; button.textContent='▶';
     button.setAttribute('aria-label','قراءة النص العربي');
     button.addEventListener('click',event=>{
       event.preventDefault(); event.stopPropagation();
@@ -1051,11 +1053,18 @@ function enhanceSpeech(root){
   });
 }
 
-listenToggle.addEventListener('click',()=>{
-  const on=!document.body.classList.contains('listen-mode');
+function setListenMode(on){
   document.body.classList.toggle('listen-mode',on);
   listenToggle.setAttribute('aria-pressed',String(on));
+  localStorage.setItem('listenModeUserChoice',on?'1':'0');
   if(!on && speech) speech.cancel();
+}
+
+setListenMode(localStorage.getItem('listenModeUserChoice')==='1'); // default OFF
+
+listenToggle.addEventListener('click',()=>{
+  const on=!document.body.classList.contains('listen-mode');
+  setListenMode(on);
   showSpeechStatus(on?'اضغط على أي نص لسماعه':'تم إيقاف وضع الاستماع');
 });
 
