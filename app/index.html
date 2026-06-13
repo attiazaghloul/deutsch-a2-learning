@@ -1916,8 +1916,8 @@ function renderChapterTab(c, tab){
   }
   if(tab==='wortschatz'){
     let h = `<div class="fc-bar">
-      <button class="btn btn-green" id="fcStart">🃏 Mit Karten üben</button>
-      <button class="btn btn-ghost" id="fcStop" style="display:none">📃 Liste zeigen</button>
+      <button class="btn btn-green" id="fcStart" style="display:none">🃏 Mit Karten üben</button>
+      <button class="btn btn-ghost" id="fcStop">📃 Liste zeigen</button>
     </div>
     <div id="fcArea"></div>
     ${c.vocabSummary?`<div class="card vocab-summary">
@@ -1929,7 +1929,7 @@ function renderChapterTab(c, tab){
         <img src="${scene.src}" alt="${scene.alt}">
         <figcaption>${scene.caption}${ar(scene.captionAr)}</figcaption>
       </figure>`).join('')}</div>`:''}
-    <div class="card" id="vocList">`;
+    <div class="card" id="vocList" style="display:none">`;
     let currentCategory='';
     c.vocab.forEach(v => {
       if(v.cat && v.cat!==currentCategory){
@@ -2300,15 +2300,17 @@ function vocabVisual(v,chapter){
 let fcState = null;
 function initFlash(c){
   const start = $('#fcStart'), stop = $('#fcStop'), area = $('#fcArea'), list = $('#vocList');
-  start.addEventListener('click', () => {
+  const showCards = () => {
     fcState = {cards:[...c.vocab].sort(()=>Math.random()-.5), chapter:c.num, i:0, flipped:false};
     list.style.display='none'; start.style.display='none'; stop.style.display='block';
     drawFC();
-  });
+  };
+  start.addEventListener('click', showCards);
   stop.addEventListener('click', () => {
     fcState=null; list.style.display='block'; start.style.display='block'; stop.style.display='none';
     area.innerHTML='';
   });
+  showCards();
 }
 function drawFC(){
   const a = $('#fcArea'); if(!fcState) return;
