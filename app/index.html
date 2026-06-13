@@ -639,6 +639,10 @@ body.listen-mode .speakable{cursor:pointer}
 .podcast-transcript{display:grid;gap:8px}.podcast-line{display:grid;grid-template-columns:42px 1fr;gap:9px;border:1px solid var(--line);
   border-radius:14px;padding:11px;background:#fff;cursor:pointer;transition:.18s}
 .podcast-line:hover{border-color:#aac7c7}.podcast-line.active{border-color:var(--green);background:#edf7f3;box-shadow:0 0 0 3px rgba(45,129,124,.1)}
+.podcast-line[data-kind="section"]{background:#173f43;color:#fff;border-color:#173f43}
+.podcast-line[data-kind="section"] .podcast-speaker{color:#b9d7d6}.podcast-line[data-kind="section"] .speaker-avatar{background:#fff}
+.podcast-line[data-kind="interactive"]{border-left:4px solid var(--amber);background:#fffaf0}
+.podcast-line[data-kind="quiz"]{border-left:4px solid var(--blue)}.podcast-line[data-kind="answer"]{border-left:4px solid var(--green);background:#f3faf6}
 .speaker-avatar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#dcebea;color:var(--green-d);
   font-weight:900;font-size:11px}.podcast-line[data-speaker="1"] .speaker-avatar{background:#eee4f4;color:#684d7a}
 .podcast-speaker{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2);font-weight:900;margin-bottom:3px}
@@ -789,7 +793,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <script src="data_hoeren_figures.js"></script>
 <script src="data_hoeren_interactive.js"></script>
 <script src="data_exam.js"></script>
-<script src="data_podcast.js"></script>
+<script src="data_podcast.js?v=long-audio-1"></script>
 <script>
 /* ===================== state & helpers ===================== */
 const $ = s => document.querySelector(s);
@@ -1761,11 +1765,19 @@ function renderExpressions(){
 /* ===================== chapter podcasts ===================== */
 let podcastState=null;
 let podcastSession=0;
+let podcastAudio=null;
+let podcastFrameId=null;
 let podcastTranslationMode=localStorage.getItem('podcastTranslationMode')||'below';
 let podcastSwitchLanguage=localStorage.getItem('podcastSwitchLanguage')||'de';
 
 function stopPodcast(){
   podcastSession++;
+  if(podcastFrameId){cancelAnimationFrame(podcastFrameId);podcastFrameId=null;}
+  if(podcastAudio){
+    podcastAudio.pause();
+    podcastAudio.src='';
+    podcastAudio=null;
+  }
   if(podcastState){
     podcastState.playing=false;
     podcastState.paused=false;
@@ -1806,6 +1818,10 @@ function renderPodcastWords(text,lineIndex){
   }).join('');
 }
 
+function podcastLineValue(line,key,index){
+  return line?.[key]??line?.[index]??'';
+}
+
 function renderPodcastEpisode(chapterNumber){
   const episode=PODCASTS.find(item=>item.chapter===chapterNumber);
   const chapter=BOOK.find(item=>item.num===chapterNumber);
@@ -1827,7 +1843,7 @@ function renderPodcastEpisode(chapterNumber){
         </div>
         <div class="podcast-progress"><span id="podcastProgress"></span></div>
         <div class="podcast-position"><span id="podcastPosition">Satz ${saved+1} / ${episode.lines.length}</span>
-          <span>${episode.speakers.join(' · ')}</span></div>
+          <span>${episode.people?.map(person=>`${person.name}, ${person.age}`).join(' · ')||episode.speakers.join(' · ')}</span></div>
         <div class="podcast-options">
           <div class="podcast-mode">
             <button type="button" data-podcast-mode="below" onclick="setPodcastMode('below')">Deutsch + عربي</button>
@@ -1840,12 +1856,16 @@ function renderPodcastEpisode(chapterNumber){
     </article>
     <p class="podcast-note">Klicke auf einen Satz, um direkt dort weiterzuhören. Die aktuelle Zeile und das gesprochene Wort werden markiert.</p>
     <section class="podcast-transcript">${episode.lines.map((line,index)=>{
-      const speakerIndex=episode.speakers.indexOf(line[0]);
-      return `<article class="podcast-line" id="podcastLine${index}" data-speaker="${speakerIndex}" onclick="seekPodcast(${index})">
-        <div class="speaker-avatar">${escapeHtml(line[0].slice(0,2).toUpperCase())}</div>
-        <div><div class="podcast-speaker">${escapeHtml(line[0])}</div>
-          <div class="podcast-de">${renderPodcastWords(line[1],index)}</div>
-          <div class="podcast-ar">${escapeHtml(line[2])}</div></div>
+      const speaker=podcastLineValue(line,'speaker',0);
+      const de=podcastLineValue(line,'de',1);
+      const arText=podcastLineValue(line,'ar',2);
+      const speakerIndex=episode.speakers.indexOf(speaker);
+      return `<article class="podcast-line" id="podcastLine${index}" data-speaker="${speakerIndex}"
+        data-kind="${escapeHtml(line.kind||'dialogue')}" onclick="seekPodcast(${index})">
+        <div class="speaker-avatar">${escapeHtml(speaker.slice(0,2).toUpperCase())}</div>
+        <div><div class="podcast-speaker">${escapeHtml(speaker)}</div>
+          <div class="podcast-de">${renderPodcastWords(de,index)}</div>
+          <div class="podcast-ar">${escapeHtml(arText)}</div></div>
       </article>`;
     }).join('')}</section>`;
   setPodcastMode(podcastTranslationMode,false);
@@ -1860,9 +1880,7 @@ function podcastVoices(){
 }
 
 function playPodcast(fromIndex=podcastState?.index||0){
-  if(!podcastState||!speech)return;
-  speech.cancel();
-  const session=++podcastSession;
+  if(!podcastState)return;
   const {episode}=podcastState;
   podcastState.index=Math.max(0,Math.min(fromIndex,episode.lines.length-1));
   podcastState.playing=true;
@@ -1870,14 +1888,49 @@ function playPodcast(fromIndex=podcastState?.index||0){
   $$('.podcast-word.current').forEach(word=>word.classList.remove('current'));
   setPodcastActiveLine(podcastState.index);
   highlightPodcastWord(podcastState.index,0);
+  if(episode.audio){
+    if(!podcastAudio||podcastAudio.dataset.chapter!==String(episode.chapter)){
+      if(podcastAudio)podcastAudio.pause();
+      podcastAudio=new Audio(episode.audio);
+      podcastAudio.dataset.chapter=String(episode.chapter);
+      podcastAudio.preload='metadata';
+      podcastAudio.addEventListener('ended',finishPodcastAudio);
+      podcastAudio.addEventListener('error',()=>showSpeechStatus('تعذر تحميل ملف الحلقة'));
+    }
+    const line=episode.lines[podcastState.index];
+    podcastAudio.currentTime=Number(line.start||0);
+    podcastAudio.playbackRate=Math.max(.75,Math.min(1.25,speechRate));
+    podcastAudio.play().then(()=>{
+      podcastState.playing=true;
+      podcastState.paused=false;
+      syncPodcastAudio();
+      updatePodcastControls();
+    }).catch(()=>{
+      podcastState.playing=false;
+      podcastState.paused=false;
+      updatePodcastControls();
+      showSpeechStatus('اضغط تشغيل مرة أخرى لبدء الصوت');
+    });
+    return;
+  }
+  playPodcastWithSpeech();
+}
+
+function playPodcastWithSpeech(){
+  if(!podcastState||!speech)return;
+  speech.cancel();
+  const session=++podcastSession;
+  const {episode}=podcastState;
   const voices=podcastVoices();
   const profile={
     clear:{rate:1,pitch:1},calm:{rate:.82,pitch:.94},deep:{rate:.9,pitch:.82},bright:{rate:1.05,pitch:1.12}
   }[speechProfile]||{rate:1,pitch:1};
   for(let index=podcastState.index;index<episode.lines.length;index++){
     const line=episode.lines[index];
-    const speakerIndex=Math.max(0,episode.speakers.indexOf(line[0]));
-    const utterance=new SpeechSynthesisUtterance(line[1]);
+    const speaker=podcastLineValue(line,'speaker',0);
+    const de=podcastLineValue(line,'de',1);
+    const speakerIndex=Math.max(0,episode.speakers.indexOf(speaker));
+    const utterance=new SpeechSynthesisUtterance(de);
     utterance.lang='de-DE';
     utterance.voice=voices.length?voices[speakerIndex%voices.length]:null;
     utterance.rate=Math.max(.5,Math.min(1.5,speechRate*profile.rate));
@@ -1888,8 +1941,8 @@ function playPodcast(fromIndex=podcastState?.index||0){
       setPodcastActiveLine(index);
       highlightPodcastWord(index,0);
       updatePodcastControls();
-      const name=utterance.voice?.name?.replace(/^Microsoft\s+/,'').replace(/\s*-\s*German.*$/i,'')||line[0];
-      showSpeechStatus(`${name}: ${line[1].slice(0,58)}`);
+      const name=utterance.voice?.name?.replace(/^Microsoft\s+/,'').replace(/\s*-\s*German.*$/i,'')||speaker;
+      showSpeechStatus(`${name}: ${de.slice(0,58)}`);
     };
     utterance.onboundary=event=>{
       if(session!==podcastSession||event.name&&event.name!=='word')return;
@@ -1912,15 +1965,58 @@ function playPodcast(fromIndex=podcastState?.index||0){
   updatePodcastControls();
 }
 
+function syncPodcastAudio(){
+  if(!podcastAudio||!podcastState||podcastAudio.paused)return;
+  const time=podcastAudio.currentTime;
+  const lines=podcastState.episode.lines;
+  let index=podcastState.index;
+  if(time<Number(lines[index]?.start||0)||time>Number(lines[index]?.end||0)+Number(lines[index]?.pauseAfter||0)){
+    const found=lines.findIndex((line,lineIndex)=>{
+      const next=lines[lineIndex+1];
+      return time>=Number(line.start||0)&&time<(next?Number(next.start):Infinity);
+    });
+    if(found>=0)index=found;
+  }
+  if(index!==podcastState.index){
+    podcastState.index=index;
+    setPodcastActiveLine(index);
+    localStorage.setItem(`podcastProgress:${podcastState.episode.chapter}`,String(index));
+  }
+  highlightPodcastWordByTime(index,time);
+  updatePodcastControls();
+  podcastFrameId=requestAnimationFrame(syncPodcastAudio);
+}
+
+function highlightPodcastWordByTime(lineIndex,time){
+  const line=podcastState?.episode.lines[lineIndex];
+  if(!line)return;
+  const start=Number(line.start||0);
+  const end=Math.max(start+.1,Number(line.end||start+.1));
+  const ratio=Math.max(0,Math.min(.999,(time-start)/(end-start)));
+  const words=$$(`.podcast-word[data-line="${lineIndex}"]`);
+  words.forEach(word=>word.classList.remove('current'));
+  if(time<=end&&words.length)words[Math.floor(ratio*words.length)]?.classList.add('current');
+}
+
+function finishPodcastAudio(){
+  if(!podcastState)return;
+  podcastState.playing=false;
+  podcastState.paused=false;
+  podcastState.index=0;
+  if(podcastFrameId){cancelAnimationFrame(podcastFrameId);podcastFrameId=null;}
+  updatePodcastControls();
+}
+
 function togglePodcast(){
-  if(!podcastState||!speech)return;
+  if(!podcastState)return;
   if(!podcastState.playing){playPodcast(podcastState.index);return;}
   if(podcastState.paused){
-    speech.resume();
+    if(podcastAudio)podcastAudio.play().then(syncPodcastAudio);else speech?.resume();
     podcastState.paused=false;
   }else{
-    speech.pause();
+    if(podcastAudio)podcastAudio.pause();else speech?.pause();
     podcastState.paused=true;
+    if(podcastFrameId){cancelAnimationFrame(podcastFrameId);podcastFrameId=null;}
   }
   updatePodcastControls();
 }
@@ -1942,7 +2038,7 @@ function setPodcastActiveLine(index){
 
 function highlightPodcastWord(lineIndex,charIndex){
   clearPodcastWords(lineIndex);
-  const text=podcastState?.episode.lines[lineIndex][1]||'';
+  const text=podcastLineValue(podcastState?.episode.lines[lineIndex],'de',1);
   const starts=[...text.matchAll(/\S+/g)].map(match=>match.index);
   let wordIndex=0;
   starts.forEach((start,index)=>{if(start<=charIndex)wordIndex=index;});
@@ -1961,9 +2057,19 @@ function updatePodcastControls(){
     play.setAttribute('aria-label',podcastState.playing&&!podcastState.paused?'Podcast pausieren':'Podcast abspielen');
   }
   const progress=$('#podcastProgress');
-  if(progress)progress.style.width=`${(podcastState.index+1)/podcastState.episode.lines.length*100}%`;
+  if(progress){
+    const total=Number(podcastState.episode.durationSeconds||0);
+    progress.style.width=podcastAudio&&total?`${Math.min(100,podcastAudio.currentTime/total*100)}%`
+      :`${(podcastState.index+1)/podcastState.episode.lines.length*100}%`;
+  }
   const position=$('#podcastPosition');
-  if(position)position.textContent=`Satz ${podcastState.index+1} / ${podcastState.episode.lines.length}`;
+  if(position){
+    const current=podcastAudio?podcastAudio.currentTime:0;
+    const total=Number(podcastState.episode.durationSeconds||0);
+    const format=value=>`${Math.floor(value/60)}:${String(Math.floor(value%60)).padStart(2,'0')}`;
+    position.textContent=total?`${format(current)} / ${format(total)} · Satz ${podcastState.index+1}`
+      :`Satz ${podcastState.index+1} / ${podcastState.episode.lines.length}`;
+  }
 }
 
 function setPodcastMode(mode,persist=true){

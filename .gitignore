@@ -4,6 +4,7 @@
 *_text.txt
 Hören und Sprechen A2/
 /hoeren_extract/
+/build/
 
 # Local tooling
 .claude/
