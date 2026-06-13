@@ -609,6 +609,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <script src="data_extra.js"></script>
 <script src="data_enrichment.js"></script>
 <script src="data_verbs.js"></script>
+<script src="data_a21_library.js"></script>
 <script src="data_gram.js"></script>
 <script src="data_gram_extra.js"></script>
 <script src="data_gram_complete.js"></script>
@@ -1453,11 +1454,14 @@ function renderVerbs(){
         <select class="library-filter" id="verbAux" aria-label="Hilfsverb filtern">
           <option value="">haben + sein</option><option value="haben">mit haben</option><option value="sein">mit sein</option>
         </select>
+        <select class="library-filter" id="verbChapter" aria-label="Kapitel filtern">
+          <option value="">Alle Kapitel</option>${BOOK.map(c=>`<option value="${c.num}">Kapitel ${c.num}</option>`).join('')}
+        </select>
       </div>
       <div class="result-count" id="verbCount"></div>
     </div>
     <div id="verbList">${VERBS.map((verb,index)=>`
-      <article class="card verb-card" data-index="${index}" data-aux="${verb.aux}" tabindex="0" role="button" aria-expanded="false"
+      <article class="card verb-card" data-index="${index}" data-aux="${verb.aux}" data-chapter="${verb.chapter}" tabindex="0" role="button" aria-expanded="false"
         data-search="${escapeHtml(`${verb.inf} ${verb.praet} ${verb.part} ${verb.ar} ${verb.example}`.toLocaleLowerCase('de-DE'))}">
         <div class="verb-summary">
           <div><div class="verb-inf">${verb.inf}</div>
@@ -1477,12 +1481,14 @@ function renderVerbs(){
           <span class="dictionary-meta">K${verb.chapter}</span>
         </div>
       </article>`).join('')}</div>`;
-  const search=$('#verbSearch'),aux=$('#verbAux');
+  const search=$('#verbSearch'),aux=$('#verbAux'),chapter=$('#verbChapter');
   const filter=()=>{
     const query=search.value.trim().toLocaleLowerCase('de-DE');
     let visible=0;
     $$('#verbList .verb-card').forEach(entry=>{
-      const show=(!query||entry.dataset.search.includes(query))&&(!aux.value||entry.dataset.aux===aux.value);
+      const show=(!query||entry.dataset.search.includes(query))&&
+        (!aux.value||entry.dataset.aux===aux.value)&&
+        (!chapter.value||entry.dataset.chapter===chapter.value);
       entry.hidden=!show; if(show) visible++;
     });
     $('#verbCount').textContent=`${visible} / ${VERBS.length} Verben`;
@@ -1495,7 +1501,8 @@ function renderVerbs(){
     card.addEventListener('click',event=>{ if(!event.target.closest('button,input,select')) toggle(); });
     card.addEventListener('keydown',event=>{ if(event.key==='Enter'||event.key===' '){event.preventDefault();toggle();} });
   });
-  search.addEventListener('input',filter); aux.addEventListener('change',filter); filter();
+  search.addEventListener('input',filter); aux.addEventListener('change',filter);
+  chapter.addEventListener('change',filter); filter();
 }
 
 function renderExpressions(){
