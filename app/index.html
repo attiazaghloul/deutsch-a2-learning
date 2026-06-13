@@ -646,7 +646,7 @@ body.listen-mode .speakable{cursor:pointer}
 .speaker-avatar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#dcebea;color:var(--green-d);
   font-weight:900;font-size:11px}.podcast-line[data-speaker="1"] .speaker-avatar{background:#eee4f4;color:#684d7a}
 .podcast-speaker{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2);font-weight:900;margin-bottom:3px}
-.podcast-de{font-size:15px;line-height:1.75}.podcast-word{border-radius:4px;padding:0 1px;transition:.1s}
+.podcast-de{font-size:15px;line-height:1.75}.podcast-word{border-radius:4px;padding:0 1px}
 .podcast-word.current{background:#ffd66b;color:#46330b;box-shadow:0 0 0 2px rgba(255,214,107,.35)}
 .podcast-ar{font-family:Cairo,Arial,sans-serif;direction:rtl;text-align:right;color:#536167;font-size:12px;line-height:1.8;
   border-top:1px dashed #dce3e3;margin-top:5px;padding-top:5px}
@@ -793,7 +793,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <script src="data_hoeren_figures.js"></script>
 <script src="data_hoeren_interactive.js"></script>
 <script src="data_exam.js"></script>
-<script src="data_podcast.js?v=natural-dialogue-2"></script>
+<script src="data_podcast.js?v=word-sync-3"></script>
 <script>
 /* ===================== state & helpers ===================== */
 const $ = s => document.querySelector(s);
@@ -1993,10 +1993,18 @@ function highlightPodcastWordByTime(lineIndex,time){
   if(!line)return;
   const start=Number(line.start||0);
   const end=Math.max(start+.1,Number(line.end||start+.1));
-  const ratio=Math.max(0,Math.min(.999,(time-start)/(end-start)));
   const words=$$(`.podcast-word[data-line="${lineIndex}"]`);
   words.forEach(word=>word.classList.remove('current'));
-  if(time<=end&&words.length)words[Math.floor(ratio*words.length)]?.classList.add('current');
+  if(time>end||!words.length)return;
+  const relativeTime=time-start;
+  const timings=Array.isArray(line.wordTimings)?line.wordTimings:[];
+  if(timings.length){
+    const timing=timings.find(item=>relativeTime>=Number(item.start)&&relativeTime<Number(item.end));
+    if(timing)words[Number(timing.token)]?.classList.add('current');
+    return;
+  }
+  const ratio=Math.max(0,Math.min(.999,(time-start)/(end-start)));
+  words[Math.floor(ratio*words.length)]?.classList.add('current');
 }
 
 function finishPodcastAudio(){

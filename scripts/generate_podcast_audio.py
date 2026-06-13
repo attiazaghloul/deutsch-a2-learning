@@ -1,7 +1,9 @@
 import argparse
 import asyncio
 import json
+import re
 import subprocess
+import unicodedata
 from pathlib import Path
 
 import edge_tts
@@ -13,6 +15,7 @@ BUILD = ROOT / "build"
 SEGMENTS = BUILD / "podcast-segments"
 OUTPUT = ROOT / "app" / "assets" / "podcasts"
 FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
+PODCAST_VERSION = "word-sync-3"
 
 
 def voice_settings(person):
@@ -30,28 +33,109 @@ def voice_settings(person):
 
 async def synthesize(index, item, people, chapter_dir, semaphore):
     target = chapter_dir / f"{index:03d}.mp3"
-    if target.exists() and target.stat().st_size > 1000:
-        try:
-            if MP3(target).info.length > 0.1:
-                return target
-        except Exception:
-            target.unlink(missing_ok=True)
+    timing_target = chapter_dir / f"{index:03d}.words.json"
     person = next((entry for entry in people if entry["name"] == item["speaker"]), people[index % len(people)])
     rate, pitch = voice_settings(person)
+    signature = {
+        "text": item["de"],
+        "voice": person["voice"],
+        "rate": rate,
+        "pitch": pitch
+    }
+    if target.exists() and timing_target.exists() and target.stat().st_size > 1000:
+        try:
+            metadata = json.loads(timing_target.read_text(encoding="utf-8"))
+            if (
+                MP3(target).info.length > 0.1
+                and all(metadata.get(key) == value for key, value in signature.items())
+                and metadata.get("timings")
+            ):
+                return target, metadata["timings"]
+        except Exception:
+            target.unlink(missing_ok=True)
+            timing_target.unlink(missing_ok=True)
     async with semaphore:
         for attempt in range(4):
+            temp_target = target.with_suffix(".tmp.mp3")
+            temp_target.unlink(missing_ok=True)
             try:
                 communicate = edge_tts.Communicate(
-                    item["de"], person["voice"], rate=rate, pitch=pitch, volume="+0%"
+                    item["de"], person["voice"], rate=rate, pitch=pitch, volume="+0%",
+                    boundary="WordBoundary"
                 )
-                await communicate.save(str(target))
+                boundaries = []
+                with temp_target.open("wb") as audio_file:
+                    async for chunk in communicate.stream():
+                        if chunk["type"] == "audio":
+                            audio_file.write(chunk["data"])
+                        elif chunk["type"] == "WordBoundary":
+                            boundaries.append({
+                                "text": chunk["text"],
+                                "start": chunk["offset"] / 10_000_000,
+                                "end": (chunk["offset"] + chunk["duration"]) / 10_000_000
+                            })
+                temp_target.replace(target)
                 if target.exists() and target.stat().st_size > 1000 and MP3(target).info.length > 0.1:
-                    return target
+                    timings = map_boundaries_to_tokens(item["de"], boundaries)
+                    timing_target.write_text(
+                        json.dumps(
+                            {**signature, "timings": timings},
+                            ensure_ascii=False,
+                            separators=(",", ":")
+                        ),
+                        encoding="utf-8"
+                    )
+                    return target, timings
             except Exception:
+                temp_target.unlink(missing_ok=True)
                 if attempt == 3:
                     raise
                 await asyncio.sleep(1.5 * (attempt + 1))
-    return target
+    return target, []
+
+
+def normalized_word(value):
+    return "".join(
+        character.lower()
+        for character in unicodedata.normalize("NFKD", value)
+        if character.isalnum()
+    )
+
+
+def map_boundaries_to_tokens(text, boundaries):
+    tokens = [match.group(0) for match in re.finditer(r"\S+", text)]
+    token_parts = [normalized_word(token) for token in tokens]
+    mapped = []
+    token_index = 0
+    consumed = 0
+
+    for boundary in boundaries:
+        spoken = normalized_word(boundary["text"])
+        if not spoken:
+            continue
+        while token_index < len(token_parts):
+            available = token_parts[token_index][consumed:]
+            if spoken in available or available in spoken:
+                mapped.append({
+                    "token": token_index,
+                    "start": round(boundary["start"], 3),
+                    "end": round(boundary["end"], 3)
+                })
+                consumed += len(spoken)
+                if consumed >= len(token_parts[token_index]):
+                    token_index += 1
+                    consumed = 0
+                break
+            token_index += 1
+            consumed = 0
+
+    combined = []
+    for timing in mapped:
+        if combined and combined[-1]["token"] == timing["token"]:
+            combined[-1]["end"] = timing["end"]
+        else:
+            combined.append(timing)
+    return combined
 
 
 def make_silence(seconds):
@@ -88,16 +172,21 @@ async def generate_episode(episode, concurrency):
         for index, item in enumerate(episode["lines"])
     ]
     print(f"Kapitel {chapter}: generating {len(tasks)} voice segments...")
-    segment_paths = await asyncio.gather(*tasks)
+    segment_results = await asyncio.gather(*tasks)
 
     timeline = []
     concat_paths = []
     cursor = 0.0
-    for item, path in zip(episode["lines"], segment_paths):
+    for item, (path, word_timings) in zip(episode["lines"], segment_results):
         spoken = duration(path)
         start = cursor
         end = start + spoken
-        timeline.append({**item, "start": round(start, 3), "end": round(end, 3)})
+        timeline.append({
+            **item,
+            "start": round(start, 3),
+            "end": round(end, 3),
+            "wordTimings": word_timings
+        })
         concat_paths.append(path)
         pause = float(item.get("pauseAfter", 0.45))
         if pause > 0:
@@ -119,7 +208,7 @@ async def generate_episode(episode, concurrency):
         check=True
     )
     episode["lines"] = timeline
-    episode["audio"] = f"assets/podcasts/chapter-{chapter}.mp3?v=natural-dialogue-2"
+    episode["audio"] = f"assets/podcasts/chapter-{chapter}.mp3?v={PODCAST_VERSION}"
     episode["durationSeconds"] = round(duration(audio_target), 2)
     episode["duration"] = f"{round(episode['durationSeconds'] / 60)} Min."
     print(

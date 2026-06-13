@@ -50,7 +50,8 @@ function buildEpisode(chapter, shortEpisode, people) {
 
   const sceneLines = Array.isArray(shortEpisode.lines[0])
     ? shortEpisode.lines
-    : shortEpisode.lines.filter(item => item.kind === 'scene').map(item => [item.speaker, item.de, item.ar]);
+    : shortEpisode.lines.filter(item => item.kind === 'scene').slice(0, 8)
+      .map(item => [item.speaker, item.de, item.ar]);
   sceneLines.forEach((item, index) => {
     const person = people.find(candidate => candidate.name === item[0]) || people[index % 2];
     add(person, item[1], item[2], .55, 'scene');
