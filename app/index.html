@@ -184,7 +184,7 @@ table.gt b{color:var(--green-d)}
 .reading-answer{display:none;background:var(--green-l);border-radius:9px;padding:8px 11px;margin-top:7px;font-size:14px}
 .reading-answer.show{display:block}
 /* ---------- main library tabs, dictionary and expressions ---------- */
-.main-tabs{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin:0 0 16px}
+.main-tabs{display:grid;grid-template-columns:repeat(8,1fr);gap:8px;margin:0 0 16px}
 .main-tab{border:1px solid var(--line);background:var(--card);color:var(--ink-2);border-radius:13px;
   padding:10px 6px;font:inherit;font-size:13px;font-weight:700;cursor:pointer;box-shadow:var(--shadow)}
 .main-tab.active{background:var(--green-d);border-color:var(--green-d);color:#fff}
@@ -601,6 +601,53 @@ body.listen-mode .speakable{cursor:pointer}
 .word-chip.selected{background:var(--green-d);color:#fff;border-color:var(--green-d)}
 .sentence-source{display:flex;flex-wrap:wrap;gap:7px;justify-content:center}
 .game-actions{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:14px}
+/* ---------- podcasts ---------- */
+.podcast-hero{background:linear-gradient(135deg,#322f54,#2b7475);color:#fff;overflow:hidden;position:relative}
+.podcast-hero:after{content:"";position:absolute;width:170px;height:170px;border-radius:50%;right:-45px;top:-60px;
+  background:radial-gradient(circle,rgba(255,255,255,.17) 0 18%,transparent 19% 33%,rgba(255,255,255,.09) 34% 48%,transparent 49%)}
+.podcast-hero h2{color:#fff}.podcast-hero p{color:rgba(255,255,255,.86);max-width:680px;margin-top:6px}
+.podcast-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.podcast-card{display:grid;grid-template-columns:118px 1fr;border:0;text-align:left;cursor:pointer;padding:0;overflow:hidden;min-height:150px}
+.podcast-card:hover{transform:translateY(-2px)}.podcast-cover{position:relative;min-height:150px;background:var(--green-d)}
+.podcast-cover img{width:100%;height:100%;object-fit:cover;display:block}.podcast-cover:after{content:"";position:absolute;inset:0;
+  background:linear-gradient(0deg,rgba(14,45,47,.56),transparent 65%)}
+.podcast-number{position:absolute;left:9px;bottom:8px;z-index:1;background:#fff;color:var(--green-d);
+  border-radius:999px;padding:3px 8px;font-size:10px;font-weight:900}
+.podcast-copy{padding:14px}.podcast-copy h3{font-size:17px;color:var(--green-d);margin-bottom:4px}
+.podcast-copy p{font-size:12.5px;color:var(--ink-2);line-height:1.55}.podcast-meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}
+.podcast-meta span{background:var(--blue-l);color:#285175;border-radius:999px;padding:3px 7px;font-size:10px;font-weight:800}
+.podcast-player{padding:0;overflow:hidden}.podcast-player-cover{height:210px;position:relative;background:var(--green-d)}
+.podcast-player-cover img{width:100%;height:100%;object-fit:cover}.podcast-player-cover:after{content:"";position:absolute;inset:0;
+  background:linear-gradient(0deg,rgba(12,41,43,.9),rgba(12,41,43,.08) 75%)}
+.podcast-player-title{position:absolute;left:18px;right:18px;bottom:16px;color:#fff;z-index:1}
+.podcast-player-title h2{color:#fff}.podcast-player-title p{font-size:12.5px;color:rgba(255,255,255,.84)}
+.podcast-controls{padding:14px 16px}.podcast-main-controls{display:flex;align-items:center;justify-content:center;gap:9px}
+.podcast-play{width:52px;height:52px;border-radius:50%;border:0;background:var(--green-d);color:#fff;font-size:19px;cursor:pointer}
+.podcast-skip{border:1px solid var(--line);background:#fff;color:var(--green-d);border-radius:999px;padding:8px 12px;
+  font:inherit;font-size:12px;font-weight:800;cursor:pointer}
+.podcast-progress{height:7px;background:#dce5e5;border-radius:999px;overflow:hidden;margin:13px 0 5px}
+.podcast-progress span{display:block;height:100%;background:linear-gradient(90deg,var(--green),var(--blue));transition:width .25s}
+.podcast-position{display:flex;justify-content:space-between;color:var(--ink-2);font-size:10.5px}
+.podcast-options{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin:13px 0}
+.podcast-mode{display:flex;background:#e8eeee;border-radius:10px;padding:3px;gap:2px}
+.podcast-mode button{border:0;background:transparent;color:var(--ink-2);border-radius:8px;padding:6px 9px;font:inherit;
+  font-size:11px;font-weight:800;cursor:pointer}.podcast-mode button.active{background:#fff;color:var(--green-d);box-shadow:0 2px 5px rgba(25,55,58,.1)}
+.podcast-language{border:1px solid var(--line);background:#fff;color:var(--green-d);border-radius:10px;padding:7px 10px;
+  font:inherit;font-size:11px;font-weight:800;cursor:pointer}
+.podcast-keywords{display:flex;gap:6px;flex-wrap:wrap;padding:0 16px 14px}.podcast-keywords span{background:var(--amber-l);
+  color:#80551f;border-radius:999px;padding:4px 8px;font-size:10.5px;font-weight:700}
+.podcast-transcript{display:grid;gap:8px}.podcast-line{display:grid;grid-template-columns:42px 1fr;gap:9px;border:1px solid var(--line);
+  border-radius:14px;padding:11px;background:#fff;cursor:pointer;transition:.18s}
+.podcast-line:hover{border-color:#aac7c7}.podcast-line.active{border-color:var(--green);background:#edf7f3;box-shadow:0 0 0 3px rgba(45,129,124,.1)}
+.speaker-avatar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#dcebea;color:var(--green-d);
+  font-weight:900;font-size:11px}.podcast-line[data-speaker="1"] .speaker-avatar{background:#eee4f4;color:#684d7a}
+.podcast-speaker{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2);font-weight:900;margin-bottom:3px}
+.podcast-de{font-size:15px;line-height:1.75}.podcast-word{border-radius:4px;padding:0 1px;transition:.1s}
+.podcast-word.current{background:#ffd66b;color:#46330b;box-shadow:0 0 0 2px rgba(255,214,107,.35)}
+.podcast-ar{font-family:Cairo,Arial,sans-serif;direction:rtl;text-align:right;color:#536167;font-size:12px;line-height:1.8;
+  border-top:1px dashed #dce3e3;margin-top:5px;padding-top:5px}
+.podcast-line.switch-ar .podcast-de{display:none}.podcast-line:not(.switch-ar) .podcast-ar.switch-only{display:none}
+.podcast-note{font-size:11px;color:var(--ink-2);text-align:center;margin:10px 0}
 /* overview */
 .goal-item{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px dashed #e8ecf0;font-size:14.5px}
 .goal-item:last-child{border:none}
@@ -642,7 +689,9 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
   .scene-gallery{grid-template-columns:1fr}
   .vocab-scenes{grid-template-columns:repeat(2,minmax(0,1fr))}
   .exam-stats,.exam-module-grid{grid-template-columns:1fr}
-  .game-grid,.speed-options{grid-template-columns:1fr}
+  .game-grid,.speed-options,.podcast-grid{grid-template-columns:1fr}
+  .podcast-card{grid-template-columns:100px 1fr}
+  .podcast-player-cover{height:180px}
   .memory-board{grid-template-columns:repeat(3,1fr)}
   .memory-card{min-height:88px;font-size:12px}
   .exam-toolbar{top:112px;align-items:stretch;flex-direction:column}
@@ -740,6 +789,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <script src="data_hoeren_figures.js"></script>
 <script src="data_hoeren_interactive.js"></script>
 <script src="data_exam.js"></script>
+<script src="data_podcast.js"></script>
 <script>
 /* ===================== state & helpers ===================== */
 const $ = s => document.querySelector(s);
@@ -750,6 +800,7 @@ const GRAM = window.GRAM;
 const VERBS = window.A2_VERBS || [];
 const HOEREN = window.HOEREN_BOOK;
 const EXAM = window.A2_EXAM;
+const PODCASTS = window.A2_PODCASTS || [];
 function escapeHtml(value){
   return String(value).replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]));
 }
@@ -1156,6 +1207,7 @@ function go(hash){ location.hash = hash; }
 window.addEventListener('hashchange', route);
 $('#backBtn').addEventListener('click', () => {
   const h = location.hash;
+  if(/^#podcast\//.test(h)){ go('podcast'); return; }
   if(/^#games\//.test(h)){ go('games'); return; }
   if(/^#exam\//.test(h)){ go('exam'); return; }
   if(/^#listen\/[A-I]\/\d+/.test(h)){ go(h.split('/').slice(0,2).join('/').replace('#','')); return; }
@@ -1168,6 +1220,7 @@ function route(){
   const h = location.hash.replace('#','');
   stopExamTimer();
   stopGameTimers();
+  stopPodcast();
   const examMode=h==='exam'||h.startsWith('exam/');
   document.body.classList.toggle('exam-mode',examMode);
   if(examMode){
@@ -1182,6 +1235,9 @@ function route(){
   if(h==='dict'){ renderDictionary(); return; }
   if(h==='verbs'){ renderVerbs(); return; }
   if(h==='phrases'){ renderExpressions(); return; }
+  if(h==='podcast'){ renderPodcastHome(); return; }
+  const podcastMatch=h.match(/^podcast\/(\d+)$/);
+  if(podcastMatch){ renderPodcastEpisode(Number(podcastMatch[1])); return; }
   if(h==='games'){ renderGamesHome(); return; }
   const gameMatch=h.match(/^games\/(speed|memory|artikel|sentence)$/);
   if(gameMatch){ renderGame(gameMatch[1]); return; }
@@ -1219,6 +1275,7 @@ function mainTabs(active){
     <button class="main-tab ${active==='dict'?'active':''}" onclick="go('dict')">🔎 Wörterbuch</button>
     <button class="main-tab ${active==='verbs'?'active':''}" onclick="go('verbs')">🧩 Verben</button>
     <button class="main-tab ${active==='phrases'?'active':''}" onclick="go('phrases')">💬 Redewendungen</button>
+    <button class="main-tab ${active==='podcast'?'active':''}" onclick="go('podcast')">🎙 Podcast</button>
     <button class="main-tab ${active==='games'?'active':''}" onclick="go('games')">🎮 Spiele</button>
     <button class="main-tab ${active==='listen'?'active':''}" onclick="go('listen')">🎧 Hören</button>
     <button class="main-tab ${active==='exam'?'active':''}" onclick="go('exam')">📝 Prüfung</button>
@@ -1699,6 +1756,236 @@ function renderExpressions(){
     $('#expressionCount').textContent=`${visible} / ${expressions.length} Ausdrücke`;
   };
   search.addEventListener('input',filter); chapter.addEventListener('change',filter); filter();
+}
+
+/* ===================== chapter podcasts ===================== */
+let podcastState=null;
+let podcastSession=0;
+let podcastTranslationMode=localStorage.getItem('podcastTranslationMode')||'below';
+let podcastSwitchLanguage=localStorage.getItem('podcastSwitchLanguage')||'de';
+
+function stopPodcast(){
+  podcastSession++;
+  if(podcastState){
+    podcastState.playing=false;
+    podcastState.paused=false;
+  }
+  if(speech) speech.cancel();
+}
+
+function podcastCover(chapter){
+  return chapter?.visual?.src||`assets/chapters/chapter-${chapter?.num||1}.webp`;
+}
+
+function renderPodcastHome(){
+  setTop('Podcast','12 Kapitel · hören und mitlesen',false);
+  view.innerHTML=mainTabs('podcast')+`
+    <section class="card podcast-hero">
+      <h2>Deutsch im Ohr</h2>
+      <p>Zwölf kurze Gespräche auf A2-Niveau. Jede Folge wiederholt Wortschatz, Redemittel und Grammatik aus einem Kapitel.</p>
+      ${ar('١٢ حلقة قصيرة، حلقة لكل درس. اسمع الحوار وتابع السكريبت المتزامن، وشغّل الترجمة بالطريقة المناسبة لك.')}
+    </section>
+    <div class="podcast-grid">${PODCASTS.map(episode=>{
+      const chapter=BOOK.find(item=>item.num===episode.chapter);
+      const saved=Number(localStorage.getItem(`podcastProgress:${episode.chapter}`)||0);
+      return `<button type="button" class="card podcast-card" onclick="go('podcast/${episode.chapter}')">
+        <div class="podcast-cover"><img src="${podcastCover(chapter)}" alt=""><span class="podcast-number">Folge ${episode.chapter}</span></div>
+        <div class="podcast-copy"><h3>${episode.title}</h3><p>${episode.intro}</p>
+          <div class="podcast-meta"><span>${episode.duration}</span><span>${episode.speakers.join(' + ')}</span>
+            ${saved?`<span>${Math.min(100,Math.round(saved/episode.lines.length*100))}% gehört</span>`:''}</div>
+        </div>
+      </button>`;
+    }).join('')}</div>`;
+}
+
+function renderPodcastWords(text,lineIndex){
+  let wordIndex=0;
+  return escapeHtml(text).split(/(\s+)/).map(part=>{
+    if(!part.trim())return part;
+    return `<span class="podcast-word" data-line="${lineIndex}" data-word="${wordIndex++}">${part}</span>`;
+  }).join('');
+}
+
+function renderPodcastEpisode(chapterNumber){
+  const episode=PODCASTS.find(item=>item.chapter===chapterNumber);
+  const chapter=BOOK.find(item=>item.num===chapterNumber);
+  if(!episode){renderPodcastHome();return;}
+  const saved=Math.min(Number(localStorage.getItem(`podcastProgress:${chapterNumber}`)||0),episode.lines.length-1);
+  podcastState={episode,index:saved,playing:false,paused:false};
+  setTop(`Podcast ${chapterNumber}`,episode.title,true);
+  view.innerHTML=mainTabs('podcast')+`
+    <article class="card podcast-player">
+      <div class="podcast-player-cover"><img src="${podcastCover(chapter)}" alt="${escapeHtml(episode.title)}">
+        <div class="podcast-player-title"><small>FOLGE ${chapterNumber} · ${episode.duration}</small>
+          <h2>${episode.title}</h2><p>${episode.intro}</p></div>
+      </div>
+      <div class="podcast-controls">
+        <div class="podcast-main-controls">
+          <button type="button" class="podcast-skip" onclick="skipPodcast(-1)">− Satz</button>
+          <button type="button" class="podcast-play" id="podcastPlay" onclick="togglePodcast()" aria-label="Podcast abspielen">▶</button>
+          <button type="button" class="podcast-skip" onclick="skipPodcast(1)">+ Satz</button>
+        </div>
+        <div class="podcast-progress"><span id="podcastProgress"></span></div>
+        <div class="podcast-position"><span id="podcastPosition">Satz ${saved+1} / ${episode.lines.length}</span>
+          <span>${episode.speakers.join(' · ')}</span></div>
+        <div class="podcast-options">
+          <div class="podcast-mode">
+            <button type="button" data-podcast-mode="below" onclick="setPodcastMode('below')">Deutsch + عربي</button>
+            <button type="button" data-podcast-mode="switch" onclick="setPodcastMode('switch')">Deutsch ↔ عربي</button>
+          </div>
+          <button type="button" class="podcast-language" id="podcastLanguage" onclick="togglePodcastLanguage()">Deutsch anzeigen</button>
+        </div>
+      </div>
+      <div class="podcast-keywords">${episode.keywords.map(word=>`<span>${word}</span>`).join('')}</div>
+    </article>
+    <p class="podcast-note">Klicke auf einen Satz, um direkt dort weiterzuhören. Die aktuelle Zeile und das gesprochene Wort werden markiert.</p>
+    <section class="podcast-transcript">${episode.lines.map((line,index)=>{
+      const speakerIndex=episode.speakers.indexOf(line[0]);
+      return `<article class="podcast-line" id="podcastLine${index}" data-speaker="${speakerIndex}" onclick="seekPodcast(${index})">
+        <div class="speaker-avatar">${escapeHtml(line[0].slice(0,2).toUpperCase())}</div>
+        <div><div class="podcast-speaker">${escapeHtml(line[0])}</div>
+          <div class="podcast-de">${renderPodcastWords(line[1],index)}</div>
+          <div class="podcast-ar">${escapeHtml(line[2])}</div></div>
+      </article>`;
+    }).join('')}</section>`;
+  setPodcastMode(podcastTranslationMode,false);
+  setPodcastActiveLine(saved);
+}
+
+function podcastVoices(){
+  const voices=germanVoices();
+  const preferred=voices.findIndex(voice=>voice.voiceURI===speechVoiceURI);
+  if(preferred>0)voices.unshift(...voices.splice(preferred,1));
+  return voices;
+}
+
+function playPodcast(fromIndex=podcastState?.index||0){
+  if(!podcastState||!speech)return;
+  speech.cancel();
+  const session=++podcastSession;
+  const {episode}=podcastState;
+  podcastState.index=Math.max(0,Math.min(fromIndex,episode.lines.length-1));
+  podcastState.playing=true;
+  podcastState.paused=false;
+  $$('.podcast-word.current').forEach(word=>word.classList.remove('current'));
+  setPodcastActiveLine(podcastState.index);
+  highlightPodcastWord(podcastState.index,0);
+  const voices=podcastVoices();
+  const profile={
+    clear:{rate:1,pitch:1},calm:{rate:.82,pitch:.94},deep:{rate:.9,pitch:.82},bright:{rate:1.05,pitch:1.12}
+  }[speechProfile]||{rate:1,pitch:1};
+  for(let index=podcastState.index;index<episode.lines.length;index++){
+    const line=episode.lines[index];
+    const speakerIndex=Math.max(0,episode.speakers.indexOf(line[0]));
+    const utterance=new SpeechSynthesisUtterance(line[1]);
+    utterance.lang='de-DE';
+    utterance.voice=voices.length?voices[speakerIndex%voices.length]:null;
+    utterance.rate=Math.max(.5,Math.min(1.5,speechRate*profile.rate));
+    utterance.pitch=voices.length>1?profile.pitch:Math.max(.65,Math.min(1.35,profile.pitch+(speakerIndex?.12:-.04)));
+    utterance.onstart=()=>{
+      if(session!==podcastSession)return;
+      podcastState.index=index;
+      setPodcastActiveLine(index);
+      highlightPodcastWord(index,0);
+      updatePodcastControls();
+      const name=utterance.voice?.name?.replace(/^Microsoft\s+/,'').replace(/\s*-\s*German.*$/i,'')||line[0];
+      showSpeechStatus(`${name}: ${line[1].slice(0,58)}`);
+    };
+    utterance.onboundary=event=>{
+      if(session!==podcastSession||event.name&&event.name!=='word')return;
+      highlightPodcastWord(index,event.charIndex);
+    };
+    utterance.onend=()=>{
+      if(session!==podcastSession)return;
+      clearPodcastWords(index);
+      localStorage.setItem(`podcastProgress:${episode.chapter}`,String(Math.min(index+1,episode.lines.length)));
+      if(index===episode.lines.length-1){
+        podcastState.playing=false;
+        podcastState.paused=false;
+        podcastState.index=0;
+        updatePodcastControls();
+        $('#speechStatus').classList.remove('show');
+      }
+    };
+    speech.speak(utterance);
+  }
+  updatePodcastControls();
+}
+
+function togglePodcast(){
+  if(!podcastState||!speech)return;
+  if(!podcastState.playing){playPodcast(podcastState.index);return;}
+  if(podcastState.paused){
+    speech.resume();
+    podcastState.paused=false;
+  }else{
+    speech.pause();
+    podcastState.paused=true;
+  }
+  updatePodcastControls();
+}
+
+function skipPodcast(direction){
+  if(!podcastState)return;
+  const next=(podcastState.index+direction+podcastState.episode.lines.length)%podcastState.episode.lines.length;
+  playPodcast(next);
+}
+
+function seekPodcast(index){playPodcast(index);}
+
+function setPodcastActiveLine(index){
+  $$('.podcast-line').forEach((line,lineIndex)=>line.classList.toggle('active',lineIndex===index));
+  updatePodcastControls();
+  const active=$(`#podcastLine${index}`);
+  if(podcastState?.playing&&active)active.scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+function highlightPodcastWord(lineIndex,charIndex){
+  clearPodcastWords(lineIndex);
+  const text=podcastState?.episode.lines[lineIndex][1]||'';
+  const starts=[...text.matchAll(/\S+/g)].map(match=>match.index);
+  let wordIndex=0;
+  starts.forEach((start,index)=>{if(start<=charIndex)wordIndex=index;});
+  $(`.podcast-word[data-line="${lineIndex}"][data-word="${wordIndex}"]`)?.classList.add('current');
+}
+
+function clearPodcastWords(lineIndex){
+  $$(`.podcast-word[data-line="${lineIndex}"]`).forEach(word=>word.classList.remove('current'));
+}
+
+function updatePodcastControls(){
+  if(!podcastState)return;
+  const play=$('#podcastPlay');
+  if(play){
+    play.textContent=podcastState.playing&&!podcastState.paused?'Ⅱ':'▶';
+    play.setAttribute('aria-label',podcastState.playing&&!podcastState.paused?'Podcast pausieren':'Podcast abspielen');
+  }
+  const progress=$('#podcastProgress');
+  if(progress)progress.style.width=`${(podcastState.index+1)/podcastState.episode.lines.length*100}%`;
+  const position=$('#podcastPosition');
+  if(position)position.textContent=`Satz ${podcastState.index+1} / ${podcastState.episode.lines.length}`;
+}
+
+function setPodcastMode(mode,persist=true){
+  podcastTranslationMode=mode==='switch'?'switch':'below';
+  if(persist)localStorage.setItem('podcastTranslationMode',podcastTranslationMode);
+  $$('[data-podcast-mode]').forEach(button=>button.classList.toggle('active',button.dataset.podcastMode===podcastTranslationMode));
+  $$('.podcast-line').forEach(line=>{
+    const arabic=line.querySelector('.podcast-ar');
+    arabic?.classList.toggle('switch-only',podcastTranslationMode==='switch');
+    line.classList.toggle('switch-ar',podcastTranslationMode==='switch'&&podcastSwitchLanguage==='ar');
+  });
+  const language=$('#podcastLanguage');
+  if(language){
+    language.style.display=podcastTranslationMode==='switch'?'block':'none';
+    language.textContent=podcastSwitchLanguage==='de'?'عربي anzeigen':'Deutsch anzeigen';
+  }
+}
+
+function togglePodcastLanguage(){
+  podcastSwitchLanguage=podcastSwitchLanguage==='de'?'ar':'de';
+  localStorage.setItem('podcastSwitchLanguage',podcastSwitchLanguage);
+  setPodcastMode('switch',false);
 }
 
 /* ===================== learning games ===================== */
