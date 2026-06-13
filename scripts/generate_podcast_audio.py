@@ -17,13 +17,15 @@ FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
 
 def voice_settings(person):
     age = int(person.get("age", 30))
+    if person.get("gender") == "female":
+        return "+11%", "+0Hz"
     if age < 24:
-        return "+0%", "+1Hz"
+        return "+10%", "+1Hz"
     if age > 45:
-        return "-8%", "-4Hz"
+        return "+6%", "-2Hz"
     if age > 35:
-        return "-6%", "-2Hz"
-    return "-3%", "+0Hz"
+        return "+7%", "-1Hz"
+    return "+9%", "+0Hz"
 
 
 async def synthesize(index, item, people, chapter_dir, semaphore):
@@ -117,7 +119,7 @@ async def generate_episode(episode, concurrency):
         check=True
     )
     episode["lines"] = timeline
-    episode["audio"] = f"assets/podcasts/chapter-{chapter}.mp3"
+    episode["audio"] = f"assets/podcasts/chapter-{chapter}.mp3?v=natural-dialogue-2"
     episode["durationSeconds"] = round(duration(audio_target), 2)
     episode["duration"] = f"{round(episode['durationSeconds'] / 60)} Min."
     print(

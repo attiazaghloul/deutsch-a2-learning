@@ -793,7 +793,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <script src="data_hoeren_figures.js"></script>
 <script src="data_hoeren_interactive.js"></script>
 <script src="data_exam.js"></script>
-<script src="data_podcast.js?v=long-audio-1"></script>
+<script src="data_podcast.js?v=natural-dialogue-2"></script>
 <script>
 /* ===================== state & helpers ===================== */
 const $ = s => document.querySelector(s);
@@ -1899,7 +1899,8 @@ function playPodcast(fromIndex=podcastState?.index||0){
     }
     const line=episode.lines[podcastState.index];
     podcastAudio.currentTime=Number(line.start||0);
-    podcastAudio.playbackRate=Math.max(.75,Math.min(1.25,speechRate));
+    // The global default (.85) was tuned for browser TTS; recorded podcasts should play at natural 1.0x.
+    podcastAudio.playbackRate=Math.max(.8,Math.min(1.35,speechRate/.85));
     podcastAudio.play().then(()=>{
       podcastState.playing=true;
       podcastState.paused=false;
