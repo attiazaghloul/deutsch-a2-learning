@@ -184,7 +184,7 @@ table.gt b{color:var(--green-d)}
 .reading-answer{display:none;background:var(--green-l);border-radius:9px;padding:8px 11px;margin-top:7px;font-size:14px}
 .reading-answer.show{display:block}
 /* ---------- main library tabs, dictionary and expressions ---------- */
-.main-tabs{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin:0 0 16px}
+.main-tabs{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin:0 0 16px}
 .main-tab{border:1px solid var(--line);background:var(--card);color:var(--ink-2);border-radius:13px;
   padding:10px 6px;font:inherit;font-size:13px;font-weight:700;cursor:pointer;box-shadow:var(--shadow)}
 .main-tab.active{background:var(--green-d);border-color:var(--green-d);color:#fff}
@@ -540,6 +540,67 @@ body.listen-mode .speakable{cursor:pointer}
 .quiz-fb{font-size:13.5px;margin:4px 0 10px;display:none}
 .quiz-fb.show{display:block}
 .quiz-score{text-align:center;font-size:17px;font-weight:800;color:var(--green-d);padding:10px}
+/* ---------- learning games ---------- */
+.games-hero{background:linear-gradient(135deg,#173f43,#2d817c);color:#fff;overflow:hidden;position:relative}
+.games-hero:after{content:"";position:absolute;width:190px;height:190px;border:36px solid rgba(255,255,255,.07);
+  border-radius:50%;right:-62px;top:-80px}
+.games-hero h2{color:#fff;margin-bottom:6px}.games-hero p{color:rgba(255,255,255,.86);max-width:650px}
+.game-best-row{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+.game-best{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.2);border-radius:999px;
+  padding:5px 10px;font-size:12px;font-weight:700}
+.game-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.game-tile{border:0;text-align:left;cursor:pointer;min-height:168px;position:relative;overflow:hidden}
+.game-tile:hover{transform:translateY(-2px)}.game-tile h3{font-size:19px;color:var(--green-d);margin:7px 0 5px}
+.game-tile p{font-size:13.5px;color:var(--ink-2);line-height:1.55}.game-icon{font-size:29px}
+.game-tag{display:inline-block;border-radius:999px;padding:3px 8px;background:var(--green-l);color:var(--green-d);
+  font-size:10.5px;font-weight:800;margin-top:10px}
+.game-setup{max-width:610px;margin-inline:auto}.game-setup label{display:block;font-size:12px;color:var(--ink-2);
+  font-weight:800;margin:12px 0 5px}
+.game-select{width:100%;border:2px solid #d7dfe3;border-radius:12px;padding:11px;background:#fff;color:var(--ink);font:inherit}
+.game-select:focus{outline:none;border-color:var(--green)}
+.game-play-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+.game-progress{height:8px;background:#dce5e5;border-radius:999px;overflow:hidden;flex:1}
+.game-progress span{display:block;height:100%;background:var(--green);transition:width .25s}
+.game-counter{font-size:12px;color:var(--ink-2);font-weight:800;white-space:nowrap}
+.speed-stage{max-width:720px;margin-inline:auto}
+.speed-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.speed-score{font-size:15px;font-weight:900;color:var(--green-d)}
+.speed-timer{display:grid;place-items:center;width:54px;height:54px;border-radius:50%;background:#173f43;color:#fff;
+  font-size:19px;font-weight:900;font-variant-numeric:tabular-nums;box-shadow:0 0 0 5px #dcebea}
+.speed-timer.urgent{background:#a64141;box-shadow:0 0 0 5px #f6dddd}
+.speed-question{font-size:21px;line-height:1.55;text-align:center;padding:20px 12px;min-height:112px;
+  display:grid;place-items:center;color:var(--ink)}
+.speed-kind{text-align:center;color:var(--ink-2);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+.speed-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.speed-option{border:0;border-radius:14px;padding:16px 12px;min-height:70px;color:#fff;font:inherit;font-weight:800;
+  cursor:pointer;text-align:left;transition:.15s;box-shadow:0 4px 10px rgba(23,49,51,.12)}
+.speed-option:hover{filter:brightness(1.06);transform:translateY(-1px)}
+.speed-option:nth-child(1){background:#b5414b}.speed-option:nth-child(2){background:#2872a3}
+.speed-option:nth-child(3){background:#b27b22}.speed-option:nth-child(4){background:#32765e}
+.speed-option.correct{background:#238251!important;box-shadow:0 0 0 4px #bfe4cf}.speed-option.wrong{opacity:.38}
+.speed-feedback{text-align:center;min-height:46px;padding:10px;font-weight:800;color:var(--green-d)}
+.game-result{text-align:center;max-width:600px;margin-inline:auto}.result-medal{font-size:56px}
+.result-score{font-size:35px;font-weight:900;color:var(--green-d);margin:5px 0}
+.result-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:17px 0}
+.result-stat{background:#f3f7f6;border-radius:12px;padding:10px}.result-stat b{display:block;font-size:18px;color:var(--green-d)}
+.result-stat small{color:var(--ink-2)}
+.memory-board{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;max-width:720px;margin-inline:auto}
+.memory-card{border:0;background:var(--green-d);color:#fff;border-radius:13px;min-height:105px;padding:9px;
+  font:inherit;font-weight:800;cursor:pointer;transform-style:preserve-3d;transition:.2s}
+.memory-card.revealed,.memory-card.matched{background:#fff;color:var(--green-d);box-shadow:var(--shadow)}
+.memory-card.matched{background:var(--green-l);opacity:.72}.memory-card small{display:block;color:var(--ink-2);font-weight:600}
+.artikel-word{text-align:center;font-size:27px;font-weight:900;color:var(--green-d);padding:24px 8px}
+.artikel-options{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:520px;margin-inline:auto}
+.artikel-option{border:2px solid var(--line);background:#fff;border-radius:14px;padding:17px;font:inherit;font-size:20px;
+  font-weight:900;cursor:pointer}.artikel-option:nth-child(1){color:#2872a3}.artikel-option:nth-child(2){color:#b5414b}
+.artikel-option:nth-child(3){color:#32765e}.artikel-option.correct{background:var(--green-l);border-color:var(--green)}
+.artikel-option.wrong{background:var(--red-l);border-color:var(--red)}
+.sentence-zone{min-height:82px;border:2px dashed #bfcfd0;border-radius:14px;padding:10px;display:flex;flex-wrap:wrap;
+  gap:7px;align-content:flex-start;margin:12px 0;background:#fbfcfb}
+.word-chip{border:1px solid #cbd8d9;background:#fff;border-radius:9px;padding:8px 10px;font:inherit;font-weight:700;cursor:pointer}
+.word-chip.selected{background:var(--green-d);color:#fff;border-color:var(--green-d)}
+.sentence-source{display:flex;flex-wrap:wrap;gap:7px;justify-content:center}
+.game-actions{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:14px}
 /* overview */
 .goal-item{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px dashed #e8ecf0;font-size:14.5px}
 .goal-item:last-child{border:none}
@@ -581,6 +642,9 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
   .scene-gallery{grid-template-columns:1fr}
   .vocab-scenes{grid-template-columns:repeat(2,minmax(0,1fr))}
   .exam-stats,.exam-module-grid{grid-template-columns:1fr}
+  .game-grid,.speed-options{grid-template-columns:1fr}
+  .memory-board{grid-template-columns:repeat(3,1fr)}
+  .memory-card{min-height:88px;font-size:12px}
   .exam-toolbar{top:112px;align-items:stretch;flex-direction:column}
 }
 </style>
@@ -1092,6 +1156,7 @@ function go(hash){ location.hash = hash; }
 window.addEventListener('hashchange', route);
 $('#backBtn').addEventListener('click', () => {
   const h = location.hash;
+  if(/^#games\//.test(h)){ go('games'); return; }
   if(/^#exam\//.test(h)){ go('exam'); return; }
   if(/^#listen\/[A-I]\/\d+/.test(h)){ go(h.split('/').slice(0,2).join('/').replace('#','')); return; }
   if(/^#listen\/[A-I]/.test(h)){ go('listen'); return; }
@@ -1102,6 +1167,7 @@ $('#backBtn').addEventListener('click', () => {
 function route(){
   const h = location.hash.replace('#','');
   stopExamTimer();
+  stopGameTimers();
   const examMode=h==='exam'||h.startsWith('exam/');
   document.body.classList.toggle('exam-mode',examMode);
   if(examMode){
@@ -1116,6 +1182,9 @@ function route(){
   if(h==='dict'){ renderDictionary(); return; }
   if(h==='verbs'){ renderVerbs(); return; }
   if(h==='phrases'){ renderExpressions(); return; }
+  if(h==='games'){ renderGamesHome(); return; }
+  const gameMatch=h.match(/^games\/(speed|memory|artikel|sentence)$/);
+  if(gameMatch){ renderGame(gameMatch[1]); return; }
   if(h==='listen'){ renderListeningHome(); return; }
   if(h==='exam'){ renderExamHome(); return; }
   const examMatch=h.match(/^exam\/(lesen|hoeren|schreiben|sprechen)$/);
@@ -1150,6 +1219,7 @@ function mainTabs(active){
     <button class="main-tab ${active==='dict'?'active':''}" onclick="go('dict')">🔎 Wörterbuch</button>
     <button class="main-tab ${active==='verbs'?'active':''}" onclick="go('verbs')">🧩 Verben</button>
     <button class="main-tab ${active==='phrases'?'active':''}" onclick="go('phrases')">💬 Redewendungen</button>
+    <button class="main-tab ${active==='games'?'active':''}" onclick="go('games')">🎮 Spiele</button>
     <button class="main-tab ${active==='listen'?'active':''}" onclick="go('listen')">🎧 Hören</button>
     <button class="main-tab ${active==='exam'?'active':''}" onclick="go('exam')">📝 Prüfung</button>
   </nav>`;
@@ -1629,6 +1699,475 @@ function renderExpressions(){
     $('#expressionCount').textContent=`${visible} / ${expressions.length} Ausdrücke`;
   };
   search.addEventListener('input',filter); chapter.addEventListener('change',filter); filter();
+}
+
+/* ===================== learning games ===================== */
+let gameTimerId=null;
+let gameDelayId=null;
+let speedState=null;
+let memoryState=null;
+let artikelState=null;
+let sentenceState=null;
+
+function stopGameTimers(){
+  if(gameTimerId){ clearInterval(gameTimerId); gameTimerId=null; }
+  if(gameDelayId){ clearTimeout(gameDelayId); gameDelayId=null; }
+}
+
+function shuffled(items){
+  const result=[...items];
+  for(let i=result.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [result[i],result[j]]=[result[j],result[i]];
+  }
+  return result;
+}
+
+function plainText(value){
+  const node=document.createElement('div');
+  node.innerHTML=String(value||'');
+  return (node.textContent||'').replace(/\s+/g,' ').trim();
+}
+
+function gameChapterOptions(includeAll=true){
+  return `${includeAll?'<option value="all">Alle Kapitel 1–12</option>':''}`+
+    BOOK.map(chapter=>`<option value="${chapter.num}">Kapitel ${chapter.num}: ${chapter.title}</option>`).join('');
+}
+
+function gameBestScores(){
+  try{return JSON.parse(localStorage.getItem('a2GameBestScores')||'{}');}
+  catch{return {};}
+}
+
+function saveGameBest(id,score){
+  const scores=gameBestScores();
+  scores[id]=Math.max(Number(scores[id]||0),score);
+  localStorage.setItem('a2GameBestScores',JSON.stringify(scores));
+  return scores[id];
+}
+
+function renderGamesHome(){
+  setTop('Spiele','Wortschatz trainieren · schneller erinnern',false);
+  const best=gameBestScores();
+  view.innerHTML=mainTabs('games')+`
+    <section class="card games-hero">
+      <h2>Lernen, spielen, erinnern</h2>
+      <p>Kurze Spiele aus dem Wortschatz, den Beispielsätzen und den Quizfragen deiner zwölf Kapitel.</p>
+      ${ar('ألعاب قصيرة من كلمات الدروس وجملها وأسئلة القواعد. كل محاولة جديدة بتخلط المحتوى عشان تفتكر المعنى، مش ترتيب الإجابات.')}
+      <div class="game-best-row">
+        <span class="game-best">Bestscore: ${best.speed||0}</span>
+        <span class="game-best">Memory: ${best.memory?best.memory+' Züge':'noch offen'}</span>
+        <span class="game-best">Artikel: ${best.artikel||0}</span>
+        <span class="game-best">Sätze: ${best.sentence||0}</span>
+      </div>
+    </section>
+    <div class="game-grid">
+      <button type="button" class="card game-tile" onclick="go('games/speed')">
+        <div class="game-icon">⚡</div><h3>Schnell-Challenge</h3>
+        <p>Vier Antworten, laufende Zeit und mehr Punkte für schnelle richtige Antworten.</p>
+        <span class="game-tag">Kahoot-Stil · gemischte Fragen</span>
+      </button>
+      <button type="button" class="card game-tile" onclick="go('games/memory')">
+        <div class="game-icon">▦</div><h3>Memory Match</h3>
+        <p>Finde die passenden Paare aus deutschem Wort und Bedeutung.</p>
+        <span class="game-tag">12 Karten · 6 Paare</span>
+      </button>
+      <button type="button" class="card game-tile" onclick="go('games/artikel')">
+        <div class="game-icon">der·die·das</div><h3>Artikel-Challenge</h3>
+        <p>Wähle den richtigen Artikel und trainiere das Genus der Nomen.</p>
+        <span class="game-tag">10 Wörter pro Runde</span>
+      </button>
+      <button type="button" class="card game-tile" onclick="go('games/sentence')">
+        <div class="game-icon">1 · 2 · 3</div><h3>Satz-Puzzle</h3>
+        <p>Bringe die Wörter aus den Redemitteln wieder in die richtige Reihenfolge.</p>
+        <span class="game-tag">Sprechen · Satzbau</span>
+      </button>
+    </div>`;
+}
+
+function renderGame(id){
+  setTop('Spiele',id==='speed'?'Schnell-Challenge':id==='memory'?'Memory Match':
+    id==='artikel'?'Artikel-Challenge':'Satz-Puzzle',true);
+  if(id==='speed') renderSpeedSetup();
+  if(id==='memory') renderMemorySetup();
+  if(id==='artikel') renderArtikelSetup();
+  if(id==='sentence') renderSentenceSetup();
+}
+
+function gameSetupCard(title,description,action,extra=''){
+  return mainTabs('games')+`<section class="card game-setup">
+    <h2>${title}</h2><p style="color:var(--ink-2);margin-top:5px">${description}</p>
+    <label for="gameChapter">Kapitel auswählen</label>
+    <select class="game-select" id="gameChapter">${gameChapterOptions()}</select>
+    ${extra}
+    <div class="game-actions"><button type="button" class="btn btn-green" onclick="${action}">Spiel starten</button></div>
+  </section>`;
+}
+
+function selectedGameChapters(){
+  const selected=$('#gameChapter')?.value||'all';
+  return selected==='all'?BOOK:BOOK.filter(chapter=>String(chapter.num)===selected);
+}
+
+function wordLabel(value){
+  return String(value||'').replace(/^(der|die|das)\s+/i,'').replace(/,\s*[-–—\wÄÖÜäöüß.]+.*$/,'').trim();
+}
+
+function uniqueOptions(correct,candidates){
+  const clean=String(correct).trim();
+  const options=[clean];
+  shuffled(candidates).forEach(item=>{
+    const value=String(item||'').trim();
+    if(value&&!options.some(current=>current.toLocaleLowerCase('de-DE')===value.toLocaleLowerCase('de-DE'))&&options.length<4){
+      options.push(value);
+    }
+  });
+  return shuffled(options).map(text=>({text,correct:text===clean}));
+}
+
+const CONNECTOR_GAME_QUESTIONS=[
+  {chapter:1,q:'Ich bleibe heute zu Hause, ___ ich krank bin.',answer:'weil',o:['weil','deshalb','trotzdem','dann']},
+  {chapter:1,q:'Ich bin krank. ___ bleibe ich zu Hause.',answer:'Deshalb',o:['Deshalb','Weil','Obwohl','Dass']},
+  {chapter:3,q:'Wir wissen noch nicht, ___ wir die Prüfung bestanden haben.',answer:'ob',o:['ob','weil','denn','als']},
+  {chapter:4,q:'___ ich klein war, wohnte ich auf dem Land.',answer:'Als',o:['Als','Wenn','Ob','Damit']},
+  {chapter:5,q:'Ich lerne jeden Tag, ___ ich die Prüfung bestehe.',answer:'damit',o:['damit','obwohl','sondern','sonst']},
+  {chapter:6,q:'Nimm einen Schirm mit, ___ wirst du nass.',answer:'sonst',o:['sonst','weil','dass','als']},
+  {chapter:7,q:'Können Sie mir sagen, ___ der Zug abfährt?',answer:'wann',o:['wann','denn','trotzdem','sondern']},
+  {chapter:8,q:'Ich treibe Sport, ___ ich wenig Zeit habe.',answer:'obwohl',o:['obwohl','deshalb','damit','ob']},
+  {chapter:9,q:'Sie übt viel, ___ sie sicherer sprechen kann.',answer:'damit',o:['damit','weil','sondern','als']},
+  {chapter:10,q:'Ich glaube, ___ gute Nachbarn wichtig sind.',answer:'dass',o:['dass','denn','sonst','wenn']},
+  {chapter:11,q:'___ ich Zeit habe, höre ich gern Musik.',answer:'Wenn',o:['Wenn','Als','Ob','Deshalb']},
+  {chapter:12,q:'Wir fahren ans Meer, ___ das Wetter schön ist.',answer:'wenn',o:['wenn','obwohl','sondern','dass']}
+];
+
+function buildSpeedPool(chapters){
+  const pool=[];
+  const allWords=chapters.flatMap(chapter=>chapter.vocab.map(item=>item.w));
+  const allDefs=chapters.flatMap(chapter=>chapter.vocab.map(item=>plainText(item.d)));
+  chapters.forEach(chapter=>{
+    chapter.vocab.forEach(item=>{
+      pool.push({
+        kind:`Kapitel ${chapter.num} · Wortschatz`,
+        q:`Welches Wort passt? „${plainText(item.d)}“`,
+        options:uniqueOptions(item.w,allWords)
+      });
+      const match=String(item.w).match(/^(der|die|das)\s+(.+)/i);
+      if(match){
+        pool.push({
+          kind:`Kapitel ${chapter.num} · Artikel`,
+          q:`Welcher Artikel passt zu „${wordLabel(item.w)}“?`,
+          options:uniqueOptions(match[1].toLowerCase(),['der','die','das','-'])
+        });
+      }
+      const answer=wordLabel(item.w).replace(/^sich\s+/i,'');
+      const example=plainText(item.ex);
+      if(answer.length>3&&example&&new RegExp(`\\b${answer.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}\\b`,'i').test(example)){
+        pool.push({
+          kind:`Kapitel ${chapter.num} · Lückensatz`,
+          q:example.replace(new RegExp(`\\b${answer.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}\\b`,'i'),'___'),
+          options:uniqueOptions(answer,allWords.map(wordLabel))
+        });
+      }
+    });
+    (chapter.quiz||[]).forEach(question=>{
+      const answer=plainText(question.o[question.a]);
+      pool.push({
+        kind:`Kapitel ${chapter.num} · Grammatik`,
+        q:plainText(question.q),
+        options:uniqueOptions(answer,[...question.o.map(plainText),...allDefs])
+      });
+    });
+  });
+  const chapterNumbers=new Set(chapters.map(chapter=>chapter.num));
+  CONNECTOR_GAME_QUESTIONS.filter(item=>chapterNumbers.has(item.chapter)).forEach(item=>{
+    pool.push({
+      kind:`Kapitel ${item.chapter} · Konnektor`,
+      q:item.q,
+      options:uniqueOptions(item.answer,item.o)
+    });
+  });
+  return pool.filter(item=>item.options.length===4);
+}
+
+function renderSpeedSetup(){
+  view.innerHTML=gameSetupCard(
+    'Schnell-Challenge',
+    'Beantworte jede Frage, bevor die Zeit abläuft. Je schneller die richtige Antwort, desto höher der Score.',
+    'startSpeedGame()',
+    `<label for="speedCount">Anzahl der Fragen</label>
+     <select class="game-select" id="speedCount"><option>10</option><option>15</option><option>20</option></select>
+     <label for="speedTime">Zeit pro Frage</label>
+     <select class="game-select" id="speedTime"><option value="15">15 Sekunden</option><option value="10">10 Sekunden</option><option value="20">20 Sekunden</option></select>`
+  );
+}
+
+function startSpeedGame(){
+  const chapters=selectedGameChapters();
+  const count=Number($('#speedCount').value);
+  const seconds=Number($('#speedTime').value);
+  speedState={questions:shuffled(buildSpeedPool(chapters)).slice(0,count),index:0,score:0,correct:0,
+    streak:0,bestStreak:0,seconds,timeLeft:seconds,locked:false};
+  drawSpeedQuestion();
+}
+
+function drawSpeedQuestion(){
+  stopGameTimers();
+  const state=speedState;
+  if(!state||state.index>=state.questions.length){ finishSpeedGame(); return; }
+  const question=state.questions[state.index];
+  state.timeLeft=state.seconds;
+  state.locked=false;
+  view.innerHTML=mainTabs('games')+`<section class="speed-stage">
+    <div class="game-play-head">
+      <div class="game-progress"><span style="width:${state.index/state.questions.length*100}%"></span></div>
+      <span class="game-counter">${state.index+1} / ${state.questions.length}</span>
+    </div>
+    <div class="speed-meta"><span class="speed-score">Score: <span id="liveScore">${state.score}</span></span>
+      <span class="speed-timer" id="speedTimer">${state.timeLeft}</span></div>
+    <article class="card">
+      <div class="speed-kind">${question.kind}</div>
+      <div class="speed-question">${escapeHtml(question.q)}</div>
+      <div class="speed-options">${question.options.map((option,index)=>`
+        <button type="button" class="speed-option" data-index="${index}" onclick="answerSpeed(${index})">${escapeHtml(option.text)}</button>`).join('')}</div>
+      <div class="speed-feedback" id="speedFeedback"></div>
+    </article>
+  </section>`;
+  gameTimerId=setInterval(()=>{
+    state.timeLeft--;
+    const timer=$('#speedTimer');
+    if(timer){
+      timer.textContent=state.timeLeft;
+      timer.classList.toggle('urgent',state.timeLeft<=5);
+    }
+    if(state.timeLeft<=0) answerSpeed(-1);
+  },1000);
+}
+
+function answerSpeed(index){
+  const state=speedState;
+  if(!state||state.locked)return;
+  state.locked=true;
+  if(gameTimerId){clearInterval(gameTimerId);gameTimerId=null;}
+  const question=state.questions[state.index];
+  const correctIndex=question.options.findIndex(option=>option.correct);
+  const isCorrect=index===correctIndex;
+  const buttons=$$('.speed-option');
+  buttons[correctIndex]?.classList.add('correct');
+  if(isCorrect){
+    const gained=500+Math.round((state.timeLeft/state.seconds)*500);
+    state.score+=gained;
+    state.correct++;
+    state.streak++;
+    state.bestStreak=Math.max(state.bestStreak,state.streak);
+    $('#speedFeedback').textContent=`Richtig! +${gained} Punkte`;
+    $('#liveScore').textContent=state.score;
+  }else{
+    state.streak=0;
+    if(index>=0)buttons[index]?.classList.add('wrong');
+    $('#speedFeedback').textContent=index<0?'Zeit abgelaufen!':'Nicht ganz. Die richtige Antwort ist markiert.';
+  }
+  buttons.forEach(button=>button.disabled=true);
+  gameDelayId=setTimeout(()=>{state.index++;drawSpeedQuestion();},1200);
+}
+
+function finishSpeedGame(){
+  stopGameTimers();
+  const state=speedState;
+  const best=saveGameBest('speed',state.score);
+  const accuracy=Math.round(state.correct/state.questions.length*100);
+  view.innerHTML=mainTabs('games')+`<section class="card game-result">
+    <div class="result-medal">${accuracy>=90?'🏆':accuracy>=60?'⭐':'↻'}</div>
+    <h2>Runde beendet</h2><div class="result-score">${state.score} Punkte</div>
+    <p>Bestscore: <b>${best}</b></p>
+    <div class="result-stats">
+      <div class="result-stat"><b>${state.correct}/${state.questions.length}</b><small>richtig</small></div>
+      <div class="result-stat"><b>${accuracy}%</b><small>Genauigkeit</small></div>
+      <div class="result-stat"><b>${state.bestStreak}</b><small>beste Serie</small></div>
+    </div>
+    <div class="game-actions"><button class="btn btn-green" onclick="renderSpeedSetup()">Noch einmal</button>
+      <button class="btn btn-ghost" onclick="go('games')">Alle Spiele</button></div>
+  </section>`;
+}
+
+function renderMemorySetup(){
+  view.innerHTML=gameSetupCard('Memory Match','Finde sechs Wort-Bedeutung-Paare mit möglichst wenigen Zügen.','startMemoryGame()');
+}
+
+function startMemoryGame(){
+  const vocab=shuffled(selectedGameChapters().flatMap(chapter=>chapter.vocab)).slice(0,6);
+  const cards=shuffled(vocab.flatMap((item,pair)=>[
+    {pair,text:item.w,type:'Wort'},{pair,text:plainText(item.d),type:'Bedeutung'}
+  ]));
+  memoryState={cards,revealed:[],matched:new Set(),moves:0,locked:false};
+  drawMemoryGame();
+}
+
+function drawMemoryGame(){
+  const state=memoryState;
+  view.innerHTML=mainTabs('games')+`<section>
+    <div class="game-play-head"><div class="game-progress"><span style="width:${state.matched.size/6*100}%"></span></div>
+      <span class="game-counter">${state.moves} Züge</span></div>
+    <div class="memory-board">${state.cards.map((card,index)=>{
+      const shown=state.revealed.includes(index)||state.matched.has(card.pair);
+      return `<button type="button" class="memory-card ${shown?'revealed':''} ${state.matched.has(card.pair)?'matched':''}"
+        onclick="flipMemory(${index})" ${state.matched.has(card.pair)?'disabled':''}>
+        ${shown?`${escapeHtml(card.text)}<small>${card.type}</small>`:'?'}</button>`;
+    }).join('')}</div>
+  </section>`;
+}
+
+function flipMemory(index){
+  const state=memoryState;
+  if(state.locked||state.revealed.includes(index)||state.matched.has(state.cards[index].pair))return;
+  state.revealed.push(index);
+  drawMemoryGame();
+  if(state.revealed.length<2)return;
+  state.moves++;
+  const [first,second]=state.revealed;
+  if(state.cards[first].pair===state.cards[second].pair){
+    state.matched.add(state.cards[first].pair);
+    state.revealed=[];
+    drawMemoryGame();
+    if(state.matched.size===6) gameDelayId=setTimeout(finishMemoryGame,450);
+  }else{
+    state.locked=true;
+    gameDelayId=setTimeout(()=>{state.revealed=[];state.locked=false;drawMemoryGame();},850);
+  }
+}
+
+function finishMemoryGame(){
+  const moves=memoryState.moves;
+  const scores=gameBestScores();
+  scores.memory=scores.memory?Math.min(scores.memory,moves):moves;
+  localStorage.setItem('a2GameBestScores',JSON.stringify(scores));
+  view.innerHTML=mainTabs('games')+`<section class="card game-result">
+    <div class="result-medal">▦</div><h2>Alle Paare gefunden</h2>
+    <div class="result-score">${moves} Züge</div><p>Dein Rekord: <b>${scores.memory} Züge</b></p>
+    <div class="game-actions"><button class="btn btn-green" onclick="startMemoryGame()">Neue Karten</button>
+      <button class="btn btn-ghost" onclick="go('games')">Alle Spiele</button></div></section>`;
+}
+
+function renderArtikelSetup(){
+  view.innerHTML=gameSetupCard('Artikel-Challenge','Trainiere der, die und das mit Nomen direkt aus den Kapiteln.','startArtikelGame()');
+}
+
+function startArtikelGame(){
+  const words=selectedGameChapters().flatMap(chapter=>chapter.vocab)
+    .map(item=>({item,match:String(item.w).match(/^(der|die|das)\s+(.+)/i)}))
+    .filter(entry=>entry.match);
+  artikelState={questions:shuffled(words).slice(0,10),index:0,score:0,locked:false};
+  drawArtikelQuestion();
+}
+
+function drawArtikelQuestion(){
+  stopGameTimers();
+  const state=artikelState;
+  if(state.index>=state.questions.length){finishArtikelGame();return;}
+  const entry=state.questions[state.index];
+  state.locked=false;
+  view.innerHTML=mainTabs('games')+`<section class="card game-setup">
+    <div class="game-play-head"><div class="game-progress"><span style="width:${state.index/state.questions.length*100}%"></span></div>
+      <span class="game-counter">${state.index+1} / ${state.questions.length}</span></div>
+    <div class="artikel-word">${escapeHtml(wordLabel(entry.item.w))}</div>
+    <div class="artikel-options">${['der','die','das'].map(article=>`<button type="button" class="artikel-option"
+      onclick="answerArtikel('${article}')">${article}</button>`).join('')}</div>
+    <div class="speed-feedback" id="artikelFeedback"></div>
+  </section>`;
+}
+
+function answerArtikel(article){
+  const state=artikelState;
+  if(state.locked)return;
+  state.locked=true;
+  const answer=state.questions[state.index].match[1].toLowerCase();
+  $$('.artikel-option').forEach(button=>{
+    if(button.textContent===answer)button.classList.add('correct');
+    if(button.textContent===article&&article!==answer)button.classList.add('wrong');
+    button.disabled=true;
+  });
+  if(article===answer){state.score++;$('#artikelFeedback').textContent='Richtig!';}
+  else $('#artikelFeedback').textContent=`Richtig ist: ${answer}`;
+  gameDelayId=setTimeout(()=>{state.index++;drawArtikelQuestion();},850);
+}
+
+function finishArtikelGame(){
+  const state=artikelState;
+  saveGameBest('artikel',state.score);
+  view.innerHTML=mainTabs('games')+`<section class="card game-result">
+    <div class="result-medal">${state.score>=9?'🏆':'der·die·das'}</div><h2>Fertig!</h2>
+    <div class="result-score">${state.score} / ${state.questions.length}</div>
+    <div class="game-actions"><button class="btn btn-green" onclick="startArtikelGame()">Noch einmal</button>
+      <button class="btn btn-ghost" onclick="go('games')">Alle Spiele</button></div></section>`;
+}
+
+function renderSentenceSetup(){
+  view.innerHTML=gameSetupCard('Satz-Puzzle','Ordne die Wörter aus wichtigen Redemitteln. Satzzeichen bleiben am Wort.','startSentenceGame()');
+}
+
+function startSentenceGame(){
+  const sentences=selectedGameChapters().flatMap(chapter=>chapter.redemittel.flatMap(group=>group.items))
+    .filter(item=>plainText(item.de).split(' ').length>=5&&plainText(item.de).split(' ').length<=12);
+  sentenceState={questions:shuffled(sentences).slice(0,5),index:0,score:0,selected:[],tokens:[]};
+  prepareSentenceQuestion();
+}
+
+function prepareSentenceQuestion(){
+  const state=sentenceState;
+  if(state.index>=state.questions.length){finishSentenceGame();return;}
+  const sentence=plainText(state.questions[state.index].de);
+  state.tokens=shuffled(sentence.split(' ').map((text,id)=>({id,text})));
+  if(state.tokens.map(token=>token.text).join(' ')===sentence)state.tokens.reverse();
+  state.selected=[];
+  drawSentenceQuestion();
+}
+
+function drawSentenceQuestion(message=''){
+  const state=sentenceState;
+  view.innerHTML=mainTabs('games')+`<section class="card game-setup">
+    <div class="game-play-head"><div class="game-progress"><span style="width:${state.index/state.questions.length*100}%"></span></div>
+      <span class="game-counter">${state.index+1} / ${state.questions.length}</span></div>
+    <p style="text-align:center;color:var(--ink-2)">Baue den richtigen Satz:</p>
+    <div class="sentence-zone">${state.selected.map(id=>{
+      const token=state.tokens.find(item=>item.id===id);
+      return `<button class="word-chip selected" onclick="toggleSentenceToken(${id})">${escapeHtml(token.text)}</button>`;
+    }).join('')}</div>
+    <div class="sentence-source">${state.tokens.filter(token=>!state.selected.includes(token.id)).map(token=>
+      `<button class="word-chip" onclick="toggleSentenceToken(${token.id})">${escapeHtml(token.text)}</button>`).join('')}</div>
+    <div class="speed-feedback" id="sentenceFeedback">${message}</div>
+    <div class="game-actions"><button class="btn btn-green" onclick="checkSentence()">Prüfen</button>
+      <button class="btn btn-ghost" onclick="clearSentence()">Neu ordnen</button></div>
+  </section>`;
+}
+
+function toggleSentenceToken(id){
+  const selected=sentenceState.selected;
+  const index=selected.indexOf(id);
+  if(index>=0)selected.splice(index,1);else selected.push(id);
+  drawSentenceQuestion();
+}
+
+function clearSentence(){sentenceState.selected=[];drawSentenceQuestion();}
+
+function checkSentence(){
+  const state=sentenceState;
+  if(state.selected.length!==state.tokens.length){drawSentenceQuestion('Benutze zuerst alle Wörter.');return;}
+  const built=state.selected.map(id=>state.tokens.find(token=>token.id===id).text).join(' ');
+  const answer=plainText(state.questions[state.index].de);
+  if(built===answer){
+    state.score++;
+    state.index++;
+    gameDelayId=setTimeout(prepareSentenceQuestion,550);
+    drawSentenceQuestion('Richtig!');
+  }else drawSentenceQuestion('Noch nicht richtig. Versuche eine andere Reihenfolge.');
+}
+
+function finishSentenceGame(){
+  const state=sentenceState;
+  saveGameBest('sentence',state.score);
+  view.innerHTML=mainTabs('games')+`<section class="card game-result">
+    <div class="result-medal">✓</div><h2>Sehr gut!</h2><div class="result-score">${state.score} / ${state.questions.length}</div>
+    <div class="game-actions"><button class="btn btn-green" onclick="startSentenceGame()">Neue Sätze</button>
+      <button class="btn btn-ghost" onclick="go('games')">Alle Spiele</button></div></section>`;
 }
 
 /* ===================== Goethe A2 exam training ===================== */
