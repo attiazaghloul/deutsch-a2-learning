@@ -1,6 +1,0 @@
-Vocabulary card icons are from Lucide Icons 0.468.0.
-https://lucide.dev/
-
-Lucide is licensed under the ISC License. See LICENSE in this directory.
-The icons are stored locally so the learning app does not depend on an
-external image service at runtime.
