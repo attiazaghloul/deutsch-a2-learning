@@ -179,7 +179,7 @@ table.gt b{color:var(--green-d)}
 .reading-answer{display:none;background:var(--green-l);border-radius:9px;padding:8px 11px;margin-top:7px;font-size:14px}
 .reading-answer.show{display:block}
 /* ---------- main library tabs, dictionary and expressions ---------- */
-.main-tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:0 0 16px}
+.main-tabs{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin:0 0 16px}
 .main-tab{border:1px solid var(--line);background:var(--card);color:var(--ink-2);border-radius:13px;
   padding:10px 6px;font:inherit;font-size:13px;font-weight:700;cursor:pointer;box-shadow:var(--shadow)}
 .main-tab.active{background:var(--green-d);border-color:var(--green-d);color:#fff}
@@ -223,6 +223,46 @@ table.gt b{color:var(--green-d)}
   border-radius:11px;overflow:hidden;margin:10px 0}
 .verb-form{background:#fff;padding:7px 8px;font-size:13px}
 .verb-form small{display:block;color:var(--ink-2);font-size:10px}
+/* ---------- exam training ---------- */
+.exam-hero{background:linear-gradient(135deg,#163f43,#287c79);color:#fff}
+.exam-hero h2{color:#fff}
+.exam-hero p{color:rgba(255,255,255,.88)}
+.exam-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}
+.exam-stat{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:9px;text-align:center}
+.exam-stat b{display:block;font-size:17px}.exam-stat small{font-size:11px;opacity:.85}
+.exam-module-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.exam-module{border:0;text-align:left;cursor:pointer;min-height:155px;position:relative}
+.exam-module h3{color:var(--green-d);font-size:19px}.exam-module p{font-size:13.5px;color:var(--ink-2);margin-top:5px}
+.exam-module-score{position:absolute;right:15px;top:15px;background:var(--green-l);color:var(--green-d);
+  border-radius:999px;padding:4px 9px;font-size:11px;font-weight:800}
+.exam-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;position:sticky;top:118px;
+  z-index:30;background:rgba(246,242,234,.96);backdrop-filter:blur(8px);padding:8px 0 10px}
+.exam-timer{font-variant-numeric:tabular-nums;background:#173f43;color:#fff;border-radius:12px;padding:9px 13px;font-weight:800}
+.exam-part{margin-bottom:14px}.exam-part h3{color:var(--green-d);margin-bottom:4px}
+.exam-instruction{font-size:13px;color:var(--ink-2);margin-bottom:12px}
+.exam-source{background:#f6f8f8;border-left:4px solid var(--green);border-radius:10px;padding:14px;
+  line-height:1.7;font-size:14px;margin-bottom:13px}
+.exam-question{border-top:1px solid var(--line);padding:12px 0}
+.exam-question:first-of-type{border-top:0}
+.exam-question b{display:block;font-size:14.5px;margin-bottom:7px}
+.exam-option{display:block;background:#fff;border:1.5px solid #dce3e6;border-radius:10px;padding:8px 10px;margin:6px 0;font-size:14px}
+.exam-option:has(input:checked){border-color:var(--green);background:var(--green-l)}
+.exam-question.correct{background:#f3faf1}.exam-question.wrong{background:#fff1f1}
+.exam-result{display:none;border-radius:14px;padding:14px;margin:12px 0;font-weight:700}
+.exam-result.show{display:block}.exam-result.good{background:var(--green-l);color:var(--green-d)}
+.exam-result.retry{background:var(--amber-l);color:#80551f}
+.exam-audio{display:flex;align-items:center;gap:10px;background:var(--blue-l);border-radius:12px;padding:12px;margin:10px 0}
+.exam-audio button{border:0;background:var(--blue);color:#fff;border-radius:10px;padding:9px 12px;font-weight:800;cursor:pointer}
+.exam-audio button:disabled{opacity:.45;cursor:default}
+.writing-area{width:100%;min-height:180px;border:2px solid #d9e1e4;border-radius:12px;padding:12px;font:inherit;resize:vertical}
+.writing-area:focus{outline:none;border-color:var(--green)}
+.word-count{text-align:right;color:var(--ink-2);font-size:12px;margin-top:4px}
+.exam-checklist{display:grid;gap:6px;margin:12px 0}
+.exam-checklist label{background:#f7f9f9;border-radius:9px;padding:8px 10px;font-size:13.5px}
+.exam-model summary{cursor:pointer;color:var(--green-d);font-weight:800}.exam-model p{margin-top:8px;line-height:1.7}
+.speaking-help{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.speaking-help span{background:var(--blue-l);color:#173f8a;border-radius:999px;padding:5px 9px;font-size:12px}
+.exam-total{font-size:22px;font-weight:900;color:var(--green-d)}
 /* ---------- speech ---------- */
 .listen-toggle,.settings-toggle{border:1.5px solid rgba(255,255,255,.45);background:rgba(255,255,255,.14);color:#fff;
   border-radius:999px;padding:6px 9px;font:inherit;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap}
@@ -526,6 +566,8 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
   .listen-exercise-thumb{height:175px}
   .scene-gallery{grid-template-columns:1fr}
   .vocab-scenes{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .exam-stats,.exam-module-grid{grid-template-columns:1fr}
+  .exam-toolbar{top:112px;align-items:stretch;flex-direction:column}
 }
 </style>
 </head>
@@ -616,6 +658,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <script src="data_hoeren.js"></script>
 <script src="data_hoeren_figures.js"></script>
 <script src="data_hoeren_interactive.js"></script>
+<script src="data_exam.js"></script>
 <script>
 /* ===================== state & helpers ===================== */
 const $ = s => document.querySelector(s);
@@ -625,6 +668,7 @@ const BOOK = [...window.BOOK0, ...window.BOOK1, ...window.BOOK2];
 const GRAM = window.GRAM;
 const VERBS = window.A2_VERBS || [];
 const HOEREN = window.HOEREN_BOOK;
+const EXAM = window.A2_EXAM;
 function escapeHtml(value){
   return String(value).replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]));
 }
@@ -1019,6 +1063,7 @@ function go(hash){ location.hash = hash; }
 window.addEventListener('hashchange', route);
 $('#backBtn').addEventListener('click', () => {
   const h = location.hash;
+  if(/^#exam\//.test(h)){ go('exam'); return; }
   if(/^#listen\/[A-I]\/\d+/.test(h)){ go(h.split('/').slice(0,2).join('/').replace('#','')); return; }
   if(/^#listen\/[A-I]/.test(h)){ go('listen'); return; }
   if(/^#(k|g)\d+\//.test(h)) go(h.split('/')[0]);   // tab -> lesson root? actually lesson root shows tabs
@@ -1027,12 +1072,16 @@ $('#backBtn').addEventListener('click', () => {
 
 function route(){
   const h = location.hash.replace('#','');
+  stopExamTimer();
   window.scrollTo(0,0);
   if(!h){ renderHome(); return; }
   if(h==='dict'){ renderDictionary(); return; }
   if(h==='verbs'){ renderVerbs(); return; }
   if(h==='phrases'){ renderExpressions(); return; }
   if(h==='listen'){ renderListeningHome(); return; }
+  if(h==='exam'){ renderExamHome(); return; }
+  const examMatch=h.match(/^exam\/(lesen|hoeren|schreiben|sprechen)$/);
+  if(examMatch){ renderExamModule(examMatch[1]); return; }
   const listenMatch=h.match(/^listen\/([A-I])(?:\/(\d+))?$/);
   if(listenMatch){
     const chapter=HOEREN.chapters.find(item=>item.id===listenMatch[1]);
@@ -1064,6 +1113,7 @@ function mainTabs(active){
     <button class="main-tab ${active==='verbs'?'active':''}" onclick="go('verbs')">🧩 Verben</button>
     <button class="main-tab ${active==='phrases'?'active':''}" onclick="go('phrases')">💬 Redewendungen</button>
     <button class="main-tab ${active==='listen'?'active':''}" onclick="go('listen')">🎧 Hören</button>
+    <button class="main-tab ${active==='exam'?'active':''}" onclick="go('exam')">📝 Prüfung</button>
   </nav>`;
 }
 
@@ -1541,6 +1591,236 @@ function renderExpressions(){
     $('#expressionCount').textContent=`${visible} / ${expressions.length} Ausdrücke`;
   };
   search.addEventListener('input',filter); chapter.addEventListener('change',filter); filter();
+}
+
+/* ===================== Goethe A2 exam training ===================== */
+let examTimerId=null;
+
+function getExamScores(){
+  try{return JSON.parse(localStorage.getItem('a2ExamScores')||'{}');}
+  catch{return {};}
+}
+
+function saveExamScore(module,score){
+  const scores=getExamScores();
+  scores[module]=Math.round(score*10)/10;
+  localStorage.setItem('a2ExamScores',JSON.stringify(scores));
+}
+
+function stopExamTimer(){
+  if(examTimerId){clearInterval(examTimerId);examTimerId=null;}
+}
+
+function startExamTimer(seconds,targetId='examTimer'){
+  stopExamTimer();
+  let remaining=seconds;
+  const target=$('#'+targetId);
+  const draw=()=>{
+    if(!target)return;
+    const minutes=Math.floor(remaining/60);
+    const secs=remaining%60;
+    target.textContent=`${String(minutes).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
+    target.style.background=remaining<=60?'#a33b3b':'';
+  };
+  draw();
+  examTimerId=setInterval(()=>{
+    remaining--;
+    draw();
+    if(remaining<=0){
+      stopExamTimer();
+      showSpeechStatus('Die Zeit ist vorbei.');
+    }
+  },1000);
+}
+
+function examModuleDescription(id){
+  return {
+    lesen:'4 Teile · 20 Fragen · automatische Korrektur',
+    hoeren:'4 Teile · 20 Fragen · Hörtexte mit Wiedergabelimit',
+    schreiben:'2 Aufgaben · Wortzähler · Checkliste und Modelle',
+    sprechen:'3 Teile · Vorbereitung und Sprechzeit'
+  }[id];
+}
+
+function renderExamHome(){
+  setTop('Prüfungstraining A2','Goethe-Zertifikat A2 · interaktives Modelltraining',true);
+  const scores=getExamScores();
+  const ids=['lesen','hoeren','schreiben','sprechen'];
+  const total=ids.reduce((sum,id)=>sum+Number(scores[id]||0),0);
+  view.innerHTML=mainTabs('exam')+`
+    <section class="card exam-hero">
+      <h2>${EXAM.title}</h2>
+      <p>${EXAM.note}</p>
+      ${ar('نموذج تدريبي أصلي وتفاعلي على نفس هيكل امتحان Goethe A2 الحالي للبالغين، مع وقت ودرجات وتصحيح.')}
+      <div class="exam-stats">
+        ${ids.map(id=>`<div class="exam-stat"><b>${EXAM.modules[id].duration} Min.</b><small>${EXAM.modules[id].title}</small></div>`).join('')}
+      </div>
+    </section>
+    <div class="card">
+      <div class="exam-total">${total.toFixed(1)} / 100 Punkte</div>
+      <p style="font-size:13px;color:var(--ink-2);margin-top:4px">Deine gespeicherte Trainingsprognose aus allen vier Modulen.</p>
+      ${ar('دي نتيجة تدريبية محفوظة على جهازك، وليست نتيجة رسمية من معهد جوته.')}
+    </div>
+    <div class="exam-module-grid">
+      ${ids.map((id,index)=>{
+        const module=EXAM.modules[id];
+        return `<button type="button" class="card exam-module" onclick="go('exam/${id}')">
+          <span class="exam-module-score">${scores[id]!==undefined?scores[id]+' / 25':'noch offen'}</span>
+          <div class="num" style="margin-bottom:10px">${index+1}</div>
+          <h3>${module.title}</h3>
+          <p>${examModuleDescription(id)}</p>
+        </button>`;
+      }).join('')}
+    </div>
+    <div class="intro-note"><b>Hinweis:</b> Dieses Training verwendet vollständig neu geschriebene Aufgaben. Aufbau, Zeitrahmen und Module orientieren sich an der offiziellen Goethe-A2-Prüfungsstruktur.</div>`;
+}
+
+function renderExamModule(id){
+  const module=EXAM.modules[id];
+  if(!module){renderExamHome();return;}
+  setTop(`${module.title} · Prüfungstraining`,`${module.duration} Minuten · ${module.points} Punkte`,true);
+  let html=mainTabs('exam')+`
+    <div class="exam-toolbar">
+      <div><b>${module.title}</b><div style="font-size:12px;color:var(--ink-2)">${examModuleDescription(id)}</div></div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <span class="exam-timer" id="examTimer">${String(module.duration).padStart(2,'0')}:00</span>
+        <button class="btn btn-green" onclick="startExamTimer(${module.duration*60})">Zeit starten</button>
+      </div>
+    </div>`;
+  if(id==='lesen'||id==='hoeren') html+=renderObjectiveExam(id,module);
+  if(id==='schreiben') html+=renderWritingExam(module);
+  if(id==='sprechen') html+=renderSpeakingExam(module);
+  view.innerHTML=html;
+  if(id==='schreiben') initWritingExam();
+}
+
+function renderObjectiveExam(id,module){
+  return module.parts.map((part,partIndex)=>`
+    <section class="card exam-part">
+      <h3>${part.title}</h3>
+      <p class="exam-instruction">${part.instruction}</p>
+      ${id==='lesen'?`<div class="exam-source">${part.text}</div>`:`
+        <div class="exam-audio">
+          <button type="button" onclick="playExamAudio('${part.id}',this)">▶ Hörtext abspielen</button>
+          <span>maximal ${part.plays===1?'einmal':part.plays+'-mal'} · <b class="play-count">0 / ${part.plays}</b></span>
+        </div>`}
+      ${part.questions.map((question,questionIndex)=>{
+        const number=partIndex*5+questionIndex+1;
+        return `<div class="exam-question" data-answer="${question.a}" data-number="${number}">
+          <b>${number}. ${question.q}</b>
+          ${question.o.map((option,optionIndex)=>`<label class="exam-option">
+            <input type="radio" name="${id}-${number}" value="${optionIndex}"> ${option}
+          </label>`).join('')}
+        </div>`;
+      }).join('')}
+    </section>`).join('')+`
+    <button class="btn btn-green" style="width:100%" onclick="checkExamObjective('${id}')">Antworten prüfen</button>
+    <div class="exam-result" id="examResult"></div>`;
+}
+
+function playExamAudio(partId,button){
+  const part=EXAM.modules.hoeren.parts.find(item=>item.id===partId);
+  if(!part||button.disabled)return;
+  const count=Number(button.dataset.plays||0)+1;
+  button.dataset.plays=String(count);
+  button.parentElement.querySelector('.play-count').textContent=`${count} / ${part.plays}`;
+  if(count>=part.plays)button.disabled=true;
+  speakText(part.script,'de');
+}
+
+function checkExamObjective(id){
+  const questions=$$('.exam-question');
+  let correct=0;
+  questions.forEach(question=>{
+    const selected=question.querySelector('input:checked');
+    const answer=Number(question.dataset.answer);
+    const isCorrect=selected&&Number(selected.value)===answer;
+    question.classList.toggle('correct',Boolean(isCorrect));
+    question.classList.toggle('wrong',!isCorrect);
+    if(isCorrect)correct++;
+    question.querySelectorAll('input').forEach(input=>input.disabled=true);
+  });
+  const score=correct*1.25;
+  saveExamScore(id,score);
+  const result=$('#examResult');
+  result.className=`exam-result show ${score>=15?'good':'retry'}`;
+  result.innerHTML=`${correct} / 20 richtig · <b>${score.toFixed(2)} / 25 Punkte</b>
+    ${ar(score>=15?'نتيجة تدريبية جيدة في هذا القسم.':'راجع الأخطاء وحاول القسم مرة ثانية بعد المذاكرة.')}`;
+  result.scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+function renderWritingExam(module){
+  return module.tasks.map((task,index)=>`
+    <section class="card exam-part">
+      <h3>${task.title}</h3>
+      <div class="exam-source">${task.prompt}</div>
+      <textarea class="writing-area" id="writingTask${index}" data-min="${task.minWords}" placeholder="Schreibe hier deine Antwort ..."></textarea>
+      <div class="word-count" id="writingCount${index}">0 Wörter · Ziel: mindestens ${task.minWords}</div>
+      <div class="exam-checklist">
+        ${task.checklist.map((item,itemIndex)=>`<label><input type="checkbox" class="writing-check" data-task="${index}" value="${itemIndex}"> ${item}</label>`).join('')}
+      </div>
+      <details class="exam-model"><summary>Modellantwort nach der eigenen Antwort ansehen</summary><p>${task.model}</p></details>
+    </section>`).join('')+`
+    <button class="btn btn-green" style="width:100%" onclick="assessWritingExam()">Selbsteinschätzung speichern</button>
+    <div class="exam-result" id="examResult"></div>`;
+}
+
+function initWritingExam(){
+  $$('.writing-area').forEach((area,index)=>{
+    const update=()=>{
+      const words=area.value.trim()?area.value.trim().split(/\s+/).length:0;
+      const target=$(`#writingCount${index}`);
+      target.textContent=`${words} Wörter · Ziel: mindestens ${area.dataset.min}`;
+      target.style.color=words>=Number(area.dataset.min)?'var(--green-d)':'';
+      localStorage.setItem(`a2Writing${index}`,area.value);
+    };
+    area.value=localStorage.getItem(`a2Writing${index}`)||'';
+    area.addEventListener('input',update);update();
+  });
+}
+
+function assessWritingExam(){
+  const checks=$$('.writing-check');
+  const checked=checks.filter(item=>item.checked).length;
+  const score=checked*2.5;
+  saveExamScore('schreiben',score);
+  const result=$('#examResult');
+  result.className=`exam-result show ${score>=15?'good':'retry'}`;
+  result.innerHTML=`${checked} / ${checks.length} Kriterien erfüllt · <b>${score.toFixed(1)} / 25 Punkte</b>
+    ${ar('التقييم هنا ذاتي للتدريب. قارن إجابتك بالنموذج بعد ما تخلص.')}`;
+}
+
+function renderSpeakingExam(module){
+  return module.tasks.map((task,index)=>`
+    <section class="card exam-part">
+      <h3>${task.title}</h3>
+      <div class="exam-source">${task.prompt}</div>
+      <div class="speaking-help">${task.help.map(item=>`<span>${item}</span>`).join('')}</div>
+      <div class="exam-audio">
+        <button type="button" onclick="speakText(${JSON.stringify(task.prompt)},'de')">🔊 Aufgabe hören</button>
+        <button type="button" onclick="startExamTimer(${task.prep+task.speak},'sprechTaskTimer${index}')">▶ Aufgabe starten</button>
+        <span>Vorbereitung ${task.prep}s + Sprechen ${task.speak}s</span>
+        <b class="exam-timer" id="sprechTaskTimer${index}">${String(Math.floor((task.prep+task.speak)/60)).padStart(2,'0')}:${String((task.prep+task.speak)%60).padStart(2,'0')}</b>
+      </div>
+    </section>`).join('')+`
+    <section class="card">
+      <h3 style="color:var(--green-d)">Selbsteinschätzung</h3>
+      <div class="exam-checklist">${module.checklist.map((item,index)=>`
+        <label><input type="checkbox" class="speaking-check" value="${index}"> ${item}</label>`).join('')}</div>
+      <button class="btn btn-green" onclick="assessSpeakingExam()">Ergebnis speichern</button>
+      <div class="exam-result" id="examResult"></div>
+    </section>`;
+}
+
+function assessSpeakingExam(){
+  const checks=$$('.speaking-check');
+  const checked=checks.filter(item=>item.checked).length;
+  const score=checked*5;
+  saveExamScore('sprechen',score);
+  const result=$('#examResult');
+  result.className=`exam-result show ${score>=15?'good':'retry'}`;
+  result.innerHTML=`${checked} / ${checks.length} Kriterien erfüllt · <b>${score} / 25 Punkte</b>
+    ${ar('سجّل صوتك بالموبايل لو أمكن واسمعه مرة أخرى قبل التقييم الذاتي.')}`;
 }
 
 /* ===================== chapter (book) ===================== */
