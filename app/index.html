@@ -63,6 +63,9 @@ body.show-ar .ar-toggle .dot{background:var(--green)}
 body.show-ar .ar{display:block}
 span.ar{display:none;background:none;border:0;padding:0 4px;margin:0;border-radius:6px}
 body.show-ar span.ar{display:inline}
+body.exam-mode .ar-toggle,
+body.exam-mode .translate-trigger,
+body.exam-mode .ar{display:none!important}
 /* ---------- cards & layout ---------- */
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);
   padding:20px;margin-bottom:16px;overflow:hidden}
@@ -819,6 +822,11 @@ async function requestTranslation(text,sourceLanguage,targetLanguage){
 }
 
 async function captureSelection(){
+  if(document.body.classList.contains('exam-mode')){
+    translateTrigger.classList.remove('show');
+    pendingTranslation=null;
+    return;
+  }
   const selection=window.getSelection();
   const data=selectionContext(selection);
   if(!data){ translateTrigger.classList.remove('show'); return; }
@@ -1073,6 +1081,15 @@ $('#backBtn').addEventListener('click', () => {
 function route(){
   const h = location.hash.replace('#','');
   stopExamTimer();
+  const examMode=h==='exam'||h.startsWith('exam/');
+  document.body.classList.toggle('exam-mode',examMode);
+  if(examMode){
+    translationRequest++;
+    pendingTranslation=null;
+    translateTrigger.classList.remove('show');
+    closeModal('translationModal');
+    window.getSelection()?.removeAllRanges();
+  }
   window.scrollTo(0,0);
   if(!h){ renderHome(); return; }
   if(h==='dict'){ renderDictionary(); return; }
