@@ -738,20 +738,20 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
     </div>
     <div class="setting-row">
       <b>Deutsche Sprecher</b>
-      <select class="voice-select" id="speechVoice" aria-label="Deutsche Stimme"><option value="">Automatisch</option></select>
+      <select class="voice-select" id="speechVoice" aria-label="Deutsche Stimme"></select>
       <div class="voice-gallery" id="voiceGallery"></div>
       <div class="voice-availability" id="voiceAvailability"></div>
-      <div class="ar">دي أصوات أشخاص حقيقية من محرك الصوت على جهازك. اضغط على السماعة داخل كل بطاقة للمقارنة، واضغط البطاقة لاختيار الشخص.</div>
+      <div class="ar">الأصوات دي مسجلة وثابتة داخل الموقع، لذلك نفس الشخص ونفس النطق هيظهروا على أي متصفح أو جهاز.</div>
     </div>
     <div class="setting-row">
-      <b>Sprechweise <small style="color:var(--ink-2)">(gleiche Person)</small></b>
+      <b>Sprechweise <small style="color:var(--ink-2)">(Tempo der gewählten Person)</small></b>
       <div class="voice-profiles">
-        <button class="voice-profile" data-profile="clear"><b>Klar</b><small>deutlich & neutral</small></button>
-        <button class="voice-profile" data-profile="calm"><b>Ruhig</b><small>langsamer & weich</small></button>
-        <button class="voice-profile" data-profile="deep"><b>Tief</b><small>tiefer & ruhig</small></button>
-        <button class="voice-profile" data-profile="bright"><b>Hell</b><small>heller & lebendig</small></button>
+        <button class="voice-profile" data-profile="clear"><b>Natürlich</b><small>Originaltempo</small></button>
+        <button class="voice-profile" data-profile="calm"><b>Langsam</b><small>ruhiger zum Lernen</small></button>
+        <button class="voice-profile" data-profile="deep"><b>Bedacht</b><small>leicht reduziert</small></button>
+        <button class="voice-profile" data-profile="bright"><b>Lebendig</b><small>etwas schneller</small></button>
       </div>
-      <div class="ar">دي طرق إلقاء مختلفة لنفس الشخص المختار، مش أشخاص مختلفين.</div>
+      <div class="ar">دي سرعات إلقاء مختلفة لنفس التسجيل والشخص المختار.</div>
     </div>
     <div class="setting-row">
       <b>Kontextübersetzung</b>
@@ -793,6 +793,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <script src="data_hoeren_figures.js"></script>
 <script src="data_hoeren_interactive.js"></script>
 <script src="data_exam.js"></script>
+<script src="data_speech.js?v=fixed-voices-1"></script>
 <script src="data_podcast.js?v=word-sync-3"></script>
 <script>
 /* ===================== state & helpers ===================== */
@@ -805,6 +806,8 @@ const VERBS = window.A2_VERBS || [];
 const HOEREN = window.HOEREN_BOOK;
 const EXAM = window.A2_EXAM;
 const PODCASTS = window.A2_PODCASTS || [];
+const FIXED_SPEECH = window.A2_FIXED_SPEECH || {texts:[],voices:[]};
+const FIXED_SPEECH_INDEX = new Map(FIXED_SPEECH.texts.map((text,index)=>[text,index]));
 function escapeHtml(value){
   return String(value).replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]));
 }
@@ -822,7 +825,7 @@ function ar(txt){ return txt ? `<div class="ar">${txt}</div>` : ''; }
 
 /* ===================== settings and contextual translation ===================== */
 let speechRate=Number(localStorage.getItem('speechRate')||.85);
-let speechVoiceURI=localStorage.getItem('speechVoiceURI')||'';
+let speechVoiceURI=localStorage.getItem('speechVoiceURI')||'mia';
 let speechProfile=localStorage.getItem('speechProfile')||'clear';
 let pendingTranslation=null;
 let translationRequest=0;
@@ -849,32 +852,26 @@ function updateSpeedUI(){
 }
 
 function populateVoiceOptions(){
-  if(!window.speechSynthesis) return;
   const select=$('#speechVoice');
-  const current=select.value||speechVoiceURI;
-  const voices=speechSynthesis.getVoices().filter(voice=>voice.lang.toLowerCase().startsWith('de'));
-  select.innerHTML=`<option value="">Automatisch</option>`+voices.map(voice=>
-    `<option value="${escapeHtml(voice.voiceURI)}">${escapeHtml(voice.name)} · ${voice.lang}</option>`).join('');
-  if(voices.some(voice=>voice.voiceURI===current)) select.value=current;
-  else if(voices.length&&speechVoiceURI){ speechVoiceURI=''; localStorage.removeItem('speechVoiceURI'); }
+  const voices=FIXED_SPEECH.voices;
+  if(!voices.some(voice=>voice.id===speechVoiceURI)) speechVoiceURI=voices[0]?.id||'';
+  select.innerHTML=voices.map(voice=>
+    `<option value="${escapeHtml(voice.id)}">${escapeHtml(voice.name)} · ${escapeHtml(voice.description)}</option>`).join('');
+  select.value=speechVoiceURI;
   const gallery=$('#voiceGallery');
-  const cards=[{voiceURI:'',name:'Automatisch',lang:'de-DE'},...voices];
-  gallery.innerHTML=cards.map((voice,index)=>{
-    const cleanName=voice.name.replace(/^Microsoft\s+/,'').replace(/\s*-\s*German.*$/i,'');
-    const initials=cleanName.split(/\s+/).map(part=>part[0]).join('').slice(0,2).toUpperCase()||'DE';
-    const active=voice.voiceURI===speechVoiceURI;
-    return `<button type="button" class="voice-person ${active?'active':''}" data-voice-uri="${escapeHtml(voice.voiceURI)}">
+  gallery.innerHTML=voices.map(voice=>{
+    const initials=voice.name.slice(0,2).toUpperCase();
+    const active=voice.id===speechVoiceURI;
+    return `<button type="button" class="voice-person ${active?'active':''}" data-voice-uri="${escapeHtml(voice.id)}">
       <span class="voice-avatar">${escapeHtml(initials)}</span>
-      <span><span class="voice-person-name">${escapeHtml(cleanName)}</span>
-        <span class="voice-person-meta">${index===0?'beste verfügbare Stimme':escapeHtml(voice.lang)}</span></span>
-      <span class="voice-person-test" data-test-voice="${escapeHtml(voice.voiceURI)}" title="Diese Stimme testen">▶</span>
+      <span><span class="voice-person-name">${escapeHtml(voice.name)}</span>
+        <span class="voice-person-meta">${escapeHtml(voice.description)}</span></span>
+      <span class="voice-person-test" data-test-voice="${escapeHtml(voice.id)}" title="Diese Stimme testen">▶</span>
     </button>`;
   }).join('');
-  $('#voiceAvailability').textContent=voices.length>1
-    ?`${voices.length} verschiedene deutsche Personen sind auf diesem Gerät verfügbar.`
-    : voices.length===1
-      ?'Dieses Gerät stellt nur eine deutsche Person bereit. Die vier Sprechweisen darunter verändern nur den Vortrag.'
-      :'Keine eigene deutsche Stimme gefunden; der Browser wählt seine Standardsprache.';
+  $('#voiceAvailability').textContent=voices.length
+    ?`${voices.length} feste Sprecher. Klang und Aussprache bleiben auf allen Geräten gleich.`
+    :'Die feste Sprachbibliothek konnte nicht geladen werden.';
 }
 
 function setSpeechRate(value,preview=false){
@@ -920,7 +917,6 @@ $('#voiceGallery').addEventListener('click',event=>{
 document.addEventListener('keydown',event=>{ if(event.key==='Escape') $$('.modal-backdrop.show').forEach(modal=>closeModal(modal.id)); });
 updateSpeedUI();
 populateVoiceOptions();
-if(window.speechSynthesis) window.speechSynthesis.addEventListener('voiceschanged',populateVoiceOptions);
 
 function selectionContext(selection){
   const selected=selection.toString().replace(/\s+/g,' ').trim().replace(/^[„“"'.,!?;:()\[\]]+|[„“"'.,!?;:()\[\]]+$/g,'');
@@ -1055,6 +1051,9 @@ translateTrigger.addEventListener('click',showTranslationDetails);
 const speech = window.speechSynthesis;
 const listenToggle = $('#listenToggle');
 let speechStatusTimer = null;
+let fixedSpeechAudio = null;
+let fixedSpeechFrame = null;
+let fixedSpeechSession = 0;
 
 function cleanSpeechText(element){
   const copy=element.cloneNode(true);
@@ -1070,32 +1069,83 @@ function showSpeechStatus(text){
   speechStatusTimer=setTimeout(()=>status.classList.remove('show'),2600);
 }
 
-function speakText(text, lang, voiceURIOverride=''){
-  const value=(text||'').replace(/\s+/g,' ').trim();
-  if(!value) return;
+function normalizeSpeechValue(text){
+  return (text||'').replace(/\s+/g,' ').trim();
+}
+
+function stopFixedSpeech(){
+  fixedSpeechSession++;
+  if(fixedSpeechFrame){ cancelAnimationFrame(fixedSpeechFrame); fixedSpeechFrame=null; }
+  if(fixedSpeechAudio){ fixedSpeechAudio.pause(); }
+}
+
+function fixedSpeechProfileRate(){
+  return {clear:1,calm:.86,deep:.92,bright:1.08}[speechProfile]||1;
+}
+
+function playFixedSpeech(value,voiceId=speechVoiceURI,onDone=null){
+  const textIndex=FIXED_SPEECH_INDEX.get(value);
+  const voice=FIXED_SPEECH.voices.find(item=>item.id===voiceId)||FIXED_SPEECH.voices[0];
+  const timing=voice?.timings?.[textIndex];
+  if(textIndex===undefined||!voice||!timing)return false;
+  stopFixedSpeech();
+  speech?.cancel();
+  const session=++fixedSpeechSession;
+  if(!fixedSpeechAudio||fixedSpeechAudio.dataset.voice!==voice.id){
+    fixedSpeechAudio?.pause();
+    fixedSpeechAudio=new Audio(voice.audio);
+    fixedSpeechAudio.dataset.voice=voice.id;
+    fixedSpeechAudio.preload='metadata';
+  }
+  const start=Number(timing[0]);
+  const end=Number(timing[1]);
+  fixedSpeechAudio.playbackRate=Math.max(.6,Math.min(1.5,(speechRate/.85)*fixedSpeechProfileRate()));
+  fixedSpeechAudio.preservesPitch=true;
+  const begin=()=>{
+    if(session!==fixedSpeechSession)return;
+    fixedSpeechAudio.currentTime=start;
+    fixedSpeechAudio.play().then(()=>{
+      const monitor=()=>{
+        if(session!==fixedSpeechSession||fixedSpeechAudio.paused)return;
+        if(fixedSpeechAudio.currentTime>=end){
+          fixedSpeechAudio.pause();
+          fixedSpeechFrame=null;
+          $('#speechStatus').classList.remove('show');
+          onDone?.();
+          return;
+        }
+        fixedSpeechFrame=requestAnimationFrame(monitor);
+      };
+      monitor();
+    }).catch(()=>fallbackBrowserSpeech(value,'de',voiceId));
+  };
+  if(fixedSpeechAudio.readyState>=1)begin();
+  else fixedSpeechAudio.addEventListener('loadedmetadata',begin,{once:true});
+  showSpeechStatus(`${voice.name}: ${value.slice(0,72)}`);
+  return true;
+}
+
+function fallbackBrowserSpeech(value,lang,voiceURIOverride=''){
   if(!speech){ showSpeechStatus('المتصفح لا يدعم القراءة الصوتية'); return; }
   speech.cancel();
   const utterance=new SpeechSynthesisUtterance(value);
   const isArabic=lang==='ar' || /[\u0600-\u06ff]/.test(value.slice(0,40));
-  const profile={
-    clear:{rate:1,pitch:1},
-    calm:{rate:.82,pitch:.94},
-    deep:{rate:.9,pitch:.72},
-    bright:{rate:1.05,pitch:1.28}
-  }[speechProfile]||{rate:1,pitch:1};
   utterance.lang=isArabic?'ar-EG':'de-DE';
-  utterance.rate=Math.max(.5,Math.min(1.5,speechRate*profile.rate));
-  utterance.pitch=isArabic?1:profile.pitch;
+  utterance.rate=Math.max(.5,Math.min(1.5,speechRate));
   const voices=speech.getVoices();
-  const requestedVoice=voiceURIOverride||speechVoiceURI;
-  utterance.voice=(!isArabic&&requestedVoice?voices.find(v=>v.voiceURI===requestedVoice):null)
-    ||voices.find(v=>v.lang.toLowerCase().startsWith(isArabic?'ar':'de'))||null;
+  utterance.voice=voices.find(v=>v.lang.toLowerCase().startsWith(isArabic?'ar':'de'))||null;
   utterance.onend=()=>$('#speechStatus').classList.remove('show');
   speech.speak(utterance);
-  const speaker=!isArabic&&utterance.voice
-    ?utterance.voice.name.replace(/^Microsoft\s+/,'').replace(/\s*-\s*German.*$/i,'')
-    :'';
-  showSpeechStatus(`${speaker?`${speaker}: `:''}${value.slice(0,72)}`);
+  showSpeechStatus(value.slice(0,72));
+}
+
+function speakText(text, lang, voiceURIOverride=''){
+  const value=normalizeSpeechValue(text);
+  if(!value) return;
+  const isArabic=lang==='ar' || /[\u0600-\u06ff]/.test(value.slice(0,40));
+  if(!isArabic&&playFixedSpeech(value,voiceURIOverride||speechVoiceURI))return;
+  stopFixedSpeech();
+  fallbackBrowserSpeech(value,lang,voiceURIOverride);
 }
 
 function germanVoices(){
@@ -1111,36 +1161,19 @@ function germanVoices(){
 function speakReadingWithPeople(chapterNumber, readingIndex){
   const chapter=BOOK.find(item=>item.num===chapterNumber);
   const reading=chapter?.readings?.[readingIndex];
-  if(!reading || !speech) return;
+  if(!reading) return;
   const holder=document.createElement('div');
   holder.innerHTML=reading.text;
   const text=holder.textContent.replace(/\s+/g,' ').trim();
-  const voices=germanVoices();
-  if(voices.length<2){
-    showSpeechStatus('Auf diesem Gerät ist nur eine deutsche Person verfügbar.');
-    speakText(text,'de');
-    return;
-  }
-  const preferred=voices.findIndex(voice=>voice.voiceURI===speechVoiceURI);
-  if(preferred>0) voices.unshift(...voices.splice(preferred,1));
   const parts=text.match(/[^.!?]+[.!?]+|[^.!?]+$/g)?.map(part=>part.trim()).filter(Boolean)||[text];
-  const profile={
-    clear:{rate:1,pitch:1},calm:{rate:.82,pitch:.94},deep:{rate:.9,pitch:.82},bright:{rate:1.05,pitch:1.12}
-  }[speechProfile]||{rate:1,pitch:1};
-  speech.cancel();
-  parts.forEach((part,index)=>{
-    const utterance=new SpeechSynthesisUtterance(part);
-    utterance.lang='de-DE';
-    utterance.voice=voices[index%voices.length];
-    utterance.rate=Math.max(.5,Math.min(1.5,speechRate*profile.rate));
-    utterance.pitch=profile.pitch;
-    utterance.onstart=()=>{
-      const name=utterance.voice.name.replace(/^Microsoft\s+/,'').replace(/\s*-\s*German.*$/i,'');
-      showSpeechStatus(`${name}: ${part.slice(0,64)}`);
-    };
-    utterance.onend=()=>{ if(index===parts.length-1) $('#speechStatus').classList.remove('show'); };
-    speech.speak(utterance);
-  });
+  stopFixedSpeech();
+  const voices=FIXED_SPEECH.voices;
+  const playPart=index=>{
+    if(index>=parts.length)return;
+    const voice=voices[index%voices.length];
+    if(!playFixedSpeech(parts[index],voice?.id,()=>playPart(index+1)))speakText(text,'de');
+  };
+  playPart(0);
 }
 
 function enhanceSpeech(root){
