@@ -793,7 +793,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <script src="data_hoeren_figures.js"></script>
 <script src="data_hoeren_interactive.js"></script>
 <script src="data_exam.js"></script>
-<script src="data_speech.js?v=fixed-voices-1"></script>
+<script src="data_speech_clean.js?v=speech-clean-2"></script>
 <script src="data_podcast.js?v=word-sync-3"></script>
 <script>
 /* ===================== state & helpers ===================== */
@@ -1057,8 +1057,26 @@ let fixedSpeechSession = 0;
 
 function cleanSpeechText(element){
   const copy=element.cloneNode(true);
-  copy.querySelectorAll('.ar,.speak-btn,.answer-btn,.exercise-actions').forEach(node=>node.remove());
-  return copy.textContent.replace(/\s+/g,' ').trim();
+  copy.querySelectorAll('.ar,.speak-btn,.answer-btn,.exercise-actions,.qicon,.badge,.cnt,.hint').forEach(node=>node.remove());
+  return prepareSpeechText(copy.textContent,{
+    vocabulary:element.matches('.w,.dictionary-word,.verb-inf,.verb-perfect,.flashcard .big')
+  });
+}
+
+function prepareSpeechText(text,{vocabulary=false}={}){
+  let value=(text||'')
+    .replace(/[\u{1F000}-\u{1FAFF}\u2600-\u27BF]/gu,' ')
+    .replace(/[•·●▪◦◆◇■□▲△▶►◀◄★☆✓✔✕✖]/g,' ')
+    .replace(/[←→↔↗↘↑↓⟵⟶]/g,' ')
+    .replace(/\s+/g,' ')
+    .trim();
+  if(vocabulary){
+    value=value
+      .replace(/\s*,\s*-.*/,'')
+      .replace(/\s+/g,' ')
+      .trim();
+  }
+  return value
 }
 
 function showSpeechStatus(text){
@@ -1070,7 +1088,7 @@ function showSpeechStatus(text){
 }
 
 function normalizeSpeechValue(text){
-  return (text||'').replace(/\s+/g,' ').trim();
+  return prepareSpeechText(text);
 }
 
 function stopFixedSpeech(){
@@ -1086,15 +1104,22 @@ function fixedSpeechProfileRate(){
 function playFixedSpeech(value,voiceId=speechVoiceURI,onDone=null){
   const textIndex=FIXED_SPEECH_INDEX.get(value);
   const voice=FIXED_SPEECH.voices.find(item=>item.id===voiceId)||FIXED_SPEECH.voices[0];
-  const timing=voice?.timings?.[textIndex];
-  if(textIndex===undefined||!voice||!timing)return false;
+  const aliasIndex=FIXED_SPEECH.aliases?.texts?.indexOf(value)??-1;
+  const timing=textIndex===undefined
+    ?FIXED_SPEECH.aliases?.voices?.find(item=>item.id===voice?.id)?.timings?.[aliasIndex]
+    :voice?.timings?.[textIndex];
+  const audioSource=textIndex===undefined
+    ?FIXED_SPEECH.aliases?.voices?.find(item=>item.id===voice?.id)?.audio
+    :voice?.audio;
+  if(!voice||!timing||!audioSource)return false;
   stopFixedSpeech();
   speech?.cancel();
   const session=++fixedSpeechSession;
-  if(!fixedSpeechAudio||fixedSpeechAudio.dataset.voice!==voice.id){
+  const audioKey=`${voice.id}:${textIndex===undefined?'aliases':'main'}`;
+  if(!fixedSpeechAudio||fixedSpeechAudio.dataset.voice!==audioKey){
     fixedSpeechAudio?.pause();
-    fixedSpeechAudio=new Audio(voice.audio);
-    fixedSpeechAudio.dataset.voice=voice.id;
+    fixedSpeechAudio=new Audio(audioSource);
+    fixedSpeechAudio.dataset.voice=audioKey;
     fixedSpeechAudio.preload='metadata';
   }
   const start=Number(timing[0]);
@@ -1141,7 +1166,7 @@ function fallbackBrowserSpeech(value,lang,voiceURIOverride=''){
 
 function speakText(text, lang, voiceURIOverride=''){
   const value=normalizeSpeechValue(text);
-  if(!value) return;
+  if(!value||!/[A-Za-zÄÖÜäöüß\u0600-\u06ff]/.test(value))return;
   const isArabic=lang==='ar' || /[\u0600-\u06ff]/.test(value.slice(0,40));
   if(!isArabic&&playFixedSpeech(value,voiceURIOverride||speechVoiceURI))return;
   stopFixedSpeech();
@@ -1184,7 +1209,7 @@ function enhanceSpeech(root){
     '.exercise-prompt','.dictionary-word','.dictionary-definition','.dictionary-example',
     '.expression-de','.expression-meaning','.expression-example','.verb-inf','.verb-perfect',
     '.verb-form','.goal-item>div','.visual-caption',
-    '.card>h3','.card>h4','.card>p','.intro-note'
+    '.card>h3','.card>h4','.card>p','.intro-note','.flashcard .big','.flashcard .fdef','.flashcard .fex'
   ].join(',');
   root.querySelectorAll(selector).forEach(element=>{
     if(element.dataset.speechReady) return;
@@ -1218,7 +1243,10 @@ function setListenMode(on){
   document.body.classList.toggle('listen-mode',on);
   listenToggle.setAttribute('aria-pressed',String(on));
   localStorage.setItem('listenModeUserChoice',on?'1':'0');
-  if(!on && speech) speech.cancel();
+  if(!on){
+    stopFixedSpeech();
+    speech?.cancel();
+  }
 }
 
 setListenMode(localStorage.getItem('listenModeUserChoice')==='1'); // default OFF
@@ -1230,11 +1258,14 @@ listenToggle.addEventListener('click',()=>{
 });
 
 view.addEventListener('click',event=>{
-  if(!document.body.classList.contains('listen-mode') || event.target.closest('.speak-btn,input,select,.answer-btn,.exercise-check,.exercise-reset')) return;
-  const target=event.target.closest('.speakable,.quiz-opt,.word-token,.tab,.lesson-item,h2,h3,h4,p,li,td,.badge');
+  if(!document.body.classList.contains('listen-mode')
+    ||event.target.closest('.speak-btn,input,select,button,a,.answer-btn,.exercise-check,.exercise-reset,.fc-nav,.main-tabs,.chapter-tabs'))return;
+  const target=event.target.closest('.speakable,.quiz-opt,.word-token');
   if(!target) return;
   event.preventDefault(); event.stopPropagation();
-  speakText(cleanSpeechText(target),target.classList.contains('ar')?'ar':'de');
+  const text=cleanSpeechText(target);
+  if(!text||!/[A-Za-zÄÖÜäöüß\u0600-\u06ff]/.test(text))return;
+  speakText(text,target.classList.contains('ar')?'ar':'de');
 },true);
 
 new MutationObserver(()=>enhanceSpeech(view)).observe(view,{childList:true,subtree:true});
