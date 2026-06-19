@@ -17,6 +17,7 @@
 @font-face{font-family:"Cairo";font-style:normal;font-weight:600;font-display:swap;src:url("assets/fonts/cairo-600.ttf") format("truetype")}
 @font-face{font-family:"Cairo";font-style:normal;font-weight:700;font-display:swap;src:url("assets/fonts/cairo-700.ttf") format("truetype")}
 :root{
+  --topbar-h:62px;
   --green:#287c79; --green-d:#175b5d; --green-l:#e5f3f0;
   --ink:#263238; --ink-2:#66757d; --bg:#f6f2ea; --card:#fffdf9;
   --amber:#c8893d; --amber-l:#fbefd9;
@@ -110,7 +111,7 @@ body.exam-mode .ar{display:none!important}
 .a1-module p{font-size:12px;color:var(--ink-2)}
 .topic-visual-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:13px}
 .topic-visual-card{overflow:hidden;border:1px solid var(--line);border-radius:12px;background:#fff;box-shadow:0 6px 16px rgba(31,64,68,.08)}
-.topic-visual-card img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover}
+.topic-visual-card img{display:block;width:100%;aspect-ratio:1/1;object-fit:contain;background:#f8faf9}
 .topic-visual-card figcaption{padding:8px 9px;color:var(--green-d);font-size:12px;font-weight:800;line-height:1.25}
 /* lesson list */
 .lesson-item{display:flex;align-items:center;gap:14px;background:var(--card);
@@ -122,15 +123,15 @@ body.exam-mode .ar{display:none!important}
 header.topbar .back:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
 .lesson-item .num{flex:0 0 auto;width:46px;height:46px;border-radius:14px;background:var(--green-l);
   color:var(--green-d);font-weight:800;font-size:19px;display:flex;align-items:center;justify-content:center}
-.lesson-thumb{width:76px;height:58px;object-fit:cover;border-radius:12px;flex:0 0 auto}
+.lesson-thumb{width:84px;height:48px;object-fit:cover;border-radius:12px;flex:0 0 auto;background:#fff}
 .lesson-item.gram .num{background:var(--blue-l);color:var(--blue)}
 .lesson-item .ttl{flex:1}
 .lesson-item .ttl b{font-size:16px;display:block}
 .lesson-item .ttl span.sub{font-size:12.5px;color:var(--ink-2);display:block}
 .lesson-item .chev{color:#c2cad3;font-size:20px}
 /* ---------- tabs ---------- */
-.tabs{display:flex;gap:6px;overflow-x:auto;padding:4px 0 12px;scrollbar-width:none;position:sticky;top:62px;z-index:40;background:var(--bg)}
-.tabs.tabs--below-main{top:108px}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding:4px 0 12px;scrollbar-width:none;position:sticky;top:var(--topbar-h);z-index:50;background:var(--bg)}
+.tabs.tabs--below-main{top:124px;z-index:55}
 .tabs::-webkit-scrollbar{display:none}
 .tab{flex:0 0 auto;border:none;background:var(--card);box-shadow:var(--shadow);color:var(--ink-2);
   padding:9px 16px;border-radius:999px;font-size:13.5px;font-weight:700;cursor:pointer}
@@ -221,7 +222,7 @@ table.gt b{color:var(--green-d)}
 .reading-answer{display:none;background:var(--green-l);border-radius:9px;padding:8px 11px;margin-top:7px;font-size:14px}
 .reading-answer.show{display:block}
 /* ---------- main library tabs, dictionary and expressions ---------- */
-.main-tabs{display:grid;grid-template-columns:repeat(8,1fr);gap:8px;margin:0 0 16px;position:sticky;top:62px;z-index:39;background:var(--bg);padding:4px 0 10px}
+.main-tabs{display:grid;grid-template-columns:repeat(8,1fr);gap:8px;margin:0 0 16px;position:sticky;top:var(--topbar-h);z-index:70;background:var(--bg);padding:4px 0 10px}
 .main-tabs.a1-tabs{grid-template-columns:repeat(5,1fr)}
 .main-tab{border:1px solid var(--line);background:var(--card);color:var(--ink-2);border-radius:13px;
   padding:10px 6px;font:inherit;font-size:13px;font-weight:700;cursor:pointer;box-shadow:var(--shadow)}
@@ -371,8 +372,8 @@ body.listen-mode .speakable{cursor:pointer}
   border:1px solid #eee7ef;border-radius:12px;padding:12px;font-size:14px;line-height:1.8;min-height:48px}
 .translation-note{font-family:"Cairo","Tahoma",sans-serif;direction:rtl;text-align:right;color:var(--ink-2);font-size:11px;margin-top:8px}
 .chapter-visual{padding:0}
-.chapter-visual img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover}
-.chapter-visual--wide img{aspect-ratio:16/9}
+.chapter-visual img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;background:#fff}
+.chapter-visual--wide img{aspect-ratio:16/9;object-fit:cover}
 .lesson-scene{position:relative;height:142px;border-radius:16px;overflow:hidden;margin-bottom:14px;box-shadow:var(--shadow)}
 .lesson-scene img{width:100%;height:100%;object-fit:cover;display:block}
 .lesson-scene::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,66,68,.78),rgba(18,66,68,.08))}
@@ -566,7 +567,7 @@ body.listen-mode .speakable{cursor:pointer}
   border-radius:26px;overflow:hidden;background:#e8efed;border:5px solid #fff;
   box-shadow:0 14px 32px rgba(35,70,75,.16)}
 .fc-scene{width:100%;height:100%;display:block;object-fit:cover}
-.fc-visual--full{width:min(100%,330px);height:auto;aspect-ratio:1/1;background:#fff}
+.fc-visual--full{width:min(100%,312px);height:auto;aspect-ratio:1/1;background:#fff}
 .fc-visual--full .fc-scene{object-fit:contain}
 .sticker-category{position:absolute;z-index:2;left:12px;bottom:11px;max-width:76%;overflow:hidden;text-overflow:ellipsis;
   white-space:nowrap;background:rgba(255,255,255,.9);color:#285f5e;border:1px solid rgba(255,255,255,.96);
@@ -717,13 +718,14 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 @media(max-width:460px){
   .card{padding:16px}
   .practice-head{align-items:flex-start}
-  .lesson-thumb{width:62px;height:52px}
+  .lesson-thumb{width:74px;height:42px}
   .search-row{flex-direction:column}
   .library-filter{width:100%}
   .listen-toggle{padding:6px 8px}
   .listen-toggle span{display:none}
   .main-tabs{grid-template-columns:repeat(2,1fr)}
   .main-tabs.a1-tabs{grid-template-columns:repeat(2,1fr)}
+  .main-tabs + .tabs.tabs--below-main{position:static}
   .verb-grid{grid-template-columns:repeat(2,1fr)}
   .voice-gallery{grid-template-columns:1fr}
   .listening-hero{grid-template-columns:82px 1fr;gap:12px}
@@ -1239,16 +1241,29 @@ function playFixedSpeech(value,voiceId=speechVoiceURI,onDone=null){
   return true;
 }
 
-function fallbackBrowserSpeech(value,lang,voiceURIOverride=''){
+function fallbackBrowserSpeech(value,lang,voiceURIOverride='',attempt=0){
   if(!speech){ showSpeechStatus('المتصفح لا يدعم القراءة الصوتية'); return; }
   speech.cancel();
-  const utterance=new SpeechSynthesisUtterance(value);
   const isArabic=lang==='ar' || /[\u0600-\u06ff]/.test(value.slice(0,40));
+  const voices=speech.getVoices();
+  if(!voices.length){
+    if(attempt>=8){ showSpeechStatus('لا توجد أصوات قراءة متاحة في المتصفح'); return; }
+    showSpeechStatus('جارى تحميل أصوات المتصفح...');
+    setTimeout(()=>fallbackBrowserSpeech(value,lang,voiceURIOverride,attempt+1),250);
+    return;
+  }
+  const utterance=new SpeechSynthesisUtterance(value);
   utterance.lang=isArabic?'ar-EG':'de-DE';
   utterance.rate=Math.max(.5,Math.min(1.5,speechRate));
-  const voices=speech.getVoices();
-  utterance.voice=voices.find(v=>v.lang.toLowerCase().startsWith(isArabic?'ar':'de'))||null;
+  const preferred=voiceURIOverride
+    ? voices.find(v=>v.voiceURI===voiceURIOverride || v.name===voiceURIOverride)
+    : null;
+  utterance.voice=preferred
+    || voices.find(v=>v.lang.toLowerCase().startsWith(isArabic?'ar':'de'))
+    || voices.find(v=>v.lang.toLowerCase().includes(isArabic?'ar':'de'))
+    || null;
   utterance.onend=()=>$('#speechStatus').classList.remove('show');
+  utterance.onerror=()=>showSpeechStatus(isArabic?'الصوت العربي غير متاح في المتصفح':'الصوت الألماني غير متاح في المتصفح');
   speech.speak(utterance);
   showSpeechStatus(value.slice(0,72));
 }
