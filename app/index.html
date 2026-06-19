@@ -418,7 +418,7 @@ body.listen-mode .speakable{cursor:pointer}
 .listen-book-copy .sub{display:block;color:var(--ink-2);font-size:11.5px;margin-top:4px}
 .listen-book-copy .ar{margin-top:6px}
 .chapter-collage{display:grid;grid-template-columns:repeat(3,1fr);height:118px;position:relative;background:var(--blue-l)}
-.chapter-collage img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;border-right:2px solid rgba(255,255,255,.8)}
+.chapter-collage img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;border-right:2px solid rgba(255,255,255,.8);box-sizing:border-box;padding:7px;background:rgba(255,255,255,.55)}
 .chapter-collage img:last-child{border-right:0}
 .chapter-letter{position:absolute;left:10px;top:10px;display:grid;place-items:center;width:38px;height:38px;
   border-radius:12px;background:rgba(29,91,95,.92);color:#fff;font-size:18px;font-weight:800;box-shadow:0 5px 13px rgba(25,55,60,.2)}
@@ -430,7 +430,7 @@ body.listen-mode .speakable{cursor:pointer}
 .listen-exercise-card{display:block;width:100%;padding:0;overflow:hidden;text-align:left;background:var(--card);
   border:1px solid var(--line);border-radius:17px;box-shadow:var(--shadow);cursor:pointer;font:inherit;color:var(--ink)}
 .listen-exercise-card.completed{border-color:#7db39f;box-shadow:0 8px 22px rgba(39,113,89,.13)}
-.listen-exercise-thumb{position:relative;height:155px;background:var(--blue-l);overflow:hidden}
+.listen-exercise-thumb{position:relative;aspect-ratio:5/3;height:auto;background:var(--blue-l);overflow:hidden}
 .listen-exercise-thumb img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .2s ease}
 .listen-exercise-card:active .listen-exercise-thumb img{transform:scale(1.02)}
 .listen-exercise-id{position:absolute;left:10px;top:10px;background:rgba(29,91,95,.92);color:#fff;border-radius:10px;
@@ -754,7 +754,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
   .listen-chapter-grid,.listen-exercise-grid{grid-template-columns:1fr}
   .level-grid,.a1-roadmap,.a1-module-grid,.topic-visual-grid{grid-template-columns:1fr}
   .chapter-collage{height:125px}
-  .listen-exercise-thumb{height:175px}
+  .listen-exercise-thumb{height:auto}
   .scene-gallery{grid-template-columns:1fr}
   .vocab-scenes{grid-template-columns:repeat(2,minmax(0,1fr))}
   .exam-stats,.exam-module-grid{grid-template-columns:1fr}
