@@ -4,7 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#236b6d">
-<title>Deutsch A2 · Netzwerk neu + Grammatik</title>
+<link rel="canonical" href="https://attiazaghloul.github.io/deutsch-a2-learning/">
+<meta property="og:url" content="https://attiazaghloul.github.io/deutsch-a2-learning/">
+<meta property="og:title" content="Deutsch A2 Learning">
+<title>Deutsch A2 Learning · Netzwerk neu</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Carlito:wght@400;700&display=swap" rel="stylesheet">
@@ -76,6 +79,39 @@ body.exam-mode .ar{display:none!important}
 .hero .ar{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.14);color:rgba(255,255,255,.86)}
 .section-label{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;
   color:var(--ink-2);margin:22px 4px 10px}
+.level-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-bottom:18px}
+.level-card{display:flex;flex-direction:column;gap:10px;align-items:flex-start;text-align:left;width:100%;
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);
+  color:inherit;font:inherit;padding:18px;cursor:pointer;transition:.15s}
+.level-card:active{transform:scale(.98)}
+.level-card.locked{opacity:.78;cursor:default}
+.level-code{display:flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:17px;
+  background:var(--green-l);color:var(--green-d);font-size:24px;font-weight:900}
+.level-card.a2 .level-code{background:var(--blue-l);color:var(--blue)}
+.level-card.soon .level-code{background:var(--amber-l);color:var(--amber)}
+.level-card h3{font-size:20px;color:var(--green-d)}
+.level-card p{font-size:13.5px;color:var(--ink-2)}
+.level-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+.level-pill{background:#f7f9fb;border:1px solid #edf0f3;border-radius:999px;padding:4px 9px;font-size:11px;font-weight:800;color:var(--ink-2)}
+.level-mini-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-bottom:16px}
+.level-mini-nav button{border:0;border-radius:13px;background:var(--card);box-shadow:var(--shadow);padding:10px 12px;
+  color:var(--ink-2);font:inherit;font-size:13px;font-weight:800;cursor:pointer}
+.level-mini-nav button.active{background:var(--green-d);color:#fff}
+.a1-roadmap{display:flex;flex-direction:column;gap:10px}
+.a1-unit{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;border:1px solid var(--line);
+  border-radius:16px;background:var(--card);box-shadow:var(--shadow);padding:14px;color:inherit;font:inherit;cursor:pointer}
+.a1-unit .num{flex:0 0 auto;width:42px;height:42px;border-radius:13px;background:var(--green-l);color:var(--green-d);
+  display:flex;align-items:center;justify-content:center;font-weight:900}
+.a1-unit b{display:block;color:var(--green-d);font-size:15px}
+.a1-unit span{display:block;color:var(--ink-2);font-size:12px}
+.a1-module-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.a1-module{background:#f8faf9;border:1px solid #e6ece9;border-radius:13px;padding:12px}
+.a1-module b{display:block;color:var(--green-d);font-size:13.5px;margin-bottom:3px}
+.a1-module p{font-size:12px;color:var(--ink-2)}
+.topic-visual-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:13px}
+.topic-visual-card{overflow:hidden;border:1px solid var(--line);border-radius:12px;background:#fff;box-shadow:0 6px 16px rgba(31,64,68,.08)}
+.topic-visual-card img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover}
+.topic-visual-card figcaption{padding:8px 9px;color:var(--green-d);font-size:12px;font-weight:800;line-height:1.25}
 /* lesson list */
 .lesson-item{display:flex;align-items:center;gap:14px;background:var(--card);
   border-radius:var(--radius);box-shadow:var(--shadow);padding:14px 16px;margin-bottom:10px;
@@ -94,6 +130,7 @@ header.topbar .back:focus-visible{outline:3px solid var(--amber);outline-offset:
 .lesson-item .chev{color:#c2cad3;font-size:20px}
 /* ---------- tabs ---------- */
 .tabs{display:flex;gap:6px;overflow-x:auto;padding:4px 0 12px;scrollbar-width:none;position:sticky;top:62px;z-index:40;background:var(--bg)}
+.tabs.tabs--below-main{top:108px}
 .tabs::-webkit-scrollbar{display:none}
 .tab{flex:0 0 auto;border:none;background:var(--card);box-shadow:var(--shadow);color:var(--ink-2);
   padding:9px 16px;border-radius:999px;font-size:13.5px;font-weight:700;cursor:pointer}
@@ -184,7 +221,8 @@ table.gt b{color:var(--green-d)}
 .reading-answer{display:none;background:var(--green-l);border-radius:9px;padding:8px 11px;margin-top:7px;font-size:14px}
 .reading-answer.show{display:block}
 /* ---------- main library tabs, dictionary and expressions ---------- */
-.main-tabs{display:grid;grid-template-columns:repeat(8,1fr);gap:8px;margin:0 0 16px}
+.main-tabs{display:grid;grid-template-columns:repeat(8,1fr);gap:8px;margin:0 0 16px;position:sticky;top:62px;z-index:39;background:var(--bg);padding:4px 0 10px}
+.main-tabs.a1-tabs{grid-template-columns:repeat(5,1fr)}
 .main-tab{border:1px solid var(--line);background:var(--card);color:var(--ink-2);border-radius:13px;
   padding:10px 6px;font:inherit;font-size:13px;font-weight:700;cursor:pointer;box-shadow:var(--shadow)}
 .main-tab.active{background:var(--green-d);border-color:var(--green-d);color:#fff}
@@ -334,6 +372,7 @@ body.listen-mode .speakable{cursor:pointer}
 .translation-note{font-family:"Cairo","Tahoma",sans-serif;direction:rtl;text-align:right;color:var(--ink-2);font-size:11px;margin-top:8px}
 .chapter-visual{padding:0}
 .chapter-visual img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover}
+.chapter-visual--wide img{aspect-ratio:16/9}
 .lesson-scene{position:relative;height:142px;border-radius:16px;overflow:hidden;margin-bottom:14px;box-shadow:var(--shadow)}
 .lesson-scene img{width:100%;height:100%;object-fit:cover;display:block}
 .lesson-scene::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,66,68,.78),rgba(18,66,68,.08))}
@@ -367,7 +406,7 @@ body.listen-mode .speakable{cursor:pointer}
   border:1px solid var(--line);border-radius:17px;box-shadow:var(--shadow);cursor:pointer;font:inherit;color:var(--ink)}
 .listen-chapter-card:active{transform:translateY(1px)}
 .chapter-collage{display:grid;grid-template-columns:repeat(3,1fr);height:118px;position:relative;background:var(--blue-l)}
-.chapter-collage img{display:block;width:100%;height:100%;object-fit:cover;border-right:2px solid rgba(255,255,255,.8)}
+.chapter-collage img{display:block;width:100%;height:100%;object-fit:cover;object-position:top;border-right:2px solid rgba(255,255,255,.8)}
 .chapter-collage img:last-child{border-right:0}
 .chapter-letter{position:absolute;left:10px;top:10px;display:grid;place-items:center;width:38px;height:38px;
   border-radius:12px;background:rgba(29,91,95,.92);color:#fff;font-size:18px;font-weight:800;box-shadow:0 5px 13px rgba(25,55,60,.2)}
@@ -380,7 +419,7 @@ body.listen-mode .speakable{cursor:pointer}
   border:1px solid var(--line);border-radius:17px;box-shadow:var(--shadow);cursor:pointer;font:inherit;color:var(--ink)}
 .listen-exercise-card.completed{border-color:#7db39f;box-shadow:0 8px 22px rgba(39,113,89,.13)}
 .listen-exercise-thumb{position:relative;height:155px;background:var(--blue-l);overflow:hidden}
-.listen-exercise-thumb img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .2s ease}
+.listen-exercise-thumb img{display:block;width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .2s ease}
 .listen-exercise-card:active .listen-exercise-thumb img{transform:scale(1.02)}
 .listen-exercise-id{position:absolute;left:10px;top:10px;background:rgba(29,91,95,.92);color:#fff;border-radius:10px;
   padding:5px 9px;font-size:11px;font-weight:800}
@@ -445,10 +484,15 @@ body.listen-mode .speakable{cursor:pointer}
   color:var(--green-d);font-size:11px}
 .question-track{margin-left:auto;white-space:nowrap;background:var(--blue-l);color:var(--blue);border-radius:999px;
   padding:3px 7px;font-size:10px;font-weight:800}
-.question-figures{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:8px 0 12px}
-.question-figure{margin:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
-.question-figure img{display:block;width:100%;height:150px;object-fit:contain;background:#fafafa}
-.question-figure figcaption{font-size:10px;color:var(--ink-2);padding:5px 7px;text-align:center}
+.question-figures{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;margin:8px 0 12px}
+.question-figures.tiles{grid-template-columns:repeat(auto-fill,minmax(132px,1fr))}
+.question-figures.sheet{grid-template-columns:minmax(0,1fr);max-width:720px}
+.question-figure{margin:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
+.question-figure img{display:block;width:100%;height:auto;max-height:180px;object-fit:contain;background:#fafafa}
+.question-figures.tiles .question-figure img{height:155px;max-height:155px}
+.question-figures.sheet .question-figure img,.question-figure.sheet-figure img{max-height:none;height:auto}
+.question-figure figcaption{font-size:10px;color:var(--ink-2);padding:5px 7px;text-align:center;margin-top:auto}
+.section-figures{margin:0 0 14px}
 .web-options{display:grid;gap:7px}
 .web-option{display:flex;align-items:flex-start;gap:8px;padding:9px 10px;border:1px solid var(--line);border-radius:10px;
   cursor:pointer;background:#fff;font-size:13px}
@@ -522,6 +566,8 @@ body.listen-mode .speakable{cursor:pointer}
   border-radius:26px;overflow:hidden;background:#e8efed;border:5px solid #fff;
   box-shadow:0 14px 32px rgba(35,70,75,.16)}
 .fc-scene{width:100%;height:100%;display:block;object-fit:cover}
+.fc-visual--full{width:min(100%,330px);height:auto;aspect-ratio:1/1;background:#fff}
+.fc-visual--full .fc-scene{object-fit:contain}
 .sticker-category{position:absolute;z-index:2;left:12px;bottom:11px;max-width:76%;overflow:hidden;text-overflow:ellipsis;
   white-space:nowrap;background:rgba(255,255,255,.9);color:#285f5e;border:1px solid rgba(255,255,255,.96);
   box-shadow:0 4px 12px rgba(31,64,68,.12);backdrop-filter:blur(7px);
@@ -677,6 +723,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
   .listen-toggle{padding:6px 8px}
   .listen-toggle span{display:none}
   .main-tabs{grid-template-columns:repeat(2,1fr)}
+  .main-tabs.a1-tabs{grid-template-columns:repeat(2,1fr)}
   .verb-grid{grid-template-columns:repeat(2,1fr)}
   .voice-gallery{grid-template-columns:1fr}
   .listening-hero{grid-template-columns:82px 1fr;gap:12px}
@@ -686,8 +733,9 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
   .interactive-section-head{align-items:flex-start;flex-direction:column}
   .section-track-badges{justify-content:flex-start}
   .match-row{grid-template-columns:1fr}
-  .question-figure img{height:125px}
+  .question-figures.tiles .question-figure img{height:125px;max-height:125px}
   .listen-chapter-grid,.listen-exercise-grid{grid-template-columns:1fr}
+  .level-grid,.a1-roadmap,.a1-module-grid,.topic-visual-grid{grid-template-columns:1fr}
   .chapter-collage{height:125px}
   .listen-exercise-thumb{height:175px}
   .scene-gallery{grid-template-columns:1fr}
@@ -706,7 +754,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <div id="app">
   <header class="topbar">
     <button class="back" id="backBtn" aria-label="zurück">←</button>
-    <h1 id="topTitle">Deutsch A2<small>Netzwerk neu · Buch & Grammatik</small></h1>
+    <h1 id="topTitle">Deutsch A2 Learning<small>Netzwerk neu · A1 + A2</small></h1>
     <button type="button" class="listen-toggle" id="listenToggle" aria-pressed="false" title="اضغط ثم اختر أي نص لسماعه">
       🔊 <span>Hören</span>
     </button>
@@ -717,7 +765,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
   </header>
   <main id="view"></main>
   <footer class="fnote">
-    Netzwerk neu A2.1 + A2.2 · Grammatik-Skript A2 · Hören & Sprechen A2<br>
+    Netzwerk neu A1.1 + A1.2 · A2.1 + A2.2 · Grammatik-Skript A2 · Hören & Sprechen A2<br>
     <strong>Created by Attia Zaghloul</strong>
   </footer>
 </div>
@@ -778,6 +826,15 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
   </section>
 </div>
 
+<script src="data_a1.js"></script>
+<script src="data_a12.js"></script>
+<script src="data_a1_verbs.js"></script>
+<script src="data_hoeren_a1.js"></script>
+<script src="data_hoeren_a1_figures.js"></script>
+<script src="data_hoeren_a1_interactive.js"></script>
+<script src="data_phonetik_a1.js"></script>
+<script src="data_phonetik_a1_figures.js"></script>
+<script src="data_phonetik_a1_interactive.js"></script>
 <script src="data_book0.js"></script>
 <script src="data_book0_expansion.js"></script>
 <script src="data_book1.js"></script>
@@ -800,10 +857,42 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
 const view = $('#view');
+const A1_BOOK = window.A1_BOOK || [];
 const BOOK = [...window.BOOK0, ...window.BOOK1, ...window.BOOK2];
 const GRAM = window.GRAM;
 const VERBS = window.A2_VERBS || [];
+const A1_VERBS = window.A1_VERBS || [];
+const HOEREN_A1 = window.HOEREN_A1_BOOK;
+const PHONETIK_A1 = window.PHONETIK_A1_BOOK;
 const HOEREN = window.HOEREN_BOOK;
+const A1_LISTEN_BOOKS = {
+  hoeren: {
+    meta: HOEREN_A1,
+    figures: () => ({__noFigures:true}),
+    interactive: () => window.HOEREN_A1_INTERACTIVE || {},
+    progressKey: 'a1HoerenProgress',
+    trackLabel: track => `Track ${track}`,
+    audioSrc: track => `assets/listening/a1/audio/track-${String(track).padStart(3, '0')}.mp3`,
+    thumbnail: ex => `assets/listening/a1/pages/page-${String(ex.exercisePages[0]).padStart(3, '0')}.webp`,
+    pageBase: 'assets/listening/a1/pages/',
+    cover: 'assets/listening/a1/cover.webp',
+    route: 'a1/listen/hoeren',
+    chapterPattern: /^[A-H]$/
+  },
+  phonetik: {
+    meta: PHONETIK_A1,
+    figures: () => ({__noFigures:true}),
+    interactive: () => window.PHONETIK_A1_INTERACTIVE || {},
+    progressKey: 'a1PhonetikProgress',
+    trackLabel: track => `Track ${track}`,
+    audioSrc: track => `assets/listening/a1-phonetik/audio/track-${String(track).replace('.', '-')}.mp3`,
+    thumbnail: ex => `assets/listening/a1-phonetik/pages/page-${String(ex.exercisePages[0]).padStart(3, '0')}.webp`,
+    pageBase: 'assets/listening/a1-phonetik/pages/',
+    cover: 'assets/listening/a1-phonetik/cover.webp',
+    route: 'a1/listen/phonetik',
+    chapterPattern: /^[A-C]$/
+  }
+};
 const EXAM = window.A2_EXAM;
 const PODCASTS = window.A2_PODCASTS || [];
 const FIXED_SPEECH = window.A2_FIXED_SPEECH || {texts:[],voices:[]};
@@ -1275,12 +1364,38 @@ function go(hash){ location.hash = hash; }
 window.addEventListener('hashchange', route);
 $('#backBtn').addEventListener('click', () => {
   const h = location.hash;
+  const path = h.replace(/^#/,'');
+  // A1 · Kapitel-Tab → Kapitel-Übersicht
+  if(/^#a1\/k\d+\//.test(h)){ go(path.split('/').slice(0,2).join('/')); return; }
+  // A1 · Kapitel → A1 Start
+  if(/^#a1\/k\d+$/.test(h)){ go('a1'); return; }
+  // A1 · Hören/Phonetik Übung → Kapitel
+  if(/^#a1\/listen\/(?:hoeren|phonetik)\/[A-H]\/\d+$/.test(h)){ go(path.split('/').slice(0,4).join('/')); return; }
+  if(/^#a1\/listen\/(?:hoeren|phonetik)\/[A-C]\/\d+$/.test(h)){ go(path.split('/').slice(0,4).join('/')); return; }
+  // A1 · Hören/Phonetik Kapitel → Buch-Start
+  if(/^#a1\/listen\/(?:hoeren|phonetik)\/[A-H]$/.test(h)){ go(path.split('/').slice(0,3).join('/')); return; }
+  if(/^#a1\/listen\/(?:hoeren|phonetik)\/[A-C]$/.test(h)){ go(path.split('/').slice(0,3).join('/')); return; }
+  // A1 · Buch-Auswahl → Hören-Übersicht
+  if(/^#a1\/listen\/(?:hoeren|phonetik)$/.test(h)){ go('a1/listen'); return; }
+  // Legacy: a1/listen/A → a1/listen/hoeren/A
+  if(/^#a1\/listen\/[A-H](?:\/\d+)?$/.test(h)){
+    const parts = path.split('/');
+    go(['a1', 'listen', 'hoeren', ...parts.slice(2)].join('/'));
+    return;
+  }
+  // A1 · Hören / Wörterbuch / Verben / Redemittel → A1 Start
+  if(h==='#a1/listen'||/^#a1\/(dict|verbs|phrases)$/.test(h)){ go('a1'); return; }
+  // A1 / A2 Start → Niveauwahl
+  if(h==='#a1'||h==='#a2'){ go(''); return; }
   if(/^#podcast\//.test(h)){ go('podcast'); return; }
   if(/^#games\//.test(h)){ go('games'); return; }
   if(/^#exam\//.test(h)){ go('exam'); return; }
-  if(/^#listen\/[A-I]\/\d+/.test(h)){ go(h.split('/').slice(0,2).join('/').replace('#','')); return; }
+  if(/^#listen\/[A-I]\/\d+/.test(h)){ go(path.split('/').slice(0,2).join('/')); return; }
   if(/^#listen\/[A-I]/.test(h)){ go('listen'); return; }
-  if(/^#(k|g)\d+\//.test(h)) go(h.split('/')[0]);   // tab -> lesson root? actually lesson root shows tabs
+  // A2 Hauptbereiche (Tabs) → A2 Start
+  if(['#dict','#verbs','#phrases','#listen','#exam','#podcast','#games'].includes(h)){ go('a2'); return; }
+  if(/^#(k|g)\d+\//.test(h)) go(path.split('/').slice(0,1).join('/'));
+  else if(/^#(k|g)\d+$/.test(h)) go('a2');
   else go('');
 });
 
@@ -1299,7 +1414,32 @@ function route(){
     window.getSelection()?.removeAllRanges();
   }
   window.scrollTo(0,0);
-  if(!h){ renderHome(); return; }
+  if(!h){ renderLevelSelector(); return; }
+  if(h==='a1'){ renderA1Home(); return; }
+  if(h==='a1/dict'){ renderA1Dictionary(); return; }
+  if(h==='a1/verbs'){ renderA1Verbs(); return; }
+  if(h==='a1/phrases'){ renderA1Expressions(); return; }
+  if(h==='a1/listen'){ renderA1ListenBookPicker(); return; }
+  const a1ListenBookMatch=h.match(/^a1\/listen\/(hoeren|phonetik)$/);
+  if(a1ListenBookMatch){ renderA1ListeningHome(a1ListenBookMatch[1]); return; }
+  const a1ListenMatch=h.match(/^a1\/listen\/(hoeren|phonetik)\/([A-H])(?:\/(\d+))?$/);
+  if(a1ListenMatch){
+    const cfg=A1_LISTEN_BOOKS[a1ListenMatch[1]];
+    const chapter=cfg.meta.chapters.find(item=>item.id===a1ListenMatch[2]);
+    if(!chapter){ renderA1ListeningHome(a1ListenMatch[1]); return; }
+    if(a1ListenMatch[3]===undefined) renderA1ListeningChapter(cfg, chapter);
+    else renderA1ListeningExercise(cfg, chapter, Number(a1ListenMatch[3]));
+    return;
+  }
+
+  const a1ListenLegacy=h.match(/^a1\/listen\/([A-H])(?:\/(\d+))?$/);
+  if(a1ListenLegacy){
+    go(['a1', 'listen', 'hoeren', ...h.split('/').slice(2)].join('/'));
+    return;
+  }
+  const a1Match=h.match(/^a1\/k(\d+)(?:\/(\w+))?$/);
+  if(a1Match){ renderA1Chapter(Number(a1Match[1]), a1Match[2]||'ueberblick'); return; }
+  if(h==='a2'){ renderHome(); return; }
   if(h==='dict'){ renderDictionary(); return; }
   if(h==='verbs'){ renderVerbs(); return; }
   if(h==='phrases'){ renderExpressions(); return; }
@@ -1339,7 +1479,7 @@ function setTop(title, sub, hasBack){
 
 function mainTabs(active){
   return `<nav class="main-tabs" aria-label="Hauptbereiche">
-    <button class="main-tab ${active==='lessons'?'active':''}" onclick="go('')">📚 Lektionen</button>
+    <button class="main-tab ${active==='lessons'?'active':''}" onclick="go('a2')">📚 Lektionen</button>
     <button class="main-tab ${active==='dict'?'active':''}" onclick="go('dict')">🔎 Wörterbuch</button>
     <button class="main-tab ${active==='verbs'?'active':''}" onclick="go('verbs')">🧩 Verben</button>
     <button class="main-tab ${active==='phrases'?'active':''}" onclick="go('phrases')">💬 Redewendungen</button>
@@ -1351,8 +1491,458 @@ function mainTabs(active){
 }
 
 /* ===================== home ===================== */
+function levelSwitcher(active){
+  return `<div class="level-mini-nav" aria-label="Niveau wechseln">
+    <button type="button" class="${active==='a1'?'active':''}" onclick="go('a1')">A1 · Netzwerk neu A1</button>
+    <button type="button" class="${active==='a2'?'active':''}" onclick="go('a2')">A2 · Netzwerk neu A2</button>
+  </div>`;
+}
+
+function renderLevelSelector(){
+  setTop('Deutsch A2 Learning','Wähle dein Niveau', false);
+  view.innerHTML = `
+  <section class="hero">
+    <h2>Wähle deinen Deutsch-Weg</h2>
+    <p>Jedes Niveau bleibt getrennt, damit Wortschatz, Grammatik, Hören und Übungen sauber aufgebaut werden.</p>
+    ${ar('اختار المستوى اللي عايز تبدأ منه. كل مستوى هيبقى مستقل عشان المحتوى والترتيب يفضلوا واضحين.')}
+  </section>
+  <section class="level-grid">
+    <button type="button" class="level-card" onclick="go('a1')">
+      <span class="level-code">A1</span>
+      <h3>Netzwerk neu A1</h3>
+      <p>Der Startbereich für Anfänger: zwölf Kapitel mit Wortschatz, Grammatik, Lesen, Sprechen und Quiz.</p>
+      ${ar('بداية مستوى A1: كتاب Netzwerk neu A1.1 وA1.2 في تاب واحد، اثنا عشر درسًا بالمفردات والقواعد والقراءة والمحادثة والكويز.')}
+      <div class="level-meta"><span class="level-pill">Kapitel 1-12</span><span class="level-pill">A1.1 + A1.2</span></div>
+    </button>
+    <button type="button" class="level-card a2" onclick="go('a2')">
+      <span class="level-code">A2</span>
+      <h3>Netzwerk neu A2</h3>
+      <p>Der vorhandene komplette Bereich mit Lektionen, Wörterbuch, Spielen, Podcast, Hören und Prüfungstraining.</p>
+      ${ar('المستوى الموجود حاليًا: دروس A2 والقاموس والألعاب والاستماع والتدريب على الامتحان.')}
+      <div class="level-meta"><span class="level-pill">A2.1 + A2.2</span><span class="level-pill">aktiv</span></div>
+    </button>
+  </section>
+  <div class="section-label">Weitere Niveaus</div>
+  <section class="level-grid">
+    <article class="level-card soon locked">
+      <span class="level-code">B1</span>
+      <h3>Später</h3>
+      <p>Bereich reserviert, wenn A1 und A2 stabil sind.</p>
+      <div class="level-meta"><span class="level-pill">geplant</span></div>
+    </article>
+    <article class="level-card soon locked">
+      <span class="level-code">B2</span>
+      <h3>Später</h3>
+      <p>Platzhalter für einen eigenen höheren Lernpfad.</p>
+      <div class="level-meta"><span class="level-pill">geplant</span></div>
+    </article>
+  </section>`;
+}
+
+function a1MainTabs(active){
+  return `<nav class="main-tabs a1-tabs" aria-label="A1 Bereiche">
+    <button class="main-tab ${active==='lessons'?'active':''}" onclick="go('a1')">📚 Lektionen</button>
+    <button class="main-tab ${active==='dict'?'active':''}" onclick="go('a1/dict')">🔎 Wörterbuch</button>
+    <button class="main-tab ${active==='verbs'?'active':''}" onclick="go('a1/verbs')">🧩 Verben</button>
+    <button class="main-tab ${active==='phrases'?'active':''}" onclick="go('a1/phrases')">💬 Redemittel</button>
+    <button class="main-tab ${active==='listen'?'active':''}" onclick="go('a1/listen')">🎧 Hören</button>
+  </nav>`;
+}
+
+function renderA1Dictionary(){
+  setTop('A1 Wörterbuch','Alle Wörter aus den Lektionen',true);
+  const words=A1_BOOK.flatMap(chapter=>chapter.vocab.map(item=>({...item,chapter:chapter.num,title:chapter.title})))
+    .sort((a,b)=>a.w.localeCompare(b.w,'de'));
+  view.innerHTML=a1MainTabs('dict')+`
+    <div class="hero"><h2>Wörterbuch A1</h2>
+      <p>Suche auf Deutsch oder Arabisch. Der Wortschatz deckt alle Kapitel 1–12 ab.</p>
+      ${ar('ابحث بالألماني أو العربي. القاموس بيجمع كلمات كل دروس A1 من 1 إلى 12 مع الشرح والمثال.')}</div>
+    <div class="search-panel">
+      <div class="search-row">
+        <input class="library-search" id="a1DictSearch" type="search" placeholder="Deutsch oder Arabisch suchen..." aria-label="Wörter suchen">
+        <select class="library-filter" id="a1DictChapter" aria-label="Kapitel filtern">
+          <option value="">Alle Kapitel</option>${A1_BOOK.map(c=>`<option value="${c.num}">Kapitel ${c.num}</option>`).join('')}
+        </select>
+      </div>
+      <div class="result-count" id="a1DictCount"></div>
+    </div>
+    <div class="card" id="a1DictList">${words.map((v,index)=>`
+      <article class="dictionary-entry" data-index="${index}" data-chapter="${v.chapter}"
+        data-search="${escapeHtml(`${v.w} ${v.d} ${v.ex||''} ${v.ar||''}`.toLocaleLowerCase('de-DE'))}">
+        <div><div class="dictionary-word">${fmtWord(v.w)}</div>
+          <div class="dictionary-definition">${v.d}</div>
+          ${v.ex?`<div class="dictionary-example">„${v.ex}“</div>`:''}${ar(v.ar)}</div>
+        <span class="dictionary-meta">K${v.chapter}</span>
+      </article>`).join('')}</div>`;
+  const search=$('#a1DictSearch'),chapter=$('#a1DictChapter');
+  const filter=()=>{
+    const query=search.value.trim().toLocaleLowerCase('de-DE');
+    let visible=0;
+    $$('#a1DictList .dictionary-entry').forEach(entry=>{
+      const show=(!query||entry.dataset.search.includes(query))&&(!chapter.value||entry.dataset.chapter===chapter.value);
+      entry.hidden=!show; if(show) visible++;
+    });
+    $('#a1DictCount').textContent=`${visible} / ${words.length} Wörter`;
+  };
+  search.addEventListener('input',filter); chapter.addEventListener('change',filter); filter();
+}
+
+function renderA1Verbs(){
+  setTop('A1 Verbwörterbuch','Konjugation, Präteritum & Perfekt',true);
+  const pronouns=['ich','du','er/sie/es','wir','ihr','sie/Sie'];
+  view.innerHTML=a1MainTabs('verbs')+`
+    <div class="hero"><h2>Verben A1</h2>
+      <p>Die wichtigsten Verben aus A1 – Präsens mit allen Personen, Präteritum und Perfekt mit <b>haben</b> oder <b>sein</b>.</p>
+      ${ar('أهم أفعال مستوى A1 بتصريف المضارع مع كل الضمائر، والماضي البسيط، والـPerfekt مع الفعل المساعد haben أو sein.')}</div>
+    <div class="search-panel">
+      <div class="search-row">
+        <input class="library-search" id="a1VerbSearch" type="search" placeholder="Verb oder Bedeutung suchen..." aria-label="Verben suchen">
+        <select class="library-filter" id="a1VerbAux" aria-label="Hilfsverb filtern">
+          <option value="">haben + sein</option><option value="haben">mit haben</option><option value="sein">mit sein</option>
+        </select>
+        <select class="library-filter" id="a1VerbChapter" aria-label="Kapitel filtern">
+          <option value="">Alle Kapitel</option>${A1_BOOK.map(c=>`<option value="${c.num}">Kapitel ${c.num}</option>`).join('')}
+        </select>
+      </div>
+      <div class="result-count" id="a1VerbCount"></div>
+    </div>
+    <div id="a1VerbList">${A1_VERBS.map((verb,index)=>`
+      <article class="card verb-card" data-index="${index}" data-aux="${verb.aux}" data-chapter="${verb.chapter}" tabindex="0" role="button" aria-expanded="false"
+        data-search="${escapeHtml(`${verb.inf} ${verb.praet} ${verb.part} ${verb.ar} ${verb.example}`.toLocaleLowerCase('de-DE'))}">
+        <div class="verb-summary">
+          <div><div class="verb-inf">${verb.inf}</div>
+            <div class="verb-summary-line">${verb.praet} · ${verb.aux} ${verb.part}</div></div>
+          <span class="verb-chevron">⌄</span>
+        </div>
+        <div class="verb-details">
+          <div class="verb-head"><div>${ar(verb.ar)}</div><span class="verb-aux ${verb.aux}">Perfekt mit ${verb.aux}</span></div>
+          <div class="verb-tense">Präsens</div>
+          <div class="verb-grid">${verb.forms.map((form,formIndex)=>`
+            <div class="verb-form"><small>${pronouns[formIndex]}</small>${form}</div>`).join('')}</div>
+          <div class="verb-tense">Präteritum</div>
+          <div class="verb-perfect"><small>er/sie/es</small> ${verb.praet}</div>
+          <div class="verb-perfect"><small>Perfekt</small> ${verb.aux} ${verb.part}</div>
+          <div class="dictionary-example">„${verb.example}“</div>
+          <span class="dictionary-meta">K${verb.chapter}</span>
+        </div>
+      </article>`).join('')}</div>`;
+  const search=$('#a1VerbSearch'),aux=$('#a1VerbAux'),chapter=$('#a1VerbChapter');
+  const filter=()=>{
+    const query=search.value.trim().toLocaleLowerCase('de-DE');
+    let visible=0;
+    $$('#a1VerbList .verb-card').forEach(entry=>{
+      const show=(!query||entry.dataset.search.includes(query))&&
+        (!aux.value||entry.dataset.aux===aux.value)&&
+        (!chapter.value||entry.dataset.chapter===chapter.value);
+      entry.hidden=!show; if(show) visible++;
+    });
+    $('#a1VerbCount').textContent=`${visible} / ${A1_VERBS.length} Verben`;
+  };
+  $$('#a1VerbList .verb-card').forEach(card=>{
+    const toggle=()=>{
+      const open=card.classList.toggle('open');
+      card.setAttribute('aria-expanded',String(open));
+    };
+    card.addEventListener('click',event=>{ if(!event.target.closest('button,input,select')) toggle(); });
+    card.addEventListener('keydown',event=>{ if(event.key==='Enter'||event.key===' '){event.preventDefault();toggle();} });
+  });
+  search.addEventListener('input',filter); aux.addEventListener('change',filter);
+  chapter.addEventListener('change',filter); filter();
+}
+
+function renderA1Expressions(){
+  setTop('A1 Redemittel','Fertige Sätze für jede Lektion',true);
+  const phrases=A1_BOOK.flatMap(chapter=>(chapter.redemittel||[]).flatMap(group=>
+    group.items.map(item=>({de:item.de,ar:item.ar,cat:group.cat,chapter:chapter.num}))));
+  view.innerHTML=a1MainTabs('phrases')+`
+    <div class="hero"><h2>Redemittel A1</h2>
+      <p>Fertige Sätze und Ausdrücke für Begrüßung, Einkauf, Arzt, Reise und mehr – aus allen Kapiteln.</p>
+      ${ar('جُمل وتعبيرات جاهزة للكلام في كل المواقف (تحية، شراء، دكتور، سفر…) مجمّعة من كل دروس A1.')}</div>
+    <div class="search-panel">
+      <div class="search-row">
+        <input class="library-search" id="a1PhraseSearch" type="search" placeholder="Ausdruck suchen..." aria-label="Ausdrücke suchen">
+        <select class="library-filter" id="a1PhraseChapter" aria-label="Kapitel filtern">
+          <option value="">Alle Kapitel</option>${A1_BOOK.map(c=>`<option value="${c.num}">Kapitel ${c.num}</option>`).join('')}
+        </select>
+      </div>
+      <div class="result-count" id="a1PhraseCount"></div>
+    </div>
+    <div id="a1PhraseList">${phrases.map((item,index)=>`
+      <article class="card expression-card" data-index="${index}" data-chapter="${item.chapter}"
+        data-search="${escapeHtml(`${item.de} ${item.ar} ${item.cat}`.toLocaleLowerCase('de-DE'))}">
+        <span class="expression-tag">K${item.chapter} · ${item.cat}</span>
+        <div class="expression-de">${item.de}</div>
+        ${ar(item.ar)}
+      </article>`).join('')}</div>`;
+  const search=$('#a1PhraseSearch'),chapter=$('#a1PhraseChapter');
+  const filter=()=>{
+    const query=search.value.trim().toLocaleLowerCase('de-DE');
+    let visible=0;
+    $$('#a1PhraseList .expression-card').forEach(entry=>{
+      const show=(!query||entry.dataset.search.includes(query))&&(!chapter.value||entry.dataset.chapter===chapter.value);
+      entry.hidden=!show; if(show) visible++;
+    });
+    $('#a1PhraseCount').textContent=`${visible} / ${phrases.length} Ausdrücke`;
+  };
+  search.addEventListener('input',filter); chapter.addEventListener('change',filter); filter();
+}
+
+const A1_LISTENING_TRACK_TASKS={
+  2:"1a · Lisa und Paul – hören",3:"1b · Jetzt sind Sie dran",
+  5:"2a · Begrüßen und nachsprechen",7:"3a · Dialog hören und nachsprechen",8:"3b · Dialog hören und nachsprechen",
+  9:"4a · Woher kommen diese Leute?",13:"7a · Dialog hören und nachsprechen",14:"7b · Dialog hören und nachsprechen",15:"7c · Dialog hören und nachsprechen",
+  17:"9a · Alphabet hören und nachsprechen",20:"10b · Zahlen nachsprechen",22:"11b · Zahlen nachsprechen",24:"12b · Zahlen nachsprechen",
+  28:"14b · Datum nachsprechen",32:"16b · Orte – mündlich antworten",34:"17b · Hören und nachsprechen",36:"18b · Wegbeschreibung nachsprechen",
+  38:"19b · Café-Dialog nachsprechen",40:"20b · Restaurant-Dialog nachsprechen",41:"21 · Diktat hören und schreiben",
+  43:"22b · Familie – nachsprechen",45:"23b · Familienstand nachsprechen",47:"24b · Informationen nachsprechen",
+  52:"28b · Anrufbeantworter nachsprechen",59:"34 · Einkaufen nachsprechen"
+};
+function a1ListenProgress(cfg){ try{return JSON.parse(localStorage.getItem(cfg.progressKey)||'{}');}catch(e){return {};} }
+function a1BookPage(cfg, page, label){
+  return `<figure class="card book-page"><img loading="lazy" src="${cfg.pageBase}page-${String(page).padStart(3,'0')}.webp"
+      alt="${label}, Buchseite ${page}">
+    <figcaption><span>${label} · Seite ${page}</span>
+      <button type="button" class="page-zoom" data-book-page="${page}" data-page-label="${label}" data-page-base="${cfg.pageBase}">Seite vergrößern</button>
+    </figcaption></figure>`;
+}
+function a1PageSpan(cfg, exercise){
+  if(exercise.solutionPages?.length) return {task:[exercise.exercisePages[0]], solution:exercise.solutionPages};
+  const starts=cfg.meta.chapters.flatMap(c=>c.exercises).map(e=>e.exercisePages[0]);
+  const start=exercise.exercisePages[0];
+  const later=starts.filter(p=>p>start);
+  const maxPage=cfg.meta.id==='phonetik'?76:72;
+  const end=later.length?Math.min(...later)-1:maxPage;
+  const pages=[]; for(let p=start;p<=end;p++) pages.push(p);
+  return {task:[pages[0]], solution:pages.slice(1)};
+}
+function a1AudioTrack(cfg, track, label){
+  return `<article class="audio-track"><div class="audio-track-head">
+      <span class="audio-track-title">${cfg.trackLabel(track)}${label?' · '+label:''}</span><span class="track-badge">Original MP3</span></div>
+    <audio controls preload="none" src="${cfg.audioSrc(track)}">Audio wird nicht unterstützt.</audio></article>`;
+}
+function renderA1ExerciseFigures(cfg, exercise){
+  const figures=cfg.figures()[exercise.id];
+  if(!figures||!figures.length) return '';
+  const sections=cfg.interactive()[exercise.id]||[];
+  if(sections.length) return '';
+  return `<section class="interactive-sheet"><div class="section-figures">${renderListeningFigures(figures)}</div></section>`;
+}
+function renderA1InteractiveListening(cfg, exercise){
+  const sections=cfg.interactive()[exercise.id]||[];
+  if(!sections.length) return '';
+  const figuresBook=cfg.figures();
+  const hasAttachedFigures=sections.some(section=>section.figureRange||section.questions.some(question=>question.image||question.figure!==undefined||question.figureRange));
+  const overview=!hasAttachedFigures&&figuresBook[exercise.id]?renderListeningFigures(figuresBook[exercise.id]):'';
+  const questionCount=sections.reduce((sum,section)=>sum+section.questions.length,0);
+  return `<section class="interactive-sheet">
+    <div class="interactive-intro"><div><b>Interaktive Aufgaben</b>
+      <span>Direkt auswählen, schreiben und sofort prüfen.</span></div><span>${questionCount} Fragen</span></div>
+    ${overview}
+    ${sections.map((section,sectionIndex)=>{
+      const tracks=section.tracks||[];
+      return `<article class="interactive-section" data-section-index="${sectionIndex}">
+      <div class="interactive-section-head"><h3>${escapeHtml(section.title)}</h3>
+        <div class="section-track-badges">${tracks.map(track=>`<span class="track-badge">${cfg.trackLabel(track)}</span>`).join('')}</div></div>
+      <div class="section-audios">${tracks.map(track=>a1AudioTrack(cfg, track)).join('')}</div>
+      ${renderSectionFigures(exercise.id,section,figuresBook)}
+      ${section.questions.map((question,index)=>renderWebQuestion(exercise.id,question,index,sectionIndex,tracks,figuresBook)).join('')}
+      <button type="button" class="section-check" data-check-section="${sectionIndex}">Antworten prüfen</button>
+      <span class="section-result" aria-live="polite"></span>
+      </article>`;
+    }).join('')}
+  </section>`;
+}
+function renderA1RemainingTracks(cfg, exercise){
+  const sections=cfg.interactive()[exercise.id]||[];
+  const assigned=new Set(sections.flatMap(section=>section.tracks||[]));
+  const remaining=exercise.tracks.filter(track=>!assigned.has(track));
+  if(!remaining.length) return '';
+  const trackTasks=cfg.meta.id==='hoeren'?A1_LISTENING_TRACK_TASKS:{};
+  return `<section class="extra-listening"><h3>Weitere Hör- und Sprechaufgaben aus dem Buch</h3>
+    <p>Jeder Track steht direkt bei seiner zugehörigen Buchaufgabe.</p>
+    ${remaining.map(track=>`<div class="interactive-section-head"><h3>${escapeHtml(trackTasks[track]||'Übung aus dem Buch')}</h3>
+      <span class="track-badge">${cfg.trackLabel(track)}</span></div>${a1AudioTrack(cfg, track)}`).join('')}</section>`;
+}
+function a1InitInteractive(cfg, exercise){
+  const sections=cfg.interactive()[exercise.id]||[];
+  const audios=$$('.audio-track audio');
+  audios.forEach(audio=>audio.addEventListener('play',()=>{ audios.forEach(other=>{ if(other!==audio) other.pause(); }); }));
+  $$('[data-check-section]').forEach(button=>button.addEventListener('click',()=>{
+    const sectionIndex=Number(button.dataset.checkSection);
+    const section=sections[sectionIndex];
+    const container=button.closest('.interactive-section');
+    let correct=0;
+    section.questions.forEach((question,index)=>{
+      const card=container.querySelector(`[data-question-index="${index}"]`);
+      const isCorrect=checkListeningQuestion(card,question);
+      card.classList.toggle('correct',isCorrect);
+      card.classList.toggle('wrong',!isCorrect);
+      card.querySelector('.question-feedback').textContent=isCorrect?'Richtig ✓':`Richtige Antwort: ${listeningCorrectAnswer(question)}`;
+      if(isCorrect) correct++;
+    });
+    container.querySelector('.section-result').textContent=`${correct} / ${section.questions.length} richtig`;
+  }));
+}
+function renderA1ListenBookPicker(){
+  setTop('Hören A1','Zwei Übungsbücher',true);
+  const books=[
+    {id:'hoeren', meta:HOEREN_A1, cover:A1_LISTEN_BOOKS.hoeren.cover, ar:'كتاب الاستماع والتحدث الأصلي — 34 تمرينًا في 8 موضوعات.'},
+    {id:'phonetik', meta:PHONETIK_A1, cover:A1_LISTEN_BOOKS.phonetik.cover, ar:'كتاب النطق والإيقاع — تمارين Prosodie وVokale وKonsonanten مع كل الصوتيات.'}
+  ];
+  view.innerHTML=a1MainTabs('listen')+`
+    <section class="hero"><h2>Hörtraining A1</h2>
+      <p>Zwei eigenständige Bücher: Hören &amp; Sprechen und Phonetik – jeweils mit Original-Audios, Buchseiten und interaktiven Aufgaben.</p>
+      ${ar('قسمان للسمعيات: كتاب Hören & Sprechen وكتاب Phonetik — كل واحد بالصور والأسئلة والصوتيات.')}</section>
+    <section class="listen-chapter-grid">${books.map(book=>{
+      const cfg=A1_LISTEN_BOOKS[book.id];
+      const progress=a1ListenProgress(cfg);
+      const total=book.meta.chapters.reduce((s,c)=>s+c.exercises.length,0);
+      const done=Object.values(progress).filter(Boolean).length;
+      const tracks=book.meta.chapters.flatMap(c=>c.exercises).flatMap(e=>e.tracks);
+      return `<button type="button" class="listen-chapter-card" onclick="go('${cfg.route}')">
+        <div class="chapter-collage" style="grid-template-columns:1fr">
+          <img loading="lazy" class="listening-cover" style="width:100%;aspect-ratio:3/4;object-fit:cover" src="${book.cover}" alt="${escapeHtml(book.meta.title)}">
+        </div>
+        <div class="listen-chapter-copy"><b>${book.meta.title}</b>
+          <span class="sub">${book.meta.subtitle}</span>
+          <span class="sub">Track ${tracks[0]}–${tracks.at(-1)} · ${done}/${total} geschafft</span>
+          ${ar(book.ar)}<div class="listen-progress"><span style="width:${total?Math.round(done/total*100):0}%"></span></div>
+        </div></button>`;
+    }).join('')}</section>`;
+}
+function renderA1ListeningHome(bookId){
+  const cfg=A1_LISTEN_BOOKS[bookId];
+  const meta=cfg.meta;
+  setTop(meta.title, meta.subtitle, true);
+  const progress=a1ListenProgress(cfg);
+  const total=meta.chapters.reduce((s,c)=>s+c.exercises.length,0);
+  const done=Object.values(progress).filter(Boolean).length;
+  const trackCount=meta.chapters.flatMap(c=>c.exercises).flatMap(e=>e.tracks).length;
+  const introLabel=bookId==='phonetik'?'Prosodie · Wortakzent':'Einleitung';
+  const outroLabel=bookId==='phonetik'?'Konsonanten · j':'Verabschiedung';
+  view.innerHTML=a1MainTabs('listen')+`
+    <section class="hero listening-hero">
+      <img class="listening-cover" src="${cfg.cover}" alt="${escapeHtml(meta.title)} Buchcover">
+      <div><h2>${meta.title}</h2>
+        <p>Höre die Original-Aufnahmen und bearbeite die passenden Übungen aus dem Buch.</p>
+        ${ar(bookId==='phonetik'?'تدريب النطق والإيقاع والحروف — استمع وكرّر وحل التمارين التفاعلية.':'استمع للتسجيلات الأصلية وحل التمارين المطابقة من الكتاب، موضوعًا موضوعًا.')}
+        <div class="listening-stats"><span class="listening-stat">${meta.chapters.length} Themen</span><span class="listening-stat">${total} Übungen</span>
+          <span class="listening-stat">${trackCount} Audiodateien</span><span class="listening-stat">${done}/${total} geschafft</span></div>
+      </div>
+    </section>
+    ${a1AudioTrack(cfg, meta.introTrack, introLabel)}
+    <div class="section-label">Themen im Buch</div>
+    <section class="listen-chapter-grid">${meta.chapters.map(chapter=>{
+      const cdone=chapter.exercises.filter(e=>progress[e.id]).length;
+      const percent=Math.round(cdone/chapter.exercises.length*100);
+      const tracks=chapter.exercises.flatMap(e=>e.tracks);
+      const collage=chapter.exercises.slice(0,3);
+      return `<button type="button" class="listen-chapter-card" onclick="go('${cfg.route}/${chapter.id}')">
+        <div class="chapter-collage" style="grid-template-columns:repeat(${collage.length},1fr)">${collage.map(exercise=>`<img loading="lazy" src="${cfg.thumbnail(exercise)}"
+          alt="${escapeHtml(exercise.title)}">`).join('')}<span class="chapter-letter">${chapter.id}</span></div>
+        <div class="listen-chapter-copy"><b>${chapter.title}</b>
+          <span class="sub">${chapter.exercises.length} Übungen · Track ${tracks[0]}–${tracks.at(-1)}</span>
+          ${ar(chapter.titleAr)}<div class="listen-progress"><span style="width:${percent}%"></span></div>
+        </div></button>`;
+    }).join('')}</section>
+    <div class="section-label">Abschluss</div>
+    ${a1AudioTrack(cfg, meta.outroTrack, outroLabel)}`;
+}
+function renderA1ListeningChapter(cfg, chapter){
+  setTop(`${chapter.id} · ${chapter.title}`,`${chapter.exercises.length} Übungen`,true);
+  const progress=a1ListenProgress(cfg);
+  view.innerHTML=a1MainTabs('listen')+`
+    <section class="hero"><h2>${chapter.title}</h2><p>Wähle eine Übung und höre die Original-Tracks.</p>${ar(chapter.titleAr)}</section>
+    <section class="listen-exercise-grid">${chapter.exercises.map((exercise,index)=>`
+      <button type="button" class="listen-exercise-card ${progress[exercise.id]?'completed':''}" onclick="go('${cfg.route}/${chapter.id}/${index}')">
+        <div class="listen-exercise-thumb"><img loading="lazy" src="${cfg.thumbnail(exercise)}" alt="${escapeHtml(exercise.title)}">
+          <span class="listen-exercise-id">${exercise.id}</span>
+          ${progress[exercise.id]?'<span class="listen-exercise-done">Gelernt ✓</span>':''}
+        </div>
+        <div class="listen-exercise-copy"><b>${exercise.title}</b>
+          <div class="listen-exercise-meta"><span>Track ${exercise.tracks.join(' · ')}</span>
+            <span>Buch S. ${exercise.exercisePages.join(', ')}</span></div>
+          <div class="listen-progress"><span style="width:${progress[exercise.id]?100:0}%"></span></div>
+        </div>
+      </button>`).join('')}</section>`;
+}
+function renderA1ListeningExercise(cfg, chapter, index){
+  const exercise=chapter.exercises[index];
+  if(!exercise){ renderA1ListeningChapter(cfg, chapter); return; }
+  setTop(`${exercise.id}: ${exercise.title}`,`${chapter.title} · Track ${exercise.tracks.join('–')}`,true);
+  const isDone=!!a1ListenProgress(cfg)[exercise.id];
+  const span=a1PageSpan(cfg, exercise);
+  view.innerHTML=a1MainTabs('listen')+`
+    <div class="listen-lesson-head">
+      <div><div class="section-label" style="margin-top:2px">${chapter.id} · ${chapter.title}</div>
+        <h2>${exercise.title}</h2>
+        <div class="track-badges">${exercise.tracks.map(t=>`<span class="track-badge">${cfg.trackLabel(t)}</span>`).join('')}</div>
+      </div>
+      <span class="dictionary-meta">Buch S. ${exercise.exercisePages.join(', ')}</span>
+    </div>
+    <div class="book-task"><b>Deine Aufgabe</b> ${exercise.task}${ar(exercise.taskAr)}</div>
+    ${renderA1ExerciseFigures(cfg, exercise)}
+    ${renderA1InteractiveListening(cfg, exercise)}
+    ${renderA1RemainingTracks(cfg, exercise)}
+    <details class="book-reference" open>
+      <summary>Aufgabe im Buch (mit Fragen und Bildern)</summary>
+      <div class="book-reference-pages">${span.task.map(p=>a1BookPage(cfg, p,'Aufgabe')).join('')}</div>
+    </details>
+    <div class="listen-actions">
+      <button type="button" class="solution-toggle" id="a1SolBtn"${span.solution.length?'':' style="display:none"'}>Lösung &amp; Hörtext anzeigen</button>
+      <button type="button" class="lesson-complete ${isDone?'done':''}" id="a1ListenDone">${isDone?'Gelernt ✓':'Als gelernt markieren'}</button>
+    </div>
+    <section class="solution-panel" id="a1ListenSolutions"></section>`;
+  const solBtn=$('#a1SolBtn');
+  if(solBtn) solBtn.addEventListener('click',()=>{
+    const panel=$('#a1ListenSolutions');
+    const show=!panel.classList.contains('show');
+    if(show&&!panel.dataset.loaded){
+      panel.innerHTML=`<div class="section-label">Lösung und Hörtext</div>`+span.solution.map(p=>a1BookPage(cfg, p,'Lösung')).join('');
+      panel.dataset.loaded='1';
+    }
+    panel.classList.toggle('show',show);
+    solBtn.innerHTML=show?'Lösung &amp; Hörtext ausblenden':'Lösung &amp; Hörtext anzeigen';
+  });
+  const btn=$('#a1ListenDone');
+  btn.addEventListener('click',()=>{
+    const p=a1ListenProgress(cfg); p[exercise.id]=!p[exercise.id];
+    localStorage.setItem(cfg.progressKey,JSON.stringify(p));
+    btn.classList.toggle('done',!!p[exercise.id]);
+    btn.textContent=p[exercise.id]?'Gelernt ✓':'Als gelernt markieren';
+  });
+  a1InitInteractive(cfg, exercise);
+}
+
+function renderA1Home(){
+  setTop('Deutsch A1','Netzwerk neu A1', true);
+  view.innerHTML = a1MainTabs('lessons') + `
+  <section class="hero">
+    <h2>Netzwerk neu A1</h2>
+    <p>Zwölf Kapitel mit Wortschatz, Redemitteln, Grammatik, Lesen, Sprechen und Quiz - im gleichen Lernformat wie A2.</p>
+    ${ar('اثنا عشر درسًا بالمفردات وجمل الكلام والقواعد والقراءة والمحادثة والكويز، بنفس شكل مستوى A2.')}
+  </section>
+  <div class="section-label">A1 · Kapitel 1-12</div>
+  <section class="a1-roadmap">
+    ${A1_BOOK.map(chapter=>`
+      <button type="button" class="lesson-item" onclick="go('${chapter.route||`a1/k${chapter.num}`}')">
+        <div class="num">${chapter.num}</div>
+        ${chapter.visual?`<img class="lesson-thumb" src="${chapter.visual.src}" alt="">`:''}
+        <div class="ttl"><b>${chapter.title}</b><span class="sub">${chapter.subtitle}</span>${ar(chapter.titleAr)}</div>
+        <div class="chev">›</div>
+      </button>`).join('')}
+  </section>
+  <div class="intro-note">Hinweis: Die Kapitel orientieren sich an den Themen von Netzwerk neu A1.1 und A1.2, sind aber als eigene Erklärungen, Beispiele und Übungen formuliert.</div>`;
+}
+
+function renderA1Chapter(num, tab='ueberblick'){
+  const chapter=A1_BOOK.find(item=>item.num===num);
+  if(!chapter){ renderA1Home(); return; }
+  renderChapter(chapter, tab);
+}
+
 function renderHome(){
-  setTop('Deutsch A2','Netzwerk neu A2.1 + A2.2 · Buch & Grammatik', false);
+  setTop('Deutsch A2','Netzwerk neu A2.1 + A2.2 · Buch & Grammatik', true);
   let html = mainTabs('lessons') + `
   <div class="hero">
     <h2>Hallo! 👋 Lern Deutsch – Schritt für Schritt</h2>
@@ -1480,8 +2070,10 @@ function renderListeningExercise(chapter,index){
   initListeningExercise(exercise);
 }
 
-function listeningFigures(exerciseId,question){
-  const all=(window.HOEREN_FIGURES||{})[exerciseId]||[];
+function listeningFigures(exerciseId,question,figuresBook){
+  const book=figuresBook||window.HOEREN_FIGURES||{};
+  if(book.__noFigures) return [];
+  const all=book[exerciseId]||[];
   if(!question) return all;
   if(question.image) return [{src:question.image,page:question.page||''}];
   if(Number.isInteger(question.figure)) return all[question.figure]?[all[question.figure]]:[];
@@ -1489,17 +2081,36 @@ function listeningFigures(exerciseId,question){
   return [];
 }
 
-function renderListeningFigures(figures){
-  if(!figures.length) return '';
-  return `<div class="question-figures">${figures.map((figure,index)=>`
-    <figure class="question-figure"><img loading="lazy" src="${escapeHtml(figure.src)}" alt="Originalabbildung ${index+1}">
-      <figcaption>Abbildung ${index+1} · Buchseite ${figure.page}</figcaption>
-    </figure>`).join('')}</div>`;
+function figureCaption(figure,index){
+  if(figure.label) return figure.sheet?`Bilder ${figure.label}`:`Bild ${figure.label})`;
+  return `Abbildung ${index+1}`;
 }
 
-function renderWebQuestion(exerciseId,question,index,sectionIndex,tracks){
+function renderListeningFigures(figures){
+  if(!figures.length) return '';
+  const isSheet=figures.some(figure=>figure.sheet);
+  const isTiles=!isSheet&&figures.length>1;
+  const classes=['question-figures',isSheet?'sheet':'',isTiles?'tiles':''].filter(Boolean).join(' ');
+  return `<div class="${classes}">${figures.map((figure,index)=>{
+    const caption=figureCaption(figure,index);
+    const page=figure.page?` · Buchseite ${figure.page}`:'';
+    return `<figure class="question-figure${figure.sheet?' sheet-figure':''}"><img loading="lazy" src="${escapeHtml(figure.src)}" alt="${escapeHtml(caption)}">
+      <figcaption>${escapeHtml(caption)}${page}</figcaption>
+    </figure>`;
+  }).join('')}</div>`;
+}
+
+function renderSectionFigures(exerciseId,section,figuresBook){
+  if(!Array.isArray(section.figureRange)) return '';
+  const book=figuresBook||window.HOEREN_FIGURES||{};
+  const figures=(book[exerciseId]||[]).slice(section.figureRange[0],section.figureRange[1]);
+  const rendered=renderListeningFigures(figures);
+  return rendered?`<div class="section-figures">${rendered}</div>`:'';
+}
+
+function renderWebQuestion(exerciseId,question,index,sectionIndex,tracks,figuresBook){
   const name=`listen-${exerciseId}-${sectionIndex}-${index}`;
-  const figures=renderListeningFigures(listeningFigures(exerciseId,question));
+  const figures=renderListeningFigures(listeningFigures(exerciseId,question,figuresBook));
   const trackLabel=tracks.length===1?`Track ${tracks[0]}`:`Tracks ${tracks.join(' + ')}`;
   let control='';
   if(question.type==='text'){
@@ -1528,7 +2139,7 @@ function renderWebQuestion(exerciseId,question,index,sectionIndex,tracks){
 function renderInteractiveListening(exercise){
   const sections=(window.HOEREN_INTERACTIVE||{})[exercise.id]||[];
   if(!sections.length) return '';
-  const hasAttachedFigures=sections.some(section=>section.questions.some(question=>question.image||question.figure!==undefined||question.figureRange));
+  const hasAttachedFigures=sections.some(section=>section.figureRange||section.questions.some(question=>question.image||question.figure!==undefined||question.figureRange));
   const overview=!hasAttachedFigures?renderListeningFigures(listeningFigures(exercise.id)):'';
   const questionCount=sections.reduce((sum,section)=>sum+section.questions.length,0);
   return `<section class="interactive-sheet">
@@ -1542,6 +2153,7 @@ function renderInteractiveListening(exercise){
         <div class="section-track-badges">${tracks.map(track=>`<span class="track-badge">Track ${track}</span>`).join('')}</div>
       </div>
       <div class="section-audios">${tracks.map(track=>renderBookTrack(track,exercise)).join('')}</div>
+      ${renderSectionFigures(exercise.id,section)}
       ${section.questions.map((question,index)=>renderWebQuestion(exercise.id,question,index,sectionIndex,tracks)).join('')}
       <button type="button" class="section-check" data-check-section="${sectionIndex}">Antworten prüfen</button>
       <span class="section-result" aria-live="polite"></span>
@@ -1679,8 +2291,9 @@ view.addEventListener('click',event=>{
   const zoom=event.target.closest('[data-book-page]');
   if(!zoom) return;
   const page=zoom.dataset.bookPage;
+  const base=zoom.dataset.pageBase||'assets/listening/pages/';
   $('#bookPageTitle').textContent=`${zoom.dataset.pageLabel} · Seite ${page}`;
-  $('#bookPageLarge').src=`assets/listening/pages/page-${String(page).padStart(3,'0')}.webp`;
+  $('#bookPageLarge').src=`${base}page-${String(page).padStart(3,'0')}.webp`;
   $('#bookPageLarge').alt=`Buchseite ${page}`;
   openModal('bookPageModal');
 });
@@ -2878,9 +3491,13 @@ const TABS = [
 ];
 
 function renderChapter(c, tab){
-  setTop(`Kapitel ${c.num}: ${c.title}`, c.subtitle, true);
-  let html = `<div class="tabs">` + TABS.map(([id,lbl]) =>
-    `<button class="tab ${id===tab?'active':''}" onclick="go('k${c.num}/${id}')">${lbl}</button>`).join('') + `</div>`;
+  const isA1=c.route?.startsWith('a1/');
+  const routeBase=c.route||`k${c.num}`;
+  const chapterLabel=isA1?'A1 Kapitel':'Kapitel';
+  setTop(`${chapterLabel} ${c.num}: ${c.title}`, c.subtitle, true);
+  let html = isA1?a1MainTabs('lessons'):mainTabs('lessons');
+  html += `<div class="tabs tabs--below-main">` + TABS.map(([id,lbl]) =>
+    `<button class="tab ${id===tab?'active':''}" onclick="go('${routeBase}/${id}')">${lbl}</button>`).join('') + `</div>`;
   if(tab!=='ueberblick' && c.visual){
     const sceneIndex={wortschatz:1,lesen:0,redemittel:2,grammatik:3,sprechen:1,quiz:2}[tab]??0;
     const tabVisual=c.scenes?.[sceneIndex]||c.visual;
@@ -2897,7 +3514,7 @@ function renderChapter(c, tab){
 
 function renderChapterTab(c, tab){
   if(tab==='ueberblick'){
-    let h = c.visual?`<figure class="card chapter-visual">
+    let h = c.visual?`<figure class="card chapter-visual ${c.route?.startsWith('a1/')?'chapter-visual--wide':''}">
       <img src="${c.visual.src}" alt="${c.visual.alt}">
       <figcaption class="visual-caption">${c.visual.caption}${ar(c.visual.captionAr)}</figcaption>
     </figure>`:'';
@@ -2905,6 +3522,11 @@ function renderChapterTab(c, tab){
       <h3 style="color:var(--green-d);margin-bottom:6px">Worum geht es in diesem Kapitel?</h3>
       <p style="font-size:15px">${c.intro}</p>${ar(c.introAr)}
       <div class="badge-row">${c.badges.map(b=>`<span class="badge">${b}</span>`).join('')}</div>
+      ${c.topicVisuals?.length?`<div class="topic-visual-grid">${c.topicVisuals.map(topic=>`
+        <figure class="topic-visual-card">
+          <img src="${topic.src}" alt="${escapeHtml(topic.alt||topic.title)}" loading="lazy" decoding="async">
+          <figcaption>${escapeHtml(topic.title)}</figcaption>
+        </figure>`).join('')}</div>`:''}
     </div>
     <div class="card"><h3 style="color:var(--green-d);margin-bottom:8px">Das lernst du hier 🎯</h3>`;
     c.goals.forEach(g => h += `<div class="goal-item"><span>✅</span><div>${g.de}${ar(g.ar)}</div></div>`);
@@ -2963,11 +3585,11 @@ function renderChapterTab(c, tab){
   }
   if(tab==='lesen'){
     return c.readings.map((r,ri) => `
-      <article class="card reading-card with-cover">
-        <figure class="reading-cover">
-          <img src="${r.visual?.src||`assets/readings/chapter-${c.num}-reading.webp`}" alt="${r.visual?.alt||''}" style="object-position:center">
+      <article class="card reading-card ${r.visual?.src?'with-cover':''}">
+        ${r.visual?.src?`<figure class="reading-cover">
+          <img src="${r.visual.src}" alt="${r.visual.alt||''}" style="object-position:center">
           <figcaption class="reading-cover-copy"><div class="reading-kind">${r.kind}</div><h3>${r.title}</h3></figcaption>
-        </figure>
+        </figure>`:`<h3 style="color:var(--green-d);margin-bottom:8px">${r.kind}: ${r.title}</h3>`}
         <div class="reading-body">
           <div class="reading-tools">
             <button type="button" class="people-read" onclick="speakReadingWithPeople(${c.num},${ri})">Mehrere Sprecher hören</button>
@@ -3285,7 +3907,7 @@ const STICKER_CHAPTER_ACCENTS = {
 
 const STICKER_CARD_IDS = new WeakMap();
 let stickerCardId = 0;
-BOOK.forEach(chapter => chapter.vocab.forEach(card => {
+[...A1_BOOK, ...BOOK].forEach(chapter => chapter.vocab.forEach(card => {
   STICKER_CARD_IDS.set(card, stickerCardId++);
 }));
 
@@ -3294,13 +3916,26 @@ function stableWordHash(value){
 }
 
 function vocabVisual(v,chapter){
-  const chapterData=BOOK.find(item=>item.num===chapter);
+  const chapterData=[...A1_BOOK, ...BOOK].find(item=>item.vocab?.includes(v));
+  if(chapterData?.route?.startsWith('a1/')){
+    return `<div class="fc-visual fc-visual--full" role="img" aria-label="${escapeHtml(v.w)}">
+      ${v.img?`<img class="fc-scene" src="${v.img}" alt="" width="420" height="420" loading="eager" decoding="async">`:
+      `<div class="level-code" style="margin:auto">A1</div>`}
+      <span class="sticker-category">${escapeHtml(v.cat||`Kapitel ${chapterData.num}`)}</span>
+    </div>`;
+  }
+  if(!chapterData){
+    return `<div class="fc-visual" role="img" aria-label="${escapeHtml(v.w)}">
+      <div class="level-code" style="margin:auto">DE</div>
+      <span class="sticker-category">Wortschatz</span>
+    </div>`;
+  }
   const cardIndex=chapterData.vocab.indexOf(v);
   const sceneNumber=String(cardIndex+1).padStart(2,'0');
   return `<div class="fc-visual" role="img" aria-label="${escapeHtml(v.w)}">
-    <img class="fc-scene" src="assets/vocab-scenes/k${chapter}/${sceneNumber}.webp"
+    <img class="fc-scene" src="assets/vocab-scenes/k${chapterData.num}/${sceneNumber}.webp"
       alt="" width="420" height="420" loading="eager" decoding="async">
-    <span class="sticker-category">${escapeHtml(v.cat||`Kapitel ${chapter}`)}</span>
+    <span class="sticker-category">${escapeHtml(v.cat||`Kapitel ${chapterData.num}`)}</span>
   </div>`;
 }
 
