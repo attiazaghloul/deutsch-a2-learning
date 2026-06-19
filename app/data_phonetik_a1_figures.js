@@ -1,7 +1,7 @@
 /* Figure crops for Deutsch üben Phonetik A1 — scene illustrations and exercise sheets. */
 (function () {
   const B = "assets/listening/a1-phonetik/figures";
-  const sheet = (ex, page) => ({src: `${B}/${ex}/${ex}-p${String(page).padStart(2, "0")}-sheet.webp`, caption: `Buchseite ${page}`});
+  const sheet = (ex, page) => ({src: `${B}/${ex}/${ex}-p${String(page).padStart(2, "0")}-sheet.webp`, caption: `Buchseite ${page}`, page, sheet: true});
   const scene = (path, caption) => ({src: `${B}/${path}`, caption});
 
   const pages = (ex, start, end) => {

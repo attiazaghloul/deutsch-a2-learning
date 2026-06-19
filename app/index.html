@@ -406,8 +406,19 @@ body.listen-mode .speakable{cursor:pointer}
 .listen-chapter-card{display:block;width:100%;padding:0;overflow:hidden;text-align:left;background:var(--card);
   border:1px solid var(--line);border-radius:17px;box-shadow:var(--shadow);cursor:pointer;font:inherit;color:var(--ink)}
 .listen-chapter-card:active{transform:translateY(1px)}
+.listen-book-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-bottom:18px}
+.listen-book-card{display:grid;grid-template-columns:112px minmax(0,1fr);gap:14px;align-items:stretch;width:100%;text-align:left;
+  border:1px solid var(--line);border-radius:17px;background:var(--card);box-shadow:var(--shadow);padding:12px;
+  cursor:pointer;font:inherit;color:var(--ink)}
+.listen-book-card:active{transform:translateY(1px)}
+.listen-book-cover{width:112px;aspect-ratio:3/4;object-fit:cover;object-position:top;border-radius:13px;background:#fff;
+  box-shadow:0 8px 18px rgba(25,45,48,.12)}
+.listen-book-copy{display:flex;flex-direction:column;min-width:0}
+.listen-book-copy b{color:var(--green-d);font-size:15px;line-height:1.3}
+.listen-book-copy .sub{display:block;color:var(--ink-2);font-size:11.5px;margin-top:4px}
+.listen-book-copy .ar{margin-top:6px}
 .chapter-collage{display:grid;grid-template-columns:repeat(3,1fr);height:118px;position:relative;background:var(--blue-l)}
-.chapter-collage img{display:block;width:100%;height:100%;object-fit:cover;object-position:top;border-right:2px solid rgba(255,255,255,.8)}
+.chapter-collage img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;border-right:2px solid rgba(255,255,255,.8)}
 .chapter-collage img:last-child{border-right:0}
 .chapter-letter{position:absolute;left:10px;top:10px;display:grid;place-items:center;width:38px;height:38px;
   border-radius:12px;background:rgba(29,91,95,.92);color:#fff;font-size:18px;font-weight:800;box-shadow:0 5px 13px rgba(25,55,60,.2)}
@@ -420,7 +431,7 @@ body.listen-mode .speakable{cursor:pointer}
   border:1px solid var(--line);border-radius:17px;box-shadow:var(--shadow);cursor:pointer;font:inherit;color:var(--ink)}
 .listen-exercise-card.completed{border-color:#7db39f;box-shadow:0 8px 22px rgba(39,113,89,.13)}
 .listen-exercise-thumb{position:relative;height:155px;background:var(--blue-l);overflow:hidden}
-.listen-exercise-thumb img{display:block;width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .2s ease}
+.listen-exercise-thumb img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .2s ease}
 .listen-exercise-card:active .listen-exercise-thumb img{transform:scale(1.02)}
 .listen-exercise-id{position:absolute;left:10px;top:10px;background:rgba(29,91,95,.92);color:#fff;border-radius:10px;
   padding:5px 9px;font-size:11px;font-weight:800}
@@ -485,14 +496,15 @@ body.listen-mode .speakable{cursor:pointer}
   color:var(--green-d);font-size:11px}
 .question-track{margin-left:auto;white-space:nowrap;background:var(--blue-l);color:var(--blue);border-radius:999px;
   padding:3px 7px;font-size:10px;font-weight:800}
-.question-figures{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;margin:8px 0 12px}
-.question-figures.tiles{grid-template-columns:repeat(auto-fill,minmax(132px,1fr))}
-.question-figures.sheet{grid-template-columns:minmax(0,1fr);max-width:720px}
-.question-figure{margin:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
-.question-figure img{display:block;width:100%;height:auto;max-height:180px;object-fit:contain;background:#fafafa}
-.question-figures.tiles .question-figure img{height:155px;max-height:155px}
-.question-figures.sheet .question-figure img,.question-figure.sheet-figure img{max-height:none;height:auto}
-.question-figure figcaption{font-size:10px;color:var(--ink-2);padding:5px 7px;text-align:center;margin-top:auto}
+.question-figures{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));gap:10px;margin:10px 0 14px}
+.question-figures.tiles{grid-template-columns:repeat(auto-fill,minmax(148px,1fr))}
+.question-figures.sheet{grid-template-columns:minmax(0,1fr);max-width:none}
+.question-figure{margin:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;display:flex;flex-direction:column;
+  box-shadow:0 5px 16px rgba(31,64,68,.07)}
+.question-figure img{display:block;width:100%;height:auto;max-height:220px;object-fit:contain;background:#fafafa}
+.question-figures.tiles .question-figure img{height:170px;max-height:170px}
+.question-figures.sheet .question-figure img,.question-figure.sheet-figure img{max-height:none;height:auto;object-fit:contain}
+.question-figure figcaption{font-size:10.5px;color:var(--ink-2);padding:7px 9px;text-align:center;margin-top:auto;background:#fff}
 .section-figures{margin:0 0 14px}
 .web-options{display:grid;gap:7px}
 .web-option{display:flex;align-items:flex-start;gap:8px;padding:9px 10px;border:1px solid var(--line);border-radius:10px;
@@ -730,12 +742,15 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
   .voice-gallery{grid-template-columns:1fr}
   .listening-hero{grid-template-columns:82px 1fr;gap:12px}
   .listening-cover{width:82px}
+  .listen-book-grid{grid-template-columns:1fr}
+  .listen-book-card{grid-template-columns:88px minmax(0,1fr);gap:11px;padding:10px}
+  .listen-book-cover{width:88px}
   .listen-lesson-head{display:block}
   .interactive-intro{align-items:flex-start;flex-direction:column}
   .interactive-section-head{align-items:flex-start;flex-direction:column}
   .section-track-badges{justify-content:flex-start}
   .match-row{grid-template-columns:1fr}
-  .question-figures.tiles .question-figure img{height:125px;max-height:125px}
+  .question-figures.tiles .question-figure img{height:140px;max-height:140px}
   .listen-chapter-grid,.listen-exercise-grid{grid-template-columns:1fr}
   .level-grid,.a1-roadmap,.a1-module-grid,.topic-visual-grid{grid-template-columns:1fr}
   .chapter-collage{height:125px}
@@ -832,11 +847,11 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <script src="data_a12.js"></script>
 <script src="data_a1_verbs.js"></script>
 <script src="data_hoeren_a1.js"></script>
-<script src="data_hoeren_a1_figures.js"></script>
-<script src="data_hoeren_a1_interactive.js"></script>
+<script src="data_hoeren_a1_figures.js?v=a1-listen-ui-1"></script>
+<script src="data_hoeren_a1_interactive.js?v=a1-listen-ui-1"></script>
 <script src="data_phonetik_a1.js"></script>
-<script src="data_phonetik_a1_figures.js"></script>
-<script src="data_phonetik_a1_interactive.js"></script>
+<script src="data_phonetik_a1_figures.js?v=a1-listen-ui-1"></script>
+<script src="data_phonetik_a1_interactive.js?v=a1-listen-ui-1"></script>
 <script src="data_book0.js"></script>
 <script src="data_book0_expansion.js"></script>
 <script src="data_book1.js"></script>
@@ -870,12 +885,12 @@ const HOEREN = window.HOEREN_BOOK;
 const A1_LISTEN_BOOKS = {
   hoeren: {
     meta: HOEREN_A1,
-    figures: () => ({__noFigures:true}),
+    figures: () => window.HOEREN_A1_FIGURES || {},
     interactive: () => window.HOEREN_A1_INTERACTIVE || {},
     progressKey: 'a1HoerenProgress',
     trackLabel: track => `Track ${track}`,
     audioSrc: track => `assets/listening/a1/audio/track-${String(track).padStart(3, '0')}.mp3`,
-    thumbnail: ex => `assets/listening/a1/pages/page-${String(ex.exercisePages[0]).padStart(3, '0')}.webp`,
+    thumbnail: ex => `assets/listening/a1/thumbnails/${ex.id.toLowerCase()}.webp`,
     pageBase: 'assets/listening/a1/pages/',
     cover: 'assets/listening/a1/cover.webp',
     route: 'a1/listen/hoeren',
@@ -883,12 +898,12 @@ const A1_LISTEN_BOOKS = {
   },
   phonetik: {
     meta: PHONETIK_A1,
-    figures: () => ({__noFigures:true}),
+    figures: () => window.PHONETIK_A1_FIGURES || {},
     interactive: () => window.PHONETIK_A1_INTERACTIVE || {},
     progressKey: 'a1PhonetikProgress',
     trackLabel: track => `Track ${track}`,
     audioSrc: track => `assets/listening/a1-phonetik/audio/track-${String(track).replace('.', '-')}.mp3`,
-    thumbnail: ex => `assets/listening/a1-phonetik/pages/page-${String(ex.exercisePages[0]).padStart(3, '0')}.webp`,
+    thumbnail: ex => `assets/listening/a1-phonetik/thumbnails/${ex.id.toLowerCase()}.webp`,
     pageBase: 'assets/listening/a1-phonetik/pages/',
     cover: 'assets/listening/a1-phonetik/cover.webp',
     route: 'a1/listen/phonetik',
@@ -1808,17 +1823,15 @@ function renderA1ListenBookPicker(){
     <section class="hero"><h2>Hörtraining A1</h2>
       <p>Zwei eigenständige Bücher: Hören &amp; Sprechen und Phonetik – jeweils mit Original-Audios, Buchseiten und interaktiven Aufgaben.</p>
       ${ar('قسمان للسمعيات: كتاب Hören & Sprechen وكتاب Phonetik — كل واحد بالصور والأسئلة والصوتيات.')}</section>
-    <section class="listen-chapter-grid">${books.map(book=>{
+    <section class="listen-book-grid">${books.map(book=>{
       const cfg=A1_LISTEN_BOOKS[book.id];
       const progress=a1ListenProgress(cfg);
       const total=book.meta.chapters.reduce((s,c)=>s+c.exercises.length,0);
       const done=Object.values(progress).filter(Boolean).length;
       const tracks=book.meta.chapters.flatMap(c=>c.exercises).flatMap(e=>e.tracks);
-      return `<button type="button" class="listen-chapter-card" onclick="go('${cfg.route}')">
-        <div class="chapter-collage" style="grid-template-columns:1fr">
-          <img loading="lazy" class="listening-cover" style="width:100%;aspect-ratio:3/4;object-fit:cover" src="${book.cover}" alt="${escapeHtml(book.meta.title)}">
-        </div>
-        <div class="listen-chapter-copy"><b>${book.meta.title}</b>
+      return `<button type="button" class="listen-book-card" onclick="go('${cfg.route}')">
+        <img loading="lazy" class="listen-book-cover" src="${book.cover}" alt="${escapeHtml(book.meta.title)}">
+        <div class="listen-book-copy"><b>${book.meta.title}</b>
           <span class="sub">${book.meta.subtitle}</span>
           <span class="sub">Track ${tracks[0]}–${tracks.at(-1)} · ${done}/${total} geschafft</span>
           ${ar(book.ar)}<div class="listen-progress"><span style="width:${total?Math.round(done/total*100):0}%"></span></div>
@@ -2097,7 +2110,8 @@ function listeningFigures(exerciseId,question,figuresBook){
 }
 
 function figureCaption(figure,index){
-  if(figure.label) return figure.sheet?`Bilder ${figure.label}`:`Bild ${figure.label})`;
+  if(figure.caption) return figure.caption;
+  if(figure.label) return figure.sheet?`Bilder ${figure.label}`:`Bild ${figure.label}`;
   return `Abbildung ${index+1}`;
 }
 
@@ -2108,7 +2122,7 @@ function renderListeningFigures(figures){
   const classes=['question-figures',isSheet?'sheet':'',isTiles?'tiles':''].filter(Boolean).join(' ');
   return `<div class="${classes}">${figures.map((figure,index)=>{
     const caption=figureCaption(figure,index);
-    const page=figure.page?` · Buchseite ${figure.page}`:'';
+    const page=figure.page&&!caption.includes(`Buchseite ${figure.page}`)?` · Buchseite ${figure.page}`:'';
     return `<figure class="question-figure${figure.sheet?' sheet-figure':''}"><img loading="lazy" src="${escapeHtml(figure.src)}" alt="${escapeHtml(caption)}">
       <figcaption>${escapeHtml(caption)}${page}</figcaption>
     </figure>`;
