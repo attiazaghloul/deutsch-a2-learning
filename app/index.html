@@ -539,6 +539,13 @@ body.listen-mode .speakable{cursor:pointer}
 .extra-listening{border:1px solid #dfd8c4;background:linear-gradient(135deg,var(--amber-l),#fff);border-radius:16px;padding:15px;margin:14px 0}
 .extra-listening h3{font-size:15px;color:#755427;margin-bottom:4px}
 .extra-listening>p{font-size:12px;color:var(--ink-2);margin-bottom:11px}
+.phonetik-book-tasks{background:linear-gradient(135deg,#f7fffc,#fff);border-color:#cfe2dc}
+.phonetik-task-list{display:grid;gap:12px}
+.phonetik-task-card{border:1px solid var(--line);border-radius:13px;background:#fff;padding:12px}
+.phonetik-task-card .interactive-section-head{margin-bottom:7px}
+.phonetik-task-card p{margin:5px 0;color:var(--ink-2);line-height:1.55}
+.phonetik-task-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}
+.track-badge.no-audio{background:#eef1f2;color:var(--ink-2)}
 .practice-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:20px 4px 10px}
 .practice-head h3{color:var(--green-d);font-size:18px}
 .practice-progress{font-size:12px;color:var(--ink-2);background:var(--card);border:1px solid var(--line);
@@ -857,9 +864,9 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <script src="data_hoeren_a1.js"></script>
 <script src="data_hoeren_a1_figures.js?v=a1-listen-ui-1"></script>
 <script src="data_hoeren_a1_interactive.js?v=a1-listen-ui-1"></script>
-<script src="data_phonetik_a1.js?v=phonetik-content-3"></script>
-<script src="data_phonetik_a1_figures.js?v=phonetik-content-3"></script>
-<script src="data_phonetik_a1_interactive.js?v=phonetik-content-3"></script>
+<script src="data_phonetik_a1.js?v=phonetik-content-4"></script>
+<script src="data_phonetik_a1_figures.js?v=phonetik-content-4"></script>
+<script src="data_phonetik_a1_interactive.js?v=phonetik-content-4"></script>
 <script src="data_book0.js"></script>
 <script src="data_book0_expansion.js"></script>
 <script src="data_book1.js"></script>
@@ -1747,7 +1754,7 @@ function a1BookPage(cfg, page, label){
     </figcaption></figure>`;
 }
 function a1PageSpan(cfg, exercise){
-  if(exercise.solutionPages?.length) return {task:[exercise.exercisePages[0]], solution:exercise.solutionPages};
+  if(exercise.solutionPages?.length) return {task:exercise.exercisePages, solution:exercise.solutionPages};
   const starts=cfg.meta.chapters.flatMap(c=>c.exercises).map(e=>e.exercisePages[0]);
   const start=exercise.exercisePages[0];
   const later=starts.filter(p=>p>start);
@@ -1759,7 +1766,7 @@ function a1PageSpan(cfg, exercise){
 function a1AudioTrack(cfg, track, label){
   return `<article class="audio-track"><div class="audio-track-head">
       <span class="audio-track-title">${cfg.trackLabel(track)}${label?' - '+label:''}</span><span class="track-badge">Original MP3</span></div>
-    <audio controls preload="none" src="${cfg.audioSrc(track)}">Audio wird nicht unterstuetzt.</audio></article>`;
+    <audio controls preload="none" src="${cfg.audioSrc(track)}">Audio wird nicht unterstützt.</audio></article>`;
 }
 function renderA1ExerciseFigures(cfg, exercise){
   if(cfg.meta.id==='phonetik') return '';
@@ -1785,6 +1792,33 @@ function renderPhonetikGuide(exercise){
     </article>
   </section>`;
 }
+function uniqueTracks(tracks){
+  return [...new Set((tracks||[]).filter(Boolean))];
+}
+function renderA1HeaderBadges(cfg, exercise){
+  if(cfg.meta.id==='phonetik' && exercise.bookTasks?.length){
+    const tracks=uniqueTracks(exercise.bookTasks.flatMap(task=>task.tracks||[]));
+    return `<span class="track-badge">${exercise.bookTasks.length} Aufgaben</span><span class="track-badge">${tracks.length} Audios</span>`;
+  }
+  return exercise.tracks.map(t=>`<span class="track-badge">${cfg.trackLabel(t)}</span>`).join('');
+}
+function renderPhonetikBookTasks(cfg, exercise){
+  const tasks=exercise.bookTasks||[];
+  if(!tasks.length) return '';
+  return `<section class="extra-listening phonetik-book-tasks"><h3>Aufgaben der Einheit und passende Audios</h3>
+    <p>Die Buchaufgaben sind hier in der richtigen Reihenfolge. Aufgaben ohne Kopfhörer-Symbol haben keinen eigenen Audio-Track.</p>
+    <div class="phonetik-task-list">${tasks.map(task=>{
+      const tracks=task.tracks||[];
+      return `<article class="phonetik-task-card">
+        <div class="interactive-section-head"><h3>${escapeHtml(task.title)}</h3>
+          <div class="section-track-badges">${tracks.length?tracks.map(track=>`<span class="track-badge">${cfg.trackLabel(track)}</span>`).join(''):'<span class="track-badge no-audio">Ohne Audio</span>'}</div></div>
+        <p>${escapeHtml(task.task||'')}</p>
+        ${task.taskAr?ar(task.taskAr):''}
+        <div class="phonetik-task-meta"><span class="track-badge">Buch S. ${task.page}</span></div>
+        ${tracks.map(track=>a1AudioTrack(cfg, track, task.title)).join('')}
+      </article>`;
+    }).join('')}</div></section>`;
+}
 function renderA1InteractiveListening(cfg, exercise){
   const sections=cfg.interactive()[exercise.id]||[];
   if(!sections.length) return '';
@@ -1794,7 +1828,7 @@ function renderA1InteractiveListening(cfg, exercise){
   const questionCount=sections.reduce((sum,section)=>sum+section.questions.length,0);
   return `<section class="interactive-sheet">
     <div class="interactive-intro"><div><b>Interaktive Aufgaben</b>
-      <span>Direkt auswaehlen, schreiben und sofort pruefen.</span></div><span>${questionCount} Fragen</span></div>
+      <span>Direkt auswählen, schreiben und sofort prüfen.</span></div><span>${questionCount} Fragen</span></div>
     ${overview}
     ${sections.map((section,sectionIndex)=>{
       const tracks=section.tracks||[];
@@ -1804,19 +1838,20 @@ function renderA1InteractiveListening(cfg, exercise){
       <div class="section-audios">${tracks.map(track=>a1AudioTrack(cfg, track)).join('')}</div>
       ${cfg.meta.id==='phonetik'?'':renderSectionFigures(exercise.id,section,figuresBook)}
       ${section.questions.map((question,index)=>renderWebQuestion(exercise.id,question,index,sectionIndex,tracks,figuresBook)).join('')}
-      <button type="button" class="section-check" data-check-section="${sectionIndex}">Antworten pruefen</button>
+      <button type="button" class="section-check" data-check-section="${sectionIndex}">Antworten prüfen</button>
       <span class="section-result" aria-live="polite"></span>
       </article>`;
     }).join('')}
   </section>`;
 }
 function renderA1RemainingTracks(cfg, exercise){
+  if(cfg.meta.id==='phonetik') return '';
   const sections=cfg.interactive()[exercise.id]||[];
   const assigned=new Set(sections.flatMap(section=>section.tracks||[]));
   const remaining=exercise.tracks.filter(track=>!assigned.has(track));
   if(!remaining.length) return '';
   const trackTasks=cfg.trackTasks?cfg.trackTasks():(cfg.meta.id==='hoeren'?A1_LISTENING_TRACK_TASKS:{});
-  return `<section class="extra-listening"><h3>Weitere Hoer- und Sprechaufgaben aus dem Buch</h3>
+  return `<section class="extra-listening"><h3>Weitere Hör- und Sprechaufgaben aus dem Buch</h3>
     <p>Jeder Track steht direkt bei seiner zugehoerigen Buchaufgabe.</p>
     ${remaining.map(track=>`<div class="interactive-section-head"><h3>${escapeHtml(trackTasks[track]||'Uebung aus dem Buch')}</h3>
       <span class="track-badge">${cfg.trackLabel(track)}</span></div>${a1AudioTrack(cfg, track)}`).join('')}</section>`;
@@ -1925,28 +1960,34 @@ function renderA1ListeningChapter(cfg, chapter){
 function renderA1ListeningExercise(cfg, chapter, index){
   const exercise=chapter.exercises[index];
   if(!exercise){ renderA1ListeningChapter(cfg, chapter); return; }
-  setTop(`${exercise.id}: ${exercise.title}`,`${chapter.title} - Track ${exercise.tracks.join('-')}`,true);
+  const isPhonetik=cfg.meta.id==='phonetik';
+  const bookTaskTracks=uniqueTracks(exercise.bookTasks?.flatMap(task=>task.tracks||[])||[]);
+  const topSub=isPhonetik&&exercise.bookTasks?.length
+    ? `${chapter.title} - ${exercise.bookTasks.length} Aufgaben - ${bookTaskTracks.length} Audios`
+    : `${chapter.title} - Track ${exercise.tracks.join('-')}`;
+  setTop(`${exercise.id}: ${exercise.title}`,topSub,true);
   const isDone=!!a1ListenProgress(cfg)[exercise.id];
   const span=a1PageSpan(cfg, exercise);
   view.innerHTML=a1MainTabs('listen')+`
     <div class="listen-lesson-head">
       <div><div class="section-label" style="margin-top:2px">${chapter.id} - ${chapter.title}</div>
         <h2>${exercise.title}</h2>
-        <div class="track-badges">${exercise.tracks.map(t=>`<span class="track-badge">${cfg.trackLabel(t)}</span>`).join('')}</div>
+        <div class="track-badges">${renderA1HeaderBadges(cfg, exercise)}</div>
       </div>
       <span class="dictionary-meta">Buch S. ${exercise.exercisePages.join(', ')}</span>
     </div>
     <div class="book-task"><b>Deine Aufgabe</b> ${escapeHtml(exercise.task)}${ar(exercise.taskAr)}</div>
-    ${cfg.meta.id==='phonetik'?renderPhonetikGuide(exercise):''}
+    ${isPhonetik?renderPhonetikGuide(exercise):''}
+    ${isPhonetik?renderPhonetikBookTasks(cfg, exercise):''}
     ${renderA1ExerciseFigures(cfg, exercise)}
     ${renderA1InteractiveListening(cfg, exercise)}
     ${renderA1RemainingTracks(cfg, exercise)}
-    <details class="book-reference" ${cfg.meta.id==='phonetik'?'':'open'}>
+    <details class="book-reference" ${isPhonetik?'':'open'}>
       <summary>Aufgabe im Buch (mit Fragen und Bildern)</summary>
       <div class="book-reference-pages">${span.task.map(p=>a1BookPage(cfg, p,'Aufgabe')).join('')}</div>
     </details>
     <div class="listen-actions">
-      <button type="button" class="solution-toggle" id="a1SolBtn"${span.solution.length?'':' style="display:none"'}>Loesung und Hoertext anzeigen</button>
+      <button type="button" class="solution-toggle" id="a1SolBtn"${span.solution.length?'':' style="display:none"'}>Lösung und Hörtext anzeigen</button>
       <button type="button" class="lesson-complete ${isDone?'done':''}" id="a1ListenDone">${isDone?'Gelernt':'Als gelernt markieren'}</button>
     </div>
     <section class="solution-panel" id="a1ListenSolutions"></section>`;
@@ -1955,11 +1996,11 @@ function renderA1ListeningExercise(cfg, chapter, index){
     const panel=$('#a1ListenSolutions');
     const show=!panel.classList.contains('show');
     if(show&&!panel.dataset.loaded){
-      panel.innerHTML=`<div class="section-label">Loesung und Hoertext</div>`+span.solution.map(p=>a1BookPage(cfg, p,'Loesung')).join('');
+      panel.innerHTML=`<div class="section-label">Lösung und Hörtext</div>`+span.solution.map(p=>a1BookPage(cfg, p,'Lösung')).join('');
       panel.dataset.loaded='1';
     }
     panel.classList.toggle('show',show);
-    solBtn.innerHTML=show?'Loesung und Hoertext ausblenden':'Loesung und Hoertext anzeigen';
+    solBtn.innerHTML=show?'Lösung und Hörtext ausblenden':'Lösung und Hörtext anzeigen';
   });
   const btn=$('#a1ListenDone');
   btn.addEventListener('click',()=>{

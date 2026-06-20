@@ -1,19 +1,41 @@
-/* Interactive exercises for Deutsch ueben Phonetik A1. */
+/* Interactive exercises for Deutsch üben Phonetik A1. */
 (function () {
   const text = (prompt, answer, extra = {}) => ({type: "text", prompt, answer: Array.isArray(answer) ? answer : [answer], ...extra});
   const choice = (prompt, options, answer, extra = {}) => ({type: "choice", prompt, options, answer, ...extra});
   const tf = (prompt, answer) => choice(prompt, ["richtig", "falsch"], answer ? 0 : 1);
+  const match = (prompt, left, options, answer, extra = {}) => ({type: "match", prompt, left, options, answer, ...extra});
 
   window.PHONETIK_A1_INTERACTIVE = {
     A1: [
-      {title: "1 · Richtig ausgesprochen?", tracks: ["1.01"], questions: [
+      {title: "1 · Richtig ausgesprochen?", tracks: ["1.01"], figureRange: [0, 1], questions: [
         choice("Der Mann sagt:", ["mehr Wasser", "Meerwasser"], 1),
         choice("Der Mann meint:", ["mehr Wasser", "Meerwasser"], 0)
       ]},
-      {title: "2b · Silben zählen", tracks: ["1.02"], questions: [
-        text("1. Silbe (Beispiel):", ["Husten", "Fieber", "Schmerzen"]),
-        text("2. Silbe:", ["gesund", "Rezept", "Termin", "erkältet", "besuchen", "Tablette"]),
-        text("3. oder 4. Silbe:", ["Apotheke", "Medikament", "Allergie", "Rückenschmerzen", "Wartezimmer"])
+      {title: "2 · Betonte Silbe (gesund oder krank)", tracks: ["1.02"], questions: [
+        text("Nenne ein Wort mit Betonung auf der 1. Silbe (z. B. Husten):", ["Husten","Fieber","Schmerzen","Rückenschmerzen","Ärztin","Wartezimmer","Krankheit","Schnupfen","Schmerztablette","anrufen"]),
+        text("Nenne ein Wort mit Betonung auf der 2. Silbe (z. B. gesund):", ["gesund","Rezept","Termin","verreisen","erkältet","besuchen","Tablette"]),
+        text("Nenne ein Wort mit Betonung auf der 3./4. Silbe (z. B. Apotheke):", ["Apotheke","Medikament","informieren","Allergie"])
+      ]},
+      {title: "3 · In den Bergen – welches Wort zuerst?", tracks: ["1.03"], figureRange: [1, 2], questions: [
+        choice("Was hören Sie zuerst?", ["Handy", "Pullover"], 1),
+        choice("Was hören Sie zuerst?", ["Kamera", "Getränk"], 0),
+        choice("Was hören Sie zuerst?", ["Regenjacke", "Schokolade"], 1)
+      ]},
+      {title: "5 · Monate – dieselbe betonte Silbe", tracks: ["1.06"], questions: [
+        match("Welche Monate haben dieselbe betonte Silbe? Ordne zu.",
+          ["1. Dezember", "2. Januar", "3. August", "4. September", "5. Juni"],
+          ["April", "Juli", "November", "Februar", "Oktober"],
+          [2, 3, 0, 4, 1])
+      ]},
+      {title: "6 · Gute Wünsche – was sagt man?", tracks: ["1.08"], questions: [
+        text("Es ist 8 Uhr früh. →", ["Guten Morgen", "Guten Morgen.", "Guten Morgen!"]),
+        text("Ein Gast kommt ins Hotel. →", ["Herzlich willkommen", "Herzlich willkommen.", "Herzlich willkommen!", "Willkommen"]),
+        text("Das Essen kommt auf den Tisch. →", ["Guten Appetit", "Guten Appetit.", "Guten Appetit!"]),
+        text("Dein Freund hat morgen eine Prüfung. →", ["Viel Erfolg", "Viel Erfolg!"]),
+        text("Dein Freund ist krank. →", ["Gute Besserung", "Gute Besserung.", "Gute Besserung!"]),
+        text("Jemand niest: Hatschi! →", ["Gesundheit", "Gesundheit!"]),
+        text("Es ist Freitagnachmittag. →", ["Schönes Wochenende", "Schönes Wochenende.", "Schönes Wochenende!"]),
+        text("Dein Freund fährt in den Urlaub. →", ["Gute Reise", "Gute Reise.", "Gute Reise!"])
       ]}
     ],
     A2: [
