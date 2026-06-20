@@ -420,6 +420,8 @@ body.listen-mode .speakable{cursor:pointer}
 .chapter-collage{display:grid;grid-template-columns:repeat(3,1fr);height:118px;position:relative;background:var(--blue-l)}
 .chapter-collage img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;border-right:2px solid rgba(255,255,255,.8);box-sizing:border-box;padding:7px;background:rgba(255,255,255,.55)}
 .chapter-collage img:last-child{border-right:0}
+.chapter-collage.unit-cover{height:150px;display:block;background:#fff}
+.chapter-collage.unit-cover img{padding:0;border:0;object-fit:cover;background:#fff}
 .chapter-letter{position:absolute;left:10px;top:10px;display:grid;place-items:center;width:38px;height:38px;
   border-radius:12px;background:rgba(29,91,95,.92);color:#fff;font-size:18px;font-weight:800;box-shadow:0 5px 13px rgba(25,55,60,.2)}
 .listen-chapter-copy{padding:12px 13px}
@@ -450,6 +452,8 @@ body.listen-mode .speakable{cursor:pointer}
 .book-task{background:linear-gradient(135deg,var(--green-l),#fff);border:1px solid #d7e9e5;
   border-radius:14px;padding:13px 15px;margin:14px 0}
 .book-task b{display:block;color:var(--green-d);font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.phonetik-question-visual{margin:12px 0 14px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 6px 18px rgba(35,70,75,.07)}
+.phonetik-question-visual img{display:block;width:100%;height:auto}
 .audio-track{border:1px solid var(--line);background:#fff;border-radius:14px;padding:13px;margin-bottom:10px}
 .audio-track-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:9px}
 .audio-track-title{font-weight:800;color:var(--ink)}
@@ -814,14 +818,12 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
         <button class="speed-preset" data-rate="0.85">Normal</button>
         <button class="speed-preset" data-rate="1.1">Schnell</button>
       </div>
-      <div class="ar">غيّر سرعة النطق، والاختيار بيتحفظ تلقائيًا على الجهاز.</div>
     </div>
     <div class="setting-row">
       <b>Deutsche Sprecher</b>
       <select class="voice-select" id="speechVoice" aria-label="Deutsche Stimme"></select>
       <div class="voice-gallery" id="voiceGallery"></div>
       <div class="voice-availability" id="voiceAvailability"></div>
-      <div class="ar">الأصوات دي مسجلة وثابتة داخل الموقع، لذلك نفس الشخص ونفس النطق هيظهروا على أي متصفح أو جهاز.</div>
     </div>
     <div class="setting-row">
       <b>Sprechweise <small style="color:var(--ink-2)">(Tempo der gewählten Person)</small></b>
@@ -831,12 +833,10 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
         <button class="voice-profile" data-profile="deep"><b>Bedacht</b><small>leicht reduziert</small></button>
         <button class="voice-profile" data-profile="bright"><b>Lebendig</b><small>etwas schneller</small></button>
       </div>
-      <div class="ar">دي سرعات إلقاء مختلفة لنفس التسجيل والشخص المختار.</div>
     </div>
     <div class="setting-row">
       <b>Kontextübersetzung</b>
       <p style="font-size:13px;color:var(--ink-2);margin-top:5px">Markiere ein Wort. Seine Übersetzung erscheint sofort; ein Klick öffnet Wort, Satz und Satzübersetzung.</p>
-      <div class="ar">حدد كلمة داخل التطبيق، وترجمتها هتظهر فورًا. اضغط على الترجمة عشان تشوف الكلمة والجملة وترجمة الجملة.</div>
     </div>
   </section>
 </div>
@@ -919,9 +919,10 @@ const A1_LISTEN_BOOKS = {
     trackLabel: track => `Track ${track}`,
     trackTasks: () => window.PHONETIK_A1_TRACK_TASKS || {},
     audioSrc: track => `assets/listening/a1-phonetik/audio/track-${String(track).replace('.', '-')}.mp3`,
-    thumbnail: ex => `assets/listening/a1-phonetik/thumbnails/${ex.id.toLowerCase()}.webp`,
+    thumbnail: ex => ex.cover || `assets/listening/a1-phonetik/thumbnails/${ex.id.toLowerCase()}.webp`,
     pageBase: 'assets/listening/a1-phonetik/pages/',
     cover: 'assets/listening/a1-phonetik/cover.webp',
+    pageOffset: 1,
     route: 'a1/listen/phonetik',
     chapterPattern: /^[A-C]$/
   }
@@ -943,7 +944,10 @@ function setAr(on){
 $('#arToggle').addEventListener('click', () => setAr(!document.body.classList.contains('show-ar')));
 setAr(localStorage.getItem('showArUserChoice') === '1');   // default OFF
 
-function ar(txt){ return txt ? `<div class="ar">${txt}</div>` : ''; }
+function ar(txt){
+  if(location.hash.includes('a1/listen/phonetik')) return '';
+  return txt ? `<div class="ar">${txt}</div>` : '';
+}
 
 /* ===================== settings and contextual translation ===================== */
 let speechRate=Number(localStorage.getItem('speechRate')||.85);
@@ -1749,7 +1753,7 @@ function a1BookPage(cfg, page, label){
   return `<figure class="card book-page"><img loading="lazy" src="${cfg.pageBase}page-${String(assetPage).padStart(3,'0')}.webp"
       alt="${label}, Buchseite ${page}">
     <figcaption><span>${label} - Seite ${page}</span>
-      <button type="button" class="page-zoom" data-book-page="${page}" data-page-label="${label}" data-page-base="${cfg.pageBase}">Seite vergroessern</button>
+      <button type="button" class="page-zoom" data-book-page="${page}" data-asset-page="${assetPage}" data-page-label="${label}" data-page-base="${cfg.pageBase}">Seite vergroessern</button>
     </figcaption></figure>`;
 }
 function a1PageSpan(cfg, exercise){
@@ -1776,20 +1780,11 @@ function renderA1ExerciseFigures(cfg, exercise){
   return `<section class="interactive-sheet"><div class="section-figures">${renderListeningFigures(figures)}</div></section>`;
 }
 function renderPhonetikGuide(exercise){
-  const guide=exercise.guide;
-  if(!guide) return '';
-  const steps=(guide.stepsAr||[]).map(step=>`<li>${escapeHtml(step)}</li>`).join('');
-  return `<section class="phonetik-guide">
-    <article class="phonetik-guide-card">
-      <h3>${escapeHtml(guide.focus)}</h3>
-      <p>${escapeHtml(guide.focusAr||'')}</p>
-      ${guide.rememberAr?`<div class="phonetik-remember">${escapeHtml(guide.rememberAr)}</div>`:''}
-    </article>
-    <article class="phonetik-guide-card">
-      <h3>تذاكر التمرين إزاي؟</h3>
-      <ol dir="rtl">${steps}</ol>
-    </article>
-  </section>`;
+  return '';
+}
+function renderPhonetikQuestionVisual(exercise){
+  if(!exercise.visual) return '';
+  return `<figure class="phonetik-question-visual"><img loading="lazy" src="${exercise.visual}" alt="${escapeHtml(exercise.title)} visual guide"></figure>`;
 }
 function uniqueTracks(tracks){
   return [...new Set((tracks||[]).filter(Boolean))];
@@ -1881,8 +1876,9 @@ function renderA1ListenBookPicker(){
   setTop('Hören A1','Zwei Übungsbücher',true);
   const books=[
     {id:'hoeren', meta:HOEREN_A1, cover:A1_LISTEN_BOOKS.hoeren.cover, ar:'كتاب الاستماع والتحدث الأصلي — 34 تمرينًا في 8 موضوعات.'},
-    {id:'phonetik', meta:PHONETIK_A1, cover:A1_LISTEN_BOOKS.phonetik.cover, ar:'كتاب النطق والإيقاع — تمارين Prosodie وVokale وKonsonanten مع كل الصوتيات.'}
+    {id:'phonetik', meta:PHONETIK_A1, cover:A1_LISTEN_BOOKS.phonetik.cover, ar:''}
   ];
+  books.find(book=>book.id==='phonetik').ar='';
   view.innerHTML=a1MainTabs('listen')+`
     <section class="hero"><h2>Hörtraining A1</h2>
       <p>Zwei eigenständige Bücher: Hören &amp; Sprechen und Phonetik – jeweils mit Original-Audios, Buchseiten und interaktiven Aufgaben.</p>
@@ -1929,9 +1925,12 @@ function renderA1ListeningHome(bookId){
       const percent=Math.round(cdone/chapter.exercises.length*100);
       const tracks=chapter.exercises.flatMap(e=>e.tracks);
       const collage=chapter.exercises.slice(0,3);
+      const chapterVisual=chapter.cover
+        ? `<div class="chapter-collage unit-cover"><img loading="lazy" src="${chapter.cover}" alt="${escapeHtml(chapter.title)}"></div>`
+        : `<div class="chapter-collage" style="grid-template-columns:repeat(${collage.length},1fr)">${collage.map(exercise=>`<img loading="lazy" src="${cfg.thumbnail(exercise)}"
+          alt="${escapeHtml(exercise.title)}">`).join('')}<span class="chapter-letter">${chapter.id}</span></div>`;
       return `<button type="button" class="listen-chapter-card" onclick="go('${cfg.route}/${chapter.id}')">
-        <div class="chapter-collage" style="grid-template-columns:repeat(${collage.length},1fr)">${collage.map(exercise=>`<img loading="lazy" src="${cfg.thumbnail(exercise)}"
-          alt="${escapeHtml(exercise.title)}">`).join('')}<span class="chapter-letter">${chapter.id}</span></div>
+        ${chapterVisual}
         <div class="listen-chapter-copy"><b>${chapter.title}</b>
           <span class="sub">${chapter.exercises.length} Übungen · Track ${tracks[0]}–${tracks.at(-1)}</span>
           ${ar(chapter.titleAr)}<div class="listen-progress"><span style="width:${percent}%"></span></div>
@@ -1978,6 +1977,7 @@ function renderA1ListeningExercise(cfg, chapter, index){
       <span class="dictionary-meta">Buch S. ${exercise.exercisePages.join(', ')}</span>
     </div>
     <div class="book-task"><b>Deine Aufgabe</b> ${escapeHtml(exercise.task)}${ar(exercise.taskAr)}</div>
+    ${isPhonetik?renderPhonetikQuestionVisual(exercise):''}
     ${isPhonetik?renderPhonetikGuide(exercise):''}
     ${isPhonetik?renderPhonetikBookTasks(cfg, exercise):''}
     ${renderA1ExerciseFigures(cfg, exercise)}
@@ -2392,7 +2392,8 @@ view.addEventListener('click',event=>{
   const page=zoom.dataset.bookPage;
   const base=zoom.dataset.pageBase||'assets/listening/pages/';
   $('#bookPageTitle').textContent=`${zoom.dataset.pageLabel} · Seite ${page}`;
-  $('#bookPageLarge').src=`${base}page-${String(page).padStart(3,'0')}.webp`;
+  const assetPage=zoom.dataset.assetPage||page;
+  $('#bookPageLarge').src=`${base}page-${String(assetPage).padStart(3,'0')}.webp`;
   $('#bookPageLarge').alt=`Buchseite ${page}`;
   openModal('bookPageModal');
 });
