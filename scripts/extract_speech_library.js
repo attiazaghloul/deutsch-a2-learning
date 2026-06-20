@@ -10,6 +10,8 @@ fs.readdirSync('app')
   });
 
 const roots = [
+  'A1_BOOK', 'A1_VERBS', 'HOEREN_A1_BOOK', 'HOEREN_A1_INTERACTIVE',
+  'PHONETIK_A1_BOOK', 'PHONETIK_A1_INTERACTIVE',
   'BOOK0', 'BOOK1', 'BOOK2', 'GRAM', 'A2_VERBS', 'HOEREN_BOOK',
   'HOEREN_INTERACTIVE', 'A2_EXAM', 'READY_EXPRESSIONS'
 ];
@@ -33,6 +35,7 @@ function normalize(value) {
     .replace(/&amp;/g, '&')
     .replace(/&quot;/g, '"')
     .replace(/&#39;/g, "'")
+    .replace(/\bUmlaute\s+\u00e4,\s*\u00f6,\s*\u00fc/gi, 'Umlaute')
     .replace(/\s+/g, ' ')
     .trim();
 }

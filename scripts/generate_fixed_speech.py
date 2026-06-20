@@ -178,9 +178,15 @@ async def synthesize_batch(voice, batch_index, batch, semaphore):
                 temp_path.replace(audio_path)
                 timings = map_batch_boundaries(batch, boundaries)
                 if len(timings) != len(batch):
+                    missing = [
+                        f"{text_id}:{text}"
+                        for text_id, text in batch
+                        if text_id not in timings
+                    ]
                     raise RuntimeError(
                         f"{voice['id']} batch {batch_index}: "
-                        f"mapped {len(timings)} of {len(batch)} texts"
+                        f"mapped {len(timings)} of {len(batch)} texts; "
+                        f"missing {missing[:5]}"
                     )
                 timing_path.write_text(
                     json.dumps(

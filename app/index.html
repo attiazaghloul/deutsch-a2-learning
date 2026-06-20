@@ -1214,7 +1214,9 @@ function showSpeechStatus(text){
 }
 
 function normalizeSpeechValue(text){
-  return prepareSpeechText(text);
+  return prepareSpeechText(text)
+    .replace(/\bUmlaute\s+\u00e4,\s*\u00f6,\s*\u00fc/gi, 'Umlaute')
+    .trim();
 }
 
 function stopFixedSpeech(){
@@ -1308,6 +1310,13 @@ function speakText(text, lang, voiceURIOverride=''){
   if(!value||!/[A-Za-zÄÖÜäöüß\u0600-\u06ff]/.test(value))return;
   const isArabic=lang==='ar' || /[\u0600-\u06ff]/.test(value.slice(0,40));
   if(!isArabic&&playFixedSpeech(value,voiceURIOverride||speechVoiceURI))return;
+  const isA1Route=location.hash.replace(/^#/,'').startsWith('a1');
+  if(!isArabic&&isA1Route){
+    stopFixedSpeech();
+    speech?.cancel();
+    showSpeechStatus('Feste Stimme fuer diesen A1-Text noch nicht geladen.');
+    return;
+  }
   stopFixedSpeech();
   fallbackBrowserSpeech(value,lang,voiceURIOverride);
 }
