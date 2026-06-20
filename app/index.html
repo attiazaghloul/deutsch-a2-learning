@@ -864,9 +864,9 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <script src="data_hoeren_a1.js"></script>
 <script src="data_hoeren_a1_figures.js?v=a1-listen-ui-1"></script>
 <script src="data_hoeren_a1_interactive.js?v=a1-listen-ui-1"></script>
-<script src="data_phonetik_a1.js?v=phonetik-content-4"></script>
-<script src="data_phonetik_a1_figures.js?v=phonetik-content-4"></script>
-<script src="data_phonetik_a1_interactive.js?v=phonetik-content-4"></script>
+<script src="data_phonetik_a1.js?v=phonetik-content-5"></script>
+<script src="data_phonetik_a1_figures.js?v=phonetik-content-5"></script>
+<script src="data_phonetik_a1_interactive.js?v=phonetik-content-5"></script>
 <script src="data_book0.js"></script>
 <script src="data_book0_expansion.js"></script>
 <script src="data_book1.js"></script>
@@ -921,7 +921,6 @@ const A1_LISTEN_BOOKS = {
     audioSrc: track => `assets/listening/a1-phonetik/audio/track-${String(track).replace('.', '-')}.mp3`,
     thumbnail: ex => `assets/listening/a1-phonetik/thumbnails/${ex.id.toLowerCase()}.webp`,
     pageBase: 'assets/listening/a1-phonetik/pages/',
-    pageOffset: 1,
     cover: 'assets/listening/a1-phonetik/cover.webp',
     route: 'a1/listen/phonetik',
     chapterPattern: /^[A-C]$/
@@ -1809,12 +1808,14 @@ function renderPhonetikBookTasks(cfg, exercise){
     <p>Die Buchaufgaben sind hier in der richtigen Reihenfolge. Aufgaben ohne Kopfhörer-Symbol haben keinen eigenen Audio-Track.</p>
     <div class="phonetik-task-list">${tasks.map(task=>{
       const tracks=task.tracks||[];
+      const pages=task.pages||[task.page].filter(Boolean);
+      const pageLabel=pages.length>1?`Buch S. ${pages[0]}-${pages.at(-1)}`:`Buch S. ${pages[0]||exercise.exercisePages.join(', ')}`;
       return `<article class="phonetik-task-card">
         <div class="interactive-section-head"><h3>${escapeHtml(task.title)}</h3>
           <div class="section-track-badges">${tracks.length?tracks.map(track=>`<span class="track-badge">${cfg.trackLabel(track)}</span>`).join(''):'<span class="track-badge no-audio">Ohne Audio</span>'}</div></div>
         <p>${escapeHtml(task.task||'')}</p>
         ${task.taskAr?ar(task.taskAr):''}
-        <div class="phonetik-task-meta"><span class="track-badge">Buch S. ${task.page}</span></div>
+        <div class="phonetik-task-meta"><span class="track-badge">${pageLabel}</span></div>
         ${tracks.map(track=>a1AudioTrack(cfg, track, task.title)).join('')}
       </article>`;
     }).join('')}</div></section>`;

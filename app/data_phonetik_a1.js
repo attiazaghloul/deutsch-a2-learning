@@ -230,11 +230,11 @@ window.PHONETIK_A1_BOOK = {
           "Höre die Minimalpaare und markiere Wortakzent und Bedeutung. Wiederhole die Wörter laut.",
           "استمع للأزواج المتشابهة وحدد نبر الكلمة والمعنى. كرر الكلمات بصوت عال.",
           PHONETIK_GUIDES.A1),
-        exPh("A2", "Satzakzent und Rhythmus", phTracks(1, 9, 25), [9, 10, 11, 12, 13, 14], [78, 79],
+        exPh("A2", "Satzakzent und Rhythmus", phTracks(1, 9, 25), [9, 10, 11, 12, 13, 14, 15], [78, 79],
           "Übe Satzakzent, Rhythmus und emotionale Betonung in kurzen Dialogen und Sätzen.",
           "تدرب على نبر الجملة والإيقاع والتعبير العاطفي في حوارات وجمل قصيرة.",
           PHONETIK_GUIDES.A2),
-        exPh("A3", "Melodie", phTracks(1, 26, 38), [15, 16, 17, 18, 19], [79, 80],
+        exPh("A3", "Melodie", phTracks(1, 26, 38), [16, 17, 18, 19, 20], [79, 80],
           "Markiere Pausen, Melodie und Satzmelodie. Sprich die Dialoge im Karaoke-Modus mit.",
           "حدد الوقفات ولحن الجملة، ثم تحدث مع التسجيل في وضع الكاريوكي.",
           PHONETIK_GUIDES.A3)
@@ -243,35 +243,35 @@ window.PHONETIK_A1_BOOK = {
     {
       id: "B", title: "Vokale", titleAr: "الحروف المتحركة",
       exercises: [
-        exPh("B1", "Lange und kurze Vokale", phTracks(2, 1, 14), [20, 21, 22, 23, 24, 25], [80, 81],
+        exPh("B1", "Lange und kurze Vokale", phTracks(2, 1, 14), [21, 22, 23, 24, 25, 26], [80, 81],
           "Unterscheide lange und kurze betonte Vokale. Höre, markiere und wiederhole.",
           "ميز بين الحروف المتحركة الطويلة والقصيرة. استمع، حدد، ثم كرر.",
           PHONETIK_GUIDES.B1),
-        exPh("B2", "Die Vokale a und ä", phTracks(2, 15, 22), [26, 27, 28], [81, 82],
+        exPh("B2", "Die Vokale a und ä", phTracks(2, 15, 22), [27, 28, 29], [81, 82],
           "Übe a und ä in Wörtern zu Jahreszeiten, Wetter und Berufen.",
           "تدرب على a و ae في كلمات عن الفصول والطقس والمهن.",
           PHONETIK_GUIDES.B2),
-        exPh("B3", "Der Vokal e", phTracks(2, 23, 34), [29, 30, 31, 32, 33], [82, 83],
+        exPh("B3", "Der Vokal e", phTracks(2, 23, 34), [30, 31, 32, 33, 34], [82, 83],
           "Höre e in Durchsagen, Dialogen und Alltagssituationen.",
           "استمع لصوت e في الإعلانات والحوارات والمواقف اليومية.",
           PHONETIK_GUIDES.B3),
-        exPh("B4", "Der Vokal i", phTracks(2, 35, 46), [34, 35], [83, 84],
+        exPh("B4", "Der Vokal i", phTracks(2, 35, 46), [35, 36], [83, 84],
           "Markiere betonte Silben mit langem i (ie) und übe Zungenbrecher.",
           "حدد المقاطع المنبورة مع i الطويلة (ie) وتدرب على جمل النطق السريع.",
           PHONETIK_GUIDES.B4),
-        exPh("B5", "Die Vokale o und ö", phTracks(2, 47, 58), [36, 37, 38, 39], [84, 85],
+        exPh("B5", "Die Vokale o und ö", phTracks(2, 47, 58), [37, 38, 39, 40], [84, 85],
           "Höre o/oe in Alltagssätzen und wiederhole im Rhythmus.",
           "استمع إلى o/oe في جمل يومية وكررها بإيقاع منتظم.",
           PHONETIK_GUIDES.B5),
-        exPh("B6", "Die Vokale u und ü", phTracks(2, 59, 70), [40, 41, 42, 43], [85, 86],
+        exPh("B6", "Die Vokale u und ü", phTracks(2, 59, 70), [41, 42, 43, 44], [85, 86],
           "Übe u und ü in Wörtern und kurzen Dialogen.",
           "تدرب على u و ue في الكلمات والحوارات القصيرة.",
           PHONETIK_GUIDES.B6),
-        exPh("B7", "Die Diphthonge au/äu, ai/ei, eu", phTracks(2, 71, 78), [44, 45], [86, 87],
+        exPh("B7", "Die Diphthonge au/äu, ai/ei, eu", phTracks(2, 71, 78), [45, 46], [86, 87],
           "Höre und sprich Diphthonge in typischen Wörtern und Sätzen.",
           "استمع وانطق الأصوات المركبة في كلمات وجمل شائعة.",
           PHONETIK_GUIDES.B7),
-        exPh("B8", "Der Vokaleinsatz", phTracks(2, 79, 90), [46, 47], [87, 88],
+        exPh("B8", "Der Vokaleinsatz", phTracks(2, 79, 90), [47, 48], [87, 88],
           "Markiere den Knacklaut (Vokaleinsatz) und übe Zahlen und Zungenbrecher.",
           "حدد صوت بداية الحرف المتحرك وتدرب على الأرقام وجمل النطق.",
           PHONETIK_GUIDES.B8)
@@ -280,35 +280,35 @@ window.PHONETIK_A1_BOOK = {
     {
       id: "C", title: "Konsonanten", titleAr: "الحروف الساكنة",
       exercises: [
-        exPh("C1", "Der Konsonant r", phTracks(3, 1, 14), [48, 49, 50, 51, 52], [88, 89],
+        exPh("C1", "Der Konsonant r", phTracks(3, 1, 14), [49, 50, 51, 52, 53], [88, 89],
           "Unterscheide vokalisiertes und konsonantisches r. Höre und wiederhole.",
           "ميز بين r المتحولة إلى صوت حركة و r الساكنة. استمع وكرر.",
           PHONETIK_GUIDES.C1),
-        exPh("C2", "Die Konsonanten p, t, k - b, d, g", phTracks(3, 15, 28), [53, 54, 55, 56], [89, 90],
+        exPh("C2", "Die Konsonanten p, t, k - b, d, g", phTracks(3, 15, 28), [54, 55, 56, 57], [89, 90],
           "Übe stimmlose und stimmhafte Konsonanten am Wortanfang und in Sätzen.",
           "تدرب على الحروف المهموسة والمجهورة في بداية الكلمات وداخل الجمل.",
           PHONETIK_GUIDES.C2),
-        exPh("C3", "Die Konsonanten s und z", phTracks(3, 29, 41), [57, 58, 59, 60], [90],
+        exPh("C3", "Die Konsonanten s und z", phTracks(3, 29, 41), [58, 59, 60, 61], [90],
           "Höre s und z in Reimen, -tion-Wörtern und Alltagssätzen.",
           "استمع إلى s و z في القوافي وكلمات -tion والجمل اليومية.",
           PHONETIK_GUIDES.C3),
-        exPh("C4", "Die Konsonanten sch, ch, h", phTracks(3, 42, 57), [61, 62, 63, 64, 65, 66], [90, 91],
+        exPh("C4", "Die Konsonanten sch, ch, h", phTracks(3, 42, 57), [62, 63, 64, 65, 66, 67], [90, 91],
           "Markiere ch (ich/ach), sch und stummes h in Dialogen.",
           "حدد ch بنوعيها و sch و h الصامتة في الحوارات.",
           PHONETIK_GUIDES.C4),
-        exPh("C5", "Die Konsonanten f, v, w", phTracks(3, 58, 65), [67, 68, 69, 70], [91],
+        exPh("C5", "Die Konsonanten f, v, w", phTracks(3, 58, 65), [68, 69, 70, 71], [91],
           "Übe f, v und w in Wörtern und Sätzen.",
           "تدرب على f و v و w في الكلمات والجمل.",
           PHONETIK_GUIDES.C5),
-        exPh("C6", "Der Konsonant l", phTracks(3, 66, 71), [71, 72], [91],
+        exPh("C6", "Der Konsonant l", phTracks(3, 66, 71), [72, 73], [91],
           "Höre l in verschiedenen Silbenpositionen und wiederhole.",
           "استمع إلى l في مواضع مختلفة من المقطع وكرر.",
           PHONETIK_GUIDES.C6),
-        exPh("C7", "Die Konsonanten ng und nk", phTracks(3, 72, 77), [73, 74], [91],
+        exPh("C7", "Die Konsonanten ng und nk", phTracks(3, 72, 77), [74, 75], [91],
           "Übe ng und nk in typischen deutschen Wörtern.",
           "تدرب على ng و nk في كلمات ألمانية شائعة.",
           PHONETIK_GUIDES.C7),
-        exPh("C8", "Der Konsonant j", phTracks(3, 78, 82), [75], [91],
+        exPh("C8", "Der Konsonant j", phTracks(3, 78, 82), [76], [91],
           "Höre j (deutsch, englisch, französisch) und übe Karaoke-Antworten mit Ja.",
           "استمع إلى نطق j حسب أصل الكلمة وتدرب على إجابات Ja مع التسجيل.",
           PHONETIK_GUIDES.C8)
@@ -335,6 +335,21 @@ window.PHONETIK_A1_BOOK_TASKS = {
   ]
 };
 
+function phonetikFallbackTasks(exercise) {
+  const explicit = window.PHONETIK_A1_BOOK_TASKS[exercise.id] || [];
+  const covered = new Set(explicit.flatMap(task => task.tracks || []));
+  const fallback = exercise.tracks
+    .filter(track => !covered.has(track))
+    .map(track => ({
+      pages: exercise.exercisePages,
+      title: `${track} · ${exercise.title}`,
+      tracks: [track],
+      task: `Original-Audio ${track}: bearbeite die passende Aufgabe im Buch und sprich danach laut nach.`,
+      taskAr: "استمع للتسجيل الأصلي، حل المهمة المقابلة في صفحات الوحدة، ثم كرر بصوت واضح."
+    }));
+  return [...explicit, ...fallback];
+}
+
 window.PHONETIK_A1_BOOK.chapters.flatMap(chapter => chapter.exercises).forEach(exercise => {
-  exercise.bookTasks = window.PHONETIK_A1_BOOK_TASKS[exercise.id] || [];
+  exercise.bookTasks = phonetikFallbackTasks(exercise);
 });
