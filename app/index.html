@@ -883,6 +883,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <script src="data_hoeren_interactive.js"></script>
 <script src="data_exam.js"></script>
 <script src="data_speech_clean.js?v=speech-clean-2"></script>
+<script src="data_speech_a1.js?v=a1-fixed-voices-1"></script>
 <script src="data_podcast.js?v=word-sync-3"></script>
 <script>
 /* ===================== state & helpers ===================== */
@@ -931,6 +932,8 @@ const EXAM = window.A2_EXAM;
 const PODCASTS = window.A2_PODCASTS || [];
 const FIXED_SPEECH = window.A2_FIXED_SPEECH || {texts:[],voices:[]};
 const FIXED_SPEECH_INDEX = new Map(FIXED_SPEECH.texts.map((text,index)=>[text,index]));
+const A1_FIXED_SPEECH = window.A1_FIXED_SPEECH || {texts:[],voices:[]};
+const A1_FIXED_SPEECH_INDEX = new Map(A1_FIXED_SPEECH.texts.map((text,index)=>[text,index]));
 function escapeHtml(value){
   return String(value).replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]));
 }
@@ -1229,21 +1232,34 @@ function fixedSpeechProfileRate(){
   return {clear:1,calm:.86,deep:.92,bright:1.08}[speechProfile]||1;
 }
 
+function findFixedSpeechClip(value,voiceId){
+  const libraries=[
+    {id:'a2', data:FIXED_SPEECH, index:FIXED_SPEECH_INDEX},
+    {id:'a1', data:A1_FIXED_SPEECH, index:A1_FIXED_SPEECH_INDEX}
+  ];
+  for(const library of libraries){
+    const textIndex=library.index.get(value);
+    const voice=library.data.voices?.find(item=>item.id===voiceId)||library.data.voices?.[0];
+    if(textIndex!==undefined&&voice?.timings?.[textIndex]&&voice.audio){
+      return {library:library.id, voice, timing:voice.timings[textIndex], audioSource:voice.audio, kind:'main'};
+    }
+    const aliasIndex=library.data.aliases?.texts?.indexOf(value)??-1;
+    const aliasVoice=library.data.aliases?.voices?.find(item=>item.id===voice?.id);
+    if(aliasIndex>=0&&aliasVoice?.timings?.[aliasIndex]&&aliasVoice.audio){
+      return {library:library.id, voice, timing:aliasVoice.timings[aliasIndex], audioSource:aliasVoice.audio, kind:'aliases'};
+    }
+  }
+  return null;
+}
+
 function playFixedSpeech(value,voiceId=speechVoiceURI,onDone=null){
-  const textIndex=FIXED_SPEECH_INDEX.get(value);
-  const voice=FIXED_SPEECH.voices.find(item=>item.id===voiceId)||FIXED_SPEECH.voices[0];
-  const aliasIndex=FIXED_SPEECH.aliases?.texts?.indexOf(value)??-1;
-  const timing=textIndex===undefined
-    ?FIXED_SPEECH.aliases?.voices?.find(item=>item.id===voice?.id)?.timings?.[aliasIndex]
-    :voice?.timings?.[textIndex];
-  const audioSource=textIndex===undefined
-    ?FIXED_SPEECH.aliases?.voices?.find(item=>item.id===voice?.id)?.audio
-    :voice?.audio;
-  if(!voice||!timing||!audioSource)return false;
+  const clip=findFixedSpeechClip(value,voiceId);
+  if(!clip)return false;
+  const {library, voice, timing, audioSource, kind}=clip;
   stopFixedSpeech();
   speech?.cancel();
   const session=++fixedSpeechSession;
-  const audioKey=`${voice.id}:${textIndex===undefined?'aliases':'main'}`;
+  const audioKey=`${library}:${voice.id}:${kind}`;
   if(!fixedSpeechAudio||fixedSpeechAudio.dataset.voice!==audioKey){
     fixedSpeechAudio?.pause();
     fixedSpeechAudio=new Audio(audioSource);
@@ -1270,7 +1286,13 @@ function playFixedSpeech(value,voiceId=speechVoiceURI,onDone=null){
         fixedSpeechFrame=requestAnimationFrame(monitor);
       };
       monitor();
-    }).catch(()=>fallbackBrowserSpeech(value,'de',voiceId));
+    }).catch(()=>{
+      if(library==='a1'){
+        showSpeechStatus('A1-Stimme konnte nicht geladen werden.');
+        return;
+      }
+      fallbackBrowserSpeech(value,'de',voiceId);
+    });
   };
   if(fixedSpeechAudio.readyState>=1)begin();
   else fixedSpeechAudio.addEventListener('loadedmetadata',begin,{once:true});
