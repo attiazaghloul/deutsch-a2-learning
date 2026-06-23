@@ -130,10 +130,13 @@ body.exam-mode .ar{display:none!important}
   color:inherit;font:inherit;padding:16px;cursor:pointer;transition:.15s}
 .section-card:active{transform:scale(.985)}
 .section-card .icon{display:none}
+.section-card-img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:10px;background:#eef5f1}
 .section-card b{display:block;color:var(--green-d);font-size:16px;line-height:1.25;margin-bottom:4px}
 .section-card span{display:block;color:var(--ink-2);font-size:12.5px;line-height:1.45}
 .chapter-tab-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:18px}
-.chapter-tab-card{min-height:96px}
+.chapter-tab-card{min-height:0;padding:10px}
+.chapter-tab-card b{font-size:14.5px}
+.chapter-tab-card span span{font-size:11.5px}
 .a1-roadmap{display:flex;flex-direction:column;gap:10px}
 .a1-unit{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;border:1px solid var(--line);
   border-radius:16px;background:var(--card);box-shadow:var(--shadow);padding:14px;color:inherit;font:inherit;cursor:pointer}
@@ -852,7 +855,12 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
   .section-track-badges{justify-content:flex-start}
   .match-row{grid-template-columns:1fr}
   .question-figures.tiles .question-figure img{height:140px;max-height:140px}
-  .listen-chapter-grid,.listen-exercise-grid,.section-card-grid,.chapter-tab-grid{grid-template-columns:1fr}
+  .listen-chapter-grid,.listen-exercise-grid,.section-card-grid{grid-template-columns:1fr}
+  .chapter-tab-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .chapter-tab-card{padding:8px;border-radius:13px}
+  .chapter-tab-card b{font-size:13px}
+  .chapter-tab-card span span{font-size:10.8px;line-height:1.35}
+  .chapter-tab-card .section-card-img{border-radius:10px;margin-bottom:7px}
   .level-grid,.a1-roadmap,.a1-module-grid,.topic-visual-grid{grid-template-columns:1fr}
   .chapter-collage{height:125px}
   .listen-exercise-thumb{height:auto}
@@ -3910,6 +3918,13 @@ function chapterTabTitle(id,label){
   }[id]||cleanTabLabel(label);
 }
 
+function chapterTabImage(c,id){
+  const sceneIndex={lesen:0,wortschatz:1,sprechen:1,redemittel:2,quiz:2,grammatik:3}[id];
+  if(id==='ueberblick') return c.visual||c.scenes?.[0]||c.topicVisuals?.[0];
+  if(id==='wortschatz') return c.topicVisuals?.[0]||c.scenes?.[sceneIndex]||c.visual;
+  return c.scenes?.[sceneIndex]||c.topicVisuals?.[sceneIndex]||c.visual||c.scenes?.[0]||c.topicVisuals?.[0];
+}
+
 function renderChapterMenu(c){
   const isA1=c.route?.startsWith('a1/');
   const routeBase=c.route||`k${c.num}`;
@@ -3921,11 +3936,15 @@ function renderChapterMenu(c){
       <figcaption class="visual-caption">${c.visual.caption}${ar(c.visual.captionAr)}</figcaption>
     </figure>`:''}
     <section class="hero"><h2>${c.title}</h2><p>${c.subtitle}</p>${ar(c.titleAr)}</section>
-    <section class="chapter-tab-grid">${TABS.map(([id,lbl])=>`
+    <section class="chapter-tab-grid">${TABS.map(([id,lbl])=>{
+      const img=chapterTabImage(c,id);
+      return `
       <button type="button" class="section-card chapter-tab-card" onclick="go('${routeBase}/${id}')">
+        ${img?.src?`<img class="section-card-img" src="${img.src}" alt="${escapeHtml(img.alt||chapterTabTitle(id,lbl))}" loading="lazy" decoding="async">`:''}
         <span class="icon" aria-hidden="true"></span>
         <span><b>${chapterTabTitle(id,lbl)}</b><span>${chapterTabDescription(id)}</span></span>
-      </button>`).join('')}</section>`;
+      </button>`;
+    }).join('')}</section>`;
 }
 
 function renderChapter(c, tab){
