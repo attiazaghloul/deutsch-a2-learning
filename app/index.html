@@ -226,10 +226,17 @@ header.topbar .back:focus-visible,header.topbar .home:focus-visible{outline:3px 
 .gram-block h3{font-size:17px;color:var(--green-d);margin-bottom:8px;padding-bottom:6px;border-bottom:2px solid var(--green-l)}
 .gram-block h5{font-size:14.5px;margin:14px 0 6px;color:var(--ink)}
 .gram-block p{font-size:14.5px;margin-bottom:8px}
+.grammar-guide{display:grid;gap:12px}
+.grammar-guide .guide-section{background:#fff;border:1px solid #edf0e8;border-radius:13px;padding:13px 14px}
+.grammar-guide h4{color:var(--green-d);font-size:15px;margin-bottom:6px}
+.grammar-guide ul,.grammar-guide ol{padding-left:20px;font-size:14.5px}
+.grammar-guide li{margin:4px 0}
+.grammar-guide .example-lines{display:grid;gap:6px}
+.grammar-guide .example-lines div{background:var(--green-l);border-radius:10px;padding:8px 10px;font-size:14px}
+.grammar-guide .example-lines b{color:var(--green-d)}
+.grammar-guide .mistake-box{background:var(--red-l);border-left:4px solid var(--red);border-radius:10px;padding:9px 11px;font-size:14px}
 .script-topic-list{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
 .script-topic-list span{background:var(--green-l);color:var(--green-d);border-radius:999px;padding:5px 10px;font-size:12px;font-weight:800}
-.pdf-actions{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 14px}
-.pdf-actions .btn{font-size:13px}
 .exbox{background:var(--green-l);border-radius:10px;padding:10px 14px;margin:8px 0;font-size:14.5px}
 .exbox i,.exbox em{color:var(--green-d);font-style:normal;font-weight:700}
 .notebox{background:var(--amber-l);border-left:4px solid var(--amber);border-radius:8px;
@@ -1687,7 +1694,7 @@ function route(){
   const a1GrammarMatch=h.match(/^a1\/g(\d+)(?:\/(\d+))?$/);
   if(a1GrammarMatch){
     const lk=A1_GRAM.find(l=>l.num==a1GrammarMatch[1]);
-    if(lk) renderLektion(lk, a1GrammarMatch[2]||'0', {routePrefix:'a1/g', titlePrefix:'Grammatik-Skript A1 · Lektion'});
+    if(lk) renderLektion(lk, a1GrammarMatch[2]||'0', {routePrefix:'a1/g', titlePrefix:'Grammatik-Skript A1 · Lektion', coverageTitle:'Was du hier lernst', hideSource:true});
     else renderA1Home();
     return;
   }
@@ -1760,7 +1767,6 @@ const A1_SECTIONS=[
   {route:'a1/listen',icon:'H',title:'Hören',text:'A1-Hörbücher, Phonetik und interaktive Aufgaben.',ar:'استماع وتدريبات A1.'}
 ];
 
-const A1_GRAMMAR_SCRIPT_PDF='assets/a1/grammar/a1_skript_gr.pdf';
 const A1_GRAMMAR_SCRIPT=[
   {num:1,start:2,end:8,topics:['Verb - Konjugation','Personalpronomen - Nominativ','Wortstellung: Aussagesatz / Fragesätze']},
   {num:2,start:9,end:12,topics:['Starke Verben','Nomen und Artikel - Nominativ','Anrede']},
@@ -1771,7 +1777,6 @@ const A1_GRAMMAR_SCRIPT=[
   {num:7,start:25,end:27,topics:['Satzstrukturen - Aussagesatz','Modalverben','Präpositionen mit Dativ']},
   {num:8,start:28,end:31,topics:['Perfekt','Konjunktionen','Präpositionen mit Akkusativ']}
 ];
-function a1ScriptPdfPage(lesson){ return lesson.start+1; }
 function gramBody(html){ return html; }
 function a1GrammarTopicMeta(topic){
   if(topic.includes('Verb - Konjugation')) return {
@@ -1824,7 +1829,7 @@ function a1GrammarTopicMeta(topic){
     quiz:{q:'Welche Form ist richtig?',o:['Ich stehe um 7 Uhr auf.','Ich aufstehe um 7 Uhr.','Ich stehe auf um 7 Uhr.'],a:0,fb:'Im Hauptsatz steht das Präfix am Ende.'},
     practice:{type:'order',prompt:'Ordne den Satz.',tokens:['Ich','kaufe','heute','ein'],answer:'Ich kaufe heute ein'}
   };
-  if(topic.includes('Akkusativ')) return {
+  if(topic==='Akkusativ') return {
     body:'<p>Viele Verben brauchen ein Akkusativobjekt. Nur maskulin ändert sich deutlich: <b>der -> den</b>, <b>ein -> einen</b>.</p><div class="exbox">Ich sehe den Mann. · Ich kaufe einen Apfel.</div>',
     quiz:{q:'Was passt?',o:['Ich frage den Lehrer.','Ich frage der Lehrer.','Ich frage dem Lehrer.'],a:0,fb:'fragen + Akkusativ: den Lehrer.'},
     practice:{type:'fill',prompt:'Ich kaufe ___ Stift. (ein)',answer:['einen'],hint:'maskulin Akkusativ: einen'}
@@ -1844,7 +1849,7 @@ function a1GrammarTopicMeta(topic){
     quiz:{q:'Welches Wort passt zur Vergangenheit?',o:['gestern','morgen','später'],a:0,fb:'gestern = Vergangenheit.'},
     practice:{type:'fill',prompt:'___ war ich im Deutschkurs. (Vergangenheit)',answer:['gestern'],hint:'Vergangenheit: gestern'}
   };
-  if(topic.includes('Dativ')) return {
+  if(topic==='Dativ') return {
     body:'<p>Der Dativ antwortet oft auf <b>wem?</b>. Artikel: <b>dem</b> Mann, <b>der</b> Frau, <b>dem</b> Kind, <b>den</b> Kindern.</p>',
     quiz:{q:'Was passt?',o:['Ich helfe dem Mann.','Ich helfe den Mann.','Ich helfe der Mann.'],a:0,fb:'helfen + Dativ: dem Mann.'},
     practice:{type:'fill',prompt:'Ich antworte ___ Lehrerin.',answer:['der'],hint:'Lehrerin feminin Dativ: der'}
@@ -1885,29 +1890,218 @@ function a1GrammarTopicMeta(topic){
     practice:{type:'fill',prompt:'Schreibe die Regel kurz in dein Heft.',answer:['fertig'],hint:'Vergleiche danach mit dem Skript.'}
   };
 }
+function guideList(items, tag='ul'){
+  return `<${tag}>${items.map(item=>`<li>${item}</li>`).join('')}</${tag}>`;
+}
+function beginnerGrammarGuide(data){
+  return `<div class="grammar-guide">
+    <section class="guide-section"><h4>1. Die Idee</h4><p>${data.idea}</p></section>
+    <section class="guide-section"><h4>2. Die Regel</h4>${guideList(data.rules)}</section>
+    <section class="guide-section"><h4>3. Beispiele</h4><div class="example-lines">${data.examples.map(item=>`<div>${item}</div>`).join('')}</div></section>
+    <section class="guide-section"><h4>4. Häufiger Fehler</h4><div class="mistake-box">${data.mistake}</div></section>
+    <section class="guide-section"><h4>5. So lernst du es</h4>${guideList(data.steps,'ol')}</section>
+  </div>`;
+}
+function a1BeginnerGrammarData(topic){
+  if(topic.includes('Verb - Konjugation')) return {
+    idea:'Ein Verb zeigt, was jemand macht. Im Deutschen verändert sich das Verb, wenn sich die Person verändert.',
+    rules:['Suche zuerst das Subjekt: ich, du, er/sie/es, wir, ihr, sie/Sie.','Nimm den Verbstamm: lernen -> lern-, machen -> mach-, kommen -> komm-.','Setze die passende Endung: ich -e, du -st, er/sie/es -t, wir -en, ihr -t, sie/Sie -en.'],
+    examples:['<b>ich lerne</b> Deutsch.','<b>du machst</b> die Übung.','Maria <b>kommt</b> aus Spanien.','Wir <b>wohnen</b> in Berlin.'],
+    mistake:'Nicht sagen: <b>du lernen</b>. Richtig ist: <b>du lernst</b>. Nach <b>du</b> kommt fast immer <b>-st</b>.',
+    steps:['Sprich die Formen laut: ich lerne, du lernst, er lernt.','Markiere in jedem Satz zuerst das Subjekt.','Schreibe fünf eigene Sätze mit fünf verschiedenen Personen.'],
+    coverage:['Subjekt erkennen','Verbstamm finden','Endungen im Präsens benutzen']
+  };
+  if(topic.includes('Personalpronomen - Nominativ')) return {
+    idea:'Personalpronomen ersetzen Namen und Nomen. So musst du nicht immer den Namen wiederholen.',
+    rules:['Für eine sprechende Person benutzt du <b>ich</b>. Für die Person vor dir benutzt du <b>du</b>.','Für Männer oder maskuline Nomen benutzt du <b>er</b>, für Frauen oder feminine Nomen <b>sie</b>, für neutrale Nomen <b>es</b>.','Für mehrere Personen benutzt du <b>wir</b>, <b>ihr</b> oder <b>sie</b>. Die höfliche Form ist immer <b>Sie</b>.'],
+    examples:['Maria kommt aus Italien. <b>Sie</b> kommt aus Italien.','Carlos lernt Deutsch. <b>Er</b> lernt Deutsch.','Das Kind spielt. <b>Es</b> spielt.','Anna und Max wohnen hier. <b>Sie</b> wohnen hier.'],
+    mistake:'Nicht nach der deutschen Übersetzung raten. Lerne das Nomen mit Artikel: <b>das Mädchen</b> -> <b>es</b>, weil der Artikel <b>das</b> ist.',
+    steps:['Unterstreiche zuerst das Nomen oder den Namen.','Frage: eine Person oder mehrere Personen?','Ersetze das Nomen mit dem passenden Pronomen und sprich den Satz noch einmal.'],
+    coverage:['Pronomen für Personen','Pronomen für Nomen','du/Sie unterscheiden']
+  };
+  if(topic.includes('Wortstellung')) return {
+    idea:'Die Wortstellung macht den deutschen Satz verständlich. Für Anfänger ist die wichtigste Regel: Das konjugierte Verb hat einen festen Platz.',
+    rules:['Im normalen Aussagesatz steht das konjugierte Verb auf Position 2.','Position 1 kann das Subjekt sein oder ein anderes Satzteil wie <b>heute</b>, <b>morgen</b>, <b>in Berlin</b>.','In Ja/Nein-Fragen steht das Verb auf Position 1. In W-Fragen steht das Fragewort auf Position 1 und das Verb auf Position 2.'],
+    examples:['<b>Ich wohne</b> in Köln.','<b>Heute wohne</b> ich in Köln.','<b>Wohnst</b> du in Köln?','<b>Wo wohnst</b> du?'],
+    mistake:'Nicht sagen: <b>Heute ich wohne in Köln</b>. Richtig: <b>Heute wohne ich in Köln</b>.',
+    steps:['Finde das konjugierte Verb.','Prüfe: Steht es im Aussagesatz auf Position 2?','Baue denselben Satz einmal als Frage.'],
+    coverage:['Verbposition 2','Ja/Nein-Frage','W-Frage']
+  };
+  if(topic.includes('Starke Verben')) return {
+    idea:'Starke Verben sind Verben, die ihren Vokal ändern. Diese Änderung passiert oft bei <b>du</b> und <b>er/sie/es</b>.',
+    rules:['Einige Verben ändern <b>a -> ä</b>: fahren -> du fährst, er fährt.','Einige Verben ändern <b>e -> i/ie</b>: sprechen -> du sprichst, lesen -> du liest.','Bei <b>ich</b>, <b>wir</b>, <b>ihr</b> und <b>sie/Sie</b> bleibt der Vokal meistens normal.'],
+    examples:['Ich <b>fahre</b> nach Berlin. Du <b>fährst</b> nach Berlin.','Er <b>liest</b> ein Buch. Wir <b>lesen</b> ein Buch.','Sie <b>spricht</b> Deutsch. Ihr <b>sprecht</b> Deutsch.'],
+    mistake:'Nicht jedes Verb ist stark. Lerne starke Verben als kleine Liste mit Beispiel: <b>lesen - du liest - er liest</b>.',
+    steps:['Lerne pro Tag drei starke Verben.','Schreibe immer die Formen für du und er/sie/es dazu.','Bilde einen kurzen Alltagssatz mit jedem Verb.'],
+    coverage:['Vokalwechsel erkennen','du-Form bilden','er/sie/es-Form bilden']
+  };
+  if(topic.includes('Nomen und Artikel - Nominativ')) return {
+    idea:'Ein deutsches Nomen braucht fast immer einen Artikel. Der Artikel gehört zum Wort und muss mitgelernt werden.',
+    rules:['Es gibt drei bestimmte Artikel: <b>der</b>, <b>die</b>, <b>das</b>.','Die unbestimmten Artikel heißen: <b>ein</b>, <b>eine</b>, <b>ein</b>.','Im Plural benutzt du beim bestimmten Artikel <b>die</b>. Einen unbestimmten Artikel gibt es im Plural meistens nicht.'],
+    examples:['<b>der</b> Tisch -> <b>ein</b> Tisch','<b>die</b> Tasche -> <b>eine</b> Tasche','<b>das</b> Buch -> <b>ein</b> Buch','<b>die</b> Bücher -> Bücher'],
+    mistake:'Nicht nur <b>Buch</b> lernen. Immer lernen: <b>das Buch</b>. Sonst fehlen dir später Akkusativ, Dativ und Adjektivendungen.',
+    steps:['Schreibe neue Nomen immer mit Artikel.','Markiere der blau, die rot, das grün oder mit eigenen Farben.','Bilde zu jedem Nomen einen Satz: Das ist ein Buch.'],
+    coverage:['der/die/das','ein/eine/ein','Pluralartikel']
+  };
+  if(topic.includes('Anrede')) return {
+    idea:'Im Deutschen gibt es eine persönliche und eine höfliche Anrede. Das ist wichtig im Alltag, im Kurs und bei Behörden.',
+    rules:['Mit Freunden, Familie und Kindern benutzt du <b>du</b>.','Mit mehreren bekannten Personen benutzt du <b>ihr</b>.','Mit fremden Erwachsenen, Lehrern, Ärzten oder im Amt benutzt du <b>Sie</b>. Das Verb ist wie bei <b>sie</b> Plural.'],
+    examples:['<b>Wo wohnst du?</b>','<b>Wo wohnt ihr?</b>','<b>Wo wohnen Sie?</b>','<b>Wie heißen Sie?</b>'],
+    mistake:'Nicht <b>Wo wohnst Sie?</b>. Bei <b>Sie</b> heißt das Verb: <b>wohnen</b>.',
+    steps:['Entscheide zuerst: privat oder formell?','Wähle du, ihr oder Sie.','Kontrolliere danach die Verbform.'],
+    coverage:['du/ihr/Sie','höfliche Fragen','Verbform zur Anrede']
+  };
+  if(topic.includes('Genusregeln')) return {
+    idea:'Das Genus ist der Artikel eines Nomens. Viele Artikel musst du lernen, aber einige Endungen helfen dir.',
+    rules:['Endungen wie <b>-ung</b>, <b>-heit</b>, <b>-keit</b>, <b>-schaft</b> sind meistens feminin: <b>die</b>.','Endungen wie <b>-chen</b> und <b>-lein</b> sind neutral: <b>das</b>.','Tage, Monate und Jahreszeiten sind meistens maskulin: <b>der Montag</b>, <b>der Januar</b>, <b>der Sommer</b>.'],
+    examples:['<b>die</b> Wohnung, <b>die</b> Freiheit, <b>die</b> Möglichkeit','<b>das</b> Mädchen, <b>das</b> Brötchen','<b>der</b> Freitag, <b>der</b> Winter'],
+    mistake:'Regeln helfen, aber sie sind nicht immer 100 Prozent sicher. Wenn du unsicher bist, lerne den Artikel mit dem Wort.',
+    steps:['Suche die Endung des Nomens.','Nutze die Regel als erste Hilfe.','Schreibe neue Wörter in Artikel-Gruppen.'],
+    coverage:['typische Endungen','Artikel raten','Ausnahmen bewusst lernen']
+  };
+  if(topic.includes('Komposita')) return {
+    idea:'Ein Kompositum ist ein zusammengesetztes Nomen. Das letzte Wort ist das wichtigste Wort.',
+    rules:['Das letzte Wort bestimmt den Artikel.','Das letzte Wort bestimmt auch die Hauptbedeutung.','Manchmal steht zwischen den Wörtern ein Verbindungsbuchstabe wie <b>-s</b> oder <b>-n</b>.'],
+    examples:['der Kaffee + <b>die Maschine</b> = <b>die</b> Kaffeemaschine','das Wort + <b>das Buch</b> = <b>das</b> Wörterbuch','die Arbeit + <b>der Platz</b> = <b>der</b> Arbeitsplatz'],
+    mistake:'Nicht den Artikel vom ersten Wort nehmen. <b>der Kaffee</b> + <b>die Maschine</b> wird <b>die Kaffeemaschine</b>.',
+    steps:['Teile das lange Wort in kleine Wörter.','Finde das letzte Wort.','Nimm Artikel und Bedeutung vom letzten Wort.'],
+    coverage:['lange Wörter teilen','Grundwort finden','Artikel bestimmen']
+  };
+  if(topic==='Adjektiv') return {
+    idea:'Adjektive beschreiben Personen und Sachen. Am Anfang lernst du sie am einfachsten nach <b>sein</b>.',
+    rules:['Nach <b>sein</b>, <b>werden</b> und <b>bleiben</b> steht das Adjektiv ohne Endung.','Das Adjektiv beantwortet die Frage: Wie ist etwas?','Wenn das Adjektiv direkt vor dem Nomen steht, kommen später Endungen dazu. Für A1 ist zuerst die einfache Form wichtig.'],
+    examples:['Das Zimmer ist <b>groß</b>.','Die Aufgabe ist <b>leicht</b>.','Der Kaffee ist <b>heiß</b>.','Meine Lehrerin ist <b>freundlich</b>.'],
+    mistake:'Nicht sagen: <b>Das Zimmer ist großes</b>. Nach <b>ist</b> bleibt es: <b>groß</b>.',
+    steps:['Lerne Adjektive mit Gegenteilen: groß - klein, alt - neu.','Bilde Sätze mit ist/sind.','Beschreibe fünf Dinge in deinem Zimmer.'],
+    coverage:['Adjektiv nach sein','Gegenteile','einfache Beschreibungen']
+  };
+  if(topic.includes('trennbare Verben')) return {
+    idea:'Viele deutsche Verben haben einen kleinen Teil vorne. Bei trennbaren Verben wandert dieser Teil im Hauptsatz ans Ende.',
+    rules:['Trennbare Verben haben oft betonte Präfixe: <b>auf</b>stehen, <b>ein</b>kaufen, <b>an</b>rufen.','Im Hauptsatz steht das konjugierte Verb auf Position 2 und das Präfix am Ende.','Nicht trennbare Verben bleiben zusammen, zum Beispiel <b>besuchen</b>, <b>bezahlen</b>, <b>verstehen</b>.'],
+    examples:['Ich <b>stehe</b> um 7 Uhr <b>auf</b>.','Wir <b>kaufen</b> heute <b>ein</b>.','Er <b>ruft</b> seine Mutter <b>an</b>.','Ich <b>besuche</b> meine Freundin.'],
+    mistake:'Nicht sagen: <b>Ich aufstehe um 7 Uhr</b>. Richtig: <b>Ich stehe um 7 Uhr auf</b>.',
+    steps:['Markiere das Präfix.','Setze das Verb auf Position 2.','Setze das Präfix ans Satzende.'],
+    coverage:['trennbare Präfixe','Satzklammer','nicht trennbare Verben']
+  };
+  if(topic==='Akkusativ') return {
+    idea:'Der Akkusativ zeigt oft die Person oder Sache, die direkt von einer Handlung betroffen ist.',
+    rules:['Viele Verben brauchen Akkusativ: haben, sehen, kaufen, fragen, suchen, brauchen.','Nur maskulin verändert sich deutlich: <b>der -> den</b>, <b>ein -> einen</b>.','Feminin, neutral und Plural bleiben im Artikel oft gleich: die, das, die.'],
+    examples:['Ich sehe <b>den Mann</b>.','Sie kauft <b>einen Stift</b>.','Wir suchen <b>die Adresse</b>.','Er hat <b>das Buch</b>.'],
+    mistake:'Nicht sagen: <b>Ich sehe der Mann</b>. Nach <b>sehen</b> brauchst du Akkusativ: <b>den Mann</b>.',
+    steps:['Finde das Verb.','Frage: Wen oder was?','Ändere maskulin zu den/einen.'],
+    coverage:['Akkusativobjekt','den/einen','wichtige Akkusativverben']
+  };
+  if(topic.includes('Possessivartikel')) return {
+    idea:'Possessivartikel zeigen, wem etwas gehört oder zu wem etwas gehört.',
+    rules:['Die Grundformen sind: mein, dein, sein, ihr, unser, euer, Ihr.','Die Endung richtet sich nach dem Nomen: <b>mein Vater</b>, <b>meine Mutter</b>, <b>mein Kind</b>.','Im Plural benutzt du oft <b>meine</b>, <b>deine</b>, <b>seine</b>, <b>ihre</b>.'],
+    examples:['Das ist <b>mein</b> Bruder.','Das ist <b>meine</b> Schwester.','Das ist <b>mein</b> Handy.','Das sind <b>meine</b> Bücher.'],
+    mistake:'Nicht nach der Person allein entscheiden. Entscheidend ist auch das Nomen danach: <b>meine Mutter</b>, aber <b>mein Vater</b>.',
+    steps:['Wähle zuerst den Besitzer: ich -> mein, du -> dein.','Schau dann auf das Nomen und seinen Artikel.','Setze die passende Endung.'],
+    coverage:['Besitzer ausdrücken','mein/meine','Endung nach Nomen']
+  };
+  if(topic.includes('Präteritum')) return {
+    idea:'Im A1-Alltag benutzt du das Präteritum vor allem bei <b>sein</b> und <b>haben</b>.',
+    rules:['sein im Präteritum: ich war, du warst, er/sie/es war, wir waren, ihr wart, sie/Sie waren.','haben im Präteritum: ich hatte, du hattest, er/sie/es hatte, wir hatten, ihr hattet, sie/Sie hatten.','Für viele andere Verben benutzt du im Alltag eher Perfekt.'],
+    examples:['Gestern <b>war</b> ich krank.','Wir <b>waren</b> im Deutschkurs.','Ich <b>hatte</b> keine Zeit.','Sie <b>hatten</b> einen Termin.'],
+    mistake:'Nicht sagen: <b>Ich bin war krank</b>. Du brauchst nur ein Verb: <b>Ich war krank</b>.',
+    steps:['Lerne zuerst nur sein und haben.','Schreibe Sätze mit gestern, letzte Woche, früher.','Vergleiche: Heute bin ich hier. Gestern war ich hier.'],
+    coverage:['war/waren','hatte/hatten','Vergangenheit ausdrücken']
+  };
+  if(topic.includes('Zeitadverbien')) return {
+    idea:'Zeitadverbien sagen, wann etwas passiert oder in welcher Reihenfolge etwas passiert.',
+    rules:['Für Gegenwart: heute, jetzt, gerade.','Für Vergangenheit: gestern, früher, letzte Woche.','Für Reihenfolge: zuerst, dann, danach, zum Schluss. Wenn ein Zeitwort auf Position 1 steht, bleibt das Verb auf Position 2.'],
+    examples:['<b>Heute</b> lerne ich Deutsch.','<b>Gestern</b> war ich krank.','<b>Zuerst</b> frühstücke ich. <b>Dann</b> gehe ich zur Arbeit.'],
+    mistake:'Nicht sagen: <b>Heute ich lerne Deutsch</b>. Richtig: <b>Heute lerne ich Deutsch</b>.',
+    steps:['Wähle ein Zeitwort.','Setze es an Position 1 oder in die Mitte.','Kontrolliere die Verbposition.'],
+    coverage:['Zeitangaben','Reihenfolge','Verbposition nach Zeitwort']
+  };
+  if(topic==='Dativ') return {
+    idea:'Der Dativ zeigt oft die Person, die etwas bekommt, hilft oder zu der etwas gehört. Die Frage ist häufig: Wem?',
+    rules:['Artikel im Dativ: der -> dem, die -> der, das -> dem, die Plural -> den + oft -n.','Wichtige Verben mit Dativ: helfen, danken, antworten, gefallen, gehören.','Nach einigen Präpositionen steht immer Dativ.'],
+    examples:['Ich helfe <b>dem Mann</b>.','Sie antwortet <b>der Lehrerin</b>.','Das Buch gehört <b>dem Kind</b>.','Wir danken <b>den Freunden</b>.'],
+    mistake:'Nicht sagen: <b>Ich helfe den Mann</b>. <b>helfen</b> braucht Dativ: <b>dem Mann</b>.',
+    steps:['Finde das Verb.','Frage: Wem?','Setze den Artikel in den Dativ.'],
+    coverage:['Dativartikel','Verben mit Dativ','wem-Frage']
+  };
+  if(topic.includes('Imperativ')) return {
+    idea:'Der Imperativ ist die Befehls- oder Bitteform. Du benutzt ihn für kurze Anweisungen.',
+    rules:['Für <b>du</b> nimmst du oft den Verbstamm: kommen -> Komm!, machen -> Mach!','Für <b>ihr</b> nimmst du die ihr-Form: Kommt!, Macht!','Für höflich <b>Sie</b>: Verb + Sie: Kommen Sie bitte!, Machen Sie bitte!'],
+    examples:['<b>Komm</b> bitte!','<b>Hört</b> gut zu!','<b>Sprechen Sie</b> bitte langsam!','<b>Öffnen Sie</b> das Buch!'],
+    mistake:'Nicht vergessen: Mit <b>Sie</b> bleibt <b>Sie</b> im Satz: <b>Kommen Sie bitte</b>.',
+    steps:['Entscheide: du, ihr oder Sie?','Bilde die passende Form.','Mache aus dem Befehl mit bitte eine höfliche Bitte.'],
+    coverage:['du-Imperativ','ihr-Imperativ','Sie-Imperativ']
+  };
+  if(topic.includes('Modalverben')) return {
+    idea:'Modalverben verändern die Bedeutung eines zweiten Verbs: können, müssen, wollen, möchten, dürfen, sollen.',
+    rules:['Das Modalverb steht konjugiert auf Position 2.','Das zweite Verb steht im Infinitiv am Ende.','Bei <b>ich</b> und <b>er/sie/es</b> haben viele Modalverben keine normale Endung: ich kann, er kann.'],
+    examples:['Ich <b>kann</b> Deutsch <b>sprechen</b>.','Wir <b>müssen</b> heute <b>lernen</b>.','Sie <b>möchte</b> einen Kaffee <b>trinken</b>.','Darf ich hier <b>sitzen</b>?'],
+    mistake:'Nicht sagen: <b>Ich kann spreche Deutsch</b>. Richtig: <b>Ich kann Deutsch sprechen</b>.',
+    steps:['Wähle das Modalverb.','Konjugiere nur das Modalverb.','Setze das zweite Verb ans Ende im Infinitiv.'],
+    coverage:['Modalverb Position 2','Infinitiv am Ende','Bedeutung der Modalverben']
+  };
+  if(topic.includes('Präpositionen mit Dativ')) return {
+    idea:'Einige Präpositionen verlangen immer Dativ. Nach diesen Wörtern musst du den Artikel ändern.',
+    rules:['Dativ-Präpositionen: <b>aus, bei, mit, nach, seit, von, zu</b>.','Nach diesen Präpositionen benutzt du dem, der, dem, den.','Viele dieser Wörter brauchst du täglich für Wege, Herkunft und Begleitung.'],
+    examples:['Ich fahre <b>mit dem Bus</b>.','Sie kommt <b>aus der Schweiz</b>.','Wir gehen <b>zu dem Arzt</b> -> <b>zum Arzt</b>.','Ich bin <b>bei meiner Mutter</b>.'],
+    mistake:'Nicht sagen: <b>mit der Bus</b>. Bus ist maskulin, Dativ: <b>mit dem Bus</b>.',
+    steps:['Lerne die Liste auswendig: aus, bei, mit, nach, seit, von, zu.','Markiere die Präposition im Satz.','Setze das Nomen danach in den Dativ.'],
+    coverage:['Dativ-Präpositionen','Artikel nach Präposition','Alltagssätze']
+  };
+  if(topic.includes('Perfekt')) return {
+    idea:'Das Perfekt ist die wichtigste Vergangenheitsform im gesprochenen Deutsch.',
+    rules:['Perfekt besteht aus <b>haben/sein + Partizip II</b>.','Die meisten Verben benutzen <b>haben</b>: Ich habe gelernt.','Verben mit Bewegung oder Zustandswechsel benutzen oft <b>sein</b>: Ich bin gegangen.'],
+    examples:['Ich <b>habe</b> Deutsch <b>gelernt</b>.','Sie <b>hat</b> Kaffee <b>getrunken</b>.','Wir <b>sind</b> nach Hause <b>gegangen</b>.','Er <b>ist</b> spät <b>gekommen</b>.'],
+    mistake:'Nicht sagen: <b>Ich habe gehen</b>. Du brauchst das Partizip II: <b>Ich bin gegangen</b>.',
+    steps:['Wähle haben oder sein.','Bilde das Partizip II.','Setze haben/sein auf Position 2 und das Partizip ans Ende.'],
+    coverage:['haben/sein','Partizip II','Satzklammer im Perfekt']
+  };
+  if(topic.includes('Konjunktionen')) return {
+    idea:'Konjunktionen verbinden zwei Wörter oder zwei Sätze. Am Anfang sind und, oder, aber und denn besonders wichtig.',
+    rules:['<b>und</b> verbindet gleiche Informationen.','<b>oder</b> zeigt eine Wahl.','<b>aber</b> zeigt einen Gegensatz. <b>denn</b> nennt einen Grund. Nach diesen Konjunktionen bleibt die normale Wortstellung.'],
+    examples:['Ich lerne Deutsch <b>und</b> ich arbeite.','Möchtest du Tee <b>oder</b> Kaffee?','Ich habe Zeit, <b>aber</b> ich bin müde.','Ich lerne Deutsch, <b>denn</b> ich brauche Deutsch.'],
+    mistake:'Nach <b>denn</b> kommt kein Verb am Ende. Richtig: <b>denn ich bin krank</b>.',
+    steps:['Wähle die Bedeutung: Addition, Wahl, Gegensatz oder Grund.','Verbinde zwei kurze Sätze.','Kontrolliere die Wortstellung nach der Konjunktion.'],
+    coverage:['und/oder/aber/denn','Sätze verbinden','Grund nennen']
+  };
+  if(topic.includes('Präpositionen mit Akkusativ')) return {
+    idea:'Einige Präpositionen verlangen immer Akkusativ. Besonders wichtig sind sie für Wege, Ziele und kleine Alltagssätze.',
+    rules:['Akkusativ-Präpositionen: <b>durch, für, gegen, ohne, um</b>.','Nach diesen Präpositionen wird maskulin: <b>den/einen</b>.','Feminin, neutral und Plural bleiben im Artikel oft gleich.'],
+    examples:['Wir gehen <b>durch den Park</b>.','Das Geschenk ist <b>für meine Mutter</b>.','Ich bin <b>gegen den Plan</b>.','Er kommt <b>ohne einen Stift</b>.'],
+    mistake:'Nicht sagen: <b>für dem Freund</b>. Nach <b>für</b> kommt Akkusativ: <b>für den Freund</b>.',
+    steps:['Lerne die Liste: durch, für, gegen, ohne, um.','Markiere das Nomen nach der Präposition.','Ändere maskulin zu den/einen.'],
+    coverage:['Akkusativ-Präpositionen','den/einen nach Präposition','Alltagssätze']
+  };
+  return {
+    idea:'Dieses Thema gehört zu den A1-Grundlagen. Lerne zuerst die einfache Regel und danach viele kurze Beispiele.',
+    rules:['Lies die Regel langsam.','Vergleiche die Beispiele.','Schreibe eigene Mini-Sätze.'],
+    examples:[`<b>${topic}</b> im einfachen A1-Satz.`],
+    mistake:'Lerne nicht nur die Regel allein. Du brauchst immer einen Beispielsatz dazu.',
+    steps:['Regel lesen.','Beispiele laut sprechen.','Eine eigene Übung lösen.'],
+    coverage:['Regel verstehen','Beispiele sprechen','eigene Sätze bilden']
+  };
+}
 const A1_GRAM=A1_GRAMMAR_SCRIPT.map(lesson=>({
   num:lesson.num,
   titleAr:'',
   topics:lesson.topics.map((topic,index)=>{
+    const topicMeta=a1GrammarTopicMeta(topic);
+    const guide=a1BeginnerGrammarData(topic);
     const short=topic.replace('Personalpronomen - ','Pronomen ').replace('Nomen und Artikel - ','Artikel ').replace('Wortstellung: ','Wortstellung · ').replace('Nicht trennbare und trennbare Verben','Trennbare Verben');
     return {
       short,
       title:topic,
       titleAr:'',
       sourcePage:lesson.start+index,
-      coveragePoints:['Regel aus dem Skript','Beispiele','Übungen zum Ausfüllen'],
+      coveragePoints:guide.coverage,
       visual:{
-        src:`assets/grammar/lesson-${lesson.num}.webp`,
-        alt:`Grammatik-Skript A1 Lektion ${lesson.num}`,
-        caption:`Grammatik-Skript A1 · Lektion ${lesson.num}`,
+        src:`assets/a1/chapters/chapter-${lesson.num}.webp`,
+        alt:`A1 Grammatik Lektion ${lesson.num}`,
+        caption:`A1 Grammatik · Lektion ${lesson.num}`,
         captionAr:''
       },
-      body:gramBody(`${a1GrammarTopicMeta(topic).body}
-        <div class="exbox"><b>${lesson.num}.${index+1}</b> ${topic}<br><small>Original im PDF: S. ${lesson.start}${lesson.end>lesson.start?`-${lesson.end}`:''}</small></div>
-        <div class="notebox">Öffne das PDF nur, wenn du die Originalübung komplett sehen oder ausdrucken möchtest.</div>
-        <div class="pdf-actions"><a class="btn btn-ghost" href="${A1_GRAMMAR_SCRIPT_PDF}#page=${a1ScriptPdfPage(lesson)}" target="_blank" rel="noopener">Original-PDF öffnen</a></div>`),
-      quiz:[a1GrammarTopicMeta(topic).quiz],
-      practice:[a1GrammarTopicMeta(topic).practice]
+      body:gramBody(beginnerGrammarGuide(guide)),
+      quiz:[topicMeta.quiz],
+      practice:[topicMeta.practice]
     };
   })
 }));
@@ -2514,7 +2708,7 @@ function renderA1Home(){
     ${A1_GRAM.map(lesson=>`
       <button type="button" class="lesson-item gram-script" onclick="go('a1/g${lesson.num}')">
         <div class="num">L${lesson.num}</div>
-        <img class="lesson-thumb" src="assets/grammar/lesson-${lesson.num}.webp" alt="">
+        <img class="lesson-thumb" src="assets/a1/chapters/chapter-${lesson.num}.webp" alt="">
         <div class="ttl"><b>Grammatik-Skript A1 · Lektion ${lesson.num}</b>
           <span class="sub">${lesson.topics.map((topic,index)=>`${lesson.num}.${index+1} ${topic.short}`).join(' · ')}</span></div>
         <div class="chev">›</div>
@@ -4669,6 +4863,8 @@ function renderLektion(l, topicIdx, options={}){
   const routePrefix=options.routePrefix||'g';
   const titlePrefix=options.titlePrefix||'Lektion';
   const titleText=options.titlePrefix?`${titlePrefix} ${l.num}`:`Lektion ${l.num} (Skript)`;
+  const coverageTitle=options.coverageTitle||'Skript vollständig abgedeckt';
+  const hideSource=!!options.hideSource;
   setTop(titleText, l.topics.map(t=>t.short).join(' · '), true);
   const ti = parseInt(topicIdx)||0;
   let html = `<div class="tabs">` + l.topics.map((t,i) =>
@@ -4682,7 +4878,7 @@ function renderLektion(l, topicIdx, options={}){
   }
   if(t.coveragePoints?.length){
     html += `<aside class="script-coverage">
-      <div class="script-coverage-head"><b>Skript vollständig abgedeckt</b><span class="source-page">PDF S. ${t.sourcePage}</span></div>
+      <div class="script-coverage-head"><b>${coverageTitle}</b>${hideSource?'':`<span class="source-page">PDF S. ${t.sourcePage}</span>`}</div>
       <div class="coverage-points">${t.coveragePoints.map(point=>`<span class="coverage-point">${point}</span>`).join('')}</div>
     </aside>`;
   }
