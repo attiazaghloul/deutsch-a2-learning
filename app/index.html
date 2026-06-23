@@ -25,21 +25,39 @@
   --red:#b64b4b; --red-l:#f9e8e5;
   --ar:#716778; --ar-l:#f7f3f7;
   --line:#e6ded1;
+  --topbar-start:#175b5d; --topbar-end:#328986;
+  --hero-start:#175b5d; --hero-end:#3b918b;
   --radius:18px;
   --shadow:0 8px 24px rgba(49,65,68,.08);
+}
+body.level-a1{
+  --green:#2f8f60; --green-d:#1f6849; --green-l:#e6f7ed;
+  --bg:#eff8f2; --card:#fefffb; --line:#d9eadc;
+  --blue:#4c7194; --blue-l:#e8f0f7;
+  --topbar-start:#1d6849; --topbar-end:#38a46b;
+  --hero-start:#1d6849; --hero-end:#52ad78;
+  --shadow:0 8px 24px rgba(31,104,73,.1);
+}
+body.level-a2{
+  --green:#2d73a3; --green-d:#184f7a; --green-l:#e6f1fb;
+  --bg:#edf6fb; --card:#fbfeff; --line:#d7e6f0;
+  --blue:#5774a6; --blue-l:#e9eef8;
+  --topbar-start:#184f7a; --topbar-end:#3e91bc;
+  --hero-start:#184f7a; --hero-end:#4b9fbd;
+  --shadow:0 8px 24px rgba(24,79,122,.1);
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html{font-size:16px}
 body{
   font-family:"Carlito","Calibri","Segoe UI",system-ui,sans-serif;
   background:var(--bg);color:var(--ink);line-height:1.6;
-  padding-bottom:env(safe-area-inset-bottom);
+  padding-bottom:env(safe-area-inset-bottom);transition:background-color .2s ease;
 }
 .ar,[dir="rtl"],.ar-toggle span{font-family:"Cairo","Tahoma",sans-serif}
 #app{max-width:780px;margin:0 auto;padding:0 14px 90px}
 /* ---------- header ---------- */
 header.topbar{
-  position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#175b5d,#328986);color:#fff;
+  position:sticky;top:0;z-index:50;background:linear-gradient(135deg,var(--topbar-start),var(--topbar-end));color:#fff;
   margin:0 -14px 16px;padding:12px 16px;display:flex;align-items:center;gap:10px;
   box-shadow:var(--shadow);
 }
@@ -73,7 +91,7 @@ body.exam-mode .ar{display:none!important}
 /* ---------- cards & layout ---------- */
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);
   padding:20px;margin-bottom:16px;overflow:hidden}
-.hero{background:linear-gradient(135deg,#175b5d 0%,#3b918b 100%);color:#fff;
+.hero{background:linear-gradient(135deg,var(--hero-start) 0%,var(--hero-end) 100%);color:#fff;
   border-radius:var(--radius);padding:24px 20px;margin-bottom:18px;box-shadow:var(--shadow)}
 .hero h2{font-size:22px;margin-bottom:6px}
 .hero p{font-size:14px;opacity:.95}
@@ -88,7 +106,10 @@ body.exam-mode .ar{display:none!important}
 .level-card.locked{opacity:.78;cursor:default}
 .level-code{display:flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:17px;
   background:var(--green-l);color:var(--green-d);font-size:24px;font-weight:900}
+.level-card:not(.a2):not(.soon){background:linear-gradient(135deg,#fff,#f2fbf5)}
 .level-card.a2 .level-code{background:var(--blue-l);color:var(--blue)}
+.level-card.a2{background:linear-gradient(135deg,#fff,#eef6fb)}
+.level-card.a2 h3{color:#184f7a}
 .level-card.soon .level-code{background:var(--amber-l);color:var(--amber)}
 .level-card h3{font-size:20px;color:var(--green-d)}
 .level-card p{font-size:13.5px;color:var(--ink-2)}
@@ -1499,8 +1520,17 @@ $('#backBtn').addEventListener('click', () => {
   else go('');
 });
 
+function applyLevelTheme(hash){
+  const isA1=hash==='a1'||hash.startsWith('a1/');
+  const isA2=hash==='a2'||['dict','verbs','phrases','listen','exam','podcast','games'].includes(hash)
+    ||/^(k|g)\d+/.test(hash);
+  document.body.classList.toggle('level-a1',isA1);
+  document.body.classList.toggle('level-a2',isA2);
+}
+
 function route(){
   const h = location.hash.replace('#','');
+  applyLevelTheme(h);
   stopExamTimer();
   stopGameTimers();
   stopPodcast();
