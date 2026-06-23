@@ -17,7 +17,11 @@
   }
 
   function trackTask(exercise, track, index) {
-    const page = exercise.exercisePages[Math.min(index, exercise.exercisePages.length - 1)];
+    const pageIndex = Math.min(
+      exercise.exercisePages.length - 1,
+      Math.floor(index * exercise.exercisePages.length / Math.max(exercise.tracks.length, 1))
+    );
+    const page = exercise.exercisePages[pageIndex];
     return {
       page,
       title: `${track} · ${exercise.title}`,
