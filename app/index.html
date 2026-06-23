@@ -119,7 +119,7 @@ body.exam-mode .ar{display:none!important}
   cursor:pointer;border:2px solid transparent;transition:.15s;width:100%;text-align:left;
   color:inherit;font:inherit}
 .lesson-item:active{transform:scale(.98)}
-.lesson-item:focus-visible,.tab:focus-visible,.btn:focus-visible,.ar-toggle:focus-visible,
+.lesson-item:focus-visible,.tab:focus-visible,.main-tab:focus-visible,.btn:focus-visible,.ar-toggle:focus-visible,
 header.topbar .back:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
 .lesson-item .num{flex:0 0 auto;width:46px;height:46px;border-radius:14px;background:var(--green-l);
   color:var(--green-d);font-weight:800;font-size:19px;display:flex;align-items:center;justify-content:center}
@@ -130,11 +130,14 @@ header.topbar .back:focus-visible{outline:3px solid var(--amber);outline-offset:
 .lesson-item .ttl span.sub{font-size:12.5px;color:var(--ink-2);display:block}
 .lesson-item .chev{color:#c2cad3;font-size:20px}
 /* ---------- tabs ---------- */
-.tabs{display:flex;gap:6px;overflow-x:auto;padding:4px 0 12px;scrollbar-width:none;position:sticky;top:var(--topbar-h);z-index:50;background:var(--bg)}
+.tabs{display:flex;gap:6px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;
+  -webkit-overflow-scrolling:touch;padding:4px 0 12px;scrollbar-width:none;position:sticky;top:var(--topbar-h);
+  z-index:50;background:var(--bg)}
 .tabs.tabs--below-main{top:124px;z-index:55}
 .tabs::-webkit-scrollbar{display:none}
 .tab{flex:0 0 auto;border:none;background:var(--card);box-shadow:var(--shadow);color:var(--ink-2);
-  padding:9px 16px;border-radius:999px;font-size:13.5px;font-weight:700;cursor:pointer}
+  padding:9px 16px;border-radius:999px;font-size:13.5px;font-weight:700;cursor:pointer;scroll-snap-align:center;
+  white-space:nowrap}
 .tab.active{background:var(--green-d);color:#fff}
 /* ---------- vocab ---------- */
 .vocab-row{padding:13px 0;border-bottom:1px solid #edf0f3}
@@ -225,7 +228,8 @@ table.gt b{color:var(--green-d)}
 .main-tabs{display:grid;grid-template-columns:repeat(8,1fr);gap:8px;margin:0 0 16px;position:sticky;top:var(--topbar-h);z-index:70;background:var(--bg);padding:4px 0 10px}
 .main-tabs.a1-tabs{grid-template-columns:repeat(5,1fr)}
 .main-tab{border:1px solid var(--line);background:var(--card);color:var(--ink-2);border-radius:13px;
-  padding:10px 6px;font:inherit;font-size:13px;font-weight:700;cursor:pointer;box-shadow:var(--shadow)}
+  padding:10px 6px;font:inherit;font-size:13px;font-weight:700;cursor:pointer;box-shadow:var(--shadow);
+  min-width:0;white-space:nowrap}
 .main-tab.active{background:var(--green-d);border-color:var(--green-d);color:#fff}
 .search-panel{position:sticky;top:72px;z-index:20;background:rgba(246,242,234,.96);backdrop-filter:blur(8px);
   border:1px solid var(--line);border-radius:16px;padding:10px;margin-bottom:14px;box-shadow:var(--shadow)}
@@ -747,15 +751,30 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 }
 @media(max-width:460px){
   .card{padding:16px}
+  #app{padding-inline:12px}
+  header.topbar{margin-inline:-12px;padding-inline:12px}
   .practice-head{align-items:flex-start}
   .lesson-thumb{width:74px;height:42px}
   .search-row{flex-direction:column}
   .library-filter{width:100%}
   .listen-toggle{padding:6px 8px}
   .listen-toggle span{display:none}
-  .main-tabs{grid-template-columns:repeat(2,1fr)}
-  .main-tabs.a1-tabs{grid-template-columns:repeat(2,1fr)}
+  .main-tabs,.main-tabs.a1-tabs{display:flex;gap:7px;overflow-x:auto;overscroll-behavior-x:contain;
+    scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;margin-inline:-12px;padding:4px 12px 10px;
+    scrollbar-width:none}
+  .main-tabs::-webkit-scrollbar{display:none}
+  .main-tab{flex:0 0 clamp(104px,32vw,136px);padding:9px 10px;font-size:12.5px;scroll-snap-align:center;
+    overflow:hidden;text-overflow:ellipsis}
+  .tabs{margin-inline:-12px;padding:4px 12px 12px}
+  .tabs.tabs--below-main{top:112px}
+  .tab{padding:8px 13px;font-size:12.5px}
   .main-tabs + .tabs.tabs--below-main{position:static}
+  .level-mini-nav{display:flex;overflow-x:auto;gap:7px;margin-inline:-12px;padding:2px 12px 14px;
+    overscroll-behavior-x:contain;scrollbar-width:none}
+  .level-mini-nav::-webkit-scrollbar{display:none}
+  .level-mini-nav button{flex:0 0 min(74vw,260px);padding:9px 11px;white-space:normal;text-align:center}
+  .btn{padding:10px 13px}
+  .fc-bar,.fc-nav{flex-wrap:wrap}
   .verb-grid{grid-template-columns:repeat(2,1fr)}
   .voice-gallery{grid-template-columns:1fr}
   .listening-hero{grid-template-columns:82px 1fr;gap:12px}
@@ -4258,7 +4277,18 @@ function updatePracticeProgress(total, saved){
   if(progress) progress.textContent=`${done} / ${total} geschafft`;
 }
 
+function centerActiveNavigation(){
+  $$('.main-tabs,.tabs,.level-mini-nav').forEach(nav=>{
+    const active=nav.querySelector('.active');
+    if(!active || nav.scrollWidth<=nav.clientWidth) return;
+    const left=active.offsetLeft - (nav.clientWidth-active.offsetWidth)/2;
+    nav.scrollTo({left:Math.max(0,left),behavior:'auto'});
+  });
+}
+
+window.addEventListener('hashchange',()=>requestAnimationFrame(centerActiveNavigation));
 route();
+requestAnimationFrame(centerActiveNavigation);
 </script>
 </body>
 </html>
