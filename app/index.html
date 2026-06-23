@@ -589,11 +589,13 @@ body.listen-mode .speakable{cursor:pointer}
 .phonetik-task-card .interactive-section-head{margin-bottom:7px}
 .phonetik-task-card p{margin:5px 0;color:var(--ink-2);line-height:1.55}
 .phonetik-task-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}
-.phonetik-study-task{background:#f3fbf6;border:1px solid #d5eadc;border-radius:12px;padding:10px 11px;margin:9px 0;color:var(--ink);direction:rtl;text-align:right}
-.phonetik-study-task b{display:block;color:var(--green-d);font-size:13px;margin-bottom:3px}
-.phonetik-study-task ol{margin:6px 0 0;padding-inline-start:20px;color:var(--ink-2);font-size:13px;line-height:1.6}
+.phonetik-answer-box{margin:10px 0}
+.phonetik-answer-box label{display:block;margin-bottom:6px;color:var(--green-d);font-size:13px;font-weight:800}
+.phonetik-answer-box textarea{width:100%;min-height:74px;resize:vertical;border:1px solid var(--line);border-radius:12px;padding:10px 11px;font:inherit;font-size:14px;background:#fbfdfc;color:var(--ink)}
 .phonetik-print-preview{margin:9px 0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
 .phonetik-print-preview summary{cursor:pointer;padding:9px 11px;color:var(--green-d);font-weight:800;font-size:13px;direction:rtl;text-align:right}
+.phonetik-solution-preview{background:#fffaf0;border-color:#eadcba}
+.phonetik-solution-preview summary{color:#8a5a12}
 .phonetik-print-frame{max-height:310px;overflow:auto;border-top:1px solid var(--line);background:#fff}
 .phonetik-print-crop{display:block;width:100%;height:auto;background:#fff}
 .phonetik-print-actions{display:flex;justify-content:flex-end;padding:8px;background:#f8fbf8}
@@ -2028,18 +2030,11 @@ function phonetikTaskPages(task, exercise){
   const pages=(task.pages||[task.page]).filter(Boolean);
   return pages.length?pages:exercise.exercisePages||[];
 }
-function phonetikStudyTask(cfg, exercise, task){
-  const tracks=task.tracks||[];
-  const pages=phonetikTaskPages(task, exercise);
-  const pageText=pages.length>1?`${pages[0]}-${pages.at(-1)}`:`${pages[0]||''}`;
-  const trackText=tracks.length?tracks.map(track=>cfg.trackLabel(track)).join(', '):'Audio';
-  return `<div class="phonetik-study-task">
-    <b>مطلوب منك في السؤال ده</b>
-    <ol>
-      <li>اقرأ السؤال المطبوع من صفحة ${pageText} قبل تشغيل الصوت.</li>
-      <li>شغّل ${escapeHtml(trackText)} وحل الاختيارات أو الفراغات أو العلامات الموجودة في صورة الكتاب.</li>
-      <li>اسمع مرة ثانية وكرر بصوت عالي، لأن هدف الدرس هو النطق مش السماع فقط.</li>
-    </ol>
+function phonetikAnswerBox(exercise, task){
+  const key=`phonetik-${exercise.id}-${(task.tracks||[]).join('-')||task.title}`.replace(/[^a-zA-Z0-9_-]/g,'-');
+  return `<div class="phonetik-answer-box">
+    <label for="${key}">اكتب إجابتك هنا</label>
+    <textarea id="${key}" rows="3" placeholder="اكتب إجابتك قبل فتح الحل..."></textarea>
   </div>`;
 }
 function phonetikPrintedQuestionPreview(cfg, exercise, task){
@@ -2053,11 +2048,22 @@ function phonetikPrintedQuestionPreview(cfg, exercise, task){
     <div class="phonetik-print-actions"><button type="button" class="page-zoom" data-book-page="${page}" data-asset-page="${assetPage}" data-page-label="${title}" data-page-base="${cfg.pageBase}">تكبير صفحة السؤال</button></div>
   </details>`;
 }
+function phonetikSolutionPreview(cfg, exercise){
+  const pages=(exercise.solutionPages||[]).filter(Boolean);
+  if(!pages.length) return '';
+  const pageText=pages.length>1?`${pages[0]}-${pages.at(-1)}`:`${pages[0]}`;
+  const title=`راجع الإجابة - صفحة ${pageText}`;
+  return `<details class="phonetik-print-preview phonetik-solution-preview">
+    <summary>${title}</summary>
+    ${pages.map(page=>`<div class="phonetik-print-frame"><img class="phonetik-print-crop" loading="lazy" src="${a1BookPageSrc(cfg,page)}" alt="Loesung Seite ${page}"></div>
+    <div class="phonetik-print-actions"><button type="button" class="page-zoom" data-book-page="${page}" data-asset-page="${a1BookPageAsset(cfg,page)}" data-page-label="${title}" data-page-base="${cfg.pageBase}">تكبير صفحة الحل ${page}</button></div>`).join('')}
+  </details>`;
+}
 function renderPhonetikBookTasks(cfg, exercise){
   const tasks=exercise.bookTasks||[];
   if(!tasks.length) return '';
   return `<section class="extra-listening phonetik-book-tasks"><h3>Aufgaben der Einheit und passende Audios</h3>
-    <p>كل صوت هنا معه السؤال المطبوع من الكتاب فوقه مباشرة، علشان الطالب يعرف يحل إيه قبل ما يشغل التسجيل.</p>
+    <p>حل السؤال، شغل الصوت، اكتب إجابتك، ثم افتح الحل للمراجعة.</p>
     <div class="phonetik-task-list">${tasks.map(task=>{
       const tracks=task.tracks||[];
       const pages=phonetikTaskPages(task, exercise);
@@ -2067,10 +2073,11 @@ function renderPhonetikBookTasks(cfg, exercise){
           <div class="section-track-badges">${tracks.length?tracks.map(track=>`<span class="track-badge">${cfg.trackLabel(track)}</span>`).join(''):'<span class="track-badge no-audio">Ohne Audio</span>'}</div></div>
         <p>${escapeHtml(task.task||'')}</p>
         ${task.taskAr?ar(task.taskAr):''}
-        ${phonetikStudyTask(cfg, exercise, task)}
         ${phonetikPrintedQuestionPreview(cfg, exercise, task)}
-        <div class="phonetik-task-meta"><span class="track-badge">${pageLabel}</span></div>
         ${tracks.map(track=>a1AudioTrack(cfg, track, task.title)).join('')}
+        ${phonetikAnswerBox(exercise, task)}
+        ${phonetikSolutionPreview(cfg, exercise)}
+        <div class="phonetik-task-meta"><span class="track-badge">${pageLabel}</span></div>
       </article>`;
     }).join('')}</div></section>`;
 }
