@@ -66,6 +66,11 @@ header.topbar .back{
   width:38px;height:38px;border-radius:12px;cursor:pointer;flex:0 0 auto;display:none;
 }
 body.has-back header.topbar .back{display:block}
+header.topbar .home{
+  background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.28);color:#fff;font-size:16px;
+  width:36px;height:36px;border-radius:12px;cursor:pointer;flex:0 0 auto;display:none;align-items:center;justify-content:center;
+}
+body.has-route header.topbar .home{display:flex}
 header.topbar h1{font-size:17px;font-weight:700;flex:1;line-height:1.3}
 header.topbar h1 small{display:block;font-size:11px;font-weight:400;opacity:.85}
 /* Arabic toggle */
@@ -119,6 +124,17 @@ body.exam-mode .ar{display:none!important}
 .level-mini-nav button{border:0;border-radius:13px;background:var(--card);box-shadow:var(--shadow);padding:10px 12px;
   color:var(--ink-2);font:inherit;font-size:13px;font-weight:800;cursor:pointer}
 .level-mini-nav button.active{background:var(--green-d);color:#fff}
+.section-card-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:0 0 18px}
+.section-card{display:flex;align-items:flex-start;gap:13px;text-align:left;width:100%;min-height:128px;
+  background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);
+  color:inherit;font:inherit;padding:16px;cursor:pointer;transition:.15s}
+.section-card:active{transform:scale(.985)}
+.section-card .icon{display:grid;place-items:center;flex:0 0 auto;width:45px;height:45px;border-radius:14px;
+  background:var(--green-l);color:var(--green-d);font-size:22px;font-weight:900}
+.section-card b{display:block;color:var(--green-d);font-size:16px;line-height:1.25;margin-bottom:4px}
+.section-card span{display:block;color:var(--ink-2);font-size:12.5px;line-height:1.45}
+.chapter-tab-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:18px}
+.chapter-tab-card{min-height:118px}
 .a1-roadmap{display:flex;flex-direction:column;gap:10px}
 .a1-unit{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;border:1px solid var(--line);
   border-radius:16px;background:var(--card);box-shadow:var(--shadow);padding:14px;color:inherit;font:inherit;cursor:pointer}
@@ -140,8 +156,8 @@ body.exam-mode .ar{display:none!important}
   cursor:pointer;border:2px solid transparent;transition:.15s;width:100%;text-align:left;
   color:inherit;font:inherit}
 .lesson-item:active{transform:scale(.98)}
-.lesson-item:focus-visible,.tab:focus-visible,.main-tab:focus-visible,.btn:focus-visible,.ar-toggle:focus-visible,
-header.topbar .back:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.lesson-item:focus-visible,.tab:focus-visible,.main-tab:focus-visible,.section-card:focus-visible,.btn:focus-visible,.ar-toggle:focus-visible,
+header.topbar .back:focus-visible,header.topbar .home:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
 .lesson-item .num{flex:0 0 auto;width:46px;height:46px;border-radius:14px;background:var(--green-l);
   color:var(--green-d);font-weight:800;font-size:19px;display:flex;align-items:center;justify-content:center}
 .lesson-thumb{width:84px;height:48px;object-fit:cover;border-radius:12px;flex:0 0 auto;background:#fff}
@@ -810,7 +826,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
   .section-track-badges{justify-content:flex-start}
   .match-row{grid-template-columns:1fr}
   .question-figures.tiles .question-figure img{height:140px;max-height:140px}
-  .listen-chapter-grid,.listen-exercise-grid{grid-template-columns:1fr}
+  .listen-chapter-grid,.listen-exercise-grid,.section-card-grid,.chapter-tab-grid{grid-template-columns:1fr}
   .level-grid,.a1-roadmap,.a1-module-grid,.topic-visual-grid{grid-template-columns:1fr}
   .chapter-collage{height:125px}
   .listen-exercise-thumb{height:auto}
@@ -830,6 +846,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <div id="app">
   <header class="topbar">
     <button class="back" id="backBtn" aria-label="zurück">←</button>
+    <button class="home" id="homeBtn" aria-label="Home" title="Home">⌂</button>
     <h1 id="topTitle">Deutsch A2 Learning<small>Netzwerk neu · A1 + A2</small></h1>
     <button type="button" class="listen-toggle" id="listenToggle" aria-pressed="false" title="اضغط ثم اختر أي نص لسماعه">
       🔊 <span>Hören</span>
@@ -1520,16 +1537,66 @@ $('#backBtn').addEventListener('click', () => {
   else go('');
 });
 
+let lastRouteHash=null;
+let routeBackStack=[];
+let navigatingBack=false;
+
+function fallbackBackTarget(hash){
+  const h=hash?`#${hash}`:'';
+  const path=hash;
+  if(/^#a1\/k\d+\//.test(h)) return path.split('/').slice(0,2).join('/');
+  if(/^#a1\/k\d+$/.test(h)) return 'a1/lessons';
+  if(h==='#a1/lessons') return 'a1';
+  if(/^#a1\/listen\/(?:hoeren|phonetik)\/[A-H]\/\d+$/.test(h)) return path.split('/').slice(0,4).join('/');
+  if(/^#a1\/listen\/(?:hoeren|phonetik)\/[A-C]\/\d+$/.test(h)) return path.split('/').slice(0,4).join('/');
+  if(/^#a1\/listen\/(?:hoeren|phonetik)\/[A-H]$/.test(h)) return path.split('/').slice(0,3).join('/');
+  if(/^#a1\/listen\/(?:hoeren|phonetik)\/[A-C]$/.test(h)) return path.split('/').slice(0,3).join('/');
+  if(/^#a1\/listen\/(?:hoeren|phonetik)$/.test(h)) return 'a1/listen';
+  if(/^#a1\/listen\/[A-H](?:\/\d+)?$/.test(h)){
+    const parts=path.split('/');
+    return ['a1','listen','hoeren',...parts.slice(2)].join('/');
+  }
+  if(h==='#a1/listen'||/^#a1\/(dict|verbs|phrases)$/.test(h)) return 'a1';
+  if(h==='#a1'||h==='#a2') return '';
+  if(h==='#a2/lessons') return 'a2';
+  if(/^#podcast\//.test(h)) return 'podcast';
+  if(/^#games\//.test(h)) return 'games';
+  if(/^#exam\//.test(h)) return 'exam';
+  if(/^#listen\/[A-I]\/\d+/.test(h)) return path.split('/').slice(0,2).join('/');
+  if(/^#listen\/[A-I]/.test(h)) return 'listen';
+  if(['#dict','#verbs','#phrases','#listen','#exam','#podcast','#games'].includes(h)) return 'a2';
+  if(/^#(k|g)\d+\//.test(h)) return path.split('/').slice(0,1).join('/');
+  if(/^#(k|g)\d+$/.test(h)) return 'a2/lessons';
+  return '';
+}
+
+function goBack(){
+  const previous=routeBackStack.pop();
+  navigatingBack=true;
+  go(previous ?? fallbackBackTarget(location.hash.replace('#','')));
+}
+
+$('#backBtn').addEventListener('click',event=>{
+  event.preventDefault();
+  event.stopImmediatePropagation();
+  goBack();
+},true);
+$('#homeBtn').addEventListener('click',()=>go(''));
+
 function applyLevelTheme(hash){
   const isA1=hash==='a1'||hash.startsWith('a1/');
-  const isA2=hash==='a2'||['dict','verbs','phrases','listen','exam','podcast','games'].includes(hash)
+  const isA2=hash==='a2'||hash.startsWith('a2/')||['dict','verbs','phrases','listen','exam','podcast','games'].includes(hash)
     ||/^(k|g)\d+/.test(hash);
   document.body.classList.toggle('level-a1',isA1);
   document.body.classList.toggle('level-a2',isA2);
+  document.body.classList.toggle('has-route',!!hash);
 }
 
 function route(){
   const h = location.hash.replace('#','');
+  if(!navigatingBack && lastRouteHash!==null && h!==lastRouteHash) routeBackStack.push(lastRouteHash);
+  if(navigatingBack) navigatingBack=false;
+  lastRouteHash=h;
   applyLevelTheme(h);
   stopExamTimer();
   stopGameTimers();
@@ -1545,7 +1612,8 @@ function route(){
   }
   window.scrollTo(0,0);
   if(!h){ renderLevelSelector(); return; }
-  if(h==='a1'){ renderA1Home(); return; }
+  if(h==='a1'){ renderA1Hub(); return; }
+  if(h==='a1/lessons'){ renderA1Home(); return; }
   if(h==='a1/dict'){ renderA1Dictionary(); return; }
   if(h==='a1/verbs'){ renderA1Verbs(); return; }
   if(h==='a1/phrases'){ renderA1Expressions(); return; }
@@ -1568,8 +1636,9 @@ function route(){
     return;
   }
   const a1Match=h.match(/^a1\/k(\d+)(?:\/(\w+))?$/);
-  if(a1Match){ renderA1Chapter(Number(a1Match[1]), a1Match[2]||'ueberblick'); return; }
-  if(h==='a2'){ renderHome(); return; }
+  if(a1Match){ renderA1Chapter(Number(a1Match[1]), a1Match[2]); return; }
+  if(h==='a2'){ renderA2Hub(); return; }
+  if(h==='a2/lessons'){ renderHome(); return; }
   if(h==='dict'){ renderDictionary(); return; }
   if(h==='verbs'){ renderVerbs(); return; }
   if(h==='phrases'){ renderExpressions(); return; }
@@ -1595,7 +1664,7 @@ function route(){
   if(!m){ renderHome(); return; }
   if(m[1]==='k'){
     const ch = BOOK.find(c => c.num == m[2]);
-    if(ch) renderChapter(ch, m[3]||'ueberblick'); else renderHome();
+    if(ch) m[3]?renderChapter(ch, m[3]):renderChapterMenu(ch); else renderHome();
   } else {
     const lk = GRAM.find(l => l.num == m[2]);
     if(lk) renderLektion(lk, m[3]||'0'); else renderHome();
@@ -1608,6 +1677,7 @@ function setTop(title, sub, hasBack){
 }
 
 function mainTabs(active){
+  return '';
   return `<nav class="main-tabs" aria-label="Hauptbereiche">
     <button class="main-tab ${active==='lessons'?'active':''}" onclick="go('a2')">📚 Lektionen</button>
     <button class="main-tab ${active==='dict'?'active':''}" onclick="go('dict')">🔎 Wörterbuch</button>
@@ -1620,12 +1690,59 @@ function mainTabs(active){
   </nav>`;
 }
 
+function sectionCards(items, extraClass=''){
+  return `<section class="section-card-grid ${extraClass}">${items.map(item=>`
+    <button type="button" class="section-card ${item.className||''}" onclick="go('${item.route}')">
+      <span class="icon">${item.icon}</span>
+      <span><b>${item.title}</b><span>${item.text}</span>${item.ar?ar(item.ar):''}</span>
+    </button>`).join('')}</section>`;
+}
+
+const A1_SECTIONS=[
+  {route:'a1/lessons',icon:'1',title:'Lektionen',text:'12 Kapitel mit Wortschatz, Grammatik, Lesen, Sprechen und Quiz.',ar:'الدروس الكاملة لمستوى A1.'},
+  {route:'a1/dict',icon:'W',title:'Wörterbuch',text:'Alle A1-Wörter mit Suche und Kapitelfilter.',ar:'قاموس كل كلمات A1.'},
+  {route:'a1/verbs',icon:'V',title:'Verben',text:'A1-Verben mit Formen, Perfekt und Beispielen.',ar:'تصريف الأفعال الأساسية.'},
+  {route:'a1/phrases',icon:'R',title:'Redemittel',text:'Fertige Sätze für Alltag und einfache Gespräche.',ar:'جمل جاهزة للكلام.'},
+  {route:'a1/listen',icon:'H',title:'Hören',text:'A1-Hörbücher, Phonetik und interaktive Aufgaben.',ar:'استماع وتدريبات A1.'}
+];
+
+const A2_SECTIONS=[
+  {route:'a2/lessons',icon:'2',title:'Lektionen',text:'Netzwerk neu A2.1 + A2.2 und Grammatik-Skript.',ar:'دروس A2 ومذكرة القواعد.'},
+  {route:'dict',icon:'W',title:'Wörterbuch',text:'Alle A2-Wörter mit Suche und Kapitelfilter.',ar:'قاموس كل كلمات A2.'},
+  {route:'verbs',icon:'V',title:'Verben',text:'Konjugation, Präteritum und Perfekt.',ar:'تصريف الأفعال.'},
+  {route:'phrases',icon:'R',title:'Redewendungen',text:'Ausdrücke für Alltag, Prüfung und Gespräche.',ar:'تعبيرات جاهزة.'},
+  {route:'podcast',icon:'P',title:'Podcast',text:'12 Folgen zum Hören und Mitlesen.',ar:'بودكاست للاستماع والقراءة.'},
+  {route:'games',icon:'G',title:'Spiele',text:'Schnelle Spiele für Wortschatz und Satzbau.',ar:'ألعاب لتثبيت الكلمات.'},
+  {route:'listen',icon:'H',title:'Hören',text:'Hören & Sprechen A2 mit Buchseiten.',ar:'استماع A2 مع صفحات الكتاب.'},
+  {route:'exam',icon:'E',title:'Prüfung',text:'Goethe-A2 Modelltraining mit Timer.',ar:'تدريب امتحان A2.'}
+];
+
 /* ===================== home ===================== */
 function levelSwitcher(active){
   return `<div class="level-mini-nav" aria-label="Niveau wechseln">
     <button type="button" class="${active==='a1'?'active':''}" onclick="go('a1')">A1 · Netzwerk neu A1</button>
     <button type="button" class="${active==='a2'?'active':''}" onclick="go('a2')">A2 · Netzwerk neu A2</button>
   </div>`;
+}
+
+function renderA1Hub(){
+  setTop('Deutsch A1','Wähle einen Bereich',true);
+  view.innerHTML=`
+    <section class="hero"><h2>Netzwerk neu A1</h2>
+      <p>اختار القسم اللي عايز تذاكر منه. كل قسم هيفتح في صفحة مستقلة من غير شريط علوي مزاحم.</p>
+      ${ar('ابدأ بالدروس أو افتح القاموس والأفعال والاستماع مباشرة.')}
+    </section>
+    ${sectionCards(A1_SECTIONS)}`;
+}
+
+function renderA2Hub(){
+  setTop('Deutsch A2','Wähle einen Bereich',true);
+  view.innerHTML=`
+    <section class="hero"><h2>Netzwerk neu A2</h2>
+      <p>اختار القسم المطلوب: دروس، قاموس، أفعال، استماع، ألعاب، بودكاست أو تدريب الامتحان.</p>
+      ${ar('كل قسم أصبح كارت واضح في بداية المستوى، وبعد الدخول يظهر المحتوى فقط.')}
+    </section>
+    ${sectionCards(A2_SECTIONS)}`;
 }
 
 function renderLevelSelector(){
@@ -1670,6 +1787,7 @@ function renderLevelSelector(){
 }
 
 function a1MainTabs(active){
+  return '';
   return `<nav class="main-tabs a1-tabs" aria-label="A1 Bereiche">
     <button class="main-tab ${active==='lessons'?'active':''}" onclick="go('a1')">📚 Lektionen</button>
     <button class="main-tab ${active==='dict'?'active':''}" onclick="go('a1/dict')">🔎 Wörterbuch</button>
@@ -2113,10 +2231,11 @@ function renderA1Home(){
   <div class="intro-note">Hinweis: Die Kapitel orientieren sich an den Themen von Netzwerk neu A1.1 und A1.2, sind aber als eigene Erklärungen, Beispiele und Übungen formuliert.</div>`;
 }
 
-function renderA1Chapter(num, tab='ueberblick'){
+function renderA1Chapter(num, tab){
   const chapter=A1_BOOK.find(item=>item.num===num);
   if(!chapter){ renderA1Home(); return; }
-  renderChapter(chapter, tab);
+  if(!tab) renderChapterMenu(chapter);
+  else renderChapter(chapter, tab);
 }
 
 function renderHome(){
@@ -2648,6 +2767,7 @@ function podcastCover(chapter){
 
 function renderPodcastHome(){
   setTop('Podcast','12 Kapitel · hören und mitlesen',false);
+  document.body.classList.add('has-back');
   view.innerHTML=mainTabs('podcast')+`
     <section class="card podcast-hero">
       <h2>Deutsch im Ohr</h2>
@@ -3008,6 +3128,7 @@ function saveGameBest(id,score){
 function renderGamesHome(){
   setTop('Spiele','Wortschatz trainieren · schneller erinnern',false);
   const best=gameBestScores();
+  document.body.classList.add('has-back');
   view.innerHTML=mainTabs('games')+`
     <section class="card games-hero">
       <h2>Lernen, spielen, erinnern</h2>
@@ -3670,13 +3791,42 @@ const TABS = [
   ['quiz','🎯 Quiz'],
 ];
 
+function chapterTabDescription(id){
+  return {
+    ueberblick:'Überblick, Ziele und Bilder des Kapitels.',
+    wortschatz:'Wörter, Beispiele und Flashcards.',
+    lesen:'Lesetexte mit Fragen und Antworten.',
+    redemittel:'Fertige Sätze zum Sprechen.',
+    grammatik:'Regeln, Beispiele und Übungen.',
+    sprechen:'Mündliche Aufgaben und Modellantworten.',
+    quiz:'Kurzer Test zum Wiederholen.'
+  }[id]||'Inhalt öffnen.';
+}
+
+function renderChapterMenu(c){
+  const isA1=c.route?.startsWith('a1/');
+  const routeBase=c.route||`k${c.num}`;
+  const chapterLabel=isA1?'A1 Kapitel':'Kapitel';
+  setTop(`${chapterLabel} ${c.num}: ${c.title}`,'Wähle den Inhalt',true);
+  view.innerHTML=`
+    ${c.visual?`<figure class="card chapter-visual ${isA1?'chapter-visual--wide':''}">
+      <img src="${c.visual.src}" alt="${c.visual.alt}">
+      <figcaption class="visual-caption">${c.visual.caption}${ar(c.visual.captionAr)}</figcaption>
+    </figure>`:''}
+    <section class="hero"><h2>${c.title}</h2><p>${c.subtitle}</p>${ar(c.titleAr)}</section>
+    <section class="chapter-tab-grid">${TABS.map(([id,lbl])=>`
+      <button type="button" class="section-card chapter-tab-card" onclick="go('${routeBase}/${id}')">
+        <span class="icon">${lbl.trim().charAt(0)}</span>
+        <span><b>${lbl}</b><span>${chapterTabDescription(id)}</span></span>
+      </button>`).join('')}</section>`;
+}
+
 function renderChapter(c, tab){
   const isA1=c.route?.startsWith('a1/');
   const routeBase=c.route||`k${c.num}`;
   const chapterLabel=isA1?'A1 Kapitel':'Kapitel';
   setTop(`${chapterLabel} ${c.num}: ${c.title}`, c.subtitle, true);
-  let html = isA1?a1MainTabs('lessons'):mainTabs('lessons');
-  html += `<div class="tabs tabs--below-main">` + TABS.map(([id,lbl]) =>
+  let html = `<div class="tabs chapter-tabs">` + TABS.map(([id,lbl]) =>
     `<button class="tab ${id===tab?'active':''}" onclick="go('${routeBase}/${id}')">${lbl}</button>`).join('') + `</div>`;
   if(tab!=='ueberblick' && c.visual){
     const sceneIndex={wortschatz:1,lesen:0,redemittel:2,grammatik:3,sprechen:1,quiz:2}[tab]??0;
