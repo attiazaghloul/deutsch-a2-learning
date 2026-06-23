@@ -67,9 +67,12 @@ header.topbar .back{
 }
 body.has-back header.topbar .back{display:block}
 header.topbar .home{
-  background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.28);color:#fff;font-size:16px;
-  width:36px;height:36px;border-radius:12px;cursor:pointer;flex:0 0 auto;display:none;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.92);border:1px solid rgba(255,255,255,.72);color:var(--topbar-start);font-size:0;
+  width:38px;height:38px;border-radius:999px;cursor:pointer;flex:0 0 auto;display:none;align-items:center;justify-content:center;
+  box-shadow:0 10px 24px rgba(0,0,0,.14), inset 0 0 0 1px rgba(255,255,255,.35);
 }
+header.topbar .home::before{content:"⌂";font-size:20px;font-weight:900;line-height:1;transform:translateY(-1px)}
+header.topbar .home:active{transform:scale(.96)}
 body.has-route header.topbar .home{display:flex}
 header.topbar h1{font-size:17px;font-weight:700;flex:1;line-height:1.3}
 header.topbar h1 small{display:block;font-size:11px;font-weight:400;opacity:.85}
@@ -164,6 +167,7 @@ header.topbar .back:focus-visible,header.topbar .home:focus-visible{outline:3px 
   color:var(--green-d);font-weight:800;font-size:19px;display:flex;align-items:center;justify-content:center}
 .lesson-thumb{width:84px;height:48px;object-fit:cover;border-radius:12px;flex:0 0 auto;background:#fff}
 .lesson-item.gram .num{background:var(--blue-l);color:var(--blue)}
+.lesson-item.gram-script .num{background:var(--amber-l);color:var(--amber)}
 .lesson-item .ttl{flex:1}
 .lesson-item .ttl b{font-size:16px;display:block}
 .lesson-item .ttl span.sub{font-size:12.5px;color:var(--ink-2);display:block}
@@ -221,6 +225,11 @@ header.topbar .back:focus-visible,header.topbar .home:focus-visible{outline:3px 
 .gram-block h3{font-size:17px;color:var(--green-d);margin-bottom:8px;padding-bottom:6px;border-bottom:2px solid var(--green-l)}
 .gram-block h5{font-size:14.5px;margin:14px 0 6px;color:var(--ink)}
 .gram-block p{font-size:14.5px;margin-bottom:8px}
+.script-topic-list{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.script-topic-list span{background:var(--green-l);color:var(--green-d);border-radius:999px;padding:5px 10px;font-size:12px;font-weight:800}
+.pdf-actions{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 14px}
+.pdf-actions .btn{font-size:13px}
+.pdf-viewer{width:100%;height:72vh;border:1px solid var(--line);border-radius:14px;background:#fff;box-shadow:var(--shadow)}
 .exbox{background:var(--green-l);border-radius:10px;padding:10px 14px;margin:8px 0;font-size:14.5px}
 .exbox i,.exbox em{color:var(--green-d);font-style:normal;font-weight:700}
 .notebox{background:var(--amber-l);border-left:4px solid var(--amber);border-radius:8px;
@@ -805,7 +814,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
   #app{padding-inline:12px}
   header.topbar{min-height:58px;margin-inline:-12px;margin-bottom:10px;padding:7px 10px;gap:7px}
   header.topbar .back,header.topbar .home{width:34px;height:34px;border-radius:11px;font-size:17px}
-  header.topbar .home{font-size:15px}
+  header.topbar .home{font-size:0;border-radius:999px}
   header.topbar h1{font-size:15px;line-height:1.12;min-width:0}
   header.topbar h1 small{display:none}
   .settings-toggle{width:34px;height:34px}
@@ -1540,6 +1549,7 @@ $('#backBtn').addEventListener('click', () => {
   // A1 · Kapitel-Tab → Kapitel-Übersicht
   if(/^#a1\/k\d+\//.test(h)){ go(path.split('/').slice(0,2).join('/')); return; }
   // A1 · Kapitel → A1 Start
+  if(/^#a1\/g\d+$/.test(h)){ go('a1/lessons'); return; }
   if(/^#a1\/k\d+$/.test(h)){ go('a1'); return; }
   // A1 · Hören/Phonetik Übung → Kapitel
   if(/^#a1\/listen\/(?:hoeren|phonetik)\/[A-H]\/\d+$/.test(h)){ go(path.split('/').slice(0,4).join('/')); return; }
@@ -1579,6 +1589,7 @@ function fallbackBackTarget(hash){
   const h=hash?`#${hash}`:'';
   const path=hash;
   if(/^#a1\/k\d+\//.test(h)) return path.split('/').slice(0,2).join('/');
+  if(/^#a1\/g\d+$/.test(h)) return 'a1/lessons';
   if(/^#a1\/k\d+$/.test(h)) return 'a1/lessons';
   if(h==='#a1/lessons') return 'a1';
   if(/^#a1\/listen\/(?:hoeren|phonetik)\/[A-H]\/\d+$/.test(h)) return path.split('/').slice(0,4).join('/');
@@ -1671,6 +1682,8 @@ function route(){
   }
   const a1Match=h.match(/^a1\/k(\d+)(?:\/(\w+))?$/);
   if(a1Match){ renderA1Chapter(Number(a1Match[1]), a1Match[2]); return; }
+  const a1GrammarMatch=h.match(/^a1\/g(\d+)$/);
+  if(a1GrammarMatch){ renderA1GrammarScript(Number(a1GrammarMatch[1])); return; }
   if(h==='a2'){ renderA2Hub(); return; }
   if(h==='a2/lessons'){ renderHome(); return; }
   if(h==='dict'){ renderDictionary(); return; }
@@ -1739,6 +1752,19 @@ const A1_SECTIONS=[
   {route:'a1/phrases',icon:'R',title:'Redemittel',text:'Fertige Sätze für Alltag und einfache Gespräche.',ar:'جمل جاهزة للكلام.'},
   {route:'a1/listen',icon:'H',title:'Hören',text:'A1-Hörbücher, Phonetik und interaktive Aufgaben.',ar:'استماع وتدريبات A1.'}
 ];
+
+const A1_GRAMMAR_SCRIPT_PDF='assets/a1/grammar/a1_skript_gr.pdf';
+const A1_GRAMMAR_SCRIPT=[
+  {num:1,start:2,end:8,topics:['Verb - Konjugation','Personalpronomen - Nominativ','Wortstellung: Aussagesatz / Fragesätze']},
+  {num:2,start:9,end:12,topics:['Starke Verben','Nomen und Artikel - Nominativ','Anrede']},
+  {num:3,start:13,end:15,topics:['Nomen - Genusregeln','Nomen - Komposita','Adjektiv']},
+  {num:4,start:16,end:19,topics:['Nicht trennbare und trennbare Verben','Nomen und Artikel - Akkusativ','Personalpronomen - Akkusativ']},
+  {num:5,start:20,end:21,topics:['Possessivartikel','Präteritum - haben / sein','Zeitadverbien']},
+  {num:6,start:22,end:24,topics:['Nomen und Artikel - Dativ','Pronomen - Dativ','Imperativ']},
+  {num:7,start:25,end:27,topics:['Satzstrukturen - Aussagesatz','Modalverben','Präpositionen mit Dativ']},
+  {num:8,start:28,end:31,topics:['Perfekt','Konjunktionen','Präpositionen mit Akkusativ']}
+];
+function a1ScriptPdfPage(lesson){ return lesson.start+1; }
 
 const A2_SECTIONS=[
   {route:'a2/lessons',icon:'2',title:'Lektionen',text:'Netzwerk neu A2.1 + A2.2 und Grammatik-Skript.',ar:'دروس A2 ومذكرة القواعد.'},
@@ -2314,16 +2340,36 @@ function renderA1Home(){
   view.innerHTML = a1MainTabs('lessons') + `
   <section class="hero">
     <h2>Netzwerk neu A1</h2>
-    <p>Zwölf Kapitel mit Wortschatz, Redemitteln, Grammatik, Lesen, Sprechen und Quiz - im gleichen Lernformat wie A2.</p>
+    <p>Zwölf Kapitel aus Netzwerk neu A1.1/A1.2 plus Grammatik-Skript A1 als eigene Lektionsreihe.</p>
     ${ar('اثنا عشر درسًا بالمفردات وجمل الكلام والقواعد والقراءة والمحادثة والكويز، بنفس شكل مستوى A2.')}
   </section>
-  <div class="section-label">A1 · Kapitel 1-12</div>
+  <div class="section-label">📙 Netzwerk neu A1.1 · Kapitel 1–6</div>
   <section class="a1-roadmap">
-    ${A1_BOOK.map(chapter=>`
+    ${A1_BOOK.slice(0,6).map(chapter=>`
       <button type="button" class="lesson-item" onclick="go('${chapter.route||`a1/k${chapter.num}`}')">
         <div class="num">${chapter.num}</div>
         ${chapter.visual?`<img class="lesson-thumb" src="${chapter.visual.src}" alt="">`:''}
         <div class="ttl"><b>${chapter.title}</b><span class="sub">${chapter.subtitle}</span>${ar(chapter.titleAr)}</div>
+        <div class="chev">›</div>
+      </button>`).join('')}
+  </section>
+  <div class="section-label">📗 Netzwerk neu A1.2 · Kapitel 7–12</div>
+  <section class="a1-roadmap">
+    ${A1_BOOK.slice(6,12).map(chapter=>`
+      <button type="button" class="lesson-item" onclick="go('${chapter.route||`a1/k${chapter.num}`}')">
+        <div class="num">${chapter.num}</div>
+        ${chapter.visual?`<img class="lesson-thumb" src="${chapter.visual.src}" alt="">`:''}
+        <div class="ttl"><b>${chapter.title}</b><span class="sub">${chapter.subtitle}</span>${ar(chapter.titleAr)}</div>
+        <div class="chev">›</div>
+      </button>`).join('')}
+  </section>
+  <div class="section-label">📘 Grammatik-Skript A1 · Lektion 1–8</div>
+  <section class="a1-roadmap">
+    ${A1_GRAMMAR_SCRIPT.map(lesson=>`
+      <button type="button" class="lesson-item gram-script" onclick="go('a1/g${lesson.num}')">
+        <div class="num">L${lesson.num}</div>
+        <div class="ttl"><b>${lesson.topics.map((topic,index)=>`${lesson.num}.${index+1} ${topic}`).join(' · ')}</b>
+          <span class="sub">PDF S. ${lesson.start}${lesson.end>lesson.start?`-${lesson.end}`:''} · ${lesson.topics.length} Themen</span></div>
         <div class="chev">›</div>
       </button>`).join('')}
   </section>
@@ -2335,6 +2381,31 @@ function renderA1Chapter(num, tab){
   if(!chapter){ renderA1Home(); return; }
   if(!tab) renderChapterMenu(chapter);
   else renderChapter(chapter, tab);
+}
+
+function renderA1GrammarScript(num){
+  const lesson=A1_GRAMMAR_SCRIPT.find(item=>item.num===num);
+  if(!lesson){ renderA1Home(); return; }
+  const page=a1ScriptPdfPage(lesson);
+  const pageRange=`${lesson.start}${lesson.end>lesson.start?`-${lesson.end}`:''}`;
+  const pdfUrl=`${A1_GRAMMAR_SCRIPT_PDF}#page=${page}`;
+  setTop(`Grammatik-Skript A1 · Lektion ${lesson.num}`, lesson.topics.join(' · '), true);
+  view.innerHTML=`
+    <section class="hero">
+      <h2>Lektion ${lesson.num}</h2>
+      <p>Deutsch - Aber Hallo! Grammatikübungen A1 · PDF S. ${pageRange}</p>
+      <div class="script-topic-list">${lesson.topics.map((topic,index)=>`<span>${lesson.num}.${index+1} ${topic}</span>`).join('')}</div>
+    </section>
+    <div class="pdf-actions">
+      <a class="btn btn-green" href="${pdfUrl}" target="_blank" rel="noopener">PDF öffnen</a>
+      <a class="btn btn-ghost" href="${A1_GRAMMAR_SCRIPT_PDF}" download>PDF herunterladen</a>
+    </div>
+    <object class="pdf-viewer" data="${pdfUrl}" type="application/pdf">
+      <div class="card">
+        <h3>PDF kann hier nicht angezeigt werden.</h3>
+        <p>Öffne die Lektion über den Button oben.</p>
+      </div>
+    </object>`;
 }
 
 function renderHome(){
