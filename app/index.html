@@ -67,11 +67,12 @@ header.topbar .back{
 }
 body.has-back header.topbar .back{display:block}
 header.topbar .home{
-  background:rgba(255,255,255,.92);border:1px solid rgba(255,255,255,.72);color:var(--topbar-start);font-size:0;
-  width:38px;height:38px;border-radius:999px;cursor:pointer;flex:0 0 auto;display:none;align-items:center;justify-content:center;
-  box-shadow:0 10px 24px rgba(0,0,0,.14), inset 0 0 0 1px rgba(255,255,255,.35);
+  position:relative;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.36);color:#fff;font-size:0;
+  width:38px;height:38px;border-radius:12px;cursor:pointer;flex:0 0 auto;display:none;align-items:center;justify-content:center;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);
 }
-header.topbar .home::before{content:"⌂";font-size:20px;font-weight:900;line-height:1;transform:translateY(-1px)}
+header.topbar .home::before{content:"";position:absolute;width:15px;height:15px;border-left:2.4px solid currentColor;border-top:2.4px solid currentColor;transform:translateY(-2px) rotate(45deg);border-radius:2px}
+header.topbar .home::after{content:"";position:absolute;width:14px;height:12px;border:2.4px solid currentColor;border-top:0;border-radius:1px 1px 3px 3px;transform:translateY(5px)}
 header.topbar .home:active{transform:scale(.96)}
 body.has-route header.topbar .home{display:flex}
 header.topbar h1{font-size:17px;font-weight:700;flex:1;line-height:1.3}
@@ -229,7 +230,6 @@ header.topbar .back:focus-visible,header.topbar .home:focus-visible{outline:3px 
 .script-topic-list span{background:var(--green-l);color:var(--green-d);border-radius:999px;padding:5px 10px;font-size:12px;font-weight:800}
 .pdf-actions{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 14px}
 .pdf-actions .btn{font-size:13px}
-.pdf-viewer{width:100%;height:72vh;border:1px solid var(--line);border-radius:14px;background:#fff;box-shadow:var(--shadow)}
 .exbox{background:var(--green-l);border-radius:10px;padding:10px 14px;margin:8px 0;font-size:14.5px}
 .exbox i,.exbox em{color:var(--green-d);font-style:normal;font-weight:700}
 .notebox{background:var(--amber-l);border-left:4px solid var(--amber);border-radius:8px;
@@ -1549,6 +1549,7 @@ $('#backBtn').addEventListener('click', () => {
   // A1 · Kapitel-Tab → Kapitel-Übersicht
   if(/^#a1\/k\d+\//.test(h)){ go(path.split('/').slice(0,2).join('/')); return; }
   // A1 · Kapitel → A1 Start
+  if(/^#a1\/g\d+\/\d+$/.test(h)){ go(path.split('/').slice(0,2).join('/')); return; }
   if(/^#a1\/g\d+$/.test(h)){ go('a1/lessons'); return; }
   if(/^#a1\/k\d+$/.test(h)){ go('a1'); return; }
   // A1 · Hören/Phonetik Übung → Kapitel
@@ -1589,6 +1590,7 @@ function fallbackBackTarget(hash){
   const h=hash?`#${hash}`:'';
   const path=hash;
   if(/^#a1\/k\d+\//.test(h)) return path.split('/').slice(0,2).join('/');
+  if(/^#a1\/g\d+\/\d+$/.test(h)) return path.split('/').slice(0,2).join('/');
   if(/^#a1\/g\d+$/.test(h)) return 'a1/lessons';
   if(/^#a1\/k\d+$/.test(h)) return 'a1/lessons';
   if(h==='#a1/lessons') return 'a1';
@@ -1682,8 +1684,13 @@ function route(){
   }
   const a1Match=h.match(/^a1\/k(\d+)(?:\/(\w+))?$/);
   if(a1Match){ renderA1Chapter(Number(a1Match[1]), a1Match[2]); return; }
-  const a1GrammarMatch=h.match(/^a1\/g(\d+)$/);
-  if(a1GrammarMatch){ renderA1GrammarScript(Number(a1GrammarMatch[1])); return; }
+  const a1GrammarMatch=h.match(/^a1\/g(\d+)(?:\/(\d+))?$/);
+  if(a1GrammarMatch){
+    const lk=A1_GRAM.find(l=>l.num==a1GrammarMatch[1]);
+    if(lk) renderLektion(lk, a1GrammarMatch[2]||'0', {routePrefix:'a1/g', titlePrefix:'Grammatik-Skript A1 · Lektion'});
+    else renderA1Home();
+    return;
+  }
   if(h==='a2'){ renderA2Hub(); return; }
   if(h==='a2/lessons'){ renderHome(); return; }
   if(h==='dict'){ renderDictionary(); return; }
@@ -1765,6 +1772,145 @@ const A1_GRAMMAR_SCRIPT=[
   {num:8,start:28,end:31,topics:['Perfekt','Konjunktionen','Präpositionen mit Akkusativ']}
 ];
 function a1ScriptPdfPage(lesson){ return lesson.start+1; }
+function gramBody(html){ return html; }
+function a1GrammarTopicMeta(topic){
+  if(topic.includes('Verb - Konjugation')) return {
+    body:'<p>Im Präsens bekommt das Verb eine Endung passend zum Subjekt: <b>ich -e, du -st, er/sie/es -t, wir -en, ihr -t, sie/Sie -en</b>.</p><div class="exbox">ich lerne · du lernst · er lernt · wir lernen</div>',
+    quiz:{q:'Welche Form ist richtig?',o:['du lernst','du lernen','du lerne'],a:0,fb:'du bekommt meistens die Endung -st.'},
+    practice:{type:'fill',prompt:'Maria ___ aus Rom. (kommen)',answer:['kommt'],hint:'Maria = sie -> kommt'}
+  };
+  if(topic.includes('Personalpronomen - Nominativ')) return {
+    body:'<p>Personalpronomen ersetzen Personen oder Nomen im Nominativ: <b>ich, du, er, sie, es, wir, ihr, sie/Sie</b>.</p><div class="exbox">Maria kommt aus Italien. <i>Sie</i> kommt aus Italien.</div>',
+    quiz:{q:'Carlos lernt Deutsch. Welches Pronomen passt?',o:['Er','Sie','Wir'],a:0,fb:'Carlos ist maskulin singular: er.'},
+    practice:{type:'fill',prompt:'Anna und Max wohnen in Köln. ___ wohnen in Köln.',answer:['sie'],hint:'Plural: sie'}
+  };
+  if(topic.includes('Wortstellung')) return {
+    body:'<p>Im Aussagesatz steht das konjugierte Verb auf Position 2. In Ja/Nein-Fragen steht es auf Position 1.</p><div class="exbox">Ich wohne in Berlin. · Wohnst du in Berlin?</div>',
+    quiz:{q:'Wo steht das Verb im Aussagesatz?',o:['Position 2','Position 1','immer am Ende'],a:0,fb:'Aussagesatz: Verb auf Position 2.'},
+    practice:{type:'order',prompt:'Ordne den Satz.',tokens:['Morgen','lerne','ich','Deutsch'],answer:'Morgen lerne ich Deutsch'}
+  };
+  if(topic.includes('Starke Verben')) return {
+    body:'<p>Einige starke Verben ändern im Singular den Vokal: <b>fahren -> du fährst</b>, <b>lesen -> du liest</b>, <b>sprechen -> du sprichst</b>.</p>',
+    quiz:{q:'Welche Form ist richtig?',o:['du liest','du lesst','du lest'],a:0,fb:'lesen: du liest.'},
+    practice:{type:'fill',prompt:'Er ___ gern Zeitung. (lesen)',answer:['liest'],hint:'er/sie/es: liest'}
+  };
+  if(topic.includes('Nomen und Artikel - Nominativ')) return {
+    body:'<p>Nomen lernst du immer mit Artikel: <b>der</b>, <b>die</b>, <b>das</b>. Im Plural steht meistens <b>die</b>.</p><div class="exbox">der Tisch · die Tasche · das Buch · die Bücher</div>',
+    quiz:{q:'Was passt?',o:['das Buch','der Buch','die Buch'],a:0,fb:'Buch ist neutral: das Buch.'},
+    practice:{type:'fill',prompt:'Das ist ___ Tisch.',answer:['ein'],hint:'maskulin: ein Tisch'}
+  };
+  if(topic.includes('Anrede')) return {
+    body:'<p>Mit Freunden nutzt du <b>du/ihr</b>. Formell nutzt du <b>Sie</b>. Das Verb passt zur Anrede.</p><div class="exbox">Wo wohnst du? · Wo wohnen Sie?</div>',
+    quiz:{q:'Welche Frage ist formell?',o:['Wo wohnen Sie?','Wo wohnst du?','Wo wohnt ihr?'],a:0,fb:'Formell: Sie + Verb wie Plural.'},
+    practice:{type:'fill',prompt:'Herr Müller, wo ___ Sie?',answer:['wohnen'],hint:'Sie -> wohnen'}
+  };
+  if(topic.includes('Genusregeln')) return {
+    body:'<p>Einige Endungen helfen beim Artikel: <b>-ung, -heit, -keit</b> sind meistens feminin; <b>-chen</b> ist neutral.</p><div class="exbox">die Wohnung · die Freiheit · das Mädchen</div>',
+    quiz:{q:'Welcher Artikel passt meistens zu -ung?',o:['die','der','das'],a:0,fb:'-ung ist meistens feminin.'},
+    practice:{type:'fill',prompt:'___ Zeitung ist neu.',answer:['die'],hint:'Zeitung -> die'}
+  };
+  if(topic.includes('Komposita')) return {
+    body:'<p>Bei zusammengesetzten Nomen bestimmt das letzte Wort den Artikel und die Bedeutung.</p><div class="exbox">der Kaffee + die Maschine = die Kaffeemaschine</div>',
+    quiz:{q:'Welcher Artikel passt zu Wörterbuch?',o:['das','der','die'],a:0,fb:'Das Grundwort ist Buch: das Wörterbuch.'},
+    practice:{type:'fill',prompt:'der Garten + die Tür = ___ Gartentür',answer:['die'],hint:'Grundwort Tür -> die'}
+  };
+  if(topic==='Adjektiv') return {
+    body:'<p>Adjektive beschreiben Personen oder Sachen. Nach <b>sein</b> bleibt das Adjektiv ohne Endung.</p><div class="exbox">Das Auto ist neu. · Die Übung ist schwierig.</div>',
+    quiz:{q:'Welche Form passt?',o:['Das Buch ist interessant.','Das Buch ist interessante.','Das Buch ist interessanter.'],a:0,fb:'Nach sein keine Endung.'},
+    practice:{type:'fill',prompt:'Die Aufgabe ist ___. (schwierig)',answer:['schwierig'],hint:'Nach ist keine Endung.'}
+  };
+  if(topic.includes('trennbare Verben')) return {
+    body:'<p>Trennbare Verben trennen sich im Hauptsatz: Das Präfix steht am Ende. Nicht trennbare Verben bleiben zusammen.</p><div class="exbox">Ich rufe Anna an. · Ich besuche Anna.</div>',
+    quiz:{q:'Welche Form ist richtig?',o:['Ich stehe um 7 Uhr auf.','Ich aufstehe um 7 Uhr.','Ich stehe auf um 7 Uhr.'],a:0,fb:'Im Hauptsatz steht das Präfix am Ende.'},
+    practice:{type:'order',prompt:'Ordne den Satz.',tokens:['Ich','kaufe','heute','ein'],answer:'Ich kaufe heute ein'}
+  };
+  if(topic.includes('Akkusativ')) return {
+    body:'<p>Viele Verben brauchen ein Akkusativobjekt. Nur maskulin ändert sich deutlich: <b>der -> den</b>, <b>ein -> einen</b>.</p><div class="exbox">Ich sehe den Mann. · Ich kaufe einen Apfel.</div>',
+    quiz:{q:'Was passt?',o:['Ich frage den Lehrer.','Ich frage der Lehrer.','Ich frage dem Lehrer.'],a:0,fb:'fragen + Akkusativ: den Lehrer.'},
+    practice:{type:'fill',prompt:'Ich kaufe ___ Stift. (ein)',answer:['einen'],hint:'maskulin Akkusativ: einen'}
+  };
+  if(topic.includes('Possessivartikel')) return {
+    body:'<p>Possessivartikel zeigen Zugehörigkeit: <b>mein, dein, sein, ihr, unser, euer</b>. Die Endung richtet sich nach dem Nomen.</p><div class="exbox">mein Vater · meine Mutter · mein Kind</div>',
+    quiz:{q:'Was passt?',o:['meine Tasche','mein Tasche','meinen Tasche'],a:0,fb:'Tasche ist feminin: meine Tasche.'},
+    practice:{type:'fill',prompt:'Das ist ___ Bruder. (ich)',answer:['mein'],hint:'Bruder maskulin: mein'}
+  };
+  if(topic.includes('Präteritum')) return {
+    body:'<p><b>sein</b> und <b>haben</b> nutzt man im Präteritum sehr oft: ich war, du warst, er war; ich hatte, du hattest, er hatte.</p>',
+    quiz:{q:'Welche Form ist richtig?',o:['Ich war zu Hause.','Ich bin war zu Hause.','Ich hatte zu Hause.'],a:0,fb:'sein im Präteritum: ich war.'},
+    practice:{type:'fill',prompt:'Gestern ___ ich krank. (sein)',answer:['war'],hint:'ich war'}
+  };
+  if(topic.includes('Zeitadverbien')) return {
+    body:'<p>Zeitadverbien ordnen eine Handlung: <b>heute, morgen, gestern, zuerst, dann, danach</b>.</p><div class="exbox">Zuerst lerne ich. Danach mache ich eine Pause.</div>',
+    quiz:{q:'Welches Wort passt zur Vergangenheit?',o:['gestern','morgen','später'],a:0,fb:'gestern = Vergangenheit.'},
+    practice:{type:'fill',prompt:'___ war ich im Deutschkurs. (Vergangenheit)',answer:['gestern'],hint:'Vergangenheit: gestern'}
+  };
+  if(topic.includes('Dativ')) return {
+    body:'<p>Der Dativ antwortet oft auf <b>wem?</b>. Artikel: <b>dem</b> Mann, <b>der</b> Frau, <b>dem</b> Kind, <b>den</b> Kindern.</p>',
+    quiz:{q:'Was passt?',o:['Ich helfe dem Mann.','Ich helfe den Mann.','Ich helfe der Mann.'],a:0,fb:'helfen + Dativ: dem Mann.'},
+    practice:{type:'fill',prompt:'Ich antworte ___ Lehrerin.',answer:['der'],hint:'Lehrerin feminin Dativ: der'}
+  };
+  if(topic.includes('Imperativ')) return {
+    body:'<p>Der Imperativ gibt Anweisungen: <b>Komm!</b>, <b>Kommt!</b>, <b>Kommen Sie bitte!</b></p>',
+    quiz:{q:'Welche Form ist höflich?',o:['Kommen Sie bitte!','Komm bitte!','Kommt bitte!'],a:0,fb:'Höflich: Sie-Form.'},
+    practice:{type:'fill',prompt:'___ bitte langsam! (sprechen, Sie)',answer:['sprechen sie','Sprechen Sie'],hint:'Sprechen Sie bitte langsam.'}
+  };
+  if(topic.includes('Modalverben')) return {
+    body:'<p>Modalverben stehen auf Position 2. Das zweite Verb steht im Infinitiv am Ende.</p><div class="exbox">Ich kann Deutsch sprechen. · Wir müssen lernen.</div>',
+    quiz:{q:'Welche Form ist richtig?',o:['Ich muss lernen.','Ich lernen muss.','Ich muss lerne.'],a:0,fb:'Modalverb Position 2, Infinitiv am Ende.'},
+    practice:{type:'order',prompt:'Ordne den Satz.',tokens:['Ich','kann','heute','kommen'],answer:'Ich kann heute kommen'}
+  };
+  if(topic.includes('Präpositionen mit Dativ')) return {
+    body:'<p>Nach <b>aus, bei, mit, nach, seit, von, zu</b> steht Dativ.</p><div class="exbox">mit dem Bus · aus der Schweiz · bei meiner Mutter</div>',
+    quiz:{q:'Was passt?',o:['mit dem Bus','mit den Bus','mit der Bus'],a:0,fb:'mit + Dativ: dem Bus.'},
+    practice:{type:'fill',prompt:'Ich fahre mit ___ Zug.',answer:['dem'],hint:'Zug maskulin Dativ: dem'}
+  };
+  if(topic.includes('Perfekt')) return {
+    body:'<p>Perfekt bildet man mit <b>haben/sein + Partizip II</b>. Bewegung oder Zustandswechsel oft mit <b>sein</b>.</p><div class="exbox">Ich habe gelernt. · Ich bin nach Hause gegangen.</div>',
+    quiz:{q:'Welche Form ist richtig?',o:['Ich habe gelernt.','Ich bin gelernt.','Ich habe lernen.'],a:0,fb:'lernen bildet Perfekt mit haben: habe gelernt.'},
+    practice:{type:'fill',prompt:'Ich ___ Deutsch gelernt.',answer:['habe'],hint:'lernen -> haben'}
+  };
+  if(topic.includes('Konjunktionen')) return {
+    body:'<p><b>und, oder, aber, denn</b> verbinden Hauptsätze. Danach bleibt die normale Wortstellung.</p><div class="exbox">Ich lerne Deutsch, denn ich brauche Deutsch.</div>',
+    quiz:{q:'Welche Konjunktion nennt einen Grund?',o:['denn','aber','oder'],a:0,fb:'denn nennt einen Grund.'},
+    practice:{type:'fill',prompt:'Ich komme nicht, ___ ich bin krank.',answer:['denn'],hint:'Grund: denn'}
+  };
+  if(topic.includes('Präpositionen mit Akkusativ')) return {
+    body:'<p>Nach <b>durch, für, gegen, ohne, um</b> steht Akkusativ.</p><div class="exbox">für den Kurs · ohne einen Stift · um die Ecke</div>',
+    quiz:{q:'Was passt?',o:['für den Freund','für dem Freund','für der Freund'],a:0,fb:'für + Akkusativ: den Freund.'},
+    practice:{type:'fill',prompt:'Ich kaufe Blumen für ___ Mutter.',answer:['meine'],hint:'Mutter feminin Akkusativ: meine'}
+  };
+  return {
+    body:`<p>Dieses Thema kommt direkt aus dem <b>Grammatik-Skript A1</b>. Lies die Regel, sprich die Beispiele laut und bearbeite danach die Übung im Skript.</p>`,
+    quiz:{q:`Was trainierst du hier?`,o:[topic,'Podcast','Hören'],a:0,fb:'Richtig.'},
+    practice:{type:'fill',prompt:'Schreibe die Regel kurz in dein Heft.',answer:['fertig'],hint:'Vergleiche danach mit dem Skript.'}
+  };
+}
+const A1_GRAM=A1_GRAMMAR_SCRIPT.map(lesson=>({
+  num:lesson.num,
+  titleAr:'',
+  topics:lesson.topics.map((topic,index)=>{
+    const short=topic.replace('Personalpronomen - ','Pronomen ').replace('Nomen und Artikel - ','Artikel ').replace('Wortstellung: ','Wortstellung · ').replace('Nicht trennbare und trennbare Verben','Trennbare Verben');
+    return {
+      short,
+      title:topic,
+      titleAr:'',
+      sourcePage:lesson.start+index,
+      coveragePoints:['Regel aus dem Skript','Beispiele','Übungen zum Ausfüllen'],
+      visual:{
+        src:`assets/grammar/lesson-${lesson.num}.webp`,
+        alt:`Grammatik-Skript A1 Lektion ${lesson.num}`,
+        caption:`Grammatik-Skript A1 · Lektion ${lesson.num}`,
+        captionAr:''
+      },
+      body:gramBody(`${a1GrammarTopicMeta(topic).body}
+        <div class="exbox"><b>${lesson.num}.${index+1}</b> ${topic}<br><small>Original im PDF: S. ${lesson.start}${lesson.end>lesson.start?`-${lesson.end}`:''}</small></div>
+        <div class="notebox">Öffne das PDF nur, wenn du die Originalübung komplett sehen oder ausdrucken möchtest.</div>
+        <div class="pdf-actions"><a class="btn btn-ghost" href="${A1_GRAMMAR_SCRIPT_PDF}#page=${a1ScriptPdfPage(lesson)}" target="_blank" rel="noopener">Original-PDF öffnen</a></div>`),
+      quiz:[a1GrammarTopicMeta(topic).quiz],
+      practice:[a1GrammarTopicMeta(topic).practice]
+    };
+  })
+}));
 
 const A2_SECTIONS=[
   {route:'a2/lessons',icon:'2',title:'Lektionen',text:'Netzwerk neu A2.1 + A2.2 und Grammatik-Skript.',ar:'دروس A2 ومذكرة القواعد.'},
@@ -2365,11 +2511,12 @@ function renderA1Home(){
   </section>
   <div class="section-label">📘 Grammatik-Skript A1 · Lektion 1–8</div>
   <section class="a1-roadmap">
-    ${A1_GRAMMAR_SCRIPT.map(lesson=>`
+    ${A1_GRAM.map(lesson=>`
       <button type="button" class="lesson-item gram-script" onclick="go('a1/g${lesson.num}')">
         <div class="num">L${lesson.num}</div>
-        <div class="ttl"><b>${lesson.topics.map((topic,index)=>`${lesson.num}.${index+1} ${topic}`).join(' · ')}</b>
-          <span class="sub">PDF S. ${lesson.start}${lesson.end>lesson.start?`-${lesson.end}`:''} · ${lesson.topics.length} Themen</span></div>
+        <img class="lesson-thumb" src="assets/grammar/lesson-${lesson.num}.webp" alt="">
+        <div class="ttl"><b>Grammatik-Skript A1 · Lektion ${lesson.num}</b>
+          <span class="sub">${lesson.topics.map((topic,index)=>`${lesson.num}.${index+1} ${topic.short}`).join(' · ')}</span></div>
         <div class="chev">›</div>
       </button>`).join('')}
   </section>
@@ -2381,31 +2528,6 @@ function renderA1Chapter(num, tab){
   if(!chapter){ renderA1Home(); return; }
   if(!tab) renderChapterMenu(chapter);
   else renderChapter(chapter, tab);
-}
-
-function renderA1GrammarScript(num){
-  const lesson=A1_GRAMMAR_SCRIPT.find(item=>item.num===num);
-  if(!lesson){ renderA1Home(); return; }
-  const page=a1ScriptPdfPage(lesson);
-  const pageRange=`${lesson.start}${lesson.end>lesson.start?`-${lesson.end}`:''}`;
-  const pdfUrl=`${A1_GRAMMAR_SCRIPT_PDF}#page=${page}`;
-  setTop(`Grammatik-Skript A1 · Lektion ${lesson.num}`, lesson.topics.join(' · '), true);
-  view.innerHTML=`
-    <section class="hero">
-      <h2>Lektion ${lesson.num}</h2>
-      <p>Deutsch - Aber Hallo! Grammatikübungen A1 · PDF S. ${pageRange}</p>
-      <div class="script-topic-list">${lesson.topics.map((topic,index)=>`<span>${lesson.num}.${index+1} ${topic}</span>`).join('')}</div>
-    </section>
-    <div class="pdf-actions">
-      <a class="btn btn-green" href="${pdfUrl}" target="_blank" rel="noopener">PDF öffnen</a>
-      <a class="btn btn-ghost" href="${A1_GRAMMAR_SCRIPT_PDF}" download>PDF herunterladen</a>
-    </div>
-    <object class="pdf-viewer" data="${pdfUrl}" type="application/pdf">
-      <div class="card">
-        <h3>PDF kann hier nicht angezeigt werden.</h3>
-        <p>Öffne die Lektion über den Button oben.</p>
-      </div>
-    </object>`;
 }
 
 function renderHome(){
@@ -4543,11 +4665,14 @@ function initQuiz(questions){
 }
 
 /* ===================== grammar lektion (skript) ===================== */
-function renderLektion(l, topicIdx){
-  setTop(`Lektion ${l.num} (Skript)`, l.topics.map(t=>t.short).join(' · '), true);
+function renderLektion(l, topicIdx, options={}){
+  const routePrefix=options.routePrefix||'g';
+  const titlePrefix=options.titlePrefix||'Lektion';
+  const titleText=options.titlePrefix?`${titlePrefix} ${l.num}`:`Lektion ${l.num} (Skript)`;
+  setTop(titleText, l.topics.map(t=>t.short).join(' · '), true);
   const ti = parseInt(topicIdx)||0;
   let html = `<div class="tabs">` + l.topics.map((t,i) =>
-    `<button class="tab ${i===ti?'active':''}" onclick="go('g${l.num}/${i}')">${l.num}.${i+1} ${t.short}</button>`).join('') + `</div>`;
+    `<button class="tab ${i===ti?'active':''}" onclick="go('${routePrefix}${l.num}/${i}')">${l.num}.${i+1} ${t.short}</button>`).join('') + `</div>`;
   const t = l.topics[ti];
   if(t.visual){
     html += `<figure class="card grammar-visual">
@@ -4572,7 +4697,7 @@ function renderLektion(l, topicIdx){
   }
   view.innerHTML = html;
   if(t.quiz) initQuiz(t.quiz);
-  if(t.practice?.length) initPractice(t.practice, `${l.num}-${ti}`);
+  if(t.practice?.length) initPractice(t.practice, `${routePrefix}-${l.num}-${ti}`);
 }
 
 function normalizeAnswer(value){
