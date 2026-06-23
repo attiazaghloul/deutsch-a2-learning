@@ -57,7 +57,7 @@ body{
 #app{max-width:780px;margin:0 auto;padding:0 14px 90px}
 /* ---------- header ---------- */
 header.topbar{
-  position:sticky;top:0;z-index:50;background:linear-gradient(135deg,var(--topbar-start),var(--topbar-end));color:#fff;
+  position:sticky;top:0;z-index:80;background:linear-gradient(135deg,var(--topbar-start),var(--topbar-end));color:#fff;
   margin:0 -14px 16px;padding:12px 16px;display:flex;align-items:center;gap:10px;
   box-shadow:var(--shadow);
 }
@@ -125,16 +125,15 @@ body.exam-mode .ar{display:none!important}
   color:var(--ink-2);font:inherit;font-size:13px;font-weight:800;cursor:pointer}
 .level-mini-nav button.active{background:var(--green-d);color:#fff}
 .section-card-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:0 0 18px}
-.section-card{display:flex;align-items:flex-start;gap:13px;text-align:left;width:100%;min-height:128px;
+.section-card{display:block;text-align:left;width:100%;min-height:104px;
   background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);
   color:inherit;font:inherit;padding:16px;cursor:pointer;transition:.15s}
 .section-card:active{transform:scale(.985)}
-.section-card .icon{display:grid;place-items:center;flex:0 0 auto;width:45px;height:45px;border-radius:14px;
-  background:var(--green-l);color:var(--green-d);font-size:22px;font-weight:900}
+.section-card .icon{display:none}
 .section-card b{display:block;color:var(--green-d);font-size:16px;line-height:1.25;margin-bottom:4px}
 .section-card span{display:block;color:var(--ink-2);font-size:12.5px;line-height:1.45}
 .chapter-tab-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:18px}
-.chapter-tab-card{min-height:118px}
+.chapter-tab-card{min-height:96px}
 .a1-roadmap{display:flex;flex-direction:column;gap:10px}
 .a1-unit{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;border:1px solid var(--line);
   border-radius:16px;background:var(--card);box-shadow:var(--shadow);padding:14px;color:inherit;font:inherit;cursor:pointer}
@@ -169,7 +168,7 @@ header.topbar .back:focus-visible,header.topbar .home:focus-visible{outline:3px 
 /* ---------- tabs ---------- */
 .tabs{display:flex;gap:6px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;
   -webkit-overflow-scrolling:touch;padding:4px 0 12px;scrollbar-width:none;position:sticky;top:var(--topbar-h);
-  z-index:50;background:var(--bg)}
+  z-index:70;background:var(--bg)}
 .tabs.tabs--below-main{top:124px;z-index:55}
 .tabs::-webkit-scrollbar{display:none}
 .tab{flex:0 0 auto;border:none;background:var(--card);box-shadow:var(--shadow);color:var(--ink-2);
@@ -787,14 +786,29 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
   .grammar-visual img{aspect-ratio:16/8}
 }
 @media(max-width:460px){
+  :root{--topbar-h:58px}
   .card{padding:16px}
   #app{padding-inline:12px}
-  header.topbar{margin-inline:-12px;padding-inline:12px}
+  header.topbar{min-height:58px;margin-inline:-12px;margin-bottom:10px;padding:7px 10px;gap:7px}
+  header.topbar .back,header.topbar .home{width:34px;height:34px;border-radius:11px;font-size:17px}
+  header.topbar .home{font-size:15px}
+  header.topbar h1{font-size:15px;line-height:1.12;min-width:0}
+  header.topbar h1 small{display:none}
+  .settings-toggle{width:34px;height:34px}
+  .ar-toggle{padding:5px 9px;font-size:12px}
+  .hero{padding:17px 16px;margin-bottom:12px;border-radius:15px}
+  .hero h2{font-size:20px;line-height:1.25;margin-bottom:5px}
+  .hero p{font-size:12.5px;line-height:1.55}
+  .hub-hero p,.hub-hero .ar{display:none!important}
+  .section-card-grid{gap:10px}
+  .section-card{min-height:auto;padding:14px 15px;border-radius:14px}
+  .section-card b{font-size:15.5px}
+  .chapter-tab-card{min-height:auto}
   .practice-head{align-items:flex-start}
   .lesson-thumb{width:74px;height:42px}
   .search-row{flex-direction:column}
   .library-filter{width:100%}
-  .listen-toggle{padding:6px 8px}
+  .listen-toggle{display:grid;place-items:center;flex:0 0 34px;width:34px;height:34px;padding:0;border-radius:50%}
   .listen-toggle span{display:none}
   .main-tabs,.main-tabs.a1-tabs{display:flex;gap:7px;overflow-x:auto;overscroll-behavior-x:contain;
     scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;margin-inline:-12px;padding:4px 12px 10px;
@@ -802,7 +816,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
   .main-tabs::-webkit-scrollbar{display:none}
   .main-tab{flex:0 0 clamp(104px,32vw,136px);padding:9px 10px;font-size:12.5px;scroll-snap-align:center;
     overflow:hidden;text-overflow:ellipsis}
-  .tabs{margin-inline:-12px;padding:4px 12px 12px}
+  .tabs{margin-inline:-12px;padding:6px 12px 10px;box-shadow:0 8px 18px rgba(31,104,73,.07)}
   .tabs.tabs--below-main{top:112px}
   .tab{padding:8px 13px;font-size:12.5px}
   .main-tabs + .tabs.tabs--below-main{position:static}
@@ -1728,7 +1742,7 @@ function levelSwitcher(active){
 function renderA1Hub(){
   setTop('Deutsch A1','Wähle einen Bereich',true);
   view.innerHTML=`
-    <section class="hero"><h2>Netzwerk neu A1</h2>
+    <section class="hero hub-hero"><h2>Netzwerk neu A1</h2>
       <p>اختار القسم اللي عايز تذاكر منه. كل قسم هيفتح في صفحة مستقلة من غير شريط علوي مزاحم.</p>
       ${ar('ابدأ بالدروس أو افتح القاموس والأفعال والاستماع مباشرة.')}
     </section>
@@ -1738,7 +1752,7 @@ function renderA1Hub(){
 function renderA2Hub(){
   setTop('Deutsch A2','Wähle einen Bereich',true);
   view.innerHTML=`
-    <section class="hero"><h2>Netzwerk neu A2</h2>
+    <section class="hero hub-hero"><h2>Netzwerk neu A2</h2>
       <p>اختار القسم المطلوب: دروس، قاموس، أفعال، استماع، ألعاب، بودكاست أو تدريب الامتحان.</p>
       ${ar('كل قسم أصبح كارت واضح في بداية المستوى، وبعد الدخول يظهر المحتوى فقط.')}
     </section>
@@ -3803,21 +3817,37 @@ function chapterTabDescription(id){
   }[id]||'Inhalt öffnen.';
 }
 
+function cleanTabLabel(label){
+  return String(label||'').replace(/^[^A-Za-zأ„أ–أœأ¤أ¶أ¼أں]+/,'').trim();
+}
+
+function chapterTabTitle(id,label){
+  return {
+    ueberblick:'Überblick',
+    wortschatz:'Wortschatz',
+    lesen:'Lesen',
+    redemittel:'Redemittel',
+    grammatik:'Grammatik',
+    sprechen:'Sprechen',
+    quiz:'Quiz'
+  }[id]||cleanTabLabel(label);
+}
+
 function renderChapterMenu(c){
   const isA1=c.route?.startsWith('a1/');
   const routeBase=c.route||`k${c.num}`;
   const chapterLabel=isA1?'A1 Kapitel':'Kapitel';
   setTop(`${chapterLabel} ${c.num}: ${c.title}`,'Wähle den Inhalt',true);
   view.innerHTML=`
-    ${c.visual?`<figure class="card chapter-visual ${isA1?'chapter-visual--wide':''}">
+    ${false && c.visual?`<figure class="card chapter-visual ${isA1?'chapter-visual--wide':''}">
       <img src="${c.visual.src}" alt="${c.visual.alt}">
       <figcaption class="visual-caption">${c.visual.caption}${ar(c.visual.captionAr)}</figcaption>
     </figure>`:''}
     <section class="hero"><h2>${c.title}</h2><p>${c.subtitle}</p>${ar(c.titleAr)}</section>
     <section class="chapter-tab-grid">${TABS.map(([id,lbl])=>`
       <button type="button" class="section-card chapter-tab-card" onclick="go('${routeBase}/${id}')">
-        <span class="icon">${lbl.trim().charAt(0)}</span>
-        <span><b>${lbl}</b><span>${chapterTabDescription(id)}</span></span>
+        <span class="icon" aria-hidden="true"></span>
+        <span><b>${chapterTabTitle(id,lbl)}</b><span>${chapterTabDescription(id)}</span></span>
       </button>`).join('')}</section>`;
 }
 
@@ -3828,7 +3858,7 @@ function renderChapter(c, tab){
   setTop(`${chapterLabel} ${c.num}: ${c.title}`, c.subtitle, true);
   let html = `<div class="tabs chapter-tabs">` + TABS.map(([id,lbl]) =>
     `<button class="tab ${id===tab?'active':''}" onclick="go('${routeBase}/${id}')">${lbl}</button>`).join('') + `</div>`;
-  if(tab!=='ueberblick' && c.visual){
+  if(false && tab!=='ueberblick' && c.visual){
     const sceneIndex={wortschatz:1,lesen:0,redemittel:2,grammatik:3,sprechen:1,quiz:2}[tab]??0;
     const tabVisual=c.scenes?.[sceneIndex]||c.visual;
     html += `<figure class="lesson-scene">
