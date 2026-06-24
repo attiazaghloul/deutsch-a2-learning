@@ -697,6 +697,46 @@ body.listen-mode .speakable{cursor:pointer}
 .quiz-fb{font-size:13.5px;margin:4px 0 10px;display:none}
 .quiz-fb.show{display:block}
 .quiz-score{text-align:center;font-size:17px;font-weight:800;color:var(--green-d);padding:10px}
+/* ---------- A1 grammar: neu aufbereitete Lektion ---------- */
+.grammar-guide.gg2 .guide-section{margin:0 0 16px}
+.grammar-guide.gg2 .guide-section h4{font-size:15px;color:var(--green-d);margin:0 0 8px;
+  display:flex;align-items:center;gap:7px}
+.grammar-guide.gg2 .rule-list{margin:0;padding-left:18px}
+.grammar-guide.gg2 .rule-list li{margin-bottom:9px;font-size:14.5px;line-height:1.6}
+.grammar-guide.gg2 .example-lines{display:flex;flex-direction:column;gap:7px}
+.grammar-guide.gg2 .example-lines>div{background:#f4f8f6;border:1px solid #e0ebe5;border-left:4px solid var(--green);
+  border-radius:9px;padding:9px 12px;font-size:14.5px;line-height:1.55}
+.grammar-guide.gg2 .mistake-box{background:var(--red-l);border:1px solid #f3c9c9;border-radius:11px;
+  padding:11px 13px;font-size:14px;line-height:1.6}
+.grammar-guide.gg2 .mistake-box s{color:var(--red);text-decoration-thickness:2px}
+.gap-ex-wrap{margin-top:8px}
+.gap-ex-wrap .section-label{margin:18px 4px 12px}
+.gap-exercise{padding:15px 15px 13px}
+.gap-ex-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:4px}
+.gap-ex-title{font-size:16px;font-weight:800;color:var(--green-d)}
+.gap-ex-inst{font-size:13.5px;color:var(--ink-2);margin-bottom:8px;line-height:1.5}
+.gap-ex-example{background:#f4f8f6;border:1px dashed #bcd6c9;border-radius:9px;padding:8px 11px;
+  font-size:13.5px;margin-bottom:12px;line-height:1.55}
+.gap-list{list-style:none;margin:0;padding:0;counter-reset:none}
+.gap-item{font-size:15px;line-height:2.1;padding:7px 2px;border-bottom:1px solid #eef2f5}
+.gap-item:last-child{border-bottom:0}
+.gap-input{font-family:inherit;font-size:14.5px;text-align:center;border:0;border-bottom:2px solid var(--green);
+  background:#f4f8f6;border-radius:6px 6px 0 0;padding:3px 6px;margin:0 2px;min-width:2.4em;
+  color:var(--ink);outline:none;transition:background .15s,border-color .15s}
+.gap-input:focus{background:#e7f3ec;border-color:var(--green-d)}
+.gap-input.gap-wide{text-align:left;display:block;width:100%;margin:5px 0 2px;min-width:0}
+.gap-input.good{background:var(--green-l);border-color:var(--green);color:var(--green-d);font-weight:700}
+.gap-input.bad{background:var(--red-l);border-color:var(--red);color:var(--red)}
+.gap-input.gap-free{border-bottom-style:dashed}
+.gap-actions{display:flex;gap:10px;margin-top:13px}
+.gap-check,.gap-solve{font-family:inherit;font-weight:700;font-size:14px;border-radius:10px;
+  padding:9px 18px;cursor:pointer;border:2px solid var(--green)}
+.gap-check{background:var(--green);color:#fff}
+.gap-solve{background:#fff;color:var(--green-d)}
+.gap-score{font-size:14px;font-weight:800;opacity:0;transition:opacity .15s}
+.gap-score.show{opacity:1}
+.gap-score.all{color:var(--green-d)}
+.gap-score.some{color:var(--red)}
 /* ---------- learning games ---------- */
 .games-hero{background:linear-gradient(135deg,#173f43,#2d817c);color:#fff;overflow:hidden;position:relative}
 .games-hero:after{content:"";position:absolute;width:190px;height:190px;border:36px solid rgba(255,255,255,.07);
@@ -979,6 +1019,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <script src="data_a12.js"></script>
 <script src="data_a1_verbs.js"></script>
 <script src="data_a1_grammar_full.js"></script>
+<script src="data_a1_grammar_lessons.js?v=a1-gram-interactive-1"></script>
 <script src="data_hoeren_a1.js"></script>
 <script src="data_hoeren_a1_figures.js?v=a1-listen-ui-1"></script>
 <script src="data_hoeren_a1_interactive.js?v=a1-listen-ui-1"></script>
@@ -1943,6 +1984,80 @@ function a1FullGrammarBody(lessonNum, topicNum){
     return `<section class="${cls}"><h4>${escapeHtml(group.title)}</h4>${renderScriptLines(group.lines)}</section>`;
   }).join('')}</div>`;
 }
+
+/* ---- Neu aufbereitete A1-Lektion: Erklärung + interaktive Übungen ---- */
+function a1AuthoredTopic(lessonNum, topicNum){
+  return (window.A1_GRAMMAR_LESSONS||{})[`${lessonNum}.${topicNum}`];
+}
+function gapField(spec){
+  if(spec==='*') return `<input class="gap-input gap-free" data-free="1" autocomplete="off" spellcheck="false" placeholder="…">`;
+  const wide=spec.startsWith('=');
+  const ans=wide?spec.slice(1):spec;
+  const shown=ans.split('|')[0];
+  const size=wide?Math.min(Math.max(shown.length,16),40):Math.max(shown.length+1,3);
+  return `<input class="gap-input${wide?' gap-wide':''}" data-ans="${escapeHtml(ans)}" size="${size}" autocomplete="off" spellcheck="false">`;
+}
+function parseGaps(text){
+  const out=[]; const re=/\{\{(.*?)\}\}/g; let last=0, m;
+  while((m=re.exec(text))){
+    out.push(escapeHtml(text.slice(last,m.index)));
+    out.push(gapField(m[1]));
+    last=m.index+m[0].length;
+  }
+  out.push(escapeHtml(text.slice(last)));
+  return out.join('');
+}
+function a1GapExercise(ex, idx){
+  const items=ex.items.map(item=>`<li class="gap-item">${parseGaps(item)}</li>`).join('');
+  return `<div class="card gap-exercise" data-ex="${idx}">
+    <div class="gap-ex-head"><span class="gap-ex-title">${escapeHtml(ex.title)}</span><span class="gap-score" aria-live="polite"></span></div>
+    <div class="gap-ex-inst">${ex.instruction.de}${ar(ex.instruction.ar)}</div>
+    ${ex.example?`<div class="gap-ex-example"><b>Beispiel:</b> ${ex.example}</div>`:''}
+    <ol class="gap-list">${items}</ol>
+    <div class="gap-actions"><button type="button" class="gap-check">Prüfen</button><button type="button" class="gap-solve">Lösung</button></div>
+  </div>`;
+}
+function a1AuthoredBody(topic){
+  const ex=topic.explain;
+  let html=`<div class="grammar-guide gg2">`;
+  html+=`<section class="guide-section"><h4>1. Die Idee</h4><p>${ex.idea.de}</p>${ar(ex.idea.ar)}</section>`;
+  html+=`<section class="guide-section"><h4>2. Die Regel</h4><ul class="rule-list">${ex.rules.map(r=>`<li>${r.de}${ar(r.ar)}</li>`).join('')}</ul></section>`;
+  html+=`<section class="guide-section"><h4>3. Beispiele</h4><div class="example-lines">${ex.examples.map(e=>`<div>${e}</div>`).join('')}</div></section>`;
+  html+=`<section class="guide-section"><h4>4. Achtung – häufiger Fehler</h4><div class="mistake-box">${ex.mistake.de}${ar(ex.mistake.ar)}</div></section>`;
+  html+=`</div>`;
+  html+=`<div class="gap-ex-wrap"><div class="section-label">✍️ Übungen mit Selbstkorrektur${ar('تمارين بتصحيح ذاتي')}</div>`;
+  html+=topic.exercises.map((e,i)=>a1GapExercise(e,i)).join('');
+  html+=`</div>`;
+  return html;
+}
+function initGapExercises(root){
+  (root||document).querySelectorAll('.gap-exercise').forEach(card=>{
+    if(card.dataset.ready) return;
+    card.dataset.ready='1';
+    const inputs=[...card.querySelectorAll('.gap-input')];
+    const score=card.querySelector('.gap-score');
+    const gradable=inputs.filter(i=>!i.dataset.free);
+    const check=()=>{
+      let ok=0;
+      gradable.forEach(inp=>{
+        const acc=inp.dataset.ans.split('|').map(normalizeAnswer);
+        const good=acc.includes(normalizeAnswer(inp.value));
+        inp.classList.toggle('good',good); inp.classList.toggle('bad',!good);
+        if(good) ok++;
+      });
+      inputs.filter(i=>i.dataset.free).forEach(inp=>inp.classList.toggle('good',!!inp.value.trim()));
+      score.textContent=`${ok} / ${gradable.length} ✓`;
+      score.className='gap-score show '+(ok===gradable.length?'all':'some');
+    };
+    const solve=()=>{
+      gradable.forEach(inp=>{ inp.value=inp.dataset.ans.split('|')[0]; inp.classList.remove('bad'); inp.classList.add('good'); });
+      check();
+    };
+    card.querySelector('.gap-check').addEventListener('click',check);
+    card.querySelector('.gap-solve').addEventListener('click',solve);
+    inputs.forEach(inp=>inp.addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); check(); } }));
+  });
+}
 function a1BeginnerGrammarData(topic){
   if(topic.includes('Verb - Konjugation')) return {
     idea:'Ein Verb zeigt, was jemand macht. Im Deutschen verändert sich das Verb, wenn sich die Person verändert.',
@@ -2129,20 +2244,21 @@ const A1_GRAM=A1_GRAMMAR_SCRIPT.map(lesson=>({
     const guide=a1BeginnerGrammarData(topic);
     const fullTopic=a1FullGrammarTopic(lesson.num,index+1);
     const fullBody=a1FullGrammarBody(lesson.num,index+1);
+    const authored=a1AuthoredTopic(lesson.num,index+1);
     const short=topic.replace('Personalpronomen - ','Pronomen ').replace('Nomen und Artikel - ','Artikel ').replace('Wortstellung: ','Wortstellung · ').replace('Nicht trennbare und trennbare Verben','Trennbare Verben');
     return {
       short,
       title:fullTopic?.title||topic,
       titleAr:'',
       sourcePage:lesson.start+index,
-      coveragePoints:fullTopic?[`${fullTopic.lines.length} Zeilen aus dem Skript`,`${fullTopic.lines.filter(line=>line.startsWith('Übung ')).length} Übungen vollständig als Text`,'Für Handy formatiert']:guide.coverage,
+      coveragePoints:authored?[`${authored.exercises.length} Übungen interaktiv`,'Mit Selbstkorrektur ✓','Erklärung neu geschrieben']:fullTopic?[`${fullTopic.lines.length} Zeilen aus dem Skript`,`${fullTopic.lines.filter(line=>line.startsWith('Übung ')).length} Übungen vollständig als Text`,'Für Handy formatiert']:guide.coverage,
       visual:{
         src:`assets/a1/chapters/chapter-${lesson.num}.webp`,
         alt:`A1 Grammatik Lektion ${lesson.num}`,
         caption:`A1 Grammatik · Lektion ${lesson.num}`,
         captionAr:''
       },
-      body:gramBody(fullBody||beginnerGrammarGuide(guide)),
+      body:gramBody(authored?a1AuthoredBody(authored):(fullBody||beginnerGrammarGuide(guide))),
       quiz:[topicMeta.quiz],
       practice:[topicMeta.practice]
     };
@@ -4935,6 +5051,7 @@ function renderLektion(l, topicIdx, options={}){
       <div id="practiceArea"></div>`;
   }
   view.innerHTML = html;
+  initGapExercises(view);
   if(t.quiz) initQuiz(t.quiz);
   if(t.practice?.length) initPractice(t.practice, `${routePrefix}-${l.num}-${ti}`);
 }
