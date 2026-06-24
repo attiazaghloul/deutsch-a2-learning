@@ -235,6 +235,16 @@ header.topbar .back:focus-visible,header.topbar .home:focus-visible{outline:3px 
 .grammar-guide .example-lines div{background:var(--green-l);border-radius:10px;padding:8px 10px;font-size:14px}
 .grammar-guide .example-lines b{color:var(--green-d)}
 .grammar-guide .mistake-box{background:var(--red-l);border-left:4px solid var(--red);border-radius:10px;padding:9px 11px;font-size:14px}
+.script-book{display:grid;gap:12px}
+.script-book-note{background:var(--green-l);border:1px solid #d8ece3;border-radius:13px;padding:10px 12px;color:var(--green-d);font-size:13.5px;font-weight:800}
+.script-book-block,.script-exercise{background:#fff;border:1px solid #edf0e8;border-radius:14px;padding:13px 14px}
+.script-book-block h4,.script-exercise h4{color:var(--green-d);font-size:15px;margin-bottom:8px}
+.script-line{font-size:14.5px;line-height:1.65;padding:4px 0;border-bottom:1px dashed #eef1eb;white-space:normal;overflow-wrap:anywhere}
+.script-line:last-child{border-bottom:0}
+.script-line.example-line{background:var(--green-l);border:0;border-radius:10px;padding:8px 10px;margin:5px 0}
+.script-line.choice-line{padding-left:10px}
+.script-exercise{border-color:#eadfcf;background:#fffdf8}
+.script-exercise h4{display:inline-flex;align-items:center;background:var(--amber-l);color:#7b5425;border-radius:999px;padding:5px 11px;margin-bottom:9px}
 .script-topic-list{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
 .script-topic-list span{background:var(--green-l);color:var(--green-d);border-radius:999px;padding:5px 10px;font-size:12px;font-weight:800}
 .exbox{background:var(--green-l);border-radius:10px;padding:10px 14px;margin:8px 0;font-size:14.5px}
@@ -968,6 +978,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <script src="data_a1.js"></script>
 <script src="data_a12.js"></script>
 <script src="data_a1_verbs.js"></script>
+<script src="data_a1_grammar_full.js"></script>
 <script src="data_hoeren_a1.js"></script>
 <script src="data_hoeren_a1_figures.js?v=a1-listen-ui-1"></script>
 <script src="data_hoeren_a1_interactive.js?v=a1-listen-ui-1"></script>
@@ -1902,6 +1913,36 @@ function beginnerGrammarGuide(data){
     <section class="guide-section"><h4>5. So lernst du es</h4>${guideList(data.steps,'ol')}</section>
   </div>`;
 }
+function a1FullGrammarTopic(lessonNum, topicNum){
+  return (window.A1_GRAMMAR_FULL||[]).find(item=>item.lesson===lessonNum&&item.topic===topicNum);
+}
+function scriptLineClass(line){
+  if(/^Beispiel:?/.test(line)) return 'script-line example-line';
+  if(/^[a-z]\)/.test(line)) return 'script-line choice-line';
+  return 'script-line';
+}
+function renderScriptLines(lines){
+  return lines.map(line=>`<div class="${scriptLineClass(line)}">${escapeHtml(line)}</div>`).join('');
+}
+function a1FullGrammarBody(lessonNum, topicNum){
+  const topic=a1FullGrammarTopic(lessonNum, topicNum);
+  if(!topic) return '';
+  const groups=[];
+  let current={type:'rule', title:'Regel und Beispiele', lines:[]};
+  topic.lines.forEach(line=>{
+    if(line.startsWith('Übung ')){
+      if(current.lines.length) groups.push(current);
+      current={type:'exercise', title:line, lines:[]};
+      return;
+    }
+    current.lines.push(line);
+  });
+  if(current.lines.length) groups.push(current);
+  return `<div class="script-book">${groups.map(group=>{
+    const cls=group.type==='exercise'?'script-exercise':'script-book-block';
+    return `<section class="${cls}"><h4>${escapeHtml(group.title)}</h4>${renderScriptLines(group.lines)}</section>`;
+  }).join('')}</div>`;
+}
 function a1BeginnerGrammarData(topic){
   if(topic.includes('Verb - Konjugation')) return {
     idea:'Ein Verb zeigt, was jemand macht. Im Deutschen verändert sich das Verb, wenn sich die Person verändert.',
@@ -2086,20 +2127,22 @@ const A1_GRAM=A1_GRAMMAR_SCRIPT.map(lesson=>({
   topics:lesson.topics.map((topic,index)=>{
     const topicMeta=a1GrammarTopicMeta(topic);
     const guide=a1BeginnerGrammarData(topic);
+    const fullTopic=a1FullGrammarTopic(lesson.num,index+1);
+    const fullBody=a1FullGrammarBody(lesson.num,index+1);
     const short=topic.replace('Personalpronomen - ','Pronomen ').replace('Nomen und Artikel - ','Artikel ').replace('Wortstellung: ','Wortstellung · ').replace('Nicht trennbare und trennbare Verben','Trennbare Verben');
     return {
       short,
-      title:topic,
+      title:fullTopic?.title||topic,
       titleAr:'',
       sourcePage:lesson.start+index,
-      coveragePoints:guide.coverage,
+      coveragePoints:fullTopic?[`${fullTopic.lines.length} Zeilen aus dem Skript`,`${fullTopic.lines.filter(line=>line.startsWith('Übung ')).length} Übungen vollständig als Text`,'Für Handy formatiert']:guide.coverage,
       visual:{
         src:`assets/a1/chapters/chapter-${lesson.num}.webp`,
         alt:`A1 Grammatik Lektion ${lesson.num}`,
         caption:`A1 Grammatik · Lektion ${lesson.num}`,
         captionAr:''
       },
-      body:gramBody(beginnerGrammarGuide(guide)),
+      body:gramBody(fullBody||beginnerGrammarGuide(guide)),
       quiz:[topicMeta.quiz],
       practice:[topicMeta.practice]
     };
