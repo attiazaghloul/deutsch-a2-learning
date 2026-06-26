@@ -396,6 +396,18 @@ body.listen-mode .listen-toggle{background:#fff;color:var(--green-d)}
 body.listen-mode .speak-btn{display:inline-flex}
 .speak-btn:hover,.speak-btn:focus-visible{background:var(--green-l);border-color:var(--green);opacity:1;transform:translateY(-1px)}
 body.listen-mode .speakable{cursor:pointer}
+/* Offline banner */
+#offline-banner{position:fixed;bottom:0;left:0;right:0;z-index:200;background:#b64b4b;color:#fff;
+  text-align:center;padding:9px 16px calc(9px + env(safe-area-inset-bottom));
+  font-size:13px;font-weight:600;transform:translateY(100%);transition:.3s;pointer-events:none}
+#offline-banner.show{transform:translateY(0)}
+/* Download-for-offline button in topbar */
+.dl-btn{background:rgba(255,255,255,.18);border:none;color:#fff;
+  width:38px;height:38px;border-radius:12px;cursor:pointer;flex:0 0 auto;
+  display:none;align-items:center;justify-content:center;font-size:17px}
+body.has-route .dl-btn{display:flex}
+.dl-btn.cached{background:rgba(255,255,255,.36)}
+.dl-btn:active{transform:scale(.93)}
 .speech-status{position:fixed;left:50%;bottom:18px;z-index:90;transform:translate(-50%,120px);
   background:var(--ink);color:#fff;border-radius:999px;padding:8px 14px;font-size:12px;box-shadow:var(--shadow);
   transition:.2s;pointer-events:none;max-width:90%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -956,6 +968,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
     <button class="back" id="backBtn" aria-label="zurück">←</button>
     <button class="home" id="homeBtn" aria-label="Home" title="Home">⌂</button>
     <h1 id="topTitle">Deutsch Learning<small>Netzwerk neu · A1 + A2</small></h1>
+    <button type="button" class="dl-btn" id="dlBtn" title="تحميل الدرس للأوفلاين">⬇</button>
     <button type="button" class="listen-toggle" id="listenToggle" aria-pressed="false" title="اضغط ثم اختر أي نص لسماعه">
       🔊 <span>Hören</span>
     </button>
@@ -971,6 +984,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
   </footer>
 </div>
 <div class="speech-status" id="speechStatus" role="status"></div>
+<div id="offline-banner" role="status" aria-live="polite">لا يوجد اتصال بالإنترنت — المحتوى المحفوظ متاح للمذاكرة</div>
 <button type="button" class="translate-trigger" id="translateTrigger">ترجمة في السياق</button>
 <div class="modal-backdrop" id="settingsModal" aria-hidden="true">
   <section class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
@@ -5163,12 +5177,63 @@ route();
 requestAnimationFrame(centerActiveNavigation);
 </script>
 <script>
-/* PWA: Service Worker registrieren (Offline + Installierbarkeit). Hash-Routing bleibt unverändert. */
+/* PWA: Service Worker + Offline banner + Download-lesson */
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('sw.js').catch(() => {});
   });
 }
+
+// Offline banner
+(function(){
+  const banner = document.getElementById('offline-banner');
+  function sync(){ banner.classList.toggle('show', !navigator.onLine); }
+  window.addEventListener('online',  sync);
+  window.addEventListener('offline', sync);
+  sync();
+})();
+
+// Download lesson for offline
+(function(){
+  const dlBtn = document.getElementById('dlBtn');
+  if (!dlBtn || !('serviceWorker' in navigator)) return;
+
+  let _handler = null;
+
+  dlBtn.addEventListener('click', function(){
+    if (!navigator.onLine) { showSpeechStatus('أنت أوفلاين — لا يمكن التحميل الآن'); return; }
+
+    // collect all media URLs visible in the current lesson view
+    const view = document.getElementById('view');
+    const urls = new Set();
+    view.querySelectorAll('audio[src]').forEach(el => urls.add(el.src));
+    view.querySelectorAll('audio source[src]').forEach(el => urls.add(el.src));
+    view.querySelectorAll('img[src]:not([src^="data:"])').forEach(el => urls.add(el.src));
+
+    if (!urls.size) { showSpeechStatus('لا توجد ملفات وسائط في هذا الدرس'); return; }
+
+    showSpeechStatus('جاري التحميل… ' + urls.size + ' ملف');
+    dlBtn.textContent = '⏳';
+    dlBtn.disabled = true;
+
+    if (_handler) navigator.serviceWorker.removeEventListener('message', _handler);
+    _handler = function(e){
+      if (!e.data || e.data.type !== 'lesson-cached') return;
+      navigator.serviceWorker.removeEventListener('message', _handler);
+      _handler = null;
+      dlBtn.textContent = '✓';
+      dlBtn.classList.add('cached');
+      dlBtn.disabled = false;
+      showSpeechStatus('تم الحفظ للأوفلاين ✓');
+      setTimeout(() => { dlBtn.textContent = '⬇'; dlBtn.classList.remove('cached'); }, 4000);
+    };
+    navigator.serviceWorker.addEventListener('message', _handler);
+
+    navigator.serviceWorker.ready.then(reg => {
+      reg.active.postMessage({ type: 'cache-lesson', urls: [...urls] });
+    });
+  });
+})();
 </script>
 </body>
 </html>
