@@ -1037,6 +1037,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <script src="data_gram.js"></script>
 <script src="data_gram_extra.js"></script>
 <script src="data_gram_complete.js"></script>
+<script src="data_a2_grammar_lessons.js?v=a2-gram-interactive-1"></script>
 <script src="data_hoeren.js"></script>
 <script src="data_hoeren_figures.js"></script>
 <script src="data_hoeren_interactive.js"></script>
@@ -1052,6 +1053,20 @@ const view = $('#view');
 const A1_BOOK = window.A1_BOOK || [];
 const BOOK = [...window.BOOK0, ...window.BOOK1, ...window.BOOK2];
 const GRAM = window.GRAM;
+/* A2-Grammatik: vollständige Skript-Übungen interaktiv (Selbstkorrektur) an die Erklärung anhängen */
+(function attachA2GrammarExercises(){
+  const L=window.A2_GRAMMAR_LESSONS||{};
+  (GRAM||[]).forEach(lesson=>(lesson.topics||[]).forEach((topic,i)=>{
+    const data=L[`${lesson.num}.${i+1}`];
+    if(data&&data.exercises&&data.exercises.length&&!topic._a2ex){
+      topic._a2ex=true;
+      topic.body=(topic.body||'')
+        +`<div class="gap-ex-wrap"><div class="section-label">✍️ Übungen mit Selbstkorrektur${ar('تمارين بتصحيح ذاتي')}</div>`
+        +data.exercises.map((e,idx)=>a1GapExercise(e,idx)).join('')
+        +`</div>`;
+    }
+  }));
+})();
 const VERBS = window.A2_VERBS || [];
 const A1_VERBS = window.A1_VERBS || [];
 const HOEREN_A1 = window.HOEREN_A1_BOOK;
