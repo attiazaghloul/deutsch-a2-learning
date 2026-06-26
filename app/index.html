@@ -1446,10 +1446,7 @@ function playFixedSpeech(value,voiceId=speechVoiceURI,onDone=null){
       };
       monitor();
     }).catch(()=>{
-      if(library==='a1'){
-        showSpeechStatus('A1-Stimme konnte nicht geladen werden.');
-        return;
-      }
+      // Aufnahme nicht ladbar -> auf Geräte-/Browser-TTS zurückfallen statt stumm zu bleiben.
       fallbackBrowserSpeech(value,'de',voiceId);
     });
   };
@@ -1490,14 +1487,8 @@ function speakText(text, lang, voiceURIOverride=''){
   const value=normalizeSpeechValue(text);
   if(!value||!/[A-Za-zÄÖÜäöüß\u0600-\u06ff]/.test(value))return;
   const isArabic=lang==='ar' || /[\u0600-\u06ff]/.test(value.slice(0,40));
+  // Priorität: aufgenommene Stimme. Wenn keine vorhanden ist, das Geräte-/Browser-TTS nutzen (nicht stumm bleiben).
   if(!isArabic&&playFixedSpeech(value,voiceURIOverride||speechVoiceURI))return;
-  const isA1Route=location.hash.replace(/^#/,'').startsWith('a1');
-  if(!isArabic&&isA1Route){
-    stopFixedSpeech();
-    speech?.cancel();
-    showSpeechStatus('Feste Stimme fuer diesen A1-Text noch nicht geladen.');
-    return;
-  }
   stopFixedSpeech();
   fallbackBrowserSpeech(value,lang,voiceURIOverride);
 }
