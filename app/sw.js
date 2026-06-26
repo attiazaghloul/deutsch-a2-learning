@@ -2,7 +2,7 @@
    - App-Shell + Daten werden vorab gecacht (Offline-Nutzung)
    - Bilder/Audio werden zur Laufzeit gecacht (stale-while-revalidate)
    Bei Inhaltsänderungen: CACHE_VERSION erhöhen. */
-const CACHE_VERSION = 'v3';
+const CACHE_VERSION = 'v4';
 const CACHE = 'deutsch-a2-' + CACHE_VERSION;
 
 const CORE = [

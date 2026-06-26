@@ -14,8 +14,8 @@
 <meta name="apple-mobile-web-app-title" content="Deutsch">
 <link rel="canonical" href="https://attiazaghloul.github.io/deutsch-a2-learning/">
 <meta property="og:url" content="https://attiazaghloul.github.io/deutsch-a2-learning/">
-<meta property="og:title" content="Deutsch A2 Learning">
-<title>Deutsch A2 Learning · Netzwerk neu</title>
+<meta property="og:title" content="Deutsch Learning">
+<title>Deutsch Learning · Netzwerk neu</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Carlito:wght@400;700&display=swap" rel="stylesheet">
@@ -25,7 +25,7 @@
 @font-face{font-family:"Cairo";font-style:normal;font-weight:600;font-display:swap;src:url("assets/fonts/cairo-600.ttf") format("truetype")}
 @font-face{font-family:"Cairo";font-style:normal;font-weight:700;font-display:swap;src:url("assets/fonts/cairo-700.ttf") format("truetype")}
 :root{
-  --topbar-h:62px;
+  --topbar-h:calc(62px + env(safe-area-inset-top));
   --green:#287c79; --green-d:#175b5d; --green-l:#e5f3f0;
   --ink:#263238; --ink-2:#66757d; --bg:#f6f2ea; --card:#fffdf9;
   --amber:#c8893d; --amber-l:#fbefd9;
@@ -66,7 +66,7 @@ body{
 /* ---------- header ---------- */
 header.topbar{
   position:sticky;top:0;z-index:80;background:linear-gradient(135deg,var(--topbar-start),var(--topbar-end));color:#fff;
-  margin:0 -14px 16px;padding:12px 16px;display:flex;align-items:center;gap:10px;
+  margin:0 -14px 16px;padding:12px 16px;padding-top:calc(12px + env(safe-area-inset-top));display:flex;align-items:center;gap:10px;
   box-shadow:var(--shadow);
 }
 header.topbar .back{
@@ -874,10 +874,10 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
   .grammar-visual img{aspect-ratio:16/8}
 }
 @media(max-width:460px){
-  :root{--topbar-h:58px}
+  :root{--topbar-h:calc(58px + env(safe-area-inset-top))}
   .card{padding:16px}
   #app{padding-inline:12px}
-  header.topbar{min-height:58px;margin-inline:-12px;margin-bottom:10px;padding:7px 10px;gap:7px}
+  header.topbar{min-height:58px;margin-inline:-12px;margin-bottom:10px;padding:7px 10px;padding-top:calc(7px + env(safe-area-inset-top));gap:7px}
   header.topbar .back,header.topbar .home{width:34px;height:34px;border-radius:11px;font-size:17px}
   header.topbar .home{font-size:0;border-radius:999px}
   header.topbar h1{font-size:15px;line-height:1.12;min-width:0}
@@ -955,7 +955,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
   <header class="topbar">
     <button class="back" id="backBtn" aria-label="zurück">←</button>
     <button class="home" id="homeBtn" aria-label="Home" title="Home">⌂</button>
-    <h1 id="topTitle">Deutsch A2 Learning<small>Netzwerk neu · A1 + A2</small></h1>
+    <h1 id="topTitle">Deutsch Learning<small>Netzwerk neu · A1 + A2</small></h1>
     <button type="button" class="listen-toggle" id="listenToggle" aria-pressed="false" title="اضغط ثم اختر أي نص لسماعه">
       🔊 <span>Hören</span>
     </button>
@@ -2319,7 +2319,7 @@ function renderA2Hub(){
 }
 
 function renderLevelSelector(){
-  setTop('Deutsch A2 Learning','Wähle dein Niveau', false);
+  setTop('Deutsch Learning','Wähle dein Niveau', false);
   view.innerHTML = `
   <section class="hero">
     <h2>Wähle deinen Deutsch-Weg</h2>
