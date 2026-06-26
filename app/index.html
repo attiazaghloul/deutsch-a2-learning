@@ -3,7 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#236b6d">
+<meta name="theme-color" content="#175b5d">
+<!-- PWA: installierbar, läuft standalone (eigene App, ohne Browser-Leiste) -->
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="icons/favicon-64.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Deutsch">
 <link rel="canonical" href="https://attiazaghloul.github.io/deutsch-a2-learning/">
 <meta property="og:url" content="https://attiazaghloul.github.io/deutsch-a2-learning/">
 <meta property="og:title" content="Deutsch A2 Learning">
@@ -5153,6 +5161,14 @@ function centerActiveNavigation(){
 window.addEventListener('hashchange',()=>requestAnimationFrame(centerActiveNavigation));
 route();
 requestAnimationFrame(centerActiveNavigation);
+</script>
+<script>
+/* PWA: Service Worker registrieren (Offline + Installierbarkeit). Hash-Routing bleibt unverändert. */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  });
+}
 </script>
 </body>
 </html>
