@@ -1345,7 +1345,7 @@ let fixedSpeechSession = 0;
 
 function cleanSpeechText(element){
   const copy=element.cloneNode(true);
-  copy.querySelectorAll('.ar,.speak-btn,.answer-btn,.exercise-actions,.qicon,.badge,.cnt,.hint').forEach(node=>node.remove());
+  copy.querySelectorAll('.ar,.speak-btn,.answer-btn,.exercise-actions,.qicon,.badge,.cnt,.hint,input,select,button').forEach(node=>node.remove());
   return prepareSpeechText(copy.textContent,{
     vocabulary:element.matches('.w,.dictionary-word,.verb-inf,.verb-perfect,.flashcard .big')
   });
