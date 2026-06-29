@@ -142,7 +142,7 @@ body.exam-mode .ar{display:none!important}
   color:inherit;font:inherit;padding:16px;cursor:pointer;transition:.15s}
 .section-card:active{transform:scale(.985)}
 .section-card .icon{display:none}
-.section-card-img{display:block;width:100%;aspect-ratio:16/9;object-fit:contain;border-radius:12px;margin-bottom:10px;background:#eef5f1}
+.section-card-img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:10px;background:#eef5f1}
 .section-card b{display:block;color:var(--green-d);font-size:16px;line-height:1.25;margin-bottom:4px}
 .section-card span{display:block;color:var(--ink-2);font-size:12.5px;line-height:1.45}
 .chapter-tab-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:18px}
@@ -214,7 +214,7 @@ header.topbar .back:focus-visible,header.topbar .home:focus-visible{outline:3px 
 .scene-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:12px 0 16px}
 .scene-card{position:relative;overflow:hidden;border-radius:15px;min-height:150px;background:var(--green-l);
   box-shadow:var(--shadow)}
-.scene-card img{display:block;width:100%;height:100%;aspect-ratio:4/3;object-fit:contain;background:#eef5f1;transition:transform .3s ease}
+.scene-card img{display:block;width:100%;height:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .3s ease}
 .scene-card:hover img{transform:scale(1.025)}
 .scene-card figcaption{position:absolute;left:0;right:0;bottom:0;padding:28px 12px 10px;
   color:#fff;background:linear-gradient(transparent,rgba(14,41,43,.86));font-size:13px;font-weight:800}
@@ -463,8 +463,8 @@ body.has-route .dl-btn{display:flex}
 .chapter-visual{padding:0}
 .chapter-visual img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;background:#fff}
 .chapter-visual--wide img{aspect-ratio:16/9;object-fit:cover}
-.lesson-scene{position:relative;aspect-ratio:16/7;min-height:142px;border-radius:16px;overflow:hidden;margin-bottom:14px;box-shadow:var(--shadow);background:#eef5f1}
-.lesson-scene img{width:100%;height:100%;object-fit:contain;display:block}
+.lesson-scene{position:relative;height:142px;border-radius:16px;overflow:hidden;margin-bottom:14px;box-shadow:var(--shadow)}
+.lesson-scene img{width:100%;height:100%;object-fit:cover;display:block}
 .lesson-scene::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,66,68,.78),rgba(18,66,68,.08))}
 .lesson-scene-copy{position:absolute;z-index:1;left:16px;top:50%;transform:translateY(-50%);color:#fff;max-width:62%}
 .lesson-scene-copy b{display:block;font-size:17px}
@@ -1075,21 +1075,6 @@ const view = $('#view');
 const A1_BOOK = window.A1_BOOK || [];
 const BOOK = [...window.BOOK0, ...window.BOOK1, ...window.BOOK2];
 const GRAM = window.GRAM;
-const A2_SECTION_SCENES = [
-  ['Lesen und Kontext','قراءة وسياق'],
-  ['Wortschatz und Sprechen','مفردات وتحدث'],
-  ['Redemittel und Quiz','تعبيرات وتدريب'],
-  ['Grammatik klar','قواعد واضحة']
-];
-BOOK.forEach(chapter => {
-  if (chapter.route?.startsWith('a1/') || chapter.scenes?.length) return;
-  chapter.scenes = A2_SECTION_SCENES.map(([caption, captionAr], index) => ({
-    src: `assets/chapter-scenes/chapter-${chapter.num}-scene-${index + 1}.webp`,
-    alt: `${caption} · Kapitel ${chapter.num}`,
-    caption,
-    captionAr
-  }));
-});
 /* A2-Grammatik: vollständige Skript-Übungen interaktiv (Selbstkorrektur) an die Erklärung anhängen */
 (function attachA2GrammarExercises(){
   const L=window.A2_GRAMMAR_LESSONS||{};
