@@ -142,7 +142,7 @@ body.exam-mode .ar{display:none!important}
   color:inherit;font:inherit;padding:16px;cursor:pointer;transition:.15s}
 .section-card:active{transform:scale(.985)}
 .section-card .icon{display:none}
-.section-card-img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:10px;background:#eef5f1}
+.section-card-img{display:block;width:100%;aspect-ratio:16/9;object-fit:contain;border-radius:12px;margin-bottom:10px;background:#eef5f1}
 .section-card b{display:block;color:var(--green-d);font-size:16px;line-height:1.25;margin-bottom:4px}
 .section-card span{display:block;color:var(--ink-2);font-size:12.5px;line-height:1.45}
 .chapter-tab-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:18px}
@@ -214,7 +214,7 @@ header.topbar .back:focus-visible,header.topbar .home:focus-visible{outline:3px 
 .scene-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:12px 0 16px}
 .scene-card{position:relative;overflow:hidden;border-radius:15px;min-height:150px;background:var(--green-l);
   box-shadow:var(--shadow)}
-.scene-card img{display:block;width:100%;height:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .3s ease}
+.scene-card img{display:block;width:100%;height:100%;aspect-ratio:4/3;object-fit:contain;background:#eef5f1;transition:transform .3s ease}
 .scene-card:hover img{transform:scale(1.025)}
 .scene-card figcaption{position:absolute;left:0;right:0;bottom:0;padding:28px 12px 10px;
   color:#fff;background:linear-gradient(transparent,rgba(14,41,43,.86));font-size:13px;font-weight:800}
@@ -463,8 +463,8 @@ body.has-route .dl-btn{display:flex}
 .chapter-visual{padding:0}
 .chapter-visual img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;background:#fff}
 .chapter-visual--wide img{aspect-ratio:16/9;object-fit:cover}
-.lesson-scene{position:relative;height:142px;border-radius:16px;overflow:hidden;margin-bottom:14px;box-shadow:var(--shadow)}
-.lesson-scene img{width:100%;height:100%;object-fit:cover;display:block}
+.lesson-scene{position:relative;aspect-ratio:16/7;min-height:142px;border-radius:16px;overflow:hidden;margin-bottom:14px;box-shadow:var(--shadow);background:#eef5f1}
+.lesson-scene img{width:100%;height:100%;object-fit:contain;display:block}
 .lesson-scene::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,66,68,.78),rgba(18,66,68,.08))}
 .lesson-scene-copy{position:absolute;z-index:1;left:16px;top:50%;transform:translateY(-50%);color:#fff;max-width:62%}
 .lesson-scene-copy b{display:block;font-size:17px}
@@ -4941,8 +4941,21 @@ let stickerCardId = 0;
   STICKER_CARD_IDS.set(card, stickerCardId++);
 }));
 
+const A2_REAL_PHOTO_LIMIT = {
+  1:16, 2:16, 3:16, 4:16, 5:16, 6:16,
+  7:36, 8:35, 9:36, 10:35, 11:35, 12:35
+};
+
 function stableWordHash(value){
   return [...value].reduce((hash,char)=>(hash*31+char.codePointAt(0))>>>0,7);
+}
+
+function fallbackVocabSticker(v,chapterData,label='DE'){
+  const category=v.cat||(chapterData?.num?`Kapitel ${chapterData.num}`:'Wortschatz');
+  return `<div class="fc-visual" role="img" aria-label="${escapeHtml(v.w)}">
+    <div class="level-code" style="margin:auto">${label}</div>
+    <span class="sticker-category">${escapeHtml(category)}</span>
+  </div>`;
 }
 
 function vocabVisual(v,chapter){
@@ -4955,12 +4968,11 @@ function vocabVisual(v,chapter){
     </div>`;
   }
   if(!chapterData){
-    return `<div class="fc-visual" role="img" aria-label="${escapeHtml(v.w)}">
-      <div class="level-code" style="margin:auto">DE</div>
-      <span class="sticker-category">Wortschatz</span>
-    </div>`;
+    return fallbackVocabSticker(v, null, 'DE');
   }
   const cardIndex=chapterData.vocab.indexOf(v);
+  const realPhotoLimit=A2_REAL_PHOTO_LIMIT[chapterData.num]||0;
+  if(cardIndex<0 || cardIndex>=realPhotoLimit) return fallbackVocabSticker(v, chapterData, 'A2');
   const sceneNumber=String(cardIndex+1).padStart(2,'0');
   return `<div class="fc-visual" role="img" aria-label="${escapeHtml(v.w)}">
     <img class="fc-scene" src="assets/vocab-scenes/k${chapterData.num}/${sceneNumber}.webp"
