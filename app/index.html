@@ -451,11 +451,13 @@ body.has-route .dl-btn{display:flex}
   border-radius:999px;padding:8px 12px;font-family:"Cairo","Tahoma",sans-serif;font-size:12px;box-shadow:var(--shadow);
   cursor:pointer;max-width:min(280px,85vw);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .translate-trigger.show{display:block}
-.translation-source{background:var(--blue-l);border-radius:11px;padding:10px 12px;font-size:14px;margin-bottom:10px}
+.translation-source{background:var(--blue-l);border-radius:11px;padding:10px 12px;font-size:14px;margin-bottom:10px;
+  line-height:1.75;white-space:pre-wrap;overflow-wrap:anywhere}
+.translation-source mark{background:#ffe08a;color:var(--ink);border-radius:5px;padding:0 3px}
 .translation-word{display:flex;align-items:baseline;justify-content:space-between;gap:12px;background:var(--green-l);
   border-radius:12px;padding:11px 13px;margin-bottom:12px}
-.translation-word b{font-size:19px;color:var(--green-d)}
-.translation-word span{font-family:"Cairo","Tahoma",sans-serif;direction:rtl;text-align:right;color:var(--ar)}
+.translation-word b{font-size:19px;color:var(--green-d);overflow-wrap:anywhere}
+.translation-word span{font-family:"Cairo","Tahoma",sans-serif;direction:rtl;text-align:right;color:var(--ar);overflow-wrap:anywhere}
 .translation-context{font-size:12px;color:var(--ink-2);margin-bottom:8px}
 .translation-result{font-family:"Cairo","Tahoma",sans-serif;direction:rtl;text-align:right;background:var(--ar-l);
   border:1px solid #eee7ef;border-radius:12px;padding:12px;font-size:14px;line-height:1.8;min-height:48px}
@@ -1260,6 +1262,61 @@ function selectionContext(selection){
   return {selected,context:context.slice(0,650),rect};
 }
 
+function normalizeSelectionText(value){
+  return value.replace(/\s+/g,' ').trim()
+    .replace(/^[„“"'.،,!?;:()\[\]{}<>]+|[„“"'.،,!?;:()\[\]{}<>]+$/g,'');
+}
+
+function selectionIndex(text, selected){
+  return text.toLocaleLowerCase('de-DE').indexOf(selected.toLocaleLowerCase('de-DE'));
+}
+
+function sentenceContainingSelection(text, selected){
+  const clean=text.replace(/\s+/g,' ').trim();
+  const index=selectionIndex(clean, selected);
+  if(index<0) return null;
+  const before=clean.slice(0,index);
+  const after=clean.slice(index+selected.length);
+  const start=Math.max(
+    before.lastIndexOf('.'),
+    before.lastIndexOf('!'),
+    before.lastIndexOf('?'),
+    before.lastIndexOf('؟'),
+    before.lastIndexOf('؛')
+  )+1;
+  const endCandidates=['.','!','?','؟','؛']
+    .map(char=>after.indexOf(char))
+    .filter(pos=>pos>=0);
+  const end=endCandidates.length
+    ?index+selected.length+Math.min(...endCandidates)+1
+    :clean.length;
+  const sentence=clean.slice(start,end).trim();
+  return selectionIndex(sentence, selected)>=0 ? sentence.slice(0,650) : null;
+}
+
+function highlightedContextHtml(context, selected){
+  const index=selectionIndex(context, selected);
+  if(index<0) return escapeHtml(context);
+  return `${escapeHtml(context.slice(0,index))}<mark>${escapeHtml(context.slice(index,index+selected.length))}</mark>${escapeHtml(context.slice(index+selected.length))}`;
+}
+
+function selectionContext(selection){
+  const selected=normalizeSelectionText(selection.toString());
+  if(selected.length<2 || selected.length>120 || !selection.rangeCount) return null;
+  const range=selection.getRangeAt(0);
+  const container=range.commonAncestorContainer.nodeType===1?range.commonAncestorContainer:range.commonAncestorContainer.parentElement;
+  if(!container || !view.contains(container) || container.closest('input,textarea,button,.ar')) return null;
+  const block=container.closest('.reading-text p,.reading-text li,.rm-item,.model-text,.exercise-prompt,.quiz-q,.dictionary-entry,.expression-card,.verb-card,p,li,td')
+    ||container.closest('.reading-text,.card')
+    ||container;
+  const clone=block.cloneNode(true);
+  clone.querySelectorAll('.ar,.speak-btn,button,input,select,textarea').forEach(node=>node.remove());
+  const context=sentenceContainingSelection(clone.textContent, selected);
+  if(!context) return null;
+  const rect=range.getBoundingClientRect();
+  return {selected,context,contextHtml:highlightedContextHtml(context,selected),rect};
+}
+
 function knownWordTranslation(value){
   const normalized=value.toLocaleLowerCase('de-DE').replace(/^(der|die|das)\s+/,'').trim();
   const vocabulary=BOOK.flatMap(chapter=>chapter.vocab);
@@ -1289,13 +1346,17 @@ async function captureSelection(){
   const sourceLanguage=hasArabic?'ar':'de';
   const targetLanguage=hasArabic?'de':'ar';
   const known=!hasArabic?knownWordTranslation(data.selected):null;
-  pendingTranslation={...data,sourceLanguage,targetLanguage,wordTranslation:known||'',sentenceTranslation:''};
-  translateTrigger.textContent=known?`↗ ${known}`:'... جاري الترجمة';
+  pendingTranslation={...data,sourceLanguage,targetLanguage,wordTranslation:'',dictionaryFallback:known||'',sentenceTranslation:''};
+  translateTrigger.textContent='ترجمة في السياق';
   translateTrigger.style.left=`${Math.max(8,Math.min(window.innerWidth-290,data.rect.left))}px`;
   translateTrigger.style.top=`${Math.max(70,Math.min(window.innerHeight-48,data.rect.bottom+7))}px`;
   translateTrigger.classList.add('show');
-  const wordPromise=known?Promise.resolve(known):requestTranslation(data.selected,sourceLanguage,targetLanguage);
+  const wordPromise=requestTranslation(data.selected,sourceLanguage,targetLanguage).catch(error=>{
+    if(known) return known;
+    throw error;
+  });
   const sentencePromise=data.context===data.selected?wordPromise:requestTranslation(data.context,sourceLanguage,targetLanguage);
+  pendingTranslation.wordPromise=wordPromise;
   pendingTranslation.sentencePromise=sentencePromise;
   try{
     const translated=await wordPromise;
@@ -1348,7 +1409,9 @@ async function showTranslationDetails(){
   const current=pendingTranslation;
   $('#translationWord').textContent=current.selected;
   $('#translationWordMeaning').textContent=current.wordTranslation||'جارٍ الترجمة...';
-  $('#translationSentence').textContent=current.context;
+  $('#translationSentence').innerHTML=current.contextHtml||escapeHtml(current.context);
+  $('#translationSentence').style.direction=current.sourceLanguage==='ar'?'rtl':'ltr';
+  $('#translationSentence').style.textAlign=current.sourceLanguage==='ar'?'right':'left';
   $('#translationSentenceResult').textContent=current.sentenceTranslation
     ||(current.targetLanguage==='ar'?'جارٍ ترجمة الجملة...':'Der Satz wird übersetzt ...');
   $('#translationSentenceResult').style.direction=current.targetLanguage==='ar'?'rtl':'ltr';
@@ -1356,7 +1419,7 @@ async function showTranslationDetails(){
   openModal('translationModal');
   try{
     if(!current.wordTranslation){
-      current.wordTranslation=await requestTranslation(current.selected,current.sourceLanguage,current.targetLanguage);
+      current.wordTranslation=await (current.wordPromise||requestTranslation(current.selected,current.sourceLanguage,current.targetLanguage));
       $('#translationWordMeaning').textContent=current.wordTranslation;
     }
     if(!current.sentenceTranslation){
