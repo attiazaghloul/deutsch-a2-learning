@@ -3,7 +3,7 @@
    - Audio/große Bilder: stale-while-revalidate (beim ersten Abruf gecacht)
    - "cache-lesson" Nachricht: cacht alle Audio-Dateien einer Lektion on-demand
    Bei Inhaltsänderungen: CACHE_VERSION erhöhen. */
-const CACHE_VERSION = 'v11';
+const CACHE_VERSION = 'v14';
 const CACHE = 'deutsch-' + CACHE_VERSION;
 
 const CORE = [
@@ -48,6 +48,18 @@ const CORE = [
   'assets/chapter-scenes/chapter-5-scene-3.webp','assets/chapter-scenes/chapter-5-scene-4.webp',
   'assets/chapter-scenes/chapter-6-scene-1.webp','assets/chapter-scenes/chapter-6-scene-2.webp',
   'assets/chapter-scenes/chapter-6-scene-3.webp','assets/chapter-scenes/chapter-6-scene-4.webp',
+  'assets/chapter-scenes/chapter-7-scene-1.webp','assets/chapter-scenes/chapter-7-scene-2.webp',
+  'assets/chapter-scenes/chapter-7-scene-3.webp','assets/chapter-scenes/chapter-7-scene-4.webp',
+  'assets/chapter-scenes/chapter-8-scene-1.webp','assets/chapter-scenes/chapter-8-scene-2.webp',
+  'assets/chapter-scenes/chapter-8-scene-3.webp','assets/chapter-scenes/chapter-8-scene-4.webp',
+  'assets/chapter-scenes/chapter-9-scene-1.webp','assets/chapter-scenes/chapter-9-scene-2.webp',
+  'assets/chapter-scenes/chapter-9-scene-3.webp','assets/chapter-scenes/chapter-9-scene-4.webp',
+  'assets/chapter-scenes/chapter-10-scene-1.webp','assets/chapter-scenes/chapter-10-scene-2.webp',
+  'assets/chapter-scenes/chapter-10-scene-3.webp','assets/chapter-scenes/chapter-10-scene-4.webp',
+  'assets/chapter-scenes/chapter-11-scene-1.webp','assets/chapter-scenes/chapter-11-scene-2.webp',
+  'assets/chapter-scenes/chapter-11-scene-3.webp','assets/chapter-scenes/chapter-11-scene-4.webp',
+  'assets/chapter-scenes/chapter-12-scene-1.webp','assets/chapter-scenes/chapter-12-scene-2.webp',
+  'assets/chapter-scenes/chapter-12-scene-3.webp','assets/chapter-scenes/chapter-12-scene-4.webp',
 ];
 
 self.addEventListener('install', event => {
