@@ -396,12 +396,13 @@ table.gt b{color:var(--green-d)}
 .speaking-help span{background:var(--blue-l);color:#173f8a;border-radius:999px;padding:5px 9px;font-size:12px}
 .exam-total{font-size:22px;font-weight:900;color:var(--green-d)}
 /* ---------- speech ---------- */
-.listen-toggle,.settings-toggle,.topbar-icon{border:1.5px solid rgba(255,255,255,.45);background:rgba(255,255,255,.14);color:#fff;
+.settings-toggle,.topbar-icon{border:1.5px solid rgba(255,255,255,.45);background:rgba(255,255,255,.14);color:#fff;
   border-radius:999px;padding:0;font:inherit;font-size:17px;font-weight:700;cursor:pointer;white-space:nowrap;
   width:35px;height:35px;display:grid;place-items:center;flex:0 0 auto}
-body.listen-mode .listen-toggle{background:#fff;color:var(--green-d)}
-.listen-toggle span{display:none}
 .settings-toggle{font-size:17px}
+.settings-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:9px}
+.settings-action{justify-content:center;border-radius:12px;width:100%;min-height:42px}
+.settings-action.active{background:var(--green-l);border-color:var(--green);color:var(--green-d)}
 .speakable{position:relative}
 .speak-btn{display:none;align-items:center;justify-content:center;width:23px;height:23px;border:1px solid #cbdcdd;
   border-radius:8px;background:transparent;color:var(--green-d);font-size:10px;cursor:pointer;
@@ -415,11 +416,7 @@ body.listen-mode .speakable{cursor:pointer}
   font-size:13px;font-weight:600;transform:translateY(100%);transition:.3s;pointer-events:none}
 #offline-banner.show{transform:translateY(0)}
 /* Download-for-offline button in topbar */
-.dl-btn{background:rgba(255,255,255,.18);border:none;color:#fff;
-  width:38px;height:38px;border-radius:12px;cursor:pointer;flex:0 0 auto;
-  display:none;align-items:center;justify-content:center;font-size:17px}
-body.has-route .dl-btn{display:flex}
-.dl-btn.cached{background:rgba(255,255,255,.36)}
+.dl-btn.cached{background:var(--green-l);border-color:var(--green);color:var(--green-d)}
 .dl-btn:active{transform:scale(.93)}
 .speech-status{position:fixed;left:50%;bottom:18px;z-index:90;transform:translate(-50%,120px);
   background:var(--ink);color:#fff;border-radius:999px;padding:8px 14px;font-size:12px;box-shadow:var(--shadow);
@@ -919,7 +916,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
   header.topbar .home{font-size:0;border-radius:999px}
   header.topbar h1{font-size:15px;line-height:1.12;min-width:0}
   header.topbar h1 small{display:none}
-  .settings-toggle,.topbar-icon,.ar-toggle,.listen-toggle,.dl-btn{width:34px;height:34px;font-size:15px}
+  .settings-toggle,.topbar-icon,.ar-toggle{width:34px;height:34px;font-size:15px}
   .ar-toggle{padding:0;font-size:12px}
   .hero{padding:17px 16px;margin-bottom:12px;border-radius:15px}
   .hero h2{font-size:20px;line-height:1.25;margin-bottom:5px}
@@ -935,8 +932,6 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
   .library-filter{width:100%}
   .word-result-card,.word-result-card.compact{grid-template-columns:1fr}
   .word-result-card .fc-visual{max-width:260px}
-  .listen-toggle{display:grid;place-items:center;flex:0 0 34px;padding:0;border-radius:50%}
-  .listen-toggle span{display:none}
   .main-tabs,.main-tabs.a1-tabs{display:flex;gap:7px;overflow-x:auto;overscroll-behavior-x:contain;
     scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;margin-inline:-12px;padding:4px 12px 10px;
     scrollbar-width:none}
@@ -997,14 +992,10 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
     <h1 id="topTitle">Deutsch Learning<small>Netzwerk neu · A1 + A2</small></h1>
     <button type="button" class="topbar-icon" id="topSearchBtn" aria-label="Wortsuche" title="Wortsuche">&#128269;</button>
     <button type="button" class="topbar-icon" id="topFavoritesBtn" aria-label="Favoriten" title="Favoriten">&#9829;</button>
-    <button type="button" class="listen-toggle" id="listenToggle" aria-pressed="false" title="اضغط ثم اختر أي نص لسماعه">
-      &#128266;<span>Hören</span>
-    </button>
     <button type="button" class="settings-toggle" id="settingsToggle" aria-label="Einstellungen" title="Einstellungen">⚙</button>
     <button type="button" class="ar-toggle" id="arToggle" role="switch" aria-label="Arabische Übersetzung">
       <span>&#1593;</span>
     </button>
-    <button type="button" class="dl-btn" id="dlBtn" title="تحميل الدرس للأوفلاين">⬇</button>
   </header>
   <main id="view"></main>
   <footer class="fnote">
@@ -1019,6 +1010,13 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <div class="modal-backdrop" id="settingsModal" aria-hidden="true">
   <section class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
     <div class="modal-head"><h2 id="settingsTitle">Einstellungen</h2><button class="modal-close" data-close-modal="settingsModal" aria-label="Schließen">×</button></div>
+    <div class="setting-row">
+      <b>Schnellaktionen</b>
+      <div class="settings-actions">
+        <button type="button" class="favorite-btn settings-action" id="listenToggle" aria-pressed="false" title="اضغط ثم اختر أي نص لسماعه">🔇 Hören aus</button>
+        <button type="button" class="favorite-btn settings-action dl-btn" id="dlBtn" title="تحميل الدرس للأوفلاين">⬇ Download</button>
+      </div>
+    </div>
     <div class="setting-row">
       <label for="speechRate">Sprechgeschwindigkeit <span id="speechRateValue">0.85×</span></label>
       <input class="speed-range" id="speechRate" type="range" min="0.55" max="1.3" step="0.05" value="0.85">
@@ -1926,6 +1924,8 @@ function enhanceSpeech(root){
 function setListenMode(on){
   document.body.classList.toggle('listen-mode',on);
   listenToggle.setAttribute('aria-pressed',String(on));
+  listenToggle.classList.toggle('active',on);
+  listenToggle.textContent=on?'🔊 Hören an':'🔇 Hören aus';
   localStorage.setItem('listenModeUserChoice',on?'1':'0');
   if(!on){
     stopFixedSpeech();
@@ -2172,8 +2172,6 @@ function sectionCards(items, extraClass=''){
 }
 
 const A1_SECTIONS=[
-  {route:'word-search',icon:'S',title:'Wortsuche',text:'Suche A1 + A2 und finde Bedeutung, Kapitel, Karte und Beispiel.',ar:'بحث موحد في كل الكلمات.'},
-  {route:'favorites',icon:'H',title:'Favoriten',text:'Deine gespeicherten Wörter aus Auswahl und Suche.',ar:'كلماتك المفضلة.'},
   {route:'a1/lessons',icon:'1',title:'Lektionen',text:'12 Kapitel mit Wortschatz, Grammatik, Lesen, Sprechen und Quiz.',ar:'الدروس الكاملة لمستوى A1.'},
   {route:'a1/dict',icon:'W',title:'Wörterbuch',text:'Alle A1-Wörter mit Suche und Kapitelfilter.',ar:'قاموس كل كلمات A1.'},
   {route:'a1/verbs',icon:'V',title:'Verben',text:'A1-Verben mit Formen, Perfekt und Beispielen.',ar:'تصريف الأفعال الأساسية.'},
@@ -2628,8 +2626,6 @@ const A1_GRAM=A1_GRAMMAR_SCRIPT.map(lesson=>({
 }));
 
 const A2_SECTIONS=[
-  {route:'word-search',icon:'S',title:'Wortsuche',text:'Suche A1 + A2 und finde Bedeutung, Kapitel, Karte und Beispiel.',ar:'بحث موحد في كل الكلمات.'},
-  {route:'favorites',icon:'H',title:'Favoriten',text:'Deine gespeicherten Wörter aus Auswahl und Suche.',ar:'كلماتك المفضلة.'},
   {route:'a2/lessons',icon:'2',title:'Lektionen',text:'Netzwerk neu A2.1 + A2.2 und Grammatik-Skript.',ar:'دروس A2 ومذكرة القواعد.'},
   {route:'dict',icon:'W',title:'Wörterbuch',text:'Alle A2-Wörter mit Suche und Kapitelfilter.',ar:'قاموس كل كلمات A2.'},
   {route:'verbs',icon:'V',title:'Verben',text:'Konjugation, Präteritum und Perfekt.',ar:'تصريف الأفعال.'},
@@ -5654,7 +5650,7 @@ if ('serviceWorker' in navigator) {
     if (!urls.size) { showSpeechStatus('لا توجد ملفات وسائط في هذا الدرس'); return; }
 
     showSpeechStatus('جاري التحميل… ' + urls.size + ' ملف');
-    dlBtn.textContent = '⏳';
+    dlBtn.textContent = '⏳ Download';
     dlBtn.disabled = true;
 
     if (_handler) navigator.serviceWorker.removeEventListener('message', _handler);
@@ -5662,11 +5658,11 @@ if ('serviceWorker' in navigator) {
       if (!e.data || e.data.type !== 'lesson-cached') return;
       navigator.serviceWorker.removeEventListener('message', _handler);
       _handler = null;
-      dlBtn.textContent = '✓';
+      dlBtn.textContent = '✓ Saved';
       dlBtn.classList.add('cached');
       dlBtn.disabled = false;
       showSpeechStatus('تم الحفظ للأوفلاين ✓');
-      setTimeout(() => { dlBtn.textContent = '⬇'; dlBtn.classList.remove('cached'); }, 4000);
+      setTimeout(() => { dlBtn.textContent = '⬇ Download'; dlBtn.classList.remove('cached'); }, 4000);
     };
     navigator.serviceWorker.addEventListener('message', _handler);
 
