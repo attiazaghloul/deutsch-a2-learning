@@ -319,6 +319,17 @@ table.gt b{color:var(--green-d)}
 .dictionary-meta{font-size:11px;color:var(--ink-2);background:var(--green-l);border-radius:999px;padding:3px 8px;height:max-content}
 .dictionary-definition{font-size:14px;margin-top:3px}
 .dictionary-example{font-size:13px;color:var(--ink-2);font-style:italic;margin-top:3px}
+.word-result-card{display:grid;grid-template-columns:minmax(118px,170px) minmax(0,1fr);gap:16px;align-items:start}
+.word-result-card.compact{grid-template-columns:96px minmax(0,1fr);gap:12px;padding:12px;margin-bottom:10px;border-radius:14px}
+.word-result-card .fc-visual{width:100%;margin:0;border-radius:18px}
+.word-result-card.compact .fc-visual{border-radius:14px;border-width:3px}
+.word-result-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.word-result-title{font-size:21px;font-weight:900;color:var(--green-d);line-height:1.25}
+.word-result-meta{display:flex;flex-wrap:wrap;gap:6px;margin:7px 0 9px}
+.word-result-meta span{background:var(--blue-l);color:var(--blue);border-radius:999px;padding:3px 8px;font-size:11px;font-weight:800}
+.word-result-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.word-result-empty{padding:18px;text-align:center;color:var(--ink-2)}
+.custom-favorite-card{border-left:4px solid var(--red)}
 .expression-card{border-left:4px solid var(--amber)}
 .expression-de{font-size:18px;font-weight:800;color:var(--green-d)}
 .expression-meaning{font-size:14px;margin-top:6px}
@@ -451,6 +462,10 @@ body.has-route .dl-btn{display:flex}
   border-radius:999px;padding:8px 12px;font-family:"Cairo","Tahoma",sans-serif;font-size:12px;box-shadow:var(--shadow);
   cursor:pointer;max-width:min(280px,85vw);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .translate-trigger.show{display:block}
+.translate-favorite-trigger{position:fixed;z-index:96;display:none;width:36px;height:36px;border:0;border-radius:50%;
+  background:#fff;color:var(--red);box-shadow:var(--shadow);font-size:18px;font-weight:900;cursor:pointer}
+.translate-favorite-trigger.show{display:block}
+.translate-favorite-trigger.active{background:var(--red);color:#fff}
 .translation-source{background:var(--blue-l);border-radius:11px;padding:10px 12px;font-size:14px;margin-bottom:10px;
   line-height:1.75;white-space:pre-wrap;overflow-wrap:anywhere}
 .translation-source mark{background:#ffe08a;color:var(--ink);border-radius:5px;padding:0 3px}
@@ -462,6 +477,12 @@ body.has-route .dl-btn{display:flex}
 .translation-result{font-family:"Cairo","Tahoma",sans-serif;direction:rtl;text-align:right;background:var(--ar-l);
   border:1px solid #eee7ef;border-radius:12px;padding:12px;font-size:14px;line-height:1.8;min-height:48px}
 .translation-note{font-family:"Cairo","Tahoma",sans-serif;direction:rtl;text-align:right;color:var(--ink-2);font-size:11px;margin-top:8px}
+.translation-actions{display:flex;flex-wrap:wrap;gap:8px;margin:-2px 0 12px}
+.favorite-btn{border:1px solid var(--line);background:#fff;color:var(--red);border-radius:999px;padding:8px 11px;
+  font:inherit;font-size:13px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.favorite-btn.active{background:var(--red-l);border-color:#efc1bd;color:var(--red)}
+.favorite-btn .heart{font-size:17px;line-height:1}
+.translation-dictionary-hit{margin-top:12px}
 .chapter-visual{padding:0}
 .chapter-visual img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;background:#fff}
 .chapter-visual--wide img{aspect-ratio:16/9;object-fit:cover}
@@ -910,6 +931,8 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
   .lesson-thumb{width:74px;height:42px}
   .search-row{flex-direction:column}
   .library-filter{width:100%}
+  .word-result-card,.word-result-card.compact{grid-template-columns:1fr}
+  .word-result-card .fc-visual{max-width:260px}
   .listen-toggle{display:grid;place-items:center;flex:0 0 34px;width:34px;height:34px;padding:0;border-radius:50%}
   .listen-toggle span{display:none}
   .main-tabs,.main-tabs.a1-tabs{display:flex;gap:7px;overflow-x:auto;overscroll-behavior-x:contain;
@@ -988,6 +1011,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <div class="speech-status" id="speechStatus" role="status"></div>
 <div id="offline-banner" role="status" aria-live="polite">لا يوجد اتصال بالإنترنت — المحتوى المحفوظ متاح للمذاكرة</div>
 <button type="button" class="translate-trigger" id="translateTrigger">ترجمة في السياق</button>
+<button type="button" class="translate-favorite-trigger" id="translateFavoriteTrigger" aria-label="Favorit">&#9825;</button>
 <div class="modal-backdrop" id="settingsModal" aria-hidden="true">
   <section class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
     <div class="modal-head"><h2 id="settingsTitle">Einstellungen</h2><button class="modal-close" data-close-modal="settingsModal" aria-label="Schließen">×</button></div>
@@ -1025,10 +1049,15 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
   <section class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="translationTitle">
     <div class="modal-head"><h2 id="translationTitle">Kontextübersetzung</h2><button class="modal-close" data-close-modal="translationModal" aria-label="Schließen">×</button></div>
     <div class="translation-word"><b id="translationWord"></b><span id="translationWordMeaning"></span></div>
+    <div class="translation-actions">
+      <button type="button" class="favorite-btn" id="translationFavoriteBtn"><span class="heart">&#9825;</span><span>Favorit</span></button>
+      <button type="button" class="favorite-btn" id="translationSearchBtn"><span>Search</span></button>
+    </div>
     <div class="translation-context">Satz im Kontext</div>
     <div class="translation-source" id="translationSentence"></div>
     <div class="translation-context">ترجمة الجملة</div>
     <div class="translation-result" id="translationSentenceResult">جارٍ الترجمة...</div>
+    <div class="translation-dictionary-hit" id="translationDictionaryHit"></div>
     <div class="translation-note">الترجمة بتستخدم الجملة المحيطة لفهم المعنى. لو ترجمة الجهاز غير متاحة، يُرسل سياق النص التعليمي لخدمة الترجمة عبر الإنترنت.</div>
   </section>
 </div>
@@ -1157,6 +1186,216 @@ let speechProfile=localStorage.getItem('speechProfile')||'clear';
 let pendingTranslation=null;
 let translationRequest=0;
 const translateTrigger=$('#translateTrigger');
+const translateFavoriteTrigger=$('#translateFavoriteTrigger');
+const FAVORITE_WORDS_KEY='favoriteWordsV1';
+const WORD_SEARCH_PREFILL_KEY='wordSearchPrefill';
+
+function normalizeWordForSearch(value){
+  return String(value||'').toLocaleLowerCase('de-DE')
+    .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .replace(/ß/g,'ss')
+    .replace(/[^A-Za-z0-9\u00C0-\u024F\u0600-\u06FF\s]+/g,' ')
+    .replace(/\s+/g,' ')
+    .trim();
+}
+
+function bareWordKey(value){
+  return normalizeWordForSearch(value)
+    .replace(/^(der|die|das|ein|eine|einen|einem|einer)\s+/,'')
+    .replace(/^sich\s+/,'')
+    .replace(/\s*,\s*.*/,'')
+    .trim();
+}
+
+function stableFavoriteHash(value){
+  return [...String(value||'')].reduce((hash,char)=>((hash*33)^char.codePointAt(0))>>>0,5381).toString(36);
+}
+
+function wordEntryId(level,chapter,index,item){
+  return `${level}-k${chapter.num}-${index}-${stableFavoriteHash(item.w)}`;
+}
+
+function allVocabularyEntries(){
+  const make=(level,chapters)=>chapters.flatMap(chapter=>(chapter.vocab||[]).map((item,index)=>{
+    const word=plainText(item.w);
+    const definition=plainText(item.d);
+    const example=plainText(item.ex||'');
+    const meaning=plainText(item.ar||'');
+    return {
+      id:wordEntryId(level,chapter,index,item),
+      level,
+      chapter,
+      item,
+      route:chapter.route?`${chapter.route}/wortschatz`:`k${chapter.num}/wortschatz`,
+      word,
+      key:normalizeWordForSearch(word),
+      bareKey:bareWordKey(word),
+      search:normalizeWordForSearch(`${word} ${definition} ${example} ${meaning} Kapitel ${chapter.num} ${chapter.title||''}`)
+    };
+  }));
+  return [...make('A1',A1_BOOK),...make('A2',BOOK)];
+}
+
+function findWordEntry(value){
+  const query=normalizeWordForSearch(value);
+  const bare=bareWordKey(value);
+  if(!query) return null;
+  const entries=allVocabularyEntries();
+  return entries.find(entry=>entry.key===query || entry.bareKey===bare)
+    ||entries.find(entry=>entry.bareKey && (entry.bareKey.includes(bare) || bare.includes(entry.bareKey)))
+    ||entries.find(entry=>entry.search.includes(query));
+}
+
+function favoriteList(){
+  try{
+    const list=JSON.parse(localStorage.getItem(FAVORITE_WORDS_KEY)||'[]');
+    return Array.isArray(list)?list:[];
+  }catch(error){ return []; }
+}
+
+function saveFavoriteList(list){
+  localStorage.setItem(FAVORITE_WORDS_KEY,JSON.stringify(list));
+}
+
+function favoriteFromEntry(entry){
+  return {
+    id:entry.id,
+    dictionaryId:entry.id,
+    word:entry.word,
+    displayWord:entry.item.w,
+    meaning:entry.item.ar||entry.item.d||'',
+    definition:plainText(entry.item.d),
+    example:entry.item.ex||'',
+    level:entry.level,
+    chapter:entry.chapter.num,
+    title:entry.chapter.title||'',
+    route:entry.route,
+    createdAt:new Date().toISOString()
+  };
+}
+
+function favoriteFromTranslation(translation){
+  const entry=findWordEntry(translation.selected);
+  if(entry) return favoriteFromEntry(entry);
+  const key=bareWordKey(translation.selected)||normalizeWordForSearch(translation.selected);
+  return {
+    id:`custom-${stableFavoriteHash(key||translation.selected)}`,
+    word:translation.selected,
+    displayWord:translation.selected,
+    meaning:translation.wordTranslation||translation.dictionaryFallback||'',
+    definition:'',
+    example:'',
+    context:translation.context||'',
+    sentenceTranslation:translation.sentenceTranslation||'',
+    level:'',
+    chapter:'',
+    title:'',
+    route:'',
+    createdAt:new Date().toISOString()
+  };
+}
+
+function isFavoriteId(id){
+  if(!id) return false;
+  return favoriteList().some(item=>item.id===id || item.dictionaryId===id);
+}
+
+function setFavoriteButtonState(button,active){
+  if(!button) return;
+  button.classList.toggle('active',active);
+  const heart=button.querySelector('.heart');
+  if(heart) heart.innerHTML=active?'&#9829;':'&#9825;';
+  else button.innerHTML=active?'&#9829;':'&#9825;';
+  button.setAttribute('aria-pressed',String(active));
+}
+
+function updateFavoriteButtonsInView(){
+  $$('[data-favorite-id]').forEach(button=>setFavoriteButtonState(button,isFavoriteId(button.dataset.favoriteId)));
+  updateTranslationFavoriteButtons();
+}
+
+function toggleFavoriteWord(payload){
+  const list=favoriteList();
+  const index=list.findIndex(item=>item.id===payload.id || (payload.dictionaryId&&item.dictionaryId===payload.dictionaryId));
+  if(index>=0){
+    list.splice(index,1);
+    saveFavoriteList(list);
+    return false;
+  }
+  list.unshift({...payload,createdAt:payload.createdAt||new Date().toISOString()});
+  saveFavoriteList(list.slice(0,300));
+  return true;
+}
+
+function toggleDictionaryFavorite(id){
+  const entry=allVocabularyEntries().find(item=>item.id===id);
+  if(!entry) return;
+  toggleFavoriteWord(favoriteFromEntry(entry));
+  if(location.hash==='#favorites') renderFavorites();
+  else updateFavoriteButtonsInView();
+}
+
+function removeFavoriteById(id){
+  saveFavoriteList(favoriteList().filter(item=>item.id!==id && item.dictionaryId!==id));
+  renderFavorites();
+}
+
+function currentTranslationFavoritePayload(){
+  return pendingTranslation?favoriteFromTranslation(pendingTranslation):null;
+}
+
+function updateTranslationFavoriteButtons(){
+  const payload=currentTranslationFavoritePayload();
+  const active=payload?isFavoriteId(payload.id)||isFavoriteId(payload.dictionaryId):false;
+  setFavoriteButtonState(translateFavoriteTrigger,active);
+  setFavoriteButtonState($('#translationFavoriteBtn'),active);
+}
+
+function togglePendingFavorite(){
+  const payload=currentTranslationFavoritePayload();
+  if(!payload) return;
+  toggleFavoriteWord(payload);
+  updateFavoriteButtonsInView();
+}
+
+function openWordSearchFor(value){
+  const query=String(value||'').trim();
+  if(query) localStorage.setItem(WORD_SEARCH_PREFILL_KEY,query);
+  closeModal('translationModal');
+  go('word-search');
+}
+
+function wordResultCard(entry,{compact=false}={}){
+  const active=isFavoriteId(entry.id);
+  return `<article class="card word-result-card ${compact?'compact':''}">
+    <div class="word-result-visual">${vocabVisual(entry.item,entry.chapter.num)}</div>
+    <div>
+      <div class="word-result-head">
+        <div class="word-result-title">${fmtWord(entry.item.w)}</div>
+        <button type="button" class="favorite-btn ${active?'active':''}" data-favorite-id="${escapeHtml(entry.id)}" onclick="toggleDictionaryFavorite('${escapeHtml(entry.id)}')" aria-pressed="${active?'true':'false'}">
+          <span class="heart">${active?'&#9829;':'&#9825;'}</span><span>Favorit</span>
+        </button>
+      </div>
+      <div class="word-result-meta"><span>${entry.level}</span><span>Kapitel ${entry.chapter.num}</span><span>${escapeHtml(entry.chapter.title||'')}</span></div>
+      <div class="dictionary-definition">${entry.item.d}</div>
+      ${entry.item.ex?`<div class="dictionary-example">"${escapeHtml(entry.item.ex)}"</div>`:''}
+      ${ar(entry.item.ar)}
+      <div class="word-result-actions"><button type="button" class="btn btn-ghost" onclick="go('${entry.route}')">Zur Lektion</button></div>
+    </div>
+  </article>`;
+}
+
+function customFavoriteCard(item){
+  const id=escapeHtml(item.id);
+  return `<article class="card custom-favorite-card">
+    <div class="word-result-head">
+      <div class="word-result-title">${escapeHtml(item.displayWord||item.word)}</div>
+      <button type="button" class="favorite-btn active" onclick="removeFavoriteById('${id}')"><span class="heart">&#9829;</span><span>Entfernen</span></button>
+    </div>
+    ${item.meaning?`<div class="translation-result">${escapeHtml(item.meaning)}</div>`:''}
+    ${item.context?`<div class="translation-source">${escapeHtml(item.context)}</div>`:''}
+  </article>`;
+}
 
 function openModal(id){
   const modal=$('#'+id);
@@ -1318,12 +1557,10 @@ function selectionContext(selection){
 }
 
 function knownWordTranslation(value){
-  const normalized=value.toLocaleLowerCase('de-DE').replace(/^(der|die|das)\s+/,'').trim();
-  const vocabulary=BOOK.flatMap(chapter=>chapter.vocab);
-  const entry=vocabulary.find(item=>
-    item.w.toLocaleLowerCase('de-DE').replace(/^(der|die|das)\s+/,'').split(',')[0].trim()===normalized);
-  if(entry?.ar) return entry.ar;
-  const verb=VERBS.find(item=>item.inf.toLocaleLowerCase('de-DE').replace(/^sich\s+/,'')===normalized);
+  const entry=findWordEntry(value);
+  if(entry?.item?.ar) return entry.item.ar;
+  const normalized=bareWordKey(value);
+  const verb=[...A1_VERBS,...VERBS].find(item=>bareWordKey(item.inf)===normalized);
   return verb?.ar||null;
 }
 
@@ -1335,12 +1572,13 @@ async function requestTranslation(text,sourceLanguage,targetLanguage){
 async function captureSelection(){
   if(document.body.classList.contains('exam-mode')){
     translateTrigger.classList.remove('show');
+    translateFavoriteTrigger.classList.remove('show');
     pendingTranslation=null;
     return;
   }
   const selection=window.getSelection();
   const data=selectionContext(selection);
-  if(!data){ translateTrigger.classList.remove('show'); return; }
+  if(!data){ translateTrigger.classList.remove('show'); translateFavoriteTrigger.classList.remove('show'); return; }
   const requestId=++translationRequest;
   const hasArabic=/[\u0600-\u06ff]/.test(data.selected);
   const sourceLanguage=hasArabic?'ar':'de';
@@ -1348,9 +1586,15 @@ async function captureSelection(){
   const known=!hasArabic?knownWordTranslation(data.selected):null;
   pendingTranslation={...data,sourceLanguage,targetLanguage,wordTranslation:'',dictionaryFallback:known||'',sentenceTranslation:''};
   translateTrigger.textContent='ترجمة في السياق';
-  translateTrigger.style.left=`${Math.max(8,Math.min(window.innerWidth-290,data.rect.left))}px`;
-  translateTrigger.style.top=`${Math.max(70,Math.min(window.innerHeight-48,data.rect.bottom+7))}px`;
+  const bubbleLeft=Math.max(8,Math.min(window.innerWidth-290,data.rect.left));
+  const bubbleTop=Math.max(70,Math.min(window.innerHeight-48,data.rect.bottom+7));
+  translateTrigger.style.left=`${bubbleLeft}px`;
+  translateTrigger.style.top=`${bubbleTop}px`;
+  translateFavoriteTrigger.style.left=`${Math.max(8,Math.min(window.innerWidth-44,bubbleLeft+236))}px`;
+  translateFavoriteTrigger.style.top=`${bubbleTop}px`;
   translateTrigger.classList.add('show');
+  translateFavoriteTrigger.classList.add('show');
+  updateTranslationFavoriteButtons();
   const wordPromise=requestTranslation(data.selected,sourceLanguage,targetLanguage).catch(error=>{
     if(known) return known;
     throw error;
@@ -1372,14 +1616,17 @@ async function captureSelection(){
 }
 
 document.addEventListener('mouseup',event=>{
-  if(event.target.closest('#translateTrigger,.modal-backdrop,button,input,select')) return;
+  if(event.target.closest('#translateTrigger,#translateFavoriteTrigger,.modal-backdrop,button,input,select')) return;
   setTimeout(captureSelection,0);
 });
 document.addEventListener('touchend',event=>{
-  if(event.target.closest('#translateTrigger,.modal-backdrop,button,input,select')) return;
+  if(event.target.closest('#translateTrigger,#translateFavoriteTrigger,.modal-backdrop,button,input,select')) return;
   setTimeout(captureSelection,80);
 });
-document.addEventListener('scroll',()=>translateTrigger.classList.remove('show'),{passive:true});
+document.addEventListener('scroll',()=>{
+  translateTrigger.classList.remove('show');
+  translateFavoriteTrigger.classList.remove('show');
+},{passive:true});
 
 async function translateWithBrowser(text,sourceLanguage,targetLanguage){
   if(!('Translator' in window)) return null;
@@ -1406,6 +1653,7 @@ async function translateWithInternet(text,sourceLanguage,targetLanguage){
 async function showTranslationDetails(){
   if(!pendingTranslation) return;
   translateTrigger.classList.remove('show');
+  translateFavoriteTrigger.classList.remove('show');
   const current=pendingTranslation;
   $('#translationWord').textContent=current.selected;
   $('#translationWordMeaning').textContent=current.wordTranslation||'جارٍ الترجمة...';
@@ -1416,6 +1664,11 @@ async function showTranslationDetails(){
     ||(current.targetLanguage==='ar'?'جارٍ ترجمة الجملة...':'Der Satz wird übersetzt ...');
   $('#translationSentenceResult').style.direction=current.targetLanguage==='ar'?'rtl':'ltr';
   $('#translationSentenceResult').style.textAlign=current.targetLanguage==='ar'?'right':'left';
+  const dictionaryEntry=findWordEntry(current.selected);
+  $('#translationDictionaryHit').innerHTML=dictionaryEntry
+    ?`<div class="translation-context">Wortschatz-Karte</div>${wordResultCard(dictionaryEntry,{compact:true})}`
+    :'';
+  updateTranslationFavoriteButtons();
   openModal('translationModal');
   try{
     if(!current.wordTranslation){
@@ -1434,6 +1687,13 @@ async function showTranslationDetails(){
 }
 
 translateTrigger.addEventListener('click',showTranslationDetails);
+translateFavoriteTrigger.addEventListener('click',event=>{
+  event.preventDefault();
+  event.stopPropagation();
+  togglePendingFavorite();
+});
+$('#translationFavoriteBtn').addEventListener('click',togglePendingFavorite);
+$('#translationSearchBtn').addEventListener('click',()=>openWordSearchFor(pendingTranslation?.selected));
 
 /* ===================== speech ===================== */
 const speech = window.speechSynthesis;
@@ -1782,7 +2042,7 @@ $('#homeBtn').addEventListener('click',()=>go(''));
 
 function applyLevelTheme(hash){
   const isA1=hash==='a1'||hash.startsWith('a1/');
-  const isA2=hash==='a2'||hash.startsWith('a2/')||['dict','verbs','phrases','listen','exam','podcast','games'].includes(hash)
+  const isA2=hash==='a2'||hash.startsWith('a2/')||['dict','verbs','phrases','listen','exam','podcast','games','word-search','favorites'].includes(hash)
     ||/^(k|g)\d+/.test(hash);
   document.body.classList.toggle('level-a1',isA1);
   document.body.classList.toggle('level-a2',isA2);
@@ -1804,11 +2064,14 @@ function route(){
     translationRequest++;
     pendingTranslation=null;
     translateTrigger.classList.remove('show');
+    translateFavoriteTrigger.classList.remove('show');
     closeModal('translationModal');
     window.getSelection()?.removeAllRanges();
   }
   window.scrollTo(0,0);
   if(!h){ renderLevelSelector(); return; }
+  if(h==='word-search'){ renderWordSearch(); return; }
+  if(h==='favorites'){ renderFavorites(); return; }
   if(h==='a1'){ renderA1Hub(); return; }
   if(h==='a1/lessons'){ renderA1Home(); return; }
   if(h==='a1/dict'){ renderA1Dictionary(); return; }
@@ -1903,6 +2166,8 @@ function sectionCards(items, extraClass=''){
 }
 
 const A1_SECTIONS=[
+  {route:'word-search',icon:'S',title:'Wortsuche',text:'Suche A1 + A2 und finde Bedeutung, Kapitel, Karte und Beispiel.',ar:'بحث موحد في كل الكلمات.'},
+  {route:'favorites',icon:'H',title:'Favoriten',text:'Deine gespeicherten Wörter aus Auswahl und Suche.',ar:'كلماتك المفضلة.'},
   {route:'a1/lessons',icon:'1',title:'Lektionen',text:'12 Kapitel mit Wortschatz, Grammatik, Lesen, Sprechen und Quiz.',ar:'الدروس الكاملة لمستوى A1.'},
   {route:'a1/dict',icon:'W',title:'Wörterbuch',text:'Alle A1-Wörter mit Suche und Kapitelfilter.',ar:'قاموس كل كلمات A1.'},
   {route:'a1/verbs',icon:'V',title:'Verben',text:'A1-Verben mit Formen, Perfekt und Beispielen.',ar:'تصريف الأفعال الأساسية.'},
@@ -2357,6 +2622,8 @@ const A1_GRAM=A1_GRAMMAR_SCRIPT.map(lesson=>({
 }));
 
 const A2_SECTIONS=[
+  {route:'word-search',icon:'S',title:'Wortsuche',text:'Suche A1 + A2 und finde Bedeutung, Kapitel, Karte und Beispiel.',ar:'بحث موحد في كل الكلمات.'},
+  {route:'favorites',icon:'H',title:'Favoriten',text:'Deine gespeicherten Wörter aus Auswahl und Suche.',ar:'كلماتك المفضلة.'},
   {route:'a2/lessons',icon:'2',title:'Lektionen',text:'Netzwerk neu A2.1 + A2.2 und Grammatik-Skript.',ar:'دروس A2 ومذكرة القواعد.'},
   {route:'dict',icon:'W',title:'Wörterbuch',text:'Alle A2-Wörter mit Suche und Kapitelfilter.',ar:'قاموس كل كلمات A2.'},
   {route:'verbs',icon:'V',title:'Verben',text:'Konjugation, Präteritum und Perfekt.',ar:'تصريف الأفعال.'},
@@ -3332,6 +3599,99 @@ view.addEventListener('click',event=>{
   $('#bookPageLarge').alt=`Buchseite ${page}`;
   openModal('bookPageModal');
 });
+
+/* ===================== global word search and favorites ===================== */
+function renderWordSearch(){
+  setTop('Wortsuche','A1 + A2 Wortschatz',true);
+  const entries=allVocabularyEntries();
+  const prefill=localStorage.getItem(WORD_SEARCH_PREFILL_KEY)||'';
+  localStorage.removeItem(WORD_SEARCH_PREFILL_KEY);
+  view.innerHTML=`
+    <div class="hero"><h2>Wortsuche</h2>
+      <p>Suche ein Wort und finde Bedeutung, Niveau, Kapitel, Karte und Beispiel.</p>
+    </div>
+    <div class="search-panel">
+      <div class="search-row">
+        <input class="library-search" id="wordSearchInput" type="search" placeholder="Wort oder Bedeutung suchen..." value="${escapeHtml(prefill)}" aria-label="Wort suchen">
+        <select class="library-filter" id="wordSearchLevel" aria-label="Niveau filtern">
+          <option value="">A1 + A2</option>
+          <option value="A1">A1</option>
+          <option value="A2">A2</option>
+        </select>
+      </div>
+      <div class="result-count" id="wordSearchCount"></div>
+    </div>
+    <div id="wordSearchResults"></div>`;
+  const input=$('#wordSearchInput');
+  const level=$('#wordSearchLevel');
+  const results=$('#wordSearchResults');
+  const draw=()=>{
+    const query=normalizeWordForSearch(input.value);
+    if(query.length<2){
+      $('#wordSearchCount').textContent=`${entries.length} Wörter verfügbar`;
+      results.innerHTML='<div class="card word-result-empty">Gib mindestens zwei Zeichen ein.</div>';
+      return;
+    }
+    const found=entries.filter(entry=>
+      (!level.value||entry.level===level.value)&&entry.search.includes(query)
+    ).sort((a,b)=>{
+      const exactA=(a.key===query||a.bareKey===query)?0:1;
+      const exactB=(b.key===query||b.bareKey===query)?0:1;
+      return exactA-exactB || a.level.localeCompare(b.level) || a.chapter.num-b.chapter.num;
+    }).slice(0,60);
+    $('#wordSearchCount').textContent=`${found.length} Treffer`;
+    results.innerHTML=found.length
+      ?found.map(entry=>wordResultCard(entry)).join('')
+      :'<div class="card word-result-empty">Keine passende Karte gefunden.</div>';
+  };
+  input.addEventListener('input',draw);
+  level.addEventListener('change',draw);
+  draw();
+  if(prefill) input.focus();
+}
+
+function renderFavorites(){
+  setTop('Favoriten','Gespeicherte Wörter',true);
+  const saved=favoriteList();
+  view.innerHTML=`
+    <div class="hero"><h2>Favoriten</h2>
+      <p>Alle Wörter, die du mit dem Herz gespeichert hast.</p>
+    </div>
+    <div class="search-panel">
+      <div class="search-row">
+        <input class="library-search" id="favoriteSearch" type="search" placeholder="In Favoriten suchen..." aria-label="Favoriten suchen">
+        <button type="button" class="btn btn-ghost" onclick="go('word-search')">Wortsuche</button>
+      </div>
+      <div class="result-count" id="favoriteCount"></div>
+    </div>
+    <div id="favoriteResults"></div>`;
+  const input=$('#favoriteSearch');
+  const results=$('#favoriteResults');
+  const entriesById=new Map(allVocabularyEntries().map(entry=>[entry.id,entry]));
+  const draw=()=>{
+    const query=normalizeWordForSearch(input.value);
+    const visible=saved.filter(item=>{
+      const entry=entriesById.get(item.dictionaryId||item.id);
+      const text=entry
+        ?entry.search
+        :normalizeWordForSearch(`${item.word||''} ${item.meaning||''} ${item.context||''}`);
+      return !query || text.includes(query);
+    });
+    $('#favoriteCount').textContent=`${visible.length} / ${saved.length} Wörter`;
+    if(!saved.length){
+      results.innerHTML='<div class="card word-result-empty">Noch keine Favoriten. Markiere ein Wort und tippe auf das Herz.</div>';
+      return;
+    }
+    results.innerHTML=visible.length
+      ?visible.map(item=>{
+        const entry=entriesById.get(item.dictionaryId||item.id);
+        return entry?wordResultCard(entry):customFavoriteCard(item);
+      }).join('')
+      :'<div class="card word-result-empty">Kein Favorit passt zu deiner Suche.</div>';
+  };
+  input.addEventListener('input',draw);
+  draw();
+}
 
 /* ===================== dictionary and expressions ===================== */
 function renderDictionary(){
