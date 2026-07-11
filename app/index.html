@@ -1087,6 +1087,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <script src="data_book1.js"></script>
 <script src="data_book2.js"></script>
 <script src="data_extra.js"></script>
+<script src="data_lernwortschatz8.js?v=lernwortschatz8-1"></script>
 <script src="data_enrichment.js"></script>
 <script src="data_verbs.js"></script>
 <script src="data_a21_library.js"></script>
@@ -5410,6 +5411,12 @@ function vocabVisual(v,chapter){
   }
   if(!chapterData){
     return fallbackVocabSticker(v, null, 'DE');
+  }
+  if(v.img){
+    return `<div class="fc-visual" role="img" aria-label="${escapeHtml(v.w)}">
+      <img class="fc-scene" src="${escapeHtml(v.img)}" alt="" width="420" height="420" loading="eager" decoding="async">
+      <span class="sticker-category">${escapeHtml(v.cat||`Kapitel ${chapterData.num}`)}</span>
+    </div>`;
   }
   const cardIndex=chapterData.vocab.indexOf(v);
   const realPhotoLimit=A2_REAL_PHOTO_LIMIT[chapterData.num]||0;
