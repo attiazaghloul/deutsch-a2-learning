@@ -147,6 +147,7 @@ body.exam-mode .ar{display:none!important}
 .section-card span{display:block;color:var(--ink-2);font-size:12.5px;line-height:1.45}
 .chapter-tab-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:18px}
 .chapter-tab-card{min-height:0;padding:10px}
+.chapter-tab-card.a2-chapter-tab-card .section-card-img{aspect-ratio:3/2;object-fit:contain;object-position:center}
 .chapter-tab-card b{font-size:14.5px}
 .chapter-tab-card span span{font-size:11.5px}
 .a1-roadmap{display:flex;flex-direction:column;gap:10px}
@@ -1722,7 +1723,8 @@ function prepareSpeechText(text,{vocabulary=false}={}){
     .trim();
   if(vocabulary){
     value=value
-      .replace(/\s*,\s*-.*/,'')
+      .replace(/\s*,.*$/,'')
+      .replace(/\s+\((?:Sg\.|Pl\.)\)\s*$/i,'')
       .replace(/\s+/g,' ')
       .trim();
   }
@@ -4918,6 +4920,17 @@ function chapterTabTitle(id,label){
 }
 
 function chapterTabImage(c,id){
+  if(!c.route?.startsWith('a1/')){
+    const chapter=c.num;
+    const alt=`Kapitel ${chapter} · ${chapterTabTitle(id,id)}`;
+    if(chapter<=6){
+      const generatedIndex={ueberblick:1,wortschatz:2,lesen:3,redemittel:4,grammatik:5,sprechen:6,quiz:7}[id];
+      return {src:`assets/section-covers/k${chapter}/${generatedIndex}.webp`,alt};
+    }
+    const generatedIndex={wortschatz:2,lesen:3,redemittel:4,grammatik:5,sprechen:1,quiz:6}[id];
+    if(id==='ueberblick') return {src:`assets/chapters/chapter-${chapter}.webp`,alt};
+    return {src:`assets/section-covers/k${chapter}/${generatedIndex}.webp`,alt};
+  }
   const sceneIndex={lesen:0,wortschatz:1,sprechen:1,redemittel:2,quiz:2,grammatik:3}[id];
   if(id==='ueberblick') return c.visual||c.scenes?.[0]||c.topicVisuals?.[0];
   if(id==='wortschatz') return c.topicVisuals?.[0]||c.scenes?.[sceneIndex]||c.visual;
@@ -4938,7 +4951,7 @@ function renderChapterMenu(c){
     <section class="chapter-tab-grid">${TABS.map(([id,lbl])=>{
       const img=chapterTabImage(c,id);
       return `
-      <button type="button" class="section-card chapter-tab-card" onclick="go('${routeBase}/${id}')">
+      <button type="button" class="section-card chapter-tab-card ${isA1?'a1-chapter-tab-card':'a2-chapter-tab-card'}" onclick="go('${routeBase}/${id}')">
         ${img?.src?`<img class="section-card-img" src="${img.src}" alt="${escapeHtml(img.alt||chapterTabTitle(id,lbl))}" loading="lazy" decoding="async">`:''}
         <span class="icon" aria-hidden="true"></span>
         <span><b>${chapterTabTitle(id,lbl)}</b><span>${chapterTabDescription(id)}</span></span>
@@ -5370,6 +5383,9 @@ const A2_REAL_PHOTO_LIMIT = {
   1:40, 2:40, 3:34, 4:36, 5:34, 6:40,
   7:136, 8:49, 9:49, 10:52, 11:49, 12:52
 };
+const A2_EXTRA_REAL_PHOTOS = {
+  7:new Set([140,144,145])
+};
 
 function stableWordHash(value){
   return [...value].reduce((hash,char)=>(hash*31+char.codePointAt(0))>>>0,7);
@@ -5397,8 +5413,10 @@ function vocabVisual(v,chapter){
   }
   const cardIndex=chapterData.vocab.indexOf(v);
   const realPhotoLimit=A2_REAL_PHOTO_LIMIT[chapterData.num]||0;
-  if(cardIndex<0 || cardIndex>=realPhotoLimit) return fallbackVocabSticker(v, chapterData, 'A2');
-  const sceneNumber=String(cardIndex+1).padStart(2,'0');
+  const sceneIndex=cardIndex+1;
+  const hasExtraPhoto=A2_EXTRA_REAL_PHOTOS[chapterData.num]?.has(sceneIndex);
+  if(cardIndex<0 || (cardIndex>=realPhotoLimit && !hasExtraPhoto)) return fallbackVocabSticker(v, chapterData, 'A2');
+  const sceneNumber=String(sceneIndex).padStart(2,'0');
   return `<div class="fc-visual" role="img" aria-label="${escapeHtml(v.w)}">
     <img class="fc-scene" src="assets/vocab-scenes/k${chapterData.num}/${sceneNumber}.webp"
       alt="" width="420" height="420" loading="eager" decoding="async">

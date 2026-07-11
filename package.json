@@ -1,0 +1,7 @@
+{
+  "name": "deutsch-a2-learning",
+  "private": true,
+  "scripts": {
+    "test": "node --test"
+  }
+}
