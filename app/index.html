@@ -1240,7 +1240,7 @@ function ensureOfflineDictionary(){
       reject(new Error('Web Worker wird von diesem Browser nicht unterstützt.'));
       return;
     }
-    const worker=new Worker('dictionary-worker.js?v=offline-dict-worker-2');
+    const worker=new Worker('dictionary-worker.js');
     offlineDictionaryWorker=worker;
     worker.addEventListener('message',event=>{
       const message=event.data||{};

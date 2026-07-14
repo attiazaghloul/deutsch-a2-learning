@@ -220,6 +220,8 @@ test('next-generation shell and design system are wired into the offline app', (
   assert.match(css, /@media\(min-width:900px\)/);
   assert.match(worker, /ui-next\.js/);
   assert.match(worker, /styles\/ui-next\.css/);
+  assert.match(worker, /cache\.match\(req, \{ ignoreSearch: true \}\)/, 'Versioned assets must resolve from cache while offline');
+  assert.match(worker, /CACHE_VERSION = 'v28'/);
 });
 
 test('learning interactions expose keyboard and live-region semantics', () => {
@@ -235,4 +237,11 @@ test('mistakes from quizzes, practice, and exams feed the review queue', () => {
   assert.match(ui, /function addMistake\(/);
   assert.ok((html.match(/NextUI\?\.addMistake/g)||[]).length >= 4);
   assert.match(ui, /source:'mistake'/);
+});
+
+test('offline dictionary worker uses the exact pre-cached asset keys', () => {
+  const dictionaryWorker = readFileSync(join(root, 'app', 'dictionary-worker.js'), 'utf8');
+  assert.match(html, /new Worker\('dictionary-worker\.js'\)/);
+  assert.match(dictionaryWorker, /importScripts\('data_dictionary_de_ar\.js'\)/);
+  assert.doesNotMatch(dictionaryWorker, /data_dictionary_de_ar\.js\?v=/);
 });

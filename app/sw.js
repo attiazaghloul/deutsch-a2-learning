@@ -3,7 +3,7 @@
    - Audio/große Bilder: stale-while-revalidate (beim ersten Abruf gecacht)
    - "cache-lesson" Nachricht: cacht alle Audio-Dateien einer Lektion on-demand
    Bei Inhaltsänderungen: CACHE_VERSION erhöhen. */
-const CACHE_VERSION = 'v27';
+const CACHE_VERSION = 'v28';
 const CACHE = 'deutsch-' + CACHE_VERSION;
 
 const CORE = [
@@ -76,7 +76,7 @@ self.addEventListener('message', event => {
     caches.open(CACHE).then(cache =>
       Promise.allSettled(
         urls.map(url =>
-          cache.match(url).then(hit => hit ? null : fetch(url).then(res => {
+          cache.match(url, { ignoreSearch: true }).then(hit => hit ? null : fetch(url).then(res => {
             if (res && res.status === 200) cache.put(url, res);
           }).catch(() => {}))
         )
@@ -95,7 +95,7 @@ self.addEventListener('fetch', event => {
 
   if (req.mode === 'navigate') {
     event.respondWith(
-      fetch(req).catch(() => caches.match('index.html').then(r => r || caches.match('./')))
+      fetch(req).catch(() => caches.match('index.html', { ignoreSearch: true }).then(r => r || caches.match('./', { ignoreSearch: true })))
     );
     return;
   }
@@ -103,7 +103,7 @@ self.addEventListener('fetch', event => {
   // stale-while-revalidate: return cache immediately, update in background
   event.respondWith(
     caches.open(CACHE).then(cache =>
-      cache.match(req).then(cached => {
+      cache.match(req, { ignoreSearch: true }).then(cached => {
         const network = fetch(req).then(res => {
           if (res && res.status === 200 && res.type === 'basic') cache.put(req, res.clone());
           return res;

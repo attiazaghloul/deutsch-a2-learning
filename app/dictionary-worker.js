@@ -17,7 +17,9 @@ function loadDictionary() {
   // The generated data file targets a browser window. A worker's global scope
   // is equivalent for this read-only dataset.
   self.window = self;
-  importScripts('data_dictionary_de_ar.js?v=offline-dict-1');
+  // Keep this URL identical to the key pre-cached by the service worker.
+  // Safari/iOS can otherwise miss the cached response while offline.
+  importScripts('data_dictionary_de_ar.js');
   dictionary = self.OFFLINE_DE_AR || { meta: { entries: 0 }, entries: [] };
   return dictionary;
 }
