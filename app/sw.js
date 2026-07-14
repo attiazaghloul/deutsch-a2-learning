@@ -1,10 +1,9 @@
-
 /* Service Worker – Deutsch Learning (PWA)
    - App-Shell + Daten + kleine Bilder werden vorab gecacht
    - Audio/große Bilder: stale-while-revalidate (beim ersten Abruf gecacht)
    - "cache-lesson" Nachricht: cacht alle Audio-Dateien einer Lektion on-demand
    Bei Inhaltsänderungen: CACHE_VERSION erhöhen. */
-const CACHE_VERSION = 'v23';
+const CACHE_VERSION = 'v24';
 const CACHE = 'deutsch-' + CACHE_VERSION;
 
 const CORE = [
@@ -18,7 +17,7 @@ const CORE = [
   // JS data files
   'data_a1.js','data_a12.js','data_a1_grammar_full.js','data_a1_grammar_lessons.js','data_a1_verbs.js',
   'data_a21_library.js','data_a2_grammar_lessons.js','data_book0.js','data_book0_expansion.js','data_book1.js',
-  'data_book2.js','data_enrichment.js','data_exam.js','data_extra.js','data_gram.js','data_gram_complete.js',
+  'data_book2.js','data_dictionary_de_ar.js','data_enrichment.js','data_exam.js','data_extra.js','data_gram.js','data_gram_complete.js',
   'data_gram_extra.js','data_hoeren.js','data_hoeren_a1.js','data_hoeren_a1_figures.js','data_hoeren_a1_interactive.js',
   'data_hoeren_figures.js','data_hoeren_interactive.js','data_phonetik_a1.js','data_phonetik_a1_figures.js',
   'data_phonetik_a1_interactive.js','data_podcast.js','data_speech_a1.js','data_speech_clean.js','data_verbs.js',
