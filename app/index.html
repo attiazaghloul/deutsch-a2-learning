@@ -320,6 +320,17 @@ table.gt b{color:var(--green-d)}
 .dictionary-meta{font-size:11px;color:var(--ink-2);background:var(--green-l);border-radius:999px;padding:3px 8px;height:max-content}
 .dictionary-definition{font-size:14px;margin-top:3px}
 .dictionary-example{font-size:13px;color:var(--ink-2);font-style:italic;margin-top:3px}
+.offline-dict-results{display:grid;gap:12px;margin-top:14px}
+.offline-dict-card{padding:16px;border:1px solid var(--line);border-radius:16px;background:var(--card)}
+.offline-dict-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.offline-dict-word{font-size:21px;font-weight:900;color:var(--green-d)}
+.offline-dict-pos{font-size:11px;color:var(--ink-2);background:var(--green-l);border-radius:999px;padding:4px 9px;white-space:nowrap}
+.offline-dict-ar{font-size:18px;font-weight:800;line-height:1.7;margin-top:8px;text-align:right;direction:rtl;color:var(--ink)}
+.offline-dict-details{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px}
+.offline-dict-chip{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:4px 8px;color:var(--ink-2)}
+.offline-dict-note{font-size:13px;line-height:1.6;color:var(--ink-2);margin-top:8px}
+.offline-dict-source{margin-top:18px;font-size:12px;line-height:1.6;color:var(--ink-2)}
+.offline-ready{display:inline-flex;align-items:center;gap:7px;background:var(--green-l);color:var(--green-d);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:800;margin-top:8px}
 .word-result-card{display:grid;grid-template-columns:minmax(118px,170px) minmax(0,1fr);gap:16px;align-items:start}
 .word-result-card.compact{grid-template-columns:96px minmax(0,1fr);gap:12px;padding:12px;margin-bottom:10px;border-radius:14px}
 .word-result-card .fc-visual{width:100%;margin:0;border-radius:18px}
@@ -1087,6 +1098,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <script src="data_book1.js"></script>
 <script src="data_book2.js"></script>
 <script src="data_extra.js"></script>
+<script src="data_dictionary_de_ar.js?v=offline-dict-1"></script>
 <script src="data_lernwortschatz8.js?v=lernwortschatz8-1"></script>
 <script src="data_enrichment.js"></script>
 <script src="data_verbs.js"></script>
@@ -1110,6 +1122,7 @@ const view = $('#view');
 const A1_BOOK = window.A1_BOOK || [];
 const BOOK = [...window.BOOK0, ...window.BOOK1, ...window.BOOK2];
 const GRAM = window.GRAM;
+const OFFLINE_DICTIONARY = window.OFFLINE_DE_AR || {meta:{entries:0},entries:[]};
 /* A2-Grammatik: vollständige Skript-Übungen interaktiv (Selbstkorrektur) an die Erklärung anhängen */
 (function attachA2GrammarExercises(){
   const L=window.A2_GRAMMAR_LESSONS||{};
@@ -1209,6 +1222,60 @@ function bareWordKey(value){
     .replace(/^sich\s+/,'')
     .replace(/\s*,\s*.*/,'')
     .trim();
+}
+
+const OFFLINE_POS_LABELS={n:'Nomen',v:'Verb',adj:'Adjektiv',adv:'Adverb',prep:'Präposition',pron:'Pronomen',phrase:'Ausdruck',other:'Wort'};
+let offlineDictionarySearchIndex=null;
+
+function ensureOfflineDictionaryIndex(){
+  if(offlineDictionarySearchIndex) return offlineDictionarySearchIndex;
+  offlineDictionarySearchIndex=OFFLINE_DICTIONARY.entries.map((entry,index)=>({
+    index,
+    de:normalizeWordForSearch(`${entry[0]} ${(entry[7]||[]).join(' ')}`),
+    ar:normalizeWordForSearch((entry[2]||[]).join(' ')),
+    word:normalizeWordForSearch(entry[0]),
+    arabic:(entry[2]||[]).map(normalizeWordForSearch)
+  }));
+  return offlineDictionarySearchIndex;
+}
+
+function searchOfflineDictionary(value,limit=60){
+  const query=normalizeWordForSearch(value);
+  if(query.length<2) return [];
+  const arabicQuery=/[\u0600-\u06ff]/.test(query);
+  const exact=[],prefix=[],contains=[];
+  for(const item of ensureOfflineDictionaryIndex()){
+    const haystack=arabicQuery?item.ar:item.de;
+    if(!haystack.includes(query)) continue;
+    if((arabicQuery&&item.arabic.includes(query))||(!arabicQuery&&item.word===query)) exact.push(item.index);
+    else if((arabicQuery&&item.arabic.some(word=>word.startsWith(query)))||(!arabicQuery&&item.word.startsWith(query))) prefix.push(item.index);
+    else if(contains.length<limit) contains.push(item.index);
+  }
+  return [...exact,...prefix,...contains].slice(0,limit).map(index=>OFFLINE_DICTIONARY.entries[index]);
+}
+
+function offlineDictionaryCard(entry){
+  const [word,pos,arabic,glosses,example,article,plurals,forms,ipa,source]=entry;
+  const displayWord=article&&!word.toLocaleLowerCase('de-DE').startsWith(`${article} `)?`${article} ${word}`:word;
+  const germanGloss=(glosses||[]).find(item=>!item.startsWith('Englisch:'))||'';
+  const usefulForms=(forms||[]).filter(form=>normalizeWordForSearch(form)!==normalizeWordForSearch(word)).slice(0,5);
+  const sourceLabel=source?.includes('wiktionary')?'Wiktionary + FreeDict':'FreeDict';
+  return `<article class="offline-dict-card">
+    <div class="offline-dict-head"><div class="offline-dict-word">${escapeHtml(displayWord)}</div><span class="offline-dict-pos">${escapeHtml(OFFLINE_POS_LABELS[pos]||pos||'Wort')}</span></div>
+    <div class="offline-dict-ar" lang="ar">${escapeHtml((arabic||[]).join(' ، '))}</div>
+    <div class="offline-dict-details">
+      ${ipa?`<span class="offline-dict-chip">IPA ${escapeHtml(ipa)}</span>`:''}
+      ${(plurals||[]).length?`<span class="offline-dict-chip">Plural: ${escapeHtml(plurals.join(', '))}</span>`:''}
+      ${usefulForms.length?`<span class="offline-dict-chip">Formen: ${escapeHtml(usefulForms.join(', '))}</span>`:''}
+      <span class="offline-dict-chip">${sourceLabel}</span>
+    </div>
+    ${germanGloss?`<div class="offline-dict-note">${escapeHtml(germanGloss)}</div>`:''}
+    ${example?`<div class="dictionary-example">„${escapeHtml(example)}“</div>`:''}
+  </article>`;
+}
+
+function offlineDictionaryResultsHtml(entries){
+  return entries.length?entries.map(offlineDictionaryCard).join(''):'<div class="card word-result-empty">Kein Eintrag im Offline-Wörterbuch gefunden.</div>';
 }
 
 function stableFavoriteHash(value){
@@ -1993,7 +2060,7 @@ $('#backBtn').addEventListener('click', () => {
   if(/^#listen\/[A-I]\/\d+/.test(h)){ go(path.split('/').slice(0,2).join('/')); return; }
   if(/^#listen\/[A-I]/.test(h)){ go('listen'); return; }
   // A2 Hauptbereiche (Tabs) → A2 Start
-  if(['#dict','#verbs','#phrases','#listen','#exam','#podcast','#games'].includes(h)){ go('a2'); return; }
+  if(['#dict','#full-dict','#verbs','#phrases','#listen','#exam','#podcast','#games'].includes(h)){ go('a2'); return; }
   if(/^#(k|g)\d+\//.test(h)) go(path.split('/').slice(0,1).join('/'));
   else if(/^#(k|g)\d+$/.test(h)) go('a2');
   else go('');
@@ -2028,7 +2095,7 @@ function fallbackBackTarget(hash){
   if(/^#exam\//.test(h)) return 'exam';
   if(/^#listen\/[A-I]\/\d+/.test(h)) return path.split('/').slice(0,2).join('/');
   if(/^#listen\/[A-I]/.test(h)) return 'listen';
-  if(['#dict','#verbs','#phrases','#listen','#exam','#podcast','#games'].includes(h)) return 'a2';
+  if(['#dict','#full-dict','#verbs','#phrases','#listen','#exam','#podcast','#games'].includes(h)) return 'a2';
   if(/^#(k|g)\d+\//.test(h)) return path.split('/').slice(0,1).join('/');
   if(/^#(k|g)\d+$/.test(h)) return 'a2/lessons';
   return '';
@@ -2051,7 +2118,7 @@ $('#topFavoritesBtn').addEventListener('click',()=>go('favorites'));
 
 function applyLevelTheme(hash){
   const isA1=hash==='a1'||hash.startsWith('a1/');
-  const isA2=hash==='a2'||hash.startsWith('a2/')||['dict','verbs','phrases','listen','exam','podcast','games','word-search','favorites'].includes(hash)
+  const isA2=hash==='a2'||hash.startsWith('a2/')||['dict','full-dict','verbs','phrases','listen','exam','podcast','games','word-search','favorites'].includes(hash)
     ||/^(k|g)\d+/.test(hash);
   document.body.classList.toggle('level-a1',isA1);
   document.body.classList.toggle('level-a2',isA2);
@@ -2116,6 +2183,7 @@ function route(){
   if(h==='a2'){ renderA2Hub(); return; }
   if(h==='a2/lessons'){ renderHome(); return; }
   if(h==='dict'){ renderDictionary(); return; }
+  if(h==='full-dict'){ renderFullDictionary(); return; }
   if(h==='verbs'){ renderVerbs(); return; }
   if(h==='phrases'){ renderExpressions(); return; }
   if(h==='podcast'){ renderPodcastHome(); return; }
@@ -2631,6 +2699,7 @@ const A1_GRAM=A1_GRAMMAR_SCRIPT.map(lesson=>({
 const A2_SECTIONS=[
   {route:'a2/lessons',icon:'2',title:'Lektionen',text:'Netzwerk neu A2.1 + A2.2 und Grammatik-Skript.',ar:'دروس A2 ومذكرة القواعد.'},
   {route:'dict',icon:'W',title:'Wörterbuch',text:'Alle A2-Wörter mit Suche und Kapitelfilter.',ar:'قاموس كل كلمات A2.'},
+  {route:'full-dict',icon:'D',title:'Offline-Wörterbuch',text:'Großes Deutsch–Arabisch-Wörterbuch, komplett ohne Internet.',ar:'قاموس ألماني–عربي شامل يعمل أوفلاين.'},
   {route:'verbs',icon:'V',title:'Verben',text:'Konjugation, Präteritum und Perfekt.',ar:'تصريف الأفعال.'},
   {route:'phrases',icon:'R',title:'Redewendungen',text:'Ausdrücke für Alltag, Prüfung und Gespräche.',ar:'تعبيرات جاهزة.'},
   {route:'podcast',icon:'P',title:'Podcast',text:'12 Folgen zum Hören und Mitlesen.',ar:'بودكاست للاستماع والقراءة.'},
@@ -3644,10 +3713,18 @@ function renderWordSearch(){
       const exactB=(b.key===query||b.bareKey===query)?0:1;
       return exactA-exactB || a.level.localeCompare(b.level) || a.chapter.num-b.chapter.num;
     }).slice(0,60);
-    $('#wordSearchCount').textContent=`${found.length} Treffer`;
-    results.innerHTML=found.length
-      ?found.map(entry=>wordResultCard(entry)).join('')
-      :'<div class="card word-result-empty">Keine passende Karte gefunden.</div>';
+    if(found.length){
+      $('#wordSearchCount').textContent=`${found.length} Treffer im Lernwortschatz`;
+      results.innerHTML=found.map(entry=>wordResultCard(entry)).join('');
+      return;
+    }
+    const fallback=searchOfflineDictionary(query,40);
+    $('#wordSearchCount').textContent=fallback.length
+      ?`${fallback.length} Treffer im Offline-Wörterbuch`
+      :'Kein Treffer';
+    results.innerHTML=fallback.length
+      ?`<div class="section-label">Offline Deutsch–Arabisch</div><div class="offline-dict-results">${offlineDictionaryResultsHtml(fallback)}</div>`
+      :'<div class="card word-result-empty">Keine passende Karte oder Wörterbuchbedeutung gefunden.</div>';
   };
   input.addEventListener('input',draw);
   level.addEventListener('change',draw);
@@ -3699,6 +3776,41 @@ function renderFavorites(){
 }
 
 /* ===================== dictionary and expressions ===================== */
+function renderFullDictionary(){
+  setTop('Offline-Wörterbuch','Deutsch ↔ Arabisch',true);
+  const total=Number(OFFLINE_DICTIONARY.meta?.entries||OFFLINE_DICTIONARY.entries.length).toLocaleString('de-DE');
+  view.innerHTML=`
+    <div class="hero"><h2>Deutsch–Arabisch Offline</h2>
+      <p>Ein umfassendes Wörterbuch mit deutschen Stichwörtern, arabischen Bedeutungen, Wortarten, Formen und Beispielen.</p>
+      <div class="ar" style="display:block">قاموس ألماني–عربي شامل داخل التطبيق. يعمل البحث بدون إنترنت ويظهر تلقائيًا أيضًا عندما لا تكون الكلمة موجودة في دروسك.</div>
+      <div class="offline-ready">✓ ${total} Einträge offline verfügbar</div>
+    </div>
+    <div class="search-panel">
+      <div class="search-row">
+        <input class="library-search" id="offlineDictionarySearch" type="search" placeholder="Deutsch oder Arabisch suchen..." aria-label="Im Offline-Wörterbuch suchen" autocomplete="off">
+      </div>
+      <div class="result-count" id="offlineDictionaryCount">${total} Wörter und Ausdrücke</div>
+    </div>
+    <div class="offline-dict-results" id="offlineDictionaryResults"><div class="card word-result-empty">Gib mindestens zwei Zeichen ein.</div></div>
+    <div class="offline-dict-source">Quellen: Deutsches Wiktionary, aufbereitet mit Kaikki/Wiktextract (CC BY-SA 4.0), sowie FreeDict Deutsch–Englisch und Englisch–Arabisch (GPL/AGPL). Die direkte Wiktionary-Übersetzung wird bevorzugt; FreeDict erweitert die Abdeckung über gemeinsame englische Bedeutungen.</div>`;
+  const input=$('#offlineDictionarySearch');
+  const results=$('#offlineDictionaryResults');
+  let timer=null;
+  const draw=()=>{
+    const query=input.value.trim();
+    if(normalizeWordForSearch(query).length<2){
+      $('#offlineDictionaryCount').textContent=`${total} Wörter und Ausdrücke`;
+      results.innerHTML='<div class="card word-result-empty">Gib mindestens zwei Zeichen ein.</div>';
+      return;
+    }
+    const found=searchOfflineDictionary(query,80);
+    $('#offlineDictionaryCount').textContent=`${found.length} Treffer`;
+    results.innerHTML=offlineDictionaryResultsHtml(found);
+  };
+  input.addEventListener('input',()=>{ clearTimeout(timer); timer=setTimeout(draw,120); });
+  input.focus();
+}
+
 function renderDictionary(){
   setTop('A2 Wörterbuch','Alle Wörter aus den Lektionen',true);
   const words=BOOK.flatMap(chapter=>chapter.vocab.map(item=>({...item,chapter:chapter.num,title:chapter.title})))
