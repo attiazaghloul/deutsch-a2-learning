@@ -19,30 +19,28 @@
       ],
       readings: [
         {
-          title:"Ein Morgen voller Verspätungen",
-          kind:"Alltagstext",
-          text:`Mina fährt jeden Morgen mit der Straßenbahn zur Arbeit. Normalerweise braucht sie nur fünfundzwanzig Minuten. Heute zeigt die App aber schon vor der Abfahrt eine Störung an. Eine Baustelle blockiert die Strecke, deshalb fahren keine Bahnen zwischen Rathaus und Hauptbahnhof. Mina nimmt zuerst einen Ersatzbus. Der Bus steht lange im Stau und ist sehr voll. Am Hauptbahnhof erfährt sie, dass auch ihr Zug zehn Minuten Verspätung hat. Sie geht zum Informationsschalter und fragt höflich, von welchem Gleis der Zug abfährt. Die Mitarbeiterin erklärt ihr, dass sich das Gleis geändert hat. Mina erreicht den Zug gerade noch. Sie schreibt ihrem Kollegen eine Nachricht und erklärt, warum sie später kommt. Obwohl der Weg heute fast eine Stunde dauert, bleibt sie ruhig: Mit guten Informationen und etwas Geduld kommt sie schließlich sicher ans Ziel.`,
-          ar:"مينا بتروح الشغل كل يوم بالترام، لكن عطل وأعمال طريق خلوها تستخدم أتوبيس بديل وقطار متأخر. سألت موظفة المعلومات بأدب عن الرصيف الجديد ووصلت في النهاية.",
-          glossary:[["die Störung","العطل"],["blockieren","يعطّل / يغلق"],["der Ersatzbus","أتوبيس بديل"],["der Informationsschalter","شباك المعلومات"],["sich ändern","يتغيّر"],["das Ziel","الوجهة"]],
-          questions:[
-            ["Wie lange braucht Mina normalerweise zur Arbeit?","Fünfundzwanzig Minuten."],
-            ["Warum fährt keine Straßenbahn zum Hauptbahnhof?","Eine Baustelle blockiert die Strecke."],
-            ["Was hat sich am Bahnhof geändert?","Das Gleis des Zuges hat sich geändert."],
-            ["Wie reagiert Mina auf die Probleme?","Sie bleibt ruhig, informiert sich und schreibt ihrem Kollegen."]
-          ]
+          title:"Mit Flexi durch die Stadt",
+          kind:"Werbung",
+          text:`Müssen Sie schnell von A nach B? Wollen Sie flexibel sein? Ab sofort können Sie Autos, Fahrräder und E-Scooter mit unserer Flexi-App leihen! Das ist ganz einfach: Sie laden die App auf Ihr Handy herunter und registrieren sich. Mit der App suchen Sie ein Fahrzeug in Ihrer Nähe. Sie können wählen, was Sie suchen: Auto, Fahrrad oder E-Scooter. Wenn Sie ein Fahrzeug gefunden haben, bekommen Sie eine PIN. Diese geben Sie in den Bordcomputer ein. Und dann geht's los! Unsere Tarife finden Sie online und in der App.`,
+          ar:"هل تحتاج إلى الانتقال بسرعة من مكان إلى آخر؟ هل تريد أن تكون مرنًا؟ من الآن يمكنك استئجار السيارات والدراجات والسكوترات الكهربائية بتطبيق Flexi الخاص بنا! الأمر بسيط جدًا: نزّل التطبيق على هاتفك وسجّل حسابك. ابحث بالتطبيق عن مركبة قريبة منك، واختر سيارة أو دراجة أو سكوترًا كهربائيًا. عندما تجد مركبة ستحصل على رقم سري، أدخله في كمبيوتر المركبة ثم انطلق! ستجد تعريفاتنا على الإنترنت وفي التطبيق.",
+          glossary:[["leihen","يستأجر"],["sich registrieren","يسجّل"],["das Fahrzeug","المركبة"],["die Nähe","المكان القريب"],["der Bordcomputer","كمبيوتر المركبة"],["der Tarif","التعريفة"]],
+          questions:[["Welche Fahrzeuge kann man mit Flexi leihen?","Autos, Fahrräder und E-Scooter."],["Was macht man nach dem Herunterladen der App?","Man registriert sich."],["Wo gibt man die PIN ein?","In den Bordcomputer."],["Wo findet man die Tarife?","Online und in der App."]]
         },
         {
-          title:"Ein Leihrad für den Stadtbesuch",
-          kind:"Informationstext",
-          text:`Jonas bekommt am Wochenende Besuch von seiner Cousine. Sie möchten die Stadt sehen, aber nicht den ganzen Tag zu Fuß gehen. Jonas schlägt ein Leihrad-System vor. Zuerst laden beide die App herunter und registrieren sich. Danach suchen sie auf der Karte eine Station in ihrer Nähe. Vor der ersten Fahrt lesen sie die Tarife und die wichtigsten Regeln: Das Rad darf nicht auf privaten Grundstücken abgestellt werden, und nach der Fahrt muss man es an einer offiziellen Station zurückgeben. In der App reservieren sie zwei Räder für fünfzehn Minuten. An der Station wählen sie die Räder aus und geben ihre PIN ein. Die Tour führt am Fluss entlang, durch den Stadtpark und an mehreren Sehenswürdigkeiten vorbei. Als es plötzlich regnet, geben sie die Räder früher zurück und fahren mit der U-Bahn weiter. Beide finden das System praktisch, weil sie flexibel bleiben.`,
-          ar:"يوناس وقريبته استخدموا نظام عجل إيجار: نزّلوا التطبيق، سجلوا، قرأوا الأسعار والقواعد، حجزوا عجلتين وعملوا جولة في المدينة.",
-          glossary:[["das Leihrad-System","نظام تأجير العجل"],["sich registrieren","يسجّل بياناته"],["das Grundstück","قطعة أرض / ملكية"],["offiziell","رسمي"],["am Fluss entlang","على امتداد النهر"],["flexibel","مرن"]],
-          questions:[
-            ["Warum möchten Jonas und seine Cousine Fahrräder leihen?","Sie möchten die Stadt sehen und nicht den ganzen Tag laufen."],
-            ["Was machen sie vor der ersten Fahrt?","Sie laden die App herunter, registrieren sich und lesen Tarife und Regeln."],
-            ["Wo müssen sie die Räder zurückgeben?","An einer offiziellen Station."],
-            ["Warum endet die Radtour früher?","Weil es plötzlich regnet."]
-          ]
+          title:"Neue Wege durch die Stadt",
+          kind:"Artikel",
+          text:`Überall Stau und Stress\nLondon, Berlin, Mexiko-Stadt oder Tokio – überall die gleiche Situation: Die Menschen müssen zur Arbeit fahren. Wie kommen sie dorthin? Sie fahren mit vielen anderen Menschen in zu vollen U-Bahnen, wo sie sich nicht setzen können oder stehen mit ihrem Auto im Stau. Die Luft ist schlecht und alle sind genervt. Muss das so sein? Nein, sagen Experten und es gibt viele Ideen, wie man das Problem lösen kann.\n\nEs geht auch anders\nKopenhagen – die Hauptstadt von Dänemark – ist ein gutes Beispiel: breite Radwege, viele Parkplätze für Fahrräder und besondere Ampeln für Radfahrer. Sie werden schnell grün, wenn ein Radfahrer kommt. Die Konsequenz? Mehr als 50 Prozent der Stadtbewohner fahren mit dem Fahrrad ins Büro. Aber natürlich will oder kann nicht jeder mit dem Fahrrad fahren – und manche Städte sind viel größer als Kopenhagen ...\n\nVielleicht sind E-Bikes oder E-Scooter die Lösung für die Zukunft. Diese elektrischen Fahrzeuge machen Spaß und man ist schnell. Aber Untersuchungen zeigen, dass die meisten Menschen sie in der Freizeit nutzen. Nur wenige Leute fahren mit dem E-Bike zur Arbeit.\n\nIn La Paz in Bolivien haben Seilbahnen das Verkehrsproblem in der Stadt reduziert. Inzwischen kann man dort mit zehn Seilbahn-Linien über der Stadt ohne Stau von A nach B fahren. Seilbahnen sind umweltfreundlich, aber teuer.\n\nWas ist die Lösung?\nWie sieht die Zukunft der Großstädte aus? Die Lösung ist eine Kombination von diesen Ideen und anderen Vorschlägen. Vielleicht dürfen Autos in Zukunft nicht mehr in die Innenstädte fahren oder es kostet Geld – wie zum Beispiel in Mailand.`,
+          ar:"الازدحام والتوتر في كل مكان\nفي لندن وبرلين ومكسيكو سيتي وطوكيو نجد الوضع نفسه: يجب على الناس الذهاب إلى العمل. يركبون قطارات مترو مكتظة لا يجدون فيها مقعدًا، أو يقفون بسياراتهم في الزحام. الهواء ملوث والجميع منزعج. ولكن الخبراء يقولون إن هناك أفكارًا كثيرة لحل المشكلة.\n\nيمكن أن يكون الأمر مختلفًا\nتقدم كوبنهاجن، عاصمة الدنمارك، مثالًا جيدًا: مسارات واسعة ومواقف كثيرة للدراجات، وإشارات مرور خاصة لراكبي الدراجات تتحول سريعًا إلى الأخضر عند اقتراب دراجة. والنتيجة أن أكثر من نصف سكان المدينة يذهبون إلى العمل بالدراجة. بالطبع ليس كل شخص يريد أو يستطيع ركوب الدراجة، كما أن بعض المدن أكبر بكثير من كوبنهاجن.\n\nربما تكون الدراجات والسكوترات الكهربائية حل المستقبل؛ فهي ممتعة وسريعة. لكن الدراسا توضح أن معظم الناس يستخدمونها في وقت الفراغ، وقليلون فقط يذهبون إلى العمل بدراجة كهربائية.\n\nفي لاباز ببوليفيا خففت عربات التلفريك مشكلة المرور. ويمكن الآن التنقل فوق المدينة عبر عشرة خطوط بلا ازدحام. هي صديقة للبيئة لكنها مكلفة.\n\nما الحل؟\nيرجح أن مستقبل المدن الكبرى سيعتمد على مزيج من هذه الأفكار وغيرها. وربما تُمنع السيارات مستقبلًا من دخول مراكز المدن أو يصبح الدخول مقابل رسوم، كما في ميلانو.",
+          glossary:[["der Stau","الازدحام"],["der Radweg","مسار الدراجات"],["die Untersuchung","الدراسة"],["die Seilbahn","التلفريك"],["umweltfreundlich","صديق للبيئة"],["die Innenstadt","وسط المدينة"]],
+          questions:[["Warum sind viele Menschen in Großstädten genervt?","Wegen voller U-Bahnen, Stau und schlechter Luft."],["Was ist in Kopenhagen besonders gut für Radfahrer?","Breite Radwege, viele Fahrradparkplätze und besondere Ampeln."],["Welche Verkehrslösung gibt es in La Paz?","Zehn Seilbahn-Linien über der Stadt."],["Welche Lösung nennt der Text für die Zukunft?","Eine Kombination verschiedener Ideen und Vorschläge."]]
+        },
+        {
+          title:"Der Weg zur Arbeit in D-A-CH",
+          kind:"Erfahrungsberichte",
+          text:`Anna Franze, 34, Grafikerin, Hamburg\nBei mir ist das ganz einfach. Ich fahre immer mit dem Fahrrad, nur bei Gewitter und Glatteis nicht. Das dauert eine halbe Stunde und ich bin viel schneller als mit dem Bus oder der U-Bahn, weil ich nie warten muss. Außerdem bin ich dann im Büro richtig wach!\n\nFelix Pinto, 56, Arzt, Vernay am Neuenburger See\nIch wohne auf dem Land und fahre jeden Tag nach Bern, d. h. ich pendle. Ich fahre mit dem Auto zum Bahnhof, das sind 30 Minuten. Dann fahre ich mit dem Zug. Zum Glück ist meine Praxis gleich beim Bahnhof. Die Zugfahrt dauert 40 Minuten.\n\nMilan Jurić, 22, Student, Wien\nIch wohne noch bei meinen Eltern und muss täglich zur Uni fahren. Zuerst nehme ich den Bus, dann fahre ich mit der Straßenbahn und am Ende noch mit der U-Bahn. Insgesamt dauert das etwa 50 Minuten, manchmal sogar eine Stunde – in eine Richtung!`,
+          ar:"آنا فرانتسه، 34 عامًا، مصممة جرافيك من هامبورج\nالأمر بالنسبة لي بسيط جدًا. أذهب دائمًا بالدراجة، إلا عند العواصف الرعدية أو تجمد الطريق. يستغرق ذلك نصف ساعة، وأكون أسرع بكثير من الحافلة أو المترو لأنني لا أنتظر أبدًا. كما أصل إلى المكتب مستيقظة تمامًا!\n\nفيليكس بينتو، 56 عامًا، طبيب من فيرناي على بحيرة نوشاتيل\nأعيش في الريف وأذهب يوميًا إلى برن، أي إنني أتنقل يوميًا بين المنزل والعمل. أقود السيارة إلى المحطة لمدة 30 دقيقة، ثم أركب القطار. لحسن الحظ تقع عيادتي بجوار المحطة مباشرة، وتستغرق رحلة القطار 40 دقيقة.\n\nميلان يوريتش، 22 عامًا، طالب من فيينا\nما زلت أعيش مع والديّ ويجب عليّ الذهاب إلى الجامعة يوميًا. أستقل الحافلة أولًا، ثم الترام، وفي النهاية المترو. يستغرق الطريق نحو 50 ديقة في المجمل، وأحيانًا ساعة كاملة، وذلك في اتجاه واحد فقط!",
+          glossary:[["das Gewitter","العاصفة الرعدية"],["das Glatteis","جليد الطريق"],["pendeln","يتنقل يوميًا بين العمل والمنزل"],["die Praxis","العيادة"],["insgesamt","في المجمل"],["in eine Richtung","في اتجاه واحد"]],
+          questions:[["Wann fährt Anna nicht mit dem Fahrrad?","Bei Gewitter und Glatteis."],["Wie lange braucht Felix mit Auto und Zug?","Insgesamt 70 Minuten."],["Welche Verkehrsmittel benutzt Milan?","Bus, Straßenbahn und U-Bahn."],["Wer braucht manchmal eine Stunde für eine Richtung?","Milan Jurić."]]
         }
       ]
     },
@@ -69,63 +67,17 @@
       ],
       readings: [
         {
-          title:"Laras Lernplan für die Prüfung",
-          kind:"Erfahrungsbericht",
-          text:`In zwei Wochen schreibt Lara eine wichtige Deutschprüfung. Früher hat sie immer erst am letzten Abend gelernt. Dann war sie müde, nervös und konnte sich kaum konzentrieren. Dieses Mal macht sie es anders. Zuerst sammelt sie den gesamten Lernstoff und teilt ihn in kleine Themen. Jeden Werktag lernt sie vierzig Minuten und macht danach eine kurze Pause. Neue Wörter schreibt sie auf Karteikarten: vorne steht das deutsche Wort, hinten stehen die Bedeutung und ein Beispielsatz. Schwierige Wörter spricht sie laut aus und wiederholt sie am nächsten Tag. Für das Hörverstehen sieht sie kurze Videos und hört Dialoge mehrmals. Einmal pro Woche trifft sie ihren Lernpartner. Sie stellen sich gegenseitig Fragen und erklären Grammatikregeln mit eigenen Beispielen. Lara merkt, dass sie jetzt weniger Angst hat. Ihr wichtigster Tipp lautet: regelmäßig lernen, Fehler akzeptieren und genug schlafen.`,
-          ar:"لارا غيّرت طريقة مذاكرتها: قسمت المادة، استخدمت بطاقات، كررت الكلمات بصوت عالٍ، تدربت على السماع وذاكرت مع زميل. النتيجة إنها بقت أهدى.",
-          glossary:[["der Werktag","يوم عمل"],["die Bedeutung","المعنى"],["das Hörverstehen","فهم المسموع"],["gegenseitig","كل واحد للآخر"],["akzeptieren","يتقبّل"],["regelmäßig","بانتظام"]],
-          questions:[
-            ["Was war Laras altes Lernproblem?","Sie lernte erst am letzten Abend und war müde und nervös."],
-            ["Was schreibt sie auf die Rückseite der Karteikarten?","Die Bedeutung und einen Beispielsatz."],
-            ["Wie übt sie das Hörverstehen?","Mit kurzen Videos und Dialogen, die sie mehrmals hört."],
-            ["Welchen Tipp gibt Lara?","Regelmäßig lernen, Fehler akzeptieren und genug schlafen."]
-          ]
+          title:"Prüfungen – Wer hat kluge Tipps?",
+          kind:"Forumsbeiträge",
+          text:`Mona\nAm Ende vom Semester haben wir viele Prüfungen und man muss total viel lernen. Aber immer nur lernen ist auch hart – ich denke immer an zu viele andere Sachen und mache ganz viele Pausen. Am Anfang vom Semester mache ich mir einen schönen Plan und will ganz viel machen, aber am Ende schaffe ich das nicht – manche Themen kapiere ich einfach nicht. Ich glaube, ich bin nicht intelligent genug. Was kann ich tun? Ich möchte doch ein Stipendium bekommen.\n\nSchrauber\nIch arbeite tagsüber als Mechaniker und lerne abends für die Abschlussprüfung. Ich muss viel lernen, jeden Tag gleich nach der Arbeit mindestens noch zwei Stunden. Dann gehe ich natürlich zu spät ins Bett und schlafe zu wenig. Am nächsten Tag habe ich dann die Hälfte wieder vergessen. Ein Wochenende kenne ich eigentlich auch nicht mehr, weil ich dann auch lernen muss. Wie soll ich das schaffen?\n\njanjan02\nNächste Woche habe ich meine praktische Führerscheinprüfung und ich bin total nervös. Ich habe Angst, dass ich einen doofen Fehler beim Fahren mache, weil ich so aufgeregt bin. Mein Herz rast jetzt schon und ich habe Magenschmerzen. Ich hatte nicht viele Fahrstunden, weil ich keine Zeit hatte. Vielleicht habe ich zu wenig Erfahrung? Wer kann mir helfen?`,
+          ar:"مونا\nفي نهاية الفصل الدراسي لدينا امتحانات كثيرة، ويجب علينا أن نذاكر كثيرًا جدًا. لكن المذاكرة طوال الوقت شاقة أيضًا؛ فأنا أفكر دائمًا في أشياء أخرى كثيرة وآخذ فترات راحة كثيرة. في بداية الفصل أضع خطة جيدة وأريد إنجاز الكثير، لكنني في النهاية لا أنجح، وبعض الموضوعات لا أفهمها ببساطة. أعتقد أنني لست ذكية بما يكفي. ماذا أفعل؟ فأنا أريد الحصول على منحة دراسية.\n\nشراوبر\nأعمل نهارًا ميكانيكيًا وأذاكر مساءً للامتحان النهائي. يجب عليّ أن أذاكر كثيرًا، ساعتين إضافيتين على الأقل كل يوم بعد العمل مباشرة. وبالطبع أذهب إلى الفراش متأخرًا ولا أنام كفاية، فأكون في اليوم التالي قد نسيت نصف ما ذاكرته. ولم يعد لديّ عطلة نهاية أسبوع فعليًا، لأنني يجب أن أذاكر فيها أيضًا. كيف سأتمكن من ذلك؟\n\nيانيان 02\nلديّ الأسبوع المقبل الامتحان العملي لرخصة القيادة، وأنا متوترة جدًا. أخاف أن أرتكب خطأً سخيفًا أثناء القيادة بسبب توتري الشديد. قلبي يخفق بسرعة من الآن ومعدتي تؤلمني. لم آخذ حصص قيادة كثيرة لأن وقتي لم يكن يسمح. ربما لديّ خبرة قليلة جدًا؟ من يستطيع مساعدتي؟",
+          glossary:[["die Abschlussprüfung","الامتحان النهائي"],["das Stipendium","المنحة الدراسية"],["tagsüber","أثناء النهار"],["die Hälfte","النصف"],["das Herz rast","القلب يخفق بسرعة"],["die Fahrstunde","حصة تعليم القيادة"]],
+          questions:[["Warum schafft Mona ihren Lernplan nicht?","Sie denkt an andere Sachen, macht viele Pausen und versteht manche Themen nicht."],["Warum schläft Schrauber zu wenig?","Weil er nach der Arbeit noch mindestens zwei Stunden lernt."],["Welche Prüfung hat janjan02?","Die praktische Führerscheinprüfung."],["Warum hat janjan02 wenig Fahrerfahrung?","Weil sie nicht viele Fahrstunden hatte."]]
         },
         {
-          title:"Eine Präsentation, die man gern hört",
-          kind:"Ratgeber",
-          text:`Eine gute Präsentation beginnt nicht erst vor dem Publikum, sondern bei der Vorbereitung. Überlegen Sie zuerst, was die Zuhörer am Ende wissen sollen. Ordnen Sie Ihre Informationen in eine klare Gliederung: Einleitung, Hauptteil und Schluss. Schreiben Sie auf die Folien nur kurze Stichpunkte. Wenn dort ganze Absätze stehen, lesen viele Vortragende nur noch ab. Üben Sie den Vortrag mehrmals laut und messen Sie die Zeit. Beim Sprechen sollten Sie aufrecht stehen, deutlich sprechen und regelmäßig Blickkontakt mit verschiedenen Personen suchen. Kleine Pausen sind kein Fehler. Sie geben dem Publikum Zeit zum Nachdenken und helfen Ihnen beim Atmen. Wenn Sie eine Frage nicht sofort beantworten können, bleiben Sie ruhig. Sagen Sie ehrlich, dass Sie die Information später prüfen. Bitten Sie nach dem Vortrag um eine Rückmeldung. So wird die nächste Präsentation noch besser.`,
-          ar:"النص بيوضح خطوات عرض ناجح: هدف واضح، مقدمة ومحتوى وخاتمة، نقاط قصيرة، تدريب بصوت عالٍ، تواصل بصري وهدوء وقت الأسئلة.",
-          glossary:[["der Zuhörer","المستمع"],["der Absatz","فقرة"],["ablesen","يقرأ من الورق مباشرة"],["aufrecht","مستقيم"],["nachdenken","يفكر"],["prüfen","يراجع / يتحقق"]],
-          questions:[
-            ["Welche drei Teile hat eine klare Präsentation?","Einleitung, Hauptteil und Schluss."],
-            ["Warum soll man keine langen Absätze auf Folien schreiben?","Weil Vortragende dann oft nur ablesen."],
-            ["Wozu sind kleine Pausen gut?","Sie helfen dem Publikum beim Nachdenken und dem Sprecher beim Atmen."],
-            ["Was kann man tun, wenn man eine Antwort nicht weiß?","Ruhig bleiben und sagen, dass man die Information später prüft."]
-          ]
-        }
-      ]
-    },
-    9: {
-      vocab: [
-        {w:"der Kletterpark, -s", d:"Ein Ort, an dem man gesichert zwischen Bäumen klettert.", ex:"Am Samstag gehen wir in den Kletterpark.", ar:"حديقة تسلق"},
-        {w:"der Kletterwettbewerb, -e", d:"Ein Wettkampf im Klettern.", ex:"Bea nimmt an einem Kletterwettbewerb teil.", ar:"مسابقة تسلق"},
-        {w:"aufgeregt", d:"Nervös und gespannt vor einem wichtigen Ereignis.", ex:"Vor dem Wettkampf bin ich sehr aufgeregt.", ar:"متحمس ومتوتر"},
-        {w:"jemandem Mut machen", d:"Einer Person helfen, wieder an sich zu glauben.", ex:"Meine Freunde machen mir vor dem Spiel Mut.", ar:"يشجّع شخصًا"},
-        {w:"das Finale, -", d:"Der letzte und entscheidende Teil eines Wettbewerbs.", ex:"Unsere Mannschaft steht im Finale.", ar:"النهائي"},
-        {w:"der Zuschauer, -", d:"Eine Person, die ein Spiel oder einen Wettkampf ansieht.", ex:"Die Zuschauer jubeln laut.", ar:"المشاهد"},
-        {w:"anfeuern", d:"Sportler laut unterstützen.", ex:"Die Fans feuern ihr Team an.", ar:"يشجّع بحماس"},
-        {w:"sich verletzen", d:"Am Körper eine Verletzung bekommen.", ex:"Er hat sich beim Training am Fuß verletzt.", ar:"يُصاب"},
-        {w:"sich aufwärmen", d:"Den Körper vor dem Sport mit leichten Übungen vorbereiten.", ex:"Vor dem Laufen wärme ich mich zehn Minuten auf.", ar:"يعمل إحماء"},
-        {w:"durchhalten", d:"Trotz Anstrengung bis zum Ende weitermachen.", ex:"Die letzten Kilometer sind schwer, aber ich halte durch.", ar:"يصمد / يكمل للنهاية"},
-        {w:"unentschieden", d:"Mit dem gleichen Ergebnis für beide Teams.", ex:"Das Spiel endet zwei zu zwei unentschieden.", ar:"تعادل"},
-        {w:"der Teamgeist", d:"Das Gefühl, gemeinsam als Gruppe zu handeln.", ex:"Guter Teamgeist ist wichtiger als ein einzelner Star.", ar:"روح الفريق"}
-      ],
-      readings: [
-        {
-          title:"Vor und nach dem Kletterwettbewerb",
-          kind:"Erzählung",
-          text:`Am Samstag nimmt Bea zum ersten Mal an einem Kletterwettbewerb teil. Schon beim Frühstück ist sie sehr aufgeregt. Sie kontrolliert dreimal, ob Helm, Kletterschuhe und Trinkflasche in ihrer Tasche sind. Im Kletterpark trifft sie ihre Freundin Anna, die ihr Mut macht. Vor dem Start wärmt Bea sich gründlich auf und beobachtet die anderen Teilnehmer. Die erste Strecke schafft sie schnell. In der zweiten Runde macht sie jedoch einen Fehler und verliert viel Zeit. Kurz ist sie enttäuscht, trotzdem klettert sie weiter und erreicht das Ziel. Für das Finale reicht ihre Zeit nicht. Nach dem Wettbewerb wartet eine Überraschung: Anna und zwei Freunde stehen am Ausgang und haben ein kleines Plakat gemalt. Sie sagen, dass Bea beim nächsten Mal bestimmt noch besser ist. Bea lächelt. Sie hat nicht gewonnen, aber sie ist stolz, weil sie nicht aufgegeben hat.`,
-          ar:"بيا شاركت لأول مرة في مسابقة تسلق. أخطأت ولم تدخل النهائي، لكنها كملت للنهاية وأصحابها شجعوها، فكانت فخورة إنها ما استسلمتش.",
-          glossary:[["gründlich","بشكل جيد ودقيق"],["der Teilnehmer","المشارك"],["die Runde","الجولة"],["jedoch","لكن / إلا أن"],["reichen","يكفي"],["aufgeben","يستسلم"]],
-          questions:[
-            ["Warum kontrolliert Bea ihre Tasche mehrmals?","Weil sie aufgeregt ist und nichts vergessen möchte."],
-            ["Was passiert in der zweiten Runde?","Sie macht einen Fehler und verliert Zeit."],
-            ["Erreicht Bea das Finale?","Nein, ihre Zeit reicht nicht."],
-            ["Warum ist sie trotzdem stolz?","Weil sie weitergemacht und nicht aufgegeben hat."]
-          ]
-        },
-        {
+          title:"Mit Sprache arbeiten",
+          kind:"Berufsporträts",
+          text:`Sprachen faszinieren. Viele Menschen lernen in ihrer Freizeit eine neue Sprache, andere machen die Sprache zu ihrem Beruf. Wir stellen Ihnen drei Personen und Berufe vor.\n\nTom Dahl\nVor einem Jahr habe ich meine Ausbildung zum Gebärdendolmetscher abgeschlossen. Das ist mein Traumberuf! Ich sorge dafür, dass die Kommunikation zwischen den Menschen klappt. Jeden Tag gibt es andere Aufgaben. Ich dolmetsche in Konferenzen, bei Behörden oder bei privaten Festen, zum Beispiel bei Hochzeiten auf dem Standesamt. Ich begleite gehörlose Menschen auch zum Arzt. Manchmal ist es auch komisch, wenn ich in ganz privaten Situationen neutral bleiben muss – ich bin ja kein Angehöriger. Das musste ich erst mal lernen. Von Montag bis Mittwoch arbeite ich selbstständig, donnerstags und freitags arbeite ich stundenweise für ein Gebärdentelefon: Ich kommuniziere mit Gehörlosen über Video und gebe die Informationen mündlich an ihre Gesprächspartner/innen weiter.\n\nCarina Holst\nIch habe Sprachwissenschaften studiert. Wei…2939 tokens truncated…     {
           title:"Ein Verein sucht neue Mitglieder",
           kind:"Anzeige und Bericht",
           text:`Der Sportverein Nord bietet ab September einen neuen Freizeitkurs an. Gesucht werden Erwachsene, die gern gemeinsam aktiv sind. Im Kurs probieren die Mitglieder verschiedene Sportarten aus: Volleyball, Tischtennis, leichtes Lauftraining und kleine Mannschaftsspiele. Vorkenntnisse sind nicht nötig. Wichtig sind bequeme Sportschuhe, Freude an Bewegung und Respekt vor den anderen. Das Training findet jeden Dienstag von 18 bis 19.30 Uhr statt. Nach einem kostenlosen Probetraining kann man entscheiden, ob man Mitglied werden möchte. Samir besucht den Kurs, weil er nach der Arbeit mehr Bewegung braucht. Am ersten Abend kennt er niemanden und ist etwas unsicher. Die Trainerin erklärt alle Regeln ruhig, und die Gruppe begrüßt ihn freundlich. Beim Volleyball verliert sein Team zwar knapp, trotzdem haben alle viel Spaß. Samir meldet sich noch am selben Abend an. Besonders gefällt ihm der Teamgeist.`,
