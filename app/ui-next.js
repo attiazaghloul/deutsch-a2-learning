@@ -389,7 +389,8 @@
         requestAnimationFrame(()=>centerActiveNavigation());
       });
     };
-    const motionDisabled=reduceMotion.matches||state.settings.motion==='reduced';
+    const heavyRoute=destination==='full-dict'||destination==='word-search';
+    const motionDisabled=reduceMotion.matches||state.settings.motion==='reduced'||heavyRoute;
     if(!motionDisabled&&typeof document.startViewTransition==='function'){
       const transition=document.startViewTransition(update);
       transition.finished.then(finish).catch(finish);

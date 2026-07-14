@@ -104,6 +104,7 @@ test('large offline dictionary is searched outside the UI thread', () => {
   assert.equal((html.match(/function selectionContext\(/g) || []).length, 1, 'Dead duplicate selection handler should stay removed');
 
   const workerSource = readFileSync(join(root, 'app', 'dictionary-worker.js'), 'utf8');
+  assert.doesNotMatch(workerSource, /dictionary\.entries\.map\(/, 'The full dictionary must not be duplicated eagerly in memory');
   const listeners = {};
   const messages = [];
   const workerGlobal = {

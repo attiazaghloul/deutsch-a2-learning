@@ -998,7 +998,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
   *,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}
 }
 </style>
-<link rel="stylesheet" href="styles/ui-next.css?v=studio-1">
+<link rel="stylesheet" href="styles/ui-next.css?v=studio-2">
 </head>
 <body>
 <div id="app">
@@ -1240,7 +1240,7 @@ function ensureOfflineDictionary(){
       reject(new Error('Web Worker wird von diesem Browser nicht unterstützt.'));
       return;
     }
-    const worker=new Worker('dictionary-worker.js?v=offline-dict-worker-1');
+    const worker=new Worker('dictionary-worker.js?v=offline-dict-worker-2');
     offlineDictionaryWorker=worker;
     worker.addEventListener('message',event=>{
       const message=event.data||{};
@@ -5870,7 +5870,7 @@ function centerActiveNavigation(){
 
 window.addEventListener('hashchange',()=>requestAnimationFrame(centerActiveNavigation));
 </script>
-<script src="ui-next.js?v=studio-1"></script>
+<script src="ui-next.js?v=studio-2"></script>
 <script>
 /* PWA: Service Worker + Offline banner + Download-lesson */
 if ('serviceWorker' in navigator) {

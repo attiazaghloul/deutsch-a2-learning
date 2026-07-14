@@ -1,6 +1,5 @@
 /* Keeps the large offline dictionary and its search index off the UI thread. */
 let dictionary = null;
-let searchIndex = null;
 
 function normalizeDictionaryText(value) {
   return String(value || '')
@@ -20,16 +19,6 @@ function loadDictionary() {
   self.window = self;
   importScripts('data_dictionary_de_ar.js?v=offline-dict-1');
   dictionary = self.OFFLINE_DE_AR || { meta: { entries: 0 }, entries: [] };
-  searchIndex = dictionary.entries.map(entry => {
-    const word = normalizeDictionaryText(entry[0]);
-    const arabicWords = (entry[2] || []).map(normalizeDictionaryText);
-    return {
-      word,
-      de: normalizeDictionaryText(`${entry[0]} ${(entry[7] || []).join(' ')}`),
-      ar: arabicWords.join(' '),
-      arabicWords
-    };
-  });
   return dictionary;
 }
 
@@ -43,25 +32,31 @@ function searchDictionary(value, limit = 60) {
   const prefix = [];
   const contains = [];
 
-  for (let index = 0; index < searchIndex.length; index += 1) {
-    const item = searchIndex[index];
-    const haystack = arabicQuery ? item.ar : item.de;
+  // Do not build a second in-memory copy of all 138k records. That eager index
+  // caused severe memory pressure on mobile devices and could make the worker
+  // disappear before returning a result. Scanning in the worker is slightly
+  // more CPU work per query, but keeps the UI responsive and memory predictable.
+  for (let index = 0; index < data.entries.length; index += 1) {
+    const entry = data.entries[index];
+    const word = normalizeDictionaryText(entry[0]);
+    const arabicWords = arabicQuery ? (entry[2] || []).map(normalizeDictionaryText) : [];
+    const haystack = arabicQuery
+      ? arabicWords.join(' ')
+      : normalizeDictionaryText(`${entry[0]} ${(entry[7] || []).join(' ')}`);
     if (!haystack.includes(query)) continue;
 
-    if ((arabicQuery && item.arabicWords.includes(query)) || (!arabicQuery && item.word === query)) {
-      exact.push(index);
-    } else if ((arabicQuery && item.arabicWords.some(word => word.startsWith(query))) || (!arabicQuery && item.word.startsWith(query))) {
-      prefix.push(index);
+    if ((arabicQuery && arabicWords.includes(query)) || (!arabicQuery && word === query)) {
+      exact.push(entry);
+    } else if ((arabicQuery && arabicWords.some(value => value.startsWith(query))) || (!arabicQuery && word.startsWith(query))) {
+      prefix.push(entry);
     } else if (contains.length < limit) {
-      contains.push(index);
+      contains.push(entry);
     }
 
     if (exact.length + prefix.length >= limit && contains.length >= limit) break;
   }
 
-  return [...exact, ...prefix, ...contains]
-    .slice(0, limit)
-    .map(index => data.entries[index]);
+  return [...exact, ...prefix, ...contains].slice(0, limit);
 }
 
 self.addEventListener('message', event => {
