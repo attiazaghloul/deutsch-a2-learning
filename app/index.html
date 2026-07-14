@@ -994,7 +994,11 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
   .memory-card{min-height:88px;font-size:12px}
   .exam-toolbar{top:112px;align-items:stretch;flex-direction:column}
 }
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}
+}
 </style>
+<link rel="stylesheet" href="styles/ui-next.css?v=studio-1">
 </head>
 <body>
 <div id="app">
@@ -1098,7 +1102,6 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <script src="data_book1.js"></script>
 <script src="data_book2.js"></script>
 <script src="data_extra.js"></script>
-<script src="data_dictionary_de_ar.js?v=offline-dict-1"></script>
 <script src="data_lernwortschatz8.js?v=lernwortschatz8-1"></script>
 <script src="data_enrichment.js"></script>
 <script src="data_verbs.js"></script>
@@ -1122,7 +1125,7 @@ const view = $('#view');
 const A1_BOOK = window.A1_BOOK || [];
 const BOOK = [...window.BOOK0, ...window.BOOK1, ...window.BOOK2];
 const GRAM = window.GRAM;
-const OFFLINE_DICTIONARY = window.OFFLINE_DE_AR || {meta:{entries:0},entries:[]};
+const OFFLINE_DICTIONARY_META={entries:138755};
 /* A2-Grammatik: vollständige Skript-Übungen interaktiv (Selbstkorrektur) an die Erklärung anhängen */
 (function attachA2GrammarExercises(){
   const L=window.A2_GRAMMAR_LESSONS||{};
@@ -1193,7 +1196,7 @@ setAr(localStorage.getItem('showArUserChoice') === '1');   // default OFF
 
 function ar(txt){
   if(location.hash.includes('a1/listen/phonetik')) return '';
-  return txt ? `<div class="ar">${txt}</div>` : '';
+  return txt ? `<div class="ar" lang="ar" dir="rtl">${txt}</div>` : '';
 }
 
 /* ===================== settings and contextual translation ===================== */
@@ -1225,33 +1228,65 @@ function bareWordKey(value){
 }
 
 const OFFLINE_POS_LABELS={n:'Nomen',v:'Verb',adj:'Adjektiv',adv:'Adverb',prep:'Präposition',pron:'Pronomen',phrase:'Ausdruck',other:'Wort'};
-let offlineDictionarySearchIndex=null;
+let offlineDictionaryWorker=null;
+let offlineDictionaryReady=null;
+let offlineDictionaryRequestId=0;
+const offlineDictionaryRequests=new Map();
 
-function ensureOfflineDictionaryIndex(){
-  if(offlineDictionarySearchIndex) return offlineDictionarySearchIndex;
-  offlineDictionarySearchIndex=OFFLINE_DICTIONARY.entries.map((entry,index)=>({
-    index,
-    de:normalizeWordForSearch(`${entry[0]} ${(entry[7]||[]).join(' ')}`),
-    ar:normalizeWordForSearch((entry[2]||[]).join(' ')),
-    word:normalizeWordForSearch(entry[0]),
-    arabic:(entry[2]||[]).map(normalizeWordForSearch)
-  }));
-  return offlineDictionarySearchIndex;
+function ensureOfflineDictionary(){
+  if(offlineDictionaryReady) return offlineDictionaryReady;
+  offlineDictionaryReady=new Promise((resolve,reject)=>{
+    if(!('Worker' in window)){
+      reject(new Error('Web Worker wird von diesem Browser nicht unterstützt.'));
+      return;
+    }
+    const worker=new Worker('dictionary-worker.js?v=offline-dict-worker-1');
+    offlineDictionaryWorker=worker;
+    worker.addEventListener('message',event=>{
+      const message=event.data||{};
+      if(message.type==='ready'){
+        resolve(message.meta||OFFLINE_DICTIONARY_META);
+        return;
+      }
+      if(message.type==='error' && message.requestId==null){
+        const error=new Error(message.message||'Wörterbuch konnte nicht geladen werden.');
+        reject(error);
+        worker.terminate();
+        offlineDictionaryWorker=null;
+        offlineDictionaryReady=null;
+        return;
+      }
+      if(message.type==='results' || message.type==='error'){
+        const pending=offlineDictionaryRequests.get(message.requestId);
+        if(!pending) return;
+        offlineDictionaryRequests.delete(message.requestId);
+        if(message.type==='error') pending.reject(new Error(message.message||'Wörterbuch konnte nicht geladen werden.'));
+        else pending.resolve(message.entries||[]);
+      }
+    });
+    worker.addEventListener('error',()=>{
+      const error=new Error('Wörterbuch konnte nicht geladen werden.');
+      reject(error);
+      offlineDictionaryRequests.forEach(request=>request.reject(error));
+      offlineDictionaryRequests.clear();
+      worker.terminate();
+      offlineDictionaryWorker=null;
+      offlineDictionaryReady=null;
+    },{once:true});
+    worker.postMessage({type:'init'});
+  });
+  return offlineDictionaryReady;
 }
 
-function searchOfflineDictionary(value,limit=60){
+async function searchOfflineDictionary(value,limit=60){
   const query=normalizeWordForSearch(value);
   if(query.length<2) return [];
-  const arabicQuery=/[\u0600-\u06ff]/.test(query);
-  const exact=[],prefix=[],contains=[];
-  for(const item of ensureOfflineDictionaryIndex()){
-    const haystack=arabicQuery?item.ar:item.de;
-    if(!haystack.includes(query)) continue;
-    if((arabicQuery&&item.arabic.includes(query))||(!arabicQuery&&item.word===query)) exact.push(item.index);
-    else if((arabicQuery&&item.arabic.some(word=>word.startsWith(query)))||(!arabicQuery&&item.word.startsWith(query))) prefix.push(item.index);
-    else if(contains.length<limit) contains.push(item.index);
-  }
-  return [...exact,...prefix,...contains].slice(0,limit).map(index=>OFFLINE_DICTIONARY.entries[index]);
+  await ensureOfflineDictionary();
+  const requestId=++offlineDictionaryRequestId;
+  return new Promise((resolve,reject)=>{
+    offlineDictionaryRequests.set(requestId,{resolve,reject});
+    offlineDictionaryWorker.postMessage({type:'search',requestId,query,limit});
+  });
 }
 
 function offlineDictionaryCard(entry){
@@ -1391,10 +1426,12 @@ function toggleFavoriteWord(payload){
   if(index>=0){
     list.splice(index,1);
     saveFavoriteList(list);
+    window.NextUI?.syncFavorite(payload,false);
     return false;
   }
   list.unshift({...payload,createdAt:payload.createdAt||new Date().toISOString()});
   saveFavoriteList(list.slice(0,300));
+  window.NextUI?.syncFavorite(payload,true);
   return true;
 }
 
@@ -1407,6 +1444,7 @@ function toggleDictionaryFavorite(id){
 }
 
 function removeFavoriteById(id){
+  window.NextUI?.syncFavorite({id},false);
   saveFavoriteList(favoriteList().filter(item=>item.id!==id && item.dictionaryId!==id));
   renderFavorites();
 }
@@ -1468,17 +1506,30 @@ function customFavoriteCard(item){
   </article>`;
 }
 
+let modalReturnFocus=null;
+
+function modalFocusableElements(modal){
+  return [...modal.querySelectorAll('button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[href],[tabindex]:not([tabindex="-1"])')]
+    .filter(element=>element.getClientRects().length);
+}
+
 function openModal(id){
   const modal=$('#'+id);
+  if(!modal) return;
+  modalReturnFocus=document.activeElement;
   modal.classList.add('show');
   modal.setAttribute('aria-hidden','false');
   if(id==='settingsModal'){ updateSpeedUI(); populateVoiceOptions(); }
+  requestAnimationFrame(()=>modalFocusableElements(modal)[0]?.focus());
 }
 
 function closeModal(id){
   const modal=$('#'+id);
+  if(!modal) return;
   modal.classList.remove('show');
   modal.setAttribute('aria-hidden','true');
+  if(modalReturnFocus instanceof HTMLElement) modalReturnFocus.focus();
+  modalReturnFocus=null;
 }
 
 function updateSpeedUI(){
@@ -1551,26 +1602,23 @@ $('#voiceGallery').addEventListener('click',event=>{
   populateVoiceOptions();
   speakText('Diese Stimme ist jetzt ausgewählt.','de',speechVoiceURI);
 });
-document.addEventListener('keydown',event=>{ if(event.key==='Escape') $$('.modal-backdrop.show').forEach(modal=>closeModal(modal.id)); });
+document.addEventListener('keydown',event=>{
+  const modal=$('.modal-backdrop.show');
+  if(!modal) return;
+  if(event.key==='Escape'){
+    event.preventDefault();
+    closeModal(modal.id);
+    return;
+  }
+  if(event.key!=='Tab') return;
+  const focusable=modalFocusableElements(modal);
+  if(!focusable.length){ event.preventDefault(); return; }
+  const first=focusable[0],last=focusable.at(-1);
+  if(event.shiftKey && document.activeElement===first){ event.preventDefault(); last.focus(); }
+  else if(!event.shiftKey && document.activeElement===last){ event.preventDefault(); first.focus(); }
+});
 updateSpeedUI();
 populateVoiceOptions();
-
-function selectionContext(selection){
-  const selected=selection.toString().replace(/\s+/g,' ').trim().replace(/^[„“"'.,!?;:()\[\]]+|[„“"'.,!?;:()\[\]]+$/g,'');
-  if(selected.length<2 || selected.length>120 || !selection.rangeCount) return null;
-  const range=selection.getRangeAt(0);
-  const container=range.commonAncestorContainer.nodeType===1?range.commonAncestorContainer:range.commonAncestorContainer.parentElement;
-  if(!container || !view.contains(container) || container.closest('input,textarea,button,.ar')) return null;
-  const block=container.closest('.reading-text,.rm-item,.model-text,.exercise-prompt,.quiz-q,.dictionary-entry,.expression-card,.verb-card,p,li,td,.card')||container;
-  const clone=block.cloneNode(true);
-  clone.querySelectorAll('.ar,.speak-btn,button,input,select').forEach(node=>node.remove());
-  const blockText=clone.textContent.replace(/\s+/g,' ').trim().slice(0,900);
-  const escaped=selected.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
-  const sentences=blockText.match(/[^.!?؟]+[.!?؟]?/g)||[blockText];
-  const context=sentences.find(sentence=>new RegExp(escaped,'i').test(sentence))?.trim()||blockText;
-  const rect=range.getBoundingClientRect();
-  return {selected,context:context.slice(0,650),rect};
-}
 
 function normalizeSelectionText(value){
   return value.replace(/\s+/g,' ').trim()
@@ -2118,7 +2166,7 @@ $('#topFavoritesBtn').addEventListener('click',()=>go('favorites'));
 
 function applyLevelTheme(hash){
   const isA1=hash==='a1'||hash.startsWith('a1/');
-  const isA2=hash==='a2'||hash.startsWith('a2/')||['dict','full-dict','verbs','phrases','listen','exam','podcast','games','word-search','favorites'].includes(hash)
+  const isA2=hash==='a2'||hash.startsWith('a2/')||['dict','full-dict','verbs','phrases','listen','exam','podcast','games','word-search','favorites','review','progress'].includes(hash)
     ||/^(k|g)\d+/.test(hash);
   document.body.classList.toggle('level-a1',isA1);
   document.body.classList.toggle('level-a2',isA2);
@@ -2126,6 +2174,16 @@ function applyLevelTheme(hash){
 }
 
 function route(){
+  const to=location.hash.replace('#','');
+  const render=()=>renderCurrentRoute();
+  if(window.NextUI){
+    window.NextUI.transitionRoute(render,{from:lastRouteHash,to,back:navigatingBack});
+    return;
+  }
+  render();
+}
+
+function renderCurrentRoute(){
   const h = location.hash.replace('#','');
   if(!navigatingBack && lastRouteHash!==null && h!==lastRouteHash) routeBackStack.push(lastRouteHash);
   if(navigatingBack) navigatingBack=false;
@@ -2144,11 +2202,13 @@ function route(){
     closeModal('translationModal');
     window.getSelection()?.removeAllRanges();
   }
-  window.scrollTo(0,0);
-  if(!h){ renderLevelSelector(); return; }
+  if(!window.NextUI) window.scrollTo(0,0);
+  if(!h){ if(window.NextUI) window.NextUI.renderDashboard(); else renderLevelSelector(); return; }
+  if(h==='review'){ if(window.NextUI) window.NextUI.renderReviewCenter(); else renderFavorites(); return; }
+  if(h==='progress'){ if(window.NextUI) window.NextUI.renderProgressDashboard(); else renderLevelSelector(); return; }
   if(h==='word-search'){ renderWordSearch(); return; }
   if(h==='favorites'){ renderFavorites(); return; }
-  if(h==='a1'){ renderA1Hub(); return; }
+  if(h==='a1'){ if(window.NextUI) window.NextUI.renderLearningHub('a1'); else renderA1Hub(); return; }
   if(h==='a1/lessons'){ renderA1Home(); return; }
   if(h==='a1/dict'){ renderA1Dictionary(); return; }
   if(h==='a1/verbs'){ renderA1Verbs(); return; }
@@ -2180,7 +2240,7 @@ function route(){
     else renderA1Home();
     return;
   }
-  if(h==='a2'){ renderA2Hub(); return; }
+  if(h==='a2'){ if(window.NextUI) window.NextUI.renderLearningHub('a2'); else renderA2Hub(); return; }
   if(h==='a2/lessons'){ renderHome(); return; }
   if(h==='dict'){ renderDictionary(); return; }
   if(h==='full-dict'){ renderFullDictionary(); return; }
@@ -2221,17 +2281,7 @@ function setTop(title, sub, hasBack){
 }
 
 function mainTabs(active){
-  return '';
-  return `<nav class="main-tabs" aria-label="Hauptbereiche">
-    <button class="main-tab ${active==='lessons'?'active':''}" onclick="go('a2')">📚 Lektionen</button>
-    <button class="main-tab ${active==='dict'?'active':''}" onclick="go('dict')">🔎 Wörterbuch</button>
-    <button class="main-tab ${active==='verbs'?'active':''}" onclick="go('verbs')">🧩 Verben</button>
-    <button class="main-tab ${active==='phrases'?'active':''}" onclick="go('phrases')">💬 Redewendungen</button>
-    <button class="main-tab ${active==='podcast'?'active':''}" onclick="go('podcast')">🎙 Podcast</button>
-    <button class="main-tab ${active==='games'?'active':''}" onclick="go('games')">🎮 Spiele</button>
-    <button class="main-tab ${active==='listen'?'active':''}" onclick="go('listen')">🎧 Hören</button>
-    <button class="main-tab ${active==='exam'?'active':''}" onclick="go('exam')">📝 Prüfung</button>
-  </nav>`;
+  return window.NextUI?.featureTabs('a2',active)||'';
 }
 
 function sectionCards(items, extraClass=''){
@@ -2778,14 +2828,7 @@ function renderLevelSelector(){
 }
 
 function a1MainTabs(active){
-  return '';
-  return `<nav class="main-tabs a1-tabs" aria-label="A1 Bereiche">
-    <button class="main-tab ${active==='lessons'?'active':''}" onclick="go('a1')">📚 Lektionen</button>
-    <button class="main-tab ${active==='dict'?'active':''}" onclick="go('a1/dict')">🔎 Wörterbuch</button>
-    <button class="main-tab ${active==='verbs'?'active':''}" onclick="go('a1/verbs')">🧩 Verben</button>
-    <button class="main-tab ${active==='phrases'?'active':''}" onclick="go('a1/phrases')">💬 Redemittel</button>
-    <button class="main-tab ${active==='listen'?'active':''}" onclick="go('a1/listen')">🎧 Hören</button>
-  </nav>`;
+  return window.NextUI?.featureTabs('a1',active)||'';
 }
 
 function renderA1Dictionary(){
@@ -3699,7 +3742,9 @@ function renderWordSearch(){
   const input=$('#wordSearchInput');
   const level=$('#wordSearchLevel');
   const results=$('#wordSearchResults');
-  const draw=()=>{
+  let drawRequest=0;
+  const draw=async()=>{
+    const requestId=++drawRequest;
     const query=normalizeWordForSearch(input.value);
     if(query.length<2){
       $('#wordSearchCount').textContent=`${entries.length} Wörter verfügbar`;
@@ -3718,7 +3763,18 @@ function renderWordSearch(){
       results.innerHTML=found.map(entry=>wordResultCard(entry)).join('');
       return;
     }
-    const fallback=searchOfflineDictionary(query,40);
+    $('#wordSearchCount').textContent='Offline-Wörterbuch wird durchsucht…';
+    results.innerHTML='<div class="card word-result-empty">Wörterbuch wird vorbereitet…</div>';
+    let fallback=[];
+    try{
+      fallback=await searchOfflineDictionary(query,40);
+    }catch(error){
+      if(requestId!==drawRequest) return;
+      $('#wordSearchCount').textContent='Wörterbuch nicht verfügbar';
+      results.innerHTML='<div class="card word-result-empty">Das Offline-Wörterbuch konnte nicht geladen werden.</div>';
+      return;
+    }
+    if(requestId!==drawRequest) return;
     $('#wordSearchCount').textContent=fallback.length
       ?`${fallback.length} Treffer im Offline-Wörterbuch`
       :'Kein Treffer';
@@ -3778,12 +3834,12 @@ function renderFavorites(){
 /* ===================== dictionary and expressions ===================== */
 function renderFullDictionary(){
   setTop('Offline-Wörterbuch','Deutsch ↔ Arabisch',true);
-  const total=Number(OFFLINE_DICTIONARY.meta?.entries||OFFLINE_DICTIONARY.entries.length).toLocaleString('de-DE');
+  const total=Number(OFFLINE_DICTIONARY_META.entries).toLocaleString('de-DE');
   view.innerHTML=`
     <div class="hero"><h2>Deutsch–Arabisch Offline</h2>
       <p>Ein umfassendes Wörterbuch mit deutschen Stichwörtern, arabischen Bedeutungen, Wortarten, Formen und Beispielen.</p>
       <div class="ar" style="display:block">قاموس ألماني–عربي شامل داخل التطبيق. يعمل البحث بدون إنترنت ويظهر تلقائيًا أيضًا عندما لا تكون الكلمة موجودة في دروسك.</div>
-      <div class="offline-ready">✓ ${total} Einträge offline verfügbar</div>
+      <div class="offline-ready" id="offlineDictionaryStatus">${total} Einträge · wird vorbereitet…</div>
     </div>
     <div class="search-panel">
       <div class="search-row">
@@ -3796,14 +3852,34 @@ function renderFullDictionary(){
   const input=$('#offlineDictionarySearch');
   const results=$('#offlineDictionaryResults');
   let timer=null;
-  const draw=()=>{
+  let drawRequest=0;
+  ensureOfflineDictionary().then(()=>{
+    const status=$('#offlineDictionaryStatus');
+    if(status) status.textContent=`✓ ${total} Einträge offline verfügbar`;
+  }).catch(()=>{
+    const status=$('#offlineDictionaryStatus');
+    if(status) status.textContent='Wörterbuch konnte nicht geladen werden';
+  });
+  const draw=async()=>{
+    const requestId=++drawRequest;
     const query=input.value.trim();
     if(normalizeWordForSearch(query).length<2){
       $('#offlineDictionaryCount').textContent=`${total} Wörter und Ausdrücke`;
       results.innerHTML='<div class="card word-result-empty">Gib mindestens zwei Zeichen ein.</div>';
       return;
     }
-    const found=searchOfflineDictionary(query,80);
+    $('#offlineDictionaryCount').textContent='Suche läuft…';
+    results.innerHTML='<div class="card word-result-empty">Wörterbuch wird durchsucht…</div>';
+    let found=[];
+    try{
+      found=await searchOfflineDictionary(query,80);
+    }catch(error){
+      if(requestId!==drawRequest) return;
+      $('#offlineDictionaryCount').textContent='Wörterbuch nicht verfügbar';
+      results.innerHTML='<div class="card word-result-empty">Das Offline-Wörterbuch konnte nicht geladen werden.</div>';
+      return;
+    }
+    if(requestId!==drawRequest) return;
     $('#offlineDictionaryCount').textContent=`${found.length} Treffer`;
     results.innerHTML=offlineDictionaryResultsHtml(found);
   };
@@ -3958,6 +4034,7 @@ let podcastAudio=null;
 let podcastFrameId=null;
 let podcastTranslationMode=localStorage.getItem('podcastTranslationMode')||'below';
 let podcastSwitchLanguage=localStorage.getItem('podcastSwitchLanguage')||'de';
+let podcastPlaybackRate=Math.max(.75,Math.min(1.5,Number(localStorage.getItem('podcastPlaybackRate')||1)));
 
 function stopPodcast(){
   podcastSession++;
@@ -4027,9 +4104,11 @@ function renderPodcastEpisode(chapterNumber){
       </div>
       <div class="podcast-controls">
         <div class="podcast-main-controls">
-          <button type="button" class="podcast-skip" onclick="skipPodcast(-1)">− Satz</button>
+          <button type="button" class="podcast-skip" onclick="seekPodcastSeconds(-5)" aria-label="Fünf Sekunden zurück">−5 s</button>
+          <button type="button" class="podcast-skip" onclick="skipPodcast(-1)">Satz zurück</button>
           <button type="button" class="podcast-play" id="podcastPlay" onclick="togglePodcast()" aria-label="Podcast abspielen">▶</button>
-          <button type="button" class="podcast-skip" onclick="skipPodcast(1)">+ Satz</button>
+          <button type="button" class="podcast-skip" onclick="skipPodcast(1)">Satz weiter</button>
+          <button type="button" class="podcast-skip" onclick="seekPodcastSeconds(5)" aria-label="Fünf Sekunden vor">+5 s</button>
         </div>
         <div class="podcast-progress"><span id="podcastProgress"></span></div>
         <div class="podcast-position"><span id="podcastPosition">Satz ${saved+1} / ${episode.lines.length}</span>
@@ -4039,6 +4118,7 @@ function renderPodcastEpisode(chapterNumber){
             <button type="button" data-podcast-mode="below" onclick="setPodcastMode('below')">Deutsch + عربي</button>
             <button type="button" data-podcast-mode="switch" onclick="setPodcastMode('switch')">Deutsch ↔ عربي</button>
           </div>
+          <label class="podcast-rate">Tempo <select onchange="setPodcastPlaybackRate(this.value)" aria-label="Wiedergabegeschwindigkeit">${[.75,1,1.25,1.5].map(rate=>`<option value="${rate}" ${rate===podcastPlaybackRate?'selected':''}>${rate}×</option>`).join('')}</select></label>
           <button type="button" class="podcast-language" id="podcastLanguage" onclick="togglePodcastLanguage()">Deutsch anzeigen</button>
         </div>
       </div>
@@ -4050,12 +4130,13 @@ function renderPodcastEpisode(chapterNumber){
       const de=podcastLineValue(line,'de',1);
       const arText=podcastLineValue(line,'ar',2);
       const speakerIndex=episode.speakers.indexOf(speaker);
-      return `<article class="podcast-line" id="podcastLine${index}" data-speaker="${speakerIndex}"
-        data-kind="${escapeHtml(line.kind||'dialogue')}" onclick="seekPodcast(${index})">
+      return `<article class="podcast-line" id="podcastLine${index}" data-speaker="${speakerIndex}" role="button" tabindex="0"
+        aria-label="Satz ${index+1} abspielen" data-kind="${escapeHtml(line.kind||'dialogue')}" onclick="seekPodcast(${index})"
+        onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();seekPodcast(${index})}">
         <div class="speaker-avatar">${escapeHtml(speaker.slice(0,2).toUpperCase())}</div>
         <div><div class="podcast-speaker">${escapeHtml(speaker)}</div>
           <div class="podcast-de">${renderPodcastWords(de,index)}</div>
-          <div class="podcast-ar">${escapeHtml(arText)}</div></div>
+          <div class="podcast-ar" lang="ar" dir="rtl">${escapeHtml(arText)}</div></div>
       </article>`;
     }).join('')}</section>`;
   setPodcastMode(podcastTranslationMode,false);
@@ -4090,7 +4171,7 @@ function playPodcast(fromIndex=podcastState?.index||0){
     const line=episode.lines[podcastState.index];
     podcastAudio.currentTime=Number(line.start||0);
     // The global default (.85) was tuned for browser TTS; recorded podcasts should play at natural 1.0x.
-    podcastAudio.playbackRate=Math.max(.8,Math.min(1.35,speechRate/.85));
+    podcastAudio.playbackRate=podcastPlaybackRate;
     podcastAudio.play().then(()=>{
       podcastState.playing=true;
       podcastState.paused=false;
@@ -4228,11 +4309,28 @@ function skipPodcast(direction){
 
 function seekPodcast(index){playPodcast(index);}
 
+function seekPodcastSeconds(seconds){
+  if(podcastAudio&&Number.isFinite(podcastAudio.duration)){
+    podcastAudio.currentTime=Math.max(0,Math.min(podcastAudio.duration,podcastAudio.currentTime+seconds));
+    if(podcastAudio.paused){
+      podcastAudio.play().then(()=>{podcastState.playing=true;podcastState.paused=false;syncPodcastAudio();updatePodcastControls();});
+    }
+    return;
+  }
+  skipPodcast(seconds<0?-1:1);
+}
+
+function setPodcastPlaybackRate(value){
+  podcastPlaybackRate=Math.max(.75,Math.min(1.5,Number(value)||1));
+  localStorage.setItem('podcastPlaybackRate',String(podcastPlaybackRate));
+  if(podcastAudio)podcastAudio.playbackRate=podcastPlaybackRate;
+}
+
 function setPodcastActiveLine(index){
   $$('.podcast-line').forEach((line,lineIndex)=>line.classList.toggle('active',lineIndex===index));
   updatePodcastControls();
   const active=$(`#podcastLine${index}`);
-  if(podcastState?.playing&&active)active.scrollIntoView({behavior:'smooth',block:'center'});
+  if(podcastState?.playing&&active)active.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'});
 }
 
 function highlightPodcastWord(lineIndex,charIndex){
@@ -4258,8 +4356,9 @@ function updatePodcastControls(){
   const progress=$('#podcastProgress');
   if(progress){
     const total=Number(podcastState.episode.durationSeconds||0);
-    progress.style.width=podcastAudio&&total?`${Math.min(100,podcastAudio.currentTime/total*100)}%`
-      :`${(podcastState.index+1)/podcastState.episode.lines.length*100}%`;
+    const ratio=podcastAudio&&total?Math.min(1,podcastAudio.currentTime/total)
+      :(podcastState.index+1)/podcastState.episode.lines.length;
+    progress.style.transform=`scaleX(${ratio})`;
   }
   const position=$('#podcastPosition');
   if(position){
@@ -4339,13 +4438,13 @@ function saveGameBest(id,score){
 }
 
 function renderGamesHome(){
-  setTop('Spiele','Wortschatz trainieren · schneller erinnern',false);
+  setTop('Practice Lab','Gezielt trainieren · sicherer anwenden',false);
   const best=gameBestScores();
   document.body.classList.add('has-back');
   view.innerHTML=mainTabs('games')+`
     <section class="card games-hero">
-      <h2>Lernen, spielen, erinnern</h2>
-      <p>Kurze Spiele aus dem Wortschatz, den Beispielsätzen und den Quizfragen deiner zwölf Kapitel.</p>
+      <span class="next-hero-eyebrow">Practice Lab</span><h2>Kurze, fokussierte Trainingseinheiten</h2>
+      <p>Trainiere Wortschatz, Satzbau und Grammatik in kompakten Sessions. Fehler werden automatisch für deine nächste Wiederholung vorgemerkt.</p>
       ${ar('ألعاب قصيرة من كلمات الدروس وجملها وأسئلة القواعد. كل محاولة جديدة بتخلط المحتوى عشان تفتكر المعنى، مش ترتيب الإجابات.')}
       <div class="game-best-row">
         <span class="game-best">Bestscore: ${best.speed||0}</span>
@@ -4356,22 +4455,22 @@ function renderGamesHome(){
     </section>
     <div class="game-grid">
       <button type="button" class="card game-tile" onclick="go('games/speed')">
-        <div class="game-icon">⚡</div><h3>Schnell-Challenge</h3>
+        <div class="game-icon">01</div><h3>Schnell-Challenge</h3>
         <p>Vier Antworten, laufende Zeit und mehr Punkte für schnelle richtige Antworten.</p>
-        <span class="game-tag">Kahoot-Stil · gemischte Fragen</span>
+        <span class="game-tag">Fokus · gemischte Fragen</span>
       </button>
       <button type="button" class="card game-tile" onclick="go('games/memory')">
-        <div class="game-icon">▦</div><h3>Memory Match</h3>
+        <div class="game-icon">02</div><h3>Memory Match</h3>
         <p>Finde die passenden Paare aus deutschem Wort und Bedeutung.</p>
         <span class="game-tag">12 Karten · 6 Paare</span>
       </button>
       <button type="button" class="card game-tile" onclick="go('games/artikel')">
-        <div class="game-icon">der·die·das</div><h3>Artikel-Challenge</h3>
+        <div class="game-icon">03</div><h3>Artikel-Challenge</h3>
         <p>Wähle den richtigen Artikel und trainiere das Genus der Nomen.</p>
         <span class="game-tag">10 Wörter pro Runde</span>
       </button>
       <button type="button" class="card game-tile" onclick="go('games/sentence')">
-        <div class="game-icon">1 · 2 · 3</div><h3>Satz-Puzzle</h3>
+        <div class="game-icon">04</div><h3>Satz-Puzzle</h3>
         <p>Bringe die Wörter aus den Redemitteln wieder in die richtige Reihenfolge.</p>
         <span class="game-tag">Sprechen · Satzbau</span>
       </button>
@@ -4522,7 +4621,7 @@ function drawSpeedQuestion(){
       <div class="speed-question">${escapeHtml(question.q)}</div>
       <div class="speed-options">${question.options.map((option,index)=>`
         <button type="button" class="speed-option" data-index="${index}" onclick="answerSpeed(${index})">${escapeHtml(option.text)}</button>`).join('')}</div>
-      <div class="speed-feedback" id="speedFeedback"></div>
+      <div class="speed-feedback" id="speedFeedback" role="status" aria-live="polite"></div>
     </article>
   </section>`;
   gameTimerId=setInterval(()=>{
@@ -4558,6 +4657,7 @@ function answerSpeed(index){
     state.streak=0;
     if(index>=0)buttons[index]?.classList.add('wrong');
     $('#speedFeedback').textContent=index<0?'Zeit abgelaufen!':'Nicht ganz. Die richtige Antwort ist markiert.';
+    window.NextUI?.addMistake({prompt:question.q,answer:question.options[correctIndex].text,context:`Practice Lab · ${question.kind}`});
   }
   buttons.forEach(button=>button.disabled=true);
   gameDelayId=setTimeout(()=>{state.index++;drawSpeedQuestion();},1200);
@@ -4664,7 +4764,7 @@ function drawArtikelQuestion(){
     <div class="artikel-word">${escapeHtml(wordLabel(entry.item.w))}</div>
     <div class="artikel-options">${['der','die','das'].map(article=>`<button type="button" class="artikel-option"
       onclick="answerArtikel('${article}')">${article}</button>`).join('')}</div>
-    <div class="speed-feedback" id="artikelFeedback"></div>
+    <div class="speed-feedback" id="artikelFeedback" role="status" aria-live="polite"></div>
   </section>`;
 }
 
@@ -4679,7 +4779,11 @@ function answerArtikel(article){
     button.disabled=true;
   });
   if(article===answer){state.score++;$('#artikelFeedback').textContent='Richtig!';}
-  else $('#artikelFeedback').textContent=`Richtig ist: ${answer}`;
+  else {
+    $('#artikelFeedback').textContent=`Richtig ist: ${answer}`;
+    const item=state.questions[state.index].item;
+    window.NextUI?.addMistake({prompt:wordLabel(item.w),answer:`${answer} ${wordLabel(item.w)}`,context:'Practice Lab · Artikel'});
+  }
   gameDelayId=setTimeout(()=>{state.index++;drawArtikelQuestion();},850);
 }
 
@@ -4853,7 +4957,7 @@ function renderExamModule(id){
     <div class="exam-toolbar">
       <div><b>${module.title}</b><div style="font-size:12px;color:var(--ink-2)">${examModuleDescription(id)}</div></div>
       <div style="display:flex;gap:8px;align-items:center">
-        <span class="exam-timer" id="examTimer">${String(module.duration).padStart(2,'0')}:00</span>
+        <span class="exam-timer" id="examTimer" role="timer" aria-live="off">${String(module.duration).padStart(2,'0')}:00</span>
         <button class="btn btn-green" onclick="startExamTimer(${module.duration*60})">Zeit starten</button>
       </div>
     </div>`;
@@ -4885,7 +4989,7 @@ function renderObjectiveExam(id,module){
       }).join('')}
     </section>`).join('')+`
     <button class="btn btn-green" style="width:100%" onclick="checkExamObjective('${id}')">Antworten prüfen</button>
-    <div class="exam-result" id="examResult"></div>`;
+    <div class="exam-result" id="examResult" role="status" aria-live="polite"></div>`;
 }
 
 function playExamAudio(partId,button){
@@ -4908,6 +5012,11 @@ function checkExamObjective(id){
     question.classList.toggle('correct',Boolean(isCorrect));
     question.classList.toggle('wrong',!isCorrect);
     if(isCorrect)correct++;
+    else{
+      const prompt=question.querySelector('b')?.textContent?.replace(/^\d+\.\s*/, '')||'Prüfungsfrage';
+      const correctLabel=question.querySelectorAll('.exam-option')[answer]?.textContent?.trim()||'';
+      window.NextUI?.addMistake({prompt,answer:correctLabel,context:`Prüfung · ${id}`});
+    }
     question.querySelectorAll('input').forEach(input=>input.disabled=true);
   });
   const score=correct*1.25;
@@ -4916,7 +5025,7 @@ function checkExamObjective(id){
   result.className=`exam-result show ${score>=15?'good':'retry'}`;
   result.innerHTML=`${correct} / 20 richtig · <b>${score.toFixed(2)} / 25 Punkte</b>
     ${ar(score>=15?'نتيجة تدريبية جيدة في هذا القسم.':'راجع الأخطاء وحاول القسم مرة ثانية بعد المذاكرة.')}`;
-  result.scrollIntoView({behavior:'smooth',block:'center'});
+  result.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'});
 }
 
 function renderWritingExam(module){
@@ -4932,7 +5041,7 @@ function renderWritingExam(module){
       <details class="exam-model"><summary>Modellantwort nach der eigenen Antwort ansehen</summary><p>${task.model}</p></details>
     </section>`).join('')+`
     <button class="btn btn-green" style="width:100%" onclick="assessWritingExam()">Selbsteinschätzung speichern</button>
-    <div class="exam-result" id="examResult"></div>`;
+    <div class="exam-result" id="examResult" role="status" aria-live="polite"></div>`;
 }
 
 function initWritingExam(){
@@ -4978,7 +5087,7 @@ function renderSpeakingExam(module){
       <div class="exam-checklist">${module.checklist.map((item,index)=>`
         <label><input type="checkbox" class="speaking-check" value="${index}"> ${item}</label>`).join('')}</div>
       <button class="btn btn-green" onclick="assessSpeakingExam()">Ergebnis speichern</button>
-      <div class="exam-result" id="examResult"></div>
+      <div class="exam-result" id="examResult" role="status" aria-live="polite"></div>
     </section>`;
 }
 
@@ -4995,13 +5104,13 @@ function assessSpeakingExam(){
 
 /* ===================== chapter (book) ===================== */
 const TABS = [
-  ['ueberblick','📋 Überblick'],
-  ['wortschatz','📖 Wortschatz'],
-  ['lesen','📚 Lesen'],
-  ['redemittel','💬 Redemittel'],
-  ['grammatik','✏️ Grammatik'],
-  ['sprechen','🗣️ Sprechen'],
-  ['quiz','🎯 Quiz'],
+  ['ueberblick','Überblick'],
+  ['wortschatz','Wortschatz'],
+  ['lesen','Lesen'],
+  ['redemittel','Redemittel'],
+  ['grammatik','Grammatik'],
+  ['sprechen','Sprechen'],
+  ['quiz','Lerncheck'],
 ];
 
 function chapterTabDescription(id){
@@ -5060,7 +5169,7 @@ function renderChapterMenu(c){
       <img src="${c.visual.src}" alt="${c.visual.alt}">
       <figcaption class="visual-caption">${c.visual.caption}${ar(c.visual.captionAr)}</figcaption>
     </figure>`:''}
-    <section class="hero"><h2>${c.title}</h2><p>${c.subtitle}</p>${ar(c.titleAr)}</section>
+    <section class="hero chapter-hero"><div><span class="next-hero-eyebrow">${isA1?'A1':'A2'} · ${chapterLabel} ${c.num}</span><h2>${c.title}</h2><p>${c.subtitle}</p>${ar(c.titleAr)}</div>${window.NextUI?.lessonStart(routeBase)||''}</section>
     <section class="chapter-tab-grid">${TABS.map(([id,lbl])=>{
       const img=chapterTabImage(c,id);
       return `
@@ -5077,8 +5186,8 @@ function renderChapter(c, tab){
   const routeBase=c.route||`k${c.num}`;
   const chapterLabel=isA1?'A1 Kapitel':'Kapitel';
   setTop(`${chapterLabel} ${c.num}: ${c.title}`, c.subtitle, true);
-  let html = `<div class="tabs chapter-tabs">` + TABS.map(([id,lbl]) =>
-    `<button class="tab ${id===tab?'active':''}" onclick="go('${routeBase}/${id}')">${lbl}</button>`).join('') + `</div>`;
+  let html = `${window.NextUI?.lessonProgress(routeBase,tab)||''}<div class="tabs chapter-tabs" role="tablist" aria-label="Kapitelbereiche">` + TABS.map(([id,lbl]) =>
+    `<button type="button" role="tab" aria-selected="${id===tab}" class="tab ${id===tab?'active':''}" onclick="go('${routeBase}/${id}')">${lbl}</button>`).join('') + `</div>`;
   if(false && tab!=='ueberblick' && c.visual){
     const sceneIndex={wortschatz:1,lesen:0,redemittel:2,grammatik:3,sprechen:1,quiz:2}[tab]??0;
     const tabVisual=c.scenes?.[sceneIndex]||c.visual;
@@ -5088,6 +5197,7 @@ function renderChapter(c, tab){
     </figure>`;
   }
   html += renderChapterTab(c, tab);
+  html += window.NextUI?.lessonNext(routeBase,tab)||'';
   view.innerHTML = html;
   if(tab==='wortschatz') initFlash(c);
   if(tab==='quiz') initQuiz(c.quiz);
@@ -5109,8 +5219,8 @@ function renderChapterTab(c, tab){
           <figcaption>${escapeHtml(topic.title)}</figcaption>
         </figure>`).join('')}</div>`:''}
     </div>
-    <div class="card"><h3 style="color:var(--green-d);margin-bottom:8px">Das lernst du hier 🎯</h3>`;
-    c.goals.forEach(g => h += `<div class="goal-item"><span>✅</span><div>${g.de}${ar(g.ar)}</div></div>`);
+    <div class="card"><h3 style="color:var(--green-d);margin-bottom:8px">Das lernst du hier</h3>`;
+    c.goals.forEach((g,index) => h += `<div class="goal-item"><span>${String(index+1).padStart(2,'0')}</span><div>${g.de}${ar(g.ar)}</div></div>`);
     h += `</div>`;
     if(c.scenes?.length){
       h += `<div class="scene-gallery">${c.scenes.map(scene=>`
@@ -5562,15 +5672,16 @@ function drawFC(){
   const a = $('#fcArea'); if(!fcState) return;
   const v = fcState.cards[fcState.i];
   a.innerHTML = `
-  <div class="flashcard" onclick="flipFC()">
-    ${!fcState.flipped
-      ? `${vocabVisual(v,fcState.chapter)}<div class="big">${fmtWord(v.w)}</div>
-         <div class="hint">👆 Tippen = Bedeutung & Beispiele</div>`
-      : `<div class="fc-back-copy"><div class="fc-back-label">Bedeutung & Beispiele</div>
-         <div class="big" style="font-size:20px">${fmtWord(v.w)}</div>
-         <div class="fdef">💡 ${v.d}</div>
-         ${v.ex?`<div class="fex">„${v.ex}“</div>`:''}
-         ${ar(v.ar)}</div>`}
+  <div class="flashcard ${fcState.flipped?'is-flipped':''}" id="fcCard" role="button" tabindex="0"
+    aria-label="Karte umdrehen: ${escapeHtml(v.w)}" aria-pressed="${fcState.flipped}"
+    onclick="flipFC()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipFC()}">
+    <div class="flashcard-inner">
+      <div class="flashcard-face flashcard-front" aria-hidden="${fcState.flipped}">${vocabVisual(v,fcState.chapter)}<div class="big">${fmtWord(v.w)}</div>
+        <div class="hint">Karte umdrehen: Bedeutung und Beispiele</div></div>
+      <div class="flashcard-face flashcard-back" aria-hidden="${!fcState.flipped}"><div class="fc-back-copy"><div class="fc-back-label">Bedeutung & Beispiele</div>
+        <div class="big" style="font-size:20px">${fmtWord(v.w)}</div>
+        <div class="fdef">${v.d}</div>${v.ex?`<div class="fex">„${v.ex}“</div>`:''}${ar(v.ar)}</div></div>
+    </div>
   </div>
   <div class="fc-nav">
     <button class="btn btn-ghost" onclick="navFC(-1)">← zurück</button>
@@ -5578,7 +5689,15 @@ function drawFC(){
     <button class="btn btn-green" onclick="navFC(1)">weiter →</button>
   </div>`;
 }
-function flipFC(){ fcState.flipped=!fcState.flipped; drawFC(); }
+function flipFC(){
+  if(!fcState)return;
+  fcState.flipped=!fcState.flipped;
+  const card=$('#fcCard');
+  card?.classList.toggle('is-flipped',fcState.flipped);
+  card?.setAttribute('aria-pressed',String(fcState.flipped));
+  card?.querySelector('.flashcard-front')?.setAttribute('aria-hidden',String(fcState.flipped));
+  card?.querySelector('.flashcard-back')?.setAttribute('aria-hidden',String(!fcState.flipped));
+}
 function navFC(d){
   fcState.i = (fcState.i + d + fcState.cards.length) % fcState.cards.length;
   fcState.flipped=false; drawFC();
@@ -5594,9 +5713,9 @@ function initQuiz(questions){
     q.o.forEach((opt,oi) => {
       h += `<button class="quiz-opt" data-q="${qi}" data-o="${oi}">${opt}</button>`;
     });
-    h += `<div class="quiz-fb" id="fb${qi}"></div></div>`;
+    h += `<div class="quiz-fb" id="fb${qi}" role="status" aria-live="polite"></div></div>`;
   });
-  h += `<div class="card quiz-score" id="qscore">Beantworte alle Fragen! 💪</div>`;
+  h += `<div class="card quiz-score" id="qscore" role="status" aria-live="polite">Beantworte alle Fragen.</div>`;
   area.innerHTML = h;
   area.querySelectorAll('.quiz-opt').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -5608,11 +5727,14 @@ function initQuiz(questions){
       btn.parentElement.querySelectorAll('.quiz-opt').forEach((b,i)=>{
         if(i===q.a) b.classList.add('correct');
       });
-      if(oi===q.a){ score++; fb.innerHTML=`✅ Richtig! ${q.fb||''}${ar(q.fbAr)}`; }
-      else { btn.classList.add('wrong'); fb.innerHTML=`❌ Nicht ganz. ${q.fb||''}${ar(q.fbAr)}`; }
+      if(oi===q.a){ score++; fb.innerHTML=`Richtig. ${q.fb||''}${ar(q.fbAr)}`; }
+      else {
+        btn.classList.add('wrong'); fb.innerHTML=`Noch nicht. ${q.fb||''}${ar(q.fbAr)}`;
+        window.NextUI?.addMistake({prompt:q.q,answer:q.o[q.a],context:'Lerncheck'});
+      }
       fb.classList.add('show');
       if(answered===questions.length){
-        $('#qscore').innerHTML = `🏆 Dein Ergebnis: ${score} / ${questions.length}` +
+        $('#qscore').innerHTML = `Dein Ergebnis: ${score} / ${questions.length}` +
           (score===questions.length?' – Perfekt!':score>=questions.length*0.6?' – Gut gemacht!':' – Wiederhole die Lektion noch einmal!');
       }
     });
@@ -5747,9 +5869,8 @@ function centerActiveNavigation(){
 }
 
 window.addEventListener('hashchange',()=>requestAnimationFrame(centerActiveNavigation));
-route();
-requestAnimationFrame(centerActiveNavigation);
 </script>
+<script src="ui-next.js?v=studio-1"></script>
 <script>
 /* PWA: Service Worker + Offline banner + Download-lesson */
 if ('serviceWorker' in navigator) {

@@ -99,6 +99,38 @@ test('service-worker precache entries exist on disk', () => {
   assert.deepEqual(missing, []);
 });
 
+test('large offline dictionary is searched outside the UI thread', () => {
+  assert.doesNotMatch(html, /<script[^>]+data_dictionary_de_ar\.js/);
+  assert.equal((html.match(/function selectionContext\(/g) || []).length, 1, 'Dead duplicate selection handler should stay removed');
+
+  const workerSource = readFileSync(join(root, 'app', 'dictionary-worker.js'), 'utf8');
+  const listeners = {};
+  const messages = [];
+  const workerGlobal = {
+    OFFLINE_DE_AR: {
+      meta: { entries: 3 },
+      entries: [
+        ['Apfel', 'n', ['تفاحة'], [], '', 'der', [], ['Äpfel']],
+        ['Apfelsaft', 'n', ['عصير التفاح'], [], '', 'der', [], []],
+        ['lernen', 'v', ['يتعلم'], [], '', '', [], ['lernt']]
+      ]
+    },
+    addEventListener(type, handler) { listeners[type] = handler; },
+    postMessage(message) { messages.push(message); }
+  };
+  const context = vm.createContext({ self: workerGlobal, importScripts() {} });
+  vm.runInContext(workerSource, context);
+
+  listeners.message({ data: { type: 'search', requestId: 7, query: 'apfel', limit: 10 } });
+  assert.equal(messages[0].type, 'results');
+  assert.equal(messages[0].requestId, 7);
+  assert.equal(Array.from(messages[0].entries, entry => entry[0]).join(','), 'Apfel,Apfelsaft');
+
+  messages.length = 0;
+  listeners.message({ data: { type: 'search', requestId: 8, query: 'يتعلم', limit: 10 } });
+  assert.equal(messages[0].entries[0][0], 'lernen');
+});
+
 test('A2 lesson 7 keeps the expanded vocabulary complete and searchable', () => {
   const context = vm.createContext({ window: {} });
   const source = readFileSync(join(root, 'app', 'data_book1.js'), 'utf8');
@@ -172,4 +204,34 @@ test('every A2 chapter uses seven distinct section-cover assets', () => {
       assert.ok(existsSync(join(root, 'app', sources[section])), `Missing chapter ${chapter} ${section} cover`);
     }
   }
+});
+
+test('next-generation shell and design system are wired into the offline app', () => {
+  const ui = readFileSync(join(root, 'app', 'ui-next.js'), 'utf8');
+  const css = readFileSync(join(root, 'app', 'styles', 'ui-next.css'), 'utf8');
+  const worker = readFileSync(join(root, 'app', 'sw.js'), 'utf8');
+  assert.match(html, /styles\/ui-next\.css/);
+  assert.match(html, /src="ui-next\.js/);
+  assert.match(ui, /renderDashboard/);
+  assert.match(ui, /renderReviewCenter/);
+  assert.match(ui, /lessonProgress/);
+  assert.match(css, /\.app-bottom-nav/);
+  assert.match(css, /@media\(min-width:900px\)/);
+  assert.match(worker, /ui-next\.js/);
+  assert.match(worker, /styles\/ui-next\.css/);
+});
+
+test('learning interactions expose keyboard and live-region semantics', () => {
+  assert.match(html, /class="flashcard[^\n]+role="button" tabindex="0"/);
+  assert.match(html, /role="tablist" aria-label="Kapitelbereiche"/);
+  assert.match(html, /class="quiz-fb"[^>]+role="status" aria-live="polite"/);
+  assert.match(html, /class="podcast-line"[^\n]+role="button" tabindex="0"/);
+  assert.match(html, /class="podcast-ar" lang="ar" dir="rtl"/);
+});
+
+test('mistakes from quizzes, practice, and exams feed the review queue', () => {
+  const ui = readFileSync(join(root, 'app', 'ui-next.js'), 'utf8');
+  assert.match(ui, /function addMistake\(/);
+  assert.ok((html.match(/NextUI\?\.addMistake/g)||[]).length >= 4);
+  assert.match(ui, /source:'mistake'/);
 });
