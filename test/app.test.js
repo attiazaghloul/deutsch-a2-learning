@@ -244,4 +244,6 @@ test('offline dictionary worker uses the exact pre-cached asset keys', () => {
   assert.match(html, /new Worker\('dictionary-worker\.js'\)/);
   assert.match(dictionaryWorker, /importScripts\('data_dictionary_de_ar\.js'\)/);
   assert.doesNotMatch(dictionaryWorker, /data_dictionary_de_ar\.js\?v=/);
+  assert.match(html, /register\('sw\.js',\{updateViaCache:'none'\}\)/);
+  assert.match(html, /addEventListener\('controllerchange'/);
 });

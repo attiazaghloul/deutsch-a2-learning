@@ -5874,8 +5874,16 @@ window.addEventListener('hashchange',()=>requestAnimationFrame(centerActiveNavig
 <script>
 /* PWA: Service Worker + Offline banner + Download-lesson */
 if ('serviceWorker' in navigator) {
+  let serviceWorkerRefreshing=false;
+  navigator.serviceWorker.addEventListener('controllerchange',()=>{
+    if(serviceWorkerRefreshing) return;
+    serviceWorkerRefreshing=true;
+    location.reload();
+  });
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('sw.js').catch(() => {});
+    navigator.serviceWorker.register('sw.js',{updateViaCache:'none'})
+      .then(registration=>registration.update())
+      .catch(() => {});
   });
 }
 
