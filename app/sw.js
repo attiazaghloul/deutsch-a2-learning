@@ -5,7 +5,7 @@
    Bei Inhaltsänderungen: CACHE_VERSION erhöhen. */
 importScripts('dictionary-data/manifest.js');
 
-const CACHE_VERSION = 'v31';
+const CACHE_VERSION = 'v32';
 const CACHE = 'deutsch-' + CACHE_VERSION;
 const MEDIA_CACHE = 'deutsch-media-v1';
 const DICTIONARY_CACHE = `deutsch-dictionary-v${self.OFFLINE_DICTIONARY_MANIFEST.version}`;
@@ -123,18 +123,32 @@ self.addEventListener('message', event => {
 
   // { type:'cache-lesson', urls:[...] } – on-demand audio pre-cache
   if (event.data && event.data.type === 'cache-lesson') {
-    const urls = event.data.urls || [];
-    event.waitUntil(caches.open(MEDIA_CACHE).then(cache =>
-      Promise.allSettled(
-        urls.map(url =>
-          cache.match(url, { ignoreSearch: true }).then(hit => hit ? null : fetch(url).then(res => {
-            if (res && res.status === 200) cache.put(url, res);
-          }).catch(() => {}))
-        )
-      )
-    ).then(() => {
-      if (event.source) event.source.postMessage({ type: 'lesson-cached', urls });
-    }));
+    const urls = [...new Set(event.data.urls || [])];
+    const source = event.source;
+    event.waitUntil((async () => {
+      const cache = await caches.open(MEDIA_CACHE);
+      let done = 0;
+      let failed = 0;
+      for (const rawUrl of urls) {
+        try {
+          const url = new URL(rawUrl, self.location.href).href;
+          const cached = await cache.match(url, { ignoreSearch: true });
+          if (!cached) {
+            const response = await fetch(url, { cache: 'reload' });
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            await cache.put(url, response.clone());
+          }
+        } catch (_) {
+          failed += 1;
+        }
+        done += 1;
+        source?.postMessage({ type: 'lesson-cache-progress', done, total: urls.length });
+      }
+      source?.postMessage({
+        type: 'lesson-cached', urls, failed,
+        ok: failed === 0, total: urls.length
+      });
+    })());
     return;
   }
 });

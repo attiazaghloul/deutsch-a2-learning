@@ -2159,12 +2159,35 @@ view.addEventListener('click',event=>{
 new MutationObserver(()=>enhanceSpeech(view)).observe(view,{childList:true,subtree:true});
 
 /* ===================== router ===================== */
-function go(hash){ location.hash = hash; }
-window.addEventListener('hashchange', route);
+const ROUTE_HISTORY_KEY='deutschRouteIndex';
+let routeHistoryIndex=Number.isInteger(history.state?.[ROUTE_HISTORY_KEY])
+  ?history.state[ROUTE_HISTORY_KEY]:0;
+history.replaceState({...history.state,[ROUTE_HISTORY_KEY]:routeHistoryIndex},'',location.href);
+
+function routeUrl(hash){
+  const clean=String(hash||'').replace(/^#/,'');
+  return `${location.pathname}${location.search}${clean?`#${clean}`:''}`;
+}
+
+function go(hash){
+  const clean=String(hash||'').replace(/^#/,'');
+  if(clean===location.hash.replace('#','')) return;
+  navigatingBack=false;
+  routeHistoryIndex+=1;
+  history.pushState({...history.state,[ROUTE_HISTORY_KEY]:routeHistoryIndex},'',routeUrl(clean));
+  route();
+}
 
 let lastRouteHash=null;
-let routeBackStack=[];
 let navigatingBack=false;
+
+window.addEventListener('popstate',event=>{
+  const nextIndex=Number.isInteger(event.state?.[ROUTE_HISTORY_KEY])
+    ?event.state[ROUTE_HISTORY_KEY]:Math.max(0,routeHistoryIndex-1);
+  navigatingBack=nextIndex<routeHistoryIndex;
+  routeHistoryIndex=nextIndex;
+  route();
+});
 
 function fallbackBackTarget(hash){
   const h=hash?`#${hash}`:'';
@@ -2199,10 +2222,16 @@ function fallbackBackTarget(hash){
 
 function goBack(){
   const current=location.hash.replace('#','');
-  let previous=routeBackStack.pop();
-  while(previous===current) previous=routeBackStack.pop();
+  if(routeHistoryIndex>0){
+    navigatingBack=true;
+    history.back();
+    return;
+  }
+  const fallback=fallbackBackTarget(current);
+  if(fallback===current) return;
   navigatingBack=true;
-  go(previous ?? fallbackBackTarget(current));
+  history.replaceState({...history.state,[ROUTE_HISTORY_KEY]:0},'',routeUrl(fallback));
+  route();
 }
 
 $('#backBtn').addEventListener('click',event=>{
@@ -2235,7 +2264,6 @@ function route(){
 
 function renderCurrentRoute(){
   const h = location.hash.replace('#','');
-  if(!navigatingBack && lastRouteHash!==null && h!==lastRouteHash) routeBackStack.push(lastRouteHash);
   if(navigatingBack) navigatingBack=false;
   lastRouteHash=h;
   applyLevelTheme(h);
@@ -5224,7 +5252,6 @@ function renderChapterMenu(c){
       return `
       <button type="button" class="section-card chapter-tab-card ${isA1?'a1-chapter-tab-card':'a2-chapter-tab-card'}" onclick="go('${routeBase}/${id}')">
         ${img?.src?`<img class="section-card-img" src="${img.src}" alt="${escapeHtml(img.alt||chapterTabTitle(id,lbl))}" loading="lazy" decoding="async">`:''}
-        <span class="icon" aria-hidden="true"></span>
         <span><b>${chapterTabTitle(id,lbl)}</b><span>${chapterTabDescription(id)}</span></span>
       </button>`;
     }).join('')}</section>`;
@@ -5946,7 +5973,62 @@ if ('serviceWorker' in navigator) {
   sync();
 })();
 
-// Download lesson for offline
+const OFFLINE_MEDIA_FILE=/\.(?:avif|gif|jpe?g|png|svg|webp|m4a|mp3|ogg|wav|mp4|webm)(?:[?#].*)?$/i;
+
+function addOfflineMediaUrl(value,urls){
+  if(typeof value!=='string'||!OFFLINE_MEDIA_FILE.test(value.trim())) return;
+  try{
+    const url=new URL(value,document.baseURI);
+    if(url.origin===location.origin) urls.add(url.href);
+  }catch{}
+}
+
+function collectOfflineMedia(value,urls,seen=new WeakSet()){
+  if(typeof value==='string'){addOfflineMediaUrl(value,urls);return;}
+  if(!value||typeof value!=='object'||seen.has(value)) return;
+  seen.add(value);
+  if(Array.isArray(value)) value.forEach(item=>collectOfflineMedia(item,urls,seen));
+  else Object.values(value).forEach(item=>collectOfflineMedia(item,urls,seen));
+}
+
+function currentOfflineChapter(){
+  const hash=location.hash.replace('#','');
+  const a1=hash.match(/^a1\/k(\d+)(?:\/|$)/);
+  if(a1) return A1_BOOK.find(chapter=>chapter.num===Number(a1[1]))||null;
+  const a2=hash.match(/^k(\d+)(?:\/|$)/);
+  if(a2) return BOOK.find(chapter=>chapter.num===Number(a2[1]))||null;
+  return null;
+}
+
+function collectCurrentLessonOfflineUrls(){
+  const urls=new Set();
+  const chapter=currentOfflineChapter();
+
+  // Include every media reference in the chapter data, not only the active tab.
+  if(chapter){
+    collectOfflineMedia(chapter,urls);
+    TABS.forEach(([id])=>collectOfflineMedia(chapterTabImage(chapter,id),urls));
+    if(!chapter.route?.startsWith('a1/')){
+      const realPhotoLimit=A2_REAL_PHOTO_LIMIT[chapter.num]||0;
+      const extraPhotos=A2_EXTRA_REAL_PHOTOS[chapter.num]||new Set();
+      chapter.vocab?.forEach((card,index)=>{
+        const scene=index+1;
+        if(scene<=realPhotoLimit||extraPhotos.has(scene)){
+          addOfflineMediaUrl(`assets/vocab-scenes/k${chapter.num}/${String(scene).padStart(2,'0')}.webp`,urls);
+        }
+      });
+    }
+  }
+
+  // Also include media rendered by specialised lesson/listening screens.
+  const currentView=document.getElementById('view');
+  currentView?.querySelectorAll('img[src],audio[src],audio source[src],video[src],video source[src]').forEach(element=>{
+    addOfflineMediaUrl(element.currentSrc||element.src,urls);
+  });
+  return {chapter,urls:[...urls]};
+}
+
+// Download the complete current chapter for offline use.
 (function(){
   const dlBtn = document.getElementById('dlBtn');
   if (!dlBtn || !('serviceWorker' in navigator)) return;
@@ -5956,34 +6038,35 @@ if ('serviceWorker' in navigator) {
   dlBtn.addEventListener('click', function(){
     if (!navigator.onLine) { showSpeechStatus('أنت أوفلاين — لا يمكن التحميل الآن'); return; }
 
-    // collect all media URLs visible in the current lesson view
-    const view = document.getElementById('view');
-    const urls = new Set();
-    view.querySelectorAll('audio[src]').forEach(el => urls.add(el.src));
-    view.querySelectorAll('audio source[src]').forEach(el => urls.add(el.src));
-    view.querySelectorAll('img[src]:not([src^="data:"])').forEach(el => urls.add(el.src));
+    const lesson=collectCurrentLessonOfflineUrls();
+    const urls=lesson.urls;
 
-    if (!urls.size) { showSpeechStatus('لا توجد ملفات وسائط في هذا الدرس'); return; }
+    if (!urls.length) { showSpeechStatus('لا توجد ملفات وسائط في هذا الدرس'); return; }
 
-    showSpeechStatus('جاري التحميل… ' + urls.size + ' ملف');
-    dlBtn.textContent = '⏳ Download';
+    showSpeechStatus(`${lesson.chapter?'جاري تحميل الوحدة كاملة':'جاري تحميل الدرس'}… ${urls.length} ملف`);
+    dlBtn.textContent = `⏳ 0/${urls.length}`;
     dlBtn.disabled = true;
 
     if (_handler) navigator.serviceWorker.removeEventListener('message', _handler);
     _handler = function(e){
-      if (!e.data || e.data.type !== 'lesson-cached') return;
+      if (!e.data) return;
+      if(e.data.type==='lesson-cache-progress'){
+        dlBtn.textContent=`⏳ ${e.data.done}/${e.data.total}`;
+        return;
+      }
+      if (e.data.type !== 'lesson-cached') return;
       navigator.serviceWorker.removeEventListener('message', _handler);
       _handler = null;
-      dlBtn.textContent = '✓ Saved';
-      dlBtn.classList.add('cached');
+      dlBtn.textContent = e.data.ok?'✓ Saved':'⚠ Retry';
+      dlBtn.classList.toggle('cached',e.data.ok);
       dlBtn.disabled = false;
-      showSpeechStatus('تم الحفظ للأوفلاين ✓');
+      showSpeechStatus(e.data.ok?'تم حفظ الوحدة كاملة للأوفلاين ✓':`تعذر تحميل ${e.data.failed||1} ملف — حاول مرة أخرى`);
       setTimeout(() => { dlBtn.textContent = '⬇ Download'; dlBtn.classList.remove('cached'); }, 4000);
     };
     navigator.serviceWorker.addEventListener('message', _handler);
 
     navigator.serviceWorker.ready.then(reg => {
-      reg.active.postMessage({ type: 'cache-lesson', urls: [...urls] });
+      reg.active.postMessage({ type: 'cache-lesson', urls });
     });
   });
 })();

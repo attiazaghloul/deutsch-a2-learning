@@ -189,6 +189,14 @@ test('lesson 7 replacement photos map to the intended vocabulary cards', () => {
 test('A2 section covers preserve their native 3:2 aspect ratio', () => {
   assert.match(html, /\.chapter-tab-card\.a2-chapter-tab-card \.section-card-img\{aspect-ratio:3\/2;object-fit:contain;object-position:center\}/);
   assert.match(html, /isA1\?'a1-chapter-tab-card':'a2-chapter-tab-card'/);
+  assert.doesNotMatch(html, /<span class="icon" aria-hidden="true"><\/span>/, 'Chapter cards must not render empty icon placeholders');
+});
+
+test('in-app back navigation uses real session history without adding a duplicate route', () => {
+  assert.match(html, /history\.pushState\(/);
+  assert.match(html, /history\.back\(\)/);
+  assert.match(html, /addEventListener\('popstate'/);
+  assert.doesNotMatch(html, /routeBackStack/);
 });
 
 test('every A2 chapter uses seven distinct section-cover assets', () => {
@@ -234,7 +242,19 @@ test('next-generation shell and design system are wired into the offline app', (
   assert.match(worker, /shell\.match\(req, \{ ignoreSearch: true \}\)/, 'Versioned shell assets must resolve from cache while offline');
   assert.match(worker, /dictionary\.match\(req, \{ ignoreSearch: true \}\)/, 'Dictionary assets must resolve from their durable cache');
   assert.match(worker, /media\.match\(req, \{ ignoreSearch: true \}\)/, 'Downloaded lesson media must resolve from its durable cache');
-  assert.match(worker, /CACHE_VERSION = 'v31'/);
+  assert.match(worker, /CACHE_VERSION = 'v32'/);
+});
+
+test('offline lesson download includes the complete chapter and reports real progress', () => {
+  const worker = readFileSync(join(root, 'app', 'sw.js'), 'utf8');
+  assert.match(html, /function collectCurrentLessonOfflineUrls\(/);
+  assert.match(html, /collectOfflineMedia\(chapter,urls\)/);
+  assert.match(html, /TABS\.forEach\(\(\[id\]\)=>collectOfflineMedia\(chapterTabImage\(chapter,id\),urls\)\)/);
+  assert.match(html, /assets\/vocab-scenes\/k\$\{chapter\.num\}/);
+  assert.match(html, /lesson-cache-progress/);
+  assert.match(worker, /type: 'lesson-cache-progress'/);
+  assert.match(worker, /ok: failed === 0/);
+  assert.match(worker, /await cache\.put\(url, response\.clone\(\)\)/);
 });
 
 test('learning interactions expose keyboard and live-region semantics', () => {

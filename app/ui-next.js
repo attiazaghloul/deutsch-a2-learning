@@ -363,6 +363,12 @@
       if(current!==destination) return;
       const top=back?scrollPositions.get(destination)||0:0;
       window.scrollTo({top,behavior:'auto'});
+      if(back&&!reduceMotion.matches&&state.settings.motion!=='reduced'&&typeof view.animate==='function'){
+        view.animate(
+          [{opacity:.94,transform:'translateX(-7px)'},{opacity:1,transform:'translateX(0)'}],
+          {duration:140,easing:'cubic-bezier(.2,.8,.2,1)'}
+        );
+      }
       requestAnimationFrame(()=>{
         const title=document.querySelector('#topTitle')?.childNodes[0]?.textContent?.trim()||routeLabel(destination);
         document.title=`${title} · Deutsch Learning`;
@@ -372,7 +378,9 @@
       });
     };
     const heavyRoute=destination==='full-dict'||destination==='word-search';
-    const motionDisabled=reduceMotion.matches||state.settings.motion==='reduced'||heavyRoute;
+    // Full-page View Transitions are expensive on iOS when navigating back
+    // through image-heavy lessons. Use the small container animation above.
+    const motionDisabled=reduceMotion.matches||state.settings.motion==='reduced'||heavyRoute||back;
     if(!motionDisabled&&typeof document.startViewTransition==='function'){
       const transition=document.startViewTransition(update);
       transition.finished.then(finish).catch(finish);
