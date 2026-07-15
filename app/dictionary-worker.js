@@ -1,121 +1,99 @@
-/* Keeps the large offline dictionary and its search index off the UI thread. */
-let dictionary = null;
-let germanBuckets = null;
-let arabicBuckets = null;
+/* Mobile-safe offline dictionary search. Loads one small index shard and only
+   the data chunks needed for the current results. */
+let manifest = null;
+self.OFFLINE_DICT_INDEXES = self.OFFLINE_DICT_INDEXES || {};
+self.OFFLINE_DICT_CHUNKS = self.OFFLINE_DICT_CHUNKS || {};
 
 function normalizeDictionaryText(value) {
   return String(value || '')
     .toLocaleLowerCase('de-DE')
     .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[\u064B-\u065F\u0670]/g, '')
     .replace(/ß/g, 'ss')
     .replace(/[^A-Za-z0-9\u00C0-\u024F\u0600-\u06FF\s]+/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
 }
 
-function loadDictionary() {
-  if (dictionary) return dictionary;
-
-  // The generated data file targets a browser window. A worker's global scope
-  // is equivalent for this read-only dataset.
-  self.window = self;
-  // Keep this URL identical to the key pre-cached by the service worker.
-  // Safari/iOS can otherwise miss the cached response while offline.
-  importScripts('data_dictionary_de_ar.js');
-  dictionary = self.OFFLINE_DE_AR || { meta: { entries: 0 }, entries: [] };
-  return dictionary;
+function loadManifest() {
+  if (manifest) return manifest;
+  importScripts('dictionary-data/manifest.js');
+  manifest = self.OFFLINE_DICTIONARY_MANIFEST;
+  if (!manifest?.assets?.length) throw new Error('Wörterbuch-Manifest ist ungültig.');
+  return manifest;
 }
 
-function addBucket(bucketMap, key, index) {
-  if (key.length < 2) return;
-  const prefix = key.slice(0, 2);
-  const bucket = bucketMap.get(prefix);
-  if (bucket) bucket.push(index);
-  else bucketMap.set(prefix, [index]);
+function bucketFor(value) {
+  const data = loadManifest();
+  const bucketValue = /^[\u0600-\u06FF]/.test(value) && value.startsWith('ال') && value.length > 3 ? value.slice(2) : value;
+  const prefix = [...bucketValue.slice(0, 2)];
+  let hash = 0;
+  for (const char of prefix) hash = (Math.imul(hash, 31) + char.codePointAt(0)) >>> 0;
+  return hash % data.indexBuckets;
 }
 
-function germanSearchKeys(entry) {
-  const word = normalizeDictionaryText(entry[0]);
-  const articleWord = entry[5] ? normalizeDictionaryText(`${entry[5]} ${entry[0]}`) : '';
-  const forms = (entry[7] || []).map(normalizeDictionaryText);
-  return [...new Set([word, articleWord, ...forms, ...word.split(' ')].filter(value => value.length >= 2))];
-}
+function loadIndex(language, query) {
+  const bucket = bucketFor(query);
+  const key = `${language}-${String(bucket).padStart(2, '0')}`;
+  if (!self.OFFLINE_DICT_INDEXES[key]) importScripts(`dictionary-data/index-${key}.js`);
+  const index = self.OFFLINE_DICT_INDEXES[key];
+  if (!Array.isArray(index)) throw new Error('Wörterbuch-Index konnte nicht geladen werden.');
 
-function arabicSearchKeys(entry) {
-  const values = (entry[2] || []).flatMap(value => {
-    const normalized = normalizeDictionaryText(value);
-    const withoutArticle = normalized.startsWith('ال') ? normalized.slice(2) : '';
-    return [normalized, withoutArticle, ...normalized.split(' ')];
-  });
-  return [...new Set(values.filter(value => value.length >= 2))];
-}
-
-function dictionaryBuckets(language) {
-  const data = loadDictionary();
-  if (language === 'ar' && arabicBuckets) return arabicBuckets;
-  if (language === 'de' && germanBuckets) return germanBuckets;
-
-  const buckets = new Map();
-  for (let index = 0; index < data.entries.length; index += 1) {
-    const entry = data.entries[index];
-    const keys = language === 'ar' ? arabicSearchKeys(entry) : germanSearchKeys(entry);
-    for (const key of keys) addBucket(buckets, key, index);
+  // Safari keeps imported scripts in the worker. Retain only the current shard
+  // so switching between many searches cannot grow memory without limit.
+  for (const loadedKey of Object.keys(self.OFFLINE_DICT_INDEXES)) {
+    if (loadedKey !== key) delete self.OFFLINE_DICT_INDEXES[loadedKey];
   }
-  if (language === 'ar') arabicBuckets = buckets;
-  else germanBuckets = buckets;
-  return buckets;
+  return index;
+}
+
+function matchingEntryIndexes(query, language, limit) {
+  const pairs = loadIndex(language, query);
+  const best = new Map();
+  for (const [key, entryIndex, sourceRank] of pairs) {
+    if (!key.includes(query)) continue;
+    const matchRank = key === query ? 0 : key.startsWith(query) ? 1 : 2;
+    const score = matchRank * 10 + sourceRank;
+    const previous = best.get(entryIndex);
+    if (!previous || score < previous.score || (score === previous.score && key.length < previous.key.length)) {
+      best.set(entryIndex, { entryIndex, score, key });
+    }
+  }
+  return [...best.values()]
+    .sort((a, b) => a.score - b.score || a.key.length - b.key.length || a.entryIndex - b.entryIndex)
+    .slice(0, limit)
+    .map(item => item.entryIndex);
+}
+
+function loadEntries(entryIndexes) {
+  const data = loadManifest();
+  const chunkIds = [...new Set(entryIndexes.map(index => Math.floor(index / data.chunkSize)))];
+  for (const chunkId of chunkIds) {
+    if (!self.OFFLINE_DICT_CHUNKS[chunkId]) {
+      importScripts(`dictionary-data/chunk-${String(chunkId).padStart(2, '0')}.js`);
+    }
+  }
+  const entries = entryIndexes.map(index => {
+    const chunkId = Math.floor(index / data.chunkSize);
+    return self.OFFLINE_DICT_CHUNKS[chunkId]?.[index % data.chunkSize];
+  }).filter(Boolean);
+  for (const chunkId of chunkIds) delete self.OFFLINE_DICT_CHUNKS[chunkId];
+  return entries;
 }
 
 function searchDictionary(value, limit = 60) {
-  const data = loadDictionary();
   const query = normalizeDictionaryText(value);
   if (query.length < 2) return [];
-
-  const arabicQuery = /[\u0600-\u06ff]/.test(query);
-  const language = arabicQuery ? 'ar' : 'de';
-  const candidates = dictionaryBuckets(language).get(query.slice(0, 2)) || [];
-  const primaryExact = [];
-  const primaryPrefix = [];
-  const relatedExact = [];
-  const relatedPrefix = [];
-  const contains = [];
-
-  // The old implementation normalized and scanned all 138k records for every
-  // keystroke. Prefix buckets keep only numeric entry references and reduce a
-  // mobile search to the small set that can actually match the typed prefix.
-  for (const index of candidates) {
-    const entry = data.entries[index];
-    const keys = arabicQuery ? arabicSearchKeys(entry) : germanSearchKeys(entry);
-    const primaryKeys = arabicQuery
-      ? (entry[2] || []).flatMap(value => {
-          const normalized = normalizeDictionaryText(value);
-          return [normalized, normalized.startsWith('ال') ? normalized.slice(2) : ''];
-        }).filter(Boolean)
-      : [normalizeDictionaryText(entry[0]), entry[5] ? normalizeDictionaryText(`${entry[5]} ${entry[0]}`) : ''].filter(Boolean);
-    const matching = keys.filter(key => key.includes(query));
-    if (!matching.length) continue;
-    if (primaryKeys.some(key => key === query)) {
-      primaryExact.push(entry);
-    } else if (primaryKeys.some(key => key.startsWith(query))) {
-      primaryPrefix.push(entry);
-    } else if (matching.some(key => key === query)) {
-      relatedExact.push(entry);
-    } else if (matching.some(key => key.startsWith(query))) {
-      relatedPrefix.push(entry);
-    } else {
-      contains.push(entry);
-    }
-  }
-
-  return [...new Set([...primaryExact, ...primaryPrefix, ...relatedExact, ...relatedPrefix, ...contains])].slice(0, limit);
+  const language = /[\u0600-\u06ff]/.test(query) ? 'ar' : 'de';
+  return loadEntries(matchingEntryIndexes(query, language, limit));
 }
 
 self.addEventListener('message', event => {
   const message = event.data || {};
   try {
     if (message.type === 'init') {
-      const data = loadDictionary();
-      self.postMessage({ type: 'ready', meta: data.meta });
+      const data = loadManifest();
+      self.postMessage({ type: 'ready', meta: { entries: data.entries, version: data.version } });
       return;
     }
     if (message.type === 'search') {

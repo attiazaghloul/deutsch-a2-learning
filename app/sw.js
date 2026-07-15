@@ -3,9 +3,16 @@
    - Audio/große Bilder: stale-while-revalidate (beim ersten Abruf gecacht)
    - "cache-lesson" Nachricht: cacht alle Audio-Dateien einer Lektion on-demand
    Bei Inhaltsänderungen: CACHE_VERSION erhöhen. */
-const CACHE_VERSION = 'v30';
+importScripts('dictionary-data/manifest.js');
+
+const CACHE_VERSION = 'v31';
 const CACHE = 'deutsch-' + CACHE_VERSION;
-const DICTIONARY_ASSETS = ['data_dictionary_de_ar.js', 'dictionary-worker.js'];
+const MEDIA_CACHE = 'deutsch-media-v1';
+const DICTIONARY_CACHE = `deutsch-dictionary-v${self.OFFLINE_DICTIONARY_MANIFEST.version}`;
+const DICTIONARY_ASSETS = [
+  'dictionary-worker.js', 'dictionary-data/manifest.js',
+  ...self.OFFLINE_DICTIONARY_MANIFEST.assets
+];
 
 const CORE = [
   './',
@@ -15,6 +22,7 @@ const CORE = [
   'icons/icon-512.png',
   'icons/icon-maskable-512.png',
   'icons/apple-touch-icon.png',
+  'dictionary-data/manifest.js',
   // JS data files
   'data_a1.js','data_a12.js','data_a1_grammar_full.js','data_a1_grammar_lessons.js','data_a1_verbs.js',
   'data_a21_library.js','data_a2_grammar_lessons.js','data_book0.js','data_book0_expansion.js','data_book1.js',
@@ -63,7 +71,9 @@ self.addEventListener('install', event => {
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys =>
-      Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
+      Promise.all(keys.filter(key =>
+        key !== CACHE && key !== MEDIA_CACHE && key !== DICTIONARY_CACHE
+      ).map(key => caches.delete(key)))
     ).then(() => self.clients.claim())
   );
 });
@@ -74,7 +84,7 @@ self.addEventListener('message', event => {
   if (event.data && event.data.type === 'cache-dictionary') {
     const source = event.source;
     event.waitUntil((async () => {
-      const cache = await caches.open(CACHE);
+      const cache = await caches.open(DICTIONARY_CACHE);
       let done = 0;
       let ok = true;
       for (const url of DICTIONARY_ASSETS) {
@@ -94,10 +104,27 @@ self.addEventListener('message', event => {
     return;
   }
 
+  if (event.data && event.data.type === 'dictionary-cache-status') {
+    const source = event.source;
+    const requestId = event.data.requestId;
+    event.waitUntil((async () => {
+      const cache = await caches.open(DICTIONARY_CACHE);
+      let cached = 0;
+      for (const url of DICTIONARY_ASSETS) {
+        if (await cache.match(url, { ignoreSearch: true })) cached += 1;
+      }
+      source?.postMessage({
+        type: 'dictionary-cache-status', requestId, cached,
+        total: DICTIONARY_ASSETS.length, complete: cached === DICTIONARY_ASSETS.length
+      });
+    })());
+    return;
+  }
+
   // { type:'cache-lesson', urls:[...] } – on-demand audio pre-cache
   if (event.data && event.data.type === 'cache-lesson') {
     const urls = event.data.urls || [];
-    caches.open(CACHE).then(cache =>
+    event.waitUntil(caches.open(MEDIA_CACHE).then(cache =>
       Promise.allSettled(
         urls.map(url =>
           cache.match(url, { ignoreSearch: true }).then(hit => hit ? null : fetch(url).then(res => {
@@ -107,7 +134,8 @@ self.addEventListener('message', event => {
       )
     ).then(() => {
       if (event.source) event.source.postMessage({ type: 'lesson-cached', urls });
-    });
+    }));
+    return;
   }
 });
 
@@ -124,12 +152,21 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // stale-while-revalidate: return cache immediately, update in background
+  const dictionaryAsset = url.pathname.includes('/dictionary-data/');
+  // Dictionary files and downloaded lesson media live in durable caches so a
+  // normal app update cannot erase them. Other app assets use the versioned shell.
   event.respondWith(
-    caches.open(CACHE).then(cache =>
-      cache.match(req, { ignoreSearch: true }).then(cached => {
+    Promise.all([caches.open(CACHE), caches.open(DICTIONARY_CACHE), caches.open(MEDIA_CACHE)]).then(([shell, dictionary, media]) =>
+      Promise.all([
+        shell.match(req, { ignoreSearch: true }),
+        dictionary.match(req, { ignoreSearch: true }),
+        media.match(req, { ignoreSearch: true })
+      ]).then(([shellHit, dictionaryHit, mediaHit]) => {
+        const cached = shellHit || dictionaryHit || mediaHit;
         const network = fetch(req).then(res => {
-          if (res && res.status === 200 && res.type === 'basic') cache.put(req, res.clone());
+          if (res && res.status === 200 && res.type === 'basic') {
+            (dictionaryAsset ? dictionary : shell).put(req, res.clone());
+          }
           return res;
         }).catch(() => cached);
         return cached || network;

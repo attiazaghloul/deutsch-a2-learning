@@ -5,6 +5,7 @@
 Hören und Sprechen A2/
 /hoeren_extract/
 /build/
+/app/dictionary-data/
 
 # Local tooling
 .claude/

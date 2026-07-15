@@ -1309,12 +1309,32 @@ async function searchOfflineDictionary(value,limit=60){
   });
 }
 
-const OFFLINE_DICTIONARY_ASSETS=['data_dictionary_de_ar.js','dictionary-worker.js'];
+let offlineDictionaryCacheRequestId=0;
 
-async function offlineDictionaryCached(){
-  if(!('caches' in window)) return false;
-  const matches=await Promise.all(OFFLINE_DICTIONARY_ASSETS.map(asset=>caches.match(asset,{ignoreSearch:true})));
-  return matches.every(Boolean);
+async function offlineDictionaryCacheStatus(){
+  if(!('serviceWorker' in navigator)) return {complete:false,cached:0,total:0};
+  const requestId=++offlineDictionaryCacheRequestId;
+  return new Promise(resolve=>{
+    const timer=setTimeout(()=>{
+      navigator.serviceWorker.removeEventListener('message',handler);
+      resolve({complete:false,cached:0,total:0});
+    },5000);
+    const handler=event=>{
+      const message=event.data||{};
+      if(message.type!=='dictionary-cache-status'||message.requestId!==requestId) return;
+      clearTimeout(timer);
+      navigator.serviceWorker.removeEventListener('message',handler);
+      resolve(message);
+    };
+    navigator.serviceWorker.addEventListener('message',handler);
+    navigator.serviceWorker.ready.then(registration=>{
+      registration.active?.postMessage({type:'dictionary-cache-status',requestId});
+    }).catch(()=>{
+      clearTimeout(timer);
+      navigator.serviceWorker.removeEventListener('message',handler);
+      resolve({complete:false,cached:0,total:0});
+    });
+  });
 }
 
 async function syncOfflineDictionaryStatus(){
@@ -1322,9 +1342,14 @@ async function syncOfflineDictionaryStatus(){
   const button=$('#offlineDictionaryDownload');
   if(!status) return;
   const total=Number(OFFLINE_DICTIONARY_META.entries).toLocaleString('de-DE');
-  const cached=await offlineDictionaryCached().catch(()=>false);
-  status.textContent=cached?`✓ ${total} Einträge auf diesem Gerät gespeichert`:`${total} Einträge · Online laden oder offline speichern`;
-  if(button){button.textContent=cached?'✓ Offline gespeichert':'⬇ Wörterbuch offline speichern';button.classList.toggle('cached',cached);}
+  const cache=await offlineDictionaryCacheStatus().catch(()=>({complete:false,cached:0,total:0}));
+  status.textContent=cache.complete
+    ?`✓ ${total} Einträge vollständig offline gespeichert`
+    :cache.total?`${cache.cached} / ${cache.total} Wörterbuchdateien gespeichert`:`${total} Einträge · noch nicht vollständig offline`;
+  if(button){
+    button.textContent=cache.complete?'✓ Vollständig offline':'⬇ Wörterbuch offline speichern';
+    button.classList.toggle('cached',cache.complete);
+  }
 }
 
 function downloadOfflineDictionary(button){
@@ -2136,44 +2161,6 @@ new MutationObserver(()=>enhanceSpeech(view)).observe(view,{childList:true,subtr
 /* ===================== router ===================== */
 function go(hash){ location.hash = hash; }
 window.addEventListener('hashchange', route);
-$('#backBtn').addEventListener('click', () => {
-  const h = location.hash;
-  const path = h.replace(/^#/,'');
-  // A1 · Kapitel-Tab → Kapitel-Übersicht
-  if(/^#a1\/k\d+\//.test(h)){ go(path.split('/').slice(0,2).join('/')); return; }
-  // A1 · Kapitel → A1 Start
-  if(/^#a1\/g\d+\/\d+$/.test(h)){ go(path.split('/').slice(0,2).join('/')); return; }
-  if(/^#a1\/g\d+$/.test(h)){ go('a1/lessons'); return; }
-  if(/^#a1\/k\d+$/.test(h)){ go('a1'); return; }
-  // A1 · Hören/Phonetik Übung → Kapitel
-  if(/^#a1\/listen\/(?:hoeren|phonetik)\/[A-H]\/\d+$/.test(h)){ go(path.split('/').slice(0,4).join('/')); return; }
-  if(/^#a1\/listen\/(?:hoeren|phonetik)\/[A-C]\/\d+$/.test(h)){ go(path.split('/').slice(0,4).join('/')); return; }
-  // A1 · Hören/Phonetik Kapitel → Buch-Start
-  if(/^#a1\/listen\/(?:hoeren|phonetik)\/[A-H]$/.test(h)){ go(path.split('/').slice(0,3).join('/')); return; }
-  if(/^#a1\/listen\/(?:hoeren|phonetik)\/[A-C]$/.test(h)){ go(path.split('/').slice(0,3).join('/')); return; }
-  // A1 · Buch-Auswahl → Hören-Übersicht
-  if(/^#a1\/listen\/(?:hoeren|phonetik)$/.test(h)){ go('a1/listen'); return; }
-  // Legacy: a1/listen/A → a1/listen/hoeren/A
-  if(/^#a1\/listen\/[A-H](?:\/\d+)?$/.test(h)){
-    const parts = path.split('/');
-    go(['a1', 'listen', 'hoeren', ...parts.slice(2)].join('/'));
-    return;
-  }
-  // A1 · Hören / Wörterbuch / Verben / Redemittel → A1 Start
-  if(h==='#a1/listen'||/^#a1\/(dict|verbs|phrases)$/.test(h)){ go('a1'); return; }
-  // A1 / A2 Start → Niveauwahl
-  if(h==='#a1'||h==='#a2'){ go(''); return; }
-  if(/^#podcast\//.test(h)){ go('podcast'); return; }
-  if(/^#games\//.test(h)){ go('games'); return; }
-  if(/^#exam\//.test(h)){ go('exam'); return; }
-  if(/^#listen\/[A-I]\/\d+/.test(h)){ go(path.split('/').slice(0,2).join('/')); return; }
-  if(/^#listen\/[A-I]/.test(h)){ go('listen'); return; }
-  // A2 Hauptbereiche (Tabs) → A2 Start
-  if(['#dict','#full-dict','#verbs','#phrases','#listen','#exam','#podcast','#games'].includes(h)){ go('a2'); return; }
-  if(/^#(k|g)\d+\//.test(h)) go(path.split('/').slice(0,1).join('/'));
-  else if(/^#(k|g)\d+$/.test(h)) go('a2');
-  else go('');
-});
 
 let lastRouteHash=null;
 let routeBackStack=[];
@@ -2211,9 +2198,11 @@ function fallbackBackTarget(hash){
 }
 
 function goBack(){
-  const previous=routeBackStack.pop();
+  const current=location.hash.replace('#','');
+  let previous=routeBackStack.pop();
+  while(previous===current) previous=routeBackStack.pop();
   navigatingBack=true;
-  go(previous ?? fallbackBackTarget(location.hash.replace('#','')));
+  go(previous ?? fallbackBackTarget(current));
 }
 
 $('#backBtn').addEventListener('click',event=>{
@@ -3898,7 +3887,7 @@ function renderFullDictionary(){
   view.innerHTML=`
     <div class="hero"><h2>Deutsch–Arabisch Offline</h2>
       <p>Ein umfassendes Wörterbuch mit deutschen Stichwörtern, arabischen Bedeutungen, Wortarten, Formen und Beispielen.</p>
-      <div class="ar" style="display:block">قاموس ألماني–عربي شامل داخل التطبيق. يعمل البحث بدون إنترنت ويظهر تلقائيًا أيضًا عندما لا تكون الكلمة موجودة في دروسك.</div>
+      <div class="ar" style="display:block">قاموس ألماني–عربي شامل داخل التطبيق. لتشغيله بالكامل بدون إنترنت اضغط حفظ القاموس أوفلاين وانتظر اكتمال كل الملفات.</div>
       <div class="offline-dict-actions"><div class="offline-ready" id="offlineDictionaryStatus">${total} Einträge · wird vorbereitet…</div><button type="button" class="offline-dict-download" id="offlineDictionaryDownload" onclick="downloadOfflineDictionary(this)">⬇ Wörterbuch offline speichern</button></div>
     </div>
     <div class="search-panel">
@@ -5934,11 +5923,12 @@ window.addEventListener('hashchange',()=>requestAnimationFrame(centerActiveNavig
 <script>
 /* PWA: Service Worker + Offline banner + Download-lesson */
 if ('serviceWorker' in navigator) {
-  let serviceWorkerRefreshing=false;
   navigator.serviceWorker.addEventListener('controllerchange',()=>{
-    if(serviceWorkerRefreshing) return;
-    serviceWorkerRefreshing=true;
-    location.reload();
+    // Never interrupt navigation with an automatic reload. The new worker
+    // controls subsequent requests immediately; fresh UI code is used after
+    // the user naturally closes and reopens the PWA.
+    showSpeechStatus('تم تحديث ملفات الأوفلاين — التحديث الكامل يظهر عند فتح التطبيق مرة أخرى');
+    if($('#offlineDictionaryStatus')) syncOfflineDictionaryStatus();
   });
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('sw.js',{updateViaCache:'none'})

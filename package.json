@@ -2,6 +2,7 @@
   "name": "deutsch-a2-learning",
   "private": true,
   "scripts": {
-    "test": "node --test"
+    "build:dictionary": "node scripts/build_dictionary_mobile_assets.js",
+    "test": "npm run build:dictionary && node --test"
   }
 }

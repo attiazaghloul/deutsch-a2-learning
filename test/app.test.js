@@ -104,22 +104,33 @@ test('large offline dictionary is searched outside the UI thread', () => {
   assert.equal((html.match(/function selectionContext\(/g) || []).length, 1, 'Dead duplicate selection handler should stay removed');
 
   const workerSource = readFileSync(join(root, 'app', 'dictionary-worker.js'), 'utf8');
-  assert.doesNotMatch(workerSource, /dictionary\.entries\.map\(/, 'The full dictionary must not be duplicated eagerly in memory');
   const listeners = {};
   const messages = [];
+  const entries = [
+    ['Apfel', 'n', ['تفاحة'], [], '', 'der', [], ['Äpfel']],
+    ['Apfelsaft', 'n', ['عصير التفاح'], [], '', 'der', [], []],
+    ['lernen', 'v', ['يتعلم'], [], '', '', [], ['lernt']]
+  ];
   const workerGlobal = {
-    OFFLINE_DE_AR: {
-      meta: { entries: 3 },
-      entries: [
-        ['Apfel', 'n', ['تفاحة'], [], '', 'der', [], ['Äpfel']],
-        ['Apfelsaft', 'n', ['عصير التفاح'], [], '', 'der', [], []],
-        ['lernen', 'v', ['يتعلم'], [], '', '', [], ['lernt']]
-      ]
-    },
     addEventListener(type, handler) { listeners[type] = handler; },
     postMessage(message) { messages.push(message); }
   };
-  const context = vm.createContext({ self: workerGlobal, importScripts() {} });
+  const context = vm.createContext({
+    self: workerGlobal,
+    importScripts(asset) {
+      if (asset.endsWith('manifest.js')) {
+        workerGlobal.OFFLINE_DICTIONARY_MANIFEST = { version: 2, entries: 3, chunkSize: 3, indexBuckets: 16, assets: ['test'] };
+      } else if (asset.includes('index-de-')) {
+        const key = asset.match(/index-(de-\d+)\.js/)[1];
+        workerGlobal.OFFLINE_DICT_INDEXES[key] = [['apfel', 0, 0], ['apfelsaft', 1, 0]];
+      } else if (asset.includes('index-ar-')) {
+        const key = asset.match(/index-(ar-\d+)\.js/)[1];
+        workerGlobal.OFFLINE_DICT_INDEXES[key] = [['يتعلم', 2, 0]];
+      } else if (asset.includes('chunk-00.js')) {
+        workerGlobal.OFFLINE_DICT_CHUNKS[0] = entries;
+      }
+    }
+  });
   vm.runInContext(workerSource, context);
 
   listeners.message({ data: { type: 'search', requestId: 7, query: 'apfel', limit: 10 } });
@@ -220,8 +231,10 @@ test('next-generation shell and design system are wired into the offline app', (
   assert.match(css, /@media\(min-width:900px\)/);
   assert.match(worker, /ui-next\.js/);
   assert.match(worker, /styles\/ui-next\.css/);
-  assert.match(worker, /cache\.match\(req, \{ ignoreSearch: true \}\)/, 'Versioned assets must resolve from cache while offline');
-  assert.match(worker, /CACHE_VERSION = 'v30'/);
+  assert.match(worker, /shell\.match\(req, \{ ignoreSearch: true \}\)/, 'Versioned shell assets must resolve from cache while offline');
+  assert.match(worker, /dictionary\.match\(req, \{ ignoreSearch: true \}\)/, 'Dictionary assets must resolve from their durable cache');
+  assert.match(worker, /media\.match\(req, \{ ignoreSearch: true \}\)/, 'Downloaded lesson media must resolve from its durable cache');
+  assert.match(worker, /CACHE_VERSION = 'v31'/);
 });
 
 test('learning interactions expose keyboard and live-region semantics', () => {
@@ -242,16 +255,23 @@ test('mistakes from quizzes, practice, and exams feed the review queue', () => {
 test('offline dictionary worker uses the exact pre-cached asset keys', () => {
   const dictionaryWorker = readFileSync(join(root, 'app', 'dictionary-worker.js'), 'utf8');
   const serviceWorker = readFileSync(join(root, 'app', 'sw.js'), 'utf8');
+  const manifestSource = readFileSync(join(root, 'app', 'dictionary-data', 'manifest.js'), 'utf8');
+  const manifestContext = vm.createContext({ self: {} });
+  vm.runInContext(manifestSource, manifestContext);
+  const manifest = manifestContext.self.OFFLINE_DICTIONARY_MANIFEST;
   assert.match(html, /new Worker\('dictionary-worker\.js'\)/);
-  assert.match(dictionaryWorker, /importScripts\('data_dictionary_de_ar\.js'\)/);
-  assert.doesNotMatch(dictionaryWorker, /data_dictionary_de_ar\.js\?v=/);
-  assert.match(dictionaryWorker, /dictionaryBuckets\(language\)/);
-  assert.match(dictionaryWorker, /candidates = dictionaryBuckets/);
-  assert.doesNotMatch(dictionaryWorker, /for \(let index = 0; index < data\.entries\.length; index \+= 1\) \{\n    const entry = data\.entries\[index\];\n    const word = normalizeDictionaryText/, 'Each query must not rescan the entire dictionary');
+  assert.match(dictionaryWorker, /importScripts\('dictionary-data\/manifest\.js'\)/);
+  assert.match(dictionaryWorker, /dictionary-data\/index-/);
+  assert.match(dictionaryWorker, /dictionary-data\/chunk-/);
+  assert.equal(manifest.entries, 138755);
+  assert.ok(manifest.assets.length > 60);
+  for (const asset of manifest.assets) assert.ok(existsSync(join(root, 'app', asset)), `Missing ${asset}`);
   assert.match(html, /Suche im ganzen Programm/);
   assert.match(html, /downloadOfflineDictionary/);
-  assert.match(serviceWorker, /DICTIONARY_ASSETS/);
+  assert.match(serviceWorker, /DICTIONARY_CACHE/);
   assert.match(serviceWorker, /cache-dictionary/);
+  assert.match(serviceWorker, /dictionary-cache-status/);
   assert.match(html, /register\('sw\.js',\{updateViaCache:'none'\}\)/);
   assert.match(html, /addEventListener\('controllerchange'/);
+  assert.doesNotMatch(html, /controllerchange[^}]+location\.reload\(\)/s);
 });
