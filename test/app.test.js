@@ -221,7 +221,7 @@ test('next-generation shell and design system are wired into the offline app', (
   assert.match(worker, /ui-next\.js/);
   assert.match(worker, /styles\/ui-next\.css/);
   assert.match(worker, /cache\.match\(req, \{ ignoreSearch: true \}\)/, 'Versioned assets must resolve from cache while offline');
-  assert.match(worker, /CACHE_VERSION = 'v28'/);
+  assert.match(worker, /CACHE_VERSION = 'v29'/);
 });
 
 test('learning interactions expose keyboard and live-region semantics', () => {

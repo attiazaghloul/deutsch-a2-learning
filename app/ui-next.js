@@ -64,8 +64,8 @@
 
   const primaryNav=[
     {id:'home',label:'Start',route:'',icon:icons.home},
-    {id:'learn',label:'Lernen',route:()=>state.profile.level==='a1'?'a1':'a2',icon:icons.learn},
-    {id:'review',label:'Review',route:'review',icon:icons.review},
+    {id:'learn',label:'Inhalte',route:()=>state.profile.level==='a1'?'a1':'a2',icon:icons.learn},
+    {id:'review',label:'Wörter',route:'word-search',icon:icons.search},
     {id:'listen',label:'Hören',route:()=>state.profile.level==='a1'?'a1/listen':'listen',icon:icons.listen},
     {id:'progress',label:'Fortschritt',route:'progress',icon:icons.progress}
   ];
@@ -231,59 +231,41 @@
 
   function dueReviewItems(){return reviewItems().filter(item=>Number(item.dueAt||0)<=Date.now()).sort((a,b)=>Number(a.dueAt||0)-Number(b.dueAt||0));}
 
-  function dashboardOnboarding(){
-    const profile=state.profile;
-    if(profile.onboarded) return '';
-    const goals=[['daily-life','Alltag'],['work','Arbeit'],['goethe','Goethe'],['travel','Reisen']];
-    const minutes=[5,10,15,20];
-    return `<section class="onboarding-card" aria-labelledby="onboardingTitle">
-      <h2 id="onboardingTitle">Richte deinen Lernweg ein</h2>
-      <p>Drei schnelle Entscheidungen machen deine tägliche Empfehlung relevanter.</p>
-      <div class="ar" lang="ar" dir="rtl" style="display:block">اختر هدفك والوقت المناسب لك، وسنرتب لك الخطوة التالية يوميًا.</div>
-      <div class="choice-group"><span>Mein Ziel</span><div class="choice-row">${goals.map(([id,label])=>`<button type="button" class="choice-chip ${profile.goal===id?'active':''}" data-profile-field="goal" data-profile-value="${id}">${label}</button>`).join('')}</div></div>
-      <div class="choice-group"><span>Mein Niveau</span><div class="choice-row"><button type="button" class="choice-chip ${profile.level==='a1'?'active':''}" data-profile-field="level" data-profile-value="a1">A1</button><button type="button" class="choice-chip ${profile.level==='a2'?'active':''}" data-profile-field="level" data-profile-value="a2">A2</button></div></div>
-      <div class="choice-group"><span>Zeit pro Tag</span><div class="choice-row">${minutes.map(value=>`<button type="button" class="choice-chip ${profile.minutes===value?'active':''}" data-profile-field="minutes" data-profile-value="${value}">${value} Min.</button>`).join('')}</div></div>
-      <div style="margin-top:20px"><button type="button" class="next-primary" data-onboarding-complete>Lernplan erstellen ${icons.arrow}</button></div>
-    </section>`;
-  }
-
   function renderDashboard(){
-    setTop('Deutsch Studio','Dein persönlicher Lernplan',false);
-    const metrics=legacyMetrics();
-    const due=dueReviewItems().length;
+    setTop('Deutsch Learning','A1 + A2 · Alle Inhalte auf einen Blick',false);
     const level=state.profile.level;
     const continueRoute=state.lastLearningRoute||level;
-    const today=todayHistory().length;
     const listenRoute=level==='a1'?'a1/listen':'listen';
-    const lessonsRoute=level==='a1'?'a1/lessons':'a2/lessons';
+    const hasHistory=state.history.length>0;
     view.innerHTML=`<div class="next-dashboard">
-      ${dashboardOnboarding()}
-      <section class="continue-card">
-        <div class="continue-copy"><small>Weiterlernen · ${level.toUpperCase()}</small><h2>${escapeHtml(routeLabel(continueRoute))}</h2><p>Setze deinen Lernweg genau dort fort, wo du zuletzt aufgehört hast. Dein Fortschritt wird automatisch gespeichert.</p></div>
-        <div><button type="button" class="next-primary" onclick="go('${escapeHtml(continueRoute)}')">Jetzt weitermachen ${icons.arrow}</button></div>
+      <section class="home-hero" aria-labelledby="homeHeroTitle">
+        <div class="home-hero-copy">
+          <div class="home-eyebrow"><span>Deutsch lernen</span><span>A1 + A2</span></div>
+          <h2 id="homeHeroTitle">Vom ersten Satz bis zur A2-Prüfung.</h2>
+          <p>Ein vollständiger, kostenloser Lernbereich mit Lektionen, Wortschatz, Grammatik, Hören, Sprechen und interaktivem Training.</p>
+          <p class="home-ar" lang="ar" dir="rtl">برنامج متكامل لتعلّم الألمانية من البداية حتى نهاية مستوى A2، وكل المحتوى مرتب حسب المستوى والمهارة.</p>
+          <div class="home-hero-actions"><button type="button" class="home-level-cta a1" onclick="go('a1')"><b>A1</b><span>Für Anfänger</span>${icons.arrow}</button><button type="button" class="home-level-cta a2" onclick="go('a2')"><b>A2</b><span>Weiterlernen</span>${icons.arrow}</button></div>
+        </div>
+        <div class="home-overview" aria-label="Programmübersicht"><div><b>24</b><span>Lektionen</span></div><div><b>2</b><span>Niveaus</span></div><div><b>10+</b><span>Lernbereiche</span></div><div><b>Offline</b><span>verfügbar</span></div></div>
       </section>
-      <div class="next-dashboard-grid two-column">
-        <section><div class="next-section-head"><div><h2>Dein Plan für heute</h2><p>${state.profile.minutes} Minuten · fokussiert und machbar</p></div></div>
-          <div class="daily-plan">
-            <button class="daily-task" onclick="go('${lessonsRoute}')"><span class="daily-task-icon">${icons.learn}</span><span class="daily-task-copy"><b>Eine Lernetappe</b><span>Wortschatz, Grammatik und Anwendung</span></span><span class="daily-task-time">${Math.max(5,state.profile.minutes-8)} Min.</span></button>
-            <button class="daily-task" onclick="go('review')"><span class="daily-task-icon">${icons.review}</span><span class="daily-task-copy"><b>Fällige Wiederholung</b><span>${due?`${due} Karten warten`:'Heute ist alles erledigt'}</span></span><span class="daily-task-time">5 Min.</span></button>
-            <button class="daily-task" onclick="go('${listenRoute}')"><span class="daily-task-icon">${icons.listen}</span><span class="daily-task-copy"><b>Aktiv hören</b><span>Eine kurze Hör- oder Sprechübung</span></span><span class="daily-task-time">5 Min.</span></button>
-          </div>
-        </section>
-        <section><div class="next-section-head"><div><h2>Diese Woche</h2><p>Fortschritt statt Punktesammeln</p></div></div>
-          <div class="stat-grid"><div class="stat-card"><b>${today}</b><span>Aktivitäten heute</span></div><div class="stat-card"><b>${due}</b><span>Fällige Karten</span></div><div class="stat-card"><b>${metrics.listening}</b><span>Hörübungen</span></div><div class="stat-card"><b>${metrics.grammar}</b><span>Grammatikschritte</span></div></div>
-        </section>
-      </div>
-      <section><div class="next-section-head"><div><h2>Schnellzugriff</h2><p>Werkzeuge für deinen Lernalltag</p></div></div>
-        <div class="tool-grid">
-          <button class="tool-card" onclick="go('word-search')">${icons.search}<span><b>Suche</b><small>Wörter und Lektionen</small></span></button>
-          <button class="tool-card" onclick="go('${level==='a1'?'a1/dict':'full-dict'}')">${icons.dictionary}<span><b>Wörterbuch</b><small>Deutsch und Arabisch</small></span></button>
-          <button class="tool-card" onclick="go('review')">${icons.cards}<span><b>Review Center</b><small>Favoriten und Fehler</small></span></button>
-          <button class="tool-card" onclick="go('${listenRoute}')">${icons.listen}<span><b>Hörstudio</b><small>Hören und Phonetik</small></span></button>
-          <button class="tool-card" onclick="go('games')">${icons.game}<span><b>Practice Lab</b><small>Kurze aktive Übungen</small></span></button>
-          <button class="tool-card" onclick="go('exam')">${icons.exam}<span><b>Prüfung</b><small>Goethe A2 Training</small></span></button>
+      ${hasHistory?`<section class="home-continue"><span class="home-continue-icon">${icons.learn}</span><div><small>Zuletzt geöffnet · ${level.toUpperCase()}</small><b>${escapeHtml(routeLabel(continueRoute))}</b></div><button type="button" class="next-primary" onclick="go('${escapeHtml(continueRoute)}')">Weiterlernen ${icons.arrow}</button></section>`:''}
+      <section class="home-section" aria-labelledby="levelsTitle"><div class="next-section-head home-heading"><div><span class="home-kicker">Wähle dein Niveau</span><h2 id="levelsTitle">Was möchtest du lernen?</h2><p class="home-ar" lang="ar" dir="rtl">اختر المستوى وشاهد المحتوى المتاح داخله قبل أن تبدأ.</p></div></div>
+        <div class="home-level-grid">
+          <article class="home-level-card a1"><img src="assets/a1/chapters/chapter-1.webp" alt="Deutsch A1 Lernbereich" loading="eager"><div class="home-level-body"><div class="home-level-top"><span class="home-level-code">A1</span><span class="home-level-state">Anfänger</span></div><h3>Grundlagen sicher aufbauen</h3><p>Netzwerk neu A1.1 + A1.2 mit zwölf vollständigen Kapiteln.</p><ul><li>Lektionen & interaktive Übungen</li><li>Wortschatz, Grammatik & Verben</li><li>Hören, Phonetik & Redemittel</li></ul><div class="home-card-actions"><button type="button" class="next-primary" onclick="go('a1')">A1 entdecken ${icons.arrow}</button><button type="button" class="next-secondary" onclick="go('a1/lessons')">12 Lektionen</button></div></div></article>
+          <article class="home-level-card a2"><img src="assets/chapters/chapter-7.webp" alt="Deutsch A2 Lernbereich" loading="eager"><div class="home-level-body"><div class="home-level-top"><span class="home-level-code">A2</span><span class="home-level-state">Grundkenntnisse</span></div><h3>Selbstständig Deutsch anwenden</h3><p>Netzwerk neu A2.1 + A2.2 plus gezieltes Prüfungstraining.</p><ul><li>Zwölf Kapitel & Grammatik-Skript</li><li>Podcast, Hören & Gesprächstraining</li><li>Spiele & Goethe-A2 Modelltraining</li></ul><div class="home-card-actions"><button type="button" class="next-primary" onclick="go('a2')">A2 entdecken ${icons.arrow}</button><button type="button" class="next-secondary" onclick="go('a2/lessons')">12 Lektionen</button></div></div></article>
         </div>
       </section>
+      <section class="home-section" aria-labelledby="contentTitle"><div class="next-section-head home-heading"><div><span class="home-kicker">Alles im Programm</span><h2 id="contentTitle">Lerne nach Thema oder Fähigkeit</h2><p>Du musst keinen festen Plan einrichten. Öffne direkt den Bereich, den du gerade brauchst.</p><p class="home-ar" lang="ar" dir="rtl">تقدر تدخل مباشرة على الدروس أو الكلمات أو القواعد أو الاستماع من غير إعداد خطة مذاكرة.</p></div></div>
+        <div class="home-content-grid">
+          <article class="home-content-card"><span class="home-content-icon">${icons.learn}</span><div><h3>Lektionen</h3><p>24 Kapitel aus Netzwerk neu A1 und A2, jeweils mit Wortschatz, Lesen, Grammatik, Sprechen und Quiz.</p></div><div class="home-content-links"><button type="button" onclick="go('a1/lessons')">A1</button><button type="button" onclick="go('a2/lessons')">A2</button></div></article>
+          <article class="home-content-card"><span class="home-content-icon">${icons.dictionary}</span><div><h3>Wortschatz & Wörterbücher</h3><p>Kapitelwörter, Suche auf Deutsch oder Arabisch und ein großes Offline-Wörterbuch.</p></div><div class="home-content-links"><button type="button" onclick="go('a1/dict')">A1 Wörter</button><button type="button" onclick="go('full-dict')">Großes Wörterbuch</button></div></article>
+          <article class="home-content-card"><span class="home-content-icon">${icons.cards}</span><div><h3>Grammatik & Verben</h3><p>Regeln, Beispiele, Konjugation und Übungen mit sofortiger Korrektur.</p></div><div class="home-content-links"><button type="button" onclick="go('a1/verbs')">A1 Verben</button><button type="button" onclick="go('verbs')">A2 Verben</button></div></article>
+          <article class="home-content-card"><span class="home-content-icon">${icons.listen}</span><div><h3>Hören & Aussprache</h3><p>Hörbücher, Phonetik, Buchseiten und interaktive Aufgaben zum Mitmachen.</p></div><div class="home-content-links"><button type="button" onclick="go('a1/listen')">A1 Hören</button><button type="button" onclick="go('listen')">A2 Hören</button></div></article>
+          <article class="home-content-card"><span class="home-content-icon">${icons.review}</span><div><h3>Sprechen & Redemittel</h3><p>Fertige Wendungen und Beispielsätze für Alltag, Arbeit und Gespräche.</p></div><div class="home-content-links"><button type="button" onclick="go('a1/phrases')">A1 Redemittel</button><button type="button" onclick="go('phrases')">A2 Redemittel</button></div></article>
+          <article class="home-content-card featured"><span class="home-content-icon">${icons.exam}</span><div><h3>Training & Prüfung</h3><p>Aktive Spiele, Podcasts und Goethe-A2 Modelltraining mit Timer.</p></div><div class="home-content-links"><button type="button" onclick="go('games')">Training</button><button type="button" onclick="go('exam')">A2 Prüfung</button></div></article>
+        </div>
+      </section>
+      <section class="home-tools"><div><span class="home-kicker">Direktzugriff</span><h2>Nützliche Werkzeuge</h2></div><div class="home-tool-links"><button type="button" onclick="go('word-search')">${icons.search}<span><b>Wortsuche</b><small>Im gesamten Programm</small></span></button><button type="button" onclick="go('review')">${icons.cards}<span><b>Wiederholen</b><small>Favoriten und Fehler</small></span></button><button type="button" onclick="go('${listenRoute}')">${icons.listen}<span><b>Hörstudio</b><small>${level.toUpperCase()} ist ausgewählt</small></span></button></div></section>
     </div>`;
   }
 
