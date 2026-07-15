@@ -221,7 +221,7 @@ test('next-generation shell and design system are wired into the offline app', (
   assert.match(worker, /ui-next\.js/);
   assert.match(worker, /styles\/ui-next\.css/);
   assert.match(worker, /cache\.match\(req, \{ ignoreSearch: true \}\)/, 'Versioned assets must resolve from cache while offline');
-  assert.match(worker, /CACHE_VERSION = 'v29'/);
+  assert.match(worker, /CACHE_VERSION = 'v30'/);
 });
 
 test('learning interactions expose keyboard and live-region semantics', () => {
@@ -241,9 +241,17 @@ test('mistakes from quizzes, practice, and exams feed the review queue', () => {
 
 test('offline dictionary worker uses the exact pre-cached asset keys', () => {
   const dictionaryWorker = readFileSync(join(root, 'app', 'dictionary-worker.js'), 'utf8');
+  const serviceWorker = readFileSync(join(root, 'app', 'sw.js'), 'utf8');
   assert.match(html, /new Worker\('dictionary-worker\.js'\)/);
   assert.match(dictionaryWorker, /importScripts\('data_dictionary_de_ar\.js'\)/);
   assert.doesNotMatch(dictionaryWorker, /data_dictionary_de_ar\.js\?v=/);
+  assert.match(dictionaryWorker, /dictionaryBuckets\(language\)/);
+  assert.match(dictionaryWorker, /candidates = dictionaryBuckets/);
+  assert.doesNotMatch(dictionaryWorker, /for \(let index = 0; index < data\.entries\.length; index \+= 1\) \{\n    const entry = data\.entries\[index\];\n    const word = normalizeDictionaryText/, 'Each query must not rescan the entire dictionary');
+  assert.match(html, /Suche im ganzen Programm/);
+  assert.match(html, /downloadOfflineDictionary/);
+  assert.match(serviceWorker, /DICTIONARY_ASSETS/);
+  assert.match(serviceWorker, /cache-dictionary/);
   assert.match(html, /register\('sw\.js',\{updateViaCache:'none'\}\)/);
   assert.match(html, /addEventListener\('controllerchange'/);
 });

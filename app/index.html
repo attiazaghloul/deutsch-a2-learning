@@ -331,6 +331,9 @@ table.gt b{color:var(--green-d)}
 .offline-dict-note{font-size:13px;line-height:1.6;color:var(--ink-2);margin-top:8px}
 .offline-dict-source{margin-top:18px;font-size:12px;line-height:1.6;color:var(--ink-2)}
 .offline-ready{display:inline-flex;align-items:center;gap:7px;background:var(--green-l);color:var(--green-d);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:800;margin-top:8px}
+.offline-dict-actions{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin-top:10px}
+.offline-dict-download{min-height:42px;padding:8px 13px;border:1px solid rgba(255,255,255,.42);border-radius:12px;background:rgba(255,255,255,.14);color:#fff;font-weight:800;cursor:pointer}
+.offline-dict-download.cached{background:#fff;color:var(--green-d)}
 .word-result-card{display:grid;grid-template-columns:minmax(118px,170px) minmax(0,1fr);gap:16px;align-items:start}
 .word-result-card.compact{grid-template-columns:96px minmax(0,1fr);gap:12px;padding:12px;margin-bottom:10px;border-radius:14px}
 .word-result-card .fc-visual{width:100%;margin:0;border-radius:18px}
@@ -1242,13 +1245,24 @@ function ensureOfflineDictionary(){
     }
     const worker=new Worker('dictionary-worker.js');
     offlineDictionaryWorker=worker;
+    const initTimer=setTimeout(()=>{
+      const error=new Error('Wörterbuch braucht auf diesem Gerät zu lange. Bitte erneut versuchen.');
+      reject(error);
+      offlineDictionaryRequests.forEach(request=>{clearTimeout(request.timer);request.reject(error);});
+      offlineDictionaryRequests.clear();
+      worker.terminate();
+      offlineDictionaryWorker=null;
+      offlineDictionaryReady=null;
+    },45000);
     worker.addEventListener('message',event=>{
       const message=event.data||{};
       if(message.type==='ready'){
+        clearTimeout(initTimer);
         resolve(message.meta||OFFLINE_DICTIONARY_META);
         return;
       }
       if(message.type==='error' && message.requestId==null){
+        clearTimeout(initTimer);
         const error=new Error(message.message||'Wörterbuch konnte nicht geladen werden.');
         reject(error);
         worker.terminate();
@@ -1260,14 +1274,16 @@ function ensureOfflineDictionary(){
         const pending=offlineDictionaryRequests.get(message.requestId);
         if(!pending) return;
         offlineDictionaryRequests.delete(message.requestId);
+        clearTimeout(pending.timer);
         if(message.type==='error') pending.reject(new Error(message.message||'Wörterbuch konnte nicht geladen werden.'));
         else pending.resolve(message.entries||[]);
       }
     });
     worker.addEventListener('error',()=>{
+      clearTimeout(initTimer);
       const error=new Error('Wörterbuch konnte nicht geladen werden.');
       reject(error);
-      offlineDictionaryRequests.forEach(request=>request.reject(error));
+      offlineDictionaryRequests.forEach(request=>{clearTimeout(request.timer);request.reject(error);});
       offlineDictionaryRequests.clear();
       worker.terminate();
       offlineDictionaryWorker=null;
@@ -1284,8 +1300,53 @@ async function searchOfflineDictionary(value,limit=60){
   await ensureOfflineDictionary();
   const requestId=++offlineDictionaryRequestId;
   return new Promise((resolve,reject)=>{
-    offlineDictionaryRequests.set(requestId,{resolve,reject});
+    const timer=setTimeout(()=>{
+      offlineDictionaryRequests.delete(requestId);
+      reject(new Error('Die Wörterbuchsuche hat zu lange gedauert.'));
+    },20000);
+    offlineDictionaryRequests.set(requestId,{resolve,reject,timer});
     offlineDictionaryWorker.postMessage({type:'search',requestId,query,limit});
+  });
+}
+
+const OFFLINE_DICTIONARY_ASSETS=['data_dictionary_de_ar.js','dictionary-worker.js'];
+
+async function offlineDictionaryCached(){
+  if(!('caches' in window)) return false;
+  const matches=await Promise.all(OFFLINE_DICTIONARY_ASSETS.map(asset=>caches.match(asset,{ignoreSearch:true})));
+  return matches.every(Boolean);
+}
+
+async function syncOfflineDictionaryStatus(){
+  const status=$('#offlineDictionaryStatus');
+  const button=$('#offlineDictionaryDownload');
+  if(!status) return;
+  const total=Number(OFFLINE_DICTIONARY_META.entries).toLocaleString('de-DE');
+  const cached=await offlineDictionaryCached().catch(()=>false);
+  status.textContent=cached?`✓ ${total} Einträge auf diesem Gerät gespeichert`:`${total} Einträge · Online laden oder offline speichern`;
+  if(button){button.textContent=cached?'✓ Offline gespeichert':'⬇ Wörterbuch offline speichern';button.classList.toggle('cached',cached);}
+}
+
+function downloadOfflineDictionary(button){
+  if(!('serviceWorker' in navigator)){showSpeechStatus('Offline-Speicherung wird von diesem Browser nicht unterstützt');return;}
+  if(!navigator.onLine){showSpeechStatus('أنت أوفلاين — افتح القاموس مرة أونلاين لتحميله');return;}
+  button.disabled=true;
+  button.textContent='⏳ 0 / 2';
+  const handler=event=>{
+    const message=event.data||{};
+    if(message.type==='dictionary-cache-progress') button.textContent=`⏳ ${message.done} / ${message.total}`;
+    if(message.type==='dictionary-cached'){
+      navigator.serviceWorker.removeEventListener('message',handler);
+      button.disabled=false;
+      syncOfflineDictionaryStatus();
+      showSpeechStatus(message.ok?'تم تحميل القاموس بالكامل للأوفلاين ✓':'تعذر تحميل بعض ملفات القاموس');
+    }
+  };
+  navigator.serviceWorker.addEventListener('message',handler);
+  navigator.serviceWorker.ready.then(registration=>registration.active?.postMessage({type:'cache-dictionary'})).catch(()=>{
+    navigator.serviceWorker.removeEventListener('message',handler);
+    button.disabled=false;
+    button.textContent='⬇ Wörterbuch offline speichern';
   });
 }
 
@@ -3719,13 +3780,14 @@ view.addEventListener('click',event=>{
 
 /* ===================== global word search and favorites ===================== */
 function renderWordSearch(){
-  setTop('Wortsuche','A1 + A2 Wortschatz',true);
+  setTop('Wortsuche','Lektionen + vollständiges Wörterbuch',true);
   const entries=allVocabularyEntries();
   const prefill=localStorage.getItem(WORD_SEARCH_PREFILL_KEY)||'';
   localStorage.removeItem(WORD_SEARCH_PREFILL_KEY);
   view.innerHTML=`
-    <div class="hero"><h2>Wortsuche</h2>
-      <p>Suche ein Wort und finde Bedeutung, Niveau, Kapitel, Karte und Beispiel.</p>
+    <div class="hero"><h2>Suche im ganzen Programm</h2>
+      <p>Eine Suche zeigt gleichzeitig passende Wörter aus A1/A2 und Ergebnisse aus dem vollständigen Deutsch–Arabisch-Wörterbuch.</p>
+      <div class="ar" style="display:block">البحث هنا يشمل كلمات الدروس في البرنامج والقاموس الألماني–العربي الكامل في نفس الوقت.</div>
     </div>
     <div class="search-panel">
       <div class="search-row">
@@ -3743,6 +3805,7 @@ function renderWordSearch(){
   const level=$('#wordSearchLevel');
   const results=$('#wordSearchResults');
   let drawRequest=0;
+  let timer=null;
   const draw=async()=>{
     const requestId=++drawRequest;
     const query=normalizeWordForSearch(input.value);
@@ -3758,31 +3821,28 @@ function renderWordSearch(){
       const exactB=(b.key===query||b.bareKey===query)?0:1;
       return exactA-exactB || a.level.localeCompare(b.level) || a.chapter.num-b.chapter.num;
     }).slice(0,60);
-    if(found.length){
-      $('#wordSearchCount').textContent=`${found.length} Treffer im Lernwortschatz`;
-      results.innerHTML=found.map(entry=>wordResultCard(entry)).join('');
-      return;
-    }
-    $('#wordSearchCount').textContent='Offline-Wörterbuch wird durchsucht…';
-    results.innerHTML='<div class="card word-result-empty">Wörterbuch wird vorbereitet…</div>';
+    $('#wordSearchCount').textContent=found.length
+      ?`${found.length} Treffer im Programm · Wörterbuch wird durchsucht…`
+      :'Vollständiges Wörterbuch wird durchsucht…';
+    results.innerHTML=`${found.length?`<div class="section-label">Im Lernprogramm · ${found.length}</div>${found.map(entry=>wordResultCard(entry)).join('')}`:''}<div class="section-label">Vollständiges Deutsch–Arabisch-Wörterbuch</div><div class="card word-result-empty">Wörterbuch wird durchsucht…</div>`;
     let fallback=[];
     try{
       fallback=await searchOfflineDictionary(query,40);
     }catch(error){
       if(requestId!==drawRequest) return;
-      $('#wordSearchCount').textContent='Wörterbuch nicht verfügbar';
-      results.innerHTML='<div class="card word-result-empty">Das Offline-Wörterbuch konnte nicht geladen werden.</div>';
+      $('#wordSearchCount').textContent=found.length?`${found.length} Treffer im Programm · Wörterbuch nicht verfügbar`:'Wörterbuch nicht verfügbar';
+      results.innerHTML=`${found.length?`<div class="section-label">Im Lernprogramm · ${found.length}</div>${found.map(entry=>wordResultCard(entry)).join('')}`:''}<div class="section-label">Vollständiges Wörterbuch</div><div class="card word-result-empty">Das vollständige Wörterbuch konnte nicht geladen werden. Öffne es einmal mit Internet oder speichere es offline.</div>`;
       return;
     }
     if(requestId!==drawRequest) return;
-    $('#wordSearchCount').textContent=fallback.length
-      ?`${fallback.length} Treffer im Offline-Wörterbuch`
-      :'Kein Treffer';
-    results.innerHTML=fallback.length
-      ?`<div class="section-label">Offline Deutsch–Arabisch</div><div class="offline-dict-results">${offlineDictionaryResultsHtml(fallback)}</div>`
-      :'<div class="card word-result-empty">Keine passende Karte oder Wörterbuchbedeutung gefunden.</div>';
+    const total=found.length+fallback.length;
+    $('#wordSearchCount').textContent=total?`${found.length} im Programm + ${fallback.length} im Wörterbuch`:'Kein Treffer';
+    results.innerHTML=`
+      ${found.length?`<div class="section-label">Im Lernprogramm · ${found.length}</div>${found.map(entry=>wordResultCard(entry)).join('')}`:''}
+      <div class="section-label">Vollständiges Deutsch–Arabisch-Wörterbuch · ${fallback.length}</div>
+      <div class="offline-dict-results">${offlineDictionaryResultsHtml(fallback)}</div>`;
   };
-  input.addEventListener('input',draw);
+  input.addEventListener('input',()=>{clearTimeout(timer);timer=setTimeout(draw,240);});
   level.addEventListener('change',draw);
   draw();
   if(prefill) input.focus();
@@ -3839,7 +3899,7 @@ function renderFullDictionary(){
     <div class="hero"><h2>Deutsch–Arabisch Offline</h2>
       <p>Ein umfassendes Wörterbuch mit deutschen Stichwörtern, arabischen Bedeutungen, Wortarten, Formen und Beispielen.</p>
       <div class="ar" style="display:block">قاموس ألماني–عربي شامل داخل التطبيق. يعمل البحث بدون إنترنت ويظهر تلقائيًا أيضًا عندما لا تكون الكلمة موجودة في دروسك.</div>
-      <div class="offline-ready" id="offlineDictionaryStatus">${total} Einträge · wird vorbereitet…</div>
+      <div class="offline-dict-actions"><div class="offline-ready" id="offlineDictionaryStatus">${total} Einträge · wird vorbereitet…</div><button type="button" class="offline-dict-download" id="offlineDictionaryDownload" onclick="downloadOfflineDictionary(this)">⬇ Wörterbuch offline speichern</button></div>
     </div>
     <div class="search-panel">
       <div class="search-row">
@@ -3854,12 +3914,12 @@ function renderFullDictionary(){
   let timer=null;
   let drawRequest=0;
   ensureOfflineDictionary().then(()=>{
-    const status=$('#offlineDictionaryStatus');
-    if(status) status.textContent=`✓ ${total} Einträge offline verfügbar`;
+    syncOfflineDictionaryStatus();
   }).catch(()=>{
     const status=$('#offlineDictionaryStatus');
     if(status) status.textContent='Wörterbuch konnte nicht geladen werden';
   });
+  syncOfflineDictionaryStatus();
   const draw=async()=>{
     const requestId=++drawRequest;
     const query=input.value.trim();
@@ -3883,7 +3943,7 @@ function renderFullDictionary(){
     $('#offlineDictionaryCount').textContent=`${found.length} Treffer`;
     results.innerHTML=offlineDictionaryResultsHtml(found);
   };
-  input.addEventListener('input',()=>{ clearTimeout(timer); timer=setTimeout(draw,120); });
+  input.addEventListener('input',()=>{ clearTimeout(timer); timer=setTimeout(draw,260); });
   input.focus();
 }
 

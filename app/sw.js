@@ -3,8 +3,9 @@
    - Audio/große Bilder: stale-while-revalidate (beim ersten Abruf gecacht)
    - "cache-lesson" Nachricht: cacht alle Audio-Dateien einer Lektion on-demand
    Bei Inhaltsänderungen: CACHE_VERSION erhöhen. */
-const CACHE_VERSION = 'v29';
+const CACHE_VERSION = 'v30';
 const CACHE = 'deutsch-' + CACHE_VERSION;
+const DICTIONARY_ASSETS = ['data_dictionary_de_ar.js', 'dictionary-worker.js'];
 
 const CORE = [
   './',
@@ -17,7 +18,7 @@ const CORE = [
   // JS data files
   'data_a1.js','data_a12.js','data_a1_grammar_full.js','data_a1_grammar_lessons.js','data_a1_verbs.js',
   'data_a21_library.js','data_a2_grammar_lessons.js','data_book0.js','data_book0_expansion.js','data_book1.js',
-  'data_book2.js','data_dictionary_de_ar.js','dictionary-worker.js','data_enrichment.js','data_exam.js','data_extra.js','data_gram.js','data_gram_complete.js',
+  'data_book2.js','dictionary-worker.js','data_enrichment.js','data_exam.js','data_extra.js','data_gram.js','data_gram_complete.js',
   'data_gram_extra.js','data_hoeren.js','data_hoeren_a1.js','data_hoeren_a1_figures.js','data_hoeren_a1_interactive.js',
   'data_hoeren_figures.js','data_hoeren_interactive.js','data_phonetik_a1.js','data_phonetik_a1_figures.js',
   'data_phonetik_a1_interactive.js','data_podcast.js','data_speech_a1.js','data_speech_clean.js','data_verbs.js',
@@ -69,6 +70,29 @@ self.addEventListener('activate', event => {
 
 self.addEventListener('message', event => {
   if (event.data === 'skipWaiting') { self.skipWaiting(); return; }
+
+  if (event.data && event.data.type === 'cache-dictionary') {
+    const source = event.source;
+    event.waitUntil((async () => {
+      const cache = await caches.open(CACHE);
+      let done = 0;
+      let ok = true;
+      for (const url of DICTIONARY_ASSETS) {
+        try {
+          const cached = await cache.match(url, { ignoreSearch: true });
+          if (!cached) {
+            const response = await fetch(url, { cache: 'reload' });
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            await cache.put(url, response.clone());
+          }
+        } catch (_) { ok = false; }
+        done += 1;
+        source?.postMessage({ type: 'dictionary-cache-progress', done, total: DICTIONARY_ASSETS.length });
+      }
+      source?.postMessage({ type: 'dictionary-cached', ok });
+    })());
+    return;
+  }
 
   // { type:'cache-lesson', urls:[...] } – on-demand audio pre-cache
   if (event.data && event.data.type === 'cache-lesson') {

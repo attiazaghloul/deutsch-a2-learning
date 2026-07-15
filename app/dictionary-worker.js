@@ -1,5 +1,7 @@
 /* Keeps the large offline dictionary and its search index off the UI thread. */
 let dictionary = null;
+let germanBuckets = null;
+let arabicBuckets = null;
 
 function normalizeDictionaryText(value) {
   return String(value || '')
@@ -24,41 +26,88 @@ function loadDictionary() {
   return dictionary;
 }
 
+function addBucket(bucketMap, key, index) {
+  if (key.length < 2) return;
+  const prefix = key.slice(0, 2);
+  const bucket = bucketMap.get(prefix);
+  if (bucket) bucket.push(index);
+  else bucketMap.set(prefix, [index]);
+}
+
+function germanSearchKeys(entry) {
+  const word = normalizeDictionaryText(entry[0]);
+  const articleWord = entry[5] ? normalizeDictionaryText(`${entry[5]} ${entry[0]}`) : '';
+  const forms = (entry[7] || []).map(normalizeDictionaryText);
+  return [...new Set([word, articleWord, ...forms, ...word.split(' ')].filter(value => value.length >= 2))];
+}
+
+function arabicSearchKeys(entry) {
+  const values = (entry[2] || []).flatMap(value => {
+    const normalized = normalizeDictionaryText(value);
+    const withoutArticle = normalized.startsWith('ال') ? normalized.slice(2) : '';
+    return [normalized, withoutArticle, ...normalized.split(' ')];
+  });
+  return [...new Set(values.filter(value => value.length >= 2))];
+}
+
+function dictionaryBuckets(language) {
+  const data = loadDictionary();
+  if (language === 'ar' && arabicBuckets) return arabicBuckets;
+  if (language === 'de' && germanBuckets) return germanBuckets;
+
+  const buckets = new Map();
+  for (let index = 0; index < data.entries.length; index += 1) {
+    const entry = data.entries[index];
+    const keys = language === 'ar' ? arabicSearchKeys(entry) : germanSearchKeys(entry);
+    for (const key of keys) addBucket(buckets, key, index);
+  }
+  if (language === 'ar') arabicBuckets = buckets;
+  else germanBuckets = buckets;
+  return buckets;
+}
+
 function searchDictionary(value, limit = 60) {
   const data = loadDictionary();
   const query = normalizeDictionaryText(value);
   if (query.length < 2) return [];
 
   const arabicQuery = /[\u0600-\u06ff]/.test(query);
-  const exact = [];
-  const prefix = [];
+  const language = arabicQuery ? 'ar' : 'de';
+  const candidates = dictionaryBuckets(language).get(query.slice(0, 2)) || [];
+  const primaryExact = [];
+  const primaryPrefix = [];
+  const relatedExact = [];
+  const relatedPrefix = [];
   const contains = [];
 
-  // Do not build a second in-memory copy of all 138k records. That eager index
-  // caused severe memory pressure on mobile devices and could make the worker
-  // disappear before returning a result. Scanning in the worker is slightly
-  // more CPU work per query, but keeps the UI responsive and memory predictable.
-  for (let index = 0; index < data.entries.length; index += 1) {
+  // The old implementation normalized and scanned all 138k records for every
+  // keystroke. Prefix buckets keep only numeric entry references and reduce a
+  // mobile search to the small set that can actually match the typed prefix.
+  for (const index of candidates) {
     const entry = data.entries[index];
-    const word = normalizeDictionaryText(entry[0]);
-    const arabicWords = arabicQuery ? (entry[2] || []).map(normalizeDictionaryText) : [];
-    const haystack = arabicQuery
-      ? arabicWords.join(' ')
-      : normalizeDictionaryText(`${entry[0]} ${(entry[7] || []).join(' ')}`);
-    if (!haystack.includes(query)) continue;
-
-    if ((arabicQuery && arabicWords.includes(query)) || (!arabicQuery && word === query)) {
-      exact.push(entry);
-    } else if ((arabicQuery && arabicWords.some(value => value.startsWith(query))) || (!arabicQuery && word.startsWith(query))) {
-      prefix.push(entry);
-    } else if (contains.length < limit) {
+    const keys = arabicQuery ? arabicSearchKeys(entry) : germanSearchKeys(entry);
+    const primaryKeys = arabicQuery
+      ? (entry[2] || []).flatMap(value => {
+          const normalized = normalizeDictionaryText(value);
+          return [normalized, normalized.startsWith('ال') ? normalized.slice(2) : ''];
+        }).filter(Boolean)
+      : [normalizeDictionaryText(entry[0]), entry[5] ? normalizeDictionaryText(`${entry[5]} ${entry[0]}`) : ''].filter(Boolean);
+    const matching = keys.filter(key => key.includes(query));
+    if (!matching.length) continue;
+    if (primaryKeys.some(key => key === query)) {
+      primaryExact.push(entry);
+    } else if (primaryKeys.some(key => key.startsWith(query))) {
+      primaryPrefix.push(entry);
+    } else if (matching.some(key => key === query)) {
+      relatedExact.push(entry);
+    } else if (matching.some(key => key.startsWith(query))) {
+      relatedPrefix.push(entry);
+    } else {
       contains.push(entry);
     }
-
-    if (exact.length + prefix.length >= limit && contains.length >= limit) break;
   }
 
-  return [...exact, ...prefix, ...contains].slice(0, limit);
+  return [...new Set([...primaryExact, ...primaryPrefix, ...relatedExact, ...relatedPrefix, ...contains])].slice(0, limit);
 }
 
 self.addEventListener('message', event => {
