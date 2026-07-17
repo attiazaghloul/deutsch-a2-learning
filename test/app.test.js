@@ -164,6 +164,28 @@ test('A2 lesson 7 keeps the expanded vocabulary complete and searchable', () => 
   assert.ok(searchable.every(Boolean), 'Every lesson 7 vocabulary entry must produce searchable text');
 });
 
+test('Kapitel 9 includes the official Lernwortschatz with matching square photos', () => {
+  const context = vm.createContext({ window: {} });
+  vm.runInContext(readFileSync(join(root, 'app', 'data_book1.js'), 'utf8'), context);
+  vm.runInContext(readFileSync(join(root, 'app', 'data_lernwortschatz9.js'), 'utf8'), context);
+  const chapter = context.window.BOOK1.find(item => item.num === 9);
+  const additions = chapter.vocab.filter(item => item.cat?.startsWith('Lernwortschatz 9'));
+  const stats = context.window.K9_LERNWORTSCHATZ_STATS;
+
+  assert.deepEqual(
+    { official: stats.official, added: stats.added, skippedAsDuplicate: stats.skippedAsDuplicate, withoutImage: stats.withoutImage },
+    { official: 95, added: 88, skippedAsDuplicate: 7, withoutImage: 0 }
+  );
+  assert.equal(additions.length, 88);
+  additions.forEach((item, index) => {
+    const expectedImage = `assets/vocab-scenes/k9-added/${String(index + 1).padStart(2, '0')}.webp`;
+    assert.ok(item.w && item.ar);
+    assert.equal(item.img, expectedImage);
+    assert.ok(existsSync(join(root, 'app', expectedImage)), `Missing ${expectedImage}`);
+  });
+  assert.match(html, /data_lernwortschatz9\.js\?v=lernwortschatz9-2/);
+});
+
 test('lesson 7 replacement photos map to the intended vocabulary cards', () => {
   const context = vm.createContext({ window: {} });
   for (const file of ['data_book1.js', 'data_book2.js', 'data_extra.js']) {
@@ -242,7 +264,9 @@ test('next-generation shell and design system are wired into the offline app', (
   assert.match(worker, /shell\.match\(req, \{ ignoreSearch: true \}\)/, 'Versioned shell assets must resolve from cache while offline');
   assert.match(worker, /dictionary\.match\(req, \{ ignoreSearch: true \}\)/, 'Dictionary assets must resolve from their durable cache');
   assert.match(worker, /media\.match\(req, \{ ignoreSearch: true \}\)/, 'Downloaded lesson media must resolve from its durable cache');
-  assert.match(worker, /CACHE_VERSION = 'v32'/);
+  assert.match(worker, /data_lernwortschatz8\.js/);
+  assert.match(worker, /data_lernwortschatz9\.js/);
+  assert.match(worker, /CACHE_VERSION = 'v34'/);
 });
 
 test('offline lesson download includes the complete chapter and reports real progress', () => {
