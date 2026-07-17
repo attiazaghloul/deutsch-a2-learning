@@ -16,7 +16,7 @@ OUTPUT = ROOT / "app" / "assets" / "speech"
 TEXTS_PATH = ROOT / "build" / "speech-library-texts.json"
 DATA_PATH = ROOT / "app" / "data_speech_clean.js"
 FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
-VERSION = "fixed-voices-1"
+VERSION = "fixed-voices-2"
 MARKER = "Audiomarker"
 
 VOICES = [
@@ -121,7 +121,7 @@ def map_batch_boundaries(batch, boundaries):
         if first and last:
             mapped[text_id] = {
                 "start": round(first["start"], 3),
-                "end": round(last["end"] + 0.06, 3),
+                "end": round(max(first["start"] + 0.12, last["end"] - 0.025), 3),
             }
             cursor = phrase_end
     return mapped
@@ -133,7 +133,7 @@ async def synthesize_batch(voice, batch_index, batch, semaphore):
     audio_path = voice_dir / f"{batch_index:03d}.mp3"
     timing_path = voice_dir / f"{batch_index:03d}.json"
     signature = {
-        "texts": [text_id for text_id, _ in batch],
+        "texts": [text for _, text in batch],
         "voice": voice["voice"],
         "rate": voice["rate"],
         "pitch": voice["pitch"],

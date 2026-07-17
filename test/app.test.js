@@ -41,6 +41,7 @@ test('vocabulary speech removes plural symbols and grammar annotations', () => {
   assert.equal(prepareSpeechText('der Fahrplan, ⸚e', { vocabulary: true }), 'der Fahrplan');
   assert.equal(prepareSpeechText('die Fahrt, -en', { vocabulary: true }), 'die Fahrt');
   assert.equal(prepareSpeechText('das Chaos (Sg.)', { vocabulary: true }), 'das Chaos');
+  assert.equal(prepareSpeechText('außer (+ D.)', { vocabulary: true }), 'außer');
   assert.equal(prepareSpeechText('Ich fahre mit dem Zug.'), 'Ich fahre mit dem Zug.');
 });
 
@@ -169,7 +170,7 @@ test('Kapitel 9 includes the official Lernwortschatz with matching square photos
   vm.runInContext(readFileSync(join(root, 'app', 'data_book1.js'), 'utf8'), context);
   vm.runInContext(readFileSync(join(root, 'app', 'data_lernwortschatz9.js'), 'utf8'), context);
   const chapter = context.window.BOOK1.find(item => item.num === 9);
-  const additions = chapter.vocab.filter(item => item.cat?.startsWith('Lernwortschatz 9'));
+  const additions = chapter.vocab.filter(item => item.img?.includes('/k9-added/'));
   const stats = context.window.K9_LERNWORTSCHATZ_STATS;
 
   assert.deepEqual(
@@ -179,11 +180,50 @@ test('Kapitel 9 includes the official Lernwortschatz with matching square photos
   assert.equal(additions.length, 88);
   additions.forEach((item, index) => {
     const expectedImage = `assets/vocab-scenes/k9-added/${String(index + 1).padStart(2, '0')}.webp`;
-    assert.ok(item.w && item.ar);
+    assert.ok(item.w && item.ar && item.d && item.ex);
+    assert.doesNotMatch(item.d, /offiziellen Lernwortschatz/);
     assert.equal(item.img, expectedImage);
     assert.ok(existsSync(join(root, 'app', expectedImage)), `Missing ${expectedImage}`);
   });
-  assert.match(html, /data_lernwortschatz9\.js\?v=lernwortschatz9-2/);
+  assert.deepEqual(
+    [...new Set(additions.map(item => item.cat))],
+    ['Sport machen', 'Sportgeräte', 'Vereine und Fans', 'Vorschläge machen', 'Wetter', 'Andere wichtige Wörter und Wendungen', 'Unterwegs in D-A-CH']
+  );
+  assert.match(html, /data_lernwortschatz9\.js\?v=lernwortschatz9-3/);
+});
+
+test('fixed vocabulary speech covers every word in chapters 7, 8, and 9', () => {
+  const context = vm.createContext({ window: {} });
+  for (const file of [
+    'data_book0.js', 'data_book0_expansion.js', 'data_book1.js', 'data_book2.js',
+    'data_extra.js', 'data_enrichment.js', 'data_lernwortschatz8.js',
+    'data_lernwortschatz9.js', 'data_speech_clean.js'
+  ]) {
+    vm.runInContext(readFileSync(join(root, 'app', file), 'utf8'), context);
+  }
+  const speech = context.window.A2_FIXED_SPEECH;
+  const aliasIndex = new Map(speech.aliases.texts.map((text, index) => [text, index]));
+  const spokenWord = value => String(value || '')
+    .replace(/\s*,.*$/, '')
+    .replace(/\s+\((?:Sg\.|Pl\.|\+\s*[ADG]\.?)\)\s*$/i, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  assert.equal(speech.aliases.voices.length, 4);
+  for (const voice of speech.aliases.voices) {
+    assert.equal(voice.timings.length, speech.aliases.texts.length);
+    assert.match(voice.audio, /-words\.mp3\?v=fixed-voices-2$/);
+    assert.ok(existsSync(join(root, 'app', voice.audio.split('?')[0])), `Missing ${voice.audio}`);
+  }
+  for (const chapterNumber of [7, 8, 9]) {
+    const chapter = context.window.BOOK1.find(item => item.num === chapterNumber);
+    for (const word of chapter.vocab) {
+      const spoken = spokenWord(word.w);
+      const index = aliasIndex.get(spoken);
+      assert.notEqual(index, undefined, `Missing fixed speech for K${chapterNumber}: ${spoken}`);
+      assert.ok(speech.aliases.voices.every(voice => voice.timings[index]?.length === 2));
+    }
+  }
 });
 
 test('lesson 7 replacement photos map to the intended vocabulary cards', () => {
@@ -258,6 +298,8 @@ test('next-generation shell and design system are wired into the offline app', (
   assert.match(ui, /renderReviewCenter/);
   assert.match(ui, /lessonProgress/);
   assert.match(css, /\.app-bottom-nav/);
+  assert.match(css, /\.flashcard-face\[aria-hidden="true"\]\{visibility:hidden/);
+  assert.match(html, /legacyMarkerPadding=library==='a2'&&kind==='aliases'\?0:\.085/);
   assert.match(css, /@media\(min-width:900px\)/);
   assert.match(worker, /ui-next\.js/);
   assert.match(worker, /styles\/ui-next\.css/);
@@ -266,7 +308,7 @@ test('next-generation shell and design system are wired into the offline app', (
   assert.match(worker, /media\.match\(req, \{ ignoreSearch: true \}\)/, 'Downloaded lesson media must resolve from its durable cache');
   assert.match(worker, /data_lernwortschatz8\.js/);
   assert.match(worker, /data_lernwortschatz9\.js/);
-  assert.match(worker, /CACHE_VERSION = 'v34'/);
+  assert.match(worker, /CACHE_VERSION = 'v35'/);
 });
 
 test('offline lesson download includes the complete chapter and reports real progress', () => {

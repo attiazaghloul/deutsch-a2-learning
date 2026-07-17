@@ -1001,7 +1001,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
   *,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}
 }
 </style>
-<link rel="stylesheet" href="styles/ui-next.css?v=studio-3">
+<link rel="stylesheet" href="styles/ui-next.css?v=studio-4">
 </head>
 <body>
 <div id="app">
@@ -1106,7 +1106,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <script src="data_book2.js"></script>
 <script src="data_extra.js"></script>
 <script src="data_lernwortschatz8.js?v=lernwortschatz8-1"></script>
-<script src="data_lernwortschatz9.js?v=lernwortschatz9-2"></script>
+<script src="data_lernwortschatz9.js?v=lernwortschatz9-3"></script>
 <script src="data_enrichment.js"></script>
 <script src="data_verbs.js"></script>
 <script src="data_a21_library.js"></script>
@@ -1118,7 +1118,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <script src="data_hoeren_figures.js"></script>
 <script src="data_hoeren_interactive.js"></script>
 <script src="data_exam.js"></script>
-<script src="data_speech_clean.js?v=speech-clean-2"></script>
+<script src="data_speech_clean.js?v=speech-clean-3"></script>
 <script src="data_speech_a1.js?v=a1-fixed-voices-1"></script>
 <script src="data_podcast.js?v=word-sync-3"></script>
 <script>
@@ -1927,7 +1927,7 @@ function prepareSpeechText(text,{vocabulary=false}={}){
   if(vocabulary){
     value=value
       .replace(/\s*,.*$/,'')
-      .replace(/\s+\((?:Sg\.|Pl\.)\)\s*$/i,'')
+      .replace(/\s+\((?:Sg\.|Pl\.|\+\s*[ADG]\.?)\)\s*$/i,'')
       .replace(/\s+/g,' ')
       .trim();
   }
@@ -1993,7 +1993,10 @@ function playFixedSpeech(value,voiceId=speechVoiceURI,onDone=null){
     fixedSpeechAudio.preload='metadata';
   }
   const start=Number(timing[0]);
-  const end=Number(timing[1]);
+  // Older libraries end 60 ms after the final word boundary. The rebuilt A2
+  // vocabulary aliases are already trimmed during generation.
+  const legacyMarkerPadding=library==='a2'&&kind==='aliases'?0:.085;
+  const end=Math.max(start+.12,Number(timing[1])-legacyMarkerPadding);
   fixedSpeechAudio.playbackRate=Math.max(.6,Math.min(1.5,(speechRate/.85)*fixedSpeechProfileRate()));
   fixedSpeechAudio.preservesPitch=true;
   const begin=()=>{
