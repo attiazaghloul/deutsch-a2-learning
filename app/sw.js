@@ -5,7 +5,7 @@
    Bei Inhaltsänderungen: CACHE_VERSION erhöhen. */
 importScripts('dictionary-data/manifest.js');
 
-const CACHE_VERSION = 'v35';
+const CACHE_VERSION = 'v36';
 const CACHE = 'deutsch-' + CACHE_VERSION;
 const MEDIA_CACHE = 'deutsch-media-v1';
 const DICTIONARY_CACHE = `deutsch-dictionary-v${self.OFFLINE_DICTIONARY_MANIFEST.version}`;

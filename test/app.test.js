@@ -226,6 +226,26 @@ test('fixed vocabulary speech covers every word in chapters 7, 8, and 9', () => 
   }
 });
 
+test('chapter 9 reading lessons follow the coursebook topics', () => {
+  const context = vm.createContext({ window: {} });
+  for (const file of ['data_book1.js', 'data_book2.js', 'data_extra.js']) {
+    vm.runInContext(readFileSync(join(root, 'app', file), 'utf8'), context);
+  }
+  const readings = context.window.BOOK1.find(chapter => chapter.num === 9).readings;
+
+  assert.equal(readings.length, 2);
+  assert.deepEqual(
+    Array.from(readings, reading => reading.title),
+    ['Ein Fußballstar: Stimmen nach dem Spiel', 'Aktiv unterwegs in D-A-CH']
+  );
+  assert.match(readings[0].text, /Kommentare|Mike07|Bällchen|deshalb|trotzdem/);
+  assert.match(readings[1].text, /Sächsischen Schweiz|Hoch-Ybrig|Eisriesenwelt|Grüne Band/);
+  readings.forEach(reading => {
+    assert.ok(reading.ar && reading.glossary.length >= 6 && reading.questions.length === 4);
+  });
+  assert.doesNotMatch(readings.map(reading => reading.title).join(' '), /Kletterwettbewerb|Verein sucht neue Mitglieder/);
+});
+
 test('lesson 7 replacement photos map to the intended vocabulary cards', () => {
   const context = vm.createContext({ window: {} });
   for (const file of ['data_book1.js', 'data_book2.js', 'data_extra.js']) {
@@ -308,7 +328,7 @@ test('next-generation shell and design system are wired into the offline app', (
   assert.match(worker, /media\.match\(req, \{ ignoreSearch: true \}\)/, 'Downloaded lesson media must resolve from its durable cache');
   assert.match(worker, /data_lernwortschatz8\.js/);
   assert.match(worker, /data_lernwortschatz9\.js/);
-  assert.match(worker, /CACHE_VERSION = 'v35'/);
+  assert.match(worker, /CACHE_VERSION = 'v36'/);
 });
 
 test('offline lesson download includes the complete chapter and reports real progress', () => {

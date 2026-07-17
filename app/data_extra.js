@@ -109,29 +109,29 @@
       ],
       readings: [
         {
-          title:"Vor und nach dem Kletterwettbewerb",
-          kind:"Erzählung",
-          text:`Am Samstag nimmt Bea zum ersten Mal an einem Kletterwettbewerb teil. Schon beim Frühstück ist sie sehr aufgeregt. Sie kontrolliert dreimal, ob Helm, Kletterschuhe und Trinkflasche in ihrer Tasche sind. Im Kletterpark trifft sie ihre Freundin Anna, die ihr Mut macht. Vor dem Start wärmt Bea sich gründlich auf und beobachtet die anderen Teilnehmer. Die erste Strecke schafft sie schnell. In der zweiten Runde macht sie jedoch einen Fehler und verliert viel Zeit. Kurz ist sie enttäuscht, trotzdem klettert sie weiter und erreicht das Ziel. Für das Finale reicht ihre Zeit nicht. Nach dem Wettbewerb wartet eine Überraschung: Anna und zwei Freunde stehen am Ausgang und haben ein kleines Plakat gemalt. Sie sagen, dass Bea beim nächsten Mal bestimmt noch besser ist. Bea lächelt. Sie hat nicht gewonnen, aber sie ist stolz, weil sie nicht aufgegeben hat.`,
-          ar:"بيا شاركت لأول مرة في مسابقة تسلق. أخطأت ولم تدخل النهائي، لكنها كملت للنهاية وأصحابها شجعوها، فكانت فخورة إنها ما استسلمتش.",
-          glossary:[["gründlich","بشكل جيد ودقيق"],["der Teilnehmer","المشارك"],["die Runde","الجولة"],["jedoch","لكن / إلا أن"],["reichen","يكفي"],["aufgeben","يستسلم"]],
+          title:"Ein Fußballstar: Stimmen nach dem Spiel",
+          kind:"Kommentare auf einer Fanseite",
+          text:`<strong>Mike07:</strong> Was für ein spannendes Spiel! Unser Stürmer war noch nicht ganz fit, trotzdem hat er bis zum Ende gekämpft. Er war auf dem Platz, deshalb konnte das Team gewinnen. Danke für deinen Einsatz!<br><br><strong>Bällchen:</strong> Ich war im Stadion und fand das Spiel ziemlich langweilig. Fast alle Spieler haben viele Fehler gemacht. Die Mannschaft hat trotzdem gewonnen, aber für mich war nur das Tor wirklich schön.<br><br><strong>Tor3000:</strong> Ich finde gut, dass unser Spieler freundlich zu seinen Fans bleibt. Obwohl er schon oft gewonnen hat, nimmt er sich nach dem Spiel Zeit für Fotos und kurze Gespräche. Hoffentlich bleibt das so!<br><br><strong>LeoB:</strong> Du spielst mit viel Energie, deshalb bist du für mich ein Vorbild. Bleib bitte lange bei unserem Verein. Die Mannschaft und die Fans brauchen dich.`,
+          ar:"تعليقات المشجعين بعد المباراة: ثلاثة مشجعين يمدحون اللاعب بسبب مجهوده وتواضعه واهتمامه بالجمهور، بينما يرى مشجع واحد أن المباراة كانت مملة رغم الفوز.",
+          glossary:[["der Stürmer","المهاجم"],["der Einsatz","المجهود / الالتزام"],["langweilig","ممل"],["sich Zeit nehmen","يخصص وقتًا"],["das Vorbild","القدوة"],["der Verein","النادي"]],
           questions:[
-            ["Warum kontrolliert Bea ihre Tasche mehrmals?","Weil sie aufgeregt ist und nichts vergessen möchte."],
-            ["Was passiert in der zweiten Runde?","Sie macht einen Fehler und verliert Zeit."],
-            ["Erreicht Bea das Finale?","Nein, ihre Zeit reicht nicht."],
-            ["Warum ist sie trotzdem stolz?","Weil sie weitergemacht und nicht aufgegeben hat."]
+            ["Welcher Kommentar ist kritisch?","Der Kommentar von Bällchen."],
+            ["Warum konnte die Mannschaft laut Mike07 gewinnen?","Weil der Stürmer trotz seiner fehlenden Fitness mitgespielt und gekämpft hat."],
+            ["Was gefällt Tor3000 besonders?","Dass der Spieler freundlich ist und sich Zeit für seine Fans nimmt."],
+            ["Warum ist der Spieler für LeoB ein Vorbild?","Weil er mit viel Energie spielt."]
           ]
         },
         {
-          title:"Ein Verein sucht neue Mitglieder",
-          kind:"Anzeige und Bericht",
-          text:`Der Sportverein Nord bietet ab September einen neuen Freizeitkurs an. Gesucht werden Erwachsene, die gern gemeinsam aktiv sind. Im Kurs probieren die Mitglieder verschiedene Sportarten aus: Volleyball, Tischtennis, leichtes Lauftraining und kleine Mannschaftsspiele. Vorkenntnisse sind nicht nötig. Wichtig sind bequeme Sportschuhe, Freude an Bewegung und Respekt vor den anderen. Das Training findet jeden Dienstag von 18 bis 19.30 Uhr statt. Nach einem kostenlosen Probetraining kann man entscheiden, ob man Mitglied werden möchte. Samir besucht den Kurs, weil er nach der Arbeit mehr Bewegung braucht. Am ersten Abend kennt er niemanden und ist etwas unsicher. Die Trainerin erklärt alle Regeln ruhig, und die Gruppe begrüßt ihn freundlich. Beim Volleyball verliert sein Team zwar knapp, trotzdem haben alle viel Spaß. Samir meldet sich noch am selben Abend an. Besonders gefällt ihm der Teamgeist.`,
-          ar:"نادي رياضي عامل كورس للكبار يجربوا فيه رياضات مختلفة. سمير حضر تدريب تجريبي، خسر فريقه لكن استمتع بروح الفريق وسجل عضوية.",
-          glossary:[["der Freizeitkurs","كورس وقت الفراغ"],["die Vorkenntnisse","خبرة سابقة"],["bequem","مريح"],["das Probetraining","تدريب تجريبي"],["knapp","بفارق بسيط"],["sich anmelden","يسجّل"]],
+          title:"Aktiv unterwegs in D-A-CH",
+          kind:"Vier Reisetipps für Sportfans",
+          text:`<strong>A – Es müssen nicht immer die Alpen sein</strong><br>In der Sächsischen Schweiz im Osten Deutschlands kann man durch Wälder und über Berge wandern oder an Felsen klettern. Mit passender Kleidung ist die Region fast das ganze Jahr interessant. Viele Besucher machen außerdem einen Ausflug nach Dresden, das ungefähr 40 Kilometer entfernt liegt.<br><br><strong>B – Nur Fliegen ist schöner</strong><br>Im Schweizer Gebiet Hoch-Ybrig fährt man mit dem „Sternensauser“ an einem Seil vom Berg ins Tal. Die Strecke ist 2,3 Kilometer lang und dauert nur etwas mehr als zwei Minuten. Im Sommer kann man dort wandern, im Winter Ski fahren. Zürich und Luzern sind nicht weit entfernt.<br><br><strong>C – Wenn der Sommer wieder heiß ist</strong><br>Die Eisriesenwelt bei Werfen im Salzburger Land ist auch im Sommer kalt. Deshalb braucht man feste Schuhe und warme Kleidung. Die Eishöhle ist von Mai bis Oktober geöffnet. Mit einer Seilbahn kommt man näher an den Eingang; für den Besuch sollte man ungefähr eineinhalb Stunden einplanen.<br><br><strong>D – Eine Radtour durch die deutsche Geschichte</strong><br>Das „Grüne Band“ folgt der früheren Grenze zwischen Ost- und Westdeutschland. Heute ist daraus ein langer Naturraum geworden. Man kann einzelne Abschnitte mit dem Fahrrad fahren oder mehrere Tage wandern. Informationstafeln erzählen unterwegs von Natur und deutscher Geschichte.`,
+          ar:"أربع أفكار لرحلات رياضية في دول D-A-CH: المشي والتسلق في سويسرا الساكسونية، الانزلاق بالحبل في سويسرا، زيارة كهف جليدي قرب سالزبورغ، وركوب الدراجة على امتداد الحدود الألمانية القديمة المعروفة بالحزام الأخضر.",
+          glossary:[["der Felsen","الصخرة"],["entfernt liegen","يبعد مسافة"],["das Seil","الحبل"],["die Eishöhle","الكهف الجليدي"],["einplanen","يخصص وقتًا في الخطة"],["die frühere Grenze","الحدود السابقة"],["der Abschnitt","الجزء / المقطع"],["die Informationstafel","لوحة معلومات"]],
           questions:[
-            ["Für wen ist der neue Kurs?","Für Erwachsene, die gern gemeinsam aktiv sind."],
-            ["Was braucht man für die Teilnahme?","Bequeme Sportschuhe, Freude an Bewegung und Respekt."],
-            ["Warum besucht Samir den Kurs?","Weil er nach der Arbeit mehr Bewegung braucht."],
-            ["Was gefällt ihm besonders?","Der Teamgeist."]
+            ["Wo kann man wandern und klettern, ohne in die Alpen zu fahren?","In der Sächsischen Schweiz."],
+            ["Welche Aktivitäten bietet Hoch-Ybrig im Sommer und im Winter?","Im Sommer Wandern und Fahrten mit dem Sternensauser, im Winter Skifahren."],
+            ["Warum braucht man in der Eisriesenwelt warme Kleidung?","Weil es in der Höhle auch im Sommer sehr kalt ist."],
+            ["Was verbindet das Grüne Band?","Naturerlebnisse mit Informationen über die deutsche Geschichte."]
           ]
         }
       ]
