@@ -16,8 +16,8 @@ OUTPUT = ROOT / "app" / "assets" / "speech"
 TEXTS_PATH = ROOT / "build" / "speech-library-texts.json"
 DATA_PATH = ROOT / "app" / "data_speech_clean.js"
 FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
-VERSION = "fixed-voices-5"
-MARKER = "Audiomarker"
+VERSION = "fixed-voices-6"
+SEPARATOR = " ... "
 
 VOICES = [
     {
@@ -71,7 +71,7 @@ def make_batches(texts, max_bytes=2800):
     batches = []
     current = []
     current_length = 0
-    separator_length = len(f" {MARKER}. ".encode("utf-8"))
+    separator_length = len(SEPARATOR.encode("utf-8"))
     for text_id, text in enumerate(texts):
         addition = len(text.encode("utf-8")) + (separator_length if current else 0)
         if current and current_length + addition > max_bytes:
@@ -86,12 +86,11 @@ def make_batches(texts, max_bytes=2800):
 
 
 def map_batch_boundaries(batch, boundaries):
-    marker = normalized_word(MARKER)
     stream = ""
     spans = []
     for boundary in boundaries:
         word = normalized_word(boundary["text"])
-        if not word or word == marker:
+        if not word:
             continue
         char_start = len(stream)
         stream += word
@@ -137,6 +136,7 @@ async def synthesize_batch(voice, batch_index, batch, semaphore):
         "voice": voice["voice"],
         "rate": voice["rate"],
         "pitch": voice["pitch"],
+        "separator": SEPARATOR,
     }
     if audio_path.exists() and timing_path.exists():
         try:
@@ -150,7 +150,7 @@ async def synthesize_batch(voice, batch_index, batch, semaphore):
         except Exception:
             pass
 
-    text = f" {MARKER}. ".join(item[1] for item in batch)
+    text = SEPARATOR.join(item[1] for item in batch)
     async with semaphore:
         for attempt in range(4):
             temp_path = audio_path.with_suffix(".tmp.mp3")

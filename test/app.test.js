@@ -295,7 +295,7 @@ test('fixed vocabulary speech covers every word in chapters 7 through 12', () =>
   assert.equal(speech.aliases.voices.length, 4);
   for (const voice of speech.aliases.voices) {
     assert.equal(voice.timings.length, speech.aliases.texts.length);
-    assert.match(voice.audio, /-words\.mp3\?v=fixed-voices-5$/);
+    assert.match(voice.audio, /-words\.mp3\?v=fixed-voices-6$/);
     assert.ok(existsSync(join(root, 'app', voice.audio.split('?')[0])), `Missing ${voice.audio}`);
   }
   for (const chapterNumber of [7, 8, 9, 10, 11, 12]) {
@@ -308,6 +308,36 @@ test('fixed vocabulary speech covers every word in chapters 7 through 12', () =>
       assert.ok(speech.aliases.voices.every(voice => voice.timings[index]?.length === 2));
     }
   }
+});
+
+test('chapters 7 through 12 group every vocabulary card by a real topic', () => {
+  const context = vm.createContext({ window: {} });
+  for (const file of [
+    'data_book1.js', 'data_book2.js', 'data_extra.js',
+    'data_lernwortschatz8.js', 'data_lernwortschatz9.js',
+    'data_lernwortschatz10.js', 'data_lernwortschatz11.js', 'data_lernwortschatz12.js',
+    'data_enrichment.js', 'data_vocab_topics7_12.js'
+  ]) {
+    vm.runInContext(readFileSync(join(root, 'app', file), 'utf8'), context);
+  }
+
+  for (const chapterNumber of [7, 8, 9, 10, 11, 12]) {
+    const book = chapterNumber >= 10 ? context.window.BOOK2 : context.window.BOOK1;
+    const chapter = book.find(item => item.num === chapterNumber);
+    assert.ok(chapter.vocab.every(item => item.cat), `K${chapterNumber} contains an ungrouped word`);
+    assert.ok(chapter.vocab.every(item => !/^Kapitel\s+\d+$/i.test(item.cat)), `K${chapterNumber} uses a chapter number as a topic`);
+    assert.ok(new Set(chapter.vocab.map(item => item.cat)).size >= 4, `K${chapterNumber} needs meaningful topic groups`);
+  }
+  assert.match(html, /data_vocab_topics7_12\.js\?v=vocab-topics-1/);
+});
+
+test('fixed vocabulary audio uses silent separators and prefers clean word clips', () => {
+  const generator = readFileSync(join(root, 'scripts', 'generate_fixed_speech.py'), 'utf8');
+  const aliasLookup = html.indexOf("const aliasIndex=library.data.aliases?.texts?.indexOf(value)??-1;");
+  const mainLookup = html.indexOf('const textIndex=library.index.get(value);');
+  assert.doesNotMatch(generator, /Audiomarker/);
+  assert.match(generator, /SEPARATOR = " \.\.\. "/);
+  assert.ok(aliasLookup >= 0 && mainLookup > aliasLookup, 'Short clean vocabulary clips must be checked before the legacy library');
 });
 
 test('chapter 9 reading lessons follow the coursebook topics', () => {
@@ -472,7 +502,8 @@ test('next-generation shell and design system are wired into the offline app', (
   assert.match(worker, /data_lernwortschatz10\.js/);
   assert.match(worker, /data_lernwortschatz11\.js/);
   assert.match(worker, /data_lernwortschatz12\.js/);
-  assert.match(worker, /CACHE_VERSION = 'v39'/);
+  assert.match(worker, /data_vocab_topics7_12\.js/);
+  assert.match(worker, /CACHE_VERSION = 'v40'/);
 });
 
 test('offline lesson download includes the complete chapter and reports real progress', () => {

@@ -1111,6 +1111,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <script src="data_lernwortschatz11.js?v=lernwortschatz11-1"></script>
 <script src="data_lernwortschatz12.js?v=lernwortschatz12-1"></script>
 <script src="data_enrichment.js"></script>
+<script src="data_vocab_topics7_12.js?v=vocab-topics-1"></script>
 <script src="data_verbs.js"></script>
 <script src="data_a21_library.js"></script>
 <script src="data_gram.js"></script>
@@ -1121,7 +1122,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <script src="data_hoeren_figures.js"></script>
 <script src="data_hoeren_interactive.js"></script>
 <script src="data_exam.js"></script>
-<script src="data_speech_clean.js?v=speech-clean-6"></script>
+<script src="data_speech_clean.js?v=speech-clean-7"></script>
 <script src="data_speech_a1.js?v=a1-fixed-voices-1"></script>
 <script src="data_podcast.js?v=word-sync-3"></script>
 <script>
@@ -1967,15 +1968,15 @@ function findFixedSpeechClip(value,voiceId){
     {id:'a1', data:A1_FIXED_SPEECH, index:A1_FIXED_SPEECH_INDEX}
   ];
   for(const library of libraries){
-    const textIndex=library.index.get(value);
     const voice=library.data.voices?.find(item=>item.id===voiceId)||library.data.voices?.[0];
-    if(textIndex!==undefined&&voice?.timings?.[textIndex]&&voice.audio){
-      return {library:library.id, voice, timing:voice.timings[textIndex], audioSource:voice.audio, kind:'main'};
-    }
     const aliasIndex=library.data.aliases?.texts?.indexOf(value)??-1;
     const aliasVoice=library.data.aliases?.voices?.find(item=>item.id===voice?.id);
     if(aliasIndex>=0&&aliasVoice?.timings?.[aliasIndex]&&aliasVoice.audio){
       return {library:library.id, voice, timing:aliasVoice.timings[aliasIndex], audioSource:aliasVoice.audio, kind:'aliases'};
+    }
+    const textIndex=library.index.get(value);
+    if(textIndex!==undefined&&voice?.timings?.[textIndex]&&voice.audio){
+      return {library:library.id, voice, timing:voice.timings[textIndex], audioSource:voice.audio, kind:'main'};
     }
   }
   return null;
