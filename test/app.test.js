@@ -247,12 +247,39 @@ test('Kapitel 11 includes its Lernwortschatz with matching square photos', () =>
   assert.match(html, /data_lernwortschatz11\.js\?v=lernwortschatz11-1/);
 });
 
-test('fixed vocabulary speech covers every word in chapters 7 through 11', () => {
+test('Kapitel 12 includes its Lernwortschatz with matching square photos', () => {
+  const context = vm.createContext({ window: {} });
+  for (const file of ['data_book1.js', 'data_book2.js', 'data_extra.js', 'data_lernwortschatz12.js']) {
+    vm.runInContext(readFileSync(join(root, 'app', file), 'utf8'), context);
+  }
+  const chapter = context.window.BOOK2.find(item => item.num === 12);
+  const additions = chapter.vocab.filter(item => item.img?.includes('/k12-added/'));
+  const stats = context.window.K12_LERNWORTSCHATZ_STATS;
+
+  assert.deepEqual(
+    { official: stats.official, added: stats.added, skippedAsDuplicate: stats.skippedAsDuplicate, withoutImage: stats.withoutImage, total: stats.total },
+    { official: 99, added: 90, skippedAsDuplicate: 9, withoutImage: 0, total: 136 }
+  );
+  assert.equal(additions.length, 90);
+  additions.forEach((item, index) => {
+    const expectedImage = `assets/vocab-scenes/k12-added/${String(index + 1).padStart(2, '0')}.webp`;
+    assert.ok(item.w && item.ar && item.d && item.ex && item.cat);
+    assert.equal(item.img, expectedImage);
+    assert.ok(existsSync(join(root, 'app', expectedImage)), `Missing ${expectedImage}`);
+  });
+  assert.deepEqual(
+    [...new Set(additions.map(item => item.cat))],
+    ['Gute Unterhaltung', 'Festival und Musik', 'Ein Ticket online kaufen', 'Meldungen', 'Malerei', 'Andere wichtige Wörter und Wendungen']
+  );
+  assert.match(html, /data_lernwortschatz12\.js\?v=lernwortschatz12-1/);
+});
+
+test('fixed vocabulary speech covers every word in chapters 7 through 12', () => {
   const context = vm.createContext({ window: {} });
   for (const file of [
     'data_book0.js', 'data_book0_expansion.js', 'data_book1.js', 'data_book2.js',
     'data_extra.js', 'data_lernwortschatz8.js', 'data_lernwortschatz9.js',
-    'data_lernwortschatz10.js', 'data_lernwortschatz11.js', 'data_enrichment.js',
+    'data_lernwortschatz10.js', 'data_lernwortschatz11.js', 'data_lernwortschatz12.js', 'data_enrichment.js',
     'data_speech_clean.js'
   ]) {
     vm.runInContext(readFileSync(join(root, 'app', file), 'utf8'), context);
@@ -268,10 +295,10 @@ test('fixed vocabulary speech covers every word in chapters 7 through 11', () =>
   assert.equal(speech.aliases.voices.length, 4);
   for (const voice of speech.aliases.voices) {
     assert.equal(voice.timings.length, speech.aliases.texts.length);
-    assert.match(voice.audio, /-words\.mp3\?v=fixed-voices-4$/);
+    assert.match(voice.audio, /-words\.mp3\?v=fixed-voices-5$/);
     assert.ok(existsSync(join(root, 'app', voice.audio.split('?')[0])), `Missing ${voice.audio}`);
   }
-  for (const chapterNumber of [7, 8, 9, 10, 11]) {
+  for (const chapterNumber of [7, 8, 9, 10, 11, 12]) {
     const book = chapterNumber >= 10 ? context.window.BOOK2 : context.window.BOOK1;
     const chapter = book.find(item => item.num === chapterNumber);
     for (const word of chapter.vocab) {
@@ -336,6 +363,25 @@ test('chapter 11 reading lessons follow the coursebook topics', () => {
   );
   assert.match(readings[0].text, /Familie Ketterer|Bauernhof|Schwarzwald|Kutsche|Holz/);
   assert.match(readings[1].text, /Massimo|Ingrid|Lea|Fred|verzichten/);
+  readings.forEach(reading => {
+    assert.ok(reading.ar && reading.glossary.length >= 6 && reading.questions.length === 4);
+  });
+});
+
+test('chapter 12 reading lessons follow the coursebook topics', () => {
+  const context = vm.createContext({ window: {} });
+  for (const file of ['data_book1.js', 'data_book2.js', 'data_extra.js', 'data_lernwortschatz12.js']) {
+    vm.runInContext(readFileSync(join(root, 'app', file), 'utf8'), context);
+  }
+  const readings = context.window.BOOK2.find(chapter => chapter.num === 12).readings;
+
+  assert.equal(readings.length, 2);
+  assert.deepEqual(
+    Array.from(readings, reading => reading.title),
+    ['Drei besondere Bauwerke', 'Kunst mal anders']
+  );
+  assert.match(readings[0].text, /Amphitheater Trier|Berliner Fernsehturm|Karl-Marx-Hof|1\.400 Wohnungen/);
+  assert.match(readings[1].text, /Kunstmuseum|Meister der Natur|Automuseum|alte Fahrzeuge/);
   readings.forEach(reading => {
     assert.ok(reading.ar && reading.glossary.length >= 6 && reading.questions.length === 4);
   });
@@ -425,7 +471,8 @@ test('next-generation shell and design system are wired into the offline app', (
   assert.match(worker, /data_lernwortschatz9\.js/);
   assert.match(worker, /data_lernwortschatz10\.js/);
   assert.match(worker, /data_lernwortschatz11\.js/);
-  assert.match(worker, /CACHE_VERSION = 'v38'/);
+  assert.match(worker, /data_lernwortschatz12\.js/);
+  assert.match(worker, /CACHE_VERSION = 'v39'/);
 });
 
 test('offline lesson download includes the complete chapter and reports real progress', () => {

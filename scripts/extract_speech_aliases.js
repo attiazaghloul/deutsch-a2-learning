@@ -7,7 +7,7 @@ vm.createContext(sandbox);
   'data_book0.js', 'data_book0_expansion.js', 'data_book1.js',
   'data_book2.js', 'data_extra.js',
   'data_lernwortschatz8.js', 'data_lernwortschatz9.js', 'data_lernwortschatz10.js',
-  'data_lernwortschatz11.js', 'data_enrichment.js'
+  'data_lernwortschatz11.js', 'data_lernwortschatz12.js', 'data_enrichment.js'
 ].forEach(file => vm.runInContext(fs.readFileSync(`app/${file}`, 'utf8'), sandbox));
 
 vm.runInContext(fs.readFileSync('app/data_speech_clean.js', 'utf8'), sandbox);

@@ -16,7 +16,7 @@ OUTPUT = ROOT / "app" / "assets" / "speech"
 TEXTS_PATH = ROOT / "build" / "speech-library-texts.json"
 DATA_PATH = ROOT / "app" / "data_speech_clean.js"
 FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
-VERSION = "fixed-voices-4"
+VERSION = "fixed-voices-5"
 MARKER = "Audiomarker"
 
 VOICES = [
