@@ -5,7 +5,7 @@
    Bei Inhaltsänderungen: CACHE_VERSION erhöhen. */
 importScripts('dictionary-data/manifest.js');
 
-const CACHE_VERSION = 'v40';
+const CACHE_VERSION = 'v41';
 const CACHE = 'deutsch-' + CACHE_VERSION;
 const MEDIA_CACHE = 'deutsch-media-v1';
 const DICTIONARY_CACHE = `deutsch-dictionary-v${self.OFFLINE_DICTIONARY_MANIFEST.version}`;
@@ -58,6 +58,13 @@ const CORE = [
   'assets/chapter-scenes/chapter-5-scene-3.webp','assets/chapter-scenes/chapter-5-scene-4.webp',
   'assets/chapter-scenes/chapter-6-scene-1.webp','assets/chapter-scenes/chapter-6-scene-2.webp',
   'assets/chapter-scenes/chapter-6-scene-3.webp','assets/chapter-scenes/chapter-6-scene-4.webp',
+  // Rebuilt Kapitel 7 vocabulary photos. Keep them in the versioned shell so
+  // they replace any older copies preserved in the durable offline-media cache.
+  'assets/vocab-scenes/k7/38.webp','assets/vocab-scenes/k7/44.webp','assets/vocab-scenes/k7/53.webp','assets/vocab-scenes/k7/55.webp',
+  'assets/vocab-scenes/k7/65.webp','assets/vocab-scenes/k7/68.webp','assets/vocab-scenes/k7/73.webp','assets/vocab-scenes/k7/87.webp',
+  'assets/vocab-scenes/k7/88.webp','assets/vocab-scenes/k7/93.webp','assets/vocab-scenes/k7/94.webp','assets/vocab-scenes/k7/104.webp',
+  'assets/vocab-scenes/k7/115.webp','assets/vocab-scenes/k7/116.webp','assets/vocab-scenes/k7/119.webp','assets/vocab-scenes/k7/121.webp',
+  'assets/vocab-scenes/k7/123.webp','assets/vocab-scenes/k7/140.webp','assets/vocab-scenes/k7/144.webp','assets/vocab-scenes/k7/145.webp',
 ];
 
 self.addEventListener('install', event => {
