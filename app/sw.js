@@ -5,7 +5,7 @@
    Bei Inhaltsänderungen: CACHE_VERSION erhöhen. */
 importScripts('dictionary-data/manifest.js');
 
-const CACHE_VERSION = 'v37';
+const CACHE_VERSION = 'v38';
 const CACHE = 'deutsch-' + CACHE_VERSION;
 const MEDIA_CACHE = 'deutsch-media-v1';
 const DICTIONARY_CACHE = `deutsch-dictionary-v${self.OFFLINE_DICTIONARY_MANIFEST.version}`;
@@ -26,7 +26,7 @@ const CORE = [
   // JS data files
   'data_a1.js','data_a12.js','data_a1_grammar_full.js','data_a1_grammar_lessons.js','data_a1_verbs.js',
   'data_a21_library.js','data_a2_grammar_lessons.js','data_book0.js','data_book0_expansion.js','data_book1.js',
-  'data_book2.js','data_lernwortschatz8.js','data_lernwortschatz9.js','data_lernwortschatz10.js','dictionary-worker.js','data_enrichment.js','data_exam.js','data_extra.js','data_gram.js','data_gram_complete.js',
+  'data_book2.js','data_lernwortschatz8.js','data_lernwortschatz9.js','data_lernwortschatz10.js','data_lernwortschatz11.js','dictionary-worker.js','data_enrichment.js','data_exam.js','data_extra.js','data_gram.js','data_gram_complete.js',
   'data_gram_extra.js','data_hoeren.js','data_hoeren_a1.js','data_hoeren_a1_figures.js','data_hoeren_a1_interactive.js',
   'data_hoeren_figures.js','data_hoeren_interactive.js','data_phonetik_a1.js','data_phonetik_a1_figures.js',
   'data_phonetik_a1_interactive.js','data_podcast.js','data_speech_a1.js','data_speech_clean.js','data_verbs.js',
