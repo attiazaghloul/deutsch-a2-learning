@@ -6,7 +6,7 @@ vm.createContext(sandbox);
 [
   'data_book0.js', 'data_book0_expansion.js', 'data_book1.js',
   'data_book2.js', 'data_extra.js', 'data_enrichment.js',
-  'data_lernwortschatz8.js', 'data_lernwortschatz9.js'
+  'data_lernwortschatz8.js', 'data_lernwortschatz9.js', 'data_lernwortschatz10.js'
 ].forEach(file => vm.runInContext(fs.readFileSync(`app/${file}`, 'utf8'), sandbox));
 
 const aliases = new Set();

@@ -1,3 +1,4 @@
+import argparse
 import asyncio
 import json
 import subprocess
@@ -73,10 +74,38 @@ async def generate_voice(voice, texts):
 
 
 async def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--voices", default="all")
+    args = parser.parse_args()
     texts = json.loads(ALIAS_PATH.read_text(encoding="utf-8"))
-    voices = []
+    selected_ids = (
+        {voice["id"] for voice in VOICES}
+        if args.voices == "all"
+        else set(args.voices.split(","))
+    )
+    checkpoints = {}
     for voice in VOICES:
-        voices.append(await generate_voice(voice, texts))
+        checkpoint_path = BUILD / f"{voice['id']}-aliases.json"
+        if checkpoint_path.exists():
+            checkpoint = json.loads(checkpoint_path.read_text(encoding="utf-8"))
+            if checkpoint.get("texts") == texts:
+                checkpoints[voice["id"]] = checkpoint["voice"]
+
+    for voice in VOICES:
+        if voice["id"] not in selected_ids:
+            continue
+        generated = await generate_voice(voice, texts)
+        checkpoints[voice["id"]] = generated
+        (BUILD / f"{voice['id']}-aliases.json").write_text(
+            json.dumps({"texts": texts, "voice": generated}, ensure_ascii=False),
+            encoding="utf-8",
+        )
+
+    missing = [voice["id"] for voice in VOICES if voice["id"] not in checkpoints]
+    if missing:
+        print(f"Pending voices: {', '.join(missing)}")
+        return
+    voices = [checkpoints[voice["id"]] for voice in VOICES]
 
     source = DATA_PATH.read_text(encoding="utf-8")
     data = json.loads(source.split("window.A2_FIXED_SPEECH=", 1)[1].rsplit(";", 1)[0])

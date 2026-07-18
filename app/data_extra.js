@@ -153,29 +153,29 @@
       ],
       readings: [
         {
-          title:"Das WG-Casting",
-          kind:"Dialogbericht",
-          text:`In der WG von Nils, Amira und Jo wird ein Zimmer frei. Sie schreiben eine Anzeige und laden vier Interessierte zu einem WG-Casting ein. Vor dem ersten Gespräch sammeln sie Fragen: Wie sieht der Tagesablauf der Person aus? Kocht sie gern? Hat sie ein Haustier? Wie wichtig sind ihr Ordnung und Ruhe? Die Bewerberin Sofia erzählt, dass sie als Krankenpflegerin arbeitet und manchmal Nachtdienst hat. Sie ist zuverlässig, raucht nicht und würde gern zweimal pro Woche für alle kochen. Einen festen Putzplan findet sie sinnvoll. Amira fragt, ob Sofia auch am Wochenende Besuch bekommt. Sofia antwortet offen, dass ihre Schwester manchmal übernachtet, aber sie möchte vorher immer Bescheid sagen. Nach dem Gespräch sind sich die drei einig: Sofia passt gut zu ihnen. Sie erklären ihr die WG-Kasse, die Ruhezeiten und die Nebenkosten. Eine Woche später unterschreibt Sofia den Mietvertrag.`,
-          ar:"ثلاثة زملاء سكن عملوا مقابلة لاختيار شخص جديد. صوفيا كانت واضحة وملتزمة ووافقت على نظام التنظيف والهدوء، فاختاروها.",
-          glossary:[["frei werden","يصبح شاغرًا"],["der Interessierte","الشخص المهتم"],["der Tagesablauf","نظام اليوم"],["der Nachtdienst","نوبة ليلية"],["Bescheid sagen","يبلّغ"],["der Mietvertrag","عقد الإيجار"]],
+          title:"Ungewöhnlich wohnen",
+          kind:"Vier besondere Wohnformen",
+          text:`<strong>A – Ferien auf dem Bauernhof</strong><br>Familie Lorenz wohnt in der Nähe von Lüneburg auf einem alten Bauernhof. Neben dem Wohnhaus gibt es einen Stall, eine große Wiese und zwei kleine Ferienwohnungen. Die Gäste helfen manchmal beim Füttern der Tiere. Dafür erleben sie den Alltag auf dem Land besonders intensiv.<br><br><strong>B – Leben auf einer Hallig</strong><br>Auf einer kleinen Hallig in der Nordsee leben nur wenige Familien. Das Land ist sehr flach und bei starkem Wind wird vieles nass. Die Häuser stehen deshalb auf künstlichen Hügeln. Im Sommer kommen viele Besucher, im Winter kann das Leben dort aber ruhig und manchmal einsam sein.<br><br><strong>C – Ein Hausboot mitten in der Stadt</strong><br>Nora und Ben wohnen auf einem zwölf Meter langen Hausboot. Es liegt an einem Ufer am Stadtrand. Die Wohnfläche ist klein, trotzdem haben sie Küche, Bad und ein helles Wohnzimmer. Wenn ein größeres Schiff vorbeifährt, schaukelt ihr Zuhause leicht.<br><br><strong>D – Gemeinsam in der Wagenburg</strong><br>In einer Wagenburg stehen mehrere Bauwagen rund um einen gemeinsamen Platz. Jede Person hat ihren eigenen kleinen Wohnraum. Garten, Werkstatt und Waschmaschine werden gemeinsam benutzt. Viel Luxus gibt es nicht, aber die Bewohner schätzen die Nachbarschaft.`,
+          ar:"أربع طرق سكن غير تقليدية: مزرعة بها شقق للعطلات، منزل على جزيرة Hallig في بحر الشمال، منزل عائم قرب المدينة، وعربات سكنية مرتبة حول مساحة مشتركة.",
+          glossary:[["der Stall","الحظيرة"],["flach","منخفض ومسطح"],["der künstliche Hügel","تل صناعي"],["die Wohnfläche","مساحة السكن"],["vorbeifahren","يمر بمركبة"],["gemeinsam benutzen","يستخدم بشكل مشترك"]],
           questions:[
-            ["Warum veranstaltet die WG ein Casting?","Weil ein Zimmer frei wird."],
-            ["Welchen Beruf hat Sofia?","Sie ist Krankenpflegerin."],
-            ["Was sagt Sofia über Besuch?","Ihre Schwester übernachtet manchmal, aber Sofia sagt vorher Bescheid."],
-            ["Welche Regeln erklärt die WG?","WG-Kasse, Ruhezeiten und Nebenkosten."]
+            ["Wo können Gäste beim Füttern der Tiere helfen?","Auf dem Bauernhof der Familie Lorenz."],
+            ["Warum stehen die Häuser auf der Hallig auf Hügeln?","Weil das flache Land bei starkem Wind und Wasser geschützt werden muss."],
+            ["Was passiert, wenn ein großes Schiff am Hausboot vorbeifährt?","Das Hausboot schaukelt leicht."],
+            ["Was teilen die Bewohner der Wagenburg?","Den Garten, die Werkstatt und die Waschmaschine."]
           ]
         },
         {
-          title:"Eine höfliche Beschwerde",
-          kind:"E-Mail",
-          text:`Sehr geehrter Herr Klein, seit drei Wochen funktioniert der Aufzug in unserem Haus nicht zuverlässig. Manchmal bleibt er zwischen dem zweiten und dritten Stock stehen. Gestern musste eine ältere Nachbarin fast zwanzig Minuten warten, bis die Tür wieder aufging. Außerdem ist das Licht im Treppenhaus kaputt. Besonders abends ist das gefährlich. Ich habe den Hausmeister bereits zweimal informiert, aber bisher hat sich nichts geändert. Könnten Sie bitte eine Firma beauftragen und uns mitteilen, wann die Reparatur stattfindet? Wir möchten keinen Streit, aber die Situation ist für mehrere Mieter schwierig. Bis zur Reparatur wäre es hilfreich, wenn ein Hinweis an der Aufzugtür hängen würde. Vielen Dank für Ihre Unterstützung. Mit freundlichen Grüßen, Elena Baumann.`,
-          ar:"إيلينا كتبت شكوى مؤدبة لصاحب العقار عن الأسانسير والنور. شرحت المشكلة وتأثيرها وطلبت موعد إصلاح وتنبيه للسكان.",
-          glossary:[["zuverlässig funktionieren","يعمل بثبات"],["stecken bleiben","يعلق"],["der Hausmeister","مسؤول المبنى"],["jemanden beauftragen","يكلّف شخصًا بمهمة"],["der Hinweis","تنبيه"],["die Unterstützung","المساعدة"]],
+          title:"Pero findet nach Hause",
+          kind:"Eine Tiergeschichte in zwei Textstilen",
+          text:`<strong>Text A – Persönlicher Bericht</strong><br>Jens Nickel und seine Frau Ilse leben mit vielen Schafen und mehreren Hunden auf einem Bauernhof bei Lüneburg. Eines Tages suchten sie für ihren Hund Pero ein neues Zuhause, weil er dort mehr Platz haben sollte. Eine Familie aus Waldsee nahm ihn auf. Zuerst schien alles gut zu gehen. Doch nach einem Monat war Pero plötzlich verschwunden. Zwei Wochen später stand er dünn und müde wieder bei den Nickels vor der Tür. Der vierzehnjährige Hund war ungefähr 320 Kilometer zu seinem früheren Zuhause zurückgelaufen.<br><br><strong>Text B – Kurze Zeitungsmeldung</strong><br>Ein Bauer aus Waldsee suchte vor einigen Wochen einen Hund für seine Schafe. Über eine Anzeige fand er Pero aus der Nähe von Lüneburg. Kurz nach dem Umzug lief der Hund weg. Die früheren Besitzer erhielten später einen überraschenden Anruf: Pero war wieder bei ihrem Haus. Für den langen Rückweg brauchte er etwa zwei Wochen. Jetzt darf er für immer bei den Nickels und ihren Schafen bleiben.`,
+          ar:"قصة الكلب Pero بصيغتين: تقرير شخصي مفصل وخبر صحفي قصير. انتقل الكلب إلى مزرعة جديدة، لكنه هرب وقطع نحو 320 كيلومترًا خلال أسبوعين حتى عاد إلى بيته القديم.",
+          glossary:[["jemanden aufnehmen","يستقبل شخصًا أو حيوانًا ليعيش معه"],["verschwinden","يختفي"],["zurücklaufen","يركض عائدًا"],["der frühere Besitzer","المالك السابق"],["die Zeitungsmeldung","خبر صحفي قصير"],["für immer","إلى الأبد"]],
           questions:[
-            ["Welche zwei Probleme gibt es im Haus?","Der Aufzug funktioniert nicht zuverlässig und das Treppenhauslicht ist kaputt."],
-            ["Wer hatte gestern ein Problem mit dem Aufzug?","Eine ältere Nachbarin."],
-            ["Wen hat Elena schon informiert?","Den Hausmeister."],
-            ["Was soll bis zur Reparatur passieren?","Ein Hinweis soll an der Aufzugtür hängen."]
+            ["Warum bekam Pero zuerst ein neues Zuhause?","Weil er dort mehr Platz haben und mit Schafen leben sollte."],
+            ["Wie weit lief Pero ungefähr zurück?","Ungefähr 320 Kilometer."],
+            ["Wie lange war er unterwegs?","Etwa zwei Wochen."],
+            ["Was ist der wichtigste Unterschied zwischen Text A und Text B?","Text A erzählt persönlicher und ausführlicher; Text B informiert kurz und sachlich."]
           ]
         }
       ]

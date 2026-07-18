@@ -192,12 +192,40 @@ test('Kapitel 9 includes the official Lernwortschatz with matching square photos
   assert.match(html, /data_lernwortschatz9\.js\?v=lernwortschatz9-3/);
 });
 
-test('fixed vocabulary speech covers every word in chapters 7, 8, and 9', () => {
+test('Kapitel 10 includes its Lernwortschatz with matching square photos', () => {
+  const context = vm.createContext({ window: {} });
+  vm.runInContext(readFileSync(join(root, 'app', 'data_book1.js'), 'utf8'), context);
+  vm.runInContext(readFileSync(join(root, 'app', 'data_book2.js'), 'utf8'), context);
+  vm.runInContext(readFileSync(join(root, 'app', 'data_extra.js'), 'utf8'), context);
+  vm.runInContext(readFileSync(join(root, 'app', 'data_lernwortschatz10.js'), 'utf8'), context);
+  const chapter = context.window.BOOK2.find(item => item.num === 10);
+  const additions = chapter.vocab.filter(item => item.img?.includes('/k10-added/'));
+  const stats = context.window.K10_LERNWORTSCHATZ_STATS;
+
+  assert.deepEqual(
+    { official: stats.official, added: stats.added, skippedAsDuplicate: stats.skippedAsDuplicate, withoutImage: stats.withoutImage, total: stats.total },
+    { official: 111, added: 111, skippedAsDuplicate: 0, withoutImage: 0, total: 158 }
+  );
+  assert.equal(additions.length, 111);
+  additions.forEach((item, index) => {
+    const expectedImage = `assets/vocab-scenes/k10-added/${String(index + 1).padStart(2, '0')}.webp`;
+    assert.ok(item.w && item.ar && item.d && item.ex && item.cat);
+    assert.equal(item.img, expectedImage);
+    assert.ok(existsSync(join(root, 'app', expectedImage)), `Missing ${expectedImage}`);
+  });
+  assert.deepEqual(
+    [...new Set(additions.map(item => item.cat))],
+    ['Wohnformen und Maße', 'Nachbarschaft und Alltag', 'Einrichten und Umziehen', 'Tiere und Kosenamen', 'Tiergeschichten und wichtige Wörter']
+  );
+  assert.match(html, /data_lernwortschatz10\.js\?v=lernwortschatz10-1/);
+});
+
+test('fixed vocabulary speech covers every word in chapters 7, 8, 9, and 10', () => {
   const context = vm.createContext({ window: {} });
   for (const file of [
     'data_book0.js', 'data_book0_expansion.js', 'data_book1.js', 'data_book2.js',
     'data_extra.js', 'data_enrichment.js', 'data_lernwortschatz8.js',
-    'data_lernwortschatz9.js', 'data_speech_clean.js'
+    'data_lernwortschatz9.js', 'data_lernwortschatz10.js', 'data_speech_clean.js'
   ]) {
     vm.runInContext(readFileSync(join(root, 'app', file), 'utf8'), context);
   }
@@ -212,11 +240,12 @@ test('fixed vocabulary speech covers every word in chapters 7, 8, and 9', () => 
   assert.equal(speech.aliases.voices.length, 4);
   for (const voice of speech.aliases.voices) {
     assert.equal(voice.timings.length, speech.aliases.texts.length);
-    assert.match(voice.audio, /-words\.mp3\?v=fixed-voices-2$/);
+    assert.match(voice.audio, /-words\.mp3\?v=fixed-voices-3$/);
     assert.ok(existsSync(join(root, 'app', voice.audio.split('?')[0])), `Missing ${voice.audio}`);
   }
-  for (const chapterNumber of [7, 8, 9]) {
-    const chapter = context.window.BOOK1.find(item => item.num === chapterNumber);
+  for (const chapterNumber of [7, 8, 9, 10]) {
+    const book = chapterNumber === 10 ? context.window.BOOK2 : context.window.BOOK1;
+    const chapter = book.find(item => item.num === chapterNumber);
     for (const word of chapter.vocab) {
       const spoken = spokenWord(word.w);
       const index = aliasIndex.get(spoken);
@@ -244,6 +273,25 @@ test('chapter 9 reading lessons follow the coursebook topics', () => {
     assert.ok(reading.ar && reading.glossary.length >= 6 && reading.questions.length === 4);
   });
   assert.doesNotMatch(readings.map(reading => reading.title).join(' '), /Kletterwettbewerb|Verein sucht neue Mitglieder/);
+});
+
+test('chapter 10 reading lessons follow the coursebook topics', () => {
+  const context = vm.createContext({ window: {} });
+  for (const file of ['data_book1.js', 'data_book2.js', 'data_extra.js']) {
+    vm.runInContext(readFileSync(join(root, 'app', file), 'utf8'), context);
+  }
+  const readings = context.window.BOOK2.find(chapter => chapter.num === 10).readings;
+
+  assert.equal(readings.length, 2);
+  assert.deepEqual(
+    Array.from(readings, reading => reading.title),
+    ['Ungewöhnlich wohnen', 'Pero findet nach Hause']
+  );
+  assert.match(readings[0].text, /Bauernhof|Hallig|Hausboot|Wagenburg/);
+  assert.match(readings[1].text, /Pero|320 Kilometer|zwei Wochen/);
+  readings.forEach(reading => {
+    assert.ok(reading.ar && reading.glossary.length >= 6 && reading.questions.length === 4);
+  });
 });
 
 test('lesson 7 replacement photos map to the intended vocabulary cards', () => {
@@ -328,7 +376,8 @@ test('next-generation shell and design system are wired into the offline app', (
   assert.match(worker, /media\.match\(req, \{ ignoreSearch: true \}\)/, 'Downloaded lesson media must resolve from its durable cache');
   assert.match(worker, /data_lernwortschatz8\.js/);
   assert.match(worker, /data_lernwortschatz9\.js/);
-  assert.match(worker, /CACHE_VERSION = 'v36'/);
+  assert.match(worker, /data_lernwortschatz10\.js/);
+  assert.match(worker, /CACHE_VERSION = 'v37'/);
 });
 
 test('offline lesson download includes the complete chapter and reports real progress', () => {
