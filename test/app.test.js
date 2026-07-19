@@ -423,12 +423,12 @@ test('lesson 7 has every configured real photo and keeps key cards mapped correc
     vm.runInContext(readFileSync(join(root, 'app', file), 'utf8'), context);
   }
   const lesson = context.window.BOOK1.find(chapter => chapter.num === 7);
-  const expectedScenes = [...Array.from({ length: 136 }, (_, index) => index + 1), 140, 144, 145];
+  const expectedScenes = [...Array.from({ length: 136 }, (_, index) => index + 1), 140, 144, 145]
+    .map(scene => `${String(scene).padStart(2, '0')}.webp`);
   const actualScenes = readdirSync(join(root, 'app', 'assets', 'vocab-scenes', 'k7'))
     .filter(file => /^\d+\.webp$/.test(file))
-    .map(file => Number.parseInt(file, 10))
-    .sort((left, right) => left - right);
-  assert.deepEqual(actualScenes, expectedScenes, 'Lesson 7 must contain all 139 configured real photos');
+    .sort((left, right) => Number.parseInt(left, 10) - Number.parseInt(right, 10));
+  assert.deepEqual(actualScenes, expectedScenes, 'Lesson 7 must contain all 139 correctly named real photos');
   const expected = new Map([
     [38, 'die Fahrt, -en'], [44, 'das Chaos (Sg.)'], [53, 'das Fahrzeug, -e'],
     [55, 'der Pkw, -s'], [65, 'tanken'], [68, 'das Parkhaus, ⸚er'],
