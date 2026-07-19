@@ -1,5 +1,5 @@
 const assert = require('node:assert/strict');
-const { readFileSync, existsSync } = require('node:fs');
+const { readFileSync, existsSync, readdirSync } = require('node:fs');
 const { join } = require('node:path');
 const vm = require('node:vm');
 const test = require('node:test');
@@ -417,12 +417,18 @@ test('chapter 12 reading lessons follow the coursebook topics', () => {
   });
 });
 
-test('lesson 7 replacement photos map to the intended vocabulary cards', () => {
+test('lesson 7 has every configured real photo and keeps key cards mapped correctly', () => {
   const context = vm.createContext({ window: {} });
   for (const file of ['data_book1.js', 'data_book2.js', 'data_extra.js']) {
     vm.runInContext(readFileSync(join(root, 'app', file), 'utf8'), context);
   }
   const lesson = context.window.BOOK1.find(chapter => chapter.num === 7);
+  const expectedScenes = [...Array.from({ length: 136 }, (_, index) => index + 1), 140, 144, 145];
+  const actualScenes = readdirSync(join(root, 'app', 'assets', 'vocab-scenes', 'k7'))
+    .filter(file => /^\d+\.webp$/.test(file))
+    .map(file => Number.parseInt(file, 10))
+    .sort((left, right) => left - right);
+  assert.deepEqual(actualScenes, expectedScenes, 'Lesson 7 must contain all 139 configured real photos');
   const expected = new Map([
     [38, 'die Fahrt, -en'], [44, 'das Chaos (Sg.)'], [53, 'das Fahrzeug, -e'],
     [55, 'der Pkw, -s'], [65, 'tanken'], [68, 'das Parkhaus, ⸚er'],
@@ -504,7 +510,8 @@ test('next-generation shell and design system are wired into the offline app', (
   assert.match(worker, /data_lernwortschatz12\.js/);
   assert.match(worker, /data_vocab_topics7_12\.js/);
   assert.match(worker, /assets\/vocab-scenes\/k7\/145\.webp/);
-  assert.match(worker, /CACHE_VERSION = 'v41'/);
+  assert.match(worker, /CACHE_VERSION = 'v42'/);
+  assert.match(worker, /vocab-scenes\\\/k7\\\/\\d\+\\\.webp/);
 });
 
 test('offline lesson download includes the complete chapter and reports real progress', () => {

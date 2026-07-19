@@ -5,7 +5,7 @@
    Bei Inhaltsänderungen: CACHE_VERSION erhöhen. */
 importScripts('dictionary-data/manifest.js');
 
-const CACHE_VERSION = 'v41';
+const CACHE_VERSION = 'v42';
 const CACHE = 'deutsch-' + CACHE_VERSION;
 const MEDIA_CACHE = 'deutsch-media-v1';
 const DICTIONARY_CACHE = `deutsch-dictionary-v${self.OFFLINE_DICTIONARY_MANIFEST.version}`;
@@ -76,13 +76,22 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('activate', event => {
-  event.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(keys.filter(key =>
-        key !== CACHE && key !== MEDIA_CACHE && key !== DICTIONARY_CACHE
-      ).map(key => caches.delete(key)))
-    ).then(() => self.clients.claim())
-  );
+  event.waitUntil((async () => {
+    const keys = await caches.keys();
+    await Promise.all(keys.filter(key =>
+      key !== CACHE && key !== MEDIA_CACHE && key !== DICTIONARY_CACHE
+    ).map(key => caches.delete(key)));
+
+    // All Kapitel 7 card photos were rebuilt. Remove only their durable media
+    // copies so existing offline audio and other lesson downloads stay intact.
+    const media = await caches.open(MEDIA_CACHE);
+    const mediaRequests = await media.keys();
+    await Promise.all(mediaRequests
+      .filter(request => /\/assets\/vocab-scenes\/k7\/\d+\.webp$/.test(new URL(request.url).pathname))
+      .map(request => media.delete(request)));
+
+    await self.clients.claim();
+  })());
 });
 
 self.addEventListener('message', event => {
