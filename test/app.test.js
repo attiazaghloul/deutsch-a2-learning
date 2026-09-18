@@ -289,7 +289,13 @@ test('B1.1 vocabulary gives every card its own square photo', () => {
     assert.doesNotMatch(card.ex, /^(Wir sprechen heute über|Im Alltag kann man oft|Dieser Ausdruck kommt im Alltag häufig vor)/);
   });
   assert.equal(cards.find(card => card.w === 'der Typ').ar, 'النوع / الشخص');
-  assert.match(html, /data_b1_1\.js\?v=b1-1-vocab-6/);
+  assert.equal(cards.find(card => card.w === 'aufladen').ar, 'يشحن');
+  assert.match(cards.find(card => card.w === 'operieren').d, /medizinischen Eingriff/);
+  assert.equal(cards.find(card => card.w === 'die Drohne').img, 'assets/vocab-scenes/b1.1/drohne.png');
+  assert.equal(cards.find(card => card.w === 'der Mars').ar, 'كوكب المريخ');
+  assert.equal(cards.find(card => card.w === 'das Huhn').img, 'assets/vocab-scenes/b1.1/huhn.png');
+  assert.equal(cards.find(card => card.w === 'die Karotte').ar, 'جزرة');
+  assert.match(html, /data_b1_1\.js\?v=b1-1-vocab-7/);
 });
 
 test('fixed vocabulary speech covers every word in chapters 7 through 12', () => {
@@ -528,7 +534,7 @@ test('next-generation shell and design system are wired into the offline app', (
   assert.match(worker, /data_lernwortschatz12\.js/);
   assert.match(worker, /data_vocab_topics7_12\.js/);
   assert.match(worker, /assets\/vocab-scenes\/k7\/145\.webp/);
-  assert.match(worker, /CACHE_VERSION = 'v47'/);
+  assert.match(worker, /CACHE_VERSION = 'v48'/);
   assert.match(worker, /vocab-scenes\\\/k7\\\/\\d\+\\\.webp/);
 });
 

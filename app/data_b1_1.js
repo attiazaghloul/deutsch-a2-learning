@@ -23,11 +23,11 @@ window.B1_BOOK = [
     "vocab": [
       {
         "w": "faulenzen",
-        "d": "Nichts tun und sich entspannen.",
-        "ar": "تكاسل حولها",
+        "d": "Nichts tun und sich dabei entspannen.",
+        "ar": "يتكاسل / يسترخي بلا عمل",
         "cat": "Kapitel 1",
-        "ex": "Im Urlaub möchte ich einfach faulenzen.",
-        "img": "assets/vocab-scenes/k7/128.webp"
+        "ex": "Im Urlaub möchte ich einen Tag lang am Strand faulenzen.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/001-v.jpg"
       },
       {
         "w": "giftig",
@@ -39,34 +39,34 @@ window.B1_BOOK = [
       },
       {
         "w": "der Himmel",
-        "d": "Luftraum, Gewölbe über der Erde; Aufenthaltsort im Jenseits mit Gott und den Engeln, in den die Seligen nach ihrem Tode aufgenommen werden",
+        "d": "Der Raum, den man über der Erde sieht.",
         "ar": "السماء",
         "cat": "Kapitel 1",
-        "ex": "Wir mussten die Nacht unter freiem Himmel verbringen.",
+        "ex": "Heute ist der Himmel blau und fast wolkenlos.",
         "img": "assets/vocab-scenes/b1.1/himmel.webp"
       },
       {
         "w": "das Insekt",
-        "d": "Entomologie, Zoologie: mehrzelliges, gliederfüßiges Tier mit sechs Beinen (im erwachsenen Zustand)",
-        "ar": "الحشرة",
+        "d": "Ein kleines Tier mit sechs Beinen, zum Beispiel eine Fliege.",
+        "ar": "حشرة",
         "cat": "Kapitel 1",
-        "ex": "Ein Käfer ist ebenso wie eine Libelle ein Insekt.",
+        "ex": "Auf der Blume sitzt ein buntes Insekt.",
         "img": "assets/vocab-scenes/b1.1/insekt.webp"
       },
       {
         "w": "das Netz",
-        "d": "allgemein: geknüpftes maschiges Gebilde, mit Knoten verbunden; übertragen: Struktur, die einen netzartigen Aufbau aufweist",
-        "ar": "الشبكة",
+        "d": "Ein Geflecht aus vielen miteinander verbundenen Fäden.",
+        "ar": "شبكة",
         "cat": "Kapitel 1",
-        "ex": "Fischer fangen mit riesigen Netzen Fische in großer Zahl.",
-        "img": "assets/vocab-scenes/k10/16.webp"
+        "ex": "Der Fischer zieht das volle Netz aus dem Wasser.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/005.jpg"
       },
       {
         "w": "der Pilz",
-        "d": "aus schlauchförmigen Fäden bestehender Organismus ohne Blattgrün (Reich Fungi); aus schlauchförmigen Fäden bestehender Organismus ohne Blattgrün (Reich Fungi); hat sowohl tierische als auch pflanzliche Eigenschaften",
-        "ar": "الفطر",
+        "d": "Ein Lebewesen, das oft im Wald wächst; manche Pilze kann man essen.",
+        "ar": "فطر",
         "cat": "Kapitel 1",
-        "ex": "Das größte Lebewesen der Welt ist ein Pilz.",
+        "ex": "Nach dem Regen wachsen viele Pilze im Wald.",
         "img": "assets/vocab-scenes/b1.1/pilz.webp"
       },
       {
@@ -75,7 +75,7 @@ window.B1_BOOK = [
         "ar": "الحماية",
         "cat": "Kapitel 1",
         "ex": "Die Blauhelm-Soldaten boten der Bevölkerung den notwendigen Schutz.",
-        "img": "assets/vocab-scenes/k9-added/59.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/007.jpg"
       },
       {
         "w": "zelten",
@@ -83,7 +83,7 @@ window.B1_BOOK = [
         "ar": "التخييم",
         "cat": "Kapitel 1",
         "ex": "Die Kinder zelteten jeden Sommer am nahegelegenen Baggersee.",
-        "img": "assets/vocab-scenes/k12-added/20.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/008-v.jpg"
       },
       {
         "w": "angenehm",
@@ -91,7 +91,7 @@ window.B1_BOOK = [
         "ar": "لطيف",
         "cat": "Kapitel 1",
         "ex": "Ist die Temperatur des Wassers so angenehm?",
-        "img": "assets/vocab-scenes/k9-added/38.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/009-v.jpg"
       },
       {
         "w": "die Aussicht",
@@ -99,7 +99,7 @@ window.B1_BOOK = [
         "ar": "الإطلالة / المنظور",
         "cat": "Kapitel 1",
         "ex": "Heute bei dem klaren Wetter haben wir hier eine herrliche Aussicht.",
-        "img": "assets/vocab-scenes/k10-added/106.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/010.jpg"
       },
       {
         "w": "dabei sein",
@@ -115,7 +115,7 @@ window.B1_BOOK = [
         "ar": "هناك",
         "cat": "Kapitel 1",
         "ex": "Der Bahnhof ist gleich drüben.",
-        "img": "assets/vocab-scenes/k8/07.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/012-v.jpg"
       },
       {
         "w": "das Erlebnis",
@@ -123,7 +123,7 @@ window.B1_BOOK = [
         "ar": "التجربة",
         "cat": "Kapitel 1",
         "ex": "Bahnfahren ist immer wieder ein Erlebnis.",
-        "img": "assets/vocab-scenes/k4/33.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/013.jpg"
       },
       {
         "w": "der Genuss",
@@ -131,7 +131,7 @@ window.B1_BOOK = [
         "ar": "التمتع",
         "cat": "Kapitel 1",
         "ex": "Der übermäßige Genuss von Fetten kann sich schädlich auswirken.",
-        "img": "assets/vocab-scenes/k1/15.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/014.jpg"
       },
       {
         "w": "herrlich",
@@ -139,7 +139,7 @@ window.B1_BOOK = [
         "ar": "رائع",
         "cat": "Kapitel 1",
         "ex": "Wir hatten einen herrlichen Tag am Meer.",
-        "img": "assets/vocab-scenes/k10-added/55.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/015-v.jpg"
       },
       {
         "w": "die Küste",
@@ -163,23 +163,23 @@ window.B1_BOOK = [
         "ar": "الرمال",
         "cat": "Kapitel 1",
         "ex": "Am Strand, am Strand, da gibt’s ’ne Menge Sand - (Schlager)",
-        "img": "assets/vocab-scenes/k12-added/35.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/018.jpg"
       },
       {
         "w": "die Traube",
-        "d": "eine Ansammlung, geballte Menge; umgangssprachlich: die Frucht der Weinrebe, die Weinbeere",
-        "ar": "العنب",
+        "d": "Eine Frucht, die in kleinen Beeren an einer Rebe wächst.",
+        "ar": "عنقود العنب / حبة عنب",
         "cat": "Kapitel 1",
-        "ex": "Es bildete sich eine Traube von Menschen.",
+        "ex": "Die reifen Trauben schmecken sehr süß.",
         "img": "assets/vocab-scenes/b1.1/traube.webp"
       },
       {
         "w": "der Urlaubsgruß",
-        "d": "Eine Nachricht oder ein Gruß, den man aus dem Urlaub schickt.",
-        "ar": "تحية العيد",
+        "d": "Ein Gruß, den man aus dem Urlaub schickt.",
+        "ar": "تحية من العطلة",
         "cat": "Kapitel 1",
-        "ex": "Aus dem Urlaub schickte sie ihrer Familie einen Urlaubsgruß.",
-        "img": "assets/vocab-scenes/k10-added/50.webp"
+        "ex": "Wir schicken unseren Freunden einen Urlaubsgruß aus Wien.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/020.jpg"
       },
       {
         "w": "derselbe",
@@ -202,8 +202,8 @@ window.B1_BOOK = [
         "d": "(meist kleines) Haus, das nur als vorübergehender Aufenthalt in freier Zeit genutzt wird",
         "ar": "بيت العطلات",
         "cat": "Kapitel 1",
-        "ex": "„Auf den Hügeln des gegenüberliegenden Ufers gingen die Lichter der unzähligen Ferienhäuser an.“",
-        "img": "assets/vocab-scenes/k10-added/05.webp"
+        "ex": "Auf den Hügeln des gegenüberliegenden Ufers gingen die Lichter der unzähligen Ferienhäuser an.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/023.jpg"
       },
       {
         "w": "gründlich",
@@ -211,7 +211,7 @@ window.B1_BOOK = [
         "ar": "بدقة",
         "cat": "Kapitel 1",
         "ex": "Bitte lesen Sie die Anleitung gründlich.",
-        "img": "assets/vocab-scenes/k10-added/35.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/024-v.jpg"
       },
       {
         "w": "rechtzeitig",
@@ -219,23 +219,23 @@ window.B1_BOOK = [
         "ar": "في الوقت المناسب",
         "cat": "Kapitel 1",
         "ex": "Wir kamen rechtzeitig am Bahnhof an.",
-        "img": "assets/vocab-scenes/k7/16.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/025-v.jpg"
       },
       {
         "w": "schick",
-        "d": "von Mode und Geschmack zeugend / sich positiv abhebend, hervorragend",
+        "d": "von Mode und Geschmack zeugend; sich positiv abhebend, hervorragend",
         "ar": "أنيق",
         "cat": "Kapitel 1",
         "ex": "eine schicke Hochzeit",
-        "img": "assets/vocab-scenes/k9-added/64.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/026-v.jpg"
       },
       {
         "w": "der Typ",
-        "d": "umgangssprachlich: Person mit prägenden, von anderen Personen(gruppen) abgrenzenden Eigenschaften; Menge von Gegenständen mit spezifischen Eigenschaften",
+        "d": "Eine Person mit bestimmten Eigenschaften oder eine bestimmte Art von Sache.",
         "ar": "النوع / الشخص",
         "cat": "Kapitel 1",
-        "ex": "Autos dieses Typs sind besonders selten und, infolgedessen, auch besonders teuer.",
-        "img": "assets/vocab-scenes/k10/03.webp"
+        "ex": "Er ist ein ruhiger Typ und reist gern allein.",
+        "img": "assets/vocab-scenes/b1.1/typ.png"
       },
       {
         "w": "der Urlaubstyp",
@@ -251,7 +251,7 @@ window.B1_BOOK = [
         "ar": "وجهة العطلة",
         "cat": "Kapitel 1",
         "ex": "Unser Urlaubsziel ist dieses Jahr eine kleine Insel in Griechenland.",
-        "img": "assets/vocab-scenes/k10-added/56.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/029.jpg"
       },
       {
         "w": "die Urlaubsplanung",
@@ -259,7 +259,7 @@ window.B1_BOOK = [
         "ar": "التخطيط للعطلة",
         "cat": "Kapitel 1",
         "ex": "Bei der Urlaubsplanung vergleichen wir zuerst die Preise.",
-        "img": "assets/vocab-scenes/k10-added/09.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/030.jpg"
       },
       {
         "w": "der Chat",
@@ -267,15 +267,15 @@ window.B1_BOOK = [
         "ar": "الدردشة",
         "cat": "Kapitel 1",
         "ex": "Komm heute Abend in den Chat, ich muss dir etwas Wichtiges mitteilen.",
-        "img": "assets/vocab-scenes/k8/101.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/031.webp"
       },
       {
         "w": "erholen",
-        "d": "sich entspannen / von einem schlechten Zustand zu einem besseren übergehen; wieder gesund werden",
+        "d": "sich entspannen; von einem schlechten Zustand zu einem besseren übergehen; wieder gesund werden",
         "ar": "يتعافى",
         "cat": "Kapitel 1",
         "ex": "Ich erhole mich vom Stress der letzten Tage.",
-        "img": "assets/vocab-scenes/k11/17.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/032-v.jpg"
       },
       {
         "w": "der Kompromiss",
@@ -283,14 +283,14 @@ window.B1_BOOK = [
         "ar": "التسوية",
         "cat": "Kapitel 1",
         "ex": "ein fauler Kompromiss",
-        "img": "assets/vocab-scenes/k8/130.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/033.jpg"
       },
       {
         "w": "meinetwegen",
-        "d": "bezieht den Grund auf die erste Person Singular: aus einem mich betreffenden Grunde / um mir gut zu tun, für mich",
-        "ar": "من أجلي",
+        "d": "Wegen mir oder: von mir aus.",
+        "ar": "بسببي / بالنسبة لي لا مانع",
         "cat": "Kapitel 1",
-        "ex": "Er sitzt meinetwegen im Gefängnis.",
+        "ex": "Meinetwegen können wir morgen früher losfahren.",
         "img": "assets/vocab-scenes/k12-added/13.webp"
       },
       {
@@ -299,11 +299,11 @@ window.B1_BOOK = [
         "ar": "آسف",
         "cat": "Kapitel 1",
         "ex": "Sorry, ich habe das nicht böse gemeint.",
-        "img": "assets/vocab-scenes/k9-added/27.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/035-v.jpg"
       },
       {
         "w": "wieso",
-        "d": "Interrogativadverb: leitet eine indirekte Frage nach dem Grund ein / Interrogativadverb, mit zweifelnder, erstaunter Nuance: leitet eine direkte Frage nach dem Grund ein",
+        "d": "Interrogativadverb: leitet eine indirekte Frage nach dem Grund ein; Interrogativadverb, mit zweifelnder, erstaunter Nuance: leitet eine direkte Frage nach dem Grund ein",
         "ar": "لماذا",
         "cat": "Kapitel 1",
         "ex": "Er fragte sie, wieso sie ihn geschlagen habe.",
@@ -315,7 +315,7 @@ window.B1_BOOK = [
         "ar": "الاسترخاء",
         "cat": "Kapitel 1",
         "ex": "Ein Spaziergang am Meer ist entspannend.",
-        "img": "assets/vocab-scenes/k10-added/10.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/037-v.jpg"
       },
       {
         "w": "erfahren",
@@ -323,7 +323,7 @@ window.B1_BOOK = [
         "ar": "من ذوي الخبرة",
         "cat": "Kapitel 1",
         "ex": "Auf der Reise erfahren wir viel Neues.",
-        "img": "assets/vocab-scenes/k8/95.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/038-v.jpg"
       },
       {
         "w": "die Schifffahrt",
@@ -339,23 +339,23 @@ window.B1_BOOK = [
         "ar": "فندق العافية",
         "cat": "Kapitel 1",
         "ex": "Im Wellnesshotel kann man sich in der Sauna entspannen.",
-        "img": "assets/vocab-scenes/k10-added/12.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/040.jpg"
       },
       {
         "w": "ca",
-        "d": "ISO-639-1-Code für die Sprache Katalanisch",
-        "ar": "تقريبا",
+        "d": "Abkürzung für „circa“; sie bedeutet ungefähr.",
+        "ar": "حوالي / تقريبًا",
         "cat": "Kapitel 1",
-        "ex": "„po. ca. pomposiies. meddiss. talii. state. m. dd“ (VM 8 = Ve 226)",
+        "ex": "Die Fahrt dauert ca. zwei Stunden.",
         "img": "assets/vocab-scenes/k9-added/80.webp"
       },
       {
         "w": "enthalten",
-        "d": "so beschaffen sein, dass das eine (mit dem stets nötigen Akkusativ-Objekt Bezeichnete) ein Teil des anderen (des mit dem Subjekt Bezeichneten) ist; einen Inhalt haben; bestehen aus / sich von etwas fernhalten",
-        "ar": "متضمنة",
+        "d": "Etwas als Bestandteil oder Inhalt haben.",
+        "ar": "يحتوي على",
         "cat": "Kapitel 1",
-        "ex": "er/sie/es hat/hatte enthalten",
-        "img": "assets/vocab-scenes/k10-added/86.webp"
+        "ex": "Der Preis enthält Frühstück und Abendessen.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/042-v.jpg"
       },
       {
         "w": "die Fahrtzeit",
@@ -363,15 +363,15 @@ window.B1_BOOK = [
         "ar": "وقت السفر",
         "cat": "Kapitel 1",
         "ex": "Die Fahrtzeit nach Berlin beträgt ungefähr drei Stunden.",
-        "img": "assets/vocab-scenes/k10-added/61.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/043.jpg"
       },
       {
         "w": "das Gästehaus",
         "d": "Haus, in dem Gäste untergebracht werden können",
         "ar": "بيت الضيافة",
         "cat": "Kapitel 1",
-        "ex": "„Gäste wurden allenfalls vorübergehend und auch nur aus triftigem Grund im Gästehaus untergebracht.“",
-        "img": "assets/vocab-scenes/k10-added/36.webp"
+        "ex": "Gäste wurden allenfalls vorübergehend und auch nur aus triftigem Grund im Gästehaus untergebracht.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/044.jpg"
       },
       {
         "w": "die Halbpension",
@@ -379,7 +379,7 @@ window.B1_BOOK = [
         "ar": "نصف القيمة",
         "cat": "Kapitel 1",
         "ex": "Wir fahren im Sommer wieder ans Meer, haben diesmal aber nur Halbpension gebucht, da wir bei dieser Hitze mittags sowieso keinen Hunger haben.",
-        "img": "assets/vocab-scenes/k1/26.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/045.jpg"
       },
       {
         "w": "höchstens",
@@ -387,7 +387,7 @@ window.B1_BOOK = [
         "ar": "على الأكثر",
         "cat": "Kapitel 1",
         "ex": "Franz meint, es waren 5000 Besucher auf dem Festival. Aber ich denke, es waren höchstens 3000.",
-        "img": "assets/vocab-scenes/k7/101.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/046-v.jpg"
       },
       {
         "w": "der Reisebüro-Mitarbeiter",
@@ -411,7 +411,7 @@ window.B1_BOOK = [
         "ar": "حافلة التزلج",
         "cat": "Kapitel 1",
         "ex": "Der Skibus fährt morgens direkt zur Piste.",
-        "img": "assets/vocab-scenes/k4/06.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/049.jpg"
       },
       {
         "w": "das Skigebiet",
@@ -419,7 +419,7 @@ window.B1_BOOK = [
         "ar": "منطقة التزلج",
         "cat": "Kapitel 1",
         "ex": "Bei der Wahl ihres Urlaubsortes achtet sie immer darauf, dass ein Skigebiet in der Nähe ist.",
-        "img": "assets/vocab-scenes/k9-added/28.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/050.jpg"
       },
       {
         "w": "der Skilift",
@@ -443,7 +443,7 @@ window.B1_BOOK = [
         "ar": "منطقة العافية / السبا",
         "cat": "Kapitel 1",
         "ex": "Der Wellness-Bereich ist bis 22 Uhr geöffnet.",
-        "img": "assets/vocab-scenes/k12-added/67.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/053.jpg"
       },
       {
         "w": "der Winterurlaub",
@@ -451,15 +451,15 @@ window.B1_BOOK = [
         "ar": "عطلة الشتاء",
         "cat": "Kapitel 1",
         "ex": "Im Winterurlaub gehe ich gerne Skifahren.",
-        "img": "assets/vocab-scenes/k10-added/17.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/054.jpg"
       },
       {
         "w": "die Badewanne",
         "d": "Wanne im Badezimmer mit zumeist länglicher Form zum Baden",
         "ar": "حوض الاستحمام",
         "cat": "Kapitel 1",
-        "ex": "„Diese Drohung erinnerte Charlotte Corday an ihre Mission, welche sie eine Zeitlang über dem Abscheu vor dem Morde vergessen hatte; sie näherte sich der Badewanne, zog ihr Messer und senkte",
-        "img": "assets/vocab-scenes/k10-added/21.webp"
+        "ex": "Diese Drohung erinnerte Charlotte Corday an ihre Mission, welche sie eine Zeitlang über dem Abscheu vor dem Morde vergessen hatte; sie näherte sich der Badewanne, zog ihr Messer und senkte",
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/055.jpg"
       },
       {
         "w": "das Boot",
@@ -467,7 +467,7 @@ window.B1_BOOK = [
         "ar": "القارب",
         "cat": "Kapitel 1",
         "ex": "Wir können mit dem Boot über den Fluss setzen.",
-        "img": "assets/vocab-scenes/k10-added/08.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/056.jpg"
       },
       {
         "w": "da",
@@ -483,7 +483,7 @@ window.B1_BOOK = [
         "ar": "فكرة مفاجئة",
         "cat": "Kapitel 1",
         "ex": "Nach langem, fruchtlosen Nachdenken hatte ich den rettenden Einfall.",
-        "img": "assets/vocab-scenes/k10-added/110.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/058.jpg"
       },
       {
         "w": "enttäuscht",
@@ -491,7 +491,7 @@ window.B1_BOOK = [
         "ar": "بخيبة أمل",
         "cat": "Kapitel 1",
         "ex": "Er machte ein sehr enttäuschtes Gesicht.",
-        "img": "assets/vocab-scenes/k4/07.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/059-v.jpg"
       },
       {
         "w": "der Forumstext",
@@ -503,7 +503,7 @@ window.B1_BOOK = [
       },
       {
         "w": "jedenfalls",
-        "d": "an Vorangegangenes anknüpfend: auf alle Fälle, bestimmt / an Vorangegangenes anknüpfend: nach, trotz dem, was vorher geschehen ist",
+        "d": "an Vorangegangenes anknüpfend: auf alle Fälle, bestimmt; an Vorangegangenes anknüpfend: nach, trotz dem, was vorher geschehen ist",
         "ar": "على أية حال",
         "cat": "Kapitel 1",
         "ex": "Sie war in der Musikwelt unbekannt, zumindest/jedenfalls bis vor kurzem.",
@@ -512,10 +512,10 @@ window.B1_BOOK = [
       {
         "w": "liegen",
         "d": "Sich an einem Ort befinden oder waagerecht sein.",
-        "ar": "كذبة",
+        "ar": "يقع / يكون مستلقيًا",
         "cat": "Kapitel 1",
         "ex": "Das Hotel liegt direkt am See.",
-        "img": "assets/vocab-scenes/k12/01.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/062-v.jpg"
       },
       {
         "w": "obwohl",
@@ -531,7 +531,7 @@ window.B1_BOOK = [
         "ar": "على ما يبدو",
         "cat": "Kapitel 1",
         "ex": "Die Situation ist heute offenbar.",
-        "img": "assets/vocab-scenes/k10-added/57.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/064-v.jpg"
       },
       {
         "w": "solche",
@@ -547,7 +547,7 @@ window.B1_BOOK = [
         "ar": "للنزهة",
         "cat": "Kapitel 1",
         "ex": "an jdm. vorbeispazieren",
-        "img": "assets/vocab-scenes/k10-added/77.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/066-v.jpg"
       },
       {
         "w": "die Stadtatmosphäre",
@@ -555,11 +555,11 @@ window.B1_BOOK = [
         "ar": "جو المدينة",
         "cat": "Kapitel 1",
         "ex": "Die Stadtatmosphäre ist abends besonders lebendig.",
-        "img": "assets/vocab-scenes/k5/30.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/067.jpg"
       },
       {
         "w": "die Strandpromenade",
-        "d": "breiter, befestigter Weg an einem Strand entlang, an dem sich häufig Ladengeschäfte befinden / Spaziergang entlang eines Strandes",
+        "d": "breiter, befestigter Weg an einem Strand entlang, an dem sich häufig Ladengeschäfte befinden; Spaziergang entlang eines Strandes",
         "ar": "ممشى الشاطئ",
         "cat": "Kapitel 1",
         "ex": "Strandpromenade aus Holz",
@@ -578,8 +578,8 @@ window.B1_BOOK = [
         "d": "Ein Urlaub an einem Strand.",
         "ar": "عطلة الشاطئ",
         "cat": "Kapitel 1",
-        "ex": "„Ob Strandurlaub in Sardinien, Fjord-Wanderungen in Norwegen oder Rafting in Laos – Chaotentouristen sind auf nichts wirklich vorbereitet und deshalb für alles gleichermaßen offen.“",
-        "img": "assets/vocab-scenes/k7/42.webp"
+        "ex": "Ob Strandurlaub in Sardinien, Fjord-Wanderungen in Norwegen oder Rafting in Laos – Chaotentouristen sind auf nichts wirklich vorbereitet und deshalb für alles gleichermaßen offen.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/070.jpg"
       },
       {
         "w": "das Abenteuer",
@@ -587,7 +587,7 @@ window.B1_BOOK = [
         "ar": "مغامرة",
         "cat": "Kapitel 1",
         "ex": "Auf seinen Fahrten über das Meer erlebt der griechische Held Odysseus viele Abenteuer.",
-        "img": "assets/vocab-scenes/k10-added/83.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/071.jpg"
       },
       {
         "w": "aufbauen",
@@ -595,7 +595,7 @@ window.B1_BOOK = [
         "ar": "بناء",
         "cat": "Kapitel 1",
         "ex": "Wir bauen das Zelt am See auf.",
-        "img": "assets/vocab-scenes/k10-added/89.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/072-v.jpg"
       },
       {
         "w": "die Bild-Geschichte",
@@ -607,7 +607,7 @@ window.B1_BOOK = [
       },
       {
         "w": "Bock",
-        "d": "männliches Tier von Schaf und Ziege oder Rehwild, sowie von Nagetieren wie Meerschweinchen, Ratten, Mäusen, Kaninchen / Bockkäfer (insbesondere den Hausbock)",
+        "d": "männliches Tier von Schaf und Ziege oder Rehwild, sowie von Nagetieren wie Meerschweinchen, Ratten, Mäusen, Kaninchen; Bockkäfer (insbesondere den Hausbock)",
         "ar": "باك",
         "cat": "Kapitel 1",
         "ex": "Den Bock kann man nicht melken.",
@@ -619,15 +619,15 @@ window.B1_BOOK = [
         "ar": "حرق",
         "cat": "Kapitel 1",
         "ex": "Das Holz brennt schon.",
-        "img": "assets/vocab-scenes/k11-added/62.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/075-v.jpg"
       },
       {
         "w": "der Eimer",
-        "d": "hohes, rundes Gefäß, zumeist in Form eines Zylinders oder Kegelstumpfes, das mit einem beweglichen Henkel versehen ist und zur Aufbewahrung und/oder zum Transport, besonders von Flüssigkeiten, dient / Volumenmaß für Flüssigkeiten von unterschiedlicher Größe, das zumeist als Schankmaß vor allem für Wein verwendet wurde",
+        "d": "hohes, rundes Gefäß, zumeist in Form eines Zylinders oder Kegelstumpfes, das mit einem beweglichen Henkel versehen ist und zur Aufbewahrung und; oder zum Transport, besonders von Flüssigkeiten, dient; Volumenmaß für Flüssigkeiten von unterschiedlicher Größe, das zumeist als Schankmaß vor allem für Wein verwendet wurde",
         "ar": "الدلو",
         "cat": "Kapitel 1",
         "ex": "Gieß bitte mal das Wasser aus dem Eimer.",
-        "img": "assets/vocab-scenes/k1/08.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/076.jpg"
       },
       {
         "w": "der Kofferraum",
@@ -639,7 +639,7 @@ window.B1_BOOK = [
       },
       {
         "w": "mehrfach",
-        "d": "auf die gleiche Art öfter (nacheinander) auftretend; sich wiederholend / auf verschiedene Art und Weise",
+        "d": "auf die gleiche Art öfter (nacheinander) auftretend; sich wiederholend; auf verschiedene Art und Weise",
         "ar": "عدة مرات",
         "cat": "Kapitel 1",
         "ex": "Sie geht mehrfach im Monat ins Kino.",
@@ -651,7 +651,7 @@ window.B1_BOOK = [
         "ar": "تخطئ",
         "cat": "Kapitel 1",
         "ex": "Bei der Reise kann immer etwas schiefgehen.",
-        "img": "assets/vocab-scenes/k10-added/22.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/079-v.jpg"
       },
       {
         "w": "tragen",
@@ -667,7 +667,7 @@ window.B1_BOOK = [
         "ar": "يائسة",
         "cat": "Kapitel 1",
         "ex": "Er war verzweifelt, weil er den Zug verpasst hatte.",
-        "img": "assets/vocab-scenes/k12-added/51.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/081-v.jpg"
       },
       {
         "w": "die Wiese",
@@ -675,15 +675,15 @@ window.B1_BOOK = [
         "ar": "المرج",
         "cat": "Kapitel 1",
         "ex": "Auf der Wiese vor unserem Haus kann man gut Frisbee spielen.",
-        "img": "assets/vocab-scenes/k11-added/35.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/082.jpg"
       },
       {
         "w": "das Zeug",
-        "d": "Gegenstände aller Art, Material, Gerät / Gewebe für Kleider",
+        "d": "Gegenstände aller Art, Material, Gerät; Gewebe für Kleider",
         "ar": "الاشياء",
         "cat": "Kapitel 1",
         "ex": "das ganze Zeug",
-        "img": "assets/vocab-scenes/k10-added/46.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/083.jpg"
       },
       {
         "w": "fest machen",
@@ -691,7 +691,7 @@ window.B1_BOOK = [
         "ar": "جعل شركة",
         "cat": "Kapitel 1",
         "ex": "Mach bitte den Koffer fest.",
-        "img": "assets/vocab-scenes/k10/34.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/084-v.jpg"
       },
       {
         "w": "die Perspektive",
@@ -699,7 +699,7 @@ window.B1_BOOK = [
         "ar": "المنظور",
         "cat": "Kapitel 1",
         "ex": "Aus meiner Perspektive betrachtet stellt sich der Vorgang anders dar.",
-        "img": "assets/vocab-scenes/k1/38.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/085.jpg"
       },
       {
         "w": "diktieren",
@@ -707,15 +707,15 @@ window.B1_BOOK = [
         "ar": "إملاء",
         "cat": "Kapitel 1",
         "ex": "Die Lehrerin diktiert einen Satz.",
-        "img": "assets/vocab-scenes/k10-added/85.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/086-v.jpg"
       },
       {
         "w": "der ICE",
-        "d": "Intercity-Express – die schnellste und komfortabelste (Fern-)Zugkategorie der Deutschen Bahn und ihrer Partner in den Nachbarländern; österreichisch, schweizerisch: InterCityExpress / InterCity-Experimental – die Vorgängerbezeichnung eines Versuchs-Triebzugs der Deutschen Bahn zur Erforschung und Entwicklung von Triebfahrzeugen für den Hochgeschwindigkeitsverkehr",
+        "d": "Intercity-Express – die schnellste und komfortabelste (Fern-)Zugkategorie der Deutschen Bahn und ihrer Partner in den Nachbarländern; österreichisch, schweizerisch: InterCityExpress; InterCity-Experimental – die Vorgängerbezeichnung eines Versuchs-Triebzugs der Deutschen Bahn zur Erforschung und Entwicklung von Triebfahrzeugen für den Hochgeschwindigkeitsverkehr",
         "ar": "قطار سريع بين المدن",
         "cat": "Kapitel 1",
         "ex": "Der ICE unterscheidet sich durch seine äußere Gestaltung von allen anderen Zügen der Deutschen Bahn.",
-        "img": "assets/vocab-scenes/k8/142.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/087.jpg"
       },
       {
         "w": "die Zugnummer",
@@ -723,7 +723,7 @@ window.B1_BOOK = [
         "ar": "رقم القطار",
         "cat": "Kapitel 1",
         "ex": "Bitte prüfen Sie die Zugnummer auf der Anzeigetafel.",
-        "img": "assets/vocab-scenes/k11/32.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/088.jpg"
       },
       {
         "w": "die Bushaltestelle",
@@ -731,15 +731,15 @@ window.B1_BOOK = [
         "ar": "محطة الحافلات",
         "cat": "Kapitel 1",
         "ex": "Viele Menschen quetschten sich unter den Regenschutz der kleinen Bushaltestelle.",
-        "img": "assets/vocab-scenes/k6/20.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/089.jpg"
       },
       {
         "w": "das Gepäckband",
         "d": "Ein Förderband, auf dem Koffer am Flughafen ankommen.",
         "ar": "سير الأمتعة",
         "cat": "Kapitel 1",
-        "ex": "„Schmale junge Männer von Südsee-Statur schleppten Koffer, Schachteln, Körbe fürs Gepäckband, Blumen, Puppen, zuweilen auch ein ausgestopftes Krokodil für die Kabine heran.“",
-        "img": "assets/vocab-scenes/k12/20.webp"
+        "ex": "Schmale junge Männer von Südsee-Statur schleppten Koffer, Schachteln, Körbe fürs Gepäckband, Blumen, Puppen, zuweilen auch ein ausgestopftes Krokodil für die Kabine heran.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/090.jpg"
       },
       {
         "w": "der Tiergarten",
@@ -747,7 +747,7 @@ window.B1_BOOK = [
         "ar": "حديقة الحيوان",
         "cat": "Kapitel 1",
         "ex": "Die Großeltern machen heute mit ihren Enkeln einen Ausflug in den Tiergarten, um sich die Eisbären anzusehen.",
-        "img": "assets/vocab-scenes/k10-added/82.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/091.jpg"
       },
       {
         "w": "der Hauptbahnhof",
@@ -755,7 +755,7 @@ window.B1_BOOK = [
         "ar": "المحطة الرئيسية",
         "cat": "Kapitel 1",
         "ex": "Der Zug kommt um 16.00 Uhr am Hauptbahnhof an.",
-        "img": "assets/vocab-scenes/k7/02.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/092.jpg"
       },
       {
         "w": "die Alm",
@@ -763,7 +763,7 @@ window.B1_BOOK = [
         "ar": "مَرعى جبلي في الألب",
         "cat": "Kapitel 1",
         "ex": "Der Hirte führte seine Schafe und Lämmer auf die Alm hinaus, um sie grasen zu lassen.",
-        "img": "assets/vocab-scenes/k1/12.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/093.jpg"
       },
       {
         "w": "der Almsommer",
@@ -771,7 +771,7 @@ window.B1_BOOK = [
         "ar": "الصيف في المراعي الجبلية",
         "cat": "Kapitel 1",
         "ex": "Den Almsommer verbringt die Familie in den Bergen.",
-        "img": "assets/vocab-scenes/k12-added/11.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/094.jpg"
       },
       {
         "w": "der Almurlaub",
@@ -779,7 +779,7 @@ window.B1_BOOK = [
         "ar": "عطلة جبال الألب",
         "cat": "Kapitel 1",
         "ex": "Im Almurlaub genießen wir die Ruhe und die frische Luft.",
-        "img": "assets/vocab-scenes/k7/73.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/095.jpg"
       },
       {
         "w": "begeistert",
@@ -787,7 +787,7 @@ window.B1_BOOK = [
         "ar": "بسعادة غامرة",
         "cat": "Kapitel 1",
         "ex": "Die Kinder sind vom Ausflug begeistert.",
-        "img": "assets/vocab-scenes/k9/20.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/096-v.jpg"
       },
       {
         "w": "beinahe",
@@ -795,7 +795,7 @@ window.B1_BOOK = [
         "ar": "تقريبا",
         "cat": "Kapitel 1",
         "ex": "Wir hätten den Bus beinahe verpasst.",
-        "img": "assets/vocab-scenes/k10/08.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/097-v.jpg"
       },
       {
         "w": "eher",
@@ -807,15 +807,15 @@ window.B1_BOOK = [
       },
       {
         "w": "die Einsamkeit",
-        "d": "das Alleinsein oder Verlassensein / Abgeschiedenheit, Einöde",
+        "d": "das Alleinsein oder Verlassensein; Abgeschiedenheit, Einöde",
         "ar": "الوحدة",
         "cat": "Kapitel 1",
         "ex": "In der großen Stadt fühlt er manchmal Einsamkeit.",
-        "img": "assets/vocab-scenes/k10-added/24.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/099.jpg"
       },
       {
         "w": "der Empfang",
-        "d": "das Empfangen einer Übertragung (zum Beispiel Rundfunk, Funk, Handy, …) / Begrüßung (zum Beispiel von Gästen, Mitarbeitern, Freunden und Ähnlichen)",
+        "d": "das Empfangen einer Übertragung (zum Beispiel Rundfunk, Funk, Handy, …); Begrüßung (zum Beispiel von Gästen, Mitarbeitern, Freunden und Ähnlichen)",
         "ar": "الاستقبال",
         "cat": "Kapitel 1",
         "ex": "jdm. einen herzlichen Empfang bereiten",
@@ -827,7 +827,7 @@ window.B1_BOOK = [
         "ar": "تقرر",
         "cat": "Kapitel 1",
         "ex": "Und sollte sich ein Unternehmen letztendlich doch dazu entschließen, in die Hauptstadt zu ziehen, zögen die Mitarbeiter meist mit Freuden mit.",
-        "img": "assets/vocab-scenes/k10-added/78.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/101-v.jpg"
       },
       {
         "w": "entschloss",
@@ -835,7 +835,7 @@ window.B1_BOOK = [
         "ar": "قررت",
         "cat": "Kapitel 1",
         "ex": "Er entschloss sich, die Reise allein zu machen.",
-        "img": "assets/vocab-scenes/k10/10.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/102-v.jpg"
       },
       {
         "w": "erholt",
@@ -843,15 +843,15 @@ window.B1_BOOK = [
         "ar": "تعافى",
         "cat": "Kapitel 1",
         "ex": "Nach dem Wochenende fühlte sie sich erholt und fit.",
-        "img": "assets/vocab-scenes/k10-added/80.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/103-v.jpg"
       },
       {
         "w": "erkälten",
-        "d": "sich eine Erkältung zuziehen / jemanden oder etwas aktiv in einen kälteren Zustand versetzen oder auch kalt werden lassen",
+        "d": "sich eine Erkältung zuziehen; jemanden oder etwas aktiv in einen kälteren Zustand versetzen oder auch kalt werden lassen",
         "ar": "اصابة بالبرد",
         "cat": "Kapitel 1",
         "ex": "Der Bub erkältete sich schon zum zweiten Mal in diesem Frühjahr.",
-        "img": "assets/vocab-scenes/k10-added/87.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/104-v.jpg"
       },
       {
         "w": "falls",
@@ -859,7 +859,7 @@ window.B1_BOOK = [
         "ar": "إذا",
         "cat": "Kapitel 1",
         "ex": "Falls es regnet, bleiben wir im Hotel.",
-        "img": "assets/vocab-scenes/k7/39.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/105-v.jpg"
       },
       {
         "w": "das Gebirge",
@@ -867,7 +867,7 @@ window.B1_BOOK = [
         "ar": "الجبال",
         "cat": "Kapitel 1",
         "ex": "Im Gebirge kann das Wetter schnell umschlagen.",
-        "img": "assets/vocab-scenes/k8/155.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/106.jpg"
       },
       {
         "w": "heimfahren",
@@ -875,7 +875,7 @@ window.B1_BOOK = [
         "ar": "قيادة المنزل",
         "cat": "Kapitel 1",
         "ex": "Am Sonntag fahren wir wieder heim.",
-        "img": "assets/vocab-scenes/k10-added/97.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/107-v.jpg"
       },
       {
         "w": "das Heimweh",
@@ -883,7 +883,7 @@ window.B1_BOOK = [
         "ar": "الحنين إلى الوطن",
         "cat": "Kapitel 1",
         "ex": "Nach zwei Monaten im Ausland bekam er Heimweh.",
-        "img": "assets/vocab-scenes/k10/35.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/108.jpg"
       },
       {
         "w": "hierher",
@@ -891,19 +891,19 @@ window.B1_BOOK = [
         "ar": "هنا",
         "cat": "Kapitel 1",
         "ex": "Jetzt habe ich drei Jahre lang Deutsch gelernt, komme hierher und verstehe kein einziges Wort!",
-        "img": "assets/vocab-scenes/k7/76.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/109-v.jpg"
       },
       {
         "w": "die Hütte",
-        "d": "\"kleines und bautechnisch einfaches Gebäude, das häufig von den späteren Nutzern in Eigenarbeit aus lokal verfügbaren, möglicherweise auch vergänglichen oder losen zusammengefügten Materialien errichtet wird\" / Gebäude/Anlage/Werk, in welchem Glas oder Metalle erschmolzen werden",
+        "d": "\"kleines und bautechnisch einfaches Gebäude, das häufig von den späteren Nutzern in Eigenarbeit aus lokal verfügbaren, möglicherweise auch vergänglichen oder losen zusammengefügten Materialien errichtet wird\"; Gebäude; Anlage; Werk, in welchem Glas oder Metalle erschmolzen werden",
         "ar": "الكوخ",
         "cat": "Kapitel 1",
         "ex": "Die Hütte bietet Schutz vor Regen.",
-        "img": "assets/vocab-scenes/k1/09.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/110.jpg"
       },
       {
         "w": "die Käserei",
-        "d": "Herstellung von Käse / Betrieb zur Herstellung von Käse",
+        "d": "Herstellung von Käse; Betrieb zur Herstellung von Käse",
         "ar": "معمل الألبان / مصنع الجبن",
         "cat": "Kapitel 1",
         "ex": "Sie erlernte die Käserei von der Tante mütterlicherseits.",
@@ -911,11 +911,11 @@ window.B1_BOOK = [
       },
       {
         "w": "melken",
-        "d": "Milch vom Milchvieh gewinnen / andere ausnehmen",
+        "d": "Milch vom Milchvieh gewinnen; andere ausnehmen",
         "ar": "الحليب",
         "cat": "Kapitel 1",
-        "ex": "„…und wird soviel zu melken haben, dass er Butter essen wird.“ (Jes. 7.22)",
-        "img": "assets/vocab-scenes/k1/04.webp"
+        "ex": "…und wird soviel zu melken haben, dass er Butter essen wird.“ (Jes. 7.22)",
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/112-v.jpg"
       },
       {
         "w": "momentan",
@@ -923,31 +923,31 @@ window.B1_BOOK = [
         "ar": "حاليا",
         "cat": "Kapitel 1",
         "ex": "Momentan habe ich wenig Zeit.",
-        "img": "assets/vocab-scenes/k10-added/65.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/113-v.jpg"
       },
       {
         "w": "die Neuigkeit",
         "d": "Information oder Nachricht von einem Geschehen, das sich erst vor kurzer Zeit ereignet hat",
         "ar": "الأخبار",
         "cat": "Kapitel 1",
-        "ex": "„Die Neuigkeiten aus China und Spanien würden nun als Korrekturbeschleuniger wirken.“",
-        "img": "assets/vocab-scenes/k8/156.webp"
+        "ex": "Die Neuigkeiten aus China und Spanien würden nun als Korrekturbeschleuniger wirken.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/114.jpg"
       },
       {
         "w": "der Rückblick",
-        "d": "bewusste Erinnerung an Vergangenes / Bericht über etwas Abgeschlossenes",
+        "d": "bewusste Erinnerung an Vergangenes; Bericht über etwas Abgeschlossenes",
         "ar": "المراجعة",
         "cat": "Kapitel 1",
         "ex": "ein Rückblick auf die Ereignisse der letzten Monate",
-        "img": "assets/vocab-scenes/k8/160.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/115.jpg"
       },
       {
         "w": "der Sonnenaufgang",
-        "d": "das scheinbare Auftauchen der Sonne über den Horizont / übertragen: der Anfang des Tages; Tagesanbruch",
+        "d": "das scheinbare Auftauchen der Sonne über den Horizont; übertragen: der Anfang des Tages; Tagesanbruch",
         "ar": "شروق الشمس",
         "cat": "Kapitel 1",
         "ex": "Sie wurden Zeugen eines fantastischen Sonnenaufgangs.",
-        "img": "assets/vocab-scenes/k8/136.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/116.jpg"
       },
       {
         "w": "der Terminkalender",
@@ -955,15 +955,15 @@ window.B1_BOOK = [
         "ar": "تقويم الموعد",
         "cat": "Kapitel 1",
         "ex": "etw. in seinen/seinem Terminkalender eintragen",
-        "img": "assets/vocab-scenes/k6/35.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/117.jpg"
       },
       {
         "w": "vorbei",
-        "d": "bereits zu einem Ende gekommen, vergangen / gerade passiert habend, nicht mehr an der Stelle wie zuvor",
+        "d": "bereits zu einem Ende gekommen, vergangen; gerade passiert habend, nicht mehr an der Stelle wie zuvor",
         "ar": "انتهى",
         "cat": "Kapitel 1",
         "ex": "Du glaubst also, es ist alles vorbei?",
-        "img": "assets/vocab-scenes/k7/85.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/118-v.jpg"
       },
       {
         "w": "der Zeitpunkt",
@@ -971,7 +971,7 @@ window.B1_BOOK = [
         "ar": "التوقيت",
         "cat": "Kapitel 1",
         "ex": "Damit war der Zeitpunkt gekommen, sich zur Prüfung anzumelden.",
-        "img": "assets/vocab-scenes/k11/01.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/119.jpg"
       },
       {
         "w": "der Almaufenthalt",
@@ -986,8 +986,8 @@ window.B1_BOOK = [
         "d": "gemeinsam mit anderen an einer Aufgabe tätig sein; sich am Unterricht beteiligen",
         "ar": "التعاون",
         "cat": "Kapitel 1",
-        "ex": "\"Die Behandlung gelingt nur, wenn die Patienten ausreichend mitarbeiten.\"",
-        "img": "assets/vocab-scenes/k10-added/37.webp"
+        "ex": "Die Behandlung gelingt nur, wenn die Patienten ausreichend mitarbeiten.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/121-v.jpg"
       },
       {
         "w": "der Ferienclub",
@@ -995,23 +995,23 @@ window.B1_BOOK = [
         "ar": "نادي العطلة",
         "cat": "Kapitel 1",
         "ex": "Im Ferienclub gibt es Sportangebote für die ganze Familie.",
-        "img": "assets/vocab-scenes/k8/146.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/122.jpg"
       },
       {
         "w": "der Olivenbaum",
         "d": "Synonym von Ölbaum",
         "ar": "شجرة الزيتون",
         "cat": "Kapitel 1",
-        "ex": "\"Der Schatten des Olivenbaumes wirkte entspannend.\"",
-        "img": "assets/vocab-scenes/k10-added/20.webp"
+        "ex": "Der Schatten des Olivenbaumes wirkte entspannend.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/123.jpg"
       },
       {
         "w": "die Weihnachtsferien",
         "d": "Ferien rund um Weihnachten.",
         "ar": "عطلة عيد الميلاد",
         "cat": "Kapitel 1",
-        "ex": "„So auch in den Weihnachtsferien des Jahres 1964, als die Temperaturen tief in den Keller gerutscht waren.“",
-        "img": "assets/vocab-scenes/k11-added/01.webp"
+        "ex": "So auch in den Weihnachtsferien des Jahres 1964, als die Temperaturen tief in den Keller gerutscht waren.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/124.jpg"
       },
       {
         "w": "die Abneigung",
@@ -1019,7 +1019,7 @@ window.B1_BOOK = [
         "ar": "النفور",
         "cat": "Kapitel 1",
         "ex": "sofort eine Abneigung gegen etw. empfinden",
-        "img": "assets/vocab-scenes/k8/24.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k1/125.jpg"
       },
       {
         "w": "der Kausalsatz",
@@ -1075,15 +1075,15 @@ window.B1_BOOK = [
         "ar": "حاجة",
         "cat": "Kapitel 2",
         "ex": "Für die Reise benötigen wir einen Reisepass.",
-        "img": "assets/vocab-scenes/k7/105.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/001-v.jpg"
       },
       {
         "w": "der Fingerabdruck",
-        "d": "Abdruck der Innenseite einer Fingerkuppe, der das als charakteristisch angesehene Muster des Hautreliefs erkennen lässt (und zur Feststellung der Identität, besonders in der Kriminalistik, ausgewertet werden kann)",
-        "ar": "البصمة",
+        "d": "Die individuelle Spur, die eine Fingerkuppe hinterlässt.",
+        "ar": "بصمة الإصبع",
         "cat": "Kapitel 2",
-        "ex": "Seine Fingerabdrücke sind auf der Mordwaffe.",
-        "img": "assets/vocab-scenes/k3/11.webp"
+        "ex": "Das Smartphone erkennt meinen Fingerabdruck.",
+        "img": "assets/vocab-scenes/b1.1/fingerabdruck.png"
       },
       {
         "w": "der Funkkopfhörer",
@@ -1091,14 +1091,14 @@ window.B1_BOOK = [
         "ar": "سماعات الرأس اللاسلكية",
         "cat": "Kapitel 2",
         "ex": "Mit dem Funkkopfhörer kann ich Musik hören, ohne ein Kabel zu benutzen.",
-        "img": "assets/vocab-scenes/k12/17.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/003.jpg"
       },
       {
         "w": "das Lastenfahrrad",
         "d": "Fahrrad mit einer Vorrichtung zum Transportieren von Dingen",
         "ar": "دراجة البضائع",
         "cat": "Kapitel 2",
-        "ex": "\"Auch der Bund bezuschusst den Kauf von Lastenfahrrädern, und zwar mit 30 Prozent bei einer Höchstgrenze von 2500 Euro.\"",
+        "ex": "Auch der Bund bezuschusst den Kauf von Lastenfahrrädern, und zwar mit 30 Prozent bei einer Höchstgrenze von 2500 Euro.",
         "img": "assets/vocab-scenes/k9-added/26.webp"
       },
       {
@@ -1107,7 +1107,7 @@ window.B1_BOOK = [
         "ar": "المساعد الصوتي",
         "cat": "Kapitel 2",
         "ex": "Der Sprachassistent stellt auf Wunsch den Wecker.",
-        "img": "assets/vocab-scenes/k12-added/46.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/005.jpg"
       },
       {
         "w": "der Steh-Sitz-Tisch",
@@ -1120,26 +1120,26 @@ window.B1_BOOK = [
       {
         "w": "der Türöffner",
         "d": "Ein Gerät oder Knopf, mit dem man eine Tür öffnet.",
-        "ar": "فتحت الباب",
+        "ar": "زرّ فتح الباب",
         "cat": "Kapitel 2",
-        "ex": "„Er räumte seine Sachen dort ein und erschrak plötzlich, als das laute Schnarren des Türöffners an sein Ohr drang.“",
-        "img": "assets/vocab-scenes/k10/28.webp"
+        "ex": "Drücken Sie bitte auf den Türöffner.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/007.jpg"
       },
       {
         "w": "der Slogan",
         "d": "vielfach wiederholte, stilistisch durchgeformte Werbeaussage in Politik und Werbung",
         "ar": "الشعار",
         "cat": "Kapitel 2",
-        "ex": "Ein berühmter Slogan war der von Toyota: \"Nichts ist unmöglich.\"",
-        "img": "assets/vocab-scenes/k2/05.webp"
+        "ex": "Ein berühmter Slogan war der von Toyota: \"Nichts ist unmöglich.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/008.jpg"
       },
       {
         "w": "die Taste",
-        "d": "Teil einer Tastatur oder einer Klaviatur, der Druck einer Taste hat ein spezifisches Ereignis zur Folge, er erzeugt zum Beispiel einen Buchstaben oder einen Ton / Bedienelement von Geräten, das durch Druck ein Ereignis auslöst",
+        "d": "Teil einer Tastatur oder einer Klaviatur, der Druck einer Taste hat ein spezifisches Ereignis zur Folge, er erzeugt zum Beispiel einen Buchstaben oder einen Ton; Bedienelement von Geräten, das durch Druck ein Ereignis auslöst",
         "ar": "الزر",
         "cat": "Kapitel 2",
         "ex": "feststellbare/arretierbare/einrastende Taste",
-        "img": "assets/vocab-scenes/k7/108.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/009.jpg"
       },
       {
         "w": "der Transport",
@@ -1147,47 +1147,47 @@ window.B1_BOOK = [
         "ar": "النقل",
         "cat": "Kapitel 2",
         "ex": "Der Transport kam trotz Verkehrsstaus noch rechtzeitig an.",
-        "img": "assets/vocab-scenes/k12-added/31.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/010.jpg"
       },
       {
         "w": "anschließen",
-        "d": "Ein Gerät mit einem Kabel verbinden.",
-        "ar": "اتصال",
+        "d": "Ein Gerät mit einem Kabel oder einem Netzwerk verbinden.",
+        "ar": "يوصّل جهازًا",
         "cat": "Kapitel 2",
-        "ex": "Schließen Sie den Lautsprecher an den Laptop an.",
-        "img": "assets/vocab-scenes/k9-added/08.webp"
+        "ex": "Ich schließe den Drucker an den Computer an.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/011-v.jpg"
       },
       {
         "w": "aufladen",
-        "d": "Einen Akku mit Strom füllen.",
-        "ar": "تهمة",
+        "d": "Einen Akku mit elektrischer Energie füllen.",
+        "ar": "يشحن",
         "cat": "Kapitel 2",
-        "ex": "Ich muss mein Handy aufladen.",
+        "ex": "Ich muss den Akku meines Handys aufladen.",
         "img": "assets/vocab-scenes/k7/24.webp"
       },
       {
         "w": "bedienen",
-        "d": "Ein Gerät benutzen oder steuern.",
-        "ar": "تعمل",
+        "d": "Ein Gerät richtig benutzen oder steuern.",
+        "ar": "يشغّل / يستخدم جهازًا",
         "cat": "Kapitel 2",
-        "ex": "Kannst du diese Maschine bedienen?",
-        "img": "assets/vocab-scenes/k10-added/60.webp"
+        "ex": "Kannst du die neue Kaffeemaschine bedienen?",
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/013-v.jpg"
       },
       {
         "w": "einsetzen",
-        "d": "Etwas an die richtige Stelle setzen oder verwenden.",
-        "ar": "إدراج",
+        "d": "Etwas an die vorgesehene Stelle setzen oder für einen Zweck verwenden.",
+        "ar": "يُدخل / يستخدم",
         "cat": "Kapitel 2",
-        "ex": "Setzen Sie die Batterie richtig ein.",
+        "ex": "Setzen Sie die SIM-Karte vorsichtig ein.",
         "img": "assets/vocab-scenes/k7/78.webp"
       },
       {
         "w": "einstecken",
-        "d": "etwas in ein Behältnis hineinstecken / etwas an einer bestimmten Stelle befestigen",
+        "d": "etwas in ein Behältnis hineinstecken; etwas an einer bestimmten Stelle befestigen",
         "ar": "قم بتوصيل",
         "cat": "Kapitel 2",
         "ex": "Steck bitte unterwegs meine Post in den Briefkasten ein.",
-        "img": "assets/vocab-scenes/k2/35.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/015-v.jpg"
       },
       {
         "w": "installieren",
@@ -1195,15 +1195,15 @@ window.B1_BOOK = [
         "ar": "تثبيت",
         "cat": "Kapitel 2",
         "ex": "Ich installiere eine neue App.",
-        "img": "assets/vocab-scenes/k3/06.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/016-v.jpg"
       },
       {
         "w": "schalten",
-        "d": "eine Schaltung betätigen, zum Beispiel auf dem Fahrrad einen anderen Gang einlegen / einen Schalter betätigen",
+        "d": "eine Schaltung betätigen, zum Beispiel auf dem Fahrrad einen anderen Gang einlegen; einen Schalter betätigen",
         "ar": "التبديل",
         "cat": "Kapitel 2",
         "ex": "Er schaltete in den dritten Gang, da er sonst den Berg nicht mehr hinaufgekommen wäre.",
-        "img": "assets/vocab-scenes/k2/14.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/017-v.jpg"
       },
       {
         "w": "stumm",
@@ -1211,27 +1211,27 @@ window.B1_BOOK = [
         "ar": "صامت",
         "cat": "Kapitel 2",
         "ex": "Bitte schalte das Handy stumm.",
-        "img": "assets/vocab-scenes/k9-added/30.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/018-v.jpg"
       },
       {
         "w": "die Anleitung",
-        "d": "schriftliche Erklärung, wie etwas zu benutzen ist / Unterweisung durch eine Person",
+        "d": "schriftliche Erklärung, wie etwas zu benutzen ist; Unterweisung durch eine Person",
         "ar": "التعليمات",
         "cat": "Kapitel 2",
         "ex": "Unser Lehrer gab uns Anleitungen zum Bau des Modells / wie wir das Modell bauen sollten.",
-        "img": "assets/vocab-scenes/k8/25.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/019.jpg"
       },
       {
         "w": "anschaffen",
-        "d": "etwas für sich erwerben / Geld mit sexuellen Dienstleistungen verdienen",
+        "d": "etwas für sich erwerben; Geld mit sexuellen Dienstleistungen verdienen",
         "ar": "الحصول على",
         "cat": "Kapitel 2",
         "ex": "Wir sollten uns mal ein neues Auto anschaffen.",
-        "img": "assets/vocab-scenes/k2/40.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/020-v.jpg"
       },
       {
         "w": "bloß",
-        "d": "ohne Bekleidung, ohne Hülle, ohne Schutz / ohne alles andere, Ergänzende, nichts Weiteres als das Bezeichnete",
+        "d": "ohne Bekleidung, ohne Hülle, ohne Schutz; ohne alles andere, Ergänzende, nichts Weiteres als das Bezeichnete",
         "ar": "فقط",
         "cat": "Kapitel 2",
         "ex": "Wenn sie mir bloß eine Chance gegeben hätte!",
@@ -1243,19 +1243,19 @@ window.B1_BOOK = [
         "ar": "السؤال",
         "cat": "Kapitel 2",
         "ex": "Ich stellte ihr eine Frage.",
-        "img": "assets/vocab-scenes/k12-added/57.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/022.jpg"
       },
       {
         "w": "der Handyladen",
         "d": "Ein Geschäft, in dem man Handys kauft oder repariert.",
         "ar": "متجر الهواتف المحمولة",
         "cat": "Kapitel 2",
-        "ex": "„Er hat dem Verkäufer in dem Handyladen eine Menge Geld hingeblättert, damit dieser darauf verzichtet, sich einen Ausweis vorlegen zu lassen.“",
-        "img": "assets/vocab-scenes/k3/05.webp"
+        "ex": "Er hat dem Verkäufer in dem Handyladen eine Menge Geld hingeblättert, damit dieser darauf verzichtet, sich einen Ausweis vorlegen zu lassen.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/023.jpg"
       },
       {
         "w": "herunterfallen",
-        "d": "von einer höheren Stelle nach unten fallen und dabei Schaden nehmen / jemandem aus den Händen fallen",
+        "d": "von einer höheren Stelle nach unten fallen und dabei Schaden nehmen; jemandem aus den Händen fallen",
         "ar": "تسقط",
         "cat": "Kapitel 2",
         "ex": "von etw. herunterfallen",
@@ -1267,31 +1267,31 @@ window.B1_BOOK = [
         "ar": "أي شيء",
         "cat": "Kapitel 2",
         "ex": "Ich will mich nicht für irgendetwas entscheiden, sondern für etwas Bestimmtes.",
-        "img": "assets/vocab-scenes/k12-added/53.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/025-v.jpg"
       },
       {
         "w": "kaputtgehen",
-        "d": "in einen nicht mehr verwendungsfähigen Zustand geraten / kaum mehr lebensfähig oder wirtschaftlich nicht mehr rentabel werden",
-        "ar": "استراحة",
+        "d": "Nicht mehr funktionieren oder beschädigt werden.",
+        "ar": "يتعطّل / ينكسر",
         "cat": "Kapitel 2",
-        "ex": "„Doch: Was lohnt sich finanziell und ökologisch betrachtet eher? Die alten Lichterketten nutzen, bis sie kaputtgehen, oder sie besser frühzeitig austauschen?“",
-        "img": "assets/vocab-scenes/k12-added/54.webp"
+        "ex": "Mein Kopfhörer ist nach zwei Jahren kaputtgegangen.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/026-v.jpg"
       },
       {
         "w": "kommen",
-        "d": "örtlich: einen Ort erreichen, sich von einem Ort hierher begeben / zeitlich: beginnen, sich ereignen, sich ergeben",
-        "ar": "تعال",
+        "d": "Sich zu einem Ort bewegen und ihn erreichen.",
+        "ar": "يأتي",
         "cat": "Kapitel 2",
-        "ex": "er/sie ist/war gekommen",
-        "img": "assets/vocab-scenes/k12-added/56.webp"
+        "ex": "Der Techniker kommt morgen um zehn Uhr.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/027-v.jpg"
       },
       {
         "w": "lohnen",
-        "d": "sich für etwas Gutes erkenntlich zeigen / von Nutzen, Vorteil sein",
+        "d": "sich für etwas Gutes erkenntlich zeigen; von Nutzen, Vorteil sein",
         "ar": "جديرة بالاهتمام",
         "cat": "Kapitel 2",
         "ex": "Wir wollen ihm seinen Einsatz für unsere Ziele lohnen.",
-        "img": "assets/vocab-scenes/k8/16.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/028-v.jpg"
       },
       {
         "w": "das Sonderangebot",
@@ -1299,7 +1299,7 @@ window.B1_BOOK = [
         "ar": "العرض الخاص",
         "cat": "Kapitel 2",
         "ex": "Ich habe den Anzug als Sonderangebot gekauft.",
-        "img": "assets/vocab-scenes/k8/108.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/029.jpg"
       },
       {
         "w": "der Staubsauger",
@@ -1307,11 +1307,11 @@ window.B1_BOOK = [
         "ar": "المكنسة الكهربائية",
         "cat": "Kapitel 2",
         "ex": "Akku-Staubsauger",
-        "img": "assets/vocab-scenes/k8/118.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/030.jpg"
       },
       {
         "w": "stehen",
-        "d": "sich auf den Beinen ohne Ortsveränderung aufhalten / sich irgendwo befinden",
+        "d": "sich auf den Beinen ohne Ortsveränderung aufhalten; sich irgendwo befinden",
         "ar": "الوقوف",
         "cat": "Kapitel 2",
         "ex": "über etw. stehen",
@@ -1322,36 +1322,36 @@ window.B1_BOOK = [
         "d": "die Technik betreffend, auf die Technik bezogen, in der Art und Weise der Technik",
         "ar": "تقني",
         "cat": "Kapitel 2",
-        "ex": "„Drachenfliegen ist heute mindestens ebenso sicher wie Segelfliegen – dank enormer technischer Entwicklungen.“",
-        "img": "assets/vocab-scenes/k7/59.webp"
+        "ex": "Drachenfliegen ist heute mindestens ebenso sicher wie Segelfliegen – dank enormer technischer Entwicklungen.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/032-v.jpg"
       },
       {
         "w": "der Knopf",
-        "d": "Gegenstand, der durch das Stecken durch ein Knopfloch ein Kleidungsstück verschließt / Bedienelement von Geräten, das durch Druck oder durch Drehen ein Ereignis auslöst",
+        "d": "Gegenstand, der durch das Stecken durch ein Knopfloch ein Kleidungsstück verschließt; Bedienelement von Geräten, das durch Druck oder durch Drehen ein Ereignis auslöst",
         "ar": "الزر",
         "cat": "Kapitel 2",
         "ex": "Knopf mit Öse",
-        "img": "assets/vocab-scenes/k7/120.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/033.jpg"
       },
       {
         "w": "nähen",
-        "d": "Textilteile mit einem Faden verbinden / Textilwaren oder bestimmte Teile davon nach der Technik [1] herstellen oder ausbessern",
+        "d": "Textilteile mit einem Faden verbinden; Textilwaren oder bestimmte Teile davon nach der Technik [1] herstellen oder ausbessern",
         "ar": "خياطة",
         "cat": "Kapitel 2",
         "ex": "einen Saum nähen",
-        "img": "assets/vocab-scenes/k9-added/33.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/034-v.jpg"
       },
       {
         "w": "reinigen",
-        "d": "etwas von Schmutz befreien, eine Verunreinigung beseitigen / speziell Textilien ohne Wasser reinigen[1]",
-        "ar": "نظيفة",
+        "d": "Schmutz von etwas entfernen.",
+        "ar": "ينظّف",
         "cat": "Kapitel 2",
-        "ex": "seine Kleider reinigen lassen",
-        "img": "assets/vocab-scenes/k7/40.webp"
+        "ex": "Bitte reinigen Sie den Filter regelmäßig.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/035-v.jpg"
       },
       {
         "w": "streichen",
-        "d": "Farbe mit einem Pinsel auf einen Untergrund auftragen / mit der Hand oder einem Gegenstand über die Oberfläche eines anderen Gegenstandes gleiten",
+        "d": "Farbe mit einem Pinsel auf einen Untergrund auftragen; mit der Hand oder einem Gegenstand über die Oberfläche eines anderen Gegenstandes gleiten",
         "ar": "حذف",
         "cat": "Kapitel 2",
         "ex": "etw. aus dem Gedächtnis streichen",
@@ -1363,7 +1363,7 @@ window.B1_BOOK = [
         "ar": "سماعات الرأس",
         "cat": "Kapitel 2",
         "ex": "Dreh die Kopfhörer nicht so laut, dass alle anderen deine Musik hören.",
-        "img": "assets/vocab-scenes/k9/23.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/037.jpg"
       },
       {
         "w": "das Ladekabel",
@@ -1378,12 +1378,12 @@ window.B1_BOOK = [
         "d": "portables Gerät zum Aufladen mobiler Stromverbraucher wie Smartphones oder Tablets mit elektrischer Energie",
         "ar": "بطارية شحن محمولة",
         "cat": "Kapitel 2",
-        "ex": "„Die meisten Powerbanks haben einen oder mehrere USB-Anschlüsse.“",
+        "ex": "Die meisten Powerbanks haben einen oder mehrere USB-Anschlüsse.",
         "img": "assets/vocab-scenes/k7/95.webp"
       },
       {
         "w": "daher",
-        "d": "ersetzt einen bestimmten Ort, der zuvor erwähnt wurde, von dort / hier her, an den gemeinten, gezeigten Ort",
+        "d": "ersetzt einen bestimmten Ort, der zuvor erwähnt wurde, von dort; hier her, an den gemeinten, gezeigten Ort",
         "ar": "لذلك",
         "cat": "Kapitel 2",
         "ex": "Wolltest du nicht zu deiner Schwester? Daher komme ich gerade.",
@@ -1411,7 +1411,7 @@ window.B1_BOOK = [
         "ar": "بطارية الهاتف الخليوي",
         "cat": "Kapitel 2",
         "ex": "Der Handyakku ist leer und muss geladen werden.",
-        "img": "assets/vocab-scenes/k3/19.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/043.jpg"
       },
       {
         "w": "sodass",
@@ -1427,15 +1427,15 @@ window.B1_BOOK = [
         "ar": "العصا",
         "cat": "Kapitel 2",
         "ex": "Zum Mittag aß er eine Tüte Sticks.",
-        "img": "assets/vocab-scenes/k7/114.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/045.jpg"
       },
       {
         "w": "anhaben",
-        "d": "ein Kleidungsstück am Körper tragen / eingeschaltet haben",
+        "d": "ein Kleidungsstück am Körper tragen; eingeschaltet haben",
         "ar": "لديها على",
         "cat": "Kapitel 2",
         "ex": "Er hat immer dasselbe an.",
-        "img": "assets/vocab-scenes/k7/77.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/046-v.jpg"
       },
       {
         "w": "anschalten",
@@ -1443,15 +1443,15 @@ window.B1_BOOK = [
         "ar": "تشغيل",
         "cat": "Kapitel 2",
         "ex": "Schalte bitte das Licht an.",
-        "img": "assets/vocab-scenes/k2/39.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/047-v.jpg"
       },
       {
         "w": "dabeihaben",
-        "d": "mit sich führen, bei sich haben / an seiner Seite haben, mitmachen/teilnehmen lassen",
+        "d": "mit sich führen, bei sich haben; an seiner Seite haben, mitmachen; teilnehmen lassen",
         "ar": "يكون معك",
         "cat": "Kapitel 2",
         "ex": "Hast du die Fahrkarten dabei?",
-        "img": "assets/vocab-scenes/k10-added/18.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/048-v.jpg"
       },
       {
         "w": "diesmal",
@@ -1459,7 +1459,7 @@ window.B1_BOOK = [
         "ar": "هذه المرة",
         "cat": "Kapitel 2",
         "ex": "Nach einigen enttäuschenden Spielen hat unsere Mannschaft diesmal gewonnen.",
-        "img": "assets/vocab-scenes/k2/08.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/049-v.jpg"
       },
       {
         "w": "die EC-Karte",
@@ -1467,7 +1467,7 @@ window.B1_BOOK = [
         "ar": "بطاقة EC",
         "cat": "Kapitel 2",
         "ex": "Ich bezahle im Supermarkt mit meiner EC-Karte.",
-        "img": "assets/vocab-scenes/k12-added/39.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/050.png"
       },
       {
         "w": "die Gebrauchsanweisung",
@@ -1475,7 +1475,7 @@ window.B1_BOOK = [
         "ar": "تعليمات الاستخدام",
         "cat": "Kapitel 2",
         "ex": "Lesen Sie bitte zunächst die Gebrauchsanweisung.",
-        "img": "assets/vocab-scenes/k8/147.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/051.jpg"
       },
       {
         "w": "die Geheimzahl",
@@ -1483,15 +1483,15 @@ window.B1_BOOK = [
         "ar": "الرقم السري",
         "cat": "Kapitel 2",
         "ex": "Gib deine Geheimzahl an der Kasse niemals laut bekannt.",
-        "img": "assets/vocab-scenes/k7/91.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/052.jpg"
       },
       {
         "w": "der Geldautomat",
         "d": "in Deutschland gängig, in der Schweiz selten: Geldausgabeautomat; Geldausgabeautomat",
         "ar": "أجهزة الصراف الآلي",
         "cat": "Kapitel 2",
-        "ex": "„Unvergesslich der Bankangestellte, der offen und schmerzlich erklärte, er gehe in Rente, weil die neuen Geldautomaten ihn in seinem Glaskasten überflüssig machen“",
-        "img": "assets/vocab-scenes/k4/17.webp"
+        "ex": "Unvergesslich der Bankangestellte, der offen und schmerzlich erklärte, er gehe in Rente, weil die neuen Geldautomaten ihn in seinem Glaskasten überflüssig machen",
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/053.jpg"
       },
       {
         "w": "das Girokonto",
@@ -1499,7 +1499,7 @@ window.B1_BOOK = [
         "ar": "الحساب الجاري",
         "cat": "Kapitel 2",
         "ex": "Er hat heute ein Girokonto eröffnet.",
-        "img": "assets/vocab-scenes/k12-added/16.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/054.jpg"
       },
       {
         "w": "gratis",
@@ -1507,15 +1507,15 @@ window.B1_BOOK = [
         "ar": "مجانا",
         "cat": "Kapitel 2",
         "ex": "Die Reparatur ist heute gratis.",
-        "img": "assets/vocab-scenes/k8/17.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/055-v.jpg"
       },
       {
         "w": "nachsehen",
-        "d": "nach Information suchen, eine Recherche durchführen, etwas verifizieren / nach Fehlern suchen, etwas überprüfen",
+        "d": "nach Information suchen, eine Recherche durchführen, etwas verifizieren; nach Fehlern suchen, etwas überprüfen",
         "ar": "انظر",
         "cat": "Kapitel 2",
         "ex": "Die Frage kann ich nicht beantworten; da muss ich erst nachsehen.",
-        "img": "assets/vocab-scenes/k10-added/39.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/056-v.jpg"
       },
       {
         "w": "das Portemonnaie",
@@ -1523,7 +1523,7 @@ window.B1_BOOK = [
         "ar": "المحفظة",
         "cat": "Kapitel 2",
         "ex": "Kannst Du mir zehn Euro leihen? Ich habe mein Portemonnaie daheim liegenlassen.",
-        "img": "assets/vocab-scenes/k12-added/07.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/057.jpg"
       },
       {
         "w": "der Rabatt",
@@ -1543,7 +1543,7 @@ window.B1_BOOK = [
       },
       {
         "w": "wieder",
-        "d": "ein oder mehrere weitere Male / zeigt an, dass ein früherer Zustand hergestellt wird",
+        "d": "ein oder mehrere weitere Male; zeigt an, dass ein früherer Zustand hergestellt wird",
         "ar": "مرة أخرى",
         "cat": "Kapitel 2",
         "ex": "Wieder stehst du in der Tür.",
@@ -1551,15 +1551,15 @@ window.B1_BOOK = [
       },
       {
         "w": "verraten",
-        "d": "jemandem ein Geheimnis oder eine vertrauliche Nachricht preisgeben / jemandes Identität oder Aufenthaltsort einer Person/Instanz mitteilen, die jenen verfolgt",
+        "d": "jemandem ein Geheimnis oder eine vertrauliche Nachricht preisgeben; jemandes Identität oder Aufenthaltsort einer Person; Instanz mitteilen, die jenen verfolgt",
         "ar": "خيانة",
         "cat": "Kapitel 2",
         "ex": "Er hat nichts verraten.",
-        "img": "assets/vocab-scenes/k7/131.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/061-v.jpg"
       },
       {
         "w": "zurückgehen",
-        "d": "den Punkt, von dem man aufgebrochen ist, wieder aufsuchen / weniger werden",
+        "d": "den Punkt, von dem man aufgebrochen ist, wieder aufsuchen; weniger werden",
         "ar": "ارجع",
         "cat": "Kapitel 2",
         "ex": "Es ist schon spät: Es wird Zeit, dass wir zurückgehen.",
@@ -1570,7 +1570,7 @@ window.B1_BOOK = [
         "d": "transitiv: geliehenes Geld zurückgeben; mit Dativ, umgangssprachlich: eine erlittene Kränkung mit gleichen Mitteln erwidern",
         "ar": "سداد",
         "cat": "Kapitel 2",
-        "ex": "\"Südafrikas Präsident Jacob Zuma hat die Kosten einer Luxussanierung seiner Privatvilla mit Steuergeldern teilweise zurückgezahlt\".",
+        "ex": "Südafrikas Präsident Jacob Zuma hat die Kosten einer Luxussanierung seiner Privatvilla mit Steuergeldern teilweise zurückgezahlt\".",
         "img": "assets/vocab-scenes/k7/23.webp"
       },
       {
@@ -1579,7 +1579,7 @@ window.B1_BOOK = [
         "ar": "الضمان",
         "cat": "Kapitel 2",
         "ex": "Für das Gerät gilt eine zweijährige Garantie.",
-        "img": "assets/vocab-scenes/k2/32.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/064.jpg"
       },
       {
         "w": "laden",
@@ -1587,7 +1587,7 @@ window.B1_BOOK = [
         "ar": "تحميل",
         "cat": "Kapitel 2",
         "ex": "Pass auf, das Gewehr ist geladen!",
-        "img": "assets/vocab-scenes/k3/04.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/065-v.jpg"
       },
       {
         "w": "fast",
@@ -1611,7 +1611,7 @@ window.B1_BOOK = [
         "ar": "يشكو",
         "cat": "Kapitel 2",
         "ex": "Der Kunde reklamierte seinen Einkauf.",
-        "img": "assets/vocab-scenes/k8/65.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/068-v.jpg"
       },
       {
         "w": "testen",
@@ -1631,11 +1631,11 @@ window.B1_BOOK = [
       },
       {
         "w": "die Vorstellung",
-        "d": "Psychologie: die gedankliche, vergeistigte, innere Abbildung (Projektion) der (äußeren) Realität, Wirklichkeit, im inneren (Gedächtnis, Gefühl, Bewusstsein), die real erlebte Projektion der (äußeren) Realität/ Wirklichkeit; Abbild des Bewusstseins; Philosophie: geistiges Abbild realer oder fiktiver Gegenstände",
+        "d": "Psychologie: die gedankliche, vergeistigte, innere Abbildung (Projektion) der (äußeren) Realität, Wirklichkeit, im inneren (Gedächtnis, Gefühl, Bewusstsein), die real erlebte Projektion der (äußeren) Realität; Wirklichkeit; Abbild des Bewusstseins; Philosophie: geistiges Abbild realer oder fiktiver Gegenstände",
         "ar": "الفكرة",
         "cat": "Kapitel 2",
         "ex": "Bei der bloßen Vorstellung wird mir übel.",
-        "img": "assets/vocab-scenes/k8/150.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/071.jpg"
       },
       {
         "w": "die Alarmanlage",
@@ -1643,7 +1643,7 @@ window.B1_BOOK = [
         "ar": "نظام الإنذار",
         "cat": "Kapitel 2",
         "ex": "Wir sollten uns unbedingt eine Alarmanlage anschaffen.",
-        "img": "assets/vocab-scenes/k11-added/06.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/072.jpg"
       },
       {
         "w": "die Ausnahme",
@@ -1651,7 +1651,7 @@ window.B1_BOOK = [
         "ar": "الاستثناء",
         "cat": "Kapitel 2",
         "ex": "nur in Ausnahmefällen",
-        "img": "assets/vocab-scenes/k8/73.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/073.jpg"
       },
       {
         "w": "bemerken",
@@ -1667,23 +1667,23 @@ window.B1_BOOK = [
         "ar": "بالفعل",
         "cat": "Kapitel 2",
         "ex": "Ich habe die Rechnung bereits bezahlt.",
-        "img": "assets/vocab-scenes/k11/30.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/075-v.jpg"
       },
       {
         "w": "berühren",
-        "d": "jemanden / etwas berühren: mit dem Äußeren seines Körpers mit einer Sache oder einer Person in Kontakt kommen; etwas berühren: einen bestimmten Inhalt ansprechen, zum Beispiel ein Thema",
+        "d": "jemanden; etwas berühren: mit dem Äußeren seines Körpers mit einer Sache oder einer Person in Kontakt kommen; etwas berühren: einen bestimmten Inhalt ansprechen, zum Beispiel ein Thema",
         "ar": "المس",
         "cat": "Kapitel 2",
         "ex": "Er berührt behutsam die Schneide des Messers.",
-        "img": "assets/vocab-scenes/k12/23.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/076-v.jpg"
       },
       {
         "w": "der Einbruch",
-        "d": "das Eindringen in eine Örtlichkeit mit räuberischen Absichten / ohne Plural: plötzlicher Beginn",
+        "d": "das Eindringen in eine Örtlichkeit mit räuberischen Absichten; ohne Plural: plötzlicher Beginn",
         "ar": "الاقتحام",
         "cat": "Kapitel 2",
         "ex": "einen Einbruch verüben",
-        "img": "assets/vocab-scenes/k8/74.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/077.jpg"
       },
       {
         "w": "gleichzeitig",
@@ -1691,7 +1691,7 @@ window.B1_BOOK = [
         "ar": "في نفس الوقت",
         "cat": "Kapitel 2",
         "ex": "Beide Türen öffnen sich gleichzeitig.",
-        "img": "assets/vocab-scenes/k11-added/53.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/078-v.jpg"
       },
       {
         "w": "die Haustür",
@@ -1699,7 +1699,7 @@ window.B1_BOOK = [
         "ar": "الباب الأمامي",
         "cat": "Kapitel 2",
         "ex": "Die Haustür hat meistens ein besonders sicheres Schloss.",
-        "img": "assets/vocab-scenes/k2/20.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/079.jpg"
       },
       {
         "w": "hinsehen",
@@ -1707,7 +1707,7 @@ window.B1_BOOK = [
         "ar": "انظر",
         "cat": "Kapitel 2",
         "ex": "In einigen Regionen, insbesondere in Ballungsräumen, muss man wegen der deutlich gestiegenen Preise mittlerweile ganz genau hinsehen, wo und was man kaufen will.",
-        "img": "assets/vocab-scenes/k10-added/64.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/080-v.jpg"
       },
       {
         "w": "die Jalousie",
@@ -1715,7 +1715,7 @@ window.B1_BOOK = [
         "ar": "ستارة / شيش النافذة",
         "cat": "Kapitel 2",
         "ex": "Öffne die Jalousie, damit die Sonne hereinscheinen kann!",
-        "img": "assets/vocab-scenes/k2/13.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/081.jpg"
       },
       {
         "w": "machen",
@@ -1723,31 +1723,31 @@ window.B1_BOOK = [
         "ar": "افعل",
         "cat": "Kapitel 2",
         "ex": "Das macht mich wütend.",
-        "img": "assets/vocab-scenes/k6/05.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/082-v.jpg"
       },
       {
         "w": "das Magazin",
-        "d": "Platz, Raum, Gebäude zur Lagerung des Bestands oder Vorrats (an Waren, Waffen oder anderem) / größeres Geschäft des Einzelhandels (besonders im Ausland), in dem allerlei Waren zum Verkauf angeboten werden",
+        "d": "Platz, Raum, Gebäude zur Lagerung des Bestands oder Vorrats (an Waren, Waffen oder anderem); größeres Geschäft des Einzelhandels (besonders im Ausland), in dem allerlei Waren zum Verkauf angeboten werden",
         "ar": "المجلة",
         "cat": "Kapitel 2",
         "ex": "Hol mal ein paar Schrauben aus dem Magazin.",
-        "img": "assets/vocab-scenes/k8/99.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/083.jpg"
       },
       {
         "w": "der Monitor",
-        "d": "Computerbildschirm / stationäres Strahlrohr der Feuerwehr",
+        "d": "Computerbildschirm; stationäres Strahlrohr der Feuerwehr",
         "ar": "شاشة",
         "cat": "Kapitel 2",
         "ex": "Welche Auflösung hat dein Monitor?",
-        "img": "assets/vocab-scenes/k3/23.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/084.jpg"
       },
       {
         "w": "der Neubau",
-        "d": "ein erst unlängst fertiggestelltes Gebäude / die Tätigkeit des Neubauens",
+        "d": "ein erst unlängst fertiggestelltes Gebäude; die Tätigkeit des Neubauens",
         "ar": "المبنى الجديد",
         "cat": "Kapitel 2",
         "ex": "Sie wohnen in einem hässlich quadratischen Neubau.",
-        "img": "assets/vocab-scenes/k2/06.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/085.jpg"
       },
       {
         "w": "die Nutzung",
@@ -1755,7 +1755,7 @@ window.B1_BOOK = [
         "ar": "الاستخدام",
         "cat": "Kapitel 2",
         "ex": "Wir erfreuen uns der Gedankenfreiheit, der freien Wahl und der ungehinderten Nutzung aller Bildungs- und Erziehungsmöglichkeiten.",
-        "img": "assets/vocab-scenes/k12-added/59.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/086.jpg"
       },
       {
         "w": "sicher",
@@ -1763,7 +1763,7 @@ window.B1_BOOK = [
         "ar": "بالتأكيد",
         "cat": "Kapitel 2",
         "ex": "Mit der Alarmanlage fühle ich mich sicher.",
-        "img": "assets/vocab-scenes/k7/116.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/087-v.jpg"
       },
       {
         "w": "smart",
@@ -1771,7 +1771,7 @@ window.B1_BOOK = [
         "ar": "ذكي",
         "cat": "Kapitel 2",
         "ex": "Wir wohnen in einem smarten Haus.",
-        "img": "assets/vocab-scenes/k12-added/15.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/088-v.jpg"
       },
       {
         "w": "das Smart Home",
@@ -1779,15 +1779,15 @@ window.B1_BOOK = [
         "ar": "المنزل الذكي",
         "cat": "Kapitel 2",
         "ex": "Im Smart Home lassen sich Licht und Heizung per App steuern.",
-        "img": "assets/vocab-scenes/k9/35.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/089.jpg"
       },
       {
         "w": "steuern",
-        "d": "ein Fahrzeug oder ein technisches Gerät lenken / einen Prozess, eine Handlung anführend beeinflussen",
+        "d": "ein Fahrzeug oder ein technisches Gerät lenken; einen Prozess, eine Handlung anführend beeinflussen",
         "ar": "السيطرة",
         "cat": "Kapitel 2",
         "ex": "vor (nach) Abzug der Steuern",
-        "img": "assets/vocab-scenes/k11-added/65.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/090-v.jpg"
       },
       {
         "w": "der Tagesablauf",
@@ -1795,7 +1795,7 @@ window.B1_BOOK = [
         "ar": "الروتين اليومي",
         "cat": "Kapitel 2",
         "ex": "Arbeiten und Beten bestimmen den Tagesablauf der Nonnen.",
-        "img": "assets/vocab-scenes/k11-added/24.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/091.jpg"
       },
       {
         "w": "die Videonachricht",
@@ -1827,7 +1827,7 @@ window.B1_BOOK = [
         "ar": "الذي",
         "cat": "Kapitel 2",
         "ex": "Mir ist egal, wessen Schuld es ist.",
-        "img": "assets/vocab-scenes/k1/39.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/095-v.jpg"
       },
       {
         "w": "anpassen",
@@ -1835,7 +1835,7 @@ window.B1_BOOK = [
         "ar": "ضبط",
         "cat": "Kapitel 2",
         "ex": "Der Schneider passte den Anzug an.",
-        "img": "assets/vocab-scenes/k2/11.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/096-v.jpg"
       },
       {
         "w": "einschalten",
@@ -1843,15 +1843,15 @@ window.B1_BOOK = [
         "ar": "تشغيل",
         "cat": "Kapitel 2",
         "ex": "Man brauchte nur eine Zigarette zu rauchen, um die Warnanlage einzuschalten.",
-        "img": "assets/vocab-scenes/k2/17.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/097-v.jpg"
       },
       {
         "w": "Hightech",
         "d": "Besonders moderne und fortschrittliche Technik.",
         "ar": "التكنولوجيا الفائقة",
         "cat": "Kapitel 2",
-        "ex": "„Erst mit Hightech lässt sich diese Schwäche ausbügeln.“",
-        "img": "assets/vocab-scenes/k7/41.webp"
+        "ex": "Erst mit Hightech lässt sich diese Schwäche ausbügeln.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/098-v.jpg"
       },
       {
         "w": "geschehen",
@@ -1859,7 +1859,7 @@ window.B1_BOOK = [
         "ar": "يحدث",
         "cat": "Kapitel 2",
         "ex": "Was ist gestern geschehen?",
-        "img": "assets/vocab-scenes/k2/10.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/099-v.jpg"
       },
       {
         "w": "leisten",
@@ -1867,11 +1867,11 @@ window.B1_BOOK = [
         "ar": "تحمل",
         "cat": "Kapitel 2",
         "ex": "Wir können uns diese Reise nicht leisten.",
-        "img": "assets/vocab-scenes/k7/57.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/100-v.jpg"
       },
       {
         "w": "die Sorge",
-        "d": "bedrückendes Gefühl der Unruhe und Angst, durch eine unangenehme und/oder gefahrvolle Situation hervorgerufen / Bemühen um die als positiv empfundene Entwicklung einer Situation, speziell um das Wohlergehen eines anderen",
+        "d": "bedrückendes Gefühl der Unruhe und Angst, durch eine unangenehme und; oder gefahrvolle Situation hervorgerufen; Bemühen um die als positiv empfundene Entwicklung einer Situation, speziell um das Wohlergehen eines anderen",
         "ar": "القلق",
         "cat": "Kapitel 2",
         "ex": "Keine Sorge!",
@@ -1890,8 +1890,8 @@ window.B1_BOOK = [
         "d": "Eine Liste mit Dingen, die man einkaufen möchte.",
         "ar": "قائمة التسوق",
         "cat": "Kapitel 2",
-        "ex": "„Nun können Sie Ihre Einkaufsliste zusammenstellen.“",
-        "img": "assets/vocab-scenes/k11-added/17.webp"
+        "ex": "Nun können Sie Ihre Einkaufsliste zusammenstellen.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/103.jpg"
       },
       {
         "w": "sparsam",
@@ -1899,7 +1899,7 @@ window.B1_BOOK = [
         "ar": "اقتصادية",
         "cat": "Kapitel 2",
         "ex": "sparsam an seinem Glas nippen",
-        "img": "assets/vocab-scenes/k7/79.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/104-v.jpg"
       },
       {
         "w": "die Gefahr",
@@ -1907,7 +1907,7 @@ window.B1_BOOK = [
         "ar": "الخطر",
         "cat": "Kapitel 2",
         "ex": "eine Gefahr/Bedrohung für jdn./etw. darstellen",
-        "img": "assets/vocab-scenes/k11-added/45.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/105.jpg"
       },
       {
         "w": "die Werbeanzeige",
@@ -1923,7 +1923,7 @@ window.B1_BOOK = [
         "ar": "جذابة",
         "cat": "Kapitel 2",
         "ex": "Die Anzeige ist modern und ansprechend.",
-        "img": "assets/vocab-scenes/k12-added/61.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/107-v.jpg"
       },
       {
         "w": "unmodern",
@@ -1931,7 +1931,7 @@ window.B1_BOOK = [
         "ar": "غير عصري",
         "cat": "Kapitel 2",
         "ex": "ein unmoderner Romantiker",
-        "img": "assets/vocab-scenes/k7/44.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/108-v.jpg"
       },
       {
         "w": "unverständlich",
@@ -1939,7 +1939,7 @@ window.B1_BOOK = [
         "ar": "غير مفهوم",
         "cat": "Kapitel 2",
         "ex": "Die Erklärung war leider unverständlich.",
-        "img": "assets/vocab-scenes/k11/24.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/109-v.jpg"
       },
       {
         "w": "ausgezeichnet",
@@ -1947,15 +1947,15 @@ window.B1_BOOK = [
         "ar": "ممتاز",
         "cat": "Kapitel 2",
         "ex": "Der Film ist ausgezeichnet.",
-        "img": "assets/vocab-scenes/k9-added/39.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/110-v.jpg"
       },
       {
         "w": "frech",
-        "d": "die Normen und Höflichkeit missachtend, Respekt vermissen lassend / positiv, auffällig aus dem Rahmen fallend",
+        "d": "die Normen und Höflichkeit missachtend, Respekt vermissen lassend; positiv, auffällig aus dem Rahmen fallend",
         "ar": "صفيق",
         "cat": "Kapitel 2",
         "ex": "ein pummeliger Vierjähriger mit einem frechen Grinsen",
-        "img": "assets/vocab-scenes/k9-added/41.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/111-v.jpg"
       },
       {
         "w": "merkwürdig",
@@ -1963,7 +1963,7 @@ window.B1_BOOK = [
         "ar": "غريب",
         "cat": "Kapitel 2",
         "ex": "Es riecht merkwürdig.",
-        "img": "assets/vocab-scenes/k12/19.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/112-v.jpg"
       },
       {
         "w": "seltsam",
@@ -1971,23 +1971,23 @@ window.B1_BOOK = [
         "ar": "غريب",
         "cat": "Kapitel 2",
         "ex": "Dieser Apfel hat eine seltsame Form.",
-        "img": "assets/vocab-scenes/k9-added/67.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/113-v.jpg"
       },
       {
         "w": "wirken",
-        "d": "tätig sein, nützlich sein, etwas schaffen, etwas vollbringen / eine Wirkung entfalten",
+        "d": "tätig sein, nützlich sein, etwas schaffen, etwas vollbringen; eine Wirkung entfalten",
         "ar": "تصرف",
         "cat": "Kapitel 2",
         "ex": "Wir wirken für den Frieden und den Schutz der Umwelt.",
-        "img": "assets/vocab-scenes/k11-added/46.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/114-v.jpg"
       },
       {
         "w": "davon",
-        "d": "Bezugnahme auf einen bestimmten Ort; Entfernung ab da oder Ablösung, Trennung, Befreiung von dort / Bezugnahme auf einen bestimmten, abgesonderten Teil von etwas Zusammengehörigem",
+        "d": "Bezugnahme auf einen bestimmten Ort; Entfernung ab da oder Ablösung, Trennung, Befreiung von dort; Bezugnahme auf einen bestimmten, abgesonderten Teil von etwas Zusammengehörigem",
         "ar": "منه",
         "cat": "Kapitel 2",
         "ex": "ein Originalbeleg oder eine beglaubigte Abschrift davon",
-        "img": "assets/vocab-scenes/k9-added/53.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/115-v.jpg"
       },
       {
         "w": "der Klebefilm",
@@ -1995,7 +1995,7 @@ window.B1_BOOK = [
         "ar": "الفيلم اللاصق",
         "cat": "Kapitel 2",
         "ex": "Mit Klebefilm befestigte er das Foto an der Wand.",
-        "img": "assets/vocab-scenes/k2/09.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/116.jpg"
       },
       {
         "w": "der Markenname",
@@ -2010,7 +2010,7 @@ window.B1_BOOK = [
         "d": "Eine Tablette gegen Schmerzen.",
         "ar": "المسكن",
         "cat": "Kapitel 2",
-        "ex": "„Insbesondere Familien sollten die Hausapotheke vor den Feiertagen auffüllen, um bei Bedarf mit Pflaster, Schmerztabletten oder Fieberzäpfchen versorgt zu sein.“",
+        "ex": "Insbesondere Familien sollten die Hausapotheke vor den Feiertagen auffüllen, um bei Bedarf mit Pflaster, Schmerztabletten oder Fieberzäpfchen versorgt zu sein.",
         "img": "assets/vocab-scenes/k1/40.webp"
       },
       {
@@ -2019,7 +2019,7 @@ window.B1_BOOK = [
         "ar": "التحلية",
         "cat": "Kapitel 2",
         "ex": "Er gibt ein bisschen Süßstoff in seinen Tee.",
-        "img": "assets/vocab-scenes/k12-added/55.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/119.jpg"
       },
       {
         "w": "das Taschentuch",
@@ -2027,11 +2027,11 @@ window.B1_BOOK = [
         "ar": "المنديل",
         "cat": "Kapitel 2",
         "ex": "Brauchst du ein Taschentuch?",
-        "img": "assets/vocab-scenes/k2/25.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/120.jpg"
       },
       {
         "w": "ansprechen",
-        "d": "anfangen mit jemandem zu sprechen; mit jemandem ein Gespräch beginnen / die Aufmerksamkeit oder das Interesse von jemandem erwecken; den Geschmack von jemandem treffen",
+        "d": "anfangen mit jemandem zu sprechen; mit jemandem ein Gespräch beginnen; die Aufmerksamkeit oder das Interesse von jemandem erwecken; den Geschmack von jemandem treffen",
         "ar": "عنوان",
         "cat": "Kapitel 2",
         "ex": "komplettes pathologisches Ansprechen",
@@ -2043,7 +2043,7 @@ window.B1_BOOK = [
         "ar": "منتبه",
         "cat": "Kapitel 2",
         "ex": "Die Kinder hören aufmerksam zu.",
-        "img": "assets/vocab-scenes/k11-added/60.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/122-v.jpg"
       },
       {
         "w": "automatisch",
@@ -2051,7 +2051,7 @@ window.B1_BOOK = [
         "ar": "تلقائيا",
         "cat": "Kapitel 2",
         "ex": "Die US-amerikanische Reaper-Drohne etwa fliegt automatisch weiter, wenn in engen Tälern der Kontakt zur tausende Meilen entfernten Basis abreißt.",
-        "img": "assets/vocab-scenes/k10/18.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/123-v.jpg"
       },
       {
         "w": "beeinflussen",
@@ -2059,15 +2059,15 @@ window.B1_BOOK = [
         "ar": "التأثير",
         "cat": "Kapitel 2",
         "ex": "Werbung beeinflusst unser Kaufverhalten.",
-        "img": "assets/vocab-scenes/k10-added/95.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/124-v.jpg"
       },
       {
         "w": "dabei",
-        "d": "in örtlicher Nähe / bezeichnet eine zeitgleiche untergeordnete, kürzere oder resultierende Handlung",
+        "d": "in örtlicher Nähe; bezeichnet eine zeitgleiche untergeordnete, kürzere oder resultierende Handlung",
         "ar": "هناك",
         "cat": "Kapitel 2",
         "ex": "Er begann zu zeichnen und redete dabei.",
-        "img": "assets/vocab-scenes/k1/22.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/125-v.jpg"
       },
       {
         "w": "ebenfalls",
@@ -2079,27 +2079,27 @@ window.B1_BOOK = [
       },
       {
         "w": "die Erinnerung",
-        "d": "die Fähigkeit, Vergangenes im Gedächtnis zu behalten; die Summe aller Erinnerungen [2] eines Menschen / ein bestimmter Gedanke, der durch die Fähigkeit [1] verblieben ist",
+        "d": "die Fähigkeit, Vergangenes im Gedächtnis zu behalten; die Summe aller Erinnerungen [2] eines Menschen; ein bestimmter Gedanke, der durch die Fähigkeit [1] verblieben ist",
         "ar": "الذاكرة",
         "cat": "Kapitel 2",
         "ex": "alten Erinnerungen nachhängen",
-        "img": "assets/vocab-scenes/k4/16.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/127.jpg"
       },
       {
         "w": "genügen",
-        "d": "für einen bestimmten Zweck in ausreichendem Maß zur Verfügung stehen / bestimmte Anforderungen erfüllen",
+        "d": "für einen bestimmten Zweck in ausreichendem Maß zur Verfügung stehen; bestimmte Anforderungen erfüllen",
         "ar": "يكفي",
         "cat": "Kapitel 2",
         "ex": "Mehr Salz? – Nein, danke. Es genügt.",
-        "img": "assets/vocab-scenes/k7/81.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/128-v.jpg"
       },
       {
         "w": "interessiert",
-        "d": "geistig aufgeschlossen, an vielen Dingen Interesse bekundend / an etwas/jemandem interessiert sein: an etwas/jemandem Interesse habend; etwas haben wollen/ jemanden näher kennenlernen wollen",
+        "d": "geistig aufgeschlossen, an vielen Dingen Interesse bekundend; an etwas; jemandem interessiert sein: an etwas; jemandem Interesse habend; etwas haben wollen; jemanden näher kennenlernen wollen",
         "ar": "مهتم",
         "cat": "Kapitel 2",
         "ex": "vielseitig interessiert sein",
-        "img": "assets/vocab-scenes/k11-added/27.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/129-v.jpg"
       },
       {
         "w": "das Kaufverhalten",
@@ -2107,19 +2107,19 @@ window.B1_BOOK = [
         "ar": "السلوك الشرائي",
         "cat": "Kapitel 2",
         "ex": "Werbung kann das Kaufverhalten der Kunden beeinflussen.",
-        "img": "assets/vocab-scenes/k12-added/24.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/130.jpg"
       },
       {
         "w": "reichen",
-        "d": "jemandem etwas geben / jemandem etwas entgegenstrecken",
+        "d": "jemandem etwas geben; jemandem etwas entgegenstrecken",
         "ar": "بما فيه الكفاية",
         "cat": "Kapitel 2",
         "ex": "Das Geld wird nicht reichen.",
-        "img": "assets/vocab-scenes/k11-added/73.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/131-v.jpg"
       },
       {
         "w": "der Spruch",
-        "d": "kurzes vorgefertigtes Ensemble von Wörtern, ähnlich dem Vers / auf eine kurze Formel gebrachter Teil eines Urteils, der die eigentliche Entscheidung und weitere Rechtsfolgen der Hauptsache benennt",
+        "d": "kurzes vorgefertigtes Ensemble von Wörtern, ähnlich dem Vers; auf eine kurze Formel gebrachter Teil eines Urteils, der die eigentliche Entscheidung und weitere Rechtsfolgen der Hauptsache benennt",
         "ar": "القول",
         "cat": "Kapitel 2",
         "ex": "der berühmte Spruch, wonach Nachahmung die ehrlichste Form der Schmeichelei ist",
@@ -2131,7 +2131,7 @@ window.B1_BOOK = [
         "ar": "متفاجئ",
         "cat": "Kapitel 2",
         "ex": "Ich war von der Nachricht überrascht.",
-        "img": "assets/vocab-scenes/k4/19.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/133-v.jpg"
       },
       {
         "w": "das Unternehmen",
@@ -2139,7 +2139,7 @@ window.B1_BOOK = [
         "ar": "الشركة",
         "cat": "Kapitel 2",
         "ex": "Ich leite ein Unternehmen.",
-        "img": "assets/vocab-scenes/k8/52.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/134.jpg"
       },
       {
         "w": "das Verhalten",
@@ -2147,7 +2147,7 @@ window.B1_BOOK = [
         "ar": "السلوك",
         "cat": "Kapitel 2",
         "ex": "Er verhält sich freundlich.",
-        "img": "assets/vocab-scenes/k9-added/37.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/135.jpg"
       },
       {
         "w": "vertrauen",
@@ -2155,7 +2155,7 @@ window.B1_BOOK = [
         "ar": "الثقة",
         "cat": "Kapitel 2",
         "ex": "Ich vertraue meiner Freundin.",
-        "img": "assets/vocab-scenes/k7/117.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/136-v.jpg"
       },
       {
         "w": "die Werbesprache",
@@ -2163,7 +2163,7 @@ window.B1_BOOK = [
         "ar": "لغة الإعلان",
         "cat": "Kapitel 2",
         "ex": "Der Ausdruck Werbesprache meint meist nur die Imagewerbung oder die Produktwerbung; andere Formen von Werbung wie Wahlwerbung werden davon unterschieden.",
-        "img": "assets/vocab-scenes/k8/119.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/137.jpg"
       },
       {
         "w": "der Werbetrick",
@@ -2171,7 +2171,7 @@ window.B1_BOOK = [
         "ar": "خدعة الإعلان",
         "cat": "Kapitel 2",
         "ex": "Der kostenlose Probemonat ist ein bekannter Werbetrick.",
-        "img": "assets/vocab-scenes/k8/138.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/138.jpg"
       },
       {
         "w": "das Wortspiel",
@@ -2179,11 +2179,11 @@ window.B1_BOOK = [
         "ar": "التورية",
         "cat": "Kapitel 2",
         "ex": "Er ist ein geübter Pilot, der karrieremäßig richtig durchgestartet ist – das Wortspiel ist unbeabsichtigt.",
-        "img": "assets/vocab-scenes/k8/26.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/139.jpg"
       },
       {
         "w": "das Merkmal",
-        "d": "typische Eigenschaft, an der man erkennt, wodurch sich etwas von Ähnlichem unterscheidet / Eigenschaft, die einem linguistischen Gegenstand (Phonem, Lexem,…) zugeschrieben wird",
+        "d": "typische Eigenschaft, an der man erkennt, wodurch sich etwas von Ähnlichem unterscheidet; Eigenschaft, die einem linguistischen Gegenstand (Phonem, Lexem,…) zugeschrieben wird",
         "ar": "الميزة",
         "cat": "Kapitel 2",
         "ex": "Die langgestreckte Rückenflosse ist ein Merkmal des Karpfens, aber auch der Karausche.",
@@ -2195,7 +2195,7 @@ window.B1_BOOK = [
         "ar": "فنلندا",
         "cat": "Kapitel 2",
         "ex": "Finnland ist reich an Seen und Wäldern.",
-        "img": "assets/vocab-scenes/k7/47.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/141-v.jpg"
       },
       {
         "w": "italienisch",
@@ -2203,15 +2203,15 @@ window.B1_BOOK = [
         "ar": "ايطالي",
         "cat": "Kapitel 2",
         "ex": "Er brachte seine italienische Ehefrau mit.",
-        "img": "assets/vocab-scenes/k12-added/63.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/142-v.jpg"
       },
       {
         "w": "ungesund",
-        "d": "schlecht für die Gesundheit / auf eine Krankheit hindeutend",
+        "d": "schlecht für die Gesundheit; auf eine Krankheit hindeutend",
         "ar": "غير صحي",
         "cat": "Kapitel 2",
-        "ex": "\"Allein zu essen ist für einen philosophierenden Gelehrten ungesund.\" (Immanuel Kant)",
-        "img": "assets/vocab-scenes/k2/21.webp"
+        "ex": "Allein zu essen ist für einen philosophierenden Gelehrten ungesund.\" (Immanuel Kant)",
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/143-v.jpg"
       },
       {
         "w": "verbieten",
@@ -2219,7 +2219,7 @@ window.B1_BOOK = [
         "ar": "حظر",
         "cat": "Kapitel 2",
         "ex": "Sie verbietet mir zu sprechen.",
-        "img": "assets/vocab-scenes/k7/17.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/144-v.jpg"
       },
       {
         "w": "das Adverb",
@@ -2227,11 +2227,11 @@ window.B1_BOOK = [
         "ar": "الظرف",
         "cat": "Kapitel 2",
         "ex": "Neben Wörtern wie „hier“ und „jetzt“ gibt es eine ganze Menge von Adverbien wie z. B. „mittags“, „beispielsweise“ und „verdientermaßen“, die aus Ableitungen entstanden sind.",
-        "img": "assets/vocab-scenes/k2/02.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k2/145.jpg"
       },
       {
         "w": "davor",
-        "d": "Adverbiale Bestimmung des Ortes: räumlich vor etwas anderem gelegen / Adverbiale Bestimmung der Zeit: zeitlich vor etwas anderem gelegen, früher; vor dem geraden Erwähnten",
+        "d": "Adverbiale Bestimmung des Ortes: räumlich vor etwas anderem gelegen; Adverbiale Bestimmung der Zeit: zeitlich vor etwas anderem gelegen, früher; vor dem geraden Erwähnten",
         "ar": "قبل ذلك",
         "cat": "Kapitel 2",
         "ex": "Sie sahen das große Gebäude. Davor stand eine Siegessäule.",
@@ -2291,14 +2291,14 @@ window.B1_BOOK = [
         "ar": "العامل",
         "cat": "Kapitel 3",
         "ex": "Der Arbeiter näht Hemden.",
-        "img": "assets/vocab-scenes/k5/19.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/001.jpg"
       },
       {
         "w": "die Arbeiterin",
-        "d": "weibliche Person, die zum Lohnerwerb einer Tätigkeit nachgeht / unfruchtbare Kaste bei Insektenvölkern, zum Beispiel bei Bienen und Ameisen",
-        "ar": "العاملة",
+        "d": "Eine Frau, die beruflich meist körperliche Arbeit leistet.",
+        "ar": "عاملة",
         "cat": "Kapitel 3",
-        "ex": "Die Arbeiterin repariert Autos.",
+        "ex": "Die Arbeiterin kontrolliert die fertigen Teile.",
         "img": "assets/vocab-scenes/k11-added/48.webp"
       },
       {
@@ -2311,19 +2311,19 @@ window.B1_BOOK = [
       },
       {
         "w": "die Bedingung",
-        "d": "Forderung, von der etwas abhängt; meist Plural: Umstände, von denen etwas abhängt oder die etwas begleiten",
-        "ar": "الحالة",
+        "d": "Etwas, das erfüllt sein muss, damit etwas möglich wird.",
+        "ar": "شرط",
         "cat": "Kapitel 3",
-        "ex": "In Deutschland ist das Abitur die Bedingung für die Aufnahme eines Studiums an einer Hochschule.",
+        "ex": "Gute Deutschkenntnisse sind eine wichtige Bedingung für die Stelle.",
         "img": "assets/vocab-scenes/k11-added/05.webp"
       },
       {
         "w": "die Behandlung",
-        "d": "das Umgehen, Verfahren mit etwas oder jemandem / Anwendung eines Heilverfahrens",
+        "d": "das Umgehen, Verfahren mit etwas oder jemandem; Anwendung eines Heilverfahrens",
         "ar": "العلاج",
         "cat": "Kapitel 3",
         "ex": "die theoretische Behandlung von Sachthemen",
-        "img": "assets/vocab-scenes/k10-added/104.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/005.jpg"
       },
       {
         "w": "die Diagnose",
@@ -2339,7 +2339,7 @@ window.B1_BOOK = [
         "ar": "العمل الجماعي",
         "cat": "Kapitel 3",
         "ex": "Bei der Gruppenarbeit lösen die Lernenden die Aufgabe gemeinsam.",
-        "img": "assets/vocab-scenes/k1/31.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/007.jpg"
       },
       {
         "w": "die Handarbeit",
@@ -2347,15 +2347,15 @@ window.B1_BOOK = [
         "ar": "العمل اليدوي",
         "cat": "Kapitel 3",
         "ex": "Wir fertigen hier alles in reiner Handarbeit.",
-        "img": "assets/vocab-scenes/k5/11.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/008.jpg"
       },
       {
         "w": "die Hygiene",
-        "d": "Maßnahmen, die der Erhaltung der Sauberkeit dienen; Körperpflege, Reinlichkeit / Gesundheitspflege, alle Aktivitäten, um Menschen gesund zu erhalten und Krankheiten zu verhüten",
+        "d": "Maßnahmen, die der Erhaltung der Sauberkeit dienen; Körperpflege, Reinlichkeit; Gesundheitspflege, alle Aktivitäten, um Menschen gesund zu erhalten und Krankheiten zu verhüten",
         "ar": "النظافة",
         "cat": "Kapitel 3",
         "ex": "Packen Sie bitte auch etwas für die persönliche Hygiene mit ein.",
-        "img": "assets/vocab-scenes/k11-added/25.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/009.jpg"
       },
       {
         "w": "die Konkurrenz",
@@ -2363,7 +2363,7 @@ window.B1_BOOK = [
         "ar": "المنافسة",
         "cat": "Kapitel 3",
         "ex": "Die Konkurrenz ist in diesem Geschäft besonders hart.",
-        "img": "assets/vocab-scenes/k9-added/45.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/010.jpg"
       },
       {
         "w": "medizinisch",
@@ -2371,7 +2371,7 @@ window.B1_BOOK = [
         "ar": "طبي",
         "cat": "Kapitel 3",
         "ex": "Sie sollten sich medizinisch behandeln lassen.",
-        "img": "assets/vocab-scenes/k9-added/19.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/011-v.jpg"
       },
       {
         "w": "monoton",
@@ -2379,15 +2379,15 @@ window.B1_BOOK = [
         "ar": "رتيب",
         "cat": "Kapitel 3",
         "ex": "Die Wüstenlandschaft war zwar monoton, aber beeindruckend.",
-        "img": "assets/vocab-scenes/k7/82.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/012-v.jpg"
       },
       {
         "w": "operieren",
-        "d": "etwas geplant, kontrolliert und überprüfbar auf etwas einwirken lassen, damit ein passender, gewünschter Effekt hervorgerufen wird; Macht, Kraft oder Einfluss auf etwas ausüben; zum Beispiel Faktoren operieren gegen oder für den Erfolg von etwas",
-        "ar": "تعمل",
+        "d": "Einen medizinischen Eingriff an einem Patienten durchführen.",
+        "ar": "يُجري عملية جراحية",
         "cat": "Kapitel 3",
-        "ex": "\"Es wird sich kaum rekonstruieren lassen, wer zuerst mit diesem Slogan operierte.\"",
-        "img": "assets/vocab-scenes/k12/33.webp"
+        "ex": "Die Ärztin operiert den Patienten morgen.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/013-v.jpg"
       },
       {
         "w": "die Pflegekraft",
@@ -2395,7 +2395,7 @@ window.B1_BOOK = [
         "ar": "مقدم الرعاية",
         "cat": "Kapitel 3",
         "ex": "Die Bezahlung der Pflegekräfte ist viel zu niedrig.",
-        "img": "assets/vocab-scenes/k12-added/71.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/014.jpg"
       },
       {
         "w": "die Schulbildung",
@@ -2403,7 +2403,7 @@ window.B1_BOOK = [
         "ar": "التعليم المدرسي",
         "cat": "Kapitel 3",
         "ex": "nur eine geringe Schulbildung (vorzuweisen) haben",
-        "img": "assets/vocab-scenes/k8/100.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/015.jpg"
       },
       {
         "w": "die Strafe",
@@ -2411,7 +2411,7 @@ window.B1_BOOK = [
         "ar": "العقوبة",
         "cat": "Kapitel 3",
         "ex": "Er muss als Strafe ins Gefängnis.",
-        "img": "assets/vocab-scenes/k7/75.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/016.jpg"
       },
       {
         "w": "tolerant",
@@ -2419,7 +2419,7 @@ window.B1_BOOK = [
         "ar": "متسامح",
         "cat": "Kapitel 3",
         "ex": "Ich schätze ihn, weil er so tolerant ist.",
-        "img": "assets/vocab-scenes/k7/50.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/017-v.jpg"
       },
       {
         "w": "die Unterrichtsform",
@@ -2427,23 +2427,23 @@ window.B1_BOOK = [
         "ar": "شكل التدريس",
         "cat": "Kapitel 3",
         "ex": "Die Lehrerin probiert heute eine neue Unterrichtsform aus.",
-        "img": "assets/vocab-scenes/k2/19.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/018.jpg"
       },
       {
         "w": "der Gegensatz",
-        "d": "Entgegenstellung, Kontrast / Komplement",
+        "d": "Entgegenstellung, Kontrast; Komplement",
         "ar": "العكس",
         "cat": "Kapitel 3",
         "ex": "im Gegensatz zu",
-        "img": "assets/vocab-scenes/k7/104.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/019.jpg"
       },
       {
         "w": "minimal",
-        "d": "sehr gering, sehr klein / kleinstmöglich, so gering, wie es nur geht",
+        "d": "sehr gering, sehr klein; kleinstmöglich, so gering, wie es nur geht",
         "ar": "الحد الأدنى",
         "cat": "Kapitel 3",
         "ex": "Die Kosten für die Fahrt waren minimal.",
-        "img": "assets/vocab-scenes/k7/87.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/020-v.jpg"
       },
       {
         "w": "ausschließlich",
@@ -2451,31 +2451,31 @@ window.B1_BOOK = [
         "ar": "حصريا",
         "cat": "Kapitel 3",
         "ex": "Die Situation ist heute ausschließlich.",
-        "img": "assets/vocab-scenes/k3/34.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/021-v.jpg"
       },
       {
         "w": "bewusst",
-        "d": "mit klarem Verstand / mit Absicht",
+        "d": "mit klarem Verstand; mit Absicht",
         "ar": "بوعي",
         "cat": "Kapitel 3",
         "ex": "bewusst vage Antworten",
-        "img": "assets/vocab-scenes/k11-added/66.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/022-v.jpg"
       },
       {
         "w": "biologisch",
-        "d": "„biologisch“ beschreibt eine Eigenschaft oder einen Zustand.",
-        "ar": "البيولوجية",
+        "d": "Die Biologie betreffend oder natürlich erzeugt.",
+        "ar": "بيولوجي / عضوي",
         "cat": "Kapitel 3",
-        "ex": "Die Situation ist heute biologisch.",
+        "ex": "Der Hof baut biologisches Gemüse an.",
         "img": "assets/vocab-scenes/k10-added/45.webp"
       },
       {
         "w": "die Diät",
-        "d": "spezielle Ernährung, (medizinischer) Ernährungsplan / Schlankheitskur",
+        "d": "spezielle Ernährung, (medizinischer) Ernährungsplan; Schlankheitskur",
         "ar": "النظام الغذائي",
         "cat": "Kapitel 3",
         "ex": "Der Leistungssportler hält sich streng an seine Diät.",
-        "img": "assets/vocab-scenes/k12-added/77.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/024.jpg"
       },
       {
         "w": "ernähren",
@@ -2483,7 +2483,7 @@ window.B1_BOOK = [
         "ar": "تغذية",
         "cat": "Kapitel 3",
         "ex": "Wir ernähren uns gesund.",
-        "img": "assets/vocab-scenes/k8/133.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/025-v.jpg"
       },
       {
         "w": "die Ernährung",
@@ -2491,23 +2491,23 @@ window.B1_BOOK = [
         "ar": "النظام الغذائي",
         "cat": "Kapitel 3",
         "ex": "Eine ausgewogene Ernährung ist wichtig.",
-        "img": "assets/vocab-scenes/k8/132.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/026.jpg"
       },
       {
         "w": "die Fitness",
-        "d": "körperliches und geistiges Wohlbefinden / Grad der erfolgreichen Anpassung an den Selektionsdruck in einer Population",
+        "d": "körperliches und geistiges Wohlbefinden; Grad der erfolgreichen Anpassung an den Selektionsdruck in einer Population",
         "ar": "اللياقة البدنية",
         "cat": "Kapitel 3",
         "ex": "Seine körperliche Fitness war so gut, dass er den Marathon in persönlicher Bestzeit lief.",
-        "img": "assets/vocab-scenes/k9/32.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/027.jpg"
       },
       {
         "w": "die Form",
-        "d": "äußere, sichtbare Gestalt, Erscheinungsform von jemandem oder etwas / bestimmte Art und Weise, wie etwas vorkommt, geartet oder gestaltet ist; erkennbarer Aufbau und/oder Struktur von etwas",
+        "d": "äußere, sichtbare Gestalt, Erscheinungsform von jemandem oder etwas; bestimmte Art und Weise, wie etwas vorkommt, geartet oder gestaltet ist; erkennbarer Aufbau und; oder Struktur von etwas",
         "ar": "الشكل / الهيئة",
         "cat": "Kapitel 3",
         "ex": "in aller Form",
-        "img": "assets/vocab-scenes/k5/04.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/028.jpg"
       },
       {
         "w": "die Frucht",
@@ -2519,19 +2519,19 @@ window.B1_BOOK = [
       },
       {
         "w": "halten",
-        "d": "etwas durch Kraftausübung in Ruhe belassen oder bringen / einen Status quo bewahren",
-        "ar": "عقد",
+        "d": "Etwas mit der Hand festhalten oder in einer Position lassen.",
+        "ar": "يمسك / يُبقي",
         "cat": "Kapitel 3",
-        "ex": "er/sie hat/hatte gehalten",
+        "ex": "Bitte halten Sie die Tür offen.",
         "img": "assets/vocab-scenes/k7/93.webp"
       },
       {
         "w": "die Karotte",
-        "d": "rundliche Möhrensorte, die jung geerntet wird (Pariser Karotte); die Möhre (Daucus carotassp.sativus) allgemein",
-        "ar": "الجزرة",
+        "d": "Ein längliches orangefarbenes Gemüse.",
+        "ar": "جزرة",
         "cat": "Kapitel 3",
-        "ex": "Heute gibt's Erbsen und Karotten.",
-        "img": "assets/vocab-scenes/k11/18.webp"
+        "ex": "Für den Salat schneide ich eine Karotte klein.",
+        "img": "assets/vocab-scenes/b1.1/karotte.png"
       },
       {
         "w": "das Nahrungsmittel",
@@ -2539,7 +2539,7 @@ window.B1_BOOK = [
         "ar": "الطعام",
         "cat": "Kapitel 3",
         "ex": "Länder mit Nahrungsmitteldefizit",
-        "img": "assets/vocab-scenes/k11-added/50.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/032.jpg"
       },
       {
         "w": "produziert",
@@ -2547,11 +2547,11 @@ window.B1_BOOK = [
         "ar": "أنتجت",
         "cat": "Kapitel 3",
         "ex": "Die Firma produziert ihre Möbel in Deutschland.",
-        "img": "assets/vocab-scenes/k10-added/25.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/033-v.jpg"
       },
       {
         "w": "die Speise",
-        "d": "Mahlzeit, zubereitetes Gericht / Kurzform für Glockenspeise, das Gussmaterial für eine Glocke",
+        "d": "Mahlzeit, zubereitetes Gericht; Kurzform für Glockenspeise, das Gussmaterial für eine Glocke",
         "ar": "الطعام",
         "cat": "Kapitel 3",
         "ex": "Speisen und Getränke",
@@ -2563,15 +2563,15 @@ window.B1_BOOK = [
         "ar": "الاتجاه",
         "cat": "Kapitel 3",
         "ex": "sich dem Trend widersetzen",
-        "img": "assets/vocab-scenes/k3/13.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/035.jpg"
       },
       {
         "w": "vegan",
         "d": "den Veganismus betreffend",
         "ar": "نباتي",
         "cat": "Kapitel 3",
-        "ex": "„Der ethische Vegetarier ernährt sich „vegan“.“",
-        "img": "assets/vocab-scenes/k9-added/43.webp"
+        "ex": "Der ethische Vegetarier ernährt sich „vegan“.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/036-v.jpg"
       },
       {
         "w": "vegetarisch",
@@ -2579,15 +2579,15 @@ window.B1_BOOK = [
         "ar": "نباتي",
         "cat": "Kapitel 3",
         "ex": "Sie isst vegetarisch.",
-        "img": "assets/vocab-scenes/k1/37.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/037-v.jpg"
       },
       {
         "w": "das Vitamin",
-        "d": "organische Verbindung, die der Körper als Wirkstoff für lebenswichtige Funktionen benötigt, aber zum größten Teil nicht selbst herstellen kann / etwas (Nahrungsmittel oder Arzneimittel, Nahrungsergänzungsmittel [zumeist in Kapsel-, Pulver- oder Tablettenform]), das ein oder mehrere dieser unter [1] beschriebenen Wirkstoffe (in natürlicher oder konzentrierter Form) enthält",
+        "d": "organische Verbindung, die der Körper als Wirkstoff für lebenswichtige Funktionen benötigt, aber zum größten Teil nicht selbst herstellen kann; etwas (Nahrungsmittel oder Arzneimittel, Nahrungsergänzungsmittel [zumeist in Kapsel-, Pulver- oder Tablettenform]), das ein oder mehrere dieser unter [1] beschriebenen Wirkstoffe (in natürlicher oder konzentrierter Form) enthält",
         "ar": "الفيتامين",
         "cat": "Kapitel 3",
         "ex": "Vitamin-A-haltig",
-        "img": "assets/vocab-scenes/k10-added/91.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/038.jpg"
       },
       {
         "w": "das Workout",
@@ -2595,15 +2595,15 @@ window.B1_BOOK = [
         "ar": "تمرين رياضي",
         "cat": "Kapitel 3",
         "ex": "Gestern habe ich ein Workout auf dem Laufband absolviert.",
-        "img": "assets/vocab-scenes/k11-added/10.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/039.jpg"
       },
       {
         "w": "erben",
-        "d": "nach dem Tod eines anderen dessen Vermögen zu Eigentum erhalten / etwas (Gebrauchtes) von jemandem geschenkt bekommen",
+        "d": "nach dem Tod eines anderen dessen Vermögen zu Eigentum erhalten; etwas (Gebrauchtes) von jemandem geschenkt bekommen",
         "ar": "يرث",
         "cat": "Kapitel 3",
         "ex": "Es gab bei ihm nichts zu erben.",
-        "img": "assets/vocab-scenes/k11/12.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/040-v.jpg"
       },
       {
         "w": "weshalb",
@@ -2619,7 +2619,7 @@ window.B1_BOOK = [
         "ar": "الرصاص",
         "cat": "Kapitel 3",
         "ex": "Viele Wege führen zum Ziel.",
-        "img": "assets/vocab-scenes/k7/20.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/042-v.jpg"
       },
       {
         "w": "gewohnt",
@@ -2627,22 +2627,22 @@ window.B1_BOOK = [
         "ar": "المعتاد",
         "cat": "Kapitel 3",
         "ex": "Der neue Arbeitsplatz ist noch ungewohnt.",
-        "img": "assets/vocab-scenes/k3/30.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/043-v.jpg"
       },
       {
         "w": "die Krisensituation",
-        "d": "Lage zu einem Zeitpunkt, in dem eine Gefahr/Gefährdung herrscht",
+        "d": "Lage zu einem Zeitpunkt, in dem eine Gefahr; Gefährdung herrscht",
         "ar": "الوضع الازمة",
         "cat": "Kapitel 3",
         "ex": "In einer Krisensituation muss man schnell und ruhig handeln.",
-        "img": "assets/vocab-scenes/k8/102.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/044.jpg"
       },
       {
         "w": "die Lebensgeschichte",
         "d": "Die Geschichte und Entwicklung im Leben einer Person.",
         "ar": "قصة الحياة",
         "cat": "Kapitel 3",
-        "ex": "„Die Lebensgeschichte von Münchhausen ist eine frühe Parabel auf Ruhm, Lüge, Medien und Imageprobleme.“",
+        "ex": "Die Lebensgeschichte von Münchhausen ist eine frühe Parabel auf Ruhm, Lüge, Medien und Imageprobleme.",
         "img": "assets/vocab-scenes/k1/30.webp"
       },
       {
@@ -2651,11 +2651,11 @@ window.B1_BOOK = [
         "ar": "طريق الحياة",
         "cat": "Kapitel 3",
         "ex": "verschiedene Bildungs- und Lebenswege",
-        "img": "assets/vocab-scenes/k10-added/79.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/046.jpg"
       },
       {
         "w": "der Prozess",
-        "d": "eine durch ein Ereignis ausgelöste Folge von Aktivitäten oder Zuständen, die in einen Endzustand mündet / Gerichtsverhandlung, Gerichtsverfahren, Rechtsstreit",
+        "d": "eine durch ein Ereignis ausgelöste Folge von Aktivitäten oder Zuständen, die in einen Endzustand mündet; Gerichtsverhandlung, Gerichtsverfahren, Rechtsstreit",
         "ar": "هذه العملية",
         "cat": "Kapitel 3",
         "ex": "Die Entwicklung des Rechtsstaates war historisch ein langer Prozess.",
@@ -2675,23 +2675,23 @@ window.B1_BOOK = [
         "ar": "الموت",
         "cat": "Kapitel 3",
         "ex": "einen Todesfall/Trauerfall in der Familie haben",
-        "img": "assets/vocab-scenes/k8/29.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/049.jpg"
       },
       {
         "w": "die Trennung",
-        "d": "materiell: Vorgang oder Ergebnis der Absonderung von Substanzen voneinander / persönlich: Vorgang oder Ergebnis der Auflösung einer persönlichen Verbindung",
+        "d": "materiell: Vorgang oder Ergebnis der Absonderung von Substanzen voneinander; persönlich: Vorgang oder Ergebnis der Auflösung einer persönlichen Verbindung",
         "ar": "الانفصال",
         "cat": "Kapitel 3",
         "ex": "die physische Trennung von Daten",
-        "img": "assets/vocab-scenes/k8/75.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/050.jpg"
       },
       {
         "w": "der Wendepunkt",
-        "d": "die Stelle, an der gewendet wird / Zeitpunkt, an dem sich etwas bedeutend verändert",
+        "d": "die Stelle, an der gewendet wird; Zeitpunkt, an dem sich etwas bedeutend verändert",
         "ar": "نقطة التحول",
         "cat": "Kapitel 3",
         "ex": "einen Wendepunkt darstellen",
-        "img": "assets/vocab-scenes/k8/139.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/051.jpg"
       },
       {
         "w": "der Zeitschriftenartikel",
@@ -2706,23 +2706,23 @@ window.B1_BOOK = [
         "d": "ein Kontinent auf der nördlichen und südlichen Erdhalbkugel; ein Kontinent auf der nördlichen und südlichen Erdhalbkugel, südlich von Europa, südwestlich von Asien und östlich von Südamerika",
         "ar": "أفريقيا",
         "cat": "Kapitel 3",
-        "ex": "„Die hartnäckige Armut in Afrika ist für die meisten modernen ökonomischen Theorien nur schwer zu fassen und verursacht heftigste Debatten.“",
-        "img": "assets/vocab-scenes/k8/18.webp"
+        "ex": "Die hartnäckige Armut in Afrika ist für die meisten modernen ökonomischen Theorien nur schwer zu fassen und verursacht heftigste Debatten.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/053-v.jpg"
       },
       {
         "w": "das Anliegen",
-        "d": "ein Wunsch, der an jemanden gerichtet ist / eine wichtige Sache, die jemanden betrifft",
+        "d": "ein Wunsch, der an jemanden gerichtet ist; eine wichtige Sache, die jemanden betrifft",
         "ar": "الطلب",
         "cat": "Kapitel 3",
         "ex": "Sicherheit ist eines unserer wichtigsten Anliegen / Hauptanliegen.",
-        "img": "assets/vocab-scenes/k8/76.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/054.jpg"
       },
       {
         "w": "der Berufssoldat",
         "d": "Person, die unbefristet als Soldat in einer Armee dient",
         "ar": "الجندي المحترف",
         "cat": "Kapitel 3",
-        "ex": "„Chink war Berufssoldat und von Standhurst direkt nach Mons gekommen.“",
+        "ex": "Chink war Berufssoldat und von Standhurst direkt nach Mons gekommen.",
         "img": "assets/vocab-scenes/k11-added/13.webp"
       },
       {
@@ -2738,15 +2738,15 @@ window.B1_BOOK = [
         "d": "Verfasser eines Buches",
         "ar": "مؤلف الكتاب",
         "cat": "Kapitel 3",
-        "ex": "„Nachdem die Band 1970 auseinandergegangen war, arbeitete Nesmith auch als Buchautor und Filmregisseur.“",
-        "img": "assets/vocab-scenes/k8/15.webp"
+        "ex": "Nachdem die Band 1970 auseinandergegangen war, arbeitete Nesmith auch als Buchautor und Filmregisseur.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/057.jpg"
       },
       {
         "w": "die Buchautorin",
         "d": "Verfasserin eines Buches",
         "ar": "مؤلف الكتاب",
         "cat": "Kapitel 3",
-        "ex": "„Die Buchautorin Sarah Diehl glaubt, dass die Fähigkeit, allein sein zu können, uns zufriedener macht.“",
+        "ex": "Die Buchautorin Sarah Diehl glaubt, dass die Fähigkeit, allein sein zu können, uns zufriedener macht.",
         "img": "assets/vocab-scenes/k8/61.webp"
       },
       {
@@ -2755,23 +2755,23 @@ window.B1_BOOK = [
         "ar": "فترة الجيش الألماني",
         "cat": "Kapitel 3",
         "ex": "Über seine Bundeswehrzeit erzählt er nur selten.",
-        "img": "assets/vocab-scenes/k8/58.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/059.jpg"
       },
       {
         "w": "einsetzen",
-        "d": "Etwas an die richtige Stelle setzen oder verwenden.",
-        "ar": "إدراج",
+        "d": "Etwas an die vorgesehene Stelle setzen oder für einen Zweck verwenden.",
+        "ar": "يُدخل / يستخدم",
         "cat": "Kapitel 3",
-        "ex": "Setzen Sie die Batterie richtig ein.",
+        "ex": "Setzen Sie die SIM-Karte vorsichtig ein.",
         "img": "assets/vocab-scenes/k3/16.webp"
       },
       {
         "w": "die Herausforderung",
-        "d": "eine Aufgabe oder Arbeit, die sehr anspruchsvoll ist / Aufforderung eines Gegners (zum Beispiel im Sport) zu einem Zweikampf",
+        "d": "eine Aufgabe oder Arbeit, die sehr anspruchsvoll ist; Aufforderung eines Gegners (zum Beispiel im Sport) zu einem Zweikampf",
         "ar": "التحدي",
         "cat": "Kapitel 3",
         "ex": "Diese Arbeit ist eine wirkliche Herausforderung.",
-        "img": "assets/vocab-scenes/k8/103.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/061.jpg"
       },
       {
         "w": "die Lebenswende",
@@ -2787,7 +2787,7 @@ window.B1_BOOK = [
         "ar": "الشجاعة",
         "cat": "Kapitel 3",
         "ex": "Er bewies seinen Mut, indem er über die gefährliche Brücke ging.",
-        "img": "assets/vocab-scenes/k10-added/105.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/063.jpg"
       },
       {
         "w": "machen",
@@ -2795,7 +2795,7 @@ window.B1_BOOK = [
         "ar": "افعل",
         "cat": "Kapitel 3",
         "ex": "Das macht mich wütend.",
-        "img": "assets/vocab-scenes/k9-added/14.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/064-v.jpg"
       },
       {
         "w": "Namibia",
@@ -2803,7 +2803,7 @@ window.B1_BOOK = [
         "ar": "ناميبيا",
         "cat": "Kapitel 3",
         "ex": "Für etwa 26.000 der zweieinhalb Millionen Einwohner Namibias ist Deutsch die Muttersprache.",
-        "img": "assets/vocab-scenes/k7/89.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/065-v.jpg"
       },
       {
         "w": "die Rückkehr",
@@ -2819,7 +2819,7 @@ window.B1_BOOK = [
         "ar": "جمع",
         "cat": "Kapitel 3",
         "ex": "Ich sammle Briefmarken.",
-        "img": "assets/vocab-scenes/k10/17.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/067-v.jpg"
       },
       {
         "w": "schließlich",
@@ -2827,7 +2827,7 @@ window.B1_BOOK = [
         "ar": "أخيرا",
         "cat": "Kapitel 3",
         "ex": "Schließlich fand er eine gute Lösung.",
-        "img": "assets/vocab-scenes/k12-added/72.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/068-v.jpg"
       },
       {
         "w": "das Schutzprojekt",
@@ -2843,7 +2843,7 @@ window.B1_BOOK = [
         "ar": "الشوق",
         "cat": "Kapitel 3",
         "ex": "Ich habe Sehnsucht nach dir.",
-        "img": "assets/vocab-scenes/k8/35.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/070.jpg"
       },
       {
         "w": "verursachen",
@@ -2851,7 +2851,7 @@ window.B1_BOOK = [
         "ar": "السبب",
         "cat": "Kapitel 3",
         "ex": "Ich verursache die Unordnung in der Küche.",
-        "img": "assets/vocab-scenes/k3/01.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/071-v.jpg"
       },
       {
         "w": "wesentlich",
@@ -2859,7 +2859,7 @@ window.B1_BOOK = [
         "ar": "ضروري",
         "cat": "Kapitel 3",
         "ex": "Er hatte einen wesentlichen Anteil daran, dass das Abkommen jetzt unterschriftsreif ist.",
-        "img": "assets/vocab-scenes/k12/22.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/072-v.jpg"
       },
       {
         "w": "der Wildhüter",
@@ -2867,7 +2867,7 @@ window.B1_BOOK = [
         "ar": "حارس اللعبة",
         "cat": "Kapitel 3",
         "ex": "Der Wildhüter kontrolliert den Wald und schützt die Tiere.",
-        "img": "assets/vocab-scenes/k11-added/20.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/073.jpg"
       },
       {
         "w": "die Wildhüterin",
@@ -2899,7 +2899,7 @@ window.B1_BOOK = [
         "ar": "عشوائي",
         "cat": "Kapitel 3",
         "ex": "Ich habe sie zufällig im Zug getroffen.",
-        "img": "assets/vocab-scenes/k7/34.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/077-v.jpg"
       },
       {
         "w": "zweimonatig",
@@ -2907,7 +2907,7 @@ window.B1_BOOK = [
         "ar": "شهرين",
         "cat": "Kapitel 3",
         "ex": "Die zweimonatige Forschungsreise brachte keine neuen Erkenntnisse.",
-        "img": "assets/vocab-scenes/k11/03.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/078-v.jpg"
       },
       {
         "w": "abwärts",
@@ -2915,7 +2915,7 @@ window.B1_BOOK = [
         "ar": "إلى الأسفل",
         "cat": "Kapitel 3",
         "ex": "Laut Human Rights Watch in China wurden ihm die Halswirbelknochen gebrochen, so dass er nun von den Schultern abwärts gelähmt ist.",
-        "img": "assets/vocab-scenes/k7/90.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/079-v.jpg"
       },
       {
         "w": "der Bahnradfahrer",
@@ -2935,7 +2935,7 @@ window.B1_BOOK = [
       },
       {
         "w": "ehren",
-        "d": "jemanden hoch schätzen; Hochachtung zeigen / etwas gereicht jemandem zur Ehre",
+        "d": "jemanden hoch schätzen; Hochachtung zeigen; etwas gereicht jemandem zur Ehre",
         "ar": "شرف",
         "cat": "Kapitel 3",
         "ex": "Deine Erfahrungen in Ehren/in allen Ehren, aber die Welt hat sich seither ziemlich verändert.",
@@ -2946,8 +2946,8 @@ window.B1_BOOK = [
         "d": "vehement für eine Sache eintretend, ein starkes Interesse an einer Sache habend",
         "ar": "ملتزم",
         "cat": "Kapitel 3",
-        "ex": "Der ehemalige politische Gefangene, der jetzt in Deutschland lebt, ist zuversichtlich. „Die Proteste werden weitergehen. Besonders die Frauen sind engagiert und zornig wie nie.“",
-        "img": "assets/vocab-scenes/k7/118.webp"
+        "ex": "Der ehemalige politische Gefangene, der jetzt in Deutschland lebt, ist zuversichtlich. „Die Proteste werden weitergehen. Besonders die Frauen sind engagiert und zornig wie nie.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/083-v.jpg"
       },
       {
         "w": "ereignen",
@@ -2955,7 +2955,7 @@ window.B1_BOOK = [
         "ar": "تحدث",
         "cat": "Kapitel 3",
         "ex": "Auf dem Heimweg ereignet sich ein Unfall.",
-        "img": "assets/vocab-scenes/k7/52.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/084-v.jpg"
       },
       {
         "w": "fach",
@@ -2970,8 +2970,8 @@ window.B1_BOOK = [
         "d": "Medizin: an einer Lähmung leidend; unfähig, bestimmte Muskeln zu bewegen",
         "ar": "مشلول",
         "cat": "Kapitel 3",
-        "ex": "„Dass beide Arme gelähmt sind, kommt so gut wie nie vor nach einem Schlaganfall.“",
-        "img": "assets/vocab-scenes/k9-added/24.webp"
+        "ex": "Dass beide Arme gelähmt sind, kommt so gut wie nie vor nach einem Schlaganfall.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/086-v.jpg"
       },
       {
         "w": "der Held",
@@ -2979,35 +2979,35 @@ window.B1_BOOK = [
         "ar": "البطل",
         "cat": "Kapitel 3",
         "ex": "Dieser Held rettete seine Frau und Kinder aus dem brennenden Haus.",
-        "img": "assets/vocab-scenes/k10-added/47.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/087.jpg"
       },
       {
         "w": "die Heldin",
-        "d": "weibliche Person, die sich besonders mutig oder erfolgreich für andere oder für eine Sache einsetzt oder bei einem Einsatz umkommt / weibliche Hauptperson einer Geschichte",
+        "d": "weibliche Person, die sich besonders mutig oder erfolgreich für andere oder für eine Sache einsetzt oder bei einem Einsatz umkommt; weibliche Hauptperson einer Geschichte",
         "ar": "البطلة",
         "cat": "Kapitel 3",
         "ex": "Diese Heldin rettete ihre Frau und Kinder aus dem brennenden Haus.",
-        "img": "assets/vocab-scenes/k3/09.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/088.jpg"
       },
       {
         "w": "der Höhepunkt",
-        "d": "der beste oder einer der besten Punkte in einer längeren Abfolge von verschiedenen Ereignissen, die sich vorher schon positiv entwickelt haben / übertragen: sexueller Höhepunkt beim Geschlechtsverkehr oder der Onanie",
+        "d": "der beste oder einer der besten Punkte in einer längeren Abfolge von verschiedenen Ereignissen, die sich vorher schon positiv entwickelt haben; übertragen: sexueller Höhepunkt beim Geschlechtsverkehr oder der Onanie",
         "ar": "الذروة",
         "cat": "Kapitel 3",
         "ex": "sich zu einem Höhepunkt steigern",
-        "img": "assets/vocab-scenes/k8/51.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/089.jpg"
       },
       {
         "w": "kämpfen",
-        "d": "verbale oder physische Auseinandersetzung zwischen Gegnern / ein Ausharren oder Durchhalten in einer schwierigen Situation",
+        "d": "verbale oder physische Auseinandersetzung zwischen Gegnern; ein Ausharren oder Durchhalten in einer schwierigen Situation",
         "ar": "قتال",
         "cat": "Kapitel 3",
         "ex": "im Krieg kämpfen",
-        "img": "assets/vocab-scenes/k7/92.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/090-v.jpg"
       },
       {
         "w": "lokal",
-        "d": "örtlich, örtlich begrenzt / den Ort (als grammatische oder semantische Kategorie) betreffend",
+        "d": "örtlich, örtlich begrenzt; den Ort (als grammatische oder semantische Kategorie) betreffend",
         "ar": "محلي",
         "cat": "Kapitel 3",
         "ex": "das Konsumieren von Getränken in- und außerhalb des Lokals",
@@ -3019,7 +3019,7 @@ window.B1_BOOK = [
         "ar": "وفي الوقت نفسه",
         "cat": "Kapitel 3",
         "ex": "Mittlerweile arbeitet sie in Berlin.",
-        "img": "assets/vocab-scenes/k11-added/54.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/092-v.jpg"
       },
       {
         "w": "der Oberkörper",
@@ -3042,16 +3042,16 @@ window.B1_BOOK = [
         "d": "Sportlerin, die bei den Olympischen Spielen mindestens einen sportlichen Wettbewerb gewonnen hat",
         "ar": "البطلة الأولمبية",
         "cat": "Kapitel 3",
-        "ex": "„Die US-Amerikanerin Mikaela Shiffrin ist Weltmeisterin, Olympiasiegerin und Weltcupsiegerin im Slalom.“",
+        "ex": "Die US-Amerikanerin Mikaela Shiffrin ist Weltmeisterin, Olympiasiegerin und Weltcupsiegerin im Slalom.",
         "img": "assets/vocab-scenes/k8/104.webp"
       },
       {
         "w": "der Optimismus",
-        "d": "der Glaube, in der besten aller möglichen Welten zu leben / eine generell positive Erwartungshaltung beziehungsweise Weltsicht",
+        "d": "der Glaube, in der besten aller möglichen Welten zu leben; eine generell positive Erwartungshaltung beziehungsweise Weltsicht",
         "ar": "التفاؤل",
         "cat": "Kapitel 3",
-        "ex": "In einem strengen Sinne \"ist der Begriff \"Optimismus\" nur auf die Systeme von Leipniz und Malebranche anzuwenden … Leibniz, der das Wort Optimismus selbst nicht gebraucht, arbeitet mit einem mathematischen Gleichnis: >\"",
-        "img": "assets/vocab-scenes/k8/14.webp"
+        "ex": "In einem strengen Sinne \"ist der Begriff \"Optimismus\" nur auf die Systeme von Leipniz und Malebranche anzuwenden … Leibniz, der das Wort Optimismus selbst nicht gebraucht, arbeitet mit einem mathematischen Gleichnis: >",
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/096.jpg"
       },
       {
         "w": "politisch",
@@ -3067,23 +3067,23 @@ window.B1_BOOK = [
         "ar": "امرأة قوية وناجحة",
         "cat": "Kapitel 3",
         "ex": "Sie ist eine Powerfrau und organisiert alles allein.",
-        "img": "assets/vocab-scenes/k3/26.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/098.jpg"
       },
       {
         "w": "das Privatleben",
-        "d": "derjenige Teil der Lebensgestaltung, der sich im privaten/persönlichen Bereich abspielt, also außerhalb von Beruf oder Öffentlichkeit",
+        "d": "derjenige Teil der Lebensgestaltung, der sich im privaten; persönlichen Bereich abspielt, also außerhalb von Beruf oder Öffentlichkeit",
         "ar": "الحياة الخاصة",
         "cat": "Kapitel 3",
-        "ex": "„Bis heute sind nur eine Handvoll Schwarzweißfotos von Turing bekannt, die aber kaum Einblick in sein Privatleben geben.“",
-        "img": "assets/vocab-scenes/k8/123.webp"
+        "ex": "Bis heute sind nur eine Handvoll Schwarzweißfotos von Turing bekannt, die aber kaum Einblick in sein Privatleben geben.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/099.jpg"
       },
       {
         "w": "radikal",
-        "d": "im Denken und oder Handeln in besonderem Maße von der Norm abweichend / in besonders hervorstechendem Maße",
+        "d": "im Denken und oder Handeln in besonderem Maße von der Norm abweichend; in besonders hervorstechendem Maße",
         "ar": "جذري",
         "cat": "Kapitel 3",
         "ex": "Manche Menschen denken radikal, besonders dann, wenn sie zu einem Thema persönliche Erfahrungen gesammelt haben.",
-        "img": "assets/vocab-scenes/k9-added/11.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/100-v.jpg"
       },
       {
         "w": "seitdem",
@@ -3091,15 +3091,15 @@ window.B1_BOOK = [
         "ar": "منذ ذلك الحين",
         "cat": "Kapitel 3",
         "ex": "Seitdem lernt er jeden Tag Deutsch.",
-        "img": "assets/vocab-scenes/k11/34.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/101-v.jpg"
       },
       {
         "w": "die Selbstständigkeit",
-        "d": "Zustand, auf eigenen Füßen zu stehen / Zustand, sein Berufsleben unabhängig von Arbeitgebern zu gestalten",
+        "d": "Zustand, auf eigenen Füßen zu stehen; Zustand, sein Berufsleben unabhängig von Arbeitgebern zu gestalten",
         "ar": "الاستقلال",
         "cat": "Kapitel 3",
         "ex": "Er hat sich lange um seine Selbstständigkeit bemüht.",
-        "img": "assets/vocab-scenes/k6/06.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/102.jpg"
       },
       {
         "w": "der Stadtrat",
@@ -3107,15 +3107,15 @@ window.B1_BOOK = [
         "ar": "مجلس المدينة",
         "cat": "Kapitel 3",
         "ex": "Unser Stadtrat hat einige Projekte beschlossen, um Gebäude der Gemeinde zu renovieren.",
-        "img": "assets/vocab-scenes/k5/29.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/103.jpg"
       },
       {
         "w": "stürzen",
-        "d": "eine hilflose, ungewollte Bewegung nach unten ausführen / absichtlich zum Fallen bringen",
+        "d": "eine hilflose, ungewollte Bewegung nach unten ausführen; absichtlich zum Fallen bringen",
         "ar": "تقع",
         "cat": "Kapitel 3",
         "ex": "vom Fahrrad stürzen",
-        "img": "assets/vocab-scenes/k10/20.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/104-v.jpg"
       },
       {
         "w": "tätig",
@@ -3123,7 +3123,7 @@ window.B1_BOOK = [
         "ar": "نشط",
         "cat": "Kapitel 3",
         "ex": "Die Situation ist heute tätig.",
-        "img": "assets/vocab-scenes/k12-added/47.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/105-v.jpg"
       },
       {
         "w": "unverändert",
@@ -3131,7 +3131,7 @@ window.B1_BOOK = [
         "ar": "دون تغيير",
         "cat": "Kapitel 3",
         "ex": "Mein Gewicht blieb unverändert.",
-        "img": "assets/vocab-scenes/k12-added/73.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/106-v.jpg"
       },
       {
         "w": "veränderte",
@@ -3139,11 +3139,11 @@ window.B1_BOOK = [
         "ar": "تغير",
         "cat": "Kapitel 3",
         "ex": "Die neue Arbeit veränderte seinen Tagesablauf.",
-        "img": "assets/vocab-scenes/k10-added/51.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/107-v.jpg"
       },
       {
         "w": "die Wahl",
-        "d": "Entscheidung zwischen zwei oder mehreren Möglichkeiten / das Abstimmen darüber, wer bestimmte Ämter oder Gremien besetzen beziehungsweise ausüben darf, auch über einzelne Sachthemen",
+        "d": "Entscheidung zwischen zwei oder mehreren Möglichkeiten; das Abstimmen darüber, wer bestimmte Ämter oder Gremien besetzen beziehungsweise ausüben darf, auch über einzelne Sachthemen",
         "ar": "الاختيار",
         "cat": "Kapitel 3",
         "ex": "eine Wahl treffen",
@@ -3154,8 +3154,8 @@ window.B1_BOOK = [
         "d": "Sieger bei einem Wettbewerb in einer bestimmten (meist sportlichen) Disziplin, bei dem es um die Weltmeisterschaft geht",
         "ar": "بطل العالم",
         "cat": "Kapitel 3",
-        "ex": "„Österreich ist erstmals Weltmeister im Faustball.“",
-        "img": "assets/vocab-scenes/k8/124.webp"
+        "ex": "Österreich ist erstmals Weltmeister im Faustball.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/109.jpg"
       },
       {
         "w": "die Weltmeisterin",
@@ -3163,7 +3163,7 @@ window.B1_BOOK = [
         "ar": "بطلة العالم",
         "cat": "Kapitel 3",
         "ex": "Die Weltmeisterin verlor ihren Titel an die Herausfordererin.",
-        "img": "assets/vocab-scenes/k8/110.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/110.jpg"
       },
       {
         "w": "die Wirbelsäule",
@@ -3171,7 +3171,7 @@ window.B1_BOOK = [
         "ar": "العمود الفقري",
         "cat": "Kapitel 3",
         "ex": "Die Wirbelsäule besteht aus der Halswirbelsäule, der Brustwirbelsäule mit den zwölf Rippen, die den Brustkorb bilden, der Lendenwirbelsäule mit fünf großen Wirbeln und dem Kreuzbein, das auc",
-        "img": "assets/vocab-scenes/k12/03.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/111.jpg"
       },
       {
         "w": "literarisch",
@@ -3187,14 +3187,14 @@ window.B1_BOOK = [
         "ar": "الماضي",
         "cat": "Kapitel 3",
         "ex": "Über Vergangenes zu sprechen hilft manchmal beim Verstehen.",
-        "img": "assets/vocab-scenes/k8/125.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/113.jpg"
       },
       {
         "w": "die Vergangenheitsform",
         "d": "Eine grammatische Zeitform für Ereignisse in der Vergangenheit.",
         "ar": "الزمن الماضي",
         "cat": "Kapitel 3",
-        "ex": "„Über manche Unsicherheit im Gebrauch von Vergangenheitsformen hilft uns hinweg, dass wir überwiegend das Perfekt, übrigens die mündlich inzwischen am meisten gebrauchte Form der Vergangenheit, benutzen.“",
+        "ex": "Über manche Unsicherheit im Gebrauch von Vergangenheitsformen hilft uns hinweg, dass wir überwiegend das Perfekt, übrigens die mündlich inzwischen am meisten gebrauchte Form der Vergangenheit, benutzen.",
         "img": "assets/vocab-scenes/k12-added/21.webp"
       },
       {
@@ -3202,16 +3202,16 @@ window.B1_BOOK = [
         "d": "Journalistik: kurzer, in sich abgeschlossener Text in einer Zeitung",
         "ar": "مقال الصحيفة",
         "cat": "Kapitel 3",
-        "ex": "„Bei meiner Durchsicht früher Zeitungsartikel zum besseren Verständnis der damaligen Situation ergaben sich allerdings mehr Fragezeichen als Fakten.“",
+        "ex": "Bei meiner Durchsicht früher Zeitungsartikel zum besseren Verständnis der damaligen Situation ergaben sich allerdings mehr Fragezeichen als Fakten.",
         "img": "assets/vocab-scenes/k8/135.webp"
       },
       {
         "w": "begeistern",
-        "d": "jemanden in große freudige Erregung versetzen; jemandem Hoffnung geben / sich für etwas sehr interessieren",
+        "d": "jemanden in große freudige Erregung versetzen; jemandem Hoffnung geben; sich für etwas sehr interessieren",
         "ar": "إلهام",
         "cat": "Kapitel 3",
         "ex": "Deine Ruhe und Gelassenheit im Umgang mit Kindern begeistert mich.",
-        "img": "assets/vocab-scenes/k10-added/28.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/116-v.jpg"
       },
       {
         "w": "historisch",
@@ -3219,15 +3219,15 @@ window.B1_BOOK = [
         "ar": "تاريخي",
         "cat": "Kapitel 3",
         "ex": "Die Situation ist heute historisch.",
-        "img": "assets/vocab-scenes/k12/27.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/117-v.jpg"
       },
       {
         "w": "das Stadtfest",
         "d": "Ein öffentliches Fest in einer Stadt.",
         "ar": "مهرجان المدينة",
         "cat": "Kapitel 3",
-        "ex": "„Bis zu ihrer Krankheit erinnere ich mich an meine Mutter wie an eine Frau, die sich bei sämtlichen Sammlungen zum Kampf gegen den Krebs oder auch zu allen Stadtfesten fotografieren ließ.“",
-        "img": "assets/vocab-scenes/k7/112.webp"
+        "ex": "Bis zu ihrer Krankheit erinnere ich mich an meine Mutter wie an eine Frau, die sich bei sämtlichen Sammlungen zum Kampf gegen den Krebs oder auch zu allen Stadtfesten fotografieren ließ.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/118.jpg"
       },
       {
         "w": "erstellen",
@@ -3239,11 +3239,11 @@ window.B1_BOOK = [
       },
       {
         "w": "der/die Alte",
-        "d": "alte Frau / Mutter",
+        "d": "alte Frau; Mutter",
         "ar": "الرجل / المرأة المسنّة",
         "cat": "Kapitel 3",
         "ex": "Sie hat schon mit 30 die Alte gespielt.",
-        "img": "assets/vocab-scenes/k12-added/81.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/120.jpg"
       },
       {
         "w": "aufwachen",
@@ -3251,7 +3251,7 @@ window.B1_BOOK = [
         "ar": "استيقظ",
         "cat": "Kapitel 3",
         "ex": "Ich wache jeden Morgen früh auf.",
-        "img": "assets/vocab-scenes/k10-added/42.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/121-v.jpg"
       },
       {
         "w": "außerhalb",
@@ -3267,15 +3267,15 @@ window.B1_BOOK = [
         "ar": "طازجة",
         "cat": "Kapitel 3",
         "ex": "Am liebsten koche ich mit frischem Gemüse.",
-        "img": "assets/vocab-scenes/k3/31.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/123-v.jpg"
       },
       {
         "w": "gemacht",
-        "d": "mit berechnender Absicht erzeugt statt unwillkürlich/natürlich entstanden/geworden / vollendet und (gesellschaftlich) anerkannt, so, wie es sein soll; überwiegend als ‚gemachter Mann‘, auch in emanzipatorischem Kontext: ‚gemachte Frau‘, selten mit anderen Bezugswörtern",
+        "d": "mit berechnender Absicht erzeugt statt unwillkürlich; natürlich entstanden; geworden; vollendet und (gesellschaftlich) anerkannt, so, wie es sein soll; überwiegend als ‚gemachter Mann‘, auch in emanzipatorischem Kontext: ‚gemachte Frau‘, selten mit anderen Bezugswörtern",
         "ar": "صنع",
         "cat": "Kapitel 3",
         "ex": "er/sie hat/hatte gemacht",
-        "img": "assets/vocab-scenes/k11-added/68.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/124-v.jpg"
       },
       {
         "w": "Klamotten",
@@ -3283,11 +3283,11 @@ window.B1_BOOK = [
         "ar": "ملابس",
         "cat": "Kapitel 3",
         "ex": "Für die Reise packe ich bequeme Klamotten ein.",
-        "img": "assets/vocab-scenes/k7/121.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/125-v.jpg"
       },
       {
         "w": "innerhalb",
-        "d": "mit Genitiv: in einem bestimmten Zeitraum / mit Genitiv: im Inneren von etwas",
+        "d": "mit Genitiv: in einem bestimmten Zeitraum; mit Genitiv: im Inneren von etwas",
         "ar": "داخل",
         "cat": "Kapitel 3",
         "ex": "innerhalb von zwei Wochen",
@@ -3299,7 +3299,7 @@ window.B1_BOOK = [
         "ar": "بمحبة",
         "cat": "Kapitel 3",
         "ex": "etw. liebevoll restaurieren",
-        "img": "assets/vocab-scenes/k11-added/29.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/127-v.jpg"
       },
       {
         "w": "der Nachtisch",
@@ -3307,15 +3307,15 @@ window.B1_BOOK = [
         "ar": "الحلوى",
         "cat": "Kapitel 3",
         "ex": "Zum Nachtisch gibt es Götterspeise.",
-        "img": "assets/vocab-scenes/k3/08.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/128.jpg"
       },
       {
         "w": "schwach",
         "d": "ohne Kraft; mangelhafte Leistung erbringend",
         "ar": "ضعيف",
         "cat": "Kapitel 3",
-        "ex": "„Ich fühle mich so schwach, dass ich nicht mehr weitergehen kann.“",
-        "img": "assets/vocab-scenes/k10-added/98.webp"
+        "ex": "Ich fühle mich so schwach, dass ich nicht mehr weitergehen kann.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/129-v.jpg"
       },
       {
         "w": "die Schwiegereltern",
@@ -3323,7 +3323,7 @@ window.B1_BOOK = [
         "ar": "الأصهار",
         "cat": "Kapitel 3",
         "ex": "Morgen kommen meine Schwiegereltern auf Besuch.",
-        "img": "assets/vocab-scenes/k12-added/04.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/130.jpg"
       },
       {
         "w": "der Sonnabend",
@@ -3339,7 +3339,7 @@ window.B1_BOOK = [
         "ar": "تقع في الحب",
         "cat": "Kapitel 3",
         "ex": "Er hat sich Hals über Kopf in sie verliebt.",
-        "img": "assets/vocab-scenes/k9/11.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/132-v.jpg"
       },
       {
         "w": "verschwinden",
@@ -3347,7 +3347,7 @@ window.B1_BOOK = [
         "ar": "تختفي",
         "cat": "Kapitel 3",
         "ex": "Mein Schlüssel ist verschwunden.",
-        "img": "assets/vocab-scenes/k10-added/13.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/133-v.jpg"
       },
       {
         "w": "der Regentag",
@@ -3355,7 +3355,7 @@ window.B1_BOOK = [
         "ar": "اليوم الممطر",
         "cat": "Kapitel 3",
         "ex": "An Regentagen spielen die Kinder meistens im Haus.",
-        "img": "assets/vocab-scenes/k8/11.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/134.jpg"
       },
       {
         "w": "jetzig",
@@ -3367,11 +3367,11 @@ window.B1_BOOK = [
       },
       {
         "w": "das Klinikum",
-        "d": "Gebäude oder Gebäudekomplex, in dem Kranke behandelt und beherbergt werden / praktischer Teil des Medizinstudiums",
+        "d": "Gebäude oder Gebäudekomplex, in dem Kranke behandelt und beherbergt werden; praktischer Teil des Medizinstudiums",
         "ar": "العيادة",
         "cat": "Kapitel 3",
         "ex": "Ich muss morgen in das Klinikum.",
-        "img": "assets/vocab-scenes/k8/79.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/136.jpg"
       },
       {
         "w": "die Krise",
@@ -3379,23 +3379,23 @@ window.B1_BOOK = [
         "ar": "الأزمة",
         "cat": "Kapitel 3",
         "ex": "Die internationalen Finanzen befinden sich zur Zeit in einer Krise.",
-        "img": "assets/vocab-scenes/k7/123.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/137.jpg"
       },
       {
         "w": "lieb",
         "d": "liebenswürdig, nett; geschätzt, gemocht",
         "ar": "عزيزي",
         "cat": "Kapitel 3",
-        "ex": "\"Es lohnt sich doch, ein wenig lieb zu sein / Und alles auf das Einfachste zu schrauben.\"",
+        "ex": "Es lohnt sich doch, ein wenig lieb zu sein / Und alles auf das Einfachste zu schrauben.",
         "img": "assets/vocab-scenes/k12-added/60.webp"
       },
       {
         "w": "das Verhältnis",
-        "d": "eine Beziehung, bei der zwei Dinge oder zwei Sachverhalte miteinander verglichen werden / persönliche Beziehung zweier Menschen oder Gruppen von Menschen",
+        "d": "eine Beziehung, bei der zwei Dinge oder zwei Sachverhalte miteinander verglichen werden; persönliche Beziehung zweier Menschen oder Gruppen von Menschen",
         "ar": "العلاقة",
         "cat": "Kapitel 3",
         "ex": "Ich stehe in keinem Verhältnis zu dieser Firma.",
-        "img": "assets/vocab-scenes/k8/140.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/139.jpg"
       },
       {
         "w": "die Zuneigung",
@@ -3403,7 +3403,7 @@ window.B1_BOOK = [
         "ar": "المودة",
         "cat": "Kapitel 3",
         "ex": "Sein Stehvermögen hat ihm erst Respekt und jetzt sogar Zuneigung eingebracht.",
-        "img": "assets/vocab-scenes/k8/62.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/140.jpg"
       },
       {
         "w": "die Botschaft",
@@ -3411,7 +3411,7 @@ window.B1_BOOK = [
         "ar": "الرسالة",
         "cat": "Kapitel 3",
         "ex": "Die Botschaft hör’ ich wohl, allein mir fehlt der Glaube (Goethe)",
-        "img": "assets/vocab-scenes/k8/144.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/141.jpg"
       },
       {
         "w": "das Konsulat",
@@ -3427,7 +3427,7 @@ window.B1_BOOK = [
         "ar": "جواز السفر",
         "cat": "Kapitel 3",
         "ex": "Ohne Reisepass können Sie nicht die Grenze passieren!",
-        "img": "assets/vocab-scenes/k6/10.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/143.jpg"
       },
       {
         "w": "überqueren",
@@ -3442,8 +3442,8 @@ window.B1_BOOK = [
         "d": "Inch; Längeneinheit, die 2,54 cm entspricht; Maßeinheit für die Länge, die je nach Gegend 2 bis 3 cm entsprach",
         "ar": "الجمارك",
         "cat": "Kapitel 3",
-        "ex": "„Die Maßeinheit Zoll gibt es aber noch! In den USA zum Beispiel wird mit ihr gemessen. Die Amerikaner nutzen nämlich das angloamerikanische Maßsystem. Dort heißt das Zoll \"inch\" und ist tats",
-        "img": "assets/vocab-scenes/k11-added/02.webp"
+        "ex": "Die Maßeinheit Zoll gibt es aber noch! In den USA zum Beispiel wird mit ihr gemessen. Die Amerikaner nutzen nämlich das angloamerikanische Maßsystem. Dort heißt das Zoll \"inch\" und ist tats",
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/145.jpg"
       },
       {
         "w": "aufgeben",
@@ -3451,15 +3451,15 @@ window.B1_BOOK = [
         "ar": "استسلم",
         "cat": "Kapitel 3",
         "ex": "Der Läufer gab nach einem Sturz auf.",
-        "img": "assets/vocab-scenes/k3/24.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/146-v.jpg"
       },
       {
         "w": "die Liebesgeschichte",
-        "d": "Erzählung, die von einer Liebesbeziehung handelt / vorübergehende Liebesbeziehung",
+        "d": "Erzählung, die von einer Liebesbeziehung handelt; vorübergehende Liebesbeziehung",
         "ar": "قصة الحب",
         "cat": "Kapitel 3",
         "ex": "Die Liebesgeschichte handelt von der schönen Mona und dem schüchternen Maximilian.",
-        "img": "assets/vocab-scenes/k11/33.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/147.jpg"
       },
       {
         "w": "niemals",
@@ -3467,15 +3467,15 @@ window.B1_BOOK = [
         "ar": "أبدا",
         "cat": "Kapitel 3",
         "ex": "Ich werde das niemals akzeptieren.",
-        "img": "assets/vocab-scenes/k12-added/03.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/148-v.jpg"
       },
       {
         "w": "wegziehen",
-        "d": "den Wohnsitz wechseln / etwas von seinem Ort fortbewegen (in einer ziehenden Bewegung)",
+        "d": "den Wohnsitz wechseln; etwas von seinem Ort fortbewegen (in einer ziehenden Bewegung)",
         "ar": "ابتعد",
         "cat": "Kapitel 3",
         "ex": "Sie will nicht mehr bleiben und zieht daher weg.",
-        "img": "assets/vocab-scenes/k3/29.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/149-v.jpg"
       },
       {
         "w": "Und",
@@ -3491,7 +3491,7 @@ window.B1_BOOK = [
         "ar": "موظف / موظفة مكتب",
         "cat": "Kapitel 3",
         "ex": "Die Büroangestellte beantwortet die E-Mails.",
-        "img": "assets/vocab-scenes/k2/16.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/151.jpg"
       },
       {
         "w": "das Camping",
@@ -3499,7 +3499,7 @@ window.B1_BOOK = [
         "ar": "التخييم",
         "cat": "Kapitel 3",
         "ex": "In diesen Ferien fahren wir nicht ins Hotel: Wir machen Camping im Wohnmobil.",
-        "img": "assets/vocab-scenes/k9-added/17.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/152.jpg"
       },
       {
         "w": "die Espresso-Kanne",
@@ -3507,15 +3507,15 @@ window.B1_BOOK = [
         "ar": "وعاء الاسبريسو",
         "cat": "Kapitel 3",
         "ex": "Mit der Espresso-Kanne bereite ich morgens Kaffee zu.",
-        "img": "assets/vocab-scenes/k9-added/88.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/153.jpg"
       },
       {
         "w": "der Aspekt",
-        "d": "Betrachtungsweise, Gesichtspunkt / bestimmte Stellung der Gestirne zueinander",
+        "d": "Betrachtungsweise, Gesichtspunkt; bestimmte Stellung der Gestirne zueinander",
         "ar": "الجانب",
         "cat": "Kapitel 3",
         "ex": "einen Aspekt ansprechen",
-        "img": "assets/vocab-scenes/k3/10.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/154.jpg"
       },
       {
         "w": "der Blogeintrag",
@@ -3523,7 +3523,7 @@ window.B1_BOOK = [
         "ar": "دخول المدونة",
         "cat": "Kapitel 3",
         "ex": "Ihr neuer Blogeintrag handelt von einer Reise nach Wien.",
-        "img": "assets/vocab-scenes/k8/126.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/155.jpg"
       },
       {
         "w": "das Fach",
@@ -3535,19 +3535,19 @@ window.B1_BOOK = [
       },
       {
         "w": "gucken",
-        "d": "seine Augen auf etwas richten / ein bestimmtes Gesicht machen",
+        "d": "seine Augen auf etwas richten; ein bestimmtes Gesicht machen",
         "ar": "انظر",
         "cat": "Kapitel 3",
         "ex": "Guck mal, was ich hier habe!",
-        "img": "assets/vocab-scenes/k8/21.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/157-v.jpg"
       },
       {
         "w": "jahrelang",
         "d": "mehrere Jahre dauernd",
         "ar": "لسنوات",
         "cat": "Kapitel 3",
-        "ex": "„Die Folgen der Grausamkeiten spürt Elisa bis heute, trotz jahrelanger Psychotherapie.“",
-        "img": "assets/vocab-scenes/k11/04.webp"
+        "ex": "Die Folgen der Grausamkeiten spürt Elisa bis heute, trotz jahrelanger Psychotherapie.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/158-v.jpg"
       },
       {
         "w": "der Lehrling",
@@ -3571,7 +3571,7 @@ window.B1_BOOK = [
         "ar": "نسبيا",
         "cat": "Kapitel 3",
         "ex": "Der Tod ist das absoluteste und dabei das relativste aller Phänomene.",
-        "img": "assets/vocab-scenes/k3/15.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/161-v.jpg"
       },
       {
         "w": "veröffentlichen",
@@ -3579,15 +3579,15 @@ window.B1_BOOK = [
         "ar": "نشر",
         "cat": "Kapitel 3",
         "ex": "Das Buch wurde 1958 veröffentlicht.",
-        "img": "assets/vocab-scenes/k4/36.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/162-v.jpg"
       },
       {
         "w": "der Baustein",
-        "d": "Stein zum Bauen von Mauern, Gebäuden und Ähnlichem / übertragen: Bestandteil",
+        "d": "Stein zum Bauen von Mauern, Gebäuden und Ähnlichem; übertragen: Bestandteil",
         "ar": "لبنة البناء",
         "cat": "Kapitel 3",
         "ex": "Ein Philosoph, etwas närrisch wie alle seines Schlages, verließ eines Tages die Stadt, in der viele Häuser gebaut wurden, um keinen Ziegel oder Baustein auf den Kopf zu kriegen.",
-        "img": "assets/vocab-scenes/k8/81.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/163.jpg"
       },
       {
         "w": "das Muster",
@@ -3595,22 +3595,22 @@ window.B1_BOOK = [
         "ar": "النمط",
         "cat": "Kapitel 3",
         "ex": "Die Vorhänge haben ein sehr schönes Muster.",
-        "img": "assets/vocab-scenes/k9-added/74.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/164.jpg"
       },
       {
         "w": "die Struktur",
-        "d": "allgemein: etwas Aufgebautes, aus mehreren Teilen bestehendes und von seinen Einzelteilen abhängiges Gefüge / ohne Mehrzahl: das Aussehen einer Sache, die Beschaffenheit einer Oberfläche oder Musterung, zum Beispiel bei Textilien sowie Tapeten",
+        "d": "allgemein: etwas Aufgebautes, aus mehreren Teilen bestehendes und von seinen Einzelteilen abhängiges Gefüge; ohne Mehrzahl: das Aussehen einer Sache, die Beschaffenheit einer Oberfläche oder Musterung, zum Beispiel bei Textilien sowie Tapeten",
         "ar": "الهيكل",
         "cat": "Kapitel 3",
         "ex": "Das mittelgroße Unternehmen hat klare Strukturen und eine schriftlich festgehaltene Strategie.",
-        "img": "assets/vocab-scenes/k10-added/102.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/165.jpg"
       },
       {
         "w": "die Tempusform",
         "d": "Eine grammatische Form, die die Zeit eines Geschehens zeigt.",
         "ar": "الشكل المتوتر",
         "cat": "Kapitel 3",
-        "ex": "„Dort wird gezeigt, daß die Namen für die Tempusformen oft irreführend sind.“",
+        "ex": "Dort wird gezeigt, daß die Namen für die Tempusformen oft irreführend sind.",
         "img": "assets/vocab-scenes/k2/18.webp"
       },
       {
@@ -3619,7 +3619,7 @@ window.B1_BOOK = [
         "ar": "اختر",
         "cat": "Kapitel 3",
         "ex": "Ich habe mir dieses Paar Schuhe ausgesucht, das will ich haben!",
-        "img": "assets/vocab-scenes/k10-added/44.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/167-v.jpg"
       },
       {
         "w": "nachher",
@@ -3627,7 +3627,7 @@ window.B1_BOOK = [
         "ar": "بعد ذلك",
         "cat": "Kapitel 3",
         "ex": "Ich gehe nachher schwimmen.",
-        "img": "assets/vocab-scenes/k4/18.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/168-v.jpg"
       },
       {
         "w": "Höflich",
@@ -3635,7 +3635,7 @@ window.B1_BOOK = [
         "ar": "مهذبا",
         "cat": "Kapitel 3",
         "ex": "Die Situation ist heute Höflich.",
-        "img": "assets/vocab-scenes/k9-added/48.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/169-v.jpg"
       },
       {
         "w": "begrüßen",
@@ -3643,15 +3643,15 @@ window.B1_BOOK = [
         "ar": "مرحبا بكم",
         "cat": "Kapitel 3",
         "ex": "Die Gastgeber begrüßen ihre Gäste.",
-        "img": "assets/vocab-scenes/k11/29.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/170-v.jpg"
       },
       {
         "w": "das Benehmen",
-        "d": "Gesamtheit der Umgangsformen, des Verhaltens, der menschlichen Handlungsweisen / Form der Mitwirkung bei einem Rechtsakt, weniger als Einigung oder Absprache",
+        "d": "Gesamtheit der Umgangsformen, des Verhaltens, der menschlichen Handlungsweisen; Form der Mitwirkung bei einem Rechtsakt, weniger als Einigung oder Absprache",
         "ar": "السلوك",
         "cat": "Kapitel 3",
         "ex": "gutes Benehmen an den Tag legen",
-        "img": "assets/vocab-scenes/k9-added/36.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/171.jpg"
       },
       {
         "w": "anwesend",
@@ -3659,15 +3659,15 @@ window.B1_BOOK = [
         "ar": "الحاضر",
         "cat": "Kapitel 3",
         "ex": "adjektivisch: Fast alle anwesenden Konzertbesucher spendeten lang anhaltenden Beifall.",
-        "img": "assets/vocab-scenes/k11-added/40.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/172-v.jpg"
       },
       {
         "w": "aufhalten",
-        "d": "jemanden/etwas nicht weitergehen/weiterfortschreiten lassen; etwas im offenen Zustand halten",
+        "d": "jemanden; etwas nicht weitergehen; weiterfortschreiten lassen; etwas im offenen Zustand halten",
         "ar": "توقف",
         "cat": "Kapitel 3",
         "ex": "Das Einsatzkommando konnte gerade noch rechtzeitig aufgehalten werden.",
-        "img": "assets/vocab-scenes/k12-added/01.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/173-v.jpg"
       },
       {
         "w": "aufgehalten",
@@ -3675,35 +3675,35 @@ window.B1_BOOK = [
         "ar": "توقف",
         "cat": "Kapitel 3",
         "ex": "Wegen eines Staus wurde ich eine Stunde aufgehalten.",
-        "img": "assets/vocab-scenes/k11-added/33.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/174-v.jpg"
       },
       {
         "w": "die Begrüßung",
-        "d": "Ritual (Wörter und/oder Gesten), um einer Person Respekt zu erweisen und sie willkommen zu heißen",
+        "d": "Ritual (Wörter und; oder Gesten), um einer Person Respekt zu erweisen und sie willkommen zu heißen",
         "ar": "التحية",
         "cat": "Kapitel 3",
         "ex": "Er hob die Hand zur Begrüßung / zum Gruß.",
-        "img": "assets/vocab-scenes/k8/63.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/175.jpg"
       },
       {
         "w": "das Benimmbuch",
         "d": "Ein Buch mit Regeln für gutes Benehmen.",
         "ar": "كتاب الآداب",
         "cat": "Kapitel 3",
-        "ex": "„Links und rechts neben ihren Tellern lag die komplette Besteckreihe aus dem Benimmbuch.“",
+        "ex": "Links und rechts neben ihren Tellern lag die komplette Besteckreihe aus dem Benimmbuch.",
         "img": "assets/vocab-scenes/k2/36.webp"
       },
       {
         "w": "die Beziehung",
-        "d": "Verhältnis, in dem Menschen oder Organisationen zueinander stehen / wechselseitiges Verhältnis zwischen beliebigen Objekten",
+        "d": "Verhältnis, in dem Menschen oder Organisationen zueinander stehen; wechselseitiges Verhältnis zwischen beliebigen Objekten",
         "ar": "العلاقة",
         "cat": "Kapitel 3",
         "ex": "die diplomatischen Beziehungen zum Regime abbrechen",
-        "img": "assets/vocab-scenes/k8/67.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/177.jpg"
       },
       {
         "w": "beziehungsweise",
-        "d": "oder, oder vielmehr, genauer gesagt, besser gesagt / und im anderen Fall",
+        "d": "oder, oder vielmehr, genauer gesagt, besser gesagt; und im anderen Fall",
         "ar": "على التوالي",
         "cat": "Kapitel 3",
         "ex": "die Rolle des Lehrers beziehungsweise Schülers",
@@ -3719,11 +3719,11 @@ window.B1_BOOK = [
       },
       {
         "w": "der Gastgeber",
-        "d": "jemand, der jemanden als Gast zu sich einlädt; bei sich zu Gast hat / derjenige oder diejenigen Teilnehmer an einer Veranstaltung, in dessen/deren Räumlichkeiten diese stattfindet",
+        "d": "jemand, der jemanden als Gast zu sich einlädt; bei sich zu Gast hat; derjenige oder diejenigen Teilnehmer an einer Veranstaltung, in dessen; deren Räumlichkeiten diese stattfindet",
         "ar": "المضيف",
         "cat": "Kapitel 3",
         "ex": "Wir dankten unseren Gastgebern für ihre Gastfreundschaft.",
-        "img": "assets/vocab-scenes/k11-added/38.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/180.jpg"
       },
       {
         "w": "die Gastgeberin",
@@ -3731,15 +3731,15 @@ window.B1_BOOK = [
         "ar": "المضيفة",
         "cat": "Kapitel 3",
         "ex": "von der Gastgeberin begrüßt werden",
-        "img": "assets/vocab-scenes/k4/28.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/181.jpg"
       },
       {
         "w": "die Geschäftsfrau",
         "d": "Frau, die ein Geschäft betreibt oder Geschäfte macht",
         "ar": "سيدة أعمال",
         "cat": "Kapitel 3",
-        "ex": "„Die schlaueste unter den Insassinnen der gehobenen Abteilung war eine Fälscherin und Geschäftsfrau namens Nelly Kerwin.“",
-        "img": "assets/vocab-scenes/k4/29.webp"
+        "ex": "Die schlaueste unter den Insassinnen der gehobenen Abteilung war eine Fälscherin und Geschäftsfrau namens Nelly Kerwin.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/182.jpg"
       },
       {
         "w": "der Geschäftsmann",
@@ -3747,7 +3747,7 @@ window.B1_BOOK = [
         "ar": "رجل الأعمال",
         "cat": "Kapitel 3",
         "ex": "Er gab seinen Beruf vage als Geschäftsmann an.",
-        "img": "assets/vocab-scenes/k3/12.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/183.jpg"
       },
       {
         "w": "die Gewohnheit",
@@ -3755,7 +3755,7 @@ window.B1_BOOK = [
         "ar": "هذه العادة",
         "cat": "Kapitel 3",
         "ex": "Macht der Gewohnheit",
-        "img": "assets/vocab-scenes/k11/21.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/184.jpg"
       },
       {
         "w": "hierarchisch",
@@ -3771,7 +3771,7 @@ window.B1_BOOK = [
         "ar": "تجاهل",
         "cat": "Kapitel 3",
         "ex": "Man sollte wichtige Regeln nicht ignorieren.",
-        "img": "assets/vocab-scenes/k7/125.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/186-v.jpg"
       },
       {
         "w": "klagen",
@@ -3779,39 +3779,39 @@ window.B1_BOOK = [
         "ar": "يشكو",
         "cat": "Kapitel 3",
         "ex": "Die Nachbarn klagen über den Lärm.",
-        "img": "assets/vocab-scenes/k2/38.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/187-v.jpg"
       },
       {
         "w": "der Kuss",
         "d": "die Berührung der Lippen auf die Lippen oder beliebige andere Körperteile; die Berührung der Lippen auf die Lippen oder beliebige andere Körperteile (einschließlich der Zunge und der Geschlechtsorgane) eines anderen Menschen oder einen, durch diese Geste geliebten oder verehrten Gegenstand",
         "ar": "القبلة",
         "cat": "Kapitel 3",
-        "ex": "„Sie gab ihm einen kurzen Kuss auf die Wange.“",
-        "img": "assets/vocab-scenes/k1/25.webp"
+        "ex": "Sie gab ihm einen kurzen Kuss auf die Wange.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/188.jpg"
       },
       {
         "w": "der Lift",
-        "d": "in oder an einem Gebäude befindliche mechanische Vorrichtung, mit der Personen oder Lasten hinauf- beziehungsweise hinabbefördert werden / mechanische Vorrichtung, mit der Wintersportler hangaufwärts befördert werden",
+        "d": "in oder an einem Gebäude befindliche mechanische Vorrichtung, mit der Personen oder Lasten hinauf- beziehungsweise hinabbefördert werden; mechanische Vorrichtung, mit der Wintersportler hangaufwärts befördert werden",
         "ar": "المصعد",
         "cat": "Kapitel 3",
-        "ex": "„Aber die Aufzüge der Maschinerie wurden betätigt. Immer wieder erscheint eine Hauptperson aus der Versenkung. Am Ende fährt Satanas mit Don Juan per Lift in die Tiefe.“",
-        "img": "assets/vocab-scenes/k3/14.webp"
+        "ex": "Aber die Aufzüge der Maschinerie wurden betätigt. Immer wieder erscheint eine Hauptperson aus der Versenkung. Am Ende fährt Satanas mit Don Juan per Lift in die Tiefe.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/189.jpg"
       },
       {
         "w": "niesen",
-        "d": "ruckartig und meistens laut Luft durch Nase und/oder Mund ausstoßen; ruckartig und meistens laut Luft durch Nase und/oder Mund ausstoßen (als Reflex auf einen Reiz der Nasenschleimhaut), ohne darüber Kontrolle zu haben",
+        "d": "ruckartig und meistens laut Luft durch Nase und; oder Mund ausstoßen; ruckartig und meistens laut Luft durch Nase und; oder Mund ausstoßen (als Reflex auf einen Reiz der Nasenschleimhaut), ohne darüber Kontrolle zu haben",
         "ar": "يعطس",
         "cat": "Kapitel 3",
         "ex": "Entschuldigung, ich muss schon den ganzen Tag niesen! Ich habe mir wohl eine Erkältung zugezogen.",
-        "img": "assets/vocab-scenes/k10-added/94.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/190-v.jpg"
       },
       {
         "w": "das Personal",
-        "d": "Belegschaft eines Geschäftes, Unternehmens oder einer Firma / kurz für: Dienstpersonal oder Hauspersonal",
+        "d": "Belegschaft eines Geschäftes, Unternehmens oder einer Firma; kurz für: Dienstpersonal oder Hauspersonal",
         "ar": "الموظفين",
         "cat": "Kapitel 3",
         "ex": "zum Personal gehören",
-        "img": "assets/vocab-scenes/k11-added/32.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k3/191.webp"
       }
     ],
     "readings": [],
@@ -3847,43 +3847,43 @@ window.B1_BOOK = [
     "vocab": [
       {
         "w": "die Akte",
-        "d": "Sammlung von Aufzeichnungen, die inhaltlich zusammengehören / amtliche Aufzeichnung",
+        "d": "Sammlung von Aufzeichnungen, die inhaltlich zusammengehören; amtliche Aufzeichnung",
         "ar": "الملف",
         "cat": "Kapitel 4",
         "ex": "eine Akte anlegen",
-        "img": "assets/vocab-scenes/k12-added/66.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/001.jpg"
       },
       {
         "w": "anbauen",
-        "d": "(etwas, ein zusätzliches Gebäudeteil) einem Gebäude hinzufügen / (Nutzpflanzen) auf einem Feld oder einem Beet anpflanzen, um sie später zu ernten",
+        "d": "(etwas, ein zusätzliches Gebäudeteil) einem Gebäude hinzufügen; (Nutzpflanzen) auf einem Feld oder einem Beet anpflanzen, um sie später zu ernten",
         "ar": "تنمو",
         "cat": "Kapitel 4",
         "ex": "Familie Dübler hat einen Wintergarten angebaut, aber keinen Bauantrag gestellt.",
-        "img": "assets/vocab-scenes/k7/97.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/002-v.jpg"
       },
       {
         "w": "der/die Angeklagte",
         "d": "deutsches Recht: eine weibliche Person, gegen die die Eröffnung des Hauptverfahrens beschlossen ist (§ 157 StPO)",
         "ar": "المتهم / المتهمة",
         "cat": "Kapitel 4",
-        "ex": "„Angeklagter!“",
-        "img": "assets/vocab-scenes/k12-added/42.webp"
+        "ex": "Angeklagter!",
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/003.jpg"
       },
       {
         "w": "die Anlage",
-        "d": "persönliche Veranlagung (geistig, körperlich); Faktoren, die durch Erziehung nicht beeinflussbar sind / Anhang (Beilage) eines Briefes, Dokuments oder einer E-Mail",
+        "d": "persönliche Veranlagung (geistig, körperlich); Faktoren, die durch Erziehung nicht beeinflussbar sind; Anhang (Beilage) eines Briefes, Dokuments oder einer E-Mail",
         "ar": "المنشأة",
         "cat": "Kapitel 4",
         "ex": "die Höhe der Anlage",
-        "img": "assets/vocab-scenes/k11-added/39.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/004.jpg"
       },
       {
         "w": "beschäftigen",
-        "d": "etwas beschäftigt jemanden: etwas ist die jetzige Tätigkeit einer Person; mit Betonung der beschäftigenden Sache / reflexiv, sich beschäftigen: einer Sache oder Person konzentriert seine Aufmerksamkeit widmen",
+        "d": "etwas beschäftigt jemanden: etwas ist die jetzige Tätigkeit einer Person; mit Betonung der beschäftigenden Sache; reflexiv, sich beschäftigen: einer Sache oder Person konzentriert seine Aufmerksamkeit widmen",
         "ar": "توظيف",
         "cat": "Kapitel 4",
         "ex": "Dieses Problem beschäftigte ihn so sehr, dass er kaum Zeit für andere Tätigkeiten hatte.",
-        "img": "assets/vocab-scenes/k7/84.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/005-v.jpg"
       },
       {
         "w": "das Einkommen",
@@ -3891,7 +3891,7 @@ window.B1_BOOK = [
         "ar": "الدخل",
         "cat": "Kapitel 4",
         "ex": "Familien mit niedrigem Einkommen",
-        "img": "assets/vocab-scenes/k11-added/61.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/006.jpg"
       },
       {
         "w": "der Elektroingenieur",
@@ -3907,7 +3907,7 @@ window.B1_BOOK = [
         "ar": "المهندسة الكهربائية",
         "cat": "Kapitel 4",
         "ex": "Seine Mutter ist gelernte Elektroingenieurin.",
-        "img": "assets/vocab-scenes/k12-added/17.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/008.jpg"
       },
       {
         "w": "fair",
@@ -3931,7 +3931,7 @@ window.B1_BOOK = [
         "ar": "عادل",
         "cat": "Kapitel 4",
         "ex": "Durch das Urteil erhielt der Verbrecher doch noch seine gerechte Strafe.",
-        "img": "assets/vocab-scenes/k4/15.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/011-v.jpg"
       },
       {
         "w": "das Gericht",
@@ -3939,7 +3939,7 @@ window.B1_BOOK = [
         "ar": "المحكمة",
         "cat": "Kapitel 4",
         "ex": "Vor dem Gericht scharten sich bereits die Medien.",
-        "img": "assets/vocab-scenes/k1/10.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/012.jpg"
       },
       {
         "w": "die Gerichtsverhandlung",
@@ -3947,15 +3947,15 @@ window.B1_BOOK = [
         "ar": "جلسة المحكمة",
         "cat": "Kapitel 4",
         "ex": "Die Gerichtsverhandlung ist durch Urteil, Einstellung des Verfahrens oder Freispruch des Angeklagten beendet.",
-        "img": "assets/vocab-scenes/k12-added/40.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/013.jpg"
       },
       {
         "w": "herstellen",
-        "d": "einen Gegenstand (gewerbsmäßig) anfertigen / erreichen, dass etwas zustande kommt",
+        "d": "einen Gegenstand (gewerbsmäßig) anfertigen; erreichen, dass etwas zustande kommt",
         "ar": "إنتاج",
         "cat": "Kapitel 4",
         "ex": "einen Stoff herstellen",
-        "img": "assets/vocab-scenes/k9-added/55.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/014-v.jpg"
       },
       {
         "w": "die Industrie",
@@ -3963,7 +3963,7 @@ window.B1_BOOK = [
         "ar": "الصناعة",
         "cat": "Kapitel 4",
         "ex": "Die Industrie Deutschlands ist führend auf dem Gebiet des Fahrzeugbaus.",
-        "img": "assets/vocab-scenes/k7/94.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/015.jpg"
       },
       {
         "w": "die Landwirtschaft",
@@ -3971,7 +3971,7 @@ window.B1_BOOK = [
         "ar": "الزراعة",
         "cat": "Kapitel 4",
         "ex": "In der Landwirtschaft muss man harte körperliche Arbeit verrichten können.",
-        "img": "assets/vocab-scenes/k5/05.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/016.jpg"
       },
       {
         "w": "die Menschenkenntnis",
@@ -3979,7 +3979,7 @@ window.B1_BOOK = [
         "ar": "معرفة الطبيعة البشرية",
         "cat": "Kapitel 4",
         "ex": "Wer eine gute Menschenkenntnis besitzt, lässt sich nicht leicht übers Ohr hauen.",
-        "img": "assets/vocab-scenes/k9/06.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/017.jpg"
       },
       {
         "w": "die Öffentlichkeit",
@@ -3987,7 +3987,7 @@ window.B1_BOOK = [
         "ar": "الجمهور",
         "cat": "Kapitel 4",
         "ex": "Die Öffentlichkeit reagiert auf solche Äußerungen meist empfindlich.",
-        "img": "assets/vocab-scenes/k5/31.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/018.jpg"
       },
       {
         "w": "die Partei",
@@ -4003,54 +4003,54 @@ window.B1_BOOK = [
         "ar": "المحامي",
         "cat": "Kapitel 4",
         "ex": "Der Vertrag wurde von einem Rechtsanwalt entworfen.",
-        "img": "assets/vocab-scenes/k7/103.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/020.jpg"
       },
       {
         "w": "die Rechtsanwältin",
-        "d": "staatlich geprüfte und zur Rechtsberatung zugelassene Juristin, die freiberuflich tätig ist und die ihre Auftraggeber bei Gericht sowie außergerichtlich vertritt",
-        "ar": "المحامي",
+        "d": "Eine Juristin, die Menschen rechtlich berät und vor Gericht vertritt.",
+        "ar": "محامية",
         "cat": "Kapitel 4",
-        "ex": "\"Eine Rechtsanwältin hat der Gegenpartei ein Geheimnis verraten. Dafür stand sie nun selbst vor Gericht.\"",
-        "img": "assets/vocab-scenes/k2/03.webp"
+        "ex": "Die Rechtsanwältin spricht vor der Verhandlung mit ihrer Mandantin.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/021.jpg"
       },
       {
         "w": "die Reportage",
         "d": "Journalismus: journalistische Textsorte; Art der Berichterstattung, bei welcher der Berichterstatter, der Reporter, sich im oder nahe beim Geschehen, über das er berichtet, befindet",
         "ar": "التقرير",
         "cat": "Kapitel 4",
-        "ex": "\"Die Reportage arbeitet genau umgekehrt: Die Reportage ist konkret, wo die Nachricht abstrakt bleiben muss. Die Reportage ist dicht dran.\"",
-        "img": "assets/vocab-scenes/k6/18.webp"
+        "ex": "Die Reportage arbeitet genau umgekehrt: Die Reportage ist konkret, wo die Nachricht abstrakt bleiben muss. Die Reportage ist dicht dran.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/022.jpg"
       },
       {
         "w": "der Reporter",
-        "d": "Journalismus: Journalist, der am Ort des Geschehens (oder zumindest in dessen Nähe) ist, über das er berichtet",
-        "ar": "المراسل",
+        "d": "Ein Journalist, der über Ereignisse vor Ort berichtet.",
+        "ar": "مراسل صحفي",
         "cat": "Kapitel 4",
-        "ex": "\"So bezeichnet man zum Beispiel als Redakteur den hauptberuflich bei den Medien angestellten Journalisten, als Reporter den überwiegend im Außendienst tätigen Journalisten, als Korrespondent den Berichterstatter von anderen Standorten, als Pressesprecher, Pressereferent oder Medienreferent die in der Öffentlichkeitsarbeit von Wirtschaft, Verbänden und Verwaltung tätigen Personen.\"",
-        "img": "assets/vocab-scenes/k1/33.webp"
+        "ex": "Der Reporter berichtet live vom Gericht.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/023.jpg"
       },
       {
         "w": "die Reporterin",
         "d": "Journalistin, die am Ort des Geschehens (oder zumindest in dessen Nähe) ist, über das sie berichtet",
         "ar": "المراسلة",
         "cat": "Kapitel 4",
-        "ex": "„Die Reporterin achtet ihre Bitte zwar, veröffentlicht aber trotzdem einige Details, die sie aus zuverlässigen Quellen weiß.“",
-        "img": "assets/vocab-scenes/k10/31.webp"
+        "ex": "Die Reporterin achtet ihre Bitte zwar, veröffentlicht aber trotzdem einige Details, die sie aus zuverlässigen Quellen weiß.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/024.jpg"
       },
       {
         "w": "der Richter",
-        "d": "Person bei einem Gericht, die die Aufgaben der Judikatur wahrnimmt; Religion: Buch des Alten Testaments",
-        "ar": "القاضي",
+        "d": "Ein Mann, der an einem Gericht Urteile spricht.",
+        "ar": "قاضٍ",
         "cat": "Kapitel 4",
-        "ex": "Und will endlich ein Richter oder ein andrer Beamte von den Wenigen, welchen das Recht und das gemeine Wohl lieber ist, als ihr Bauch und der Mammon, ein Volksrat und kein Volksschinder sein",
-        "img": "assets/vocab-scenes/k9/34.webp"
+        "ex": "Der Richter hört beide Seiten an.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/025.jpg"
       },
       {
         "w": "die Richterin",
-        "d": "Inhaberin eines öffentlichen Amtes bei einem Gericht, die Aufgaben der Judikatur (Rechtsprechung) wahrnimmt",
-        "ar": "القاضي",
+        "d": "Eine Frau, die an einem Gericht Urteile spricht.",
+        "ar": "قاضية",
         "cat": "Kapitel 4",
-        "ex": "Die Richterin verkündete das Urteil.",
+        "ex": "Die Richterin verkündet am Ende das Urteil.",
         "img": "assets/vocab-scenes/k9-added/78.webp"
       },
       {
@@ -4059,7 +4059,7 @@ window.B1_BOOK = [
         "ar": "النجار",
         "cat": "Kapitel 4",
         "ex": "Den Schrank haben wir uns vom Schreiner machen lassen.",
-        "img": "assets/vocab-scenes/k10/21.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/027.jpg"
       },
       {
         "w": "die Schreinerin",
@@ -4071,23 +4071,23 @@ window.B1_BOOK = [
       },
       {
         "w": "der Spezialist",
-        "d": "jemand, der über besondere Kenntnisse auf einem Fachgebiet verfügt / Facharzt",
+        "d": "jemand, der über besondere Kenntnisse auf einem Fachgebiet verfügt; Facharzt",
         "ar": "المتخصص",
         "cat": "Kapitel 4",
         "ex": "Spezialist für numerische Lösungen",
-        "img": "assets/vocab-scenes/k8/141.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/029.jpg"
       },
       {
         "w": "die Spezialistin",
-        "d": "weibliche Person, die über besondere Kenntnisse auf einem Fachgebiet verfügt",
-        "ar": "المتخصص",
+        "d": "Eine Frau mit besonders guten Kenntnissen auf einem Fachgebiet.",
+        "ar": "متخصصة / خبيرة",
         "cat": "Kapitel 4",
-        "ex": "Die neue Technikerin ist eine Spezialistin für Portalkräne.",
-        "img": "assets/vocab-scenes/k8/120.webp"
+        "ex": "Sie ist Spezialistin für erneuerbare Energien.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/030.jpg"
       },
       {
         "w": "das Urteil",
-        "d": "richterliche Entscheidung eines Gerichtes zur abschließenden Klärung eines Rechtsstreites / Eindruck einer Person gegenüber anderen",
+        "d": "richterliche Entscheidung eines Gerichtes zur abschließenden Klärung eines Rechtsstreites; Eindruck einer Person gegenüber anderen",
         "ar": "الحكم",
         "cat": "Kapitel 4",
         "ex": "Urteil zugunsten des Klägers",
@@ -4095,11 +4095,11 @@ window.B1_BOOK = [
       },
       {
         "w": "das Verbrechen",
-        "d": "besonders schwere Straftat / verantwortungsloses Vorgehen, verwerfliches Handeln",
+        "d": "besonders schwere Straftat; verantwortungsloses Vorgehen, verwerfliches Handeln",
         "ar": "الجريمة",
         "cat": "Kapitel 4",
         "ex": "Was ein Verbrechen ist, wissen wir und wissens nicht! (Hans Magnus Enzensberger).",
-        "img": "assets/vocab-scenes/k3/02.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/032.jpg"
       },
       {
         "w": "die Analyse",
@@ -4107,11 +4107,11 @@ window.B1_BOOK = [
         "ar": "التحليل",
         "cat": "Kapitel 4",
         "ex": "Bei der Analyse werden die einzelnen Bestandteile ermittelt und diese dann detailliert untersucht.",
-        "img": "assets/vocab-scenes/k11/26.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/033.jpg"
       },
       {
         "w": "austragen",
-        "d": "etwas verschiedenen Empfängern zubringen / eine Auseinandersetzung zur Entscheidung führen",
+        "d": "etwas verschiedenen Empfängern zubringen; eine Auseinandersetzung zur Entscheidung führen",
         "ar": "نفذ",
         "cat": "Kapitel 4",
         "ex": "Er trägt seit dreißig Jahren die Post aus.",
@@ -4123,7 +4123,7 @@ window.B1_BOOK = [
         "ar": "ساعي البريد",
         "cat": "Kapitel 4",
         "ex": "Der Briefträger teilt die Briefe schnell aus.",
-        "img": "assets/vocab-scenes/k10-added/107.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/035.jpg"
       },
       {
         "w": "die Briefträgerin",
@@ -4131,7 +4131,7 @@ window.B1_BOOK = [
         "ar": "ساعي البريد",
         "cat": "Kapitel 4",
         "ex": "Die Briefträgerin teilt die Briefe rasch aus.",
-        "img": "assets/vocab-scenes/k10/13.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/036.jpg"
       },
       {
         "w": "der Chemiker",
@@ -4146,24 +4146,24 @@ window.B1_BOOK = [
         "d": "weibliche Person, die (Fach-)Kenntnisse im Bereich Chemie besitzt",
         "ar": "الكيميائية",
         "cat": "Kapitel 4",
-        "ex": "„Die von Ida Rolf, früher Chemikerin am Rockefeller Institute, entwickelte Technik der »strukturellen Integration« wird heute allgemein kurz »Rolfing« genannt.“",
-        "img": "assets/vocab-scenes/k11-added/12.webp"
+        "ex": "Die von Ida Rolf, früher Chemikerin am Rockefeller Institute, entwickelte Technik der »strukturellen Integration« wird heute allgemein kurz »Rolfing« genannt.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/038.jpg"
       },
       {
         "w": "die Elektronik",
-        "d": "Teilgebiet der Elektrotechnik, das sich mit elektronischen Bauelementen, also zum Beispiel Kondensatoren, Transistoren, Spulen oder Fotozellen befasst / elektronischer Teil eines Geräts oder einer Anlage",
+        "d": "Teilgebiet der Elektrotechnik, das sich mit elektronischen Bauelementen, also zum Beispiel Kondensatoren, Transistoren, Spulen oder Fotozellen befasst; elektronischer Teil eines Geräts oder einer Anlage",
         "ar": "الالكترونيات",
         "cat": "Kapitel 4",
         "ex": "Magdalena kann sich nicht für Elektronik begeistern.",
-        "img": "assets/vocab-scenes/k8/60.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/039.jpg"
       },
       {
         "w": "exakt",
-        "d": "den gegebenen Bedingungen vollständig entsprechend / wissenschaftlich korrekt, präzise",
+        "d": "den gegebenen Bedingungen vollständig entsprechend; wissenschaftlich korrekt, präzise",
         "ar": "بالضبط",
         "cat": "Kapitel 4",
         "ex": "Nennen Sie mir bitte die exakte Uhrzeit.",
-        "img": "assets/vocab-scenes/k9-added/49.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/040-v.jpg"
       },
       {
         "w": "geregelt",
@@ -4171,7 +4171,7 @@ window.B1_BOOK = [
         "ar": "ينظم",
         "cat": "Kapitel 4",
         "ex": "ein geregeltes / regelmäßiges / festes Einkommen",
-        "img": "assets/vocab-scenes/k7/53.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/041-v.jpg"
       },
       {
         "w": "der Mechatroniker",
@@ -4179,7 +4179,7 @@ window.B1_BOOK = [
         "ar": "مهندس الميكاترونكس",
         "cat": "Kapitel 4",
         "ex": "Aufgrund seiner Leidenschaft für Elektrotechnik und Mechanik, absolvierte er eine Ausbildung zum Mechatroniker.",
-        "img": "assets/vocab-scenes/k1/02.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/042.jpg"
       },
       {
         "w": "die Mechatronikerin",
@@ -4187,7 +4187,7 @@ window.B1_BOOK = [
         "ar": "مهندسة ميكاترونكس",
         "cat": "Kapitel 4",
         "ex": "Die Mechatronikerin repariert den Roboter.",
-        "img": "assets/vocab-scenes/k8/66.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/043.jpg"
       },
       {
         "w": "das Metall",
@@ -4195,15 +4195,15 @@ window.B1_BOOK = [
         "ar": "المعدن",
         "cat": "Kapitel 4",
         "ex": "Gartenzäune können aus Metall, Holz oder Kunststoff bestehen.",
-        "img": "assets/vocab-scenes/k4/03.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/044.jpg"
       },
       {
         "w": "zustellen",
-        "d": "etwas mit Gegenständen versperren, verbarrikadieren / eine postalische Sendung überbringen",
+        "d": "etwas mit Gegenständen versperren, verbarrikadieren; eine postalische Sendung überbringen",
         "ar": "تسليم",
         "cat": "Kapitel 4",
         "ex": "Die ganze Einfahrt ist mit Fahrzeugen zugestellt.",
-        "img": "assets/vocab-scenes/k11/05.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/045-v.jpg"
       },
       {
         "w": "ursprünglich",
@@ -4211,7 +4211,7 @@ window.B1_BOOK = [
         "ar": "في الأصل",
         "cat": "Kapitel 4",
         "ex": "Die Situation ist heute ursprünglich.",
-        "img": "assets/vocab-scenes/k12-added/41.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/046-v.jpg"
       },
       {
         "w": "der Augenblick",
@@ -4219,11 +4219,11 @@ window.B1_BOOK = [
         "ar": "اللحظة",
         "cat": "Kapitel 4",
         "ex": "im letzten Augenblick",
-        "img": "assets/vocab-scenes/k8/143.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/047.jpg"
       },
       {
         "w": "daran",
-        "d": "referenziert einen Gegenstand und bezeichnet die unmittelbare Berührung mit diesem / referenziert einen Umstand, Zustand, Handlung oder Ereignis, meist in Bezug mit einer geistigen Tätigkeit",
+        "d": "referenziert einen Gegenstand und bezeichnet die unmittelbare Berührung mit diesem; referenziert einen Umstand, Zustand, Handlung oder Ereignis, meist in Bezug mit einer geistigen Tätigkeit",
         "ar": "عليه",
         "cat": "Kapitel 4",
         "ex": "Daran hängen sich im Normalfall immer zwei Personen.",
@@ -4235,23 +4235,23 @@ window.B1_BOOK = [
         "ar": "التطوير",
         "cat": "Kapitel 4",
         "ex": "Nach der Krise deuten jüngste Entwicklungen einen schnellen Frieden an.",
-        "img": "assets/vocab-scenes/k7/119.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/049.jpg"
       },
       {
         "w": "ernst",
-        "d": "ohne Spaß, ohne Scherz, ohne Humor, ohne Ironie / über einen Zustand, der schlimme Konsequenzen haben kann; bedrohlich",
+        "d": "ohne Spaß, ohne Scherz, ohne Humor, ohne Ironie; über einen Zustand, der schlimme Konsequenzen haben kann; bedrohlich",
         "ar": "على محمل الجد",
         "cat": "Kapitel 4",
         "ex": "etw. ernst meinen",
-        "img": "assets/vocab-scenes/k9-added/61.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/050-v.jpg"
       },
       {
         "w": "aushalten",
-        "d": "eine unangenehme Situation ertragen oder ertragen können / durchhalten; eine Last tragen können; einer Belastung standhalten",
+        "d": "eine unangenehme Situation ertragen oder ertragen können; durchhalten; eine Last tragen können; einer Belastung standhalten",
         "ar": "تحمل",
         "cat": "Kapitel 4",
         "ex": "Er lässt sich von seiner Freundin aushalten.",
-        "img": "assets/vocab-scenes/k9-added/52.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/051-v.jpg"
       },
       {
         "w": "der Wunschberuf",
@@ -4274,7 +4274,7 @@ window.B1_BOOK = [
         "d": "Eine Verbform für Wünsche, Möglichkeiten oder indirekte Aussagen.",
         "ar": "الشكل الشرطي",
         "cat": "Kapitel 4",
-        "ex": "„Wäre“ ist eine Konjunktivform von „sein“.",
+        "ex": "Wäre“ ist eine Konjunktivform von „sein“.",
         "img": "assets/vocab-scenes/k12-added/05.webp"
       },
       {
@@ -4282,7 +4282,7 @@ window.B1_BOOK = [
         "d": "Ein Satz, der eine Bedingung ausdrückt.",
         "ar": "الجملة الشرطية",
         "cat": "Kapitel 4",
-        "ex": "„Perlmann wußte, sie war absurd, diese Orgie von irrealen Bedingungssätzen, und nicht nur das, sie fraß auch die Erleichterung auf, so daß er sich jetzt in die Tränen der ersten Erlösung zurücksehnte.“",
+        "ex": "Perlmann wußte, sie war absurd, diese Orgie von irrealen Bedingungssätzen, und nicht nur das, sie fraß auch die Erleichterung auf, so daß er sich jetzt in die Tränen der ersten Erlösung zurücksehnte.",
         "img": "assets/vocab-scenes/k12-added/06.webp"
       },
       {
@@ -4299,7 +4299,7 @@ window.B1_BOOK = [
         "ar": "غير واقعي",
         "cat": "Kapitel 4",
         "ex": "Eine Welt ohne Krieg und Hunger scheint irreal zu sein.",
-        "img": "assets/vocab-scenes/k8/27.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/057-v.jpg"
       },
       {
         "w": "Wenn",
@@ -4311,19 +4311,19 @@ window.B1_BOOK = [
       },
       {
         "w": "das Besteck",
-        "d": "Werkzeug für kultiviertes Essen, kurz für Essbesteck / Werkzeug für Operationen und Präparationen",
+        "d": "Werkzeug für kultiviertes Essen, kurz für Essbesteck; Werkzeug für Operationen und Präparationen",
         "ar": "أدوات المائدة",
         "cat": "Kapitel 4",
         "ex": "Hals-Nasen-Ohren-Besteck",
-        "img": "assets/vocab-scenes/k11-added/36.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/059.jpg"
       },
       {
         "w": "die Bürste",
-        "d": "aus einem Stiel oder Griff und befestigten Borsten bestehender Gegenstand / Gleitkontakt aus Graphit in Motoren und Generatoren",
+        "d": "aus einem Stiel oder Griff und befestigten Borsten bestehender Gegenstand; Gleitkontakt aus Graphit in Motoren und Generatoren",
         "ar": "الفرشاة",
         "cat": "Kapitel 4",
-        "ex": "„Messer und Bürsten sind derzeit Klaus Mißlers Verbündete. Mit ihnen rückt der 50-Jährige Schmutzflecken und zusammengeklebten Seiten in wertvollen Büchern zu Leibe.“",
-        "img": "assets/vocab-scenes/k4/04.webp"
+        "ex": "Messer und Bürsten sind derzeit Klaus Mißlers Verbündete. Mit ihnen rückt der 50-Jährige Schmutzflecken und zusammengeklebten Seiten in wertvollen Büchern zu Leibe.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/060.jpg"
       },
       {
         "w": "färben",
@@ -4331,23 +4331,23 @@ window.B1_BOOK = [
         "ar": "اللون",
         "cat": "Kapitel 4",
         "ex": "Seit Jahren färbt sie ihre Haare rot.",
-        "img": "assets/vocab-scenes/k12-added/58.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/061-v.jpg"
       },
       {
         "w": "föhnen",
-        "d": "etwas (in der Regel die Haare) mit einem Föhn trocknen / vom Wind: stark, heftig wehen",
+        "d": "etwas (in der Regel die Haare) mit einem Föhn trocknen; vom Wind: stark, heftig wehen",
         "ar": "ضربة جافة",
         "cat": "Kapitel 4",
         "ex": "Ich muss mir noch die Haare föhnen!",
-        "img": "assets/vocab-scenes/k8/28.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/062-v.jpg"
       },
       {
         "w": "die Gaststätte",
-        "d": "Betrieb, in dem Gäste mit Speisen und/oder Getränken bewirtet werden",
+        "d": "Betrieb, in dem Gäste mit Speisen und; oder Getränken bewirtet werden",
         "ar": "المطعم",
         "cat": "Kapitel 4",
         "ex": "Wanderungen plant man gern in Kenntnis der am Wege liegenden Gaststätten.",
-        "img": "assets/vocab-scenes/k4/32.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/063.jpg"
       },
       {
         "w": "der Hammer",
@@ -4355,31 +4355,31 @@ window.B1_BOOK = [
         "ar": "المطرقة",
         "cat": "Kapitel 4",
         "ex": "Der Hammer gehört zur Grundausrüstung des Zimmermanns.",
-        "img": "assets/vocab-scenes/k10-added/53.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/064.jpg"
       },
       {
         "w": "der Imbiss",
-        "d": "eine kurze Mahlzeit außerhalb der Hauptmahlzeiten / Stand, Kantine, Kiosk oder Stube, wo man eine kleine Zwischenmahlzeit kaufen und einnehmen kann",
+        "d": "eine kurze Mahlzeit außerhalb der Hauptmahlzeiten; Stand, Kantine, Kiosk oder Stube, wo man eine kleine Zwischenmahlzeit kaufen und einnehmen kann",
         "ar": "الوجبة الخفيفة",
         "cat": "Kapitel 4",
         "ex": "Auf der Veranda nahmen sie einen kleinen Imbiss ein.",
-        "img": "assets/vocab-scenes/k10-added/63.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/065.jpg"
       },
       {
         "w": "der Kamm",
-        "d": "Gerät mit aneinandergereihten Zinken zum Ausrichten und Säubern von Haaren / roter, gezackter Hautlappen auf dem Kopf von Kammhühnern",
+        "d": "Gerät mit aneinandergereihten Zinken zum Ausrichten und Säubern von Haaren; roter, gezackter Hautlappen auf dem Kopf von Kammhühnern",
         "ar": "المشط",
         "cat": "Kapitel 4",
         "ex": "alle über einen Kamm scheren",
-        "img": "assets/vocab-scenes/k10-added/01.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/066.jpg"
       },
       {
         "w": "der Karton",
-        "d": "festeres, papierähnliches Produkt / dünner, rechteckiger Behälter",
+        "d": "festeres, papierähnliches Produkt; dünner, rechteckiger Behälter",
         "ar": "الصندوق",
         "cat": "Kapitel 4",
         "ex": "Pappe für Kartonagen",
-        "img": "assets/vocab-scenes/k10/19.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/067.jpg"
       },
       {
         "w": "der Rechner",
@@ -4395,31 +4395,31 @@ window.B1_BOOK = [
         "ar": "المقص",
         "cat": "Kapitel 4",
         "ex": "Die Schere ist ein klassisches Bastelutensil.",
-        "img": "assets/vocab-scenes/k9-added/21.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/069.jpg"
       },
       {
         "w": "der Umschlag",
-        "d": "Hülle aus Papier für einen Brief / (feuchte) Umwicklung einer schmerzenden Stelle",
+        "d": "Hülle aus Papier für einen Brief; (feuchte) Umwicklung einer schmerzenden Stelle",
         "ar": "المغلف",
         "cat": "Kapitel 4",
         "ex": "Der Brief wurde in einem Umschlag DIN-C6 lang ohne Fenster versendet.",
-        "img": "assets/vocab-scenes/k8/82.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/070.jpg"
       },
       {
         "w": "irren",
-        "d": "falsch liegen, einem Fehler aufsitzen, einen Irrtum begehen / orientierungslos sein, ohne Ortskenntnis umherlaufen, sich verlaufen",
+        "d": "falsch liegen, einem Fehler aufsitzen, einen Irrtum begehen; orientierungslos sein, ohne Ortskenntnis umherlaufen, sich verlaufen",
         "ar": "يخطئ",
         "cat": "Kapitel 4",
         "ex": "Ich dachte, die Erde sei eine Scheibe, doch ich irrte.",
-        "img": "assets/vocab-scenes/k11/14.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/071-v.jpg"
       },
       {
         "w": "schütten",
-        "d": "etwas durch starkes Kippen aus einem Gefäß entfernen / sehr stark regnen",
+        "d": "etwas durch starkes Kippen aus einem Gefäß entfernen; sehr stark regnen",
         "ar": "صب",
         "cat": "Kapitel 4",
         "ex": "Ich schütte Wasser auf den Boden.",
-        "img": "assets/vocab-scenes/k7/54.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/072-v.jpg"
       },
       {
         "w": "das Versehen",
@@ -4427,7 +4427,7 @@ window.B1_BOOK = [
         "ar": "الرقابة",
         "cat": "Kapitel 4",
         "ex": "Ich habe Ihnen aus Versehen die falschen Unterlagen zukommen lassen.",
-        "img": "assets/vocab-scenes/k8/86.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/073.jpg"
       },
       {
         "w": "verwechseln",
@@ -4439,11 +4439,11 @@ window.B1_BOOK = [
       },
       {
         "w": "zusammensitzen",
-        "d": "intransitiv: (in geselliger Runde) gemeinsam irgendwo sitzen; (in einer Reihe) einer/eine neben dem/der anderen sitzen",
+        "d": "intransitiv: (in geselliger Runde) gemeinsam irgendwo sitzen; (in einer Reihe) einer; eine neben dem; der anderen sitzen",
         "ar": "الجلوس معا",
         "cat": "Kapitel 4",
-        "ex": "\"Der Tod vor dem Zaun ist dein Feind! Mit dem Gerücht zusammen hatte er sich ins Lager eingeschlichen und hockte überall dort, wo die Menschen in den Baracken zusammensaßen.\"",
-        "img": "assets/vocab-scenes/k7/136.webp"
+        "ex": "Der Tod vor dem Zaun ist dein Feind! Mit dem Gerücht zusammen hatte er sich ins Lager eingeschlichen und hockte überall dort, wo die Menschen in den Baracken zusammensaßen.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/075-v.jpg"
       },
       {
         "w": "zusammen",
@@ -4458,8 +4458,8 @@ window.B1_BOOK = [
         "d": "Wille, etwas zu realisieren; Grund für eine Handlung",
         "ar": "النية",
         "cat": "Kapitel 4",
-        "ex": "\"Die Rechtheit der Absicht allein macht nicht schon den ganzen guten Willen.\"",
-        "img": "assets/vocab-scenes/k7/107.webp"
+        "ex": "Die Rechtheit der Absicht allein macht nicht schon den ganzen guten Willen.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/077.jpg"
       },
       {
         "w": "schrecklich",
@@ -4467,7 +4467,7 @@ window.B1_BOOK = [
         "ar": "رهيب",
         "cat": "Kapitel 4",
         "ex": "Er hatte schreckliche Alpträume.",
-        "img": "assets/vocab-scenes/k12-added/79.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/078-v.jpg"
       },
       {
         "w": "verzeihen",
@@ -4475,7 +4475,7 @@ window.B1_BOOK = [
         "ar": "يغفر",
         "cat": "Kapitel 4",
         "ex": "Ich kann dir nicht verzeihen.",
-        "img": "assets/vocab-scenes/k10-added/49.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/079-v.jpg"
       },
       {
         "w": "kürzlich",
@@ -4483,23 +4483,23 @@ window.B1_BOOK = [
         "ar": "مؤخرا",
         "cat": "Kapitel 4",
         "ex": "Die Situation ist heute kürzlich.",
-        "img": "assets/vocab-scenes/k9-added/69.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/080-v.jpg"
       },
       {
         "w": "unfreundlich",
         "d": "auf eine abweisende Art und Weise",
         "ar": "غير ودية",
         "cat": "Kapitel 4",
-        "ex": "\"Sei nicht so unfreundlich zu deiner Tante!\"",
-        "img": "assets/vocab-scenes/k12-added/12.webp"
+        "ex": "Sei nicht so unfreundlich zu deiner Tante!",
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/081-v.jpg"
       },
       {
         "w": "die Variante",
         "d": "leicht veränderte Form von etwas; eine von zwei oder mehr Möglichkeiten",
         "ar": "البديل",
         "cat": "Kapitel 4",
-        "ex": "„Der Direktor, der für Rauschgold noch nie viel übriggehabt hatte, fand diese neue Variante der Jahresendfigur gar nicht so schlecht.“",
-        "img": "assets/vocab-scenes/k11/25.webp"
+        "ex": "Der Direktor, der für Rauschgold noch nie viel übriggehabt hatte, fand diese neue Variante der Jahresendfigur gar nicht so schlecht.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/082.jpg"
       },
       {
         "w": "abschreiben",
@@ -4507,7 +4507,7 @@ window.B1_BOOK = [
         "ar": "شطب",
         "cat": "Kapitel 4",
         "ex": "In der Abschlussklausur haben viele abgeschrieben.",
-        "img": "assets/vocab-scenes/k8/78.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/083-v.jpg"
       },
       {
         "w": "der Anhang",
@@ -4515,7 +4515,7 @@ window.B1_BOOK = [
         "ar": "الملحق",
         "cat": "Kapitel 4",
         "ex": "Die Mail hatte einen längeren Anhang.",
-        "img": "assets/vocab-scenes/k3/20.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/084.jpg"
       },
       {
         "w": "ankommen",
@@ -4523,7 +4523,7 @@ window.B1_BOOK = [
         "ar": "يصل",
         "cat": "Kapitel 4",
         "ex": "Ich kam gestern in Bremen an.",
-        "img": "assets/vocab-scenes/k6/29.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/085-v.jpg"
       },
       {
         "w": "aussagekräftig",
@@ -4531,7 +4531,7 @@ window.B1_BOOK = [
         "ar": "ذات معنى",
         "cat": "Kapitel 4",
         "ex": "Die Abschlussberichte wurden sehr aussagekräftig dargelegt.",
-        "img": "assets/vocab-scenes/k4/23.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/086-v.jpg"
       },
       {
         "w": "die Bescheinigung",
@@ -4539,7 +4539,7 @@ window.B1_BOOK = [
         "ar": "الشهادة",
         "cat": "Kapitel 4",
         "ex": "Eine Bescheinigung dient als schriftlicher Nachweis für die Richtigkeit einer behaupteten Tatsache.",
-        "img": "assets/vocab-scenes/k12-added/43.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/087.jpg"
       },
       {
         "w": "das Bewerbungsfoto",
@@ -4547,7 +4547,7 @@ window.B1_BOOK = [
         "ar": "صورة التطبيق",
         "cat": "Kapitel 4",
         "ex": "Für den Lebenslauf brauche ich ein aktuelles Bewerbungsfoto.",
-        "img": "assets/vocab-scenes/k8/54.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/088.jpg"
       },
       {
         "w": "das Bewerbungsportal",
@@ -4562,8 +4562,8 @@ window.B1_BOOK = [
         "d": "kurze, schriftliche Formulierung eines Begehren oder einer Bewerbung",
         "ar": "خطاب الطلب",
         "cat": "Kapitel 4",
-        "ex": "„Was die formalen Eigenschaften betrifft, ist Übersichtlichkeit wichtig. Die Grundregel lautet: Das Bewerbungsschreiben darf nicht länger als eine DIN-A4-Seite sein.“",
-        "img": "assets/vocab-scenes/k5/09.webp"
+        "ex": "Was die formalen Eigenschaften betrifft, ist Übersichtlichkeit wichtig. Die Grundregel lautet: Das Bewerbungsschreiben darf nicht länger als eine DIN-A4-Seite sein.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/090.jpg"
       },
       {
         "w": "das Bewerbungstraining",
@@ -4571,7 +4571,7 @@ window.B1_BOOK = [
         "ar": "التدريب على التطبيق",
         "cat": "Kapitel 4",
         "ex": "Im Bewerbungstraining üben wir typische Fragen.",
-        "img": "assets/vocab-scenes/k2/31.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/091.jpg"
       },
       {
         "w": "darum",
@@ -4587,7 +4587,7 @@ window.B1_BOOK = [
         "ar": "لدينا",
         "cat": "Kapitel 4",
         "ex": "Da sie nur wenig Gäste hatten, schätzten sie sich unser glücklich.",
-        "img": "assets/vocab-scenes/k7/36.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/093-v.jpg"
       },
       {
         "w": "der Download",
@@ -4595,23 +4595,23 @@ window.B1_BOOK = [
         "ar": "التنزيل",
         "cat": "Kapitel 4",
         "ex": "etw. gratis zum Herunterladen / als Download anbieten",
-        "img": "assets/vocab-scenes/k12-added/52.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/094.jpg"
       },
       {
         "w": "eignen",
-        "d": "für einen Einsatz, eine Funktion benötigte Eigenschaften oder Fähigkeiten besitzen / einer Person, einer Sache als Merkmal zugehören",
+        "d": "für einen Einsatz, eine Funktion benötigte Eigenschaften oder Fähigkeiten besitzen; einer Person, einer Sache als Merkmal zugehören",
         "ar": "مناسب",
         "cat": "Kapitel 4",
         "ex": "Ich eigne mich, aufgrund meiner schwach ausgeprägten Muskeln, nicht als Bauarbeiter.",
-        "img": "assets/vocab-scenes/k8/31.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/095-v.jpg"
       },
       {
         "w": "enthalten",
-        "d": "so beschaffen sein, dass das eine (mit dem stets nötigen Akkusativ-Objekt Bezeichnete) ein Teil des anderen (des mit dem Subjekt Bezeichneten) ist; einen Inhalt haben; bestehen aus / sich von etwas fernhalten",
-        "ar": "متضمنة",
+        "d": "Etwas als Bestandteil oder Inhalt haben.",
+        "ar": "يحتوي على",
         "cat": "Kapitel 4",
-        "ex": "er/sie/es hat/hatte enthalten",
-        "img": "assets/vocab-scenes/k12-added/32.webp"
+        "ex": "Der Preis enthält Frühstück und Abendessen.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/096-v.jpg"
       },
       {
         "w": "erkundigen",
@@ -4619,7 +4619,7 @@ window.B1_BOOK = [
         "ar": "استفسر",
         "cat": "Kapitel 4",
         "ex": "Du sollst dich lieber über ihre Probleme erkundigen, wenn du ihr helfen willst.",
-        "img": "assets/vocab-scenes/k12/29.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/097-v.jpg"
       },
       {
         "w": "die Fortbildung",
@@ -4627,7 +4627,7 @@ window.B1_BOOK = [
         "ar": "التدريب",
         "cat": "Kapitel 4",
         "ex": "Fortbildung ist ein Prozess, der ein Leben lang anhält.",
-        "img": "assets/vocab-scenes/k2/04.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/098.jpg"
       },
       {
         "w": "frühere",
@@ -4635,7 +4635,7 @@ window.B1_BOOK = [
         "ar": "في وقت سابق",
         "cat": "Kapitel 4",
         "ex": "Meine frühere Kollegin arbeitet jetzt in München.",
-        "img": "assets/vocab-scenes/k7/18.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/099-v.jpg"
       },
       {
         "w": "die Geduld",
@@ -4643,15 +4643,15 @@ window.B1_BOOK = [
         "ar": "الصبر",
         "cat": "Kapitel 4",
         "ex": "sich in Geduld üben",
-        "img": "assets/vocab-scenes/k7/129.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/100.jpg"
       },
       {
         "w": "die Institution",
-        "d": "allgemein: Einrichtung, Organisation, Organisationselement, Behörde, Anstalt / Soziologie: eine mit Handlungsrechten, Handlungspflichten oder normativer Geltung belegte soziale Wirklichkeit, durch die Gruppen und Gemeinschaften nach innen und nach außen hin verbindlich (geltend) wirken oder handeln",
+        "d": "allgemein: Einrichtung, Organisation, Organisationselement, Behörde, Anstalt; Soziologie: eine mit Handlungsrechten, Handlungspflichten oder normativer Geltung belegte soziale Wirklichkeit, durch die Gruppen und Gemeinschaften nach innen und nach außen hin verbindlich (geltend) wirken oder handeln",
         "ar": "المؤسسة",
         "cat": "Kapitel 4",
         "ex": "nationale und internationale Institutionen",
-        "img": "assets/vocab-scenes/k8/127.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/101.jpg"
       },
       {
         "w": "jedoch",
@@ -4659,31 +4659,31 @@ window.B1_BOOK = [
         "ar": "ومع ذلك",
         "cat": "Kapitel 4",
         "ex": "Der Zeuge tätigte zwar eine Aussage, sagte jedoch nicht die Wahrheit.",
-        "img": "assets/vocab-scenes/k8/33.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/102-v.jpg"
       },
       {
         "w": "die Jobsuche",
         "d": "Die Suche nach einer Arbeitsstelle.",
         "ar": "البحث عن وظيفة",
         "cat": "Kapitel 4",
-        "ex": "„Es fällt mir schwer, das nötige Interesse für irgendjemandes Jobsuche aufzubringen.“",
-        "img": "assets/vocab-scenes/k11-added/63.webp"
+        "ex": "Es fällt mir schwer, das nötige Interesse für irgendjemandes Jobsuche aufzubringen.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/103.jpg"
       },
       {
         "w": "der Lebenslauf",
-        "d": "Abfolge dessen, was sich im Verlauf des Lebens von jemandem ereignet hat / schriftliche Übersicht wesentlicher Aspekte von [1]",
+        "d": "Abfolge dessen, was sich im Verlauf des Lebens von jemandem ereignet hat; schriftliche Übersicht wesentlicher Aspekte von [1]",
         "ar": "السيرة الذاتية",
         "cat": "Kapitel 4",
         "ex": "ein Anschreiben und einen Lebenslauf einreichen",
-        "img": "assets/vocab-scenes/k5/17.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/104.jpg"
       },
       {
         "w": "mitschicken",
-        "d": "bei einer Aussendung/Versendung beilegen; zur gleichen Zeit in einem Akt versenden (verschicken)",
+        "d": "bei einer Aussendung; Versendung beilegen; zur gleichen Zeit in einem Akt versenden (verschicken)",
         "ar": "أرسل على طول",
         "cat": "Kapitel 4",
         "ex": "Schick mir doch bitte auch die genaue Adresse mit.",
-        "img": "assets/vocab-scenes/k4/27.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/105-v.jpg"
       },
       {
         "w": "das PDF-Dokument",
@@ -4691,23 +4691,23 @@ window.B1_BOOK = [
         "ar": "وثيقة PDF",
         "cat": "Kapitel 4",
         "ex": "Bitte schicken Sie das ausgefüllte PDF-Dokument per E-Mail.",
-        "img": "assets/vocab-scenes/k10/33.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/106.jpg"
       },
       {
         "w": "die Personalabteilung",
         "d": "Die Abteilung eines Unternehmens, die sich um Mitarbeiter kümmert.",
         "ar": "قسم الموارد البشرية",
         "cat": "Kapitel 4",
-        "ex": "„Diese heiteren Workaholics sind eine Freude für ihre Vorgesetzten, aber eine Plage für die Personalabteilungen, die für jeden nicht genommenen Urlaubstag Rückstellungen bilden müssen.“",
-        "img": "assets/vocab-scenes/k5/20.webp"
+        "ex": "Diese heiteren Workaholics sind eine Freude für ihre Vorgesetzten, aber eine Plage für die Personalabteilungen, die für jeden nicht genommenen Urlaubstag Rückstellungen bilden müssen.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/107.jpg"
       },
       {
         "w": "der Personalchef",
         "d": "Der Leiter der Personalabteilung.",
         "ar": "مدير شؤون الموظفين",
         "cat": "Kapitel 4",
-        "ex": "„Der bisherige Generalsekretär im Betriebsrat soll neuer Personalchef werden und damit Karlheinz Blessing folgen.“",
-        "img": "assets/vocab-scenes/k4/35.webp"
+        "ex": "Der bisherige Generalsekretär im Betriebsrat soll neuer Personalchef werden und damit Karlheinz Blessing folgen.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/108.jpg"
       },
       {
         "w": "die Personalchefin",
@@ -4715,7 +4715,7 @@ window.B1_BOOK = [
         "ar": "مدير الموارد البشرية",
         "cat": "Kapitel 4",
         "ex": "Ja, ich bin hier die Personalchefin, oder anders ausgedrückt Human Resource Manager. Was kann ich für Sie tun?",
-        "img": "assets/vocab-scenes/k7/11.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/109.jpg"
       },
       {
         "w": "die Personalien",
@@ -4723,23 +4723,23 @@ window.B1_BOOK = [
         "ar": "التفاصيل الشخصية",
         "cat": "Kapitel 4",
         "ex": "Die Polizei nahm seine Personalien auf.",
-        "img": "assets/vocab-scenes/k1/16.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/110.jpg"
       },
       {
         "w": "der Profi",
-        "d": "jemand, der eine Tätigkeit ausführt, in der er sich besonders gut auskennt und/oder für die er ausgebildet ist / jemand, der eine Tätigkeit gegen Bezahlung ausführt",
+        "d": "jemand, der eine Tätigkeit ausführt, in der er sich besonders gut auskennt und; oder für die er ausgebildet ist; jemand, der eine Tätigkeit gegen Bezahlung ausführt",
         "ar": "المحترف",
         "cat": "Kapitel 4",
         "ex": "Ein echter Profi wird auch mit den vielen Auflagen zurechtkommen.",
-        "img": "assets/vocab-scenes/k4/13.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/111.jpg"
       },
       {
         "w": "der Ratgeber",
-        "d": "Person, die eine beratende Funktion ausübt; jemand, der Ratschläge geben kann / Schriftstück mit Tipps oder spezielles Nachschlagewerk",
+        "d": "Person, die eine beratende Funktion ausübt; jemand, der Ratschläge geben kann; Schriftstück mit Tipps oder spezielles Nachschlagewerk",
         "ar": "المستشار",
         "cat": "Kapitel 4",
         "ex": "Ratgeber für moderne Lebensführung",
-        "img": "assets/vocab-scenes/k11-added/58.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/112.jpg"
       },
       {
         "w": "relevant",
@@ -4747,7 +4747,7 @@ window.B1_BOOK = [
         "ar": "ذات الصلة",
         "cat": "Kapitel 4",
         "ex": "besonders relevant sein (für)",
-        "img": "assets/vocab-scenes/k7/55.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/113-v.jpg"
       },
       {
         "w": "sämtlich",
@@ -4755,7 +4755,7 @@ window.B1_BOOK = [
         "ar": "كل منهم",
         "cat": "Kapitel 4",
         "ex": "Die Situation ist heute sämtlich.",
-        "img": "assets/vocab-scenes/k7/58.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/114-v.jpg"
       },
       {
         "w": "selbstverständlich",
@@ -4763,39 +4763,39 @@ window.B1_BOOK = [
         "ar": "بالطبع",
         "cat": "Kapitel 4",
         "ex": "Die Situation ist heute selbstverständlich.",
-        "img": "assets/vocab-scenes/k4/21.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/115-v.jpg"
       },
       {
         "w": "seriös",
-        "d": "ordentlich / ernst, würdig (personenbezogen)",
+        "d": "ordentlich; ernst, würdig (personenbezogen)",
         "ar": "على محمل الجد",
         "cat": "Kapitel 4",
         "ex": "seriöse veröffentlichte Quellen",
-        "img": "assets/vocab-scenes/k8/34.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/116-v.jpg"
       },
       {
         "w": "der Stand",
-        "d": "das aufrechte Stehen / das Stillstehen, die Bewegungslosigkeit",
+        "d": "das aufrechte Stehen; das Stillstehen, die Bewegungslosigkeit",
         "ar": "الموقف",
         "cat": "Kapitel 4",
         "ex": "Stand auf einer Handelsmesse",
-        "img": "assets/vocab-scenes/k11-added/22.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/117.jpg"
       },
       {
         "w": "die Voraussetzung",
-        "d": "eine Bedingung, die im Vorfeld erfüllt sein muss; etwas was benötigt wird, bevor etwas anderes eintreten kann / eine Annahme, die einer Überlegung vorangestellt wurde",
+        "d": "eine Bedingung, die im Vorfeld erfüllt sein muss; etwas was benötigt wird, bevor etwas anderes eintreten kann; eine Annahme, die einer Überlegung vorangestellt wurde",
         "ar": "الشرط الأساسي",
         "cat": "Kapitel 4",
         "ex": "die Voraussetzungen erfüllen",
-        "img": "assets/vocab-scenes/k5/12.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/118.jpg"
       },
       {
         "w": "die Vorlage",
-        "d": "Hilfsmittel zur Erstellung ähnlicher Stücke (materiell oder informationstechnisch) / Original, nach dem eine Nachahmung erstellt wurde",
+        "d": "Hilfsmittel zur Erstellung ähnlicher Stücke (materiell oder informationstechnisch); Original, nach dem eine Nachahmung erstellt wurde",
         "ar": "القالب",
         "cat": "Kapitel 4",
         "ex": "die Vorlage für spätere Filme",
-        "img": "assets/vocab-scenes/k4/01.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/119.jpg"
       },
       {
         "w": "zukünftig",
@@ -4803,23 +4803,23 @@ window.B1_BOOK = [
         "ar": "في المستقبل",
         "cat": "Kapitel 4",
         "ex": "in einer zukünftigen Welt",
-        "img": "assets/vocab-scenes/k7/46.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/120-v.jpg"
       },
       {
         "w": "der Zweck",
-        "d": "Sinn oder Beweggrund, den eine Handlung, ein Vorgang oder eine andere Maßnahme haben soll / Ziel, das mit einer Handlung, mit einem Vorgang oder mit einer sonstigen Maßnahme erreicht werden soll; Funktion, der etwas dienen soll",
+        "d": "Sinn oder Beweggrund, den eine Handlung, ein Vorgang oder eine andere Maßnahme haben soll; Ziel, das mit einer Handlung, mit einem Vorgang oder mit einer sonstigen Maßnahme erreicht werden soll; Funktion, der etwas dienen soll",
         "ar": "الغرض",
         "cat": "Kapitel 4",
         "ex": "Sinn und Zweck des Ganzen ist …",
-        "img": "assets/vocab-scenes/k4/14.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/121.jpg"
       },
       {
         "w": "darüber",
-        "d": "im Raum oberhalb von etwas / über etwas hinweg, so dass es drunter landet",
+        "d": "im Raum oberhalb von etwas; über etwas hinweg, so dass es drunter landet",
         "ar": "عنه",
         "cat": "Kapitel 4",
         "ex": "Befindet man sich im oberstes Geschoss eines Bauwerkes, so ist darüber dann das Dach.",
-        "img": "assets/vocab-scenes/k7/98.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/122-v.jpg"
       },
       {
         "w": "das Pronominaladverb",
@@ -4831,19 +4831,19 @@ window.B1_BOOK = [
       },
       {
         "w": "befriedigend",
-        "d": "so, dass es die Beteiligten zufrieden macht / in Österreich: die Notenstufe 3, offiziell großgeschrieben: Befriedigend",
+        "d": "so, dass es die Beteiligten zufrieden macht; in Österreich: die Notenstufe 3, offiziell großgeschrieben: Befriedigend",
         "ar": "مرضية",
         "cat": "Kapitel 4",
         "ex": "Ob Sie nun Reichtum, Macht, einen befriedigenderen Beruf, ein harmonisches Familienleben anstreben – was es auch sei: mit Hilfe unserer Formel werden Sie es erreichen!",
-        "img": "assets/vocab-scenes/k12-added/44.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/124-v.jpg"
       },
       {
         "w": "beziehen",
-        "d": "irgendwo einziehen / etwas beginnen",
+        "d": "irgendwo einziehen; etwas beginnen",
         "ar": "تتعلق",
         "cat": "Kapitel 4",
         "ex": "Wann können wir endlich das neue Haus beziehen?",
-        "img": "assets/vocab-scenes/k7/61.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/125-v.jpg"
       },
       {
         "w": "danach",
@@ -4859,7 +4859,7 @@ window.B1_BOOK = [
         "ar": "العامل / الموظف",
         "cat": "Kapitel 4",
         "ex": "Der Aufschwung ist da – doch die Masse der Arbeitnehmer hat davon wenig.",
-        "img": "assets/vocab-scenes/k10-added/48.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/127.jpg"
       },
       {
         "w": "die Arbeitnehmerin",
@@ -4867,15 +4867,15 @@ window.B1_BOOK = [
         "ar": "العاملة / الموظفة",
         "cat": "Kapitel 4",
         "ex": "Erika ist mit 87 Jahren unsere älteste Arbeitnehmerin.",
-        "img": "assets/vocab-scenes/k9-added/22.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/128.jpg"
       },
       {
         "w": "der Eindruck",
-        "d": "verbleibende Erinnerung, Vorstellung, die jemand oder etwas hinterlassen hat / sichtbare Spur",
+        "d": "verbleibende Erinnerung, Vorstellung, die jemand oder etwas hinterlassen hat; sichtbare Spur",
         "ar": "الانطباع",
         "cat": "Kapitel 4",
         "ex": "den Eindruck machen",
-        "img": "assets/vocab-scenes/k8/87.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/129.jpg"
       },
       {
         "w": "kleinmachen",
@@ -4883,7 +4883,7 @@ window.B1_BOOK = [
         "ar": "جعل صغيرة",
         "cat": "Kapitel 4",
         "ex": "Man sollte andere Menschen nicht kleinmachen.",
-        "img": "assets/vocab-scenes/k12-added/80.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/130-v.jpg"
       },
       {
         "w": "überzeugen",
@@ -4891,7 +4891,7 @@ window.B1_BOOK = [
         "ar": "إقناع",
         "cat": "Kapitel 4",
         "ex": "Seine Argumente haben mich überzeugt.",
-        "img": "assets/vocab-scenes/k4/31.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/131-v.jpg"
       },
       {
         "w": "qualifiziert",
@@ -4906,8 +4906,8 @@ window.B1_BOOK = [
         "d": "Die Suche nach einer Arbeitsstelle.",
         "ar": "البحث عن وظيفة",
         "cat": "Kapitel 4",
-        "ex": "„Es fällt mir schwer, das nötige Interesse für irgendjemandes Jobsuche aufzubringen.“",
-        "img": "assets/vocab-scenes/k11/19.webp"
+        "ex": "Es fällt mir schwer, das nötige Interesse für irgendjemandes Jobsuche aufzubringen.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/133-v.jpg"
       },
       {
         "w": "die Absprache",
@@ -4915,11 +4915,11 @@ window.B1_BOOK = [
         "ar": "الاتفاقية",
         "cat": "Kapitel 4",
         "ex": "eine Absprache treffen",
-        "img": "assets/vocab-scenes/k8/68.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/134.jpg"
       },
       {
         "w": "gesucht",
-        "d": "abwertend: zwanghaft zustande gekommen, unnatürlich / im Sinne von suchen: etwas, das gebraucht wird; etwas, das zu finden versucht wird",
+        "d": "abwertend: zwanghaft zustande gekommen, unnatürlich; im Sinne von suchen: etwas, das gebraucht wird; etwas, das zu finden versucht wird",
         "ar": "مطلوب",
         "cat": "Kapitel 4",
         "ex": "er/sie hat/hatte gesucht",
@@ -4931,7 +4931,7 @@ window.B1_BOOK = [
         "ar": "الإعلان",
         "cat": "Kapitel 4",
         "ex": "Jemand der ein Inserat aufgibt, ist ein Inserent.",
-        "img": "assets/vocab-scenes/k8/56.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/136.jpg"
       },
       {
         "w": "kommunikativ",
@@ -4946,7 +4946,7 @@ window.B1_BOOK = [
         "d": "(männliche☆) Person, die während der Nachtstunden (beispielsweise an einer Rezeption in einem Hotel) Gäste in Empfang nimmt (= als Portier tätig ist)",
         "ar": "العتال الليلي",
         "cat": "Kapitel 4",
-        "ex": "\"Und das Wetter in Nordvietnam war wieder gut genug für Bombenangriffe, und das Pentagon läßt durchblicken, daß die ja ihre eigenen Maschinen in China verstecken, und gestern morgen überfielen drei Männer das Schuyler Arms Hotel in der 98. Straße, schossen den Nachtportier an und entkamen mit 68 Dollar.\"",
+        "ex": "Und das Wetter in Nordvietnam war wieder gut genug für Bombenangriffe, und das Pentagon läßt durchblicken, daß die ja ihre eigenen Maschinen in China verstecken, und gestern morgen überfielen drei Männer das Schuyler Arms Hotel in der 98. Straße, schossen den Nachtportier an und entkamen mit 68 Dollar.",
         "img": "assets/vocab-scenes/k7/26.webp"
       },
       {
@@ -4955,7 +4955,7 @@ window.B1_BOOK = [
         "ar": "الأجر بالساعة",
         "cat": "Kapitel 4",
         "ex": "Bei einem Stundenlohn von sieben Euro kann man keine großen Sprünge machen.",
-        "img": "assets/vocab-scenes/k8/32.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/139.jpg"
       },
       {
         "w": "der Teilzeitjob",
@@ -4971,15 +4971,15 @@ window.B1_BOOK = [
         "ar": "المتعة",
         "cat": "Kapitel 4",
         "ex": "Im Schwimmbad hatte er ein großes Vergnügen.",
-        "img": "assets/vocab-scenes/k12-added/18.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/141.jpg"
       },
       {
         "w": "die Zeiteinteilung",
         "d": "das Einteilen von Zeit",
         "ar": "التوقيت",
         "cat": "Kapitel 4",
-        "ex": "\"Doch auch wenn unsere vertrauten Zeiteinteilungen völlig willkürlich sind, gibt es ein allgegenwärtiges Prinzip in der Natur, das man Entropie nennt, die, wie Eddington nachgewiesen hat, die Zeit mit einer Art von empirischem Vektor versieht.\"",
-        "img": "assets/vocab-scenes/k11/02.webp"
+        "ex": "Doch auch wenn unsere vertrauten Zeiteinteilungen völlig willkürlich sind, gibt es ein allgegenwärtiges Prinzip in der Natur, das man Entropie nennt, die, wie Eddington nachgewiesen hat, die Zeit mit einer Art von empirischem Vektor versieht.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/142.jpg"
       },
       {
         "w": "der Bereich",
@@ -4987,7 +4987,7 @@ window.B1_BOOK = [
         "ar": "المنطقة",
         "cat": "Kapitel 4",
         "ex": "Im Bereich der Gärten wird keinerlei Bautätigkeit geduldet.",
-        "img": "assets/vocab-scenes/k12-added/69.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/143.jpg"
       },
       {
         "w": "die Bewerbungsunterlagen",
@@ -4995,7 +4995,7 @@ window.B1_BOOK = [
         "ar": "وثائق الطلب",
         "cat": "Kapitel 4",
         "ex": "Bitte schicken Sie die vollständigen Bewerbungsunterlagen.",
-        "img": "assets/vocab-scenes/k6/04.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/144.jpg"
       },
       {
         "w": "der Interessent",
@@ -5003,7 +5003,7 @@ window.B1_BOOK = [
         "ar": "الطرف المهتم",
         "cat": "Kapitel 4",
         "ex": "Er untersucht in einer Studie die Zukunft des Car-Sharings in Deutschland bis 2020 und hat festgestellt, dass sich die Zahl der Nutzer von der Zahl der Interessenten um Größenordnungen unterscheidet.",
-        "img": "assets/vocab-scenes/k11-added/18.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/145.jpg"
       },
       {
         "w": "die Interessentin",
@@ -5011,7 +5011,7 @@ window.B1_BOOK = [
         "ar": "الطرف المهتم",
         "cat": "Kapitel 4",
         "ex": "Es gibt sicher eine Menge Interessentinnen für Car-Sharing.",
-        "img": "assets/vocab-scenes/k12-added/87.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/146.jpg"
       },
       {
         "w": "vorbeilkommen",
@@ -5027,15 +5027,15 @@ window.B1_BOOK = [
         "ar": "المقابلة",
         "cat": "Kapitel 4",
         "ex": "Am Montag habe ich ein Vorstellungsgespräch bei einer ansässigen Firma.",
-        "img": "assets/vocab-scenes/k5/10.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/148.jpg"
       },
       {
         "w": "absolut",
-        "d": "durch nichts bedingt, von uneingeschränkter Gültigkeit und/oder Verbindlichkeit / Politik: unumschränkte Herrschaft betreffend oder habend",
+        "d": "durch nichts bedingt, von uneingeschränkter Gültigkeit und; oder Verbindlichkeit; Politik: unumschränkte Herrschaft betreffend oder habend",
         "ar": "على الاطلاق",
         "cat": "Kapitel 4",
         "ex": "Ich habe absolut/überhaupt keinen Grund, dorthin zurückzukehren.",
-        "img": "assets/vocab-scenes/k7/99.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/149-v.jpg"
       },
       {
         "w": "aggressiv",
@@ -5043,27 +5043,27 @@ window.B1_BOOK = [
         "ar": "عدوانية",
         "cat": "Kapitel 4",
         "ex": "Die Situation ist heute aggressiv.",
-        "img": "assets/vocab-scenes/k7/126.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/150-v.jpg"
       },
       {
         "w": "die Anfahrt",
-        "d": "Strecke/Weg zu einem Ziel / Bewegung mit einem Fahrzeug zu einem Ziel",
+        "d": "Strecke; Weg zu einem Ziel; Bewegung mit einem Fahrzeug zu einem Ziel",
         "ar": "النهج",
         "cat": "Kapitel 4",
         "ex": "zu einem Ort eine lange Anfahrt haben",
-        "img": "assets/vocab-scenes/k7/43.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/151.jpg"
       },
       {
         "w": "die Aufmerksamkeit",
-        "d": "kein Plural: gezielte Wahrnehmung der Umwelt / kleines Geschenk, das jemandem bei einem Zusammentreffen übergeben wird",
+        "d": "kein Plural: gezielte Wahrnehmung der Umwelt; kleines Geschenk, das jemandem bei einem Zusammentreffen übergeben wird",
         "ar": "الاهتمام",
         "cat": "Kapitel 4",
         "ex": "die mediale Aufmerksamkeit",
-        "img": "assets/vocab-scenes/k8/106.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/152.jpg"
       },
       {
         "w": "die Aufregung",
-        "d": "Gefühl der Anspannung und Unruhe / verwirrendes, chaotisches Durcheinander",
+        "d": "Gefühl der Anspannung und Unruhe; verwirrendes, chaotisches Durcheinander",
         "ar": "الإثارة",
         "cat": "Kapitel 4",
         "ex": "in Aufregung versetzen",
@@ -5071,27 +5071,27 @@ window.B1_BOOK = [
       },
       {
         "w": "der Auftritt",
-        "d": "bestimmte Konstellation des Personals auf der Bühne; bei Personen- oder Szenewechsel beginnt ein neuer Auftritt / das Erscheinen eines Darstellers auf der Bühne",
+        "d": "bestimmte Konstellation des Personals auf der Bühne; bei Personen- oder Szenewechsel beginnt ein neuer Auftritt; das Erscheinen eines Darstellers auf der Bühne",
         "ar": "المظهر",
         "cat": "Kapitel 4",
         "ex": "Es war sein erster öffentlicher Auftritt seit der Wahl.",
-        "img": "assets/vocab-scenes/k12/13.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/154.jpg"
       },
       {
         "w": "die Beurteilung",
-        "d": "das Beurteilen, die Einschätzung / beurteilendes Schriftstück; Wertung",
+        "d": "das Beurteilen, die Einschätzung; beurteilendes Schriftstück; Wertung",
         "ar": "التقييم",
         "cat": "Kapitel 4",
         "ex": "Ich lag möglicherweise falsch mit meiner Beurteilung.",
-        "img": "assets/vocab-scenes/k12/07.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/155.jpg"
       },
       {
         "w": "der Bewerber",
-        "d": "Person, die einen Antrag stellt, um etwas zu bekommen / Mann, der um die Hand einer Frau anhält",
+        "d": "Person, die einen Antrag stellt, um etwas zu bekommen; Mann, der um die Hand einer Frau anhält",
         "ar": "مقدم الطلب",
         "cat": "Kapitel 4",
         "ex": "Wer nur Bewerber ist, weiß noch nicht, ob seine Bewerbung Erfolg haben wird.",
-        "img": "assets/vocab-scenes/k8/57.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/156.jpg"
       },
       {
         "w": "die Bewerberin",
@@ -5107,15 +5107,15 @@ window.B1_BOOK = [
         "ar": "الصناعة",
         "cat": "Kapitel 4",
         "ex": "Nicht in allen Branchen gehen die Geschäfte derzeit gut.",
-        "img": "assets/vocab-scenes/k4/02.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/158.jpg"
       },
       {
         "w": "die Einstellung",
-        "d": "Art und Weise, wie man etwas beurteilt / Möglichkeit, das Verhalten eines Geräts, Programms zu ändern, um etwas zu regeln",
+        "d": "Art und Weise, wie man etwas beurteilt; Möglichkeit, das Verhalten eines Geräts, Programms zu ändern, um etwas zu regeln",
         "ar": "الإعداد",
         "cat": "Kapitel 4",
         "ex": "Gesetze, die die Einstellung von Frauen fördern",
-        "img": "assets/vocab-scenes/k7/12.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/159.jpg"
       },
       {
         "w": "entspannt",
@@ -5123,7 +5123,7 @@ window.B1_BOOK = [
         "ar": "استرخاء",
         "cat": "Kapitel 4",
         "ex": "Trotz des Problems blieb er entspannt.",
-        "img": "assets/vocab-scenes/k4/20.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/160-v.jpg"
       },
       {
         "w": "die Fähigkeit",
@@ -5131,11 +5131,11 @@ window.B1_BOOK = [
         "ar": "القدرة",
         "cat": "Kapitel 4",
         "ex": "Fähigkeit zum Gegenschlag",
-        "img": "assets/vocab-scenes/k8/71.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/161.jpg"
       },
       {
         "w": "der Faktor",
-        "d": "Operand der Multiplikation, Teil eines Produktes / mitwirkender Bestandteil",
+        "d": "Operand der Multiplikation, Teil eines Produktes; mitwirkender Bestandteil",
         "ar": "العامل",
         "cat": "Kapitel 4",
         "ex": "einer der schwierigsten Faktoren",
@@ -5143,7 +5143,7 @@ window.B1_BOOK = [
       },
       {
         "w": "gesamt",
-        "d": "alle zugehörigen Dinge und/oder Personen zusammengenommen; ganz, vollständig, vereinigt",
+        "d": "alle zugehörigen Dinge und; oder Personen zusammengenommen; ganz, vollständig, vereinigt",
         "ar": "المجموع",
         "cat": "Kapitel 4",
         "ex": "die gesamte Familie",
@@ -5171,31 +5171,31 @@ window.B1_BOOK = [
         "ar": "الموقف",
         "cat": "Kapitel 4",
         "ex": "Der Mensch hat eine aufrechte Körperhaltung.",
-        "img": "assets/vocab-scenes/k9/01.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/166.jpg"
       },
       {
         "w": "die Körpersprache",
         "d": "Art und Weise, mit dem eigenen Körper das Gesprochene zu verdeutlichen; die Art und Weise, mit dem eigenen Körper (seiner Haltung oder den Bewegungen) das Gesprochene zu verdeutlichen oder etwas Unausgesprochenes darzulegen",
         "ar": "لغة الجسد",
         "cat": "Kapitel 4",
-        "ex": "„Im engen Sinne ist nonverbale Kommunikation Körpersprache […]“",
-        "img": "assets/vocab-scenes/k11-added/59.webp"
+        "ex": "Im engen Sinne ist nonverbale Kommunikation Körpersprache […]",
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/167.jpg"
       },
       {
         "w": "lauter",
-        "d": "einer ehrlichen, redlichen, aufrichtigen Verhaltensweise entsprechend / aus reinem, klarem, unvermischtem Material",
+        "d": "einer ehrlichen, redlichen, aufrichtigen Verhaltensweise entsprechend; aus reinem, klarem, unvermischtem Material",
         "ar": "بصوت أعلى",
         "cat": "Kapitel 4",
         "ex": "lauter nette Leute",
-        "img": "assets/vocab-scenes/k10/07.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/168-v.jpg"
       },
       {
         "w": "locker",
-        "d": "durchlässig, nicht dicht / mangelhaft befestigt, wackelig",
+        "d": "durchlässig, nicht dicht; mangelhaft befestigt, wackelig",
         "ar": "فضفاض",
         "cat": "Kapitel 4",
         "ex": "Mein Chef sieht die meisten Dinge ziemlich locker.",
-        "img": "assets/vocab-scenes/k9-added/10.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/169-v.jpg"
       },
       {
         "w": "menschlich",
@@ -5207,7 +5207,7 @@ window.B1_BOOK = [
       },
       {
         "w": "möglichst",
-        "d": "so gut, so schnell, so groß und Ähnliches sich etwas einrichten/machen lässt",
+        "d": "so gut, so schnell, so groß und Ähnliches sich etwas einrichten; machen lässt",
         "ar": "ممكن",
         "cat": "Kapitel 4",
         "ex": "Sie sollten diese Übungen möglichst jeden Tag machen.",
@@ -5219,7 +5219,7 @@ window.B1_BOOK = [
         "ar": "مفتوح",
         "cat": "Kapitel 4",
         "ex": "Durch ein offenes Fenster konnten die Diebe leicht in die Wohnung eindringen.",
-        "img": "assets/vocab-scenes/k7/10.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/172-v.jpg"
       },
       {
         "w": "optimistisch",
@@ -5227,7 +5227,7 @@ window.B1_BOOK = [
         "ar": "متفائل",
         "cat": "Kapitel 4",
         "ex": "Er bleibt auch in schwierigen Situationen optimistisch.",
-        "img": "assets/vocab-scenes/k10-added/23.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/173-v.jpg"
       },
       {
         "w": "das Outfit",
@@ -5235,15 +5235,15 @@ window.B1_BOOK = [
         "ar": "الزي",
         "cat": "Kapitel 4",
         "ex": "Das ist ein echt cooles Outfit!",
-        "img": "assets/vocab-scenes/k4/09.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/174.jpg"
       },
       {
         "w": "die Persönlichkeit",
-        "d": "die Gesamtheit der persönlichen Eigenschaften eines Menschen / ein Mensch mit in einem Bereich sehr stark ausgeprägten Persönlichkeitsmerkmalen",
+        "d": "die Gesamtheit der persönlichen Eigenschaften eines Menschen; ein Mensch mit in einem Bereich sehr stark ausgeprägten Persönlichkeitsmerkmalen",
         "ar": "الشخصية",
         "cat": "Kapitel 4",
         "ex": "Youtube-Persönlichkeit",
-        "img": "assets/vocab-scenes/k6/13.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k4/175.jpg"
       }
     ],
     "readings": [],
@@ -5283,7 +5283,7 @@ window.B1_BOOK = [
         "ar": "النفايات",
         "cat": "Kapitel 5",
         "ex": "Bitte trennen Sie den Abfall.",
-        "img": "assets/vocab-scenes/k9-added/09.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/001.jpg"
       },
       {
         "w": "der Autofahrer",
@@ -5291,7 +5291,7 @@ window.B1_BOOK = [
         "ar": "السائق",
         "cat": "Kapitel 5",
         "ex": "Autofahrer, der Fahrerflucht begeht",
-        "img": "assets/vocab-scenes/k10-added/02.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/002.jpg"
       },
       {
         "w": "die Autofahrerin",
@@ -5299,7 +5299,7 @@ window.B1_BOOK = [
         "ar": "السائق",
         "cat": "Kapitel 5",
         "ex": "Viele Autofahrerinnen halten nicht an Stoppschildern.",
-        "img": "assets/vocab-scenes/k1/36.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/003.jpg"
       },
       {
         "w": "Bio-",
@@ -5311,26 +5311,26 @@ window.B1_BOOK = [
       },
       {
         "w": "digital",
-        "d": "in fest vorgegebenen Stufen quantisiert einen Messwert darstellend oder verarbeitend, meist als Dual- oder Dezimalzahl / die Finger betreffend, mit dem Finger durchgeführt",
+        "d": "in fest vorgegebenen Stufen quantisiert einen Messwert darstellend oder verarbeitend, meist als Dual- oder Dezimalzahl; die Finger betreffend, mit dem Finger durchgeführt",
         "ar": "رقمي",
         "cat": "Kapitel 5",
         "ex": "Bei der digitalen Darstellung ergibt sich durch die Quantisierung ein Abtastfehler; die Dualzahlen können fehlerfrei übertragen, gespeichert oder rechnerisch verarbeitet werden.",
-        "img": "assets/vocab-scenes/k3/27.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/005-v.jpg"
       },
       {
         "w": "der Durchschnitt",
-        "d": "Summe der Eigenschaften verschiedener Dinge, geteilt durch deren Anzahl / ungefährer Erfahrungswert; Objekt oder Wesen mit „normalen“ Eigenschaften seiner Klasse",
+        "d": "Ein mittlerer Wert, der aus mehreren Werten berechnet wird.",
         "ar": "المتوسط",
         "cat": "Kapitel 5",
-        "ex": "im langjährigen Durchschnitt",
-        "img": "assets/vocab-scenes/k2/34.webp"
+        "ex": "Im Durchschnitt verbraucht jede Person weniger Wasser als früher.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/006.jpg"
       },
       {
         "w": "europäisch",
-        "d": "„europäisch“ beschreibt eine Eigenschaft oder einen Zustand.",
-        "ar": "الأوروبية",
+        "d": "Europa oder die Länder Europas betreffend.",
+        "ar": "أوروبي",
         "cat": "Kapitel 5",
-        "ex": "Die Situation ist heute europäisch.",
+        "ex": "Die Staaten suchen nach einer europäischen Lösung.",
         "img": "assets/vocab-scenes/k11-added/16.webp"
       },
       {
@@ -5339,23 +5339,23 @@ window.B1_BOOK = [
         "ar": "استهلاك اللحوم",
         "cat": "Kapitel 5",
         "ex": "Ihr wurde empfohlen, ihren Fleischkonsum, besonders den von »rotem Fleisch«, zu reduzieren.",
-        "img": "assets/vocab-scenes/k12-added/22.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/008.jpg"
       },
       {
         "w": "das Huhn",
-        "d": "Zoologie: das Haushuhn (wissenschaftlich: Gallus gallus gallus); das Haushuhn (wissenschaftlich:Gallus gallus gallus)",
-        "ar": "الدجاج",
+        "d": "Ein domestizierter Vogel, der Eier legt.",
+        "ar": "دجاجة / دجاج",
         "cat": "Kapitel 5",
-        "ex": "Wir züchten hier Hühner.",
-        "img": "assets/vocab-scenes/k1/11.webp"
+        "ex": "Das Huhn läuft frei über den Bauernhof.",
+        "img": "assets/vocab-scenes/b1.1/huhn.png"
       },
       {
         "w": "liegen",
         "d": "Sich an einem Ort befinden oder waagerecht sein.",
-        "ar": "كذبة",
+        "ar": "يقع / يكون مستلقيًا",
         "cat": "Kapitel 5",
         "ex": "Das Hotel liegt direkt am See.",
-        "img": "assets/vocab-scenes/k7/30.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/010-v.jpg"
       },
       {
         "w": "der Marktanteil",
@@ -5367,7 +5367,7 @@ window.B1_BOOK = [
       },
       {
         "w": "mitrechnen",
-        "d": "gemeinsam mit anderen oder auch parallel mit zum Beispiel einem Lehrer, eine Rechenaufgabe lösen / in seine Überlegungen/Berechnungen einbeziehen",
+        "d": "gemeinsam mit anderen oder auch parallel mit zum Beispiel einem Lehrer, eine Rechenaufgabe lösen; in seine Überlegungen; Berechnungen einbeziehen",
         "ar": "العد",
         "cat": "Kapitel 5",
         "ex": "Wenn ich jetzt laut mit dir mitrechne, komme ich auf fünf.",
@@ -5383,19 +5383,19 @@ window.B1_BOOK = [
       },
       {
         "w": "der Rekord",
-        "d": "anerkannte Bestleistung in einer bestimmten Disziplin zu einem bestimmten Zeitpunkt / Höchstleistung oder bester Wert auf einem anderen Gebiet",
-        "ar": "السجل",
+        "d": "Die beste bisher gemessene Leistung oder der höchste Wert.",
+        "ar": "رقم قياسي",
         "cat": "Kapitel 5",
-        "ex": "einen Rekord aufstellen",
-        "img": "assets/vocab-scenes/k5/14.webp"
+        "ex": "Die Sportlerin stellt einen neuen Rekord auf.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/014.jpg"
       },
       {
         "w": "das Rind",
-        "d": "in mehreren Arten vorkommender Paarhufer / der als Arbeits- oder Nutztier gehaltene Wiederkäuer",
-        "ar": "لحم البقر",
+        "d": "Ein großes Nutztier aus der Familie der Rinder.",
+        "ar": "بقرة / ماشية",
         "cat": "Kapitel 5",
-        "ex": "gutmütiges Rind, mit dem die Herde angelockt und geführt wird",
-        "img": "assets/vocab-scenes/k10-added/11.webp"
+        "ex": "Das Rind frisst Gras auf der Weide.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/015.jpg"
       },
       {
         "w": "das Trinkwasser",
@@ -5403,7 +5403,7 @@ window.B1_BOOK = [
         "ar": "مياه الشرب",
         "cat": "Kapitel 5",
         "ex": "Trinkwasser ist die wichtigste Ressource der Erde. Es ist eins der drei Lebensmittel, neben Luft und Nahrung.",
-        "img": "assets/vocab-scenes/k8/131.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/016.jpg"
       },
       {
         "w": "verbrauchen",
@@ -5411,7 +5411,7 @@ window.B1_BOOK = [
         "ar": "تستهلك",
         "cat": "Kapitel 5",
         "ex": "Wir verbrauchen im Winter mehr Strom.",
-        "img": "assets/vocab-scenes/k5/24.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/017-v.jpg"
       },
       {
         "w": "der Verpackungsmüll",
@@ -5419,15 +5419,15 @@ window.B1_BOOK = [
         "ar": "نفايات التغليف",
         "cat": "Kapitel 5",
         "ex": "Plastikfolie um Gurken ist überflüssiger Verpackungsmüll.",
-        "img": "assets/vocab-scenes/k11-added/41.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/018.jpg"
       },
       {
         "w": "das Bioprodukt",
         "d": "Ein Produkt aus ökologischer Landwirtschaft.",
         "ar": "المنتج العضوي",
         "cat": "Kapitel 5",
-        "ex": "„Bioprodukte können zwar für uns Menschen gesund sein, aber trotzdem unter umweltschädigenden und unmenschlichen Bedingungen hergestellt worden sein.“",
-        "img": "assets/vocab-scenes/k10-added/111.webp"
+        "ex": "Bioprodukte können zwar für uns Menschen gesund sein, aber trotzdem unter umweltschädigenden und unmenschlichen Bedingungen hergestellt worden sein.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/019.jpg"
       },
       {
         "w": "das Recycling",
@@ -5435,7 +5435,7 @@ window.B1_BOOK = [
         "ar": "إعادة التدوير",
         "cat": "Kapitel 5",
         "ex": "Das Recycling dient der Müllreduzierung und zugleich der Schonung von Ressourcen.",
-        "img": "assets/vocab-scenes/k5/13.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/020.jpg"
       },
       {
         "w": "die Region",
@@ -5443,7 +5443,7 @@ window.B1_BOOK = [
         "ar": "المنطقة",
         "cat": "Kapitel 5",
         "ex": "Die Region um den Bodensee lebt vom internationalen Austausch.",
-        "img": "assets/vocab-scenes/k10/14.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/021.jpg"
       },
       {
         "w": "regional",
@@ -5451,7 +5451,7 @@ window.B1_BOOK = [
         "ar": "إقليمي",
         "cat": "Kapitel 5",
         "ex": "regionale wirtschaftliche Integration",
-        "img": "assets/vocab-scenes/k7/49.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/022-v.jpg"
       },
       {
         "w": "schützen",
@@ -5459,23 +5459,23 @@ window.B1_BOOK = [
         "ar": "حماية",
         "cat": "Kapitel 5",
         "ex": "Bäume schützen das Klima.",
-        "img": "assets/vocab-scenes/k11-added/42.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/023-v.jpg"
       },
       {
         "w": "der Transportweg",
         "d": "Der Weg, über den Waren transportiert werden.",
         "ar": "طريق النقل",
         "cat": "Kapitel 5",
-        "ex": "„Je länger der Transportweg eines Produktes, desto größer ist der Schadstoffausstoß durch den Transport.“",
-        "img": "assets/vocab-scenes/k9/33.webp"
+        "ex": "Je länger der Transportweg eines Produktes, desto größer ist der Schadstoffausstoß durch den Transport.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/024.jpg"
       },
       {
         "w": "extrem",
-        "d": "in irgend einem Maße nicht zu übertreffen; am weitesten von der Mitte oder dem Durchschnitt entfernt / außerordentlich, besonders; übermäßig",
+        "d": "in irgend einem Maße nicht zu übertreffen; am weitesten von der Mitte oder dem Durchschnitt entfernt; außerordentlich, besonders; übermäßig",
         "ar": "المدقع",
         "cat": "Kapitel 5",
         "ex": "ins andere Extrem verfallen",
-        "img": "assets/vocab-scenes/k9-added/42.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/025-v.jpg"
       },
       {
         "w": "die Herkunft",
@@ -5491,23 +5491,23 @@ window.B1_BOOK = [
         "ar": "العلامة التجارية",
         "cat": "Kapitel 5",
         "ex": "Rinder werden mit Ohrenmarken versehen.",
-        "img": "assets/vocab-scenes/k7/127.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/027.jpg"
       },
       {
         "w": "das Abgas",
         "d": "gasförmiges Produkt einer Reaktion, meist aus einer Verbrennung, das im Regelfall nicht mehr nutzbar ist",
         "ar": "غاز العادم",
         "cat": "Kapitel 5",
-        "ex": "\"Während in den wohlhabenden Industrieländern das Rauchen zunehmend geächtet wird, sitzen Millionen Menschen in Asien und Afrika über offenem Feuer und inhalieren die Abgase von Holz, Holzkohle und Kerosin.\"",
+        "ex": "Während in den wohlhabenden Industrieländern das Rauchen zunehmend geächtet wird, sitzen Millionen Menschen in Asien und Afrika über offenem Feuer und inhalieren die Abgase von Holz, Holzkohle und Kerosin.",
         "img": "assets/vocab-scenes/k10-added/43.webp"
       },
       {
         "w": "aufhalten",
-        "d": "jemanden/etwas nicht weitergehen/weiterfortschreiten lassen; etwas im offenen Zustand halten",
+        "d": "jemanden; etwas nicht weitergehen; weiterfortschreiten lassen; etwas im offenen Zustand halten",
         "ar": "توقف",
         "cat": "Kapitel 5",
         "ex": "Das Einsatzkommando konnte gerade noch rechtzeitig aufgehalten werden.",
-        "img": "assets/vocab-scenes/k9-added/51.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/029-v.jpg"
       },
       {
         "w": "bekämpfen",
@@ -5515,7 +5515,7 @@ window.B1_BOOK = [
         "ar": "قتال",
         "cat": "Kapitel 5",
         "ex": "Wir müssen die Umweltverschmutzung bekämpfen.",
-        "img": "assets/vocab-scenes/k7/13.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/030-v.jpg"
       },
       {
         "w": "beobachten",
@@ -5523,7 +5523,7 @@ window.B1_BOOK = [
         "ar": "مراقبة",
         "cat": "Kapitel 5",
         "ex": "Die Wissenschaftler beobachten das Wetter.",
-        "img": "assets/vocab-scenes/k11-added/21.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/031-v.jpg"
       },
       {
         "w": "durchsetzen",
@@ -5531,15 +5531,15 @@ window.B1_BOOK = [
         "ar": "فرض",
         "cat": "Kapitel 5",
         "ex": "Er setzte mal wieder seinen Willen durch.",
-        "img": "assets/vocab-scenes/k5/25.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/032-v.jpg"
       },
       {
         "w": "durchstreichen",
-        "d": "mit einem Strich (eines Schreibgeräts) für nicht mehr gültig erklären / durch ein Sieb passieren",
+        "d": "mit einem Strich (eines Schreibgeräts) für nicht mehr gültig erklären; durch ein Sieb passieren",
         "ar": "شطب",
         "cat": "Kapitel 5",
         "ex": "Ich streiche jetzt die Namen derjenigen durch, die abgesagt haben.",
-        "img": "assets/vocab-scenes/k8/04.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/033-v.jpg"
       },
       {
         "w": "die Erde",
@@ -5547,7 +5547,7 @@ window.B1_BOOK = [
         "ar": "الأرض",
         "cat": "Kapitel 5",
         "ex": "Er steht mit beiden Füßen auf der Erde.",
-        "img": "assets/vocab-scenes/k9/05.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/034.jpg"
       },
       {
         "w": "erforschen",
@@ -5555,7 +5555,7 @@ window.B1_BOOK = [
         "ar": "استكشاف",
         "cat": "Kapitel 5",
         "ex": "Forscher erforschen den Klimawandel.",
-        "img": "assets/vocab-scenes/k5/26.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/035-v.jpg"
       },
       {
         "w": "ergreifen",
@@ -5563,7 +5563,7 @@ window.B1_BOOK = [
         "ar": "اغتنام",
         "cat": "Kapitel 5",
         "ex": "Plötzlich ergreift er meinen Arm.",
-        "img": "assets/vocab-scenes/k11-added/44.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/036-v.jpg"
       },
       {
         "w": "die Ernte",
@@ -5571,15 +5571,15 @@ window.B1_BOOK = [
         "ar": "الحصاد",
         "cat": "Kapitel 5",
         "ex": "Die Ernte ist noch im Gange.",
-        "img": "assets/vocab-scenes/k11-added/51.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/037.jpg"
       },
       {
         "w": "ernten",
-        "d": "Nutzpflanzen von den Feldern einholen; etwas bekommen/erhalten",
+        "d": "Nutzpflanzen von den Feldern einholen; etwas bekommen; erhalten",
         "ar": "الحصاد",
         "cat": "Kapitel 5",
         "ex": "Im Sommer und Herbst wird geerntet.",
-        "img": "assets/vocab-scenes/k2/15.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/038-v.jpg"
       },
       {
         "w": "fördern",
@@ -5587,7 +5587,7 @@ window.B1_BOOK = [
         "ar": "ترقية",
         "cat": "Kapitel 5",
         "ex": "Die Stadt fördert das Recycling.",
-        "img": "assets/vocab-scenes/k10-added/70.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/039-v.jpg"
       },
       {
         "w": "der Fortschritt",
@@ -5595,7 +5595,7 @@ window.B1_BOOK = [
         "ar": "التقدم",
         "cat": "Kapitel 5",
         "ex": "Die Universität gilt oft als Zentrum des technischen Fortschritts.",
-        "img": "assets/vocab-scenes/k10/09.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/040.jpg"
       },
       {
         "w": "die Klimaerwärmung",
@@ -5603,7 +5603,7 @@ window.B1_BOOK = [
         "ar": "الاحتباس الحراري",
         "cat": "Kapitel 5",
         "ex": "Die weltweite Klimaerwärmung wird von vielen als eine der größten Gefahren des 21. Jahrhunderts wahrgenommen.",
-        "img": "assets/vocab-scenes/k1/27.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/041.jpg"
       },
       {
         "w": "der Klimawandel",
@@ -5611,7 +5611,7 @@ window.B1_BOOK = [
         "ar": "تغير المناخ",
         "cat": "Kapitel 5",
         "ex": "Allgemein bedeutet der Klimawandel die Veränderungen des Erdklimas.",
-        "img": "assets/vocab-scenes/k1/34.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/042.jpg"
       },
       {
         "w": "die Maßnahme",
@@ -5619,7 +5619,7 @@ window.B1_BOOK = [
         "ar": "إجراء / تدبير",
         "cat": "Kapitel 5",
         "ex": "alte Maßnahmen neu verpackt",
-        "img": "assets/vocab-scenes/k8/88.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/043.jpg"
       },
       {
         "w": "messen",
@@ -5635,7 +5635,7 @@ window.B1_BOOK = [
         "ar": "بيئية",
         "cat": "Kapitel 5",
         "ex": "ökologisch inertes Gebiet",
-        "img": "assets/vocab-scenes/k10/22.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/045-v.jpg"
       },
       {
         "w": "die Ressource",
@@ -5643,7 +5643,7 @@ window.B1_BOOK = [
         "ar": "المورد",
         "cat": "Kapitel 5",
         "ex": "Die Ressourcen für die Ölgewinnung sind begrenzt.",
-        "img": "assets/vocab-scenes/k10-added/76.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/046.jpg"
       },
       {
         "w": "schädlich",
@@ -5655,11 +5655,11 @@ window.B1_BOOK = [
       },
       {
         "w": "stoppen",
-        "d": "zum Stehen bringen oder zum Stehen gebracht werden / aufhören etwas zu tun oder dazu gebracht werden, mit etwas aufzuhören",
+        "d": "zum Stehen bringen oder zum Stehen gebracht werden; aufhören etwas zu tun oder dazu gebracht werden, mit etwas aufzuhören",
         "ar": "توقف",
         "cat": "Kapitel 5",
         "ex": "die Ausbreitung der Krankheit eindämmen/stoppen",
-        "img": "assets/vocab-scenes/k11-added/70.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/048-v.jpg"
       },
       {
         "w": "der Umweltschutz",
@@ -5667,7 +5667,7 @@ window.B1_BOOK = [
         "ar": "حماية البيئة",
         "cat": "Kapitel 5",
         "ex": "Da die hochentwickelten Nationen die meisten Schadstoffe erzeugen, tragen sie auch die Hauptverantwortung für den Umweltschutz.",
-        "img": "assets/vocab-scenes/k9-added/82.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/049.jpg"
       },
       {
         "w": "die Umweltverschmutzung",
@@ -5675,15 +5675,15 @@ window.B1_BOOK = [
         "ar": "التلوث البيئي",
         "cat": "Kapitel 5",
         "ex": "Wir müssen die Umweltverschmutzung in den Griff bekommen.",
-        "img": "assets/vocab-scenes/k10/12.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/050.jpg"
       },
       {
         "w": "unterstützen",
-        "d": "jemandem bei etwas helfen, entweder durch tatkräftige Hilfe oder auch durch einen finanziellen Beitrag / etwas gutheißen, dafür sein und es gut finden",
-        "ar": "الدعم",
+        "d": "Jemandem helfen oder eine Sache fördern.",
+        "ar": "يدعم / يساعد",
         "cat": "Kapitel 5",
-        "ex": "jdn. moralisch unterstützen",
-        "img": "assets/vocab-scenes/k7/102.webp"
+        "ex": "Viele Menschen unterstützen das Umweltprojekt.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/051-v.jpg"
       },
       {
         "w": "die Ursache",
@@ -5695,11 +5695,11 @@ window.B1_BOOK = [
       },
       {
         "w": "vernichten",
-        "d": "zerstören, (bewusst und unmittelbar gewaltsam) nichtigmachen / übertragen: die Legitimation entziehen; das Ansehen beschädigen — Bedeutung [1] mit Bezug auf Ansehen oder Ähnliches.",
+        "d": "zerstören, (bewusst und unmittelbar gewaltsam) nichtigmachen; übertragen: die Legitimation entziehen; das Ansehen beschädigen — Bedeutung [1] mit Bezug auf Ansehen oder Ähnliches.",
         "ar": "يُدمّر / يُبيد",
         "cat": "Kapitel 5",
         "ex": "Er vernichtete alle Unterlagen, damit man ihm nichts nachweisen konnte.",
-        "img": "assets/vocab-scenes/k9/24.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/053-v.jpg"
       },
       {
         "w": "verringern",
@@ -5707,7 +5707,7 @@ window.B1_BOOK = [
         "ar": "تقليل",
         "cat": "Kapitel 5",
         "ex": "Wir wollen unseren Stromverbrauch verringern.",
-        "img": "assets/vocab-scenes/k8/30.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/054-v.jpg"
       },
       {
         "w": "verschwenden",
@@ -5715,7 +5715,7 @@ window.B1_BOOK = [
         "ar": "النفايات",
         "cat": "Kapitel 5",
         "ex": "Bitte verschwende kein Wasser.",
-        "img": "assets/vocab-scenes/k12-added/49.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/055-v.jpg"
       },
       {
         "w": "zerstören",
@@ -5723,7 +5723,7 @@ window.B1_BOOK = [
         "ar": "تدمير",
         "cat": "Kapitel 5",
         "ex": "Umweltschäden zerstören viele Lebensräume.",
-        "img": "assets/vocab-scenes/k7/134.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/056-v.jpg"
       },
       {
         "w": "der Begriff",
@@ -5731,11 +5731,11 @@ window.B1_BOOK = [
         "ar": "المصطلح",
         "cat": "Kapitel 5",
         "ex": "Denn eben, wo Begriffe fehlen, da stellt ein Wort zur rechten Zeit sich ein. (Goethe, Faust I.)",
-        "img": "assets/vocab-scenes/k8/157.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/057.jpg"
       },
       {
         "w": "berechnen",
-        "d": "eine mathematische Operation ausführen, etwas ausrechnen / für etwas eine Bezahlung fordern, etwas in Rechnung stellen",
+        "d": "eine mathematische Operation ausführen, etwas ausrechnen; für etwas eine Bezahlung fordern, etwas in Rechnung stellen",
         "ar": "احسب",
         "cat": "Kapitel 5",
         "ex": "Ich muss mal berechnen, wie viel Geld uns noch zur Verfügung steht.",
@@ -5743,11 +5743,11 @@ window.B1_BOOK = [
       },
       {
         "w": "der Fußabdruck",
-        "d": "auf dem Erdboden zurückgelassene Spur von einem Fuß / auf früheres Geschehen hinweisender Befund",
-        "ar": "البصمة",
+        "d": "Die Spur eines Fußes; übertragen auch die Umweltwirkung einer Person.",
+        "ar": "بصمة القدم / الأثر البيئي",
         "cat": "Kapitel 5",
-        "ex": "CO2-Fußabdruck",
-        "img": "assets/vocab-scenes/k5/02.webp"
+        "ex": "Wir möchten unseren ökologischen Fußabdruck verkleinern.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/059.jpg"
       },
       {
         "w": "das Öko-Duell",
@@ -5763,7 +5763,7 @@ window.B1_BOOK = [
         "ar": "غسالة الصحون",
         "cat": "Kapitel 5",
         "ex": "den Geschirrspüler einräumen / ausräumen",
-        "img": "assets/vocab-scenes/k11-added/11.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/061.jpg"
       },
       {
         "w": "die Glasflasche",
@@ -5771,15 +5771,15 @@ window.B1_BOOK = [
         "ar": "الزجاجة",
         "cat": "Kapitel 5",
         "ex": "Mineralwasser wird oft in Glasflaschen verkauft.",
-        "img": "assets/vocab-scenes/k9-added/05.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/062.jpg"
       },
       {
         "w": "die Plastikflasche",
         "d": "Eine Flasche aus Kunststoff.",
         "ar": "الزجاجة البلاستيكية",
         "cat": "Kapitel 5",
-        "ex": "„Die Plastikflasche mit dem Brennspiritus lag auf der Schreibtischkante.“",
-        "img": "assets/vocab-scenes/k11-added/49.webp"
+        "ex": "Die Plastikflasche mit dem Brennspiritus lag auf der Schreibtischkante.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/063.jpg"
       },
       {
         "w": "allerdings",
@@ -5787,7 +5787,7 @@ window.B1_BOOK = [
         "ar": "ومع ذلك",
         "cat": "Kapitel 5",
         "ex": "Die Wanderer wollten aufbrechen, sie hatten allerdings keinen Proviant.",
-        "img": "assets/vocab-scenes/k10-added/103.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/064-v.jpg"
       },
       {
         "w": "der Bedarf",
@@ -5795,7 +5795,7 @@ window.B1_BOOK = [
         "ar": "الحاجة",
         "cat": "Kapitel 5",
         "ex": "bei dringendem/akutem Bedarf",
-        "img": "assets/vocab-scenes/k5/15.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/065.jpg"
       },
       {
         "w": "die Duschzeit",
@@ -5811,31 +5811,31 @@ window.B1_BOOK = [
         "ar": "كفاءة",
         "cat": "Kapitel 5",
         "ex": "Mit dieser effizienten Methode erreichte er schnell das Ziel.",
-        "img": "assets/vocab-scenes/k7/14.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/067-v.jpg"
       },
       {
         "w": "die Einwegflasche",
         "d": "Eine Flasche, die nur einmal benutzt wird.",
         "ar": "الزجاجة القابل للتصرف",
         "cat": "Kapitel 5",
-        "ex": "„Allzu viele Verbraucher griffen gedankenlos nach der ökologisch schlechten Einwegflasche, im falschen Glauben, diese würde nach der Rückgabe wieder befüllt.“",
+        "ex": "Allzu viele Verbraucher griffen gedankenlos nach der ökologisch schlechten Einwegflasche, im falschen Glauben, diese würde nach der Rückgabe wieder befüllt.",
         "img": "assets/vocab-scenes/k5/16.webp"
       },
       {
         "w": "erwärmen",
-        "d": "warm machen; die Temperatur erhöhen / positive(re) Einstellung zu etwas gewinnen",
+        "d": "warm machen; die Temperatur erhöhen; positive(re) Einstellung zu etwas gewinnen",
         "ar": "الاحماء",
         "cat": "Kapitel 5",
         "ex": "Das Fleisch soll ganz langsam erwärmt werden.",
-        "img": "assets/vocab-scenes/k7/62.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/069-v.jpg"
       },
       {
         "w": "der Fall",
-        "d": "Abwärtsbewegung aufgrund der Schwerkraft; das Fallen / das Eintreten eines Zustandes",
+        "d": "Abwärtsbewegung aufgrund der Schwerkraft; das Fallen; das Eintreten eines Zustandes",
         "ar": "القضية",
         "cat": "Kapitel 5",
         "ex": "auf jeden Fall",
-        "img": "assets/vocab-scenes/k10-added/03.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/070.jpg"
       },
       {
         "w": "gedruckt",
@@ -5843,23 +5843,23 @@ window.B1_BOOK = [
         "ar": "مطبوعة",
         "cat": "Kapitel 5",
         "ex": "Der Artikel wurde gestern gedruckt.",
-        "img": "assets/vocab-scenes/k7/63.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/071-v.jpg"
       },
       {
         "w": "kommen",
-        "d": "örtlich: einen Ort erreichen, sich von einem Ort hierher begeben / zeitlich: beginnen, sich ereignen, sich ergeben",
-        "ar": "تعال",
+        "d": "Sich zu einem Ort bewegen und ihn erreichen.",
+        "ar": "يأتي",
         "cat": "Kapitel 5",
-        "ex": "er/sie ist/war gekommen",
-        "img": "assets/vocab-scenes/k7/35.webp"
+        "ex": "Der Techniker kommt morgen um zehn Uhr.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/072-v.jpg"
       },
       {
         "w": "korrekt",
-        "d": "so, dass etwas richtig und nicht falsch ist / so, dass etwas den (herrschenden, geltenden) Regeln entspricht oder auch: menschlich fair oder der Lage entsprechend angemessen ist",
+        "d": "so, dass etwas richtig und nicht falsch ist; so, dass etwas den (herrschenden, geltenden) Regeln entspricht oder auch: menschlich fair oder der Lage entsprechend angemessen ist",
         "ar": "صحيح",
         "cat": "Kapitel 5",
         "ex": "sich korrekt verhalten",
-        "img": "assets/vocab-scenes/k8/01.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/073-v.jpg"
       },
       {
         "w": "die Mehrwegflasche",
@@ -5867,7 +5867,7 @@ window.B1_BOOK = [
         "ar": "الزجاجة القابلة لإعادة الاستخدام",
         "cat": "Kapitel 5",
         "ex": "Nicht in den Müll werfen! Das ist eine Mehrwegflasche.",
-        "img": "assets/vocab-scenes/k9-added/29.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/074.jpg"
       },
       {
         "w": "die Ökobilanz",
@@ -5883,11 +5883,11 @@ window.B1_BOOK = [
         "ar": "النتيجة",
         "cat": "Kapitel 5",
         "ex": "Das Resultat ist gleich null.",
-        "img": "assets/vocab-scenes/k12-added/45.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/076.jpg"
       },
       {
         "w": "die Seite",
-        "d": "in einer bestimmten Richtung liegende Begrenzungsfläche / Grenzlinie eines Vieleckes",
+        "d": "in einer bestimmten Richtung liegende Begrenzungsfläche; Grenzlinie eines Vieleckes",
         "ar": "الصفحة",
         "cat": "Kapitel 5",
         "ex": "die positive Seite der Sache herausstreichen",
@@ -5899,7 +5899,7 @@ window.B1_BOOK = [
         "ar": "يجتمع",
         "cat": "Kapitel 5",
         "ex": "Sie am Wochenende zu treffen ist schwierig.",
-        "img": "assets/vocab-scenes/k11-added/19.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/078-v.jpg"
       },
       {
         "w": "unterscheiden",
@@ -5907,11 +5907,11 @@ window.B1_BOOK = [
         "ar": "تفرق",
         "cat": "Kapitel 5",
         "ex": "Man muss zwischen Meinung und Tatsache unterscheiden.",
-        "img": "assets/vocab-scenes/k5/27.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/079-v.jpg"
       },
       {
         "w": "die Wahl",
-        "d": "Entscheidung zwischen zwei oder mehreren Möglichkeiten / das Abstimmen darüber, wer bestimmte Ämter oder Gremien besetzen beziehungsweise ausüben darf, auch über einzelne Sachthemen",
+        "d": "Entscheidung zwischen zwei oder mehreren Möglichkeiten; das Abstimmen darüber, wer bestimmte Ämter oder Gremien besetzen beziehungsweise ausüben darf, auch über einzelne Sachthemen",
         "ar": "الاختيار",
         "cat": "Kapitel 5",
         "ex": "eine Wahl treffen",
@@ -5927,11 +5927,11 @@ window.B1_BOOK = [
       },
       {
         "w": "die Alternative",
-        "d": "eine von mehreren Möglichkeiten oder eine Ausweichsmöglichkeit (siehe auch ausweichen) / Wahlmöglichkeit zwischen zwei einander ausschließenden Optionen (ursprüngliche Bedeutung; nur so im zugrunde liegenden lateinischen Wort alter)",
+        "d": "eine von mehreren Möglichkeiten oder eine Ausweichsmöglichkeit (siehe auch ausweichen); Wahlmöglichkeit zwischen zwei einander ausschließenden Optionen (ursprüngliche Bedeutung; nur so im zugrunde liegenden lateinischen Wort alter)",
         "ar": "البديل",
         "cat": "Kapitel 5",
         "ex": "sich als Alternative anbieten (Sache)",
-        "img": "assets/vocab-scenes/k1/20.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/082.jpg"
       },
       {
         "w": "die Pfandflasche",
@@ -5939,7 +5939,7 @@ window.B1_BOOK = [
         "ar": "زجاجة الودائع",
         "cat": "Kapitel 5",
         "ex": "Nicht wegwerfen! Das ist eine Pfandflasche.",
-        "img": "assets/vocab-scenes/k9-added/03.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/083.jpg"
       },
       {
         "w": "die Energiekosten",
@@ -5947,7 +5947,7 @@ window.B1_BOOK = [
         "ar": "تكاليف الطاقة",
         "cat": "Kapitel 5",
         "ex": "Durch die neue Heizung sinken die Energiekosten.",
-        "img": "assets/vocab-scenes/k8/50.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/084.jpg"
       },
       {
         "w": "das Satzzeichen",
@@ -5955,15 +5955,15 @@ window.B1_BOOK = [
         "ar": "علامة الترقيم",
         "cat": "Kapitel 5",
         "ex": "Satzzeichen markieren das Ende von Sätzen oder erleichtern das Erkennen von Syntagmen im Satz.",
-        "img": "assets/vocab-scenes/k8/128.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/085.jpg"
       },
       {
         "w": "das Müllproblem",
         "d": "Das Problem großer Mengen von Müll.",
         "ar": "مشكلة القمامة",
         "cat": "Kapitel 5",
-        "ex": "„Während die Malediver für die Dollars immer ein geeignetes Plätzchen fanden, wuchs ihnen das Müllproblem über den Kopf.“",
-        "img": "assets/vocab-scenes/k12-added/86.webp"
+        "ex": "Während die Malediver für die Dollars immer ein geeignetes Plätzchen fanden, wuchs ihnen das Müllproblem über den Kopf.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/086.jpg"
       },
       {
         "w": "der Absatz",
@@ -5971,15 +5971,15 @@ window.B1_BOOK = [
         "ar": "الفقرة",
         "cat": "Kapitel 5",
         "ex": "Der ganze Satzteil wird zu einem neuen Absatz. (Vertragsänderung)",
-        "img": "assets/vocab-scenes/k5/18.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/087.jpg"
       },
       {
         "w": "allein",
-        "d": "für sich, getrennt, einsam, einzeln sein; nur; ohne Beistand, Zeugen, Anwesenheit von anderen Personen, ohne Hilfe sein / ausschließlich anderer Personen, Gegenstände, Umstände; nur",
+        "d": "für sich, getrennt, einsam, einzeln sein; nur; ohne Beistand, Zeugen, Anwesenheit von anderen Personen, ohne Hilfe sein; ausschließlich anderer Personen, Gegenstände, Umstände; nur",
         "ar": "وحده",
         "cat": "Kapitel 5",
         "ex": "für mich allein",
-        "img": "assets/vocab-scenes/k11/06.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/088-v.jpg"
       },
       {
         "w": "die Außenseite",
@@ -5987,7 +5987,7 @@ window.B1_BOOK = [
         "ar": "الخارج",
         "cat": "Kapitel 5",
         "ex": "an der Außenseite befindlich",
-        "img": "assets/vocab-scenes/k8/145.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/089.jpg"
       },
       {
         "w": "beschädigt",
@@ -5999,11 +5999,11 @@ window.B1_BOOK = [
       },
       {
         "w": "dagegen",
-        "d": "gegen eine Sache; so, dass man einer Sache abgeneigt ist / auf der anderen Seite, im Gegensatz dazu",
+        "d": "gegen eine Sache; so, dass man einer Sache abgeneigt ist; auf der anderen Seite, im Gegensatz dazu",
         "ar": "ضدها",
         "cat": "Kapitel 5",
         "ex": "Wenn Sie mich fragen, bin ich dagegen.",
-        "img": "assets/vocab-scenes/k7/106.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/091-v.jpg"
       },
       {
         "w": "damit",
@@ -6011,7 +6011,7 @@ window.B1_BOOK = [
         "ar": "مع ذلك",
         "cat": "Kapitel 5",
         "ex": "Ist Ihre Frage damit beantwortet?",
-        "img": "assets/vocab-scenes/k8/19.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/092-v.jpg"
       },
       {
         "w": "gibt",
@@ -6027,7 +6027,7 @@ window.B1_BOOK = [
         "ar": "تنشأ",
         "cat": "Kapitel 5",
         "ex": "Vor Millionen von Jahren entstand auf der Erde Leben.",
-        "img": "assets/vocab-scenes/k11-added/30.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/094-v.jpg"
       },
       {
         "w": "erhältlich",
@@ -6035,23 +6035,23 @@ window.B1_BOOK = [
         "ar": "متاح",
         "cat": "Kapitel 5",
         "ex": "Ist dieses Fachbuch noch erhältlich?",
-        "img": "assets/vocab-scenes/k8/69.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/095-v.jpg"
       },
       {
         "w": "die Gegend",
-        "d": "Landschaft/Region; meist nicht genau eingegrenzter Teil der Erdoberfläche; räumliches Areal; eine Zone des Körpers, etwa die Umgebung eines Organs oder eines Körperteils",
+        "d": "Landschaft; Region; meist nicht genau eingegrenzter Teil der Erdoberfläche; räumliches Areal; eine Zone des Körpers, etwa die Umgebung eines Organs oder eines Körperteils",
         "ar": "المنطقة",
         "cat": "Kapitel 5",
-        "ex": "\"Es ist eine Gegend, in die sich allenfalls Extremkletterer verirren und auch Hilfsorganisationen und Reporter nur unter Mühen vordringen.\"",
-        "img": "assets/vocab-scenes/k7/69.webp"
+        "ex": "Es ist eine Gegend, in die sich allenfalls Extremkletterer verirren und auch Hilfsorganisationen und Reporter nur unter Mühen vordringen.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/096.jpg"
       },
       {
         "w": "die Geschäftsidee",
         "d": "Einfall, Vorstellung, wie und womit ein Geschäft betrieben werden kann",
         "ar": "فكرة العمل",
         "cat": "Kapitel 5",
-        "ex": "\"Von diesen Erzählungen stark beeindruckt, glaubte ich beinahe, eine neue Geschäftsidee entwickeln zu können.\"",
-        "img": "assets/vocab-scenes/k6/22.webp"
+        "ex": "Von diesen Erzählungen stark beeindruckt, glaubte ich beinahe, eine neue Geschäftsidee entwickeln zu können.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/097.jpg"
       },
       {
         "w": "haltbar",
@@ -6059,7 +6059,7 @@ window.B1_BOOK = [
         "ar": "دائم",
         "cat": "Kapitel 5",
         "ex": "Misten Sie jedes Jahr mindestens einmal Ihre Hausapotheke aus, denn Arzneimittel sind nicht unbegrenzt haltbar!",
-        "img": "assets/vocab-scenes/k11-added/15.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/098-v.jpg"
       },
       {
         "w": "jederzeit",
@@ -6067,7 +6067,7 @@ window.B1_BOOK = [
         "ar": "في أي وقت",
         "cat": "Kapitel 5",
         "ex": "Eine Änderung ist jederzeit möglich.",
-        "img": "assets/vocab-scenes/k11/22.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/099-v.jpg"
       },
       {
         "w": "der Kaffeebecher",
@@ -6075,7 +6075,7 @@ window.B1_BOOK = [
         "ar": "قدح القهوة",
         "cat": "Kapitel 5",
         "ex": "In der Straßenbahn fiel ihm blöderweise der Kaffeebecher herunter.",
-        "img": "assets/vocab-scenes/k9-added/04.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/100.jpg"
       },
       {
         "w": "krumm",
@@ -6083,15 +6083,15 @@ window.B1_BOOK = [
         "ar": "ملتوية",
         "cat": "Kapitel 5",
         "ex": "Er hat eine krumme Nase.",
-        "img": "assets/vocab-scenes/k9/22.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/101-v.jpg"
       },
       {
         "w": "der Kunststoff",
         "d": "Bezeichnung für einen Festkörper, dessen Grundbestandteil synthetisch oder halbsynthetisch erzeugte Polymere mit organischen Gruppen sind",
         "ar": "البلاستيك",
         "cat": "Kapitel 5",
-        "ex": "\"Kunststoff ist alt. Fast 500 Jahre alt ist die älteste Anleitung zur Herstellung eines Kunststoffs auf Kaseinbasis.\"",
-        "img": "assets/vocab-scenes/k9-added/73.webp"
+        "ex": "Kunststoff ist alt. Fast 500 Jahre alt ist die älteste Anleitung zur Herstellung eines Kunststoffs auf Kaseinbasis.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/102.jpg"
       },
       {
         "w": "landen",
@@ -6107,15 +6107,15 @@ window.B1_BOOK = [
         "ar": "تسليم",
         "cat": "Kapitel 5",
         "ex": "Die bestellten Waren wurden noch nicht geliefert.",
-        "img": "assets/vocab-scenes/k7/27.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/104-v.jpg"
       },
       {
         "w": "der Müllberg",
-        "d": "großer Haufen bestehend aus Müll/Unrat; große Unordnung mit dem Aussehen von Müll/Unrat",
+        "d": "großer Haufen bestehend aus Müll; Unrat; große Unordnung mit dem Aussehen von Müll; Unrat",
         "ar": "جبل القمامة",
         "cat": "Kapitel 5",
-        "ex": "\"Laut Schaal möchte nun auch der Landkreis Augsburg am Müllberg entsorgen, weil die Deponie Hegnenbach nicht mehr zur Verfügung steht.\"",
-        "img": "assets/vocab-scenes/k10-added/84.webp"
+        "ex": "Laut Schaal möchte nun auch der Landkreis Augsburg am Müllberg entsorgen, weil die Deponie Hegnenbach nicht mehr zur Verfügung steht.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/105.jpg"
       },
       {
         "w": "der Mülleimer",
@@ -6123,7 +6123,7 @@ window.B1_BOOK = [
         "ar": "سلة المهملات",
         "cat": "Kapitel 5",
         "ex": "Der Mülleimer müsste mal wieder geleert werden.",
-        "img": "assets/vocab-scenes/k7/45.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/106.jpg"
       },
       {
         "w": "nachhaltig",
@@ -6131,7 +6131,7 @@ window.B1_BOOK = [
         "ar": "مستدام",
         "cat": "Kapitel 5",
         "ex": "Ziele für nachhaltige Entwicklung",
-        "img": "assets/vocab-scenes/k11-added/26.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/107-v.jpg"
       },
       {
         "w": "die Neugründung",
@@ -6139,31 +6139,31 @@ window.B1_BOOK = [
         "ar": "تأسيس جديد",
         "cat": "Kapitel 5",
         "ex": "Die Neugründung des Vereins wurde im Frühjahr beschlossen.",
-        "img": "assets/vocab-scenes/k8/129.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/108.jpg"
       },
       {
         "w": "der Ökostrom",
         "d": "Strom aus erneuerbaren Energiequellen.",
         "ar": "الكهرباء الخضراء",
         "cat": "Kapitel 5",
-        "ex": "„Bei der Produktion von Ökostrom wird weltweit am stärksten auf Windenergie gesetzt.“",
-        "img": "assets/vocab-scenes/k7/60.webp"
+        "ex": "Bei der Produktion von Ökostrom wird weltweit am stärksten auf Windenergie gesetzt.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/109.jpg"
       },
       {
         "w": "der Online-Shop",
         "d": "Ein Geschäft im Internet.",
         "ar": "المتجر الالكتروني",
         "cat": "Kapitel 5",
-        "ex": "„Das Umsatzvolumen für dekorative Kosmetik in Deutschland hat sich seit 2012 um 25 Prozent erhöht, die Verkäufe über Online-Shops nicht einmal eingerechnet.“",
-        "img": "assets/vocab-scenes/k3/22.webp"
+        "ex": "Das Umsatzvolumen für dekorative Kosmetik in Deutschland hat sich seit 2012 um 25 Prozent erhöht, die Verkäufe über Online-Shops nicht einmal eingerechnet.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/110.jpg"
       },
       {
         "w": "das Pfand",
-        "d": "Gegenstand eines Sicherungsgebers, welcher vorübergehend bei einem Nehmer verbleibt, als Sicherheit für etwas, das der Geber diesem Nehmer schuldet / Geldbetrag, der bei Rückgabe eines geliehenen Leergutes erstattet wird",
+        "d": "Gegenstand eines Sicherungsgebers, welcher vorübergehend bei einem Nehmer verbleibt, als Sicherheit für etwas, das der Geber diesem Nehmer schuldet; Geldbetrag, der bei Rückgabe eines geliehenen Leergutes erstattet wird",
         "ar": "الوديعة",
         "cat": "Kapitel 5",
         "ex": "für etw. Pfand zahlen",
-        "img": "assets/vocab-scenes/k5/22.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/111.jpg"
       },
       {
         "w": "recycelbar",
@@ -6171,7 +6171,7 @@ window.B1_BOOK = [
         "ar": "قابلة لإعادة التدوير",
         "cat": "Kapitel 5",
         "ex": "Die Situation ist heute recycelbar.",
-        "img": "assets/vocab-scenes/k12/31.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/112-v.jpg"
       },
       {
         "w": "sogenannt",
@@ -6191,19 +6191,19 @@ window.B1_BOOK = [
       },
       {
         "w": "die Sonnenenergie",
-        "d": "von der Sonne erzeugte und abgestrahlte Energie / durch Kollektoren aus Sonnenstrahlen gewonnene Wärme oder Strom; Form der umweltfreundlichen Energiegewinnung",
+        "d": "von der Sonne erzeugte und abgestrahlte Energie; durch Kollektoren aus Sonnenstrahlen gewonnene Wärme oder Strom; Form der umweltfreundlichen Energiegewinnung",
         "ar": "الطاقة الشمسية",
         "cat": "Kapitel 5",
         "ex": "Sonnenenergie wird von der Sonne hergestellt und abgestrahlt.",
-        "img": "assets/vocab-scenes/k8/114.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/115.jpg"
       },
       {
         "w": "das Start-up",
         "d": "neu gegründeter Betrieb",
         "ar": "البدء",
         "cat": "Kapitel 5",
-        "ex": "„Zahlreiche Start-ups versuchen, Investoren dazu zu bewegen, Milliarden in emissionsfreie Mobilität zu stecken.“",
-        "img": "assets/vocab-scenes/k8/90.webp"
+        "ex": "Zahlreiche Start-ups versuchen, Investoren dazu zu bewegen, Milliarden in emissionsfreie Mobilität zu stecken.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/116.jpg"
       },
       {
         "w": "die Steckdose",
@@ -6211,23 +6211,23 @@ window.B1_BOOK = [
         "ar": "المقبس",
         "cat": "Kapitel 5",
         "ex": "Wenn meine zweijährige Nichte zu Besuch kommt, muss ich alle Steckdosen kindersicher machen.",
-        "img": "assets/vocab-scenes/k3/18.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/117.jpg"
       },
       {
         "w": "die Tonne",
-        "d": "Physik: Gewichtseinheit: 1t = 1000 kg; rundes Behältnis, oft aus Metall bestehend, mit Deckel und/oder Spundloch",
+        "d": "Physik: Gewichtseinheit: 1t = 1000 kg; rundes Behältnis, oft aus Metall bestehend, mit Deckel und; oder Spundloch",
         "ar": "سلة المهملات",
         "cat": "Kapitel 5",
         "ex": "Heute leert die Müllabfuhr die Tonnen.",
-        "img": "assets/vocab-scenes/k7/22.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/118.jpg"
       },
       {
         "w": "verleihen",
-        "d": "etwas zeitweise jemandem überlassen / jemanden oder etwas auszeichnen, zum Beispiel eine Person mit einer Auszeichnung, einem Preis, einem Titel",
+        "d": "etwas zeitweise jemandem überlassen; jemanden oder etwas auszeichnen, zum Beispiel eine Person mit einer Auszeichnung, einem Preis, einem Titel",
         "ar": "إقراض",
         "cat": "Kapitel 5",
         "ex": "Ich verleihe meine Zahnbürste grundsätzlich nicht.",
-        "img": "assets/vocab-scenes/k10-added/52.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/119-v.jpg"
       },
       {
         "w": "vermeiden",
@@ -6235,7 +6235,7 @@ window.B1_BOOK = [
         "ar": "تجنب",
         "cat": "Kapitel 5",
         "ex": "Wir vermeiden unnötigen Plastikmüll.",
-        "img": "assets/vocab-scenes/k7/31.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/120-v.jpg"
       },
       {
         "w": "die Verschwendung",
@@ -6243,7 +6243,7 @@ window.B1_BOOK = [
         "ar": "الإهدار",
         "cat": "Kapitel 5",
         "ex": "So eine Verschwendung!",
-        "img": "assets/vocab-scenes/k8/53.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/121.jpg"
       },
       {
         "w": "zurückbekommen",
@@ -6251,23 +6251,23 @@ window.B1_BOOK = [
         "ar": "عد",
         "cat": "Kapitel 5",
         "ex": "Er hatte das Buch seiner Freundin geliehen, aber nie wieder zurückbekommen.",
-        "img": "assets/vocab-scenes/k9-added/58.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/122-v.jpg"
       },
       {
         "w": "zurück",
-        "d": "wieder zu einem (auch fiktiven) Ausgangspunkt / der eigenen Bewegung oder dem eigenen Blick entgegengesetzt; hinter einem",
+        "d": "wieder zu einem (auch fiktiven) Ausgangspunkt; der eigenen Bewegung oder dem eigenen Blick entgegengesetzt; hinter einem",
         "ar": "العودة",
         "cat": "Kapitel 5",
         "ex": "zurück nach Deutschland",
-        "img": "assets/vocab-scenes/k10-added/99.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/123-v.jpg"
       },
       {
         "w": "zurückbringen",
-        "d": "jemanden oder etwas wieder dorthin bringen, wo er/sie/es zuvor hergekommen ist / jemanden oder etwas in eine benachteiligte Situation bringen, dass es nichts anderes übrig bleibt, als noch einmal aufs Neue anzufangen",
+        "d": "jemanden oder etwas wieder dorthin bringen, wo er; sie; es zuvor hergekommen ist; jemanden oder etwas in eine benachteiligte Situation bringen, dass es nichts anderes übrig bleibt, als noch einmal aufs Neue anzufangen",
         "ar": "اعاده",
         "cat": "Kapitel 5",
         "ex": "Wilhelm bringt die geliehenen Fahrzeuge ausnahmslos vollgetankt zurück.",
-        "img": "assets/vocab-scenes/k5/23.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/124-v.jpg"
       },
       {
         "w": "der Pfandbecher",
@@ -6279,15 +6279,15 @@ window.B1_BOOK = [
       },
       {
         "w": "retten",
-        "d": "jemanden oder etwas aus einer bedrohlichen Lage befreien, erlösen, in Sicherheit bringen / etwas vor drohendem Verlust bewahren, erhalten",
+        "d": "jemanden oder etwas aus einer bedrohlichen Lage befreien, erlösen, in Sicherheit bringen; etwas vor drohendem Verlust bewahren, erhalten",
         "ar": "حفظ",
         "cat": "Kapitel 5",
         "ex": "Sie konnten gerade noch gerettet werden.",
-        "img": "assets/vocab-scenes/k9-added/12.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/126-v.jpg"
       },
       {
         "w": "verlangen",
-        "d": "etwas von jemandem fordern, etwas haben wollen / etwas notwendig machen, erfordern",
+        "d": "etwas von jemandem fordern, etwas haben wollen; etwas notwendig machen, erfordern",
         "ar": "الطلب",
         "cat": "Kapitel 5",
         "ex": "auf dessen Verlangen",
@@ -6299,15 +6299,15 @@ window.B1_BOOK = [
         "ar": "الكأس القابل للتصرف",
         "cat": "Kapitel 5",
         "ex": "Ein Wegwerfbecher wird nach einmaligem Gebrauch weggeworfen.",
-        "img": "assets/vocab-scenes/k9-added/72.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/128.jpg"
       },
       {
         "w": "die Aktion",
-        "d": "Unternehmung, um etwas Bestimmtes zu erreichen / Sonderangebot oder eine Sonderverkaufsregelung in einem Geschäft",
+        "d": "Unternehmung, um etwas Bestimmtes zu erreichen; Sonderangebot oder eine Sonderverkaufsregelung in einem Geschäft",
         "ar": "حملة / نشاط",
         "cat": "Kapitel 5",
         "ex": "eine konzertierte Aktion",
-        "img": "assets/vocab-scenes/k8/80.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/129.jpg"
       },
       {
         "w": "elektronisch",
@@ -6315,15 +6315,15 @@ window.B1_BOOK = [
         "ar": "إلكترونيا",
         "cat": "Kapitel 5",
         "ex": "Die Situation ist heute elektronisch.",
-        "img": "assets/vocab-scenes/k12-added/28.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/130-v.jpg"
       },
       {
         "w": "der Stromverbrauch",
-        "d": "Verwendung von elektrischer Energie / Angabe über den Bedarf eines elektrischen Geräts an Energie",
+        "d": "Verwendung von elektrischer Energie; Angabe über den Bedarf eines elektrischen Geräts an Energie",
         "ar": "استهلاك الكهرباء",
         "cat": "Kapitel 5",
         "ex": "Wir werden mit einem hohen Stromverbrauch rechnen müssen, jetzt wo der Winter so kalt ist.",
-        "img": "assets/vocab-scenes/k12-added/14.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/131.jpg"
       },
       {
         "w": "der Umwelttipp",
@@ -6335,7 +6335,7 @@ window.B1_BOOK = [
       },
       {
         "w": "verschmutzen",
-        "d": "schmutzig machen, dreckig machen, mit Schmutz versehen / schmutzig werden, dreckig werden",
+        "d": "schmutzig machen, dreckig machen, mit Schmutz versehen; schmutzig werden, dreckig werden",
         "ar": "تلوث",
         "cat": "Kapitel 5",
         "ex": "Mit seinen dreckigen Schuhen hat er die ganze Diele verschmutzt.",
@@ -6359,15 +6359,15 @@ window.B1_BOOK = [
       },
       {
         "w": "das Argument",
-        "d": "eine Aussage oder eine Kette von Schlussfolgerungen, die zur Begründung einer anderen Aussage (oder Behauptung) herangezogen wird / Linguistik: in der Rektions-Bindungs-Theorie Ausdrücke/Ergänzungen, die eine Theta-Rolle, eine bestimmte semantische Funktion, ausüben",
+        "d": "eine Aussage oder eine Kette von Schlussfolgerungen, die zur Begründung einer anderen Aussage (oder Behauptung) herangezogen wird; Linguistik: in der Rektions-Bindungs-Theorie Ausdrücke; Ergänzungen, die eine Theta-Rolle, eine bestimmte semantische Funktion, ausüben",
         "ar": "الحجة",
         "cat": "Kapitel 5",
         "ex": "ein Argument anbringen",
-        "img": "assets/vocab-scenes/k8/91.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/136.jpg"
       },
       {
         "w": "der Standpunkt",
-        "d": "räumliche Position / Aspekt, der die Betrachtung von etwas bestimmt, Überzeugung",
+        "d": "räumliche Position; Aspekt, der die Betrachtung von etwas bestimmt, Überzeugung",
         "ar": "وجهة نظر",
         "cat": "Kapitel 5",
         "ex": "einen neutralen Standpunkt einnehmen",
@@ -6375,7 +6375,7 @@ window.B1_BOOK = [
       },
       {
         "w": "stehen",
-        "d": "sich auf den Beinen ohne Ortsveränderung aufhalten / sich irgendwo befinden",
+        "d": "sich auf den Beinen ohne Ortsveränderung aufhalten; sich irgendwo befinden",
         "ar": "الوقوف",
         "cat": "Kapitel 5",
         "ex": "über etw. stehen",
@@ -6387,7 +6387,7 @@ window.B1_BOOK = [
         "ar": "مقتنع",
         "cat": "Kapitel 5",
         "ex": "Ich bin überzeugt, dass dieser Plan funktioniert.",
-        "img": "assets/vocab-scenes/k10-added/54.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/139-v.jpg"
       },
       {
         "w": "umsonst",
@@ -6395,7 +6395,7 @@ window.B1_BOOK = [
         "ar": "مجانا",
         "cat": "Kapitel 5",
         "ex": "Wir warteten eine Stunde umsonst auf den Bus.",
-        "img": "assets/vocab-scenes/k8/02.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/140-v.jpg"
       },
       {
         "w": "die Uni-Mensa",
@@ -6411,15 +6411,15 @@ window.B1_BOOK = [
         "ar": "تماما",
         "cat": "Kapitel 5",
         "ex": "in völliger Verzweiflung",
-        "img": "assets/vocab-scenes/k9-added/46.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/142-v.jpg"
       },
       {
         "w": "widersprechen",
-        "d": "auf eine Aussage mit einer gegenteiligen Aussage antworten / im Gegensatz zu einer Sache stehen; dagegensprechen; nicht zusammenpassen",
+        "d": "auf eine Aussage mit einer gegenteiligen Aussage antworten; im Gegensatz zu einer Sache stehen; dagegensprechen; nicht zusammenpassen",
         "ar": "يتعارض",
         "cat": "Kapitel 5",
         "ex": "sich selbst widersprechen",
-        "img": "assets/vocab-scenes/k12-added/19.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/143-v.jpg"
       },
       {
         "w": "der Blitz",
@@ -6427,15 +6427,15 @@ window.B1_BOOK = [
         "ar": "البرق",
         "cat": "Kapitel 5",
         "ex": "An Blitz und Donner erkennt man ein Gewitter.",
-        "img": "assets/vocab-scenes/k3/25.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/144.jpg"
       },
       {
         "w": "blitzen",
-        "d": "sich durch die Luft unter Lichtentstehung (elektrisch) entladen / Lichtreflexe verursachen",
+        "d": "sich durch die Luft unter Lichtentstehung (elektrisch) entladen; Lichtreflexe verursachen",
         "ar": "فلاش",
         "cat": "Kapitel 5",
         "ex": "Bei Gewittern blitzt es.",
-        "img": "assets/vocab-scenes/k10-added/74.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/145-v.jpg"
       },
       {
         "w": "der Donner",
@@ -6443,7 +6443,7 @@ window.B1_BOOK = [
         "ar": "الرعد",
         "cat": "Kapitel 5",
         "ex": "Der Donner nach dem Blitz war gewaltig.",
-        "img": "assets/vocab-scenes/k11-added/23.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/146.jpg"
       },
       {
         "w": "donnern",
@@ -6467,11 +6467,11 @@ window.B1_BOOK = [
         "ar": "يتساقط البَرَد",
         "cat": "Kapitel 5",
         "ex": "Wenn es hagelt, bleiben wir lieber im Haus.",
-        "img": "assets/vocab-scenes/k9-added/13.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/149-v.jpg"
       },
       {
         "w": "mild",
-        "d": "nicht stark im Geschmack / ohne Strenge",
+        "d": "nicht stark im Geschmack; ohne Strenge",
         "ar": "خفيف",
         "cat": "Kapitel 5",
         "ex": "ein weicher/milder Whisky",
@@ -6483,7 +6483,7 @@ window.B1_BOOK = [
         "ar": "ضبابي",
         "cat": "Kapitel 5",
         "ex": "Es ist neblig.",
-        "img": "assets/vocab-scenes/k9-added/15.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/151-v.jpg"
       },
       {
         "w": "nieseln",
@@ -6491,7 +6491,7 @@ window.B1_BOOK = [
         "ar": "رذاذ",
         "cat": "Kapitel 5",
         "ex": "Da draußen nieselte es viel.",
-        "img": "assets/vocab-scenes/k10-added/75.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/152-v.jpg"
       },
       {
         "w": "regnerisch",
@@ -6499,7 +6499,7 @@ window.B1_BOOK = [
         "ar": "ممطر",
         "cat": "Kapitel 5",
         "ex": "Die Situation ist heute regnerisch.",
-        "img": "assets/vocab-scenes/k12/32.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/153-v.jpg"
       },
       {
         "w": "schwül",
@@ -6507,7 +6507,7 @@ window.B1_BOOK = [
         "ar": "قائظ",
         "cat": "Kapitel 5",
         "ex": "Heute ist es wieder so unerträglich schwül.",
-        "img": "assets/vocab-scenes/k9-added/16.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/154-v.jpg"
       },
       {
         "w": "stürmisch",
@@ -6515,7 +6515,7 @@ window.B1_BOOK = [
         "ar": "عاصف",
         "cat": "Kapitel 5",
         "ex": "Bei diesem stürmischen Wetter schickt man doch keinen Hund vor die Türe.",
-        "img": "assets/vocab-scenes/k1/18.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/155-v.jpg"
       },
       {
         "w": "das Traumwetter",
@@ -6523,7 +6523,7 @@ window.B1_BOOK = [
         "ar": "الطقس الحلم",
         "cat": "Kapitel 5",
         "ex": "Bei diesem Traumwetter gehen wir an den See.",
-        "img": "assets/vocab-scenes/k9-added/34.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/156.jpg"
       },
       {
         "w": "wolkig",
@@ -6531,7 +6531,7 @@ window.B1_BOOK = [
         "ar": "غائم",
         "cat": "Kapitel 5",
         "ex": "Sie gingen unter wolkigem Himmel schwimmen.",
-        "img": "assets/vocab-scenes/k9-added/83.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/157-v.jpg"
       },
       {
         "w": "die Wettervorhersage",
@@ -6539,7 +6539,7 @@ window.B1_BOOK = [
         "ar": "توقعات الطقس",
         "cat": "Kapitel 5",
         "ex": "Laut Wettervorhersage soll es am Wochenende regnen.",
-        "img": "assets/vocab-scenes/k5/28.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/158.jpg"
       },
       {
         "w": "die Vorhersage",
@@ -6547,7 +6547,7 @@ window.B1_BOOK = [
         "ar": "التنبؤ",
         "cat": "Kapitel 5",
         "ex": "Eine Vorhersage darüber, wie sich die Verhältnisse langfristig entwickeln werden, erscheint sehr gewagt.",
-        "img": "assets/vocab-scenes/k11-added/75.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/159.jpg"
       },
       {
         "w": "die Wetterbesserung",
@@ -6555,7 +6555,7 @@ window.B1_BOOK = [
         "ar": "التحسن في الطقس",
         "cat": "Kapitel 5",
         "ex": "Am Nachmittag ist eine Wetterbesserung zu erwarten.",
-        "img": "assets/vocab-scenes/k12-added/36.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/160.jpg"
       },
       {
         "w": "das Gedächtnis",
@@ -6563,15 +6563,15 @@ window.B1_BOOK = [
         "ar": "الذاكرة",
         "cat": "Kapitel 5",
         "ex": "Leider lässt die Gedächtnisleistung mit dem Alter nach.",
-        "img": "assets/vocab-scenes/k11-added/34.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/161.jpg"
       },
       {
         "w": "der Herbststurm",
         "d": "im Herbst wehender, kräftiger Wind",
         "ar": "عاصفة الخريف",
         "cat": "Kapitel 5",
-        "ex": "\"Rainer Hillgärtner weist darauf hin, dass Autos in dieser Zeit nach Möglichkeit nicht direkt unter einem Baum abgestellt werden sollten. Einerseits können herab fallende Kastanien ähnliche Schäden wie ein Hagelgewitter verursachen, anderseits sitzt nicht jeder Ast so fest, dass er einen Herbststurm unbeschadet übersteht.\"",
-        "img": "assets/vocab-scenes/k9-added/87.webp"
+        "ex": "Rainer Hillgärtner weist darauf hin, dass Autos in dieser Zeit nach Möglichkeit nicht direkt unter einem Baum abgestellt werden sollten. Einerseits können herab fallende Kastanien ähnliche Schäden wie ein Hagelgewitter verursachen, anderseits sitzt nicht jeder Ast so fest, dass er einen Herbststurm unbeschadet übersteht.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/162.jpg"
       },
       {
         "w": "der Schneesturm",
@@ -6579,7 +6579,7 @@ window.B1_BOOK = [
         "ar": "العاصفة الثلجية",
         "cat": "Kapitel 5",
         "ex": "Bei den Schneestürmen brach Chaos auf den Straßen aus.",
-        "img": "assets/vocab-scenes/k10-added/71.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/163.jpg"
       },
       {
         "w": "der Sturm",
@@ -6587,7 +6587,7 @@ window.B1_BOOK = [
         "ar": "العاصفة",
         "cat": "Kapitel 5",
         "ex": "Ein Sturm ist ein Wind der Stärke 9 bis 11 auf der Beaufort-Skala.",
-        "img": "assets/vocab-scenes/k10-added/07.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/164.jpg"
       },
       {
         "w": "stürmen",
@@ -6595,7 +6595,7 @@ window.B1_BOOK = [
         "ar": "عاصفة",
         "cat": "Kapitel 5",
         "ex": "Mit hochrotem Kopf stürmte sie aus dem Wohnzimmer.",
-        "img": "assets/vocab-scenes/k10/15.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/165-v.jpg"
       },
       {
         "w": "Engagement",
@@ -6603,23 +6603,23 @@ window.B1_BOOK = [
         "ar": "الالتزام",
         "cat": "Kapitel 5",
         "ex": "Sein Engagement für den Umweltschutz ist beeindruckend.",
-        "img": "assets/vocab-scenes/k12/34.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/166-v.jpg"
       },
       {
         "w": "aufklären",
-        "d": "die Wahrheit über etwas Ungeklärtes ans Licht bringen / von Sachverhalten: aufhören, ungeklärt zu sein",
+        "d": "die Wahrheit über etwas Ungeklärtes ans Licht bringen; von Sachverhalten: aufhören, ungeklärt zu sein",
         "ar": "تنوير",
         "cat": "Kapitel 5",
         "ex": "Die Polizei konnte den Tathergang rekonstruieren und den Fall aufklären.",
-        "img": "assets/vocab-scenes/k7/28.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/167-v.jpg"
       },
       {
         "w": "beteiligen",
-        "d": "an etwas teilnehmen oder teilhaben / jemanden an etwas teilnehmen oder teilhaben lassen",
+        "d": "an etwas teilnehmen oder teilhaben; jemanden an etwas teilnehmen oder teilhaben lassen",
         "ar": "المشاركة",
         "cat": "Kapitel 5",
         "ex": "Er beteiligte sich an allen Projekten des Vereins.",
-        "img": "assets/vocab-scenes/k12/35.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/168-v.jpg"
       },
       {
         "w": "die Bevölkerung",
@@ -6635,31 +6635,31 @@ window.B1_BOOK = [
         "ar": "المواطن",
         "cat": "Kapitel 5",
         "ex": "Die Bürger Berlins gingen auf die Straßen und protestierten.",
-        "img": "assets/vocab-scenes/k8/22.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/170.jpg"
       },
       {
         "w": "die Bürgerin",
-        "d": "Einwohnerin einer Stadt oder eines Staates / im Mittelalter weibliches Mitglied des Bürgerstandes",
+        "d": "Einwohnerin einer Stadt oder eines Staates; im Mittelalter weibliches Mitglied des Bürgerstandes",
         "ar": "المواطن",
         "cat": "Kapitel 5",
         "ex": "Der Bundespräsident richtete seinen Appell an alle Bürgerinnen und Bürger des Landes.",
-        "img": "assets/vocab-scenes/k1/23.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/171.jpg"
       },
       {
         "w": "dienen",
         "d": "in untergeordneter Stellung für jemanden arbeiten; einer Sache von Nutzen sein",
         "ar": "يخدم",
         "cat": "Kapitel 5",
-        "ex": "„Hans hatte sieben Jahre bei seinem Herrn gedient, da sprach er zu ihm: ‚Herr, meine Zeit ist herum, nun wollte ich gerne wieder heim zu meiner Mutter, gebt mir meinen Lohn.‘ “",
-        "img": "assets/vocab-scenes/k8/10.webp"
+        "ex": "Hans hatte sieben Jahre bei seinem Herrn gedient, da sprach er zu ihm: ‚Herr, meine Zeit ist herum, nun wollte ich gerne wieder heim zu meiner Mutter, gebt mir meinen Lohn.‘",
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/172-v.jpg"
       },
       {
         "w": "drehen",
-        "d": "etwas um eine Achse bewegen / sich um eine Achse bewegen",
+        "d": "etwas um eine Achse bewegen; sich um eine Achse bewegen",
         "ar": "تدوير",
         "cat": "Kapitel 5",
         "ex": "sich um die eigene Achse drehen",
-        "img": "assets/vocab-scenes/k9-added/18.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/173-v.jpg"
       },
       {
         "w": "das Engagement",
@@ -6667,23 +6667,23 @@ window.B1_BOOK = [
         "ar": "الالتزام",
         "cat": "Kapitel 5",
         "ex": "Ihr Engagement im Verein hilft vielen Kindern.",
-        "img": "assets/vocab-scenes/k8/151.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/174.jpg"
       },
       {
         "w": "extra",
-        "d": "außerdem, zusätzlich / absichtlich",
+        "d": "außerdem, zusätzlich; absichtlich",
         "ar": "اضافية",
         "cat": "Kapitel 5",
         "ex": "Extras auf Wunsch",
-        "img": "assets/vocab-scenes/k9-added/63.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/175-v.jpg"
       },
       {
         "w": "geschützt",
         "d": "gefeit, immun, nicht anfällig",
         "ar": "محمي",
         "cat": "Kapitel 5",
-        "ex": "„Aber die polizeilich und gerichtlich geschützte Ehre deutscher Politiker blieb unangetastet.“",
-        "img": "assets/vocab-scenes/k7/71.webp"
+        "ex": "Aber die polizeilich und gerichtlich geschützte Ehre deutscher Politiker blieb unangetastet.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/176-v.jpg"
       },
       {
         "w": "die Hauskatze",
@@ -6691,23 +6691,23 @@ window.B1_BOOK = [
         "ar": "القط المنزلي",
         "cat": "Kapitel 5",
         "ex": "Unsere Hauskatze schläft gern auf dem Sofa.",
-        "img": "assets/vocab-scenes/k9-added/76.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/177.jpg"
       },
       {
         "w": "hilflos",
         "d": "„hilflos“ beschreibt eine Eigenschaft oder einen Zustand.",
         "ar": "عاجز",
         "cat": "Kapitel 5",
-        "ex": "„Mein Vater muss sich sehr hilflos vorgekommen sein, abhängig von seinen halbwüchsigen Kindern.“",
-        "img": "assets/vocab-scenes/k8/05.webp"
+        "ex": "Mein Vater muss sich sehr hilflos vorgekommen sein, abhängig von seinen halbwüchsigen Kindern.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/178-v.jpg"
       },
       {
         "w": "die Idee",
-        "d": "Urbild einer Erscheinung / meist plötzlich auftretender Gedanke, der Erfolg verspricht",
+        "d": "Urbild einer Erscheinung; meist plötzlich auftretender Gedanke, der Erfolg verspricht",
         "ar": "الفكرة",
         "cat": "Kapitel 5",
         "ex": "auf den Gedanken kommen / auf die Idee kommen, etw. zu tun",
-        "img": "assets/vocab-scenes/k11/10.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/179.jpg"
       },
       {
         "w": "immer",
@@ -6715,7 +6715,7 @@ window.B1_BOOK = [
         "ar": "دائما",
         "cat": "Kapitel 5",
         "ex": "Er blieb ihr immer treu.",
-        "img": "assets/vocab-scenes/k10-added/40.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/180-v.jpg"
       },
       {
         "w": "das Infomaterial",
@@ -6723,7 +6723,7 @@ window.B1_BOOK = [
         "ar": "المادة المعلوماتية",
         "cat": "Kapitel 5",
         "ex": "Am Eingang liegt Infomaterial über die Ausstellung.",
-        "img": "assets/vocab-scenes/k8/121.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/181.jpg"
       },
       {
         "w": "der Katzenfreund",
@@ -6731,7 +6731,7 @@ window.B1_BOOK = [
         "ar": "عاشق القط",
         "cat": "Kapitel 5",
         "ex": "Da Guntbert in der näheren Umgebung als großer Katzenfreund bekannt ist, werden ständig herrenlose Katzen zu ihm gebracht.",
-        "img": "assets/vocab-scenes/k5/33.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/182.jpg"
       },
       {
         "w": "die Katzenfreundin",
@@ -6739,7 +6739,7 @@ window.B1_BOOK = [
         "ar": "عاشق القط",
         "cat": "Kapitel 5",
         "ex": "Da Gabi in der näheren Umgebung als große Katzenfreundin bekannt ist, werden ständig herrenlose Katzen zu ihr gebracht.",
-        "img": "assets/vocab-scenes/k5/21.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/183.jpg"
       },
       {
         "w": "das Klima",
@@ -6747,7 +6747,7 @@ window.B1_BOOK = [
         "ar": "المناخ",
         "cat": "Kapitel 5",
         "ex": "Das Klima ist nächst der Bodenart wichtigster Umweltfaktor für alle Organismen.",
-        "img": "assets/vocab-scenes/k12-added/90.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/184.jpg"
       },
       {
         "w": "ländlich",
@@ -6755,7 +6755,7 @@ window.B1_BOOK = [
         "ar": "ريفي",
         "cat": "Kapitel 5",
         "ex": "der ländliche Raum",
-        "img": "assets/vocab-scenes/k11-added/57.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/185-v.jpg"
       },
       {
         "w": "die Mitfahrbank",
@@ -6771,15 +6771,15 @@ window.B1_BOOK = [
         "ar": "القرية المجاورة",
         "cat": "Kapitel 5",
         "ex": "In den Nachbardörfern gab es auch jedes Jahr ein Feuerwehrfest. Warum nicht auch in Benndorf?",
-        "img": "assets/vocab-scenes/k5/01.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/187.jpg"
       },
       {
         "w": "der Naturfreund",
         "d": "Person, die die Natur liebt",
         "ar": "عاشق الطبيعة",
         "cat": "Kapitel 5",
-        "ex": "„Den zeigt er dem schwärmerischen jungen Naturfreund, für diesen ein unvergeßliches Erlebnis, wahrscheinlich nicht weniger bedeutsam als die gesamte verwegene Bildungsreise.“",
-        "img": "assets/vocab-scenes/k12-added/89.webp"
+        "ex": "Den zeigt er dem schwärmerischen jungen Naturfreund, für diesen ein unvergeßliches Erlebnis, wahrscheinlich nicht weniger bedeutsam als die gesamte verwegene Bildungsreise.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/188.jpg"
       },
       {
         "w": "die Naturfreundin",
@@ -6787,15 +6787,15 @@ window.B1_BOOK = [
         "ar": "عاشق الطبيعة",
         "cat": "Kapitel 5",
         "ex": "Klar bin ich Naturfreundin und so oft draußen, wie es nur geht.",
-        "img": "assets/vocab-scenes/k6/37.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/189.jpg"
       },
       {
         "w": "pflanzen",
-        "d": "zum Anwachsen einsetzen / hinsetzen, aufstellen",
+        "d": "zum Anwachsen einsetzen; hinsetzen, aufstellen",
         "ar": "النباتات",
         "cat": "Kapitel 5",
         "ex": "Pflanzen ohne Wurzelballen / Erdballen",
-        "img": "assets/vocab-scenes/k10-added/66.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/190-v.jpg"
       },
       {
         "w": "schaden",
@@ -6803,7 +6803,7 @@ window.B1_BOOK = [
         "ar": "ضرر",
         "cat": "Kapitel 5",
         "ex": "Zu viel Zucker kann den Zähnen schaden.",
-        "img": "assets/vocab-scenes/k7/72.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/191-v.jpg"
       },
       {
         "w": "die Schwierigkeit",
@@ -6811,7 +6811,7 @@ window.B1_BOOK = [
         "ar": "الصعوبة",
         "cat": "Kapitel 5",
         "ex": "einige technische Schwierigkeiten",
-        "img": "assets/vocab-scenes/k8/111.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/192.jpg"
       },
       {
         "w": "der Strauch",
@@ -6819,7 +6819,7 @@ window.B1_BOOK = [
         "ar": "شجيرة",
         "cat": "Kapitel 5",
         "ex": "Hinter dem Haus wächst ein großer Strauch.",
-        "img": "assets/vocab-scenes/k5/08.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/193.jpg"
       },
       {
         "w": "die Themenwoche",
@@ -6827,7 +6827,7 @@ window.B1_BOOK = [
         "ar": "الأسبوع الموضوعي",
         "cat": "Kapitel 5",
         "ex": "In der Schule findet nächste Woche eine Themenwoche statt.",
-        "img": "assets/vocab-scenes/k8/23.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/194.jpg"
       },
       {
         "w": "verteilen",
@@ -6835,7 +6835,7 @@ window.B1_BOOK = [
         "ar": "توزيع",
         "cat": "Kapitel 5",
         "ex": "Die Helfer verteilen Wasser an die Besucher.",
-        "img": "assets/vocab-scenes/k7/29.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/195-v.jpg"
       },
       {
         "w": "der Vorort",
@@ -6843,14 +6843,14 @@ window.B1_BOOK = [
         "ar": "الضاحية",
         "cat": "Kapitel 5",
         "ex": "Sie wohnen in einem ruhigen Vorort von Hamburg.",
-        "img": "assets/vocab-scenes/k12-added/26.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/196.jpg"
       },
       {
         "w": "die Wildkatze",
         "d": "Eine Katze, die in freier Natur lebt.",
         "ar": "القط البري",
         "cat": "Kapitel 5",
-        "ex": "„Im Kellerwald leben noch Rothirsche, Wildkatzen, Schwarzstörche und der seltene Uhu.“",
+        "ex": "Im Kellerwald leben noch Rothirsche, Wildkatzen, Schwarzstörche und der seltene Uhu.",
         "img": "assets/vocab-scenes/k12-added/78.webp"
       },
       {
@@ -6859,7 +6859,7 @@ window.B1_BOOK = [
         "ar": "العد",
         "cat": "Kapitel 5",
         "ex": "Horst zählt die leeren Bierflaschen auf seinem Küchentisch.",
-        "img": "assets/vocab-scenes/k10/27.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/198-v.jpg"
       },
       {
         "w": "das Zeichen",
@@ -6871,19 +6871,19 @@ window.B1_BOOK = [
       },
       {
         "w": "anschließen",
-        "d": "Ein Gerät mit einem Kabel verbinden.",
-        "ar": "اتصال",
+        "d": "Ein Gerät mit einem Kabel oder einem Netzwerk verbinden.",
+        "ar": "يوصّل جهازًا",
         "cat": "Kapitel 5",
-        "ex": "Schließen Sie den Lautsprecher an den Laptop an.",
-        "img": "assets/vocab-scenes/k10-added/81.webp"
+        "ex": "Ich schließe den Drucker an den Computer an.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/200-v.jpg"
       },
       {
         "w": "aufheben",
-        "d": "etwas nehmen, aufnehmen (was auf dem Boden liegt) / ein Verbot oder eine Beschränkung abschaffen",
+        "d": "etwas nehmen, aufnehmen (was auf dem Boden liegt); ein Verbot oder eine Beschränkung abschaffen",
         "ar": "إلغاء",
         "cat": "Kapitel 5",
         "ex": "viel Aufhebens/Redens von/um etw. machen",
-        "img": "assets/vocab-scenes/k7/64.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/201-v.jpg"
       },
       {
         "w": "aufwändig",
@@ -6895,18 +6895,18 @@ window.B1_BOOK = [
       },
       {
         "w": "die Geschwindigkeit",
-        "d": "Verhältnis von zurückgelegter Strecke zur dafür benötigten Zeit (Geschwindigkeit = Strecke/Zeit) / Schnelligkeit, Tempo",
+        "d": "Verhältnis von zurückgelegter Strecke zur dafür benötigten Zeit (Geschwindigkeit = Strecke; Zeit); Schnelligkeit, Tempo",
         "ar": "السرعة",
         "cat": "Kapitel 5",
         "ex": "mit hoher Geschwindigkeit",
-        "img": "assets/vocab-scenes/k8/105.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k5/203.jpg"
       },
       {
         "w": "das Plogging",
         "d": "Sport, bei dem zusätzlich zum Joggen Müll aufgesammelt wird",
         "ar": "الضرب",
         "cat": "Kapitel 5",
-        "ex": "„Plogging ist nicht direkt ein von einer Organisation ins Leben gerufenes Projekt, sondern ein Trend der ursprünglich aus Schweden kommt.“",
+        "ex": "Plogging ist nicht direkt ein von einer Organisation ins Leben gerufenes Projekt, sondern ein Trend der ursprünglich aus Schweden kommt.",
         "img": "assets/vocab-scenes/k8/92.webp"
       }
     ],
@@ -6946,16 +6946,16 @@ window.B1_BOOK = [
         "d": "Ein kurzer Text unter einem Bild.",
         "ar": "التسمية التوضيحية",
         "cat": "Kapitel 6",
-        "ex": "„Die Bildunterzeile (oder Bildunterschrift, kurz BU) gehört zu jedem Foto; es erscheint kein Foto ohne Bildunterzeile.“",
-        "img": "assets/vocab-scenes/k7/96.webp"
+        "ex": "Die Bildunterzeile (oder Bildunterschrift, kurz BU) gehört zu jedem Foto; es erscheint kein Foto ohne Bildunterzeile.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/001.jpg"
       },
       {
         "w": "der Chip",
-        "d": "elektronische Schaltung auf einem Halbleiter auf kleinstem Raum / mit Fett gebackene oder frittierte dünne Scheibe eines Lebensmittels (meist Kartoffel)",
+        "d": "elektronische Schaltung auf einem Halbleiter auf kleinstem Raum; mit Fett gebackene oder frittierte dünne Scheibe eines Lebensmittels (meist Kartoffel)",
         "ar": "الشريحة",
         "cat": "Kapitel 6",
         "ex": "über Kopf eingebauter Chip ohne Bonddrähte",
-        "img": "assets/vocab-scenes/k8/12.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/002.jpg"
       },
       {
         "w": "der Daten-Chip",
@@ -6967,19 +6967,19 @@ window.B1_BOOK = [
       },
       {
         "w": "die Drohne",
-        "d": "männliche Biene / Nichtstuer, Faulenzer, der andere für sich arbeiten lässt",
-        "ar": "الطائرة بدون طيار",
+        "d": "Ein unbemanntes Fluggerät, das ferngesteuert oder automatisch fliegt.",
+        "ar": "طائرة مسيّرة / طائرة بدون طيار",
         "cat": "Kapitel 6",
-        "ex": "Die Drohnen werden von den Arbeiterinnen aus dem Stock gejagt, wenn sie nicht mehr gebraucht werden.",
-        "img": "assets/vocab-scenes/k6/26.webp"
+        "ex": "Die Drohne fotografiert das Gebiet aus der Luft.",
+        "img": "assets/vocab-scenes/b1.1/drohne.png"
       },
       {
         "w": "die Haut",
         "d": "größtes Sinnesorgan bei Menschen und Tieren, das dem Schutz des Gewebes dient; größtes Sinnesorgan bei Menschen und Tieren, das gleichzeitig als Schutz des darunterliegenden Gewebes, Atmung, Wärmeregulierung und anderem dient",
         "ar": "الجلد",
         "cat": "Kapitel 6",
-        "ex": "„Der Traum ist der beste Beweis dafür, dass wir nicht so fest in unserer Haut eingeschlossen sind, als es scheint. (Christian Friedrich Hebbel)“",
-        "img": "assets/vocab-scenes/k11/07.webp"
+        "ex": "Der Traum ist der beste Beweis dafür, dass wir nicht so fest in unserer Haut eingeschlossen sind, als es scheint. (Christian Friedrich Hebbel)",
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/005.jpg"
       },
       {
         "w": "irgendwann",
@@ -6991,19 +6991,19 @@ window.B1_BOOK = [
       },
       {
         "w": "der Mars",
-        "d": "römischer Gott des Krieges",
-        "ar": "المريخ",
+        "d": "Der vierte Planet unseres Sonnensystems.",
+        "ar": "كوكب المريخ",
         "cat": "Kapitel 6",
-        "ex": "Mars ist der Sohn von Jupiter und Juno.",
-        "img": "assets/vocab-scenes/k6/32.webp"
+        "ex": "Eine Raumsonde sendet neue Bilder vom Mars.",
+        "img": "assets/vocab-scenes/b1.1/mars.png"
       },
       {
         "w": "die Mobilität",
-        "d": "geistige Fähigkeit, sich auf Neues einzustellen / Wechsel von Beruf, Status, Wohnort …",
+        "d": "geistige Fähigkeit, sich auf Neues einzustellen; Wechsel von Beruf, Status, Wohnort …",
         "ar": "التنقل",
         "cat": "Kapitel 6",
         "ex": "Mobilität auf dem Arbeitsmarkt",
-        "img": "assets/vocab-scenes/k12-added/34.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/008.jpg"
       },
       {
         "w": "der Passagier",
@@ -7019,7 +7019,7 @@ window.B1_BOOK = [
         "ar": "الراكب",
         "cat": "Kapitel 6",
         "ex": "Jede Passagierin muss vor Beginn der Reise ihre Fahrkarte lösen.",
-        "img": "assets/vocab-scenes/k7/15.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/010.jpg"
       },
       {
         "w": "der Planet",
@@ -7027,23 +7027,23 @@ window.B1_BOOK = [
         "ar": "الكوكب",
         "cat": "Kapitel 6",
         "ex": "Jupiter ist der größte Planet im Sonnensystem.",
-        "img": "assets/vocab-scenes/k9-added/01.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/011.jpg"
       },
       {
         "w": "staubsaugen",
-        "d": "einen Staubsauger benutzen / etwas mit dem Staubsauger reinigen",
-        "ar": "فراغ",
+        "d": "Mit einem Staubsauger Schmutz vom Boden entfernen.",
+        "ar": "يكنس بالمكنسة الكهربائية",
         "cat": "Kapitel 6",
-        "ex": "Ich habe die Fenster geputzt, jetzt will ich noch staubsaugen.",
-        "img": "assets/vocab-scenes/k10-added/32.webp"
+        "ex": "Am Samstag staubsauge ich die ganze Wohnung.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/012-v.jpg"
       },
       {
         "w": "übernehmen",
-        "d": "sich etwas von jemandem nehmen, zu eigen machen; jemandem etwas wegnehmen / sich zu viel zumuten, sich selbst überlasten",
+        "d": "sich etwas von jemandem nehmen, zu eigen machen; jemandem etwas wegnehmen; sich zu viel zumuten, sich selbst überlasten",
         "ar": "تولي",
         "cat": "Kapitel 6",
         "ex": "die Besorgung eines Geschäfts übernehmen",
-        "img": "assets/vocab-scenes/k10-added/29.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/013-v.jpg"
       },
       {
         "w": "die Wohnanlage",
@@ -7051,7 +7051,7 @@ window.B1_BOOK = [
         "ar": "المجمع السكني",
         "cat": "Kapitel 6",
         "ex": "Die neue Wohnanlage hat einen großen Innenhof.",
-        "img": "assets/vocab-scenes/k11/31.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/014.jpg"
       },
       {
         "w": "die Prognose",
@@ -7075,7 +7075,7 @@ window.B1_BOOK = [
         "ar": "ليلة رأس السنة",
         "cat": "Kapitel 6",
         "ex": "Zu Silvester werden viele Feuerwerkskörper verschossen.",
-        "img": "assets/vocab-scenes/k1/05.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/017-v.jpg"
       },
       {
         "w": "vornehmen",
@@ -7091,7 +7091,7 @@ window.B1_BOOK = [
         "ar": "العذر",
         "cat": "Kapitel 6",
         "ex": "eine Ausrede erfinden",
-        "img": "assets/vocab-scenes/k6/02.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/019.jpg"
       },
       {
         "w": "befragen",
@@ -7099,7 +7099,7 @@ window.B1_BOOK = [
         "ar": "سؤال",
         "cat": "Kapitel 6",
         "ex": "Der Richter befragte die Zeugen.",
-        "img": "assets/vocab-scenes/k8/08.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/020-v.jpg"
       },
       {
         "w": "dauernd",
@@ -7107,7 +7107,7 @@ window.B1_BOOK = [
         "ar": "باستمرار",
         "cat": "Kapitel 6",
         "ex": "Deine dauernden Unterbrechungen stören irgendwie.",
-        "img": "assets/vocab-scenes/k11/28.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/021-v.jpg"
       },
       {
         "w": "einfach",
@@ -7115,15 +7115,15 @@ window.B1_BOOK = [
         "ar": "سهل",
         "cat": "Kapitel 6",
         "ex": "Die Klassenarbeit in Französisch war sehr einfach.",
-        "img": "assets/vocab-scenes/k10-added/04.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/022-v.jpg"
       },
       {
         "w": "fassen",
-        "d": "etwas greifen und festhalten / gefangen nehmen",
-        "ar": "فهم",
+        "d": "Etwas greifen; auch einen Gedanken verstehen oder einen Entschluss bilden.",
+        "ar": "يمسك / يستوعب",
         "cat": "Kapitel 6",
-        "ex": "Fassen der Räder",
-        "img": "assets/vocab-scenes/k11/09.webp"
+        "ex": "Sie fasst den Entschluss, ihr Ziel zu verfolgen.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/023-v.jpg"
       },
       {
         "w": "frisch",
@@ -7131,7 +7131,7 @@ window.B1_BOOK = [
         "ar": "طازجة",
         "cat": "Kapitel 6",
         "ex": "Am liebsten koche ich mit frischem Gemüse.",
-        "img": "assets/vocab-scenes/k1/21.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/024-v.jpg"
       },
       {
         "w": "der Leser",
@@ -7139,15 +7139,15 @@ window.B1_BOOK = [
         "ar": "القارئ",
         "cat": "Kapitel 6",
         "ex": "Der aufmerksame Leser sieht, was zwischen den Zeilen steht.",
-        "img": "assets/vocab-scenes/k11-added/31.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/025.jpg"
       },
       {
         "w": "die Leserin",
-        "d": "weibliche Person, die liest",
-        "ar": "القارئ",
+        "d": "Eine Frau, die einen Text oder ein Buch liest.",
+        "ar": "قارئة",
         "cat": "Kapitel 6",
-        "ex": "Sein neuer Roman hat viele begeisterte Leserinnen gefunden.",
-        "img": "assets/vocab-scenes/k6/36.webp"
+        "ex": "Die Leserin empfiehlt den Roman ihrer Freundin.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/026.jpg"
       },
       {
         "w": "Süßes",
@@ -7155,7 +7155,7 @@ window.B1_BOOK = [
         "ar": "الحلويات",
         "cat": "Kapitel 6",
         "ex": "Nach dem Essen möchte das Kind noch etwas Süßes.",
-        "img": "assets/vocab-scenes/k1/28.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/027-v.jpg"
       },
       {
         "w": "der Vorsatz",
@@ -7171,7 +7171,7 @@ window.B1_BOOK = [
         "ar": "تصبح",
         "cat": "Kapitel 6",
         "ex": "Dein Gesicht wird rot.",
-        "img": "assets/vocab-scenes/k1/07.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/029-v.jpg"
       },
       {
         "w": "das Futur",
@@ -7179,7 +7179,7 @@ window.B1_BOOK = [
         "ar": "زمن المستقبل",
         "cat": "Kapitel 6",
         "ex": "Das Futur von \"ich gehe\" ist \"ich werde gehen\".",
-        "img": "assets/vocab-scenes/k11/08.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/030.jpg"
       },
       {
         "w": "die Wahrheit",
@@ -7187,7 +7187,7 @@ window.B1_BOOK = [
         "ar": "الحقيقة",
         "cat": "Kapitel 6",
         "ex": "die nackte Wahrheit",
-        "img": "assets/vocab-scenes/k8/94.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/031.jpg"
       },
       {
         "w": "gelingen",
@@ -7195,7 +7195,7 @@ window.B1_BOOK = [
         "ar": "تنجح",
         "cat": "Kapitel 6",
         "ex": "Der Plan ist gut gelungen.",
-        "img": "assets/vocab-scenes/k1/17.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/032-v.jpg"
       },
       {
         "w": "realisieren",
@@ -7203,7 +7203,7 @@ window.B1_BOOK = [
         "ar": "أدرك",
         "cat": "Kapitel 6",
         "ex": "Sie will ihren Traum realisieren.",
-        "img": "assets/vocab-scenes/k10-added/14.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/033-v.jpg"
       },
       {
         "w": "das Hauptproblem",
@@ -7211,15 +7211,15 @@ window.B1_BOOK = [
         "ar": "المشكلة الرئيسية",
         "cat": "Kapitel 6",
         "ex": "Das Hauptproblem ist der fehlende Platz.",
-        "img": "assets/vocab-scenes/k12-added/88.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/034.jpg"
       },
       {
         "w": "konkret",
-        "d": "sinnlich erfahrbar, anschaulich; wirklich; gegenständlich / deutlich formuliert, sachlich, bestimmt, genau",
+        "d": "sinnlich erfahrbar, anschaulich; wirklich; gegenständlich; deutlich formuliert, sachlich, bestimmt, genau",
         "ar": "ملموسة",
         "cat": "Kapitel 6",
         "ex": "im konkreten Fall",
-        "img": "assets/vocab-scenes/k10/23.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/035-v.jpg"
       },
       {
         "w": "eventuell",
@@ -7235,23 +7235,23 @@ window.B1_BOOK = [
         "ar": "تصريف الأسماء بإضافة n أو en",
         "cat": "Kapitel 6",
         "ex": "Das Wort „Student“ folgt der n-Deklination.",
-        "img": "assets/vocab-scenes/k10/01.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/037.jpg"
       },
       {
         "w": "der Praktikant",
-        "d": "Person, die ein – in der Regel berufsvorbereitendes – Praktikum absolviert",
-        "ar": "المتدرب",
+        "d": "Ein Mann, der in einem Betrieb praktische Berufserfahrung sammelt.",
+        "ar": "متدرّب",
         "cat": "Kapitel 6",
-        "ex": "„Offenbar kann jedermann einfach in ein x-beliebiges Krankenhaus hineinlaufen und seine Arbeitskraft als Praktikant anbieten, gratis, versteht sich.“",
+        "ex": "Der Praktikant arbeitet drei Monate in der Redaktion.",
         "img": "assets/vocab-scenes/k7/122.webp"
       },
       {
         "w": "die Praktikantin",
-        "d": "weibliche Person, die ein – in der Regel berufsvorbereitendes – Praktikum absolviert",
-        "ar": "المتدرب",
+        "d": "Eine Frau, die in einem Betrieb praktische Berufserfahrung sammelt.",
+        "ar": "متدرّبة",
         "cat": "Kapitel 6",
-        "ex": "„Er kaufte sich sogar eine Adler-Schreibmaschine und tippte einmal in der Woche seine Bestellungen an die Fabrikanten darauf, was seinen Praktikantinnen imponierte.“",
-        "img": "assets/vocab-scenes/k6/23.webp"
+        "ex": "Die Praktikantin hilft heute im Kundenservice.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/039.jpg"
       },
       {
         "w": "das Zitat",
@@ -7259,7 +7259,7 @@ window.B1_BOOK = [
         "ar": "الاقتباس",
         "cat": "Kapitel 6",
         "ex": "Ein Zitat aus Goethes Werken macht sich immer gut.",
-        "img": "assets/vocab-scenes/k6/30.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/040.jpg"
       },
       {
         "w": "der Affe",
@@ -7267,7 +7267,7 @@ window.B1_BOOK = [
         "ar": "القرد",
         "cat": "Kapitel 6",
         "ex": "Affen sind in der Regel Pflanzenfresser.",
-        "img": "assets/vocab-scenes/k7/115.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/041.jpg"
       },
       {
         "w": "der Elefant",
@@ -7275,7 +7275,7 @@ window.B1_BOOK = [
         "ar": "الفيل",
         "cat": "Kapitel 6",
         "ex": "Elefanten haben Rüssel und Stoßzähne.",
-        "img": "assets/vocab-scenes/k9-added/20.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/042.jpg"
       },
       {
         "w": "der Löwe",
@@ -7287,11 +7287,11 @@ window.B1_BOOK = [
       },
       {
         "w": "der Pädagoge",
-        "d": "Erzieher, Lehrer (mit entsprechender pädagogischer Ausbildung) / Wissenschaftler auf dem Gebiet der Pädagogik",
+        "d": "Erzieher, Lehrer (mit entsprechender pädagogischer Ausbildung); Wissenschaftler auf dem Gebiet der Pädagogik",
         "ar": "المربّي / اختصاصي التربية",
         "cat": "Kapitel 6",
         "ex": "Pädagoge zu werden ist nicht nur Beruf, sondern Berufung.",
-        "img": "assets/vocab-scenes/k8/96.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/044.jpg"
       },
       {
         "w": "die Pädagogin",
@@ -7299,7 +7299,7 @@ window.B1_BOOK = [
         "ar": "المربّية / اختصاصية التربية",
         "cat": "Kapitel 6",
         "ex": "Die Pädagogin hat bei ihrer Weiterbildung von den Büchern großer Pädagogen des 19. Jahrhunderts profitiert.",
-        "img": "assets/vocab-scenes/k8/72.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/045.jpg"
       },
       {
         "w": "die Vokallänge",
@@ -7315,7 +7315,7 @@ window.B1_BOOK = [
         "ar": "مجهول",
         "cat": "Kapitel 6",
         "ex": "Die Umfrage ist anonym.",
-        "img": "assets/vocab-scenes/k10/04.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/047-v.jpg"
       },
       {
         "w": "der Arbeitsort",
@@ -7327,18 +7327,18 @@ window.B1_BOOK = [
       },
       {
         "w": "aufhalten",
-        "d": "jemanden/etwas nicht weitergehen/weiterfortschreiten lassen; etwas im offenen Zustand halten",
+        "d": "jemanden; etwas nicht weitergehen; weiterfortschreiten lassen; etwas im offenen Zustand halten",
         "ar": "توقف",
         "cat": "Kapitel 6",
         "ex": "Das Einsatzkommando konnte gerade noch rechtzeitig aufgehalten werden.",
-        "img": "assets/vocab-scenes/k6/21.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/049-v.jpg"
       },
       {
         "w": "halten",
-        "d": "etwas durch Kraftausübung in Ruhe belassen oder bringen / einen Status quo bewahren",
-        "ar": "عقد",
+        "d": "Etwas mit der Hand festhalten oder in einer Position lassen.",
+        "ar": "يمسك / يُبقي",
         "cat": "Kapitel 6",
-        "ex": "er/sie hat/hatte gehalten",
+        "ex": "Bitte halten Sie die Tür offen.",
         "img": "assets/vocab-scenes/k8/149.webp"
       },
       {
@@ -7355,7 +7355,7 @@ window.B1_BOOK = [
         "ar": "خرج",
         "cat": "Kapitel 6",
         "ex": "Wir sind gestern Abend zusammen ausgegangen.",
-        "img": "assets/vocab-scenes/k10-added/16.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/052-v.jpg"
       },
       {
         "w": "autonom",
@@ -7363,7 +7363,7 @@ window.B1_BOOK = [
         "ar": "مستقلة",
         "cat": "Kapitel 6",
         "ex": "Das Fahrzeug kann autonom fahren.",
-        "img": "assets/vocab-scenes/k6/25.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/053-v.jpg"
       },
       {
         "w": "befinden",
@@ -7371,7 +7371,7 @@ window.B1_BOOK = [
         "ar": "يقع",
         "cat": "Kapitel 6",
         "ex": "Das Hotel befindet sich neben dem Bahnhof.",
-        "img": "assets/vocab-scenes/k7/65.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/054-v.jpg"
       },
       {
         "w": "begegnen",
@@ -7403,15 +7403,15 @@ window.B1_BOOK = [
         "ar": "الخُمس",
         "cat": "Kapitel 6",
         "ex": "Ein Fünftel der Teilnehmer kam zu spät.",
-        "img": "assets/vocab-scenes/k6/11.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/058.jpg"
       },
       {
         "w": "der Fußweg",
         "d": "Weg, der von Fußgängern und Fußgängerinnen benutzt wird; Weg für Fußgänger und Fußgängerinnen, der entlang einer Straße führt",
         "ar": "ممر المشاة",
         "cat": "Kapitel 6",
-        "ex": "„Der Fahrer schritt voraus auf einem in den Schnee gestapften Fußweg.“",
-        "img": "assets/vocab-scenes/k7/05.webp"
+        "ex": "Der Fahrer schritt voraus auf einem in den Schnee gestapften Fußweg.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/059.jpg"
       },
       {
         "w": "die Grünfläche",
@@ -7419,15 +7419,15 @@ window.B1_BOOK = [
         "ar": "المنطقة الخضراء",
         "cat": "Kapitel 6",
         "ex": "Das Friedhofsamt pflegt die Grünflächen.",
-        "img": "assets/vocab-scenes/k8/154.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/060.jpg"
       },
       {
         "w": "der Hausbewohner",
         "d": "jemand, der in einem Haus wohnt",
         "ar": "شاغل المنزل",
         "cat": "Kapitel 6",
-        "ex": "„Noch ehe er mehr als zwei Monate in der Lindenallee 113 gewohnt hatte, sahen sich die meisten Hausbewohner von ihm bereits grußlos verachtet.“",
-        "img": "assets/vocab-scenes/k11-added/04.webp"
+        "ex": "Noch ehe er mehr als zwei Monate in der Lindenallee 113 gewohnt hatte, sahen sich die meisten Hausbewohner von ihm bereits grußlos verachtet.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/061.jpg"
       },
       {
         "w": "die Hausbewohnerin",
@@ -7435,14 +7435,14 @@ window.B1_BOOK = [
         "ar": "سكان المنزل / المقيمة",
         "cat": "Kapitel 6",
         "ex": "Die Hausbewohnerin kennt alle Nachbarn.",
-        "img": "assets/vocab-scenes/k10/26.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/062.jpg"
       },
       {
         "w": "die Hausfassade",
         "d": "Vorderansicht eines Hauses",
         "ar": "واجهة المنزل",
         "cat": "Kapitel 6",
-        "ex": "„Die Hausfassade und das Auto der Gastfamilie, die sich in Sicherheit bringen konnte, wurden bei dem Brand beschädigt.“",
+        "ex": "Die Hausfassade und das Auto der Gastfamilie, die sich in Sicherheit bringen konnte, wurden bei dem Brand beschädigt.",
         "img": "assets/vocab-scenes/k7/68.webp"
       },
       {
@@ -7451,15 +7451,15 @@ window.B1_BOOK = [
         "ar": "اليوم",
         "cat": "Kapitel 6",
         "ex": "Die Situation ist heute heutig.",
-        "img": "assets/vocab-scenes/k9-added/23.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/064-v.jpg"
       },
       {
         "w": "das Homeoffice",
-        "d": "digitaler Arbeitsplatz in der persönlichen Wohnstätte / Arbeitsform, bei welcher digital von der persönlichen Wohnstätte aus gearbeitet wird",
+        "d": "digitaler Arbeitsplatz in der persönlichen Wohnstätte; Arbeitsform, bei welcher digital von der persönlichen Wohnstätte aus gearbeitet wird",
         "ar": "مكتب المنزل",
         "cat": "Kapitel 6",
         "ex": "Im ehemaligen Kinderzimmer habe ich mir ein Homeoffice eingerichtet.",
-        "img": "assets/vocab-scenes/k6/08.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/065.jpg"
       },
       {
         "w": "längst",
@@ -7467,31 +7467,31 @@ window.B1_BOOK = [
         "ar": "منذ فترة طويلة",
         "cat": "Kapitel 6",
         "ex": "Der Zug ist längst abgefahren.",
-        "img": "assets/vocab-scenes/k9-added/06.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/066-v.jpg"
       },
       {
         "w": "lauten",
-        "d": "aus den genannten Worten bestehen, den Wortlaut haben / sich anhören, klingen",
+        "d": "aus den genannten Worten bestehen, den Wortlaut haben; sich anhören, klingen",
         "ar": "قراءة",
         "cat": "Kapitel 6",
         "ex": "auf fremde Währung lauten",
-        "img": "assets/vocab-scenes/k10-added/93.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/067-v.jpg"
       },
       {
         "w": "die Lebensqualität",
         "d": "meist Singular: die Gesamtheit verschiedener Faktoren, die das Wohlbefinden eines Menschen innerhalb einer Gesellschaft beeinflussen",
         "ar": "جودة الحياة",
         "cat": "Kapitel 6",
-        "ex": "„Die Befürworter des Referendums in der Schweiz erhoffen sich mehr Lebensqualität und einen höheren Wohlstand, wenn der Zuzug begrenzt wird.“",
-        "img": "assets/vocab-scenes/k8/107.webp"
+        "ex": "Die Befürworter des Referendums in der Schweiz erhoffen sich mehr Lebensqualität und einen höheren Wohlstand, wenn der Zuzug begrenzt wird.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/068.jpg"
       },
       {
         "w": "lebenswert",
         "d": "es wert sein, gelebt zu werden",
         "ar": "يستحق العيش",
         "cat": "Kapitel 6",
-        "ex": "„Ist das Leben lebenswert?“",
-        "img": "assets/vocab-scenes/k10-added/31.webp"
+        "ex": "Ist das Leben lebenswert?",
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/069-v.jpg"
       },
       {
         "w": "das Mikro-Wohnen",
@@ -7499,7 +7499,7 @@ window.B1_BOOK = [
         "ar": "السكن في مساحة صغيرة جدًا",
         "cat": "Kapitel 6",
         "ex": "Mikro-Wohnen ist in großen Städten immer beliebter.",
-        "img": "assets/vocab-scenes/k11-added/08.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/070.jpg"
       },
       {
         "w": "miteinander",
@@ -7507,11 +7507,11 @@ window.B1_BOOK = [
         "ar": "مع بعضهم البعض",
         "cat": "Kapitel 6",
         "ex": "Wir arbeiten gut miteinander.",
-        "img": "assets/vocab-scenes/k12-added/83.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/071-v.jpg"
       },
       {
         "w": "das Prinzip",
-        "d": "Grundsatz oder Maßstab des Handelns, der einen Mensch leitet / Grundgedanke, auf den eine Institution, Organisation, ein Projekt, ein Gegenstand aufbaut",
+        "d": "Grundsatz oder Maßstab des Handelns, der einen Mensch leitet; Grundgedanke, auf den eine Institution, Organisation, ein Projekt, ein Gegenstand aufbaut",
         "ar": "المبدأ",
         "cat": "Kapitel 6",
         "ex": "ein Mann mit Prinzipien",
@@ -7522,7 +7522,7 @@ window.B1_BOOK = [
         "d": "im Privatbesitz befindliches Auto",
         "ar": "السيارة الخاصة",
         "cat": "Kapitel 6",
-        "ex": "„Das Privatauto ist unzeitgemäßer Individualismus.“",
+        "ex": "Das Privatauto ist unzeitgemäßer Individualismus.",
         "img": "assets/vocab-scenes/k6/09.webp"
       },
       {
@@ -7535,7 +7535,7 @@ window.B1_BOOK = [
       },
       {
         "w": "spielen",
-        "d": "einer zwanglosen komplexen Betätigung nachgehen, bei der der Lustgewinn im Vordergrund steht / ein Musikinstrument benutzen",
+        "d": "einer zwanglosen komplexen Betätigung nachgehen, bei der der Lustgewinn im Vordergrund steht; ein Musikinstrument benutzen",
         "ar": "لعب",
         "cat": "Kapitel 6",
         "ex": "jdm. beim Spielen zusehen",
@@ -7543,10 +7543,10 @@ window.B1_BOOK = [
       },
       {
         "w": "das Stadtviertel",
-        "d": "abgegrenzter oder in bestimmter Weise zusammengehörender Teil einer Stadt / umgangssprachlich: die gesamten Einwohner, Bewohner eines Stadtviertels[1]",
+        "d": "abgegrenzter oder in bestimmter Weise zusammengehörender Teil einer Stadt; umgangssprachlich: die gesamten Einwohner, Bewohner eines Stadtviertels[1]",
         "ar": "حيّ المدينة",
         "cat": "Kapitel 6",
-        "ex": "„Immer mehr Berliner zieht es in das neue Stadtviertel zwischen Eldenaer Straße und Landsberger Allee in Prenzlauer Berg.“",
+        "ex": "Immer mehr Berliner zieht es in das neue Stadtviertel zwischen Eldenaer Straße und Landsberger Allee in Prenzlauer Berg.",
         "img": "assets/vocab-scenes/k11-added/03.webp"
       },
       {
@@ -7555,7 +7555,7 @@ window.B1_BOOK = [
         "ar": "تكبير",
         "cat": "Kapitel 6",
         "ex": "Wir wollen das Foto vergrößern.",
-        "img": "assets/vocab-scenes/k7/08.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/077-v.jpg"
       },
       {
         "w": "voraussichtlich",
@@ -7563,23 +7563,23 @@ window.B1_BOOK = [
         "ar": "المتوقع",
         "cat": "Kapitel 6",
         "ex": "die voraussichtlichen Kosten",
-        "img": "assets/vocab-scenes/k10-added/06.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/078-v.jpg"
       },
       {
         "w": "wachsen",
-        "d": "allmählich größer werden; von der Größe, vom Umfang her zunehmen / sich im Laufe des Wachsens¹ entwickeln; an einer bestimmten Stelle vorkommen und gedeihen",
+        "d": "allmählich größer werden; von der Größe, vom Umfang her zunehmen; sich im Laufe des Wachsens¹ entwickeln; an einer bestimmten Stelle vorkommen und gedeihen",
         "ar": "تنمو",
         "cat": "Kapitel 6",
         "ex": "er/sie ist/war gewachsen",
-        "img": "assets/vocab-scenes/k11-added/72.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/079-v.jpg"
       },
       {
         "w": "die Windturbine",
         "d": "Strömungskraftmaschine, die die kinetische Energie des Windes in elektrischen Strom umwandelt",
         "ar": "توربين رياح",
         "cat": "Kapitel 6",
-        "ex": "„Windturbinen mit vertikalen Flügeln sind, unabhängig von der Windrichtung, immer vor dem Wind.“",
-        "img": "assets/vocab-scenes/k10-added/30.webp"
+        "ex": "Windturbinen mit vertikalen Flügeln sind, unabhängig von der Windrichtung, immer vor dem Wind.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/080.jpg"
       },
       {
         "w": "die Akademie",
@@ -7611,7 +7611,7 @@ window.B1_BOOK = [
         "ar": "منطقة المشاة",
         "cat": "Kapitel 6",
         "ex": "In einer Fußgängerzone lässt es sich herrlich flanieren, einkaufen und bei seinem Lieblingsgetränk entspannen.",
-        "img": "assets/vocab-scenes/k7/33.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/084.jpg"
       },
       {
         "w": "das Hallenbad",
@@ -7619,7 +7619,7 @@ window.B1_BOOK = [
         "ar": "حمام السباحة الداخلي",
         "cat": "Kapitel 6",
         "ex": "In unserem Hallenbad riecht es immer so penetrant nach Chlor.",
-        "img": "assets/vocab-scenes/k12-added/23.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/085.jpg"
       },
       {
         "w": "die Kindertagesstätte",
@@ -7627,7 +7627,7 @@ window.B1_BOOK = [
         "ar": "مركز الرعاية النهارية",
         "cat": "Kapitel 6",
         "ex": "Natürlich gibt es in Japan auch Kindertagesstätten.",
-        "img": "assets/vocab-scenes/k7/110.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/086.jpg"
       },
       {
         "w": "der Kiosk",
@@ -7635,11 +7635,11 @@ window.B1_BOOK = [
         "ar": "الكشك",
         "cat": "Kapitel 6",
         "ex": "Dazu gehörten ein Maurischer Kiosk, eine Indische Fischerhütte, ein Indisches Zelt, ein See und zahlreiche exotische Pflanzen.",
-        "img": "assets/vocab-scenes/k10-added/19.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/087.jpg"
       },
       {
         "w": "die Klinik",
-        "d": "Krankenhaus, Heilstätte mit stationärer Versorgung / das Erscheinungsbild und der Verlauf einer Krankheit",
+        "d": "Krankenhaus, Heilstätte mit stationärer Versorgung; das Erscheinungsbild und der Verlauf einer Krankheit",
         "ar": "العيادة",
         "cat": "Kapitel 6",
         "ex": "Klinik für Hals-, Nasen- und Ohrenkrankheiten",
@@ -7651,7 +7651,7 @@ window.B1_BOOK = [
         "ar": "حديقة الحيوان",
         "cat": "Kapitel 6",
         "ex": "Im Tierpark leben Tiere wie der Löwe.",
-        "img": "assets/vocab-scenes/k6/17.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/089.jpg"
       },
       {
         "w": "die Volkshochschule",
@@ -7659,30 +7659,30 @@ window.B1_BOOK = [
         "ar": "مركز تعليم الكبار",
         "cat": "Kapitel 6",
         "ex": "In der Volkshochschule kann man Sprachkurse besuchen.",
-        "img": "assets/vocab-scenes/k2/33.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/090.jpg"
       },
       {
         "w": "der Zirkus",
-        "d": "großes Zelt oder Gebäude, in dem Tierdressuren und Ähnliches gezeigt werden / Trubel, Durcheinander",
+        "d": "großes Zelt oder Gebäude, in dem Tierdressuren und Ähnliches gezeigt werden; Trubel, Durcheinander",
         "ar": "السيرك",
         "cat": "Kapitel 6",
         "ex": "Im Zirkus findet die Vorstellung statt, aber draußen gibt es auch jede Menge zu sehen.",
-        "img": "assets/vocab-scenes/k6/28.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/091.jpg"
       },
       {
         "w": "der Anteil",
         "d": "nach einer Vereinbarung bestimmter Teil einer Menge (meistens Geld), die eine gewisse Person bekommen soll; Anteilnahme, Betroffenheit, Interesse",
         "ar": "الحصة",
         "cat": "Kapitel 6",
-        "ex": "\"Und wo bleibt mein Anteil?\"",
-        "img": "assets/vocab-scenes/k10-added/72.webp"
+        "ex": "Und wo bleibt mein Anteil?",
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/092.jpg"
       },
       {
         "w": "umformulieren",
         "d": "anders formulieren",
         "ar": "إعادة صياغة",
         "cat": "Kapitel 6",
-        "ex": "„Elisabeth ließ jedoch den bisherigen Titel \"Supreme Head\" in \"Supreme Governor\" umformulieren.“",
+        "ex": "Elisabeth ließ jedoch den bisherigen Titel \"Supreme Head\" in \"Supreme Governor\" umformulieren.",
         "img": "assets/vocab-scenes/k12-added/27.webp"
       },
       {
@@ -7690,8 +7690,8 @@ window.B1_BOOK = [
         "d": "bildungssprachlich, selten: Vorfall, Geschehen, Begebenheit, Erscheinung, Vorkommnis; Linguistik, Grammatik: grammatischer Fall, Deklinationsform, Beugungsform, grammatische Kategorie der Deklination von Substantiven, Adjektiven, Pronomen und Artikel",
         "ar": "القضية",
         "cat": "Kapitel 6",
-        "ex": "\"Anfang des Jahres ist schließlich auch die amerikanische Steuerbehörde IRS (Internal Revenue Service) aufmerksam geworden. Sie hat festgestellt, dass im SL [Second Life] an ihr vorbei Umsatz gemacht wird. Das bedeutet: Schwarzmarkt. Der Kasus beschäftigt seitdem den Kongress.\"",
-        "img": "assets/vocab-scenes/k8/89.webp"
+        "ex": "Anfang des Jahres ist schließlich auch die amerikanische Steuerbehörde IRS (Internal Revenue Service) aufmerksam geworden. Sie hat festgestellt, dass im SL [Second Life] an ihr vorbei Umsatz gemacht wird. Das bedeutet: Schwarzmarkt. Der Kasus beschäftigt seitdem den Kongress.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/094.jpg"
       },
       {
         "w": "der Bürgermeister",
@@ -7699,7 +7699,7 @@ window.B1_BOOK = [
         "ar": "رئيس البلدية",
         "cat": "Kapitel 6",
         "ex": "Bürgermeister und Gemeinderat verabschieden den neuen Gemeindehaushalt.",
-        "img": "assets/vocab-scenes/k7/03.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/095.jpg"
       },
       {
         "w": "die Bürgermeisterin",
@@ -7707,7 +7707,7 @@ window.B1_BOOK = [
         "ar": "رئيسة البلدية",
         "cat": "Kapitel 6",
         "ex": "Bürgermeisterin und Gemeinderat verabschieden den neuen Gemeindehaushalt.",
-        "img": "assets/vocab-scenes/k6/07.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/096.jpg"
       },
       {
         "w": "die Bildung",
@@ -7715,7 +7715,7 @@ window.B1_BOOK = [
         "ar": "التعليم",
         "cat": "Kapitel 6",
         "ex": "Bildung ist für die Zukunft eines Landes wichtig.",
-        "img": "assets/vocab-scenes/k8/77.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/097.jpg"
       },
       {
         "w": "möglicherweise",
@@ -7730,16 +7730,16 @@ window.B1_BOOK = [
         "d": "aktuell gegebene Sachlage im Verkehrsleben",
         "ar": "الوضع المروري",
         "cat": "Kapitel 6",
-        "ex": "„Die Verkehrskreuzung ist eine sehr komplexe Verkehrssituation, die dem Verkehrsverständnis und Verkehrskönnen der Kinder viel abverlangt.“",
-        "img": "assets/vocab-scenes/k7/01.webp"
+        "ex": "Die Verkehrskreuzung ist eine sehr komplexe Verkehrssituation, die dem Verkehrsverständnis und Verkehrskönnen der Kinder viel abverlangt.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/099.jpg"
       },
       {
         "w": "der Wohnraum",
-        "d": "ein Zimmer, welches zum Schlafen oder Wohnen dient / Sammelbegriff für alle Wohnungen und Wohnhäuser in einer gewissen Umgebung",
+        "d": "ein Zimmer, welches zum Schlafen oder Wohnen dient; Sammelbegriff für alle Wohnungen und Wohnhäuser in einer gewissen Umgebung",
         "ar": "مساحة المعيشة",
         "cat": "Kapitel 6",
         "ex": "Die Polizei durchsuchte nochmals die Wohnräume des Verdächtigen.",
-        "img": "assets/vocab-scenes/k6/38.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/100.jpg"
       },
       {
         "w": "die Vorfreude",
@@ -7747,7 +7747,7 @@ window.B1_BOOK = [
         "ar": "الترقب",
         "cat": "Kapitel 6",
         "ex": "Vorfreude ist die schönste Freude.",
-        "img": "assets/vocab-scenes/k1/14.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/101.jpg"
       },
       {
         "w": "die Melodie",
@@ -7755,7 +7755,7 @@ window.B1_BOOK = [
         "ar": "اللحن",
         "cat": "Kapitel 6",
         "ex": "Ich kenne diese Melodie aus einem alten Film.",
-        "img": "assets/vocab-scenes/k12/08.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/102.jpg"
       },
       {
         "w": "der Rhythmus",
@@ -7763,7 +7763,7 @@ window.B1_BOOK = [
         "ar": "الإيقاع",
         "cat": "Kapitel 6",
         "ex": "Die Tänzer bewegen sich im Rhythmus der Musik.",
-        "img": "assets/vocab-scenes/k12/09.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/103.jpg"
       },
       {
         "w": "der Stern",
@@ -7771,15 +7771,15 @@ window.B1_BOOK = [
         "ar": "النجم",
         "cat": "Kapitel 6",
         "ex": "Proxima Centauri ist der nächste Stern.",
-        "img": "assets/vocab-scenes/k6/16.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/104.jpg"
       },
       {
         "w": "dahin",
-        "d": "ersetzt einen Ort (häufig mit Verben der Bewegung) / ersetzt einen Zeitpunkt",
+        "d": "ersetzt einen Ort (häufig mit Verben der Bewegung); ersetzt einen Zeitpunkt",
         "ar": "هناك",
         "cat": "Kapitel 6",
         "ex": "Ich will aber dahin!",
-        "img": "assets/vocab-scenes/k12-added/70.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/105-v.jpg"
       },
       {
         "w": "grad",
@@ -7791,18 +7791,18 @@ window.B1_BOOK = [
       },
       {
         "w": "die Hürde",
-        "d": "76,20 bis 106,68 cm hohes Hindernis, das in bestimmten Abständen (ungefähr 8,50 bis 35 m) auf der Laufstrecke steht und vom Läufer überwunden werden muss, ohne dass es umfällt / großes Objekt, über das ein Pferd beim Springreiten springen muss, ohne es umzuwerfen",
+        "d": "76,20 bis 106,68 cm hohes Hindernis, das in bestimmten Abständen (ungefähr 8,50 bis 35 m) auf der Laufstrecke steht und vom Läufer überwunden werden muss, ohne dass es umfällt; großes Objekt, über das ein Pferd beim Springreiten springen muss, ohne es umzuwerfen",
         "ar": "العقبة",
         "cat": "Kapitel 6",
         "ex": "eine Hürde nehmen",
-        "img": "assets/vocab-scenes/k6/31.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/107.jpg"
       },
       {
         "w": "die Liedzeile",
         "d": "Zeile eines Liedes",
         "ar": "خط الأغنية",
         "cat": "Kapitel 6",
-        "ex": "„Verzweifelt läufst du herum – ein Mensch, umgehauen von der ältesten Liedzeile der Welt.“",
+        "ex": "Verzweifelt läufst du herum – ein Mensch, umgehauen von der ältesten Liedzeile der Welt.",
         "img": "assets/vocab-scenes/k12/06.webp"
       },
       {
@@ -7811,15 +7811,15 @@ window.B1_BOOK = [
         "ar": "أعتقد",
         "cat": "Kapitel 6",
         "ex": "Zeit zum Nachdenken",
-        "img": "assets/vocab-scenes/k7/133.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/109-v.jpg"
       },
       {
         "w": "schweben",
-        "d": "in einem Medium treiben / langsam fliegen, sich langsam durch die Luft bewegen",
+        "d": "in einem Medium treiben; langsam fliegen, sich langsam durch die Luft bewegen",
         "ar": "تعويم",
         "cat": "Kapitel 6",
         "ex": "zwischen Leben und Tod schweben",
-        "img": "assets/vocab-scenes/k10-added/69.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/110-v.jpg"
       },
       {
         "w": "selber",
@@ -7827,15 +7827,15 @@ window.B1_BOOK = [
         "ar": "نفسك",
         "cat": "Kapitel 6",
         "ex": "Ich repariere das Fahrrad selber.",
-        "img": "assets/vocab-scenes/k9-added/25.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/111-v.jpg"
       },
       {
         "w": "stapeln",
-        "d": "ordentlich aufeinanderlegen, einen Stapel bilden / etwas in größerer Anzahl anhäufen; quantitativ anwachsen",
+        "d": "ordentlich aufeinanderlegen, einen Stapel bilden; etwas in größerer Anzahl anhäufen; quantitativ anwachsen",
         "ar": "كومة",
         "cat": "Kapitel 6",
         "ex": "Vor dem Winter hatte er das Brennholz unter dem Vordach gestapelt.",
-        "img": "assets/vocab-scenes/k8/06.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/112-v.jpg"
       },
       {
         "w": "die Tiefe",
@@ -7843,14 +7843,14 @@ window.B1_BOOK = [
         "ar": "العمق",
         "cat": "Kapitel 6",
         "ex": "Die Tiefe des Sees beträgt an dieser Stelle zehn Meter.",
-        "img": "assets/vocab-scenes/k12-added/74.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/113.jpg"
       },
       {
         "w": "die Umschreibung",
-        "d": "Beschreibung eines Sachverhaltes mit anderen sprachlichen Mitteln / Eigentum jemandem anderen übertragen",
+        "d": "Beschreibung eines Sachverhaltes mit anderen sprachlichen Mitteln; Eigentum jemandem anderen übertragen",
         "ar": "الوصف",
         "cat": "Kapitel 6",
-        "ex": "„Zudem schmückt ihn ein Mösenbart, aber diese Umschreibung kommt nicht vom Runner, sondern von Dietrich.“",
+        "ex": "Zudem schmückt ihn ein Mösenbart, aber diese Umschreibung kommt nicht vom Runner, sondern von Dietrich.",
         "img": "assets/vocab-scenes/k12-added/08.webp"
       },
       {
@@ -7859,7 +7859,7 @@ window.B1_BOOK = [
         "ar": "تقييم",
         "cat": "Kapitel 6",
         "ex": "Die Jury bewertet den Auftritt.",
-        "img": "assets/vocab-scenes/k3/33.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/115-v.jpg"
       },
       {
         "w": "kitschig",
@@ -7867,7 +7867,7 @@ window.B1_BOOK = [
         "ar": "جبني",
         "cat": "Kapitel 6",
         "ex": "Es klingt abgedroschen/kitschig, aber als ich ihn sah, wusste ich, dass er der Richtige ist.",
-        "img": "assets/vocab-scenes/k7/74.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/116-v.jpg"
       },
       {
         "w": "verständlich",
@@ -7875,15 +7875,15 @@ window.B1_BOOK = [
         "ar": "مفهومة",
         "cat": "Kapitel 6",
         "ex": "Die Erklärung ist verständlich.",
-        "img": "assets/vocab-scenes/k11-added/56.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/117-v.jpg"
       },
       {
         "w": "der Bass",
-        "d": "tiefe Singstimme bei Männern / Sänger mit tiefer Singstimme",
+        "d": "tiefe Singstimme bei Männern; Sänger mit tiefer Singstimme",
         "ar": "الجهير",
         "cat": "Kapitel 6",
-        "ex": "„Statistisch sind 5 % der Männerstimmen Bässe.“",
-        "img": "assets/vocab-scenes/k8/85.webp"
+        "ex": "Statistisch sind 5 % der Männerstimmen Bässe.",
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/118.jpg"
       },
       {
         "w": "die Flöte",
@@ -7899,7 +7899,7 @@ window.B1_BOOK = [
         "ar": "الآلة الموسيقية",
         "cat": "Kapitel 6",
         "ex": "Zur Ausstattung eines Orchesters werden viele Musikinstrumente benötigt.",
-        "img": "assets/vocab-scenes/k12/26.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/120.jpg"
       },
       {
         "w": "das Piano",
@@ -7907,7 +7907,7 @@ window.B1_BOOK = [
         "ar": "البيانو",
         "cat": "Kapitel 6",
         "ex": "Das Piano ist in der Regel ein über 7\\tfrac{1}{2} Oktaven reichendes Instrument.",
-        "img": "assets/vocab-scenes/k8/84.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/121.jpg"
       },
       {
         "w": "das Schlagzeug",
@@ -7915,7 +7915,7 @@ window.B1_BOOK = [
         "ar": "آلة الطبل / الدرامز",
         "cat": "Kapitel 6",
         "ex": "Mein Bruder spielt Schlagzeug in einer Band.",
-        "img": "assets/vocab-scenes/k12/18.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/122.jpg"
       },
       {
         "w": "die Violine",
@@ -7923,15 +7923,15 @@ window.B1_BOOK = [
         "ar": "الكمان",
         "cat": "Kapitel 6",
         "ex": "Wenn ich auf meiner Violine spiele, schwebe ich in anderen Sphären.",
-        "img": "assets/vocab-scenes/k12/02.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/123.jpg"
       },
       {
         "w": "die Auszeichnung",
-        "d": "Verleihung einer Ehrung meist in Form eines besonderen Gegenstandes oder eines Titels / besonderer Gegenstand oder Titel, mit dem jemand geehrt und gewürdigt wird",
+        "d": "Verleihung einer Ehrung meist in Form eines besonderen Gegenstandes oder eines Titels; besonderer Gegenstand oder Titel, mit dem jemand geehrt und gewürdigt wird",
         "ar": "الجائزة",
         "cat": "Kapitel 6",
         "ex": "von jdm. eine Auszeichnung/Ehrung erhalten",
-        "img": "assets/vocab-scenes/k8/122.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/124.jpg"
       },
       {
         "w": "die Biografie",
@@ -7947,7 +7947,7 @@ window.B1_BOOK = [
         "ar": "برنامج اكتشاف المواهب",
         "cat": "Kapitel 6",
         "ex": "In der Casting-Show suchen sie neue Sänger.",
-        "img": "assets/vocab-scenes/k8/152.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/126.jpg"
       },
       {
         "w": "die Charts",
@@ -7955,7 +7955,7 @@ window.B1_BOOK = [
         "ar": "قائمة الأغاني الأكثر نجاحًا",
         "cat": "Kapitel 6",
         "ex": "Der Song steht seit Wochen in den Charts.",
-        "img": "assets/vocab-scenes/k8/83.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/127.jpg"
       },
       {
         "w": "der Coversong",
@@ -7963,7 +7963,7 @@ window.B1_BOOK = [
         "ar": "أغنية مُعاد أداؤها",
         "cat": "Kapitel 6",
         "ex": "Die Band spielte einen bekannten Coversong.",
-        "img": "assets/vocab-scenes/k12/04.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/128.jpg"
       },
       {
         "w": "die Jury",
@@ -7971,15 +7971,15 @@ window.B1_BOOK = [
         "ar": "هيئة المحلفين",
         "cat": "Kapitel 6",
         "ex": "Die Jury mitsamt der Schauspielerin Diane Kruger hat gesprochen: Die Gewinner für die Bären 2008 stehen fest.",
-        "img": "assets/vocab-scenes/k6/34.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/129.jpg"
       },
       {
         "w": "der Preis",
-        "d": "beim Erwerb einer Ware oder Dienstleistung zu zahlender Geldbetrag / ehrende Auszeichnung für besondere Verdienste",
+        "d": "beim Erwerb einer Ware oder Dienstleistung zu zahlender Geldbetrag; ehrende Auszeichnung für besondere Verdienste",
         "ar": "السعر / الجائزة",
         "cat": "Kapitel 6",
         "ex": "zum halben Preis",
-        "img": "assets/vocab-scenes/k12-added/29.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/130.jpg"
       },
       {
         "w": "der Songwriter",
@@ -7987,7 +7987,7 @@ window.B1_BOOK = [
         "ar": "كاتب الأغاني",
         "cat": "Kapitel 6",
         "ex": "Sein Songwriter hat gestern gekündigt und nun ist er auf der Suche nach einem neuen.",
-        "img": "assets/vocab-scenes/k12/12.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/131.jpg"
       },
       {
         "w": "die Songwriterin",
@@ -7995,7 +7995,7 @@ window.B1_BOOK = [
         "ar": "كاتبة الأغاني",
         "cat": "Kapitel 6",
         "ex": "Sie wurde 2003 Songwriterin des Jahres.",
-        "img": "assets/vocab-scenes/k12/11.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/132.jpg"
       },
       {
         "w": "mitsingen",
@@ -8003,15 +8003,15 @@ window.B1_BOOK = [
         "ar": "الغناء على طول",
         "cat": "Kapitel 6",
         "ex": "Das Publikum singt beim Refrain mit.",
-        "img": "assets/vocab-scenes/k12/05.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/133-v.jpg"
       },
       {
         "w": "der Song",
-        "d": "Lied, meist aufgebaut aus Strophe und Refrain / allgemein ein Musikstück oder eine (musikalische) Tonaufnahme",
+        "d": "Lied, meist aufgebaut aus Strophe und Refrain; allgemein ein Musikstück oder eine (musikalische) Tonaufnahme",
         "ar": "الأغنية",
         "cat": "Kapitel 6",
         "ex": "Der Song „Yesterday“ der Beatles war weltberühmt.",
-        "img": "assets/vocab-scenes/k12/10.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/134.jpg"
       },
       {
         "w": "der Songtitel",
@@ -8019,23 +8019,23 @@ window.B1_BOOK = [
         "ar": "عنوان الأغنية",
         "cat": "Kapitel 6",
         "ex": "Der Songtitel steht auf dem Plakat.",
-        "img": "assets/vocab-scenes/k12/15.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/135.jpg"
       },
       {
         "w": "bezeichnen",
-        "d": "jemandem oder etwas einen Namen geben, jemanden benennen / in bestimmter Weise kennzeichnen; durch ein Symbol erkennbar machen",
+        "d": "jemandem oder etwas einen Namen geben, jemanden benennen; in bestimmter Weise kennzeichnen; durch ein Symbol erkennbar machen",
         "ar": "يسمّي / يطلِق اسمًا على",
         "cat": "Kapitel 6",
         "ex": "Die Affäre bei VW kann man mit gutem Grund als Skandal bezeichnen.",
-        "img": "assets/vocab-scenes/k7/09.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/136-v.jpg"
       },
       {
         "w": "die Bezeichnung",
-        "d": "Code aus Zeichen und Symbolen, der auf einen Gegenstand oder Begriff verweist / Wort, sprachlicher Ausdruck für etwas Gemeintes",
+        "d": "Code aus Zeichen und Symbolen, der auf einen Gegenstand oder Begriff verweist; Wort, sprachlicher Ausdruck für etwas Gemeintes",
         "ar": "التسمية / المصطلح",
         "cat": "Kapitel 6",
         "ex": "Auf der Verpackung muss eine Bezeichnung stehen, die den Produkttyp ausweist.",
-        "img": "assets/vocab-scenes/k8/13.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/137.jpg"
       },
       {
         "w": "der Doktorand",
@@ -8043,7 +8043,7 @@ window.B1_BOOK = [
         "ar": "طالب دكتوراه",
         "cat": "Kapitel 6",
         "ex": "Der Doktorand arbeitet an seiner Forschungsarbeit.",
-        "img": "assets/vocab-scenes/k8/113.webp"
+        "img": "assets/vocab-scenes/b1.1/openverse/k6/138.jpg"
       },
       {
         "w": "die Doktorandin",
@@ -8055,10 +8055,10 @@ window.B1_BOOK = [
       },
       {
         "w": "der Internationalismus",
-        "d": "Linguistik: Wort, das in gleicher/ähnlicher Form und Bedeutung zugleich in mehreren Sprachen verbreitet ist; Politik: internationale Ausrichtung politischer Maßnahmen, politischen Denkens",
-        "ar": "الأممية",
+        "d": "Ein Wort, das in mehreren Sprachen ähnlich aussieht und dasselbe bedeutet.",
+        "ar": "كلمة دولية مشتركة بين لغات",
         "cat": "Kapitel 6",
-        "ex": "\"Zudem bildet sich eine wachsende Zahl sogenannter Internationalismen heraus, die, weil sie die Kommunikation erleichtern können, eigentlich willkommen sein müßten.\"",
+        "ex": "Hotel ist in vielen Sprachen ein Internationalismus.",
         "img": "assets/vocab-scenes/k8/112.webp"
       }
     ],
