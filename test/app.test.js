@@ -510,7 +510,7 @@ test('next-generation shell and design system are wired into the offline app', (
   assert.match(worker, /data_lernwortschatz12\.js/);
   assert.match(worker, /data_vocab_topics7_12\.js/);
   assert.match(worker, /assets\/vocab-scenes\/k7\/145\.webp/);
-  assert.match(worker, /CACHE_VERSION = 'v42'/);
+  assert.match(worker, /CACHE_VERSION = 'v43'/);
   assert.match(worker, /vocab-scenes\\\/k7\\\/\\d\+\\\.webp/);
 });
 

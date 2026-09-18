@@ -744,6 +744,9 @@ body.listen-mode .speakable{cursor:pointer}
 .fc-visual{width:min(100%,318px);height:auto;aspect-ratio:1/1;margin:0 auto 16px;position:relative;display:block;
   border-radius:26px;overflow:hidden;background:#e8efed;border:5px solid #fff;
   box-shadow:0 14px 32px rgba(35,70,75,.16)}
+.fc-visual--semantic{background:linear-gradient(145deg,#eef8f3 0%,#e8effb 52%,#f8f0ff 100%)}
+.fc-emoji{width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:28px;
+  font-size:clamp(64px,15vw,104px);line-height:1;text-align:center;filter:drop-shadow(0 8px 8px rgba(35,70,75,.12))}
 .fc-scene{width:100%;height:100%;display:block;object-fit:cover}
 .fc-visual--full{width:min(100%,312px);height:auto;aspect-ratio:1/1;background:#fff}
 .fc-visual--full .fc-scene{object-fit:contain}
@@ -1115,7 +1118,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <script src="data_book0_expansion.js"></script>
 <script src="data_book1.js"></script>
 <script src="data_book2.js"></script>
-<script src="data_b1_1.js?v=b1-1-vocab-1"></script>
+<script src="data_b1_1.js?v=b1-1-vocab-2"></script>
 <script src="data_extra.js"></script>
 <script src="data_lernwortschatz8.js?v=lernwortschatz8-1"></script>
 <script src="data_lernwortschatz9.js?v=lernwortschatz9-3"></script>
@@ -1443,7 +1446,7 @@ function allVocabularyEntries(){
       search:normalizeWordForSearch(`${word} ${definition} ${example} ${meaning} Kapitel ${chapter.num} ${chapter.title||''}`)
     };
   }));
-  return [...make('A1',A1_BOOK),...make('A2',BOOK)];
+  return [...make('A1',A1_BOOK),...make('A2',BOOK),...make('B1.1',B1_BOOK)];
 }
 
 function findWordEntry(value){
@@ -5774,8 +5777,12 @@ function stableWordHash(value){
 
 function fallbackVocabSticker(v,chapterData,label='DE'){
   const category=v.cat||(chapterData?.num?`Kapitel ${chapterData.num}`:'Wortschatz');
+  const text=`${v.w||''} ${v.d||''} ${v.ar||''}`.toLocaleLowerCase('de');
+  const rule=VOCAB_VISUAL_RULES.find(([pattern])=>pattern.test(text));
+  const chapterIcon={1:'🧳🌍',2:'📱⚙️',3:'🔄🌱',4:'💼🤝',5:'🌱♻️',6:'🚀🎵'}[chapterData?.num]||'🗂️';
+  const visual=rule?.[1]||chapterIcon;
   return `<div class="fc-visual" role="img" aria-label="${escapeHtml(v.w)}">
-    <div class="level-code" style="margin:auto">${label}</div>
+    <div class="fc-emoji" aria-hidden="true">${visual}</div>
     <span class="sticker-category">${escapeHtml(category)}</span>
   </div>`;
 }
@@ -5791,6 +5798,9 @@ function vocabVisual(v,chapter){
   }
   if(!chapterData){
     return fallbackVocabSticker(v, null, 'DE');
+  }
+  if(chapterData.route?.startsWith('b1.1/')){
+    return fallbackVocabSticker(v, chapterData, 'B1.1');
   }
   if(v.img){
     return `<div class="fc-visual" role="img" aria-label="${escapeHtml(v.w)}">
