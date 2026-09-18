@@ -54,6 +54,14 @@ body.level-a2{
   --hero-start:#184f7a; --hero-end:#4b9fbd;
   --shadow:0 8px 24px rgba(24,79,122,.1);
 }
+body.level-b1{
+  --green:#7b5b9e; --green-d:#5b3d79; --green-l:#f0eafb;
+  --bg:#f6f2fb; --card:#fffdfd; --line:#e5dcef;
+  --blue:#6d5a9d; --blue-l:#efebf8;
+  --topbar-start:#5b3d79; --topbar-end:#8f70b4;
+  --hero-start:#5b3d79; --hero-end:#9879bc;
+  --shadow:0 8px 24px rgba(91,61,121,.12);
+}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html{font-size:16px}
 body{
@@ -127,6 +135,9 @@ body.exam-mode .ar{display:none!important}
 .level-card.a2 .level-code{background:var(--blue-l);color:var(--blue)}
 .level-card.a2{background:linear-gradient(135deg,#fff,#eef6fb)}
 .level-card.a2 h3{color:#184f7a}
+.level-card.b1 .level-code{background:#f0eafb;color:#5b3d79}
+.level-card.b1{background:linear-gradient(135deg,#fff,#f4eefb)}
+.level-card.b1 h3{color:#5b3d79}
 .level-card.soon .level-code{background:var(--amber-l);color:var(--amber)}
 .level-card h3{font-size:20px;color:var(--green-d)}
 .level-card p{font-size:13.5px;color:var(--ink-2)}
@@ -1008,7 +1019,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
   <header class="topbar">
     <button class="back" id="backBtn" aria-label="zurück">←</button>
     <button class="home" id="homeBtn" aria-label="Home" title="Home">⌂</button>
-    <h1 id="topTitle">Deutsch Learning<small>Netzwerk neu · A1 + A2</small></h1>
+    <h1 id="topTitle">Deutsch Learning<small>Netzwerk neu · A1 + A2 + B1.1</small></h1>
     <button type="button" class="topbar-icon" id="topSearchBtn" aria-label="Wortsuche" title="Wortsuche">&#128269;</button>
     <button type="button" class="topbar-icon" id="topFavoritesBtn" aria-label="Favoriten" title="Favoriten">&#9829;</button>
     <button type="button" class="settings-toggle" id="settingsToggle" aria-label="Einstellungen" title="Einstellungen">⚙</button>
@@ -1018,7 +1029,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
   </header>
   <main id="view"></main>
   <footer class="fnote">
-    Netzwerk neu A1.1 + A1.2 · A2.1 + A2.2 · Grammatik-Skript A2 · Hören & Sprechen A2<br>
+    Netzwerk neu A1.1 + A1.2 · A2.1 + A2.2 · B1.1 Kapitel 1–6 · Grammatik-Skript A2 · Hören & Sprechen A2<br>
     <strong>Created by Attia Zaghloul</strong>
   </footer>
 </div>
@@ -1104,6 +1115,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <script src="data_book0_expansion.js"></script>
 <script src="data_book1.js"></script>
 <script src="data_book2.js"></script>
+<script src="data_b1_1.js?v=b1-1-vocab-1"></script>
 <script src="data_extra.js"></script>
 <script src="data_lernwortschatz8.js?v=lernwortschatz8-1"></script>
 <script src="data_lernwortschatz9.js?v=lernwortschatz9-3"></script>
@@ -1132,6 +1144,7 @@ const $$ = s => [...document.querySelectorAll(s)];
 const view = $('#view');
 const A1_BOOK = window.A1_BOOK || [];
 const BOOK = [...window.BOOK0, ...window.BOOK1, ...window.BOOK2];
+const B1_BOOK = window.B1_BOOK || [];
 const GRAM = window.GRAM;
 const OFFLINE_DICTIONARY_META={entries:138755};
 /* A2-Grammatik: vollständige Skript-Übungen interaktiv (Selbstkorrektur) an die Erklärung anhängen */
@@ -2217,6 +2230,10 @@ function fallbackBackTarget(hash){
   if(h==='#a1/listen'||/^#a1\/(dict|verbs|phrases)$/.test(h)) return 'a1';
   if(h==='#a1'||h==='#a2') return '';
   if(h==='#a2/lessons') return 'a2';
+  if(h==='#b1.1/lessons') return 'b1.1';
+  if(/^#b1\.1\/k\d+\//.test(h)) return path.split('/').slice(0,2).join('/');
+  if(/^#b1\.1\/k\d+$/.test(h)) return 'b1.1/lessons';
+  if(h==='#b1.1') return '';
   if(/^#podcast\//.test(h)) return 'podcast';
   if(/^#games\//.test(h)) return 'games';
   if(/^#exam\//.test(h)) return 'exam';
@@ -2253,9 +2270,11 @@ $('#topFavoritesBtn').addEventListener('click',()=>go('favorites'));
 
 function applyLevelTheme(hash){
   const isA1=hash==='a1'||hash.startsWith('a1/');
+  const isB1=hash==='b1.1'||hash.startsWith('b1.1/');
   const isA2=hash==='a2'||hash.startsWith('a2/')||['dict','full-dict','verbs','phrases','listen','exam','podcast','games','word-search','favorites','review','progress'].includes(hash)
     ||/^(k|g)\d+/.test(hash);
   document.body.classList.toggle('level-a1',isA1);
+  document.body.classList.toggle('level-b1',isB1);
   document.body.classList.toggle('level-a2',isA2);
   document.body.classList.toggle('has-route',!!hash);
 }
@@ -2328,6 +2347,14 @@ function renderCurrentRoute(){
   }
   if(h==='a2'){ if(window.NextUI) window.NextUI.renderLearningHub('a2'); else renderA2Hub(); return; }
   if(h==='a2/lessons'){ renderHome(); return; }
+  if(h==='b1.1'){ if(window.NextUI) window.NextUI.renderLearningHub('b1.1'); else renderB1Hub(); return; }
+  if(h==='b1.1/lessons'){ renderB1Home(); return; }
+  const b1Match=h.match(/^b1\.1\/k(\d+)(?:\/(\w+))?$/);
+  if(b1Match){
+    const chapter=B1_BOOK.find(item=>item.num===Number(b1Match[1]));
+    if(chapter) b1Match[2]?renderChapter(chapter,b1Match[2]):renderChapterMenu(chapter); else renderB1Home();
+    return;
+  }
   if(h==='dict'){ renderDictionary(); return; }
   if(h==='full-dict'){ renderFullDictionary(); return; }
   if(h==='verbs'){ renderVerbs(); return; }
@@ -2844,11 +2871,16 @@ const A2_SECTIONS=[
   {route:'exam',icon:'E',title:'Prüfung',text:'Goethe-A2 Modelltraining mit Timer.',ar:'تدريب امتحان A2.'}
 ];
 
+const B1_SECTIONS=[
+  {route:'b1.1/lessons',icon:'1',title:'Lektionen',text:'Sechs Kapitel B1.1 mit Wortschatzkarten und Bildern.',ar:'ست وحدات B1.1 مع كلمات وبطاقات وصور.'}
+];
+
 /* ===================== home ===================== */
 function levelSwitcher(active){
   return `<div class="level-mini-nav" aria-label="Niveau wechseln">
     <button type="button" class="${active==='a1'?'active':''}" onclick="go('a1')">A1 · Netzwerk neu A1</button>
     <button type="button" class="${active==='a2'?'active':''}" onclick="go('a2')">A2 · Netzwerk neu A2</button>
+    <button type="button" class="${active==='b1.1'?'active':''}" onclick="go('b1.1')">B1.1 · Netzwerk neu B1</button>
   </div>`;
 }
 
@@ -2870,6 +2902,16 @@ function renderA2Hub(){
       ${ar('كل قسم أصبح كارت واضح في بداية المستوى، وبعد الدخول يظهر المحتوى فقط.')}
     </section>
     ${sectionCards(A2_SECTIONS)}`;
+}
+
+function renderB1Hub(){
+  setTop('Deutsch B1.1','Wähle einen Bereich',true);
+  view.innerHTML=`
+    <section class="hero hub-hero"><h2>Netzwerk neu B1.1</h2>
+      <p>ست وحدات جديدة من الملزمة، والكلمات هي أول خطوة في كل وحدة — مع ترجمة عربية وكروت وصور.</p>
+      ${ar('ابدأ بالكلمات، اقلب البطاقة، ثم راجع كل وحدة بالترتيب.')}
+    </section>
+    ${sectionCards(B1_SECTIONS)}`;
 }
 
 function renderLevelSelector(){
@@ -2898,12 +2940,13 @@ function renderLevelSelector(){
   </section>
   <div class="section-label">Weitere Niveaus</div>
   <section class="level-grid">
-    <article class="level-card soon locked">
-      <span class="level-code">B1</span>
-      <h3>Später</h3>
-      <p>Bereich reserviert, wenn A1 und A2 stabil sind.</p>
-      <div class="level-meta"><span class="level-pill">geplant</span></div>
-    </article>
+    <button type="button" class="level-card b1" onclick="go('b1.1')">
+      <span class="level-code">B1.1</span>
+      <h3>Netzwerk neu B1.1</h3>
+      <p>Sechs Kapitel mit 985 Wortschatzkarten, arabischer Bedeutung und Bildern.</p>
+      ${ar('ست وحدات B1.1 مع 985 كلمة وترجمة عربية وصور وبطاقات تفاعلية.')}
+      <div class="level-meta"><span class="level-pill">Kapitel 1-6</span><span class="level-pill">neu</span></div>
+    </button>
     <article class="level-card soon locked">
       <span class="level-code">B2</span>
       <h3>Später</h3>
@@ -3442,6 +3485,26 @@ function renderA1Chapter(num, tab){
   if(!chapter){ renderA1Home(); return; }
   if(!tab) renderChapterMenu(chapter);
   else renderChapter(chapter, tab);
+}
+
+function renderB1Home(){
+  setTop('Deutsch B1.1','Netzwerk neu B1.1 · Kapitel 1–6',true);
+  view.innerHTML = (window.NextUI?.featureTabs('b1.1','lessons')||'') + `
+  <section class="hero">
+    <h2>Netzwerk neu B1.1</h2>
+    <p>Die ersten sechs Kapitel aus dem Kapitelwortschatz: 985 Wörter mit arabischer Bedeutung, Bildern und Karteikarten.</p>
+    ${ar('أول ست وحدات من مفردات Netzwerk neu B1.1: 985 كلمة بالمعنى العربي، والصور، ونظام الكروت.')}
+  </section>
+  <div class="section-label">📙 B1.1 · Kapitel 1–6</div>
+  <section class="a1-roadmap">
+    ${B1_BOOK.map(chapter=>`
+      <button type="button" class="lesson-item" onclick="go('${chapter.route}/wortschatz')">
+        <div class="num">${chapter.num}</div>
+        ${chapter.visual?`<img class="lesson-thumb" src="${chapter.visual.src}" alt="">`:''}
+        <div class="ttl"><b>${chapter.title}</b><span class="sub">${chapter.subtitle} · ${chapter.vocab.length} Wörter</span>${ar(chapter.introAr)}</div>
+        <div class="chev">›</div>
+      </button>`).join('')}
+  </section>`;
 }
 
 function renderHome(){
@@ -5197,6 +5260,14 @@ const TABS = [
   ['sprechen','Sprechen'],
   ['quiz','Lerncheck'],
 ];
+const B1_TABS = [
+  ['wortschatz','Wortschatz'],
+  ['ueberblick','Überblick'],
+];
+
+function chapterTabs(c){
+  return c?.route?.startsWith('b1.1/') ? B1_TABS : TABS;
+}
 
 function chapterTabDescription(id){
   return {
@@ -5246,16 +5317,17 @@ function chapterTabImage(c,id){
 
 function renderChapterMenu(c){
   const isA1=c.route?.startsWith('a1/');
+  const isB1=c.route?.startsWith('b1.1/');
   const routeBase=c.route||`k${c.num}`;
-  const chapterLabel=isA1?'A1 Kapitel':'Kapitel';
+  const chapterLabel=isA1?'A1 Kapitel':isB1?'B1.1 Kapitel':'Kapitel';
   setTop(`${chapterLabel} ${c.num}: ${c.title}`,'Wähle den Inhalt',true);
   view.innerHTML=`
     ${false && c.visual?`<figure class="card chapter-visual ${isA1?'chapter-visual--wide':''}">
       <img src="${c.visual.src}" alt="${c.visual.alt}">
       <figcaption class="visual-caption">${c.visual.caption}${ar(c.visual.captionAr)}</figcaption>
     </figure>`:''}
-    <section class="hero chapter-hero"><div><span class="next-hero-eyebrow">${isA1?'A1':'A2'} · ${chapterLabel} ${c.num}</span><h2>${c.title}</h2><p>${c.subtitle}</p>${ar(c.titleAr)}</div>${window.NextUI?.lessonStart(routeBase)||''}</section>
-    <section class="chapter-tab-grid">${TABS.map(([id,lbl])=>{
+    <section class="hero chapter-hero"><div><span class="next-hero-eyebrow">${isA1?'A1':isB1?'B1.1':'A2'} · ${chapterLabel} ${c.num}</span><h2>${c.title}</h2><p>${c.subtitle}</p>${ar(c.titleAr)}</div>${window.NextUI?.lessonStart(routeBase)||''}</section>
+    <section class="chapter-tab-grid">${chapterTabs(c).map(([id,lbl])=>{
       const img=chapterTabImage(c,id);
       return `
       <button type="button" class="section-card chapter-tab-card ${isA1?'a1-chapter-tab-card':'a2-chapter-tab-card'}" onclick="go('${routeBase}/${id}')">
@@ -5267,10 +5339,12 @@ function renderChapterMenu(c){
 
 function renderChapter(c, tab){
   const isA1=c.route?.startsWith('a1/');
+  const isB1=c.route?.startsWith('b1.1/');
   const routeBase=c.route||`k${c.num}`;
-  const chapterLabel=isA1?'A1 Kapitel':'Kapitel';
+  const chapterLabel=isA1?'A1 Kapitel':isB1?'B1.1 Kapitel':'Kapitel';
   setTop(`${chapterLabel} ${c.num}: ${c.title}`, c.subtitle, true);
-  let html = `${window.NextUI?.lessonProgress(routeBase,tab)||''}<div class="tabs chapter-tabs" role="tablist" aria-label="Kapitelbereiche">` + TABS.map(([id,lbl]) =>
+  const tabs=chapterTabs(c);
+  let html = `${isB1?'':(window.NextUI?.lessonProgress(routeBase,tab)||'')}<div class="tabs chapter-tabs" role="tablist" aria-label="Kapitelbereiche">` + tabs.map(([id,lbl]) =>
     `<button type="button" role="tab" aria-selected="${id===tab}" class="tab ${id===tab?'active':''}" onclick="go('${routeBase}/${id}')">${lbl}</button>`).join('') + `</div>`;
   if(false && tab!=='ueberblick' && c.visual){
     const sceneIndex={wortschatz:1,lesen:0,redemittel:2,grammatik:3,sprechen:1,quiz:2}[tab]??0;
@@ -5281,7 +5355,7 @@ function renderChapter(c, tab){
     </figure>`;
   }
   html += renderChapterTab(c, tab);
-  html += window.NextUI?.lessonNext(routeBase,tab)||'';
+  html += isB1?'':(window.NextUI?.lessonNext(routeBase,tab)||'');
   view.innerHTML = html;
   if(tab==='wortschatz') initFlash(c);
   if(tab==='quiz') initQuiz(c.quiz);
@@ -5682,7 +5756,7 @@ const STICKER_CHAPTER_ACCENTS = {
 
 const STICKER_CARD_IDS = new WeakMap();
 let stickerCardId = 0;
-[...A1_BOOK, ...BOOK].forEach(chapter => chapter.vocab.forEach(card => {
+[...A1_BOOK, ...BOOK, ...B1_BOOK].forEach(chapter => chapter.vocab.forEach(card => {
   STICKER_CARD_IDS.set(card, stickerCardId++);
 }));
 
@@ -5707,7 +5781,7 @@ function fallbackVocabSticker(v,chapterData,label='DE'){
 }
 
 function vocabVisual(v,chapter){
-  const chapterData=[...A1_BOOK, ...BOOK].find(item=>item.vocab?.includes(v));
+  const chapterData=[...A1_BOOK, ...BOOK, ...B1_BOOK].find(item=>item.vocab?.includes(v));
   if(chapterData?.route?.startsWith('a1/')){
     return `<div class="fc-visual fc-visual--full" role="img" aria-label="${escapeHtml(v.w)}">
       ${v.img?`<img class="fc-scene" src="${v.img}" alt="" width="420" height="420" loading="eager" decoding="async">`:
@@ -6003,6 +6077,8 @@ function currentOfflineChapter(){
   const hash=location.hash.replace('#','');
   const a1=hash.match(/^a1\/k(\d+)(?:\/|$)/);
   if(a1) return A1_BOOK.find(chapter=>chapter.num===Number(a1[1]))||null;
+  const b1=hash.match(/^b1\.1\/k(\d+)(?:\/|$)/);
+  if(b1) return B1_BOOK.find(chapter=>chapter.num===Number(b1[1]))||null;
   const a2=hash.match(/^k(\d+)(?:\/|$)/);
   if(a2) return BOOK.find(chapter=>chapter.num===Number(a2[1]))||null;
   return null;
@@ -6016,7 +6092,7 @@ function collectCurrentLessonOfflineUrls(){
   if(chapter){
     collectOfflineMedia(chapter,urls);
     TABS.forEach(([id])=>collectOfflineMedia(chapterTabImage(chapter,id),urls));
-    if(!chapter.route?.startsWith('a1/')){
+    if(!chapter.route?.startsWith('a1/')&&!chapter.route?.startsWith('b1.1/')){
       const realPhotoLimit=A2_REAL_PHOTO_LIMIT[chapter.num]||0;
       const extraPhotos=A2_EXTRA_REAL_PHOTOS[chapter.num]||new Set();
       chapter.vocab?.forEach((card,index)=>{
