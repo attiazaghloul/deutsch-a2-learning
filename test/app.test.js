@@ -274,6 +274,18 @@ test('Kapitel 12 includes its Lernwortschatz with matching square photos', () =>
   assert.match(html, /data_lernwortschatz12\.js\?v=lernwortschatz12-1/);
 });
 
+test('B1.1 vocabulary gives every card its own square photo', () => {
+  const context = vm.createContext({ window: {} });
+  vm.runInContext(readFileSync(join(root, 'app', 'data_b1_1.js'), 'utf8'), context);
+  const cards = context.window.B1_BOOK.flatMap(chapter => chapter.vocab);
+  const images = cards.map(card => card.img);
+  assert.equal(cards.length, 985);
+  assert.ok(images.every(Boolean));
+  assert.equal(new Set(images).size, cards.length);
+  images.forEach(image => assert.ok(existsSync(join(root, 'app', image)), `Missing ${image}`));
+  assert.match(html, /data_b1_1\.js\?v=b1-1-vocab-4/);
+});
+
 test('fixed vocabulary speech covers every word in chapters 7 through 12', () => {
   const context = vm.createContext({ window: {} });
   for (const file of [
@@ -510,7 +522,7 @@ test('next-generation shell and design system are wired into the offline app', (
   assert.match(worker, /data_lernwortschatz12\.js/);
   assert.match(worker, /data_vocab_topics7_12\.js/);
   assert.match(worker, /assets\/vocab-scenes\/k7\/145\.webp/);
-  assert.match(worker, /CACHE_VERSION = 'v44'/);
+  assert.match(worker, /CACHE_VERSION = 'v45'/);
   assert.match(worker, /vocab-scenes\\\/k7\\\/\\d\+\\\.webp/);
 });
 

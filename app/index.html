@@ -1120,7 +1120,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <script src="data_book0_expansion.js"></script>
 <script src="data_book1.js"></script>
 <script src="data_book2.js"></script>
-<script src="data_b1_1.js?v=b1-1-vocab-3"></script>
+<script src="data_b1_1.js?v=b1-1-vocab-4"></script>
 <script src="data_extra.js"></script>
 <script src="data_lernwortschatz8.js?v=lernwortschatz8-1"></script>
 <script src="data_lernwortschatz9.js?v=lernwortschatz9-3"></script>
@@ -5870,7 +5870,7 @@ function vocabVisual(v,chapter){
   if(!chapterData){
     return fallbackVocabSticker(v, null, 'DE');
   }
-  if(chapterData.route?.startsWith('b1.1/')){
+  if(chapterData.route?.startsWith('b1.1/') && !v.img){
     return b1AtlasVisual(v, chapterData);
   }
   if(v.img){
