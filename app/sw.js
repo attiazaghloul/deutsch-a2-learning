@@ -2,7 +2,7 @@
    - App-Shell + Daten + kleine Bilder werden vorab gecacht
    - Audio/große Bilder: stale-while-revalidate (beim ersten Abruf gecacht)
    - "cache-lesson" Nachricht: cacht alle Audio-Dateien einer Lektion on-demand
-   Bei Inhaltsänderungen: CACHE_VERSION erhöhen. */
+   Bei Inhaltsänderungen: CACHE_VERSION erhöhen. B1.1 is included in v43. */
 importScripts('dictionary-data/manifest.js');
 
 const CACHE_VERSION = 'v43';
