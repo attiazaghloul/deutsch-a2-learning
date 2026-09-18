@@ -283,7 +283,13 @@ test('B1.1 vocabulary gives every card its own square photo', () => {
   assert.ok(images.every(Boolean));
   assert.equal(new Set(images).size, cards.length);
   images.forEach(image => assert.ok(existsSync(join(root, 'app', image)), `Missing ${image}`));
-  assert.match(html, /data_b1_1\.js\?v=b1-1-vocab-5/);
+  cards.forEach(card => {
+    assert.ok(card.d && card.ex && card.ar, `Incomplete card: ${card.w}`);
+    assert.doesNotMatch(card.d, /bezeichnet eine Person, einen Gegenstand oder einen Begriff aus dem Kapitel|Mit „.*“ beschreibt man eine Handlung|häufig verwendeter Ausdruck im Deutschen/);
+    assert.doesNotMatch(card.ex, /^(Wir sprechen heute über|Im Alltag kann man oft|Dieser Ausdruck kommt im Alltag häufig vor)/);
+  });
+  assert.equal(cards.find(card => card.w === 'der Typ').ar, 'النوع / الشخص');
+  assert.match(html, /data_b1_1\.js\?v=b1-1-vocab-6/);
 });
 
 test('fixed vocabulary speech covers every word in chapters 7 through 12', () => {
@@ -522,7 +528,7 @@ test('next-generation shell and design system are wired into the offline app', (
   assert.match(worker, /data_lernwortschatz12\.js/);
   assert.match(worker, /data_vocab_topics7_12\.js/);
   assert.match(worker, /assets\/vocab-scenes\/k7\/145\.webp/);
-  assert.match(worker, /CACHE_VERSION = 'v46'/);
+  assert.match(worker, /CACHE_VERSION = 'v47'/);
   assert.match(worker, /vocab-scenes\\\/k7\\\/\\d\+\\\.webp/);
 });
 
