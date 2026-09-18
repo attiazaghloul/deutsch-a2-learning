@@ -747,6 +747,8 @@ body.listen-mode .speakable{cursor:pointer}
 .fc-visual--semantic{background:linear-gradient(145deg,#eef8f3 0%,#e8effb 52%,#f8f0ff 100%)}
 .fc-emoji{width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:28px;
   font-size:clamp(64px,15vw,104px);line-height:1;text-align:center;filter:drop-shadow(0 8px 8px rgba(35,70,75,.12))}
+.fc-visual--atlas{background:#fff}
+.fc-atlas-tile{position:absolute;inset:0;background-repeat:no-repeat;background-size:400% 400%;}
 .fc-scene{width:100%;height:100%;display:block;object-fit:cover}
 .fc-visual--full{width:min(100%,312px);height:auto;aspect-ratio:1/1;background:#fff}
 .fc-visual--full .fc-scene{object-fit:contain}
@@ -1118,7 +1120,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <script src="data_book0_expansion.js"></script>
 <script src="data_book1.js"></script>
 <script src="data_book2.js"></script>
-<script src="data_b1_1.js?v=b1-1-vocab-2"></script>
+<script src="data_b1_1.js?v=b1-1-vocab-3"></script>
 <script src="data_extra.js"></script>
 <script src="data_lernwortschatz8.js?v=lernwortschatz8-1"></script>
 <script src="data_lernwortschatz9.js?v=lernwortschatz9-3"></script>
@@ -5775,6 +5777,75 @@ function stableWordHash(value){
   return [...value].reduce((hash,char)=>(hash*31+char.codePointAt(0))>>>0,7);
 }
 
+/* B1.1 uses six newly generated photographic atlases. Each atlas has 16
+   square scenes; the rule order keeps the visual tied to the word meaning. */
+const B1_ATLAS_RULES = {
+  1: [
+    [/faulenzen|entspann|erhol|langweil|genuss/ ,1], [/giftig|pilz|insekt|schutz|sicher/,2],
+    [/himmel|sonne|wolke|wetter/,3], [/zelten|zelt|camp/,4],
+    [/küste|aussicht|herrlich|schön|strand|meer|promen/,5], [/traube|reif|frucht/,6],
+    [/ferien|urlaub|reise|gepäck|koffer|haus|gäste|pension|wellness/,7], [/fahrt|bahn|zug|bus|ski|fahrzeit/,8],
+    [/badewanne|wellness|spa/,9], [/boot|schifffahrt|see|fluss/,10],
+    [/enttäusch|hotel|forum|obwohl|offenbar/,11], [/stadt|promenade|atmosphäre/,12],
+    [/abenteuer|wandern|ausflug|erlebnis/,13], [/kofferraum|gepäck|transport/,14],
+    [/wiese|sand|picknick|zeug|eimer/,15], [/bahnhof|hauptbahnhof|haltestelle|zugnummer|ice|tiergarten/,16]
+  ],
+  2: [
+    [/fingerabdruck|biometr/,1], [/funkkopfhörer|kopfhörer|audio|hören/,2], [/lastenfahrrad|fahrrad/,3],
+    [/sprachassistent|smart home|smartphone|gerät/,4], [/steh-sitz|schreibtisch|tisch/,5], [/türöffner|zugang|öffnen/,6],
+    [/taste|knopf|drücken/,7], [/aufladen|laden|einstecken|anschließen|strom/,8], [/installieren|montieren/,9],
+    [/schalten|einschalten|ausschalten/,10], [/kaputt|defekt|repar|störung/,11], [/staubsaug|haushalt|automatis/,12],
+    [/transport|liefern|paket|fracht/,13], [/bedienen|handarbeit|werkzeug|einsetzen/,14], [/digital|bildschirm|display|app|internet/,15],
+    [/praktisch|benötigen|nützlich|slogan|funktion/,16]
+  ],
+  3: [
+    [/arbeiter|werkstatt|fabrik|beruf/,1], [/arbeiterin|handarbeit|schrein|nähen/,2], [/automatis|roboter|maschine/,3],
+    [/behandlung|diagnose|medizin|arzt/,4], [/pflegekraft|patient|pflege/,5], [/diagnose|untersuch|krank/,6],
+    [/gruppenarbeit|team|zusammenarbeit/,7], [/handarbeit|bastel|werk/,8], [/hygiene|waschen|sauber/,9],
+    [/operieren|operation|chirurg/,10], [/unterricht|schule|lehrer|bildung/,11], [/konkurrenz|wettbewerb|leistung/,12],
+    [/gericht|strafe|anklag|urteil/,13], [/behandlung|gesund|genes|krankenhaus/,14], [/unterrichtsform|lernen|klasse/,15],
+    [/bedingung|tolerant|veränder|entwicklung/,16]
+  ],
+  4: [
+    [/akte|unterlagen|dokument|datei/,1], [/anbauen|landwirtschaft|bauer|feld/,2], [/angeklag|gericht|verhandlung|richter/,3],
+    [/anlage|industrie|betrieb|firma/,4], [/beschäftigen|arbeitsplatz|büro|arbeit/,5], [/elektroingenieur|elektr|technik/,6],
+    [/fair|gerecht|zusammenarbeit|team/,7], [/fernsehsender|fernsehen|kamera|moderator/,8], [/gericht|gavel|richter/,9],
+    [/herstellen|produktion|fabrik/,10], [/landwirtschaft|acker|traktor/,11], [/öffentlichkeit|öffentlich|anhörung/,12],
+    [/menschenkenntnis|kommunikation|besprech|meeting/,13], [/einkommen|gehalt|geld|rechnung/,14], [/industrie|herstellen|arbeiter/,15],
+    [/bewerbung|vorstellungsgespräch|karriere|stelle/,16]
+  ],
+  5: [
+    [/abfall|müll|recycl|sortieren/,1], [/autofahrer|auto|elektr/,2], [/bio-|biologisch|gemüse|markt/,3], [/digital|papierlos|tablet/,4],
+    [/durchschnitt|energie|strom|verbrauch/,5], [/europäisch|europa|fahrrad|stadt/,6], [/fleischkonsum|fleisch|mahlzeit|essen/,7],
+    [/huhn|geflügel/,8], [/rind|kuh|milch/,9], [/trinkwasser|wasser|getränk/,10], [/verpackungsmüll|verpack|plastik/,11],
+    [/papierverbrauch|papier|blatt/,12], [/marktanteil|einkaufen|laden|supermarkt/,13], [/rekord|nachhalt|umwelt/,14],
+    [/mitrechnen|zahlen|statistik|vergleich/,15], [/verbrauchen|ressource|klim|umweltfreundlich/,16]
+  ],
+  6: [
+    [/drohne|luftbild/,1], [/chip|daten-chip|computer|digital/,2], [/haut|körper/,3], [/passagier|zug|bahn|einsteigen/,4],
+    [/erde|welt|planet/,5], [/mars|raumfahrt|astronomie/,6], [/mobilität|verkehr|straßenbahn|bus/,7], [/auto|selbstfahr|autonom/,8],
+    [/wohnanlage|wohnung|haus|gebäude/,9], [/staubsaugen|putzen|haushalt/,10], [/prognose|wetter|vorhersage/,11],
+    [/irgendwann|zukunft|prognose|hoffnung/,12], [/singen|sänger|song|lied/,13], [/piano|violine|flöte|instrument|musik/,14],
+    [/songwriter|studio|aufnahme|mikrofon/,15], [/konzert|publikum|bühne|auftritt/,16]
+  ]
+};
+
+function b1AtlasVisual(v, chapterData){
+  const num=chapterData?.num||1;
+  const text=`${v.w||''} ${v.d||''} ${v.ar||''}`.toLocaleLowerCase('de');
+  const rules=B1_ATLAS_RULES[num]||[];
+  const match=rules.find(([pattern])=>pattern.test(text));
+  const chapterFallback={1:7,2:16,3:16,4:5,5:16,6:12};
+  const tile=match?.[1]||chapterFallback[num]||16;
+  const col=(tile-1)%4, row=Math.floor((tile-1)/4);
+  const pos=`${col*33.333333}% ${row*33.333333}%`;
+  const category=v.cat||`Kapitel ${num}`;
+  return `<div class="fc-visual fc-visual--atlas" role="img" aria-label="${escapeHtml(v.w)}">
+    <div class="fc-atlas-tile" style="background-image:url('assets/vocab-scenes/b1.1/atlas-k${num}.png');background-position:${pos}"></div>
+    <span class="sticker-category">${escapeHtml(category)}</span>
+  </div>`;
+}
+
 function fallbackVocabSticker(v,chapterData,label='DE'){
   const category=v.cat||(chapterData?.num?`Kapitel ${chapterData.num}`:'Wortschatz');
   const text=`${v.w||''} ${v.d||''} ${v.ar||''}`.toLocaleLowerCase('de');
@@ -5800,7 +5871,7 @@ function vocabVisual(v,chapter){
     return fallbackVocabSticker(v, null, 'DE');
   }
   if(chapterData.route?.startsWith('b1.1/')){
-    return fallbackVocabSticker(v, chapterData, 'B1.1');
+    return b1AtlasVisual(v, chapterData);
   }
   if(v.img){
     return `<div class="fc-visual" role="img" aria-label="${escapeHtml(v.w)}">

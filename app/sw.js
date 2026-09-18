@@ -2,10 +2,10 @@
    - App-Shell + Daten + kleine Bilder werden vorab gecacht
    - Audio/große Bilder: stale-while-revalidate (beim ersten Abruf gecacht)
    - "cache-lesson" Nachricht: cacht alle Audio-Dateien einer Lektion on-demand
-   Bei Inhaltsänderungen: CACHE_VERSION erhöhen. B1.1 vocabulary refresh is included in v43. */
+   Bei Inhaltsänderungen: CACHE_VERSION erhöhen. B1.1 photographic atlas refresh is included in v44. */
 importScripts('dictionary-data/manifest.js');
 
-const CACHE_VERSION = 'v43';
+const CACHE_VERSION = 'v44';
 const CACHE = 'deutsch-' + CACHE_VERSION;
 const MEDIA_CACHE = 'deutsch-media-v1';
 const DICTIONARY_CACHE = `deutsch-dictionary-v${self.OFFLINE_DICTIONARY_MANIFEST.version}`;
@@ -65,6 +65,9 @@ const CORE = [
   'assets/vocab-scenes/k7/88.webp','assets/vocab-scenes/k7/93.webp','assets/vocab-scenes/k7/94.webp','assets/vocab-scenes/k7/104.webp',
   'assets/vocab-scenes/k7/115.webp','assets/vocab-scenes/k7/116.webp','assets/vocab-scenes/k7/119.webp','assets/vocab-scenes/k7/121.webp',
   'assets/vocab-scenes/k7/123.webp','assets/vocab-scenes/k7/140.webp','assets/vocab-scenes/k7/144.webp','assets/vocab-scenes/k7/145.webp',
+  // B1.1 generated photographic vocabulary atlases (six chapters × 16 scenes)
+  'assets/vocab-scenes/b1.1/atlas-k1.png','assets/vocab-scenes/b1.1/atlas-k2.png','assets/vocab-scenes/b1.1/atlas-k3.png',
+  'assets/vocab-scenes/b1.1/atlas-k4.png','assets/vocab-scenes/b1.1/atlas-k5.png','assets/vocab-scenes/b1.1/atlas-k6.png',
 ];
 
 self.addEventListener('install', event => {
