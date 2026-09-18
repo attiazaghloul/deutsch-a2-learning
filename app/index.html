@@ -6114,14 +6114,18 @@ window.addEventListener('hashchange',()=>requestAnimationFrame(centerActiveNavig
 /* PWA: Service Worker + Offline banner + Download-lesson */
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.addEventListener('controllerchange',()=>{
-    // Never interrupt navigation with an automatic reload. The new worker
-    // controls subsequent requests immediately; fresh UI code is used after
-    // the user naturally closes and reopens the PWA.
-    showSpeechStatus('تم تحديث ملفات الأوفلاين — التحديث الكامل يظهر عند فتح التطبيق مرة أخرى');
+    // Reload exactly once so an installed mobile PWA immediately reads the
+    // data and image paths from the newly activated versioned cache.
+    if(sessionStorage.getItem('pwa-v49-reloaded')!=='1'){
+      sessionStorage.setItem('pwa-v49-reloaded','1');
+      location.reload();
+      return;
+    }
+    showSpeechStatus('تم تحديث التطبيق إلى النسخة الجديدة');
     if($('#offlineDictionaryStatus')) syncOfflineDictionaryStatus();
   });
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('sw.js',{updateViaCache:'none'})
+    navigator.serviceWorker.register('sw.js?v=49',{updateViaCache:'none'})
       .then(registration=>registration.update())
       .catch(() => {});
   });
