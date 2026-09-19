@@ -291,7 +291,11 @@ test('B1.1 vocabulary is text-only and ships no word images', () => {
   assert.equal(cards.find(card => card.w === 'der Mars').ar, 'كوكب المريخ');
   assert.equal(cards.find(card => card.w === 'die Karotte').ar, 'جزرة');
   assert.equal(cards.find(card => card.w === 'die Vollpension').ar, 'إقامة كاملة تشمل الإفطار والغداء والعشاء');
-  assert.match(html, /data_b1_1\.js\?v=b1-1-vocab-10/);
+  assert.match(html, /data_b1_1\.js\?v=b1-1-vocab-11/);
+  // no chapter may still promise a photo that no longer exists
+  context.window.B1_BOOK.forEach(chapter => {
+    assert.doesNotMatch(chapter.vocabSummary.note, /الصورة|صورة|Foto|Bild/);
+  });
 });
 
 test('no B1.1 image assets or image code paths remain in the app', () => {
@@ -548,7 +552,7 @@ test('next-generation shell and design system are wired into the offline app', (
   assert.match(worker, /data_lernwortschatz12\.js/);
   assert.match(worker, /data_vocab_topics7_12\.js/);
   assert.match(worker, /assets\/vocab-scenes\/k7\/145\.webp/);
-  assert.match(worker, /CACHE_VERSION = 'v52'/);
+  assert.match(worker, /CACHE_VERSION = 'v53'/);
   assert.match(worker, /vocab-scenes\\\/k7\\\/\\d\+\\\.webp/);
 });
 
@@ -598,8 +602,8 @@ test('offline dictionary worker uses the exact pre-cached asset keys', () => {
   assert.match(serviceWorker, /DICTIONARY_CACHE/);
   assert.match(serviceWorker, /cache-dictionary/);
   assert.match(serviceWorker, /dictionary-cache-status/);
-  assert.match(html, /register\('sw\.js\?v=52',\{updateViaCache:'none'\}\)/);
+  assert.match(html, /register\('sw\.js\?v=53',\{updateViaCache:'none'\}\)/);
   assert.match(html, /addEventListener\('controllerchange'/);
-  assert.match(html, /pwa-v52-reloaded/);
+  assert.match(html, /pwa-v53-reloaded/);
   assert.match(html, /controllerchange[^}]+location\.reload\(\)/s);
 });
