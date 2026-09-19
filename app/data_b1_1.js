@@ -1,4 +1,4 @@
-/* Netzwerk neu B1.1 Kapitelwortschatz 1-6. German explanation, contextual example, Arabic meaning and one independent photo per card. */
+/* Netzwerk neu B1.1 Kapitelwortschatz 1-6. Human-reviewed learning fields and one independent safe photo per card. */
 window.B1_BOOK = [
   {
     "num": 1,
@@ -43,7 +43,7 @@ window.B1_BOOK = [
         "ar": "السماء",
         "cat": "Kapitel 1",
         "ex": "Heute ist der Himmel blau und fast wolkenlos.",
-        "img": "assets/vocab-scenes/b1.1/himmel.webp"
+        "img": "assets/vocab-scenes/b1.1/safe-review/k1/003.webp"
       },
       {
         "w": "das Insekt",
@@ -227,7 +227,7 @@ window.B1_BOOK = [
         "ar": "أنيق",
         "cat": "Kapitel 1",
         "ex": "eine schicke Hochzeit",
-        "img": "assets/vocab-scenes/b1.1/openverse/k1/026-v.jpg"
+        "img": "assets/vocab-scenes/b1.1/safe-review/k1/026.webp"
       },
       {
         "w": "der Typ",
@@ -459,7 +459,7 @@ window.B1_BOOK = [
         "ar": "حوض الاستحمام",
         "cat": "Kapitel 1",
         "ex": "Diese Drohung erinnerte Charlotte Corday an ihre Mission, welche sie eine Zeitlang über dem Abscheu vor dem Morde vergessen hatte; sie näherte sich der Badewanne, zog ihr Messer und senkte",
-        "img": "assets/vocab-scenes/b1.1/openverse/k1/055.jpg"
+        "img": "assets/vocab-scenes/b1.1/safe-review/k1/055.webp"
       },
       {
         "w": "das Boot",
@@ -803,7 +803,7 @@ window.B1_BOOK = [
         "ar": "بالأحرى",
         "cat": "Kapitel 1",
         "ex": "Ich fahre eher im Sommer in Urlaub.",
-        "img": "assets/vocab-scenes/k10/06.webp"
+        "img": "assets/vocab-scenes/b1.1/safe-review/k1/098.webp"
       },
       {
         "w": "die Einsamkeit",
@@ -1019,7 +1019,7 @@ window.B1_BOOK = [
         "ar": "النفور",
         "cat": "Kapitel 1",
         "ex": "sofort eine Abneigung gegen etw. empfinden",
-        "img": "assets/vocab-scenes/b1.1/openverse/k1/125.jpg"
+        "img": "assets/vocab-scenes/b1.1/safe-review/k1/125.webp"
       },
       {
         "w": "der Kausalsatz",
@@ -1083,7 +1083,7 @@ window.B1_BOOK = [
         "ar": "بصمة الإصبع",
         "cat": "Kapitel 2",
         "ex": "Das Smartphone erkennt meinen Fingerabdruck.",
-        "img": "assets/vocab-scenes/b1.1/fingerabdruck.png"
+        "img": "assets/vocab-scenes/b1.1/safe-review/k2/002.webp"
       },
       {
         "w": "der Funkkopfhörer",
@@ -1163,7 +1163,7 @@ window.B1_BOOK = [
         "ar": "يشحن",
         "cat": "Kapitel 2",
         "ex": "Ich muss den Akku meines Handys aufladen.",
-        "img": "assets/vocab-scenes/k7/24.webp"
+        "img": "assets/vocab-scenes/b1.1/safe-review/k2/012.webp"
       },
       {
         "w": "bedienen",
@@ -1539,7 +1539,7 @@ window.B1_BOOK = [
         "ar": "نقي",
         "cat": "Kapitel 2",
         "ex": "Das war reines Glück.",
-        "img": "assets/vocab-scenes/k9-added/32.webp"
+        "img": "assets/vocab-scenes/b1.1/safe-review/k2/059.webp"
       },
       {
         "w": "wieder",
@@ -1659,7 +1659,7 @@ window.B1_BOOK = [
         "ar": "إشعار",
         "cat": "Kapitel 2",
         "ex": "Er bemerkte den Betrug.",
-        "img": "assets/vocab-scenes/k11-added/64.webp"
+        "img": "assets/vocab-scenes/b1.1/safe-review/k2/074.webp"
       },
       {
         "w": "bereits",
@@ -1803,7 +1803,7 @@ window.B1_BOOK = [
         "ar": "رسالة الفيديو",
         "cat": "Kapitel 2",
         "ex": "Sie schickte ihrer Freundin eine kurze Videonachricht.",
-        "img": "assets/vocab-scenes/k6/40.webp"
+        "img": "assets/vocab-scenes/b1.1/safe-review/k2/092.webp"
       },
       {
         "w": "die Wand",
@@ -1851,7 +1851,7 @@ window.B1_BOOK = [
         "ar": "التكنولوجيا الفائقة",
         "cat": "Kapitel 2",
         "ex": "Erst mit Hightech lässt sich diese Schwäche ausbügeln.",
-        "img": "assets/vocab-scenes/b1.1/openverse/k2/098-v.jpg"
+        "img": "assets/vocab-scenes/b1.1/safe-review/k2/098.webp"
       },
       {
         "w": "geschehen",
@@ -2531,7 +2531,7 @@ window.B1_BOOK = [
         "ar": "جزرة",
         "cat": "Kapitel 3",
         "ex": "Für den Salat schneide ich eine Karotte klein.",
-        "img": "assets/vocab-scenes/b1.1/karotte.png"
+        "img": "assets/vocab-scenes/b1.1/safe-review/k3/031.webp"
       },
       {
         "w": "das Nahrungsmittel",
@@ -2723,7 +2723,7 @@ window.B1_BOOK = [
         "ar": "الجندي المحترف",
         "cat": "Kapitel 3",
         "ex": "Chink war Berufssoldat und von Standhurst direkt nach Mons gekommen.",
-        "img": "assets/vocab-scenes/k11-added/13.webp"
+        "img": "assets/vocab-scenes/b1.1/safe-review/k3/055.webp"
       },
       {
         "w": "die Berufssoldatin",
@@ -2843,7 +2843,7 @@ window.B1_BOOK = [
         "ar": "الشوق",
         "cat": "Kapitel 3",
         "ex": "Ich habe Sehnsucht nach dir.",
-        "img": "assets/vocab-scenes/b1.1/openverse/k3/070.jpg"
+        "img": "assets/vocab-scenes/b1.1/safe-review/k3/070.webp"
       },
       {
         "w": "verursachen",
@@ -3083,7 +3083,7 @@ window.B1_BOOK = [
         "ar": "جذري",
         "cat": "Kapitel 3",
         "ex": "Manche Menschen denken radikal, besonders dann, wenn sie zu einem Thema persönliche Erfahrungen gesammelt haben.",
-        "img": "assets/vocab-scenes/b1.1/openverse/k3/100-v.jpg"
+        "img": "assets/vocab-scenes/b1.1/safe-review/k3/100.webp"
       },
       {
         "w": "seitdem",
@@ -3267,7 +3267,7 @@ window.B1_BOOK = [
         "ar": "طازجة",
         "cat": "Kapitel 3",
         "ex": "Am liebsten koche ich mit frischem Gemüse.",
-        "img": "assets/vocab-scenes/b1.1/openverse/k3/123-v.jpg"
+        "img": "assets/vocab-scenes/b1.1/safe-review/k3/123.webp"
       },
       {
         "w": "gemacht",
@@ -3363,7 +3363,7 @@ window.B1_BOOK = [
         "ar": "حاليا",
         "cat": "Kapitel 3",
         "ex": "Die jetzige Situation lässt keinen Platz für Fehler.",
-        "img": "assets/vocab-scenes/k8/20.webp"
+        "img": "assets/vocab-scenes/b1.1/safe-review/k3/135.webp"
       },
       {
         "w": "das Klinikum",
@@ -3747,7 +3747,7 @@ window.B1_BOOK = [
         "ar": "رجل الأعمال",
         "cat": "Kapitel 3",
         "ex": "Er gab seinen Beruf vage als Geschäftsmann an.",
-        "img": "assets/vocab-scenes/b1.1/openverse/k3/183.jpg"
+        "img": "assets/vocab-scenes/b1.1/safe-review/k3/183.webp"
       },
       {
         "w": "die Gewohnheit",
@@ -4043,7 +4043,7 @@ window.B1_BOOK = [
         "ar": "قاضٍ",
         "cat": "Kapitel 4",
         "ex": "Der Richter hört beide Seiten an.",
-        "img": "assets/vocab-scenes/b1.1/openverse/k4/025.jpg"
+        "img": "assets/vocab-scenes/b1.1/safe-review/k4/025.webp"
       },
       {
         "w": "die Richterin",
@@ -4371,7 +4371,7 @@ window.B1_BOOK = [
         "ar": "المشط",
         "cat": "Kapitel 4",
         "ex": "alle über einen Kamm scheren",
-        "img": "assets/vocab-scenes/b1.1/openverse/k4/066.jpg"
+        "img": "assets/vocab-scenes/b1.1/safe-review/k4/066.webp"
       },
       {
         "w": "der Karton",
@@ -4891,7 +4891,7 @@ window.B1_BOOK = [
         "ar": "إقناع",
         "cat": "Kapitel 4",
         "ex": "Seine Argumente haben mich überzeugt.",
-        "img": "assets/vocab-scenes/b1.1/openverse/k4/131-v.jpg"
+        "img": "assets/vocab-scenes/b1.1/safe-review/k4/131.webp"
       },
       {
         "w": "qualifiziert",
@@ -4955,7 +4955,7 @@ window.B1_BOOK = [
         "ar": "الأجر بالساعة",
         "cat": "Kapitel 4",
         "ex": "Bei einem Stundenlohn von sieben Euro kann man keine großen Sprünge machen.",
-        "img": "assets/vocab-scenes/b1.1/openverse/k4/139.jpg"
+        "img": "assets/vocab-scenes/b1.1/safe-review/k4/139.webp"
       },
       {
         "w": "der Teilzeitjob",
@@ -6083,7 +6083,7 @@ window.B1_BOOK = [
         "ar": "ملتوية",
         "cat": "Kapitel 5",
         "ex": "Er hat eine krumme Nase.",
-        "img": "assets/vocab-scenes/b1.1/openverse/k5/101-v.jpg"
+        "img": "assets/vocab-scenes/b1.1/safe-review/k5/101.webp"
       },
       {
         "w": "der Kunststoff",
@@ -6139,7 +6139,7 @@ window.B1_BOOK = [
         "ar": "تأسيس جديد",
         "cat": "Kapitel 5",
         "ex": "Die Neugründung des Vereins wurde im Frühjahr beschlossen.",
-        "img": "assets/vocab-scenes/b1.1/openverse/k5/108.jpg"
+        "img": "assets/vocab-scenes/b1.1/safe-review/k5/108.webp"
       },
       {
         "w": "der Ökostrom",
@@ -6515,7 +6515,7 @@ window.B1_BOOK = [
         "ar": "عاصف",
         "cat": "Kapitel 5",
         "ex": "Bei diesem stürmischen Wetter schickt man doch keinen Hund vor die Türe.",
-        "img": "assets/vocab-scenes/b1.1/openverse/k5/155-v.jpg"
+        "img": "assets/vocab-scenes/b1.1/safe-review/k5/155.webp"
       },
       {
         "w": "das Traumwetter",
@@ -6699,7 +6699,7 @@ window.B1_BOOK = [
         "ar": "عاجز",
         "cat": "Kapitel 5",
         "ex": "Mein Vater muss sich sehr hilflos vorgekommen sein, abhängig von seinen halbwüchsigen Kindern.",
-        "img": "assets/vocab-scenes/b1.1/openverse/k5/178-v.jpg"
+        "img": "assets/vocab-scenes/b1.1/safe-review/k5/178.webp"
       },
       {
         "w": "die Idee",
@@ -6715,7 +6715,7 @@ window.B1_BOOK = [
         "ar": "دائما",
         "cat": "Kapitel 5",
         "ex": "Er blieb ihr immer treu.",
-        "img": "assets/vocab-scenes/b1.1/openverse/k5/180-v.jpg"
+        "img": "assets/vocab-scenes/b1.1/safe-review/k5/180.webp"
       },
       {
         "w": "das Infomaterial",
@@ -6995,7 +6995,7 @@ window.B1_BOOK = [
         "ar": "كوكب المريخ",
         "cat": "Kapitel 6",
         "ex": "Eine Raumsonde sendet neue Bilder vom Mars.",
-        "img": "assets/vocab-scenes/b1.1/mars.png"
+        "img": "assets/vocab-scenes/b1.1/safe-review/k6/007.webp"
       },
       {
         "w": "die Mobilität",
@@ -7115,7 +7115,7 @@ window.B1_BOOK = [
         "ar": "سهل",
         "cat": "Kapitel 6",
         "ex": "Die Klassenarbeit in Französisch war sehr einfach.",
-        "img": "assets/vocab-scenes/b1.1/openverse/k6/022-v.jpg"
+        "img": "assets/vocab-scenes/b1.1/safe-review/k6/022.webp"
       },
       {
         "w": "fassen",
@@ -7131,7 +7131,7 @@ window.B1_BOOK = [
         "ar": "طازجة",
         "cat": "Kapitel 6",
         "ex": "Am liebsten koche ich mit frischem Gemüse.",
-        "img": "assets/vocab-scenes/b1.1/openverse/k6/024-v.jpg"
+        "img": "assets/vocab-scenes/b1.1/safe-review/k6/024.webp"
       },
       {
         "w": "der Leser",
@@ -7307,7 +7307,7 @@ window.B1_BOOK = [
         "ar": "طول الحركة / حرف العلة",
         "cat": "Kapitel 6",
         "ex": "Die Vokallänge kann die Bedeutung eines Wortes verändern.",
-        "img": "assets/vocab-scenes/k8/153.webp"
+        "img": "assets/vocab-scenes/b1.1/safe-review/k6/046.webp"
       },
       {
         "w": "anonym",
@@ -7683,7 +7683,7 @@ window.B1_BOOK = [
         "ar": "إعادة صياغة",
         "cat": "Kapitel 6",
         "ex": "Elisabeth ließ jedoch den bisherigen Titel \"Supreme Head\" in \"Supreme Governor\" umformulieren.",
-        "img": "assets/vocab-scenes/k12-added/27.webp"
+        "img": "assets/vocab-scenes/b1.1/safe-review/k6/093.webp"
       },
       {
         "w": "der Kasus",
@@ -7755,7 +7755,7 @@ window.B1_BOOK = [
         "ar": "اللحن",
         "cat": "Kapitel 6",
         "ex": "Ich kenne diese Melodie aus einem alten Film.",
-        "img": "assets/vocab-scenes/b1.1/openverse/k6/102.jpg"
+        "img": "assets/vocab-scenes/b1.1/safe-review/k6/102.webp"
       },
       {
         "w": "der Rhythmus",
@@ -7795,7 +7795,7 @@ window.B1_BOOK = [
         "ar": "العقبة",
         "cat": "Kapitel 6",
         "ex": "eine Hürde nehmen",
-        "img": "assets/vocab-scenes/b1.1/openverse/k6/107.jpg"
+        "img": "assets/vocab-scenes/b1.1/safe-review/k6/107.webp"
       },
       {
         "w": "die Liedzeile",
