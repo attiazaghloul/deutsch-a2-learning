@@ -5870,8 +5870,11 @@ function vocabVisual(v,chapter){
   if(!chapterData){
     return fallbackVocabSticker(v, null, 'DE');
   }
-  if(chapterData.route?.startsWith('b1.1/') && !v.img){
-    return b1AtlasVisual(v, chapterData);
+  if(chapterData.route?.startsWith('b1.1/')){
+    return `<div class="fc-visual" role="img" aria-label="${escapeHtml(v.w)}">
+      <div class="level-code" style="margin:auto">B1</div>
+      <span class="sticker-category">Bild wird neu erstellt</span>
+    </div>`;
   }
   if(v.img){
     return `<div class="fc-visual" role="img" aria-label="${escapeHtml(v.w)}">
@@ -6116,8 +6119,8 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker.addEventListener('controllerchange',()=>{
     // Reload exactly once so an installed mobile PWA immediately reads the
     // data and image paths from the newly activated versioned cache.
-    if(sessionStorage.getItem('pwa-v50-reloaded')!=='1'){
-      sessionStorage.setItem('pwa-v50-reloaded','1');
+    if(sessionStorage.getItem('pwa-v51-reloaded')!=='1'){
+      sessionStorage.setItem('pwa-v51-reloaded','1');
       location.reload();
       return;
     }
@@ -6125,7 +6128,7 @@ if ('serviceWorker' in navigator) {
     if($('#offlineDictionaryStatus')) syncOfflineDictionaryStatus();
   });
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('sw.js?v=50',{updateViaCache:'none'})
+    navigator.serviceWorker.register('sw.js?v=51',{updateViaCache:'none'})
       .then(registration=>registration.update())
       .catch(() => {});
   });
