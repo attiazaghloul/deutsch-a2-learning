@@ -300,7 +300,10 @@ test('no B1.1 image assets or image code paths remain in the app', () => {
   assert.doesNotMatch(html, /b1AtlasVisual|B1_ATLAS_RULES|fc-atlas-tile/);
   assert.doesNotMatch(html, /Bild wird neu erstellt/);
   const worker = readFileSync(join(root, 'app', 'sw.js'), 'utf8');
-  assert.doesNotMatch(worker, /vocab-scenes\/b1\.1/);
+  // the worker must not cache any b1.1 image, but it must still purge the
+  // copies devices downloaded before the images were removed
+  assert.doesNotMatch(worker.match(/const CORE = \[[\s\S]*?\];/)[0], /b1\.1/);
+  assert.match(worker, /vocab-scenes\/b1\.1\/[\s\S]{0,120}?media\.delete/);
   const shell = readFileSync(join(root, 'app', 'ui-next.js'), 'utf8');
   assert.doesNotMatch(shell, /Karteikarten mit Bildern/);
   // B1.1 must not fall back to the A2 emoji stickers either: those keywords

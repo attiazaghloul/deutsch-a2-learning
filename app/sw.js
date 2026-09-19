@@ -90,6 +90,14 @@ self.addEventListener('activate', event => {
       .filter(request => /\/assets\/vocab-scenes\/k7\/\d+\.webp$/.test(new URL(request.url).pathname))
       .map(request => media.delete(request)));
 
+
+    // B1.1 vocabulary is picture-free since v52. Drop the durable copies of
+    // its old card photos so devices that already downloaded them reclaim the
+    // space and can never show them again.
+    await Promise.all(mediaRequests
+      .filter(request => new URL(request.url).pathname.includes('/assets/vocab-scenes/b1.1/'))
+      .map(request => media.delete(request)));
+
     await self.clients.claim();
   })());
 });
