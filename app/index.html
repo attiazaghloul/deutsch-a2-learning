@@ -1119,7 +1119,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <script src="data_book0_expansion.js"></script>
 <script src="data_book1.js"></script>
 <script src="data_book2.js"></script>
-<script src="data_b1_1.js?v=b1-1-vocab-11"></script>
+<script src="data_b1_1.js?v=b1-1-vocab-12"></script>
 <script src="data_extra.js"></script>
 <script src="data_lernwortschatz8.js?v=lernwortschatz8-1"></script>
 <script src="data_lernwortschatz9.js?v=lernwortschatz9-3"></script>
@@ -2947,8 +2947,8 @@ function renderLevelSelector(){
     <button type="button" class="level-card b1" onclick="go('b1.1')">
       <span class="level-code">B1.1</span>
       <h3>Netzwerk neu B1.1</h3>
-      <p>Sechs Kapitel mit 985 Wortschatzkarten, arabischer Bedeutung und Bildern.</p>
-      ${ar('ست وحدات B1.1 مع 985 كلمة وترجمة عربية وصور وبطاقات تفاعلية.')}
+      <p>Sechs Kapitel mit 982 Wortschatzkarten, arabischer Bedeutung und Beispielsätzen.</p>
+      ${ar('ست وحدات B1.1 مع 982 كلمة مع المعنى العربي وأمثلة وبطاقات تفاعلية.')}
       <div class="level-meta"><span class="level-pill">Kapitel 1-6</span><span class="level-pill">neu</span></div>
     </button>
     <article class="level-card soon locked">
@@ -3496,8 +3496,8 @@ function renderB1Home(){
   view.innerHTML = (window.NextUI?.featureTabs('b1.1','lessons')||'') + `
   <section class="hero">
     <h2>Netzwerk neu B1.1</h2>
-    <p>Die ersten sechs Kapitel aus dem Kapitelwortschatz: 985 Wörter mit arabischer Bedeutung, Bildern und Karteikarten.</p>
-    ${ar('أول ست وحدات من مفردات Netzwerk neu B1.1: 985 كلمة بالمعنى العربي، والصور، ونظام الكروت.')}
+    <p>Die ersten sechs Kapitel aus dem Kapitelwortschatz: 982 Wörter mit arabischer Bedeutung, Beispielsätzen und Karteikarten.</p>
+    ${ar('أول ست وحدات من مفردات Netzwerk neu B1.1: 982 كلمة بالمعنى العربي وأمثلة ونظام الكروت.')}
   </section>
   <div class="section-label">📙 B1.1 · Kapitel 1–6</div>
   <section class="a1-roadmap">
@@ -6051,8 +6051,8 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker.addEventListener('controllerchange',()=>{
     // Reload exactly once so an installed mobile PWA immediately reads the
     // data and image paths from the newly activated versioned cache.
-    if(sessionStorage.getItem('pwa-v53-reloaded')!=='1'){
-      sessionStorage.setItem('pwa-v53-reloaded','1');
+    if(sessionStorage.getItem('pwa-v54-reloaded')!=='1'){
+      sessionStorage.setItem('pwa-v54-reloaded','1');
       location.reload();
       return;
     }
@@ -6060,7 +6060,7 @@ if ('serviceWorker' in navigator) {
     if($('#offlineDictionaryStatus')) syncOfflineDictionaryStatus();
   });
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('sw.js?v=53',{updateViaCache:'none'})
+    navigator.serviceWorker.register('sw.js?v=54',{updateViaCache:'none'})
       .then(registration=>registration.update())
       .catch(() => {});
   });

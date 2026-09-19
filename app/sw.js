@@ -5,7 +5,7 @@
    Bei Inhaltsänderungen: CACHE_VERSION erhöhen. B1.1 vocabulary is text-only since v52. */
 importScripts('dictionary-data/manifest.js');
 
-const CACHE_VERSION = 'v53';
+const CACHE_VERSION = 'v54';
 const CACHE = 'deutsch-' + CACHE_VERSION;
 const MEDIA_CACHE = 'deutsch-media-v1';
 const DICTIONARY_CACHE = `deutsch-dictionary-v${self.OFFLINE_DICTIONARY_MANIFEST.version}`;

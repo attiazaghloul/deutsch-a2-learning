@@ -278,7 +278,7 @@ test('B1.1 vocabulary is text-only and ships no word images', () => {
   const context = vm.createContext({ window: {} });
   vm.runInContext(readFileSync(join(root, 'app', 'data_b1_1.js'), 'utf8'), context);
   const cards = context.window.B1_BOOK.flatMap(chapter => chapter.vocab);
-  assert.equal(cards.length, 985);
+  assert.equal(cards.length, 982);
   assert.equal(cards.filter(card => 'img' in card).length, 0);
   cards.forEach(card => {
     assert.ok(card.d && card.ex && card.ar, `Incomplete card: ${card.w}`);
@@ -291,7 +291,25 @@ test('B1.1 vocabulary is text-only and ships no word images', () => {
   assert.equal(cards.find(card => card.w === 'der Mars').ar, 'كوكب المريخ');
   assert.equal(cards.find(card => card.w === 'die Karotte').ar, 'جزرة');
   assert.equal(cards.find(card => card.w === 'die Vollpension').ar, 'إقامة كاملة تشمل الإفطار والغداء والعشاء');
-  assert.match(html, /data_b1_1\.js\?v=b1-1-vocab-11/);
+  assert.match(html, /data_b1_1\.js\?v=b1-1-vocab-12/);
+  cards.forEach(card => {
+    // definitions and examples must read as B1 sentences, not dictionary dumps
+    assert.match(card.d, /^[A-ZÄÖÜ„]/, `Definition not a sentence: ${card.w}`);
+    assert.match(card.d, /[.!?]$/, `Definition has no end: ${card.w}`);
+    assert.match(card.ex, /^[A-ZÄÖÜ„»]/, `Example not a sentence: ${card.w}`);
+    assert.match(card.ex, /[.!?]$/, `Example has no end: ${card.w}`);
+    assert.ok(card.ex.trim().split(/\s+/).length <= 20, `Example too long for B1: ${card.w}`);
+    assert.doesNotMatch(card.d, /Sinnverwandte Wörter|beziehungsweise|jmd\.|etw\./, `Dictionary artefact: ${card.w}`);
+    assert.doesNotMatch(card.ex, /jmd\.|etw\./, `Dictionary artefact in example: ${card.w}`);
+    // Arabic must be present and must actually be Arabic script
+    assert.match(card.ar, /[؀-ۿ]/, `Arabic missing: ${card.w}`);
+  });
+  // no word may appear twice inside the same chapter
+  context.window.B1_BOOK.forEach(chapter => {
+    const names = chapter.vocab.map(v => v.w.replace(/^(der|die|das)\s+/, '').toLowerCase());
+    assert.equal(new Set(names).size, names.length, `Duplicate word in Kapitel ${chapter.num}`);
+    assert.equal(chapter.badges[2], `${chapter.vocab.length} Wörter`, `Badge count wrong in Kapitel ${chapter.num}`);
+  });
   // no chapter may still promise a photo that no longer exists
   context.window.B1_BOOK.forEach(chapter => {
     assert.doesNotMatch(chapter.vocabSummary.note, /الصورة|صورة|Foto|Bild/);
@@ -552,7 +570,7 @@ test('next-generation shell and design system are wired into the offline app', (
   assert.match(worker, /data_lernwortschatz12\.js/);
   assert.match(worker, /data_vocab_topics7_12\.js/);
   assert.match(worker, /assets\/vocab-scenes\/k7\/145\.webp/);
-  assert.match(worker, /CACHE_VERSION = 'v53'/);
+  assert.match(worker, /CACHE_VERSION = 'v54'/);
   assert.match(worker, /vocab-scenes\\\/k7\\\/\\d\+\\\.webp/);
 });
 
@@ -602,8 +620,8 @@ test('offline dictionary worker uses the exact pre-cached asset keys', () => {
   assert.match(serviceWorker, /DICTIONARY_CACHE/);
   assert.match(serviceWorker, /cache-dictionary/);
   assert.match(serviceWorker, /dictionary-cache-status/);
-  assert.match(html, /register\('sw\.js\?v=53',\{updateViaCache:'none'\}\)/);
+  assert.match(html, /register\('sw\.js\?v=54',\{updateViaCache:'none'\}\)/);
   assert.match(html, /addEventListener\('controllerchange'/);
-  assert.match(html, /pwa-v53-reloaded/);
+  assert.match(html, /pwa-v54-reloaded/);
   assert.match(html, /controllerchange[^}]+location\.reload\(\)/s);
 });
