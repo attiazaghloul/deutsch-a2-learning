@@ -2,10 +2,10 @@
    - App-Shell + Daten + kleine Bilder werden vorab gecacht
    - Audio/große Bilder: stale-while-revalidate (beim ersten Abruf gecacht)
    - "cache-lesson" Nachricht: cacht alle Audio-Dateien einer Lektion on-demand
-   Bei Inhaltsänderungen: CACHE_VERSION erhöhen. All old B1.1 images were removed in v51. */
+   Bei Inhaltsänderungen: CACHE_VERSION erhöhen. B1.1 vocabulary is text-only since v52. */
 importScripts('dictionary-data/manifest.js');
 
-const CACHE_VERSION = 'v51';
+const CACHE_VERSION = 'v52';
 const CACHE = 'deutsch-' + CACHE_VERSION;
 const MEDIA_CACHE = 'deutsch-media-v1';
 const DICTIONARY_CACHE = `deutsch-dictionary-v${self.OFFLINE_DICTIONARY_MANIFEST.version}`;

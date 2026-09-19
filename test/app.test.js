@@ -274,15 +274,12 @@ test('Kapitel 12 includes its Lernwortschatz with matching square photos', () =>
   assert.match(html, /data_lernwortschatz12\.js\?v=lernwortschatz12-1/);
 });
 
-test('B1.1 vocabulary gives every card its own square photo', () => {
+test('B1.1 vocabulary is text-only and ships no word images', () => {
   const context = vm.createContext({ window: {} });
   vm.runInContext(readFileSync(join(root, 'app', 'data_b1_1.js'), 'utf8'), context);
   const cards = context.window.B1_BOOK.flatMap(chapter => chapter.vocab);
-  const images = cards.map(card => card.img);
   assert.equal(cards.length, 985);
-  assert.ok(images.every(Boolean));
-  assert.equal(new Set(images).size, cards.length);
-  images.forEach(image => assert.ok(existsSync(join(root, 'app', image)), `Missing ${image}`));
+  assert.equal(cards.filter(card => 'img' in card).length, 0);
   cards.forEach(card => {
     assert.ok(card.d && card.ex && card.ar, `Incomplete card: ${card.w}`);
     assert.doesNotMatch(card.d, /bezeichnet eine Person, einen Gegenstand oder einen Begriff aus dem Kapitel|Mit „.*“ beschreibt man eine Handlung|häufig verwendeter Ausdruck im Deutschen/);
@@ -291,13 +288,25 @@ test('B1.1 vocabulary gives every card its own square photo', () => {
   assert.equal(cards.find(card => card.w === 'der Typ').ar, 'النوع / الشخص');
   assert.equal(cards.find(card => card.w === 'aufladen').ar, 'يشحن');
   assert.match(cards.find(card => card.w === 'operieren').d, /medizinischen Eingriff/);
-  assert.equal(cards.find(card => card.w === 'die Drohne').img, 'assets/vocab-scenes/b1.1/drohne.png');
   assert.equal(cards.find(card => card.w === 'der Mars').ar, 'كوكب المريخ');
-  assert.equal(cards.find(card => card.w === 'das Huhn').img, 'assets/vocab-scenes/b1.1/huhn.png');
   assert.equal(cards.find(card => card.w === 'die Karotte').ar, 'جزرة');
   assert.equal(cards.find(card => card.w === 'die Vollpension').ar, 'إقامة كاملة تشمل الإفطار والغداء والعشاء');
-  assert.equal(cards.find(card => card.w === 'die Vollpension').img, 'assets/vocab-scenes/b1.1/vollpension.png');
-  assert.match(html, /data_b1_1\.js\?v=b1-1-vocab-9/);
+  assert.match(html, /data_b1_1\.js\?v=b1-1-vocab-10/);
+});
+
+test('no B1.1 image assets or image code paths remain in the app', () => {
+  assert.ok(!existsSync(join(root, 'app', 'assets', 'vocab-scenes', 'b1.1')), 'b1.1 asset folder still exists');
+  assert.doesNotMatch(html, /vocab-scenes\/b1\.1/);
+  assert.doesNotMatch(html, /b1AtlasVisual|B1_ATLAS_RULES|fc-atlas-tile/);
+  assert.doesNotMatch(html, /Bild wird neu erstellt/);
+  const worker = readFileSync(join(root, 'app', 'sw.js'), 'utf8');
+  assert.doesNotMatch(worker, /vocab-scenes\/b1\.1/);
+  const shell = readFileSync(join(root, 'app', 'ui-next.js'), 'utf8');
+  assert.doesNotMatch(shell, /Karteikarten mit Bildern/);
+  // B1.1 must not fall back to the A2 emoji stickers either: those keywords
+  // mismatch B1 words (Insekt -> football), which is what images were removed for.
+  assert.match(html, /startsWith\('b1\.1\/'\)\)\{[\s\S]{0,400}?fc-visual--plain/);
+  assert.doesNotMatch(html, /startsWith\('b1\.1\/'\)\)\{[\s\S]{0,400}?fallbackVocabSticker/);
 });
 
 test('fixed vocabulary speech covers every word in chapters 7 through 12', () => {
@@ -536,7 +545,7 @@ test('next-generation shell and design system are wired into the offline app', (
   assert.match(worker, /data_lernwortschatz12\.js/);
   assert.match(worker, /data_vocab_topics7_12\.js/);
   assert.match(worker, /assets\/vocab-scenes\/k7\/145\.webp/);
-  assert.match(worker, /CACHE_VERSION = 'v50'/);
+  assert.match(worker, /CACHE_VERSION = 'v52'/);
   assert.match(worker, /vocab-scenes\\\/k7\\\/\\d\+\\\.webp/);
 });
 
@@ -586,8 +595,8 @@ test('offline dictionary worker uses the exact pre-cached asset keys', () => {
   assert.match(serviceWorker, /DICTIONARY_CACHE/);
   assert.match(serviceWorker, /cache-dictionary/);
   assert.match(serviceWorker, /dictionary-cache-status/);
-  assert.match(html, /register\('sw\.js\?v=50',\{updateViaCache:'none'\}\)/);
+  assert.match(html, /register\('sw\.js\?v=52',\{updateViaCache:'none'\}\)/);
   assert.match(html, /addEventListener\('controllerchange'/);
-  assert.match(html, /pwa-v50-reloaded/);
+  assert.match(html, /pwa-v52-reloaded/);
   assert.match(html, /controllerchange[^}]+location\.reload\(\)/s);
 });
