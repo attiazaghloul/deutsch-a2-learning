@@ -431,11 +431,11 @@ window.B1_BOOK = [
       },
       {
         "w": "die Vollpension",
-        "d": "meist ohne Artikel: Reiseaufenthalt mit Frühstück, Mittagessen und Abendessen",
-        "ar": "المجلس الكامل",
+        "d": "Eine Verpflegungsart im Hotel, bei der Frühstück, Mittagessen und Abendessen im Preis enthalten sind.",
+        "ar": "إقامة كاملة تشمل الإفطار والغداء والعشاء",
         "cat": "Kapitel 1",
-        "ex": "Wir fahren im Sommer wieder ans Meer und haben Vollpension gebucht; wir werden uns also den Bauch so richtig vollschlagen.",
-        "img": "assets/vocab-scenes/k12-added/84.webp"
+        "ex": "Wir haben Vollpension gebucht, deshalb sind alle drei Mahlzeiten im Preis enthalten.",
+        "img": "assets/vocab-scenes/b1.1/vollpension.png"
       },
       {
         "w": "der Wellness-Bereich",

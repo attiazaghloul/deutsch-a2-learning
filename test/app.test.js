@@ -295,7 +295,9 @@ test('B1.1 vocabulary gives every card its own square photo', () => {
   assert.equal(cards.find(card => card.w === 'der Mars').ar, 'كوكب المريخ');
   assert.equal(cards.find(card => card.w === 'das Huhn').img, 'assets/vocab-scenes/b1.1/huhn.png');
   assert.equal(cards.find(card => card.w === 'die Karotte').ar, 'جزرة');
-  assert.match(html, /data_b1_1\.js\?v=b1-1-vocab-7/);
+  assert.equal(cards.find(card => card.w === 'die Vollpension').ar, 'إقامة كاملة تشمل الإفطار والغداء والعشاء');
+  assert.equal(cards.find(card => card.w === 'die Vollpension').img, 'assets/vocab-scenes/b1.1/vollpension.png');
+  assert.match(html, /data_b1_1\.js\?v=b1-1-vocab-8/);
 });
 
 test('fixed vocabulary speech covers every word in chapters 7 through 12', () => {
@@ -584,7 +586,8 @@ test('offline dictionary worker uses the exact pre-cached asset keys', () => {
   assert.match(serviceWorker, /DICTIONARY_CACHE/);
   assert.match(serviceWorker, /cache-dictionary/);
   assert.match(serviceWorker, /dictionary-cache-status/);
-  assert.match(html, /register\('sw\.js',\{updateViaCache:'none'\}\)/);
+  assert.match(html, /register\('sw\.js\?v=49',\{updateViaCache:'none'\}\)/);
   assert.match(html, /addEventListener\('controllerchange'/);
-  assert.doesNotMatch(html, /controllerchange[^}]+location\.reload\(\)/s);
+  assert.match(html, /pwa-v49-reloaded/);
+  assert.match(html, /controllerchange[^}]+location\.reload\(\)/s);
 });
