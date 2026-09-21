@@ -26,476 +26,544 @@ window.B1_BOOK = [
         "d": "Nichts tun und sich dabei entspannen.",
         "ar": "يتكاسل / يسترخي بلا عمل",
         "cat": "Kapitel 1",
-        "ex": "Im Urlaub möchte ich einen Tag lang am Strand faulenzen."
+        "ex": "Im Urlaub möchte ich einen Tag lang am Strand faulenzen.",
+        "img": "assets/vocab-scenes/b1-1/k1/001.webp"
       },
       {
         "w": "giftig",
         "d": "So, dass etwas krank machen oder töten kann.",
         "ar": "سامّ",
         "cat": "Kapitel 1",
-        "ex": "Diese Pilze sind giftig."
+        "ex": "Diese Pilze sind giftig.",
+        "img": "assets/vocab-scenes/b1-1/k1/002.webp"
       },
       {
         "w": "der Himmel",
         "d": "Der Raum, den man über der Erde sieht.",
         "ar": "السماء",
         "cat": "Kapitel 1",
-        "ex": "Heute ist der Himmel blau und fast wolkenlos."
+        "ex": "Heute ist der Himmel blau und fast wolkenlos.",
+        "img": "assets/vocab-scenes/b1-1/k1/003.webp"
       },
       {
         "w": "das Insekt",
         "d": "Ein kleines Tier mit sechs Beinen, zum Beispiel eine Fliege.",
         "ar": "حشرة",
         "cat": "Kapitel 1",
-        "ex": "Auf der Blume sitzt ein buntes Insekt."
+        "ex": "Auf der Blume sitzt ein buntes Insekt.",
+        "img": "assets/vocab-scenes/b1-1/k1/004.webp"
       },
       {
         "w": "das Netz",
         "d": "Ein Geflecht aus vielen miteinander verbundenen Fäden.",
         "ar": "شبكة",
         "cat": "Kapitel 1",
-        "ex": "Der Fischer zieht das volle Netz aus dem Wasser."
+        "ex": "Der Fischer zieht das volle Netz aus dem Wasser.",
+        "img": "assets/vocab-scenes/b1-1/k1/005.webp"
       },
       {
         "w": "der Pilz",
         "d": "Ein Lebewesen, das oft im Wald wächst; manche Pilze kann man essen.",
         "ar": "فطر",
         "cat": "Kapitel 1",
-        "ex": "Nach dem Regen wachsen viele Pilze im Wald."
+        "ex": "Nach dem Regen wachsen viele Pilze im Wald.",
+        "img": "assets/vocab-scenes/b1-1/k1/006.webp"
       },
       {
         "w": "der Schutz",
         "d": "Etwas, das vor Gefahr oder Schaden bewahrt.",
         "ar": "الحماية",
         "cat": "Kapitel 1",
-        "ex": "Die Jacke bietet guten Schutz gegen Regen und Wind."
+        "ex": "Die Jacke bietet guten Schutz gegen Regen und Wind.",
+        "img": "assets/vocab-scenes/b1-1/k1/007.webp"
       },
       {
         "w": "zelten",
         "d": "In einem Zelt übernachten.",
         "ar": "يخيّم / ينام في خيمة",
         "cat": "Kapitel 1",
-        "ex": "Im Sommer zelten wir gern am See."
+        "ex": "Im Sommer zelten wir gern am See.",
+        "img": "assets/vocab-scenes/b1-1/k1/008.webp"
       },
       {
         "w": "angenehm",
         "d": "So, dass es sich gut anfühlt.",
         "ar": "لطيف / مريح",
         "cat": "Kapitel 1",
-        "ex": "Das Wasser hat heute eine angenehme Temperatur."
+        "ex": "Das Wasser hat heute eine angenehme Temperatur.",
+        "img": "assets/vocab-scenes/b1-1/k1/009.webp"
       },
       {
         "w": "die Aussicht",
         "d": "Der Blick, den man von einem Ort aus hat.",
         "ar": "الإطلالة / المنظر",
         "cat": "Kapitel 1",
-        "ex": "Vom Balkon haben wir eine herrliche Aussicht auf das Meer."
+        "ex": "Vom Balkon haben wir eine herrliche Aussicht auf das Meer.",
+        "img": "assets/vocab-scenes/b1-1/k1/010.webp"
       },
       {
         "w": "dabei sein",
         "d": "An etwas teilnehmen oder an einem Ort anwesend sein.",
         "ar": "يشارك / يكون حاضرًا",
         "cat": "Kapitel 1",
-        "ex": "Bist du bei der Reise dabei?"
+        "ex": "Bist du bei der Reise dabei?",
+        "img": "assets/vocab-scenes/b1-1/k1/011.webp"
       },
       {
         "w": "drüben",
         "d": "Auf der anderen Seite oder dort drüben.",
         "ar": "هناك",
         "cat": "Kapitel 1",
-        "ex": "Der Bahnhof ist gleich drüben."
+        "ex": "Der Bahnhof ist gleich drüben.",
+        "img": "assets/vocab-scenes/b1-1/k1/012.webp"
       },
       {
         "w": "das Erlebnis",
         "d": "Etwas Besonderes, das man erlebt hat.",
         "ar": "تجربة مميزة / حدث لا يُنسى",
         "cat": "Kapitel 1",
-        "ex": "Bahnfahren ist immer wieder ein Erlebnis."
+        "ex": "Bahnfahren ist immer wieder ein Erlebnis.",
+        "img": "assets/vocab-scenes/b1-1/k1/013.webp"
       },
       {
         "w": "der Genuss",
         "d": "Das angenehme Gefühl, wenn man etwas Schönes isst, trinkt oder erlebt.",
         "ar": "المتعة / الاستمتاع",
         "cat": "Kapitel 1",
-        "ex": "Der erste Kaffee am Morgen ist für mich ein echter Genuss."
+        "ex": "Der erste Kaffee am Morgen ist für mich ein echter Genuss.",
+        "img": "assets/vocab-scenes/b1-1/k1/014.webp"
       },
       {
         "w": "herrlich",
         "d": "Sehr schön, angenehm oder großartig.",
         "ar": "رائع",
         "cat": "Kapitel 1",
-        "ex": "Wir hatten einen herrlichen Tag am Meer."
+        "ex": "Wir hatten einen herrlichen Tag am Meer.",
+        "img": "assets/vocab-scenes/b1-1/k1/015.webp"
       },
       {
         "w": "die Küste",
         "d": "Der Bereich, wo das Land an das Meer grenzt.",
         "ar": "الساحل",
         "cat": "Kapitel 1",
-        "ex": "Wir fahren mit dem Rad an der Küste entlang."
+        "ex": "Wir fahren mit dem Rad an der Küste entlang.",
+        "img": "assets/vocab-scenes/b1-1/k1/016.webp"
       },
       {
         "w": "reif",
         "d": "So entwickelt, dass man etwas essen oder verwenden kann.",
         "ar": "ناضج",
         "cat": "Kapitel 1",
-        "ex": "Die Trauben sind jetzt reif."
+        "ex": "Die Trauben sind jetzt reif.",
+        "img": "assets/vocab-scenes/b1-1/k1/017.webp"
       },
       {
         "w": "der Sand",
         "d": "Sehr kleine Körner, aus denen zum Beispiel ein Strand besteht.",
         "ar": "الرمل",
         "cat": "Kapitel 1",
-        "ex": "Die Kinder spielen den ganzen Tag im warmen Sand."
+        "ex": "Die Kinder spielen den ganzen Tag im warmen Sand.",
+        "img": "assets/vocab-scenes/b1-1/k1/018.webp"
       },
       {
         "w": "die Traube",
         "d": "Eine Frucht, die in kleinen Beeren an einer Rebe wächst.",
         "ar": "عنقود العنب / حبة عنب",
         "cat": "Kapitel 1",
-        "ex": "Die reifen Trauben schmecken sehr süß."
+        "ex": "Die reifen Trauben schmecken sehr süß.",
+        "img": "assets/vocab-scenes/b1-1/k1/019.webp"
       },
       {
         "w": "der Urlaubsgruß",
         "d": "Ein Gruß, den man aus dem Urlaub schickt.",
         "ar": "تحية من العطلة",
         "cat": "Kapitel 1",
-        "ex": "Wir schicken unseren Freunden einen Urlaubsgruß aus Wien."
+        "ex": "Wir schicken unseren Freunden einen Urlaubsgruß aus Wien.",
+        "img": "assets/vocab-scenes/b1-1/k1/020.webp"
       },
       {
         "w": "derselbe",
         "d": "Genau der gleiche; nicht ein anderer.",
         "ar": "نفسه",
         "cat": "Kapitel 1",
-        "ex": "Wir wohnen jedes Jahr in demselben Ferienhaus."
+        "ex": "Wir wohnen jedes Jahr in demselben Ferienhaus.",
+        "img": "assets/vocab-scenes/b1-1/k1/021.webp"
       },
       {
         "w": "die Entfernung",
         "d": "Der Abstand zwischen zwei Orten.",
         "ar": "المسافة",
         "cat": "Kapitel 1",
-        "ex": "Die Entfernung zwischen Hotel und Strand beträgt nur 200 Meter."
+        "ex": "Die Entfernung zwischen Hotel und Strand beträgt nur 200 Meter.",
+        "img": "assets/vocab-scenes/b1-1/k1/022.webp"
       },
       {
         "w": "das Ferienhaus",
         "d": "Ein Haus, das man für den Urlaub mietet.",
         "ar": "بيت العطلات",
         "cat": "Kapitel 1",
-        "ex": "Wir haben ein kleines Ferienhaus am See gemietet."
+        "ex": "Wir haben ein kleines Ferienhaus am See gemietet.",
+        "img": "assets/vocab-scenes/b1-1/k1/023.webp"
       },
       {
         "w": "gründlich",
         "d": "Sehr genau und vollständig.",
         "ar": "بدقة",
         "cat": "Kapitel 1",
-        "ex": "Bitte lesen Sie die Anleitung gründlich."
+        "ex": "Bitte lesen Sie die Anleitung gründlich.",
+        "img": "assets/vocab-scenes/b1-1/k1/024.webp"
       },
       {
         "w": "rechtzeitig",
         "d": "Früh genug, bevor es zu spät ist.",
         "ar": "في الوقت المناسب",
         "cat": "Kapitel 1",
-        "ex": "Wir kamen rechtzeitig am Bahnhof an."
+        "ex": "Wir kamen rechtzeitig am Bahnhof an.",
+        "img": "assets/vocab-scenes/b1-1/k1/025.webp"
       },
       {
         "w": "schick",
         "d": "Modisch und elegant.",
         "ar": "أنيق",
         "cat": "Kapitel 1",
-        "ex": "Für das Abendessen im Hotel zieht sie sich schick an."
+        "ex": "Für das Abendessen im Hotel zieht sie sich schick an.",
+        "img": "assets/vocab-scenes/b1-1/k1/026.webp"
       },
       {
         "w": "der Typ",
         "d": "Eine Person mit bestimmten Eigenschaften oder eine bestimmte Art von Sache.",
         "ar": "النوع / الشخص",
         "cat": "Kapitel 1",
-        "ex": "Er ist ein ruhiger Typ und reist gern allein."
+        "ex": "Er ist ein ruhiger Typ und reist gern allein.",
+        "img": "assets/vocab-scenes/b1-1/k1/027.webp"
       },
       {
         "w": "der Urlaubstyp",
         "d": "Eine Person mit einer bestimmten Art, Urlaub zu machen.",
         "ar": "نمط المسافر / نوع المصطاف",
         "cat": "Kapitel 1",
-        "ex": "Sie ist der Urlaubstyp, der gern wandert und in den Bergen schläft."
+        "ex": "Sie ist der Urlaubstyp, der gern wandert und in den Bergen schläft.",
+        "img": "assets/vocab-scenes/b1-1/k1/028.webp"
       },
       {
         "w": "das Urlaubsziel",
         "d": "Der Ort, an den man in den Urlaub fährt.",
         "ar": "وجهة العطلة",
         "cat": "Kapitel 1",
-        "ex": "Unser Urlaubsziel ist dieses Jahr eine kleine Insel in Griechenland."
+        "ex": "Unser Urlaubsziel ist dieses Jahr eine kleine Insel in Griechenland.",
+        "img": "assets/vocab-scenes/b1-1/k1/029.webp"
       },
       {
         "w": "die Urlaubsplanung",
         "d": "Die Vorbereitung und Organisation einer Reise.",
         "ar": "التخطيط للعطلة",
         "cat": "Kapitel 1",
-        "ex": "Bei der Urlaubsplanung vergleichen wir zuerst die Preise."
+        "ex": "Bei der Urlaubsplanung vergleichen wir zuerst die Preise.",
+        "img": "assets/vocab-scenes/b1-1/k1/030.webp"
       },
       {
         "w": "der Chat",
         "d": "Ein Gespräch im Internet, bei dem man Nachrichten schreibt.",
         "ar": "الدردشة",
         "cat": "Kapitel 1",
-        "ex": "Im Chat verabreden wir uns für morgen."
+        "ex": "Im Chat verabreden wir uns für morgen.",
+        "img": "assets/vocab-scenes/b1-1/k1/031.webp"
       },
       {
         "w": "erholen",
         "d": "Sich ausruhen und wieder zu Kräften kommen.",
         "ar": "يستجمّ / يرتاح",
         "cat": "Kapitel 1",
-        "ex": "Ich erhole mich vom Stress der letzten Tage."
+        "ex": "Ich erhole mich vom Stress der letzten Tage.",
+        "img": "assets/vocab-scenes/b1-1/k1/032.webp"
       },
       {
         "w": "der Kompromiss",
         "d": "Eine Lösung, bei der beide Seiten auf etwas verzichten.",
         "ar": "التسوية",
         "cat": "Kapitel 1",
-        "ex": "Wir haben einen Kompromiss gefunden: erst das Meer, dann die Berge."
+        "ex": "Wir haben einen Kompromiss gefunden: erst das Meer, dann die Berge.",
+        "img": "assets/vocab-scenes/b1-1/k1/033.webp"
       },
       {
         "w": "meinetwegen",
         "d": "Wegen mir oder: von mir aus.",
         "ar": "بسببي / بالنسبة لي لا مانع",
         "cat": "Kapitel 1",
-        "ex": "Meinetwegen können wir morgen früher losfahren."
+        "ex": "Meinetwegen können wir morgen früher losfahren.",
+        "img": "assets/vocab-scenes/b1-1/k1/034.webp"
       },
       {
         "w": "sorry",
         "d": "Entschuldigung!",
         "ar": "آسف",
         "cat": "Kapitel 1",
-        "ex": "Sorry, ich habe das nicht böse gemeint."
+        "ex": "Sorry, ich habe das nicht böse gemeint.",
+        "img": "assets/vocab-scenes/b1-1/k1/035.webp"
       },
       {
         "w": "wieso",
         "d": "Fragewort, mit dem man nach dem Grund fragt.",
         "ar": "لماذا",
         "cat": "Kapitel 1",
-        "ex": "Wieso kommst du so spät?"
+        "ex": "Wieso kommst du so spät?",
+        "img": "assets/vocab-scenes/b1-1/k1/036.webp"
       },
       {
         "w": "entspannend",
         "d": "So, dass man ruhig wird und sich erholt.",
         "ar": "مريح / باعث على الاسترخاء",
         "cat": "Kapitel 1",
-        "ex": "Ein Spaziergang am Meer ist entspannend."
+        "ex": "Ein Spaziergang am Meer ist entspannend.",
+        "img": "assets/vocab-scenes/b1-1/k1/037.webp"
       },
       {
         "w": "erfahren",
         "d": "Etwas herausfinden oder Kenntnis von etwas bekommen.",
         "ar": "يعلم بـ / يكتشف",
         "cat": "Kapitel 1",
-        "ex": "Auf der Reise erfahren wir viel Neues."
+        "ex": "Auf der Reise erfahren wir viel Neues.",
+        "img": "assets/vocab-scenes/b1-1/k1/038.webp"
       },
       {
         "w": "die Schifffahrt",
         "d": "Das Fahren von Schiffen auf Flüssen, Seen oder dem Meer.",
         "ar": "الملاحة البحرية / النهرية",
         "cat": "Kapitel 1",
-        "ex": "In der Schifffahrt sagt man anstatt rechts „steuerbord“."
+        "ex": "In der Schifffahrt sagt man anstatt rechts „steuerbord“.",
+        "img": "assets/vocab-scenes/b1-1/k1/039.webp"
       },
       {
         "w": "das Wellnesshotel",
         "d": "Ein Hotel mit Angeboten zur Entspannung und Gesundheit, zum Beispiel Sauna oder Massage.",
         "ar": "فندق العافية",
         "cat": "Kapitel 1",
-        "ex": "Im Wellnesshotel kann man sich in der Sauna entspannen."
+        "ex": "Im Wellnesshotel kann man sich in der Sauna entspannen.",
+        "img": "assets/vocab-scenes/b1-1/k1/040.webp"
       },
       {
         "w": "ca",
         "d": "Abkürzung für „circa“; sie bedeutet ungefähr.",
         "ar": "حوالي / تقريبًا",
         "cat": "Kapitel 1",
-        "ex": "Die Fahrt dauert ca. zwei Stunden."
+        "ex": "Die Fahrt dauert ca. zwei Stunden.",
+        "img": "assets/vocab-scenes/b1-1/k1/041.webp"
       },
       {
         "w": "enthalten",
         "d": "Etwas als Bestandteil oder Inhalt haben.",
         "ar": "يحتوي على",
         "cat": "Kapitel 1",
-        "ex": "Die Bewerbungsunterlagen enthalten auch die Zeugnisse."
+        "ex": "Der Preis enthält Frühstück und Abendessen.",
+        "img": "assets/vocab-scenes/b1-1/k1/042.webp"
       },
       {
         "w": "die Fahrtzeit",
         "d": "Die Zeit, die man für eine Fahrt braucht.",
         "ar": "وقت السفر",
         "cat": "Kapitel 1",
-        "ex": "Die Fahrtzeit nach Berlin beträgt ungefähr drei Stunden."
+        "ex": "Die Fahrtzeit nach Berlin beträgt ungefähr drei Stunden.",
+        "img": "assets/vocab-scenes/b1-1/k1/043.webp"
       },
       {
         "w": "das Gästehaus",
         "d": "Ein kleines Haus, in dem Gäste übernachten können.",
         "ar": "بيت الضيافة",
         "cat": "Kapitel 1",
-        "ex": "Wir übernachten in einem einfachen Gästehaus im Dorf."
+        "ex": "Wir übernachten in einem einfachen Gästehaus im Dorf.",
+        "img": "assets/vocab-scenes/b1-1/k1/044.webp"
       },
       {
         "w": "die Halbpension",
         "d": "Ein Hotelpreis, in dem Frühstück und eine warme Mahlzeit enthalten sind.",
         "ar": "إقامة بنصف إعاشة (إفطار ووجبة رئيسية)",
         "cat": "Kapitel 1",
-        "ex": "Wir haben Halbpension gebucht: Frühstück und Abendessen sind inklusive."
+        "ex": "Wir haben Halbpension gebucht: Frühstück und Abendessen sind inklusive.",
+        "img": "assets/vocab-scenes/b1-1/k1/045.webp"
       },
       {
         "w": "höchstens",
         "d": "Nicht mehr als; als größte Menge.",
         "ar": "على الأكثر",
         "cat": "Kapitel 1",
-        "ex": "Die Fahrt dauert höchstens zwei Stunden."
+        "ex": "Die Fahrt dauert höchstens zwei Stunden.",
+        "img": "assets/vocab-scenes/b1-1/k1/046.webp"
       },
       {
         "w": "der Reisebüro-Mitarbeiter",
         "d": "Eine Person, die Kunden bei der Planung und Buchung einer Reise berät.",
         "ar": "موظف وكالة السفر",
         "cat": "Kapitel 1",
-        "ex": "Der Reisebüro-Mitarbeiter empfiehlt uns ein ruhiges Hotel."
+        "ex": "Der Reisebüro-Mitarbeiter empfiehlt uns ein ruhiges Hotel.",
+        "img": "assets/vocab-scenes/b1-1/k1/047.webp"
       },
       {
         "w": "die Reisebüro-Mitarbeiterin",
         "d": "Eine Frau, die Kunden bei der Planung und Buchung einer Reise berät.",
         "ar": "موظفة وكالة سفر",
         "cat": "Kapitel 1",
-        "ex": "Die Reisebüro-Mitarbeiterin bucht den Flug für uns."
+        "ex": "Die Reisebüro-Mitarbeiterin bucht den Flug für uns.",
+        "img": "assets/vocab-scenes/b1-1/k1/048.webp"
       },
       {
         "w": "der Skibus",
         "d": "Ein Bus, der Skifahrer zu einem Skigebiet bringt.",
         "ar": "حافلة التزلج",
         "cat": "Kapitel 1",
-        "ex": "Der Skibus fährt morgens direkt zur Piste."
+        "ex": "Der Skibus fährt morgens direkt zur Piste.",
+        "img": "assets/vocab-scenes/b1-1/k1/049.webp"
       },
       {
         "w": "das Skigebiet",
         "d": "Eine Region in den Bergen, in der man Ski fahren kann.",
         "ar": "منطقة التزلج",
         "cat": "Kapitel 1",
-        "ex": "Das Skigebiet liegt nur zehn Minuten vom Hotel entfernt."
+        "ex": "Das Skigebiet liegt nur zehn Minuten vom Hotel entfernt.",
+        "img": "assets/vocab-scenes/b1-1/k1/050.webp"
       },
       {
         "w": "der Skilift",
         "d": "Eine Anlage, die Skifahrer den Berg hinaufbringt.",
         "ar": "مصعد التزلج",
         "cat": "Kapitel 1",
-        "ex": "Mit dem Skilift sind wir in fünf Minuten oben."
+        "ex": "Mit dem Skilift sind wir in fünf Minuten oben.",
+        "img": "assets/vocab-scenes/b1-1/k1/051.webp"
       },
       {
         "w": "die Vollpension",
         "d": "Eine Verpflegungsart im Hotel, bei der Frühstück, Mittagessen und Abendessen im Preis enthalten sind.",
         "ar": "إقامة كاملة تشمل الإفطار والغداء والعشاء",
         "cat": "Kapitel 1",
-        "ex": "Wir haben Vollpension gebucht, deshalb sind alle drei Mahlzeiten im Preis enthalten."
+        "ex": "Wir haben Vollpension gebucht, deshalb sind alle drei Mahlzeiten im Preis enthalten.",
+        "img": "assets/vocab-scenes/b1-1/k1/052.webp"
       },
       {
         "w": "der Wellness-Bereich",
         "d": "Ein Bereich zur Entspannung, zum Beispiel mit Sauna, Pool oder Massage.",
         "ar": "منطقة العافية / السبا",
         "cat": "Kapitel 1",
-        "ex": "Der Wellness-Bereich ist bis 22 Uhr geöffnet."
+        "ex": "Der Wellness-Bereich ist bis 22 Uhr geöffnet.",
+        "img": "assets/vocab-scenes/b1-1/k1/053.webp"
       },
       {
         "w": "der Winterurlaub",
         "d": "Urlaub im Winter, meist in den Bergen.",
         "ar": "عطلة الشتاء",
         "cat": "Kapitel 1",
-        "ex": "Im Winterurlaub gehe ich gerne Skifahren."
+        "ex": "Im Winterurlaub gehe ich gerne Skifahren.",
+        "img": "assets/vocab-scenes/b1-1/k1/054.webp"
       },
       {
         "w": "die Badewanne",
         "d": "Ein großes Becken im Bad, in dem man baden kann.",
         "ar": "حوض الاستحمام",
         "cat": "Kapitel 1",
-        "ex": "Das Hotelzimmer hat eine große Badewanne."
+        "ex": "Das Hotelzimmer hat eine große Badewanne.",
+        "img": "assets/vocab-scenes/b1-1/k1/055.webp"
       },
       {
         "w": "das Boot",
         "d": "Ein kleines Fahrzeug, das auf dem Wasser fährt.",
         "ar": "القارب",
         "cat": "Kapitel 1",
-        "ex": "Wir können mit dem Boot über den Fluss setzen."
+        "ex": "Wir können mit dem Boot über den Fluss setzen.",
+        "img": "assets/vocab-scenes/b1-1/k1/056.webp"
       },
       {
         "w": "da",
         "d": "An diesem Ort; dort.",
         "ar": "هناك",
         "cat": "Kapitel 1",
-        "ex": "Das Buch liegt da."
+        "ex": "Das Buch liegt da.",
+        "img": "assets/vocab-scenes/b1-1/k1/057.webp"
       },
       {
         "w": "der Einfall",
         "d": "Ein Gedanke, der einem plötzlich kommt.",
         "ar": "فكرة مفاجئة",
         "cat": "Kapitel 1",
-        "ex": "Sie hatte einen guten Einfall: Wir fahren mit dem Nachtzug."
+        "ex": "Sie hatte einen guten Einfall: Wir fahren mit dem Nachtzug.",
+        "img": "assets/vocab-scenes/b1-1/k1/058.webp"
       },
       {
         "w": "enttäuscht",
         "d": "Traurig, weil etwas nicht so war wie erhofft.",
         "ar": "خائب الأمل / محبَط",
         "cat": "Kapitel 1",
-        "ex": "Er machte ein sehr enttäuschtes Gesicht."
+        "ex": "Er machte ein sehr enttäuschtes Gesicht.",
+        "img": "assets/vocab-scenes/b1-1/k1/059.webp"
       },
       {
         "w": "der Forumstext",
         "d": "Ein Text, den jemand in einem Internetforum veröffentlicht.",
         "ar": "نص المنتدى",
         "cat": "Kapitel 1",
-        "ex": "Im Forumstext beschreibt sie ihre Erfahrungen mit der Reise."
+        "ex": "Im Forumstext beschreibt sie ihre Erfahrungen mit der Reise.",
+        "img": "assets/vocab-scenes/b1-1/k1/060.webp"
       },
       {
         "w": "jedenfalls",
         "d": "Auf jeden Fall; was auch immer sonst passiert.",
         "ar": "على أية حال",
         "cat": "Kapitel 1",
-        "ex": "Ich weiß nicht, ob er mitkommt. Ich fahre jedenfalls."
+        "ex": "Ich weiß nicht, ob er mitkommt. Ich fahre jedenfalls.",
+        "img": "assets/vocab-scenes/b1-1/k1/061.webp"
       },
       {
         "w": "liegen",
         "d": "Sich an einem Ort befinden oder waagerecht sein.",
         "ar": "يقع / يكون مستلقيًا",
         "cat": "Kapitel 1",
-        "ex": "Das Hotel liegt direkt am See."
+        "ex": "Das Hotel liegt direkt am See.",
+        "img": "assets/vocab-scenes/b1-1/k1/062.webp"
       },
       {
         "w": "obwohl",
         "d": "Leitet einen Nebensatz mit einem Gegensatz ein.",
         "ar": "على الرغم من أن",
         "cat": "Kapitel 1",
-        "ex": "Obwohl es regnet, gehen wir spazieren."
+        "ex": "Obwohl es regnet, gehen wir spazieren.",
+        "img": "assets/vocab-scenes/b1-1/k1/063.webp"
       },
       {
         "w": "offenbar",
         "d": "So, wie es nach allem aussieht; anscheinend.",
         "ar": "على ما يبدو",
         "cat": "Kapitel 1",
-        "ex": "Er ist offenbar schon abgereist."
+        "ex": "Er ist offenbar schon abgereist.",
+        "img": "assets/vocab-scenes/b1-1/k1/064.webp"
       },
       {
         "w": "solche",
         "d": "Dieses Wort bezeichnet Personen oder Dinge von der genannten Art.",
         "ar": "مثل هذه / أمثال هؤلاء",
         "cat": "Kapitel 1",
-        "ex": "Solche Angebote findet man im Winter besonders oft."
+        "ex": "Solche Angebote findet man im Winter besonders oft.",
+        "img": "assets/vocab-scenes/b1-1/k1/065.webp"
       },
       {
         "w": "spazieren",
         "d": "Langsam und ohne Eile gehen, um sich zu entspannen.",
         "ar": "يتنزّه / يتمشّى",
         "cat": "Kapitel 1",
-        "ex": "Nach dem Essen gehen wir am Strand spazieren."
+        "ex": "Nach dem Essen gehen wir am Strand spazieren.",
+        "img": "assets/vocab-scenes/b1-1/k1/066.webp"
       },
       {
         "w": "die Stadtatmosphäre",
         "d": "Die besondere Stimmung und Wirkung einer Stadt.",
         "ar": "جو المدينة",
         "cat": "Kapitel 1",
-        "ex": "Die Stadtatmosphäre ist abends besonders lebendig."
+        "ex": "Die Stadtatmosphäre ist abends besonders lebendig.",
+        "img": "assets/vocab-scenes/b1-1/k1/067.webp"
       },
       {
         "w": "die Strandpromenade",
         "d": "Ein breiter Weg am Strand entlang, auf dem man spazieren geht.",
         "ar": "ممشى الشاطئ",
         "cat": "Kapitel 1",
-        "ex": "Abends ist die Strandpromenade voller Menschen."
+        "ex": "Abends ist die Strandpromenade voller Menschen.",
+        "img": "assets/vocab-scenes/b1-1/k1/068.webp"
       },
       {
         "w": "weg sein",
@@ -1038,7 +1106,7 @@ window.B1_BOOK = [
         "d": "Etwas an die richtige Stelle setzen oder für einen Zweck verwenden.",
         "ar": "يُدخل / يستخدم",
         "cat": "Kapitel 2",
-        "ex": "Die Firma setzt moderne Maschinen ein."
+        "ex": "Setzen Sie die SIM-Karte vorsichtig ein."
       },
       {
         "w": "einstecken",
@@ -1227,7 +1295,7 @@ window.B1_BOOK = [
         "d": "Aus diesem Grund.",
         "ar": "لهذا السبب",
         "cat": "Kapitel 2",
-        "ex": "Der Zug fällt aus, darum nehme ich den Bus."
+        "ex": "Der Akku ist leer, darum lade ich das Handy."
       },
       {
         "w": "deswegen",
@@ -2428,7 +2496,7 @@ window.B1_BOOK = [
         "d": "Etwas an die vorgesehene Stelle setzen oder für einen Zweck verwenden.",
         "ar": "يُدخل / يستخدم",
         "cat": "Kapitel 3",
-        "ex": "Setzen Sie die SIM-Karte vorsichtig ein."
+        "ex": "Die Firma setzt moderne Maschinen ein."
       },
       {
         "w": "die Herausforderung",
@@ -4015,7 +4083,7 @@ window.B1_BOOK = [
         "d": "Aus diesem Grund.",
         "ar": "لهذا السبب",
         "cat": "Kapitel 4",
-        "ex": "Der Akku ist leer, darum lade ich das Handy."
+        "ex": "Die Stelle ist interessant, darum bewerbe ich mich."
       },
       {
         "w": "unser",
@@ -4043,7 +4111,7 @@ window.B1_BOOK = [
         "d": "Etwas als Bestandteil oder Inhalt haben.",
         "ar": "يحتوي على",
         "cat": "Kapitel 4",
-        "ex": "Der Preis enthält Frühstück und Abendessen."
+        "ex": "Die Bewerbungsunterlagen enthalten auch die Zeugnisse."
       },
       {
         "w": "erkundigen",
@@ -4692,7 +4760,7 @@ window.B1_BOOK = [
         "d": "Sich an einem Ort befinden oder waagerecht sein.",
         "ar": "يقع / يكون مستلقيًا",
         "cat": "Kapitel 5",
-        "ex": "Das Hotel liegt direkt am See."
+        "ex": "Nach dem Fest liegt überall Müll im Park."
       },
       {
         "w": "der Marktanteil",
@@ -5126,7 +5194,7 @@ window.B1_BOOK = [
         "d": "Sich zu einem Ort bewegen und ihn erreichen.",
         "ar": "يأتي",
         "cat": "Kapitel 5",
-        "ex": "Der Techniker kommt morgen um zehn Uhr."
+        "ex": "Viele Bürger kommen zur Aktion gegen Plastikmüll."
       },
       {
         "w": "korrekt",
@@ -6016,7 +6084,7 @@ window.B1_BOOK = [
         "d": "Ein Gerät mit einem Kabel oder einem Netzwerk verbinden.",
         "ar": "يوصّل جهازًا",
         "cat": "Kapitel 5",
-        "ex": "Ich schließe den Drucker an den Computer an."
+        "ex": "Wir schließen die Solaranlage an das Stromnetz an."
       },
       {
         "w": "aufheben",
@@ -6244,7 +6312,7 @@ window.B1_BOOK = [
         "d": "Gerade erst geerntet oder gemacht; auch angenehm kühl.",
         "ar": "طازج",
         "cat": "Kapitel 6",
-        "ex": "Am liebsten koche ich mit frischem Gemüse."
+        "ex": "Am Morgen ist die Luft in der Stadt angenehm frisch."
       },
       {
         "w": "der Leser",
@@ -6426,7 +6494,7 @@ window.B1_BOOK = [
         "d": "Etwas mit der Hand festhalten oder in einer Position lassen.",
         "ar": "يمسك / يُبقي",
         "cat": "Kapitel 6",
-        "ex": "Bitte halten Sie die Tür einen Moment offen."
+        "ex": "Der Bus hält direkt vor unserem Haus."
       },
       {
         "w": "ausgehen",

@@ -1119,7 +1119,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <script src="data_book0_expansion.js"></script>
 <script src="data_book1.js"></script>
 <script src="data_book2.js"></script>
-<script src="data_b1_1.js?v=b1-1-vocab-12"></script>
+<script src="data_b1_1.js?v=b1-1-vocab-13"></script>
 <script src="data_extra.js"></script>
 <script src="data_lernwortschatz8.js?v=lernwortschatz8-1"></script>
 <script src="data_lernwortschatz9.js?v=lernwortschatz9-3"></script>
@@ -5801,8 +5801,14 @@ function vocabVisual(v,chapter){
     return fallbackVocabSticker(v, null, 'DE');
   }
   if(chapterData.route?.startsWith('b1.1/')){
-    // B1.1 cards are deliberately picture-free: the word, its definition and
-    // the example carry the meaning, so no stock photo can mismatch the word.
+    // B1.1 photos are generated per word and reviewed before they ship; a card
+    // without one stays picture-free rather than borrowing a loose match.
+    if(v.img){
+      return `<div class="fc-visual" role="img" aria-label="${escapeHtml(v.w)}">
+        <img class="fc-scene" src="${escapeHtml(v.img)}" alt="" width="420" height="420" loading="eager" decoding="async">
+        <span class="sticker-category">${escapeHtml(v.cat||`Kapitel ${chapterData.num}`)}</span>
+      </div>`;
+    }
     return `<div class="fc-visual fc-visual--plain" role="img" aria-label="${escapeHtml(v.w)}">
       <div class="level-code" style="margin:auto">B1</div>
       <span class="sticker-category">${escapeHtml(v.cat||`Kapitel ${chapterData.num}`)}</span>
@@ -6051,7 +6057,7 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker.addEventListener('controllerchange',()=>{
     // Reload exactly once so an installed mobile PWA immediately reads the
     // data and image paths from the newly activated versioned cache.
-    if(sessionStorage.getItem('pwa-v54-reloaded')!=='1'){
+    if(sessionStorage.getItem('pwa-v55-reloaded')!=='1'){
       sessionStorage.setItem('pwa-v54-reloaded','1');
       location.reload();
       return;
@@ -6060,7 +6066,7 @@ if ('serviceWorker' in navigator) {
     if($('#offlineDictionaryStatus')) syncOfflineDictionaryStatus();
   });
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('sw.js?v=54',{updateViaCache:'none'})
+    navigator.serviceWorker.register('sw.js?v=55',{updateViaCache:'none'})
       .then(registration=>registration.update())
       .catch(() => {});
   });
