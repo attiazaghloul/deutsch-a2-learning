@@ -286,12 +286,18 @@ test('B1.1 vocabulary uses only reviewed photos and stays text-only otherwise', 
     assert.ok(existsSync(join(root, 'app', card.img)), `Missing ${card.img}`);
   });
   assert.equal(new Set(withImg.map(card => card.img)).size, withImg.length, 'an image is shared by two cards');
-  const unit1 = context.window.B1_BOOK.find(chapter => chapter.num === 1).vocab;
-  // unit 1 is illustrated except words a photo cannot show without text
-  assert.equal(unit1.filter(card => !card.img).map(card => card.w).join(' | '), 'die Zugnummer | der Kausalsatz | der Konzessivsatz');
-  unit1.forEach((card, index) => {
-    if (card.img) assert.equal(card.img, `assets/vocab-scenes/b1-1/k1/${String(index + 1).padStart(3, '0')}.webp`, `Photo out of order: ${card.w}`);
-  });
+  // illustrated units: every card has its photo except words a picture cannot show without text
+  const textOnly = {
+    1: 'die Zugnummer | der Kausalsatz | der Konzessivsatz',
+    2: 'der Slogan | sodass | der Markenname | der Spruch | die Werbesprache | das Wortspiel | das Adverb | der Konsekutivsatz | die Silbe',
+  };
+  for (const [num, expected] of Object.entries(textOnly)) {
+    const unit = context.window.B1_BOOK.find(chapter => chapter.num === Number(num)).vocab;
+    assert.equal(unit.filter(card => !card.img).map(card => card.w).join(' | '), expected, `Unit ${num} text-only set changed`);
+    unit.forEach((card, index) => {
+      if (card.img) assert.equal(card.img, `assets/vocab-scenes/b1-1/k${num}/${String(index + 1).padStart(3, '0')}.webp`, `Photo out of order: ${card.w}`);
+    });
+  }
   cards.forEach(card => {
     assert.ok(card.d && card.ex && card.ar, `Incomplete card: ${card.w}`);
     assert.doesNotMatch(card.d, /bezeichnet eine Person, einen Gegenstand oder einen Begriff aus dem Kapitel|Mit „.*“ beschreibt man eine Handlung|häufig verwendeter Ausdruck im Deutschen/);
@@ -303,7 +309,7 @@ test('B1.1 vocabulary uses only reviewed photos and stays text-only otherwise', 
   assert.equal(cards.find(card => card.w === 'der Mars').ar, 'كوكب المريخ');
   assert.equal(cards.find(card => card.w === 'die Karotte').ar, 'جزرة');
   assert.equal(cards.find(card => card.w === 'die Vollpension').ar, 'إقامة كاملة تشمل الإفطار والغداء والعشاء');
-  assert.match(html, /data_b1_1\.js\?v=b1-1-vocab-14/);
+  assert.match(html, /data_b1_1\.js\?v=b1-1-vocab-15/);
   cards.forEach(card => {
     // definitions and examples must read as B1 sentences, not dictionary dumps
     assert.match(card.d, /^[A-ZÄÖÜ„]/, `Definition not a sentence: ${card.w}`);
@@ -582,7 +588,7 @@ test('next-generation shell and design system are wired into the offline app', (
   assert.match(worker, /data_lernwortschatz12\.js/);
   assert.match(worker, /data_vocab_topics7_12\.js/);
   assert.match(worker, /assets\/vocab-scenes\/k7\/145\.webp/);
-  assert.match(worker, /CACHE_VERSION = 'v56'/);
+  assert.match(worker, /CACHE_VERSION = 'v57'/);
   assert.match(worker, /vocab-scenes\\\/k7\\\/\\d\+\\\.webp/);
 });
 
@@ -632,8 +638,8 @@ test('offline dictionary worker uses the exact pre-cached asset keys', () => {
   assert.match(serviceWorker, /DICTIONARY_CACHE/);
   assert.match(serviceWorker, /cache-dictionary/);
   assert.match(serviceWorker, /dictionary-cache-status/);
-  assert.match(html, /register\('sw\.js\?v=56',\{updateViaCache:'none'\}\)/);
+  assert.match(html, /register\('sw\.js\?v=57',\{updateViaCache:'none'\}\)/);
   assert.match(html, /addEventListener\('controllerchange'/);
-  assert.match(html, /pwa-v56-reloaded/);
+  assert.match(html, /pwa-v57-reloaded/);
   assert.match(html, /controllerchange[^}]+location\.reload\(\)/s);
 });

@@ -1071,49 +1071,56 @@ window.B1_BOOK = [
         "d": "Etwas brauchen.",
         "ar": "يحتاج إلى",
         "cat": "Kapitel 2",
-        "ex": "Für die Reise benötigen wir einen Reisepass."
+        "ex": "Für die Reise benötigen wir einen Reisepass.",
+        "img": "assets/vocab-scenes/b1-1/k2/001.webp"
       },
       {
         "w": "der Fingerabdruck",
         "d": "Die individuelle Spur, die eine Fingerkuppe hinterlässt.",
         "ar": "بصمة الإصبع",
         "cat": "Kapitel 2",
-        "ex": "Das Smartphone erkennt meinen Fingerabdruck."
+        "ex": "Das Smartphone erkennt meinen Fingerabdruck.",
+        "img": "assets/vocab-scenes/b1-1/k2/002.webp"
       },
       {
         "w": "der Funkkopfhörer",
         "d": "Kopfhörer, die Audiosignale kabellos empfangen.",
         "ar": "سماعات الرأس اللاسلكية",
         "cat": "Kapitel 2",
-        "ex": "Mit dem Funkkopfhörer kann ich Musik hören, ohne ein Kabel zu benutzen."
+        "ex": "Mit dem Funkkopfhörer kann ich Musik hören, ohne ein Kabel zu benutzen.",
+        "img": "assets/vocab-scenes/b1-1/k2/003.webp"
       },
       {
         "w": "das Lastenfahrrad",
         "d": "Ein Fahrrad, mit dem man schwere Dinge transportieren kann.",
         "ar": "دراجة لنقل البضائع",
         "cat": "Kapitel 2",
-        "ex": "Mit dem Lastenfahrrad bringt sie die Einkäufe nach Hause."
+        "ex": "Mit dem Lastenfahrrad bringt sie die Einkäufe nach Hause.",
+        "img": "assets/vocab-scenes/b1-1/k2/004.webp"
       },
       {
         "w": "der Sprachassistent",
         "d": "Ein Programm, das gesprochene Befehle versteht und ausführt.",
         "ar": "المساعد الصوتي",
         "cat": "Kapitel 2",
-        "ex": "Der Sprachassistent stellt auf Wunsch den Wecker."
+        "ex": "Der Sprachassistent stellt auf Wunsch den Wecker.",
+        "img": "assets/vocab-scenes/b1-1/k2/005.webp"
       },
       {
         "w": "der Steh-Sitz-Tisch",
         "d": "Ein Schreibtisch, den man im Sitzen oder Stehen benutzen kann.",
         "ar": "مكتب قابل للتعديل (للجلوس والوقوف)",
         "cat": "Kapitel 2",
-        "ex": "Am Steh-Sitz-Tisch kann ich abwechselnd sitzen und stehen."
+        "ex": "Am Steh-Sitz-Tisch kann ich abwechselnd sitzen und stehen.",
+        "img": "assets/vocab-scenes/b1-1/k2/006.webp"
       },
       {
         "w": "der Türöffner",
         "d": "Ein Gerät oder Knopf, mit dem man eine Tür öffnet.",
         "ar": "زرّ فتح الباب",
         "cat": "Kapitel 2",
-        "ex": "Drücken Sie bitte auf den Türöffner."
+        "ex": "Drücken Sie bitte auf den Türöffner.",
+        "img": "assets/vocab-scenes/b1-1/k2/007.webp"
       },
       {
         "w": "der Slogan",
@@ -1127,245 +1134,280 @@ window.B1_BOOK = [
         "d": "Ein Knopf an einem Gerät oder an einer Tastatur, den man drückt.",
         "ar": "الزر",
         "cat": "Kapitel 2",
-        "ex": "Drücken Sie die rote Taste, um das Gerät auszuschalten."
+        "ex": "Drücken Sie die rote Taste, um das Gerät auszuschalten.",
+        "img": "assets/vocab-scenes/b1-1/k2/009.webp"
       },
       {
         "w": "der Transport",
         "d": "Das Bringen von Waren oder Personen von einem Ort zum anderen.",
         "ar": "النقل",
         "cat": "Kapitel 2",
-        "ex": "Der Transport der Möbel kostet 80 Euro."
+        "ex": "Der Transport der Möbel kostet 80 Euro.",
+        "img": "assets/vocab-scenes/b1-1/k2/010.webp"
       },
       {
         "w": "anschließen",
         "d": "Ein Gerät mit einem Kabel oder einem Netzwerk verbinden.",
         "ar": "يوصّل جهازًا",
         "cat": "Kapitel 2",
-        "ex": "Ich schließe den Drucker an den Computer an."
+        "ex": "Ich schließe den Drucker an den Computer an.",
+        "img": "assets/vocab-scenes/b1-1/k2/011.webp"
       },
       {
         "w": "aufladen",
         "d": "Einen Akku mit elektrischer Energie füllen.",
         "ar": "يشحن",
         "cat": "Kapitel 2",
-        "ex": "Ich muss den Akku meines Handys aufladen."
+        "ex": "Ich muss den Akku meines Handys aufladen.",
+        "img": "assets/vocab-scenes/b1-1/k2/012.webp"
       },
       {
         "w": "bedienen",
         "d": "Ein Gerät richtig benutzen oder steuern.",
         "ar": "يشغّل / يستخدم جهازًا",
         "cat": "Kapitel 2",
-        "ex": "Kannst du die neue Kaffeemaschine bedienen?"
+        "ex": "Kannst du die neue Kaffeemaschine bedienen?",
+        "img": "assets/vocab-scenes/b1-1/k2/013.webp"
       },
       {
         "w": "einsetzen",
         "d": "Etwas an die richtige Stelle setzen oder für einen Zweck verwenden.",
         "ar": "يُدخل / يستخدم",
         "cat": "Kapitel 2",
-        "ex": "Setzen Sie die SIM-Karte vorsichtig ein."
+        "ex": "Setzen Sie die SIM-Karte vorsichtig ein.",
+        "img": "assets/vocab-scenes/b1-1/k2/014.webp"
       },
       {
         "w": "einstecken",
         "d": "Einen Stecker in die Steckdose stecken; etwas in die Tasche stecken.",
         "ar": "يُدخل / يوصل بالكهرباء",
         "cat": "Kapitel 2",
-        "ex": "Steck bitte das Ladekabel ein."
+        "ex": "Steck bitte das Ladekabel ein.",
+        "img": "assets/vocab-scenes/b1-1/k2/015.webp"
       },
       {
         "w": "installieren",
         "d": "Ein Programm oder Gerät für die Nutzung einrichten.",
         "ar": "يثبّت (برنامجًا)",
         "cat": "Kapitel 2",
-        "ex": "Ich installiere eine neue App."
+        "ex": "Ich installiere eine neue App.",
+        "img": "assets/vocab-scenes/b1-1/k2/016.webp"
       },
       {
         "w": "schalten",
         "d": "Einen Schalter benutzen oder einen anderen Gang einlegen.",
         "ar": "يبدّل / يحوّل",
         "cat": "Kapitel 2",
-        "ex": "An der Ampel schaltet er in den zweiten Gang."
+        "ex": "An der Ampel schaltet er in den zweiten Gang.",
+        "img": "assets/vocab-scenes/b1-1/k2/017.webp"
       },
       {
         "w": "stumm",
         "d": "Ohne Ton oder Geräusch.",
         "ar": "صامت",
         "cat": "Kapitel 2",
-        "ex": "Bitte schalte das Handy stumm."
+        "ex": "Bitte schalte das Handy stumm.",
+        "img": "assets/vocab-scenes/b1-1/k2/018.webp"
       },
       {
         "w": "die Anleitung",
         "d": "Ein Text, der erklärt, wie man etwas benutzt.",
         "ar": "التعليمات",
         "cat": "Kapitel 2",
-        "ex": "In der Anleitung steht, wie man das Gerät anschließt."
+        "ex": "In der Anleitung steht, wie man das Gerät anschließt.",
+        "img": "assets/vocab-scenes/b1-1/k2/019.webp"
       },
       {
         "w": "anschaffen",
         "d": "Etwas Neues kaufen, das man länger benutzt.",
         "ar": "يقتني / يشتري",
         "cat": "Kapitel 2",
-        "ex": "Wir wollen uns bald ein neues Auto anschaffen."
+        "ex": "Wir wollen uns bald ein neues Auto anschaffen.",
+        "img": "assets/vocab-scenes/b1-1/k2/020.webp"
       },
       {
         "w": "bloß",
         "d": "Nur; nichts weiter als das.",
         "ar": "فقط",
         "cat": "Kapitel 2",
-        "ex": "Ich habe bloß zehn Euro dabei."
+        "ex": "Ich habe bloß zehn Euro dabei.",
+        "img": "assets/vocab-scenes/b1-1/k2/021.webp"
       },
       {
         "w": "die Frage",
         "d": "Ein Satz, mit dem man eine Antwort haben möchte.",
         "ar": "السؤال",
         "cat": "Kapitel 2",
-        "ex": "Ich habe eine Frage zu dem neuen Vertrag."
+        "ex": "Ich habe eine Frage zu dem neuen Vertrag.",
+        "img": "assets/vocab-scenes/b1-1/k2/022.webp"
       },
       {
         "w": "der Handyladen",
         "d": "Ein Geschäft, in dem man Handys kauft oder repariert.",
         "ar": "متجر الهواتف المحمولة",
         "cat": "Kapitel 2",
-        "ex": "Im Handyladen lasse ich das Display reparieren."
+        "ex": "Im Handyladen lasse ich das Display reparieren.",
+        "img": "assets/vocab-scenes/b1-1/k2/023.webp"
       },
       {
         "w": "herunterfallen",
         "d": "Von oben nach unten fallen.",
         "ar": "يسقط من أعلى",
         "cat": "Kapitel 2",
-        "ex": "Das Handy ist mir aus der Hand heruntergefallen."
+        "ex": "Das Handy ist mir aus der Hand heruntergefallen.",
+        "img": "assets/vocab-scenes/b1-1/k2/024.webp"
       },
       {
         "w": "irgendetwas",
         "d": "Eine Sache, die man nicht genauer nennt.",
         "ar": "أي شيء",
         "cat": "Kapitel 2",
-        "ex": "Sag doch irgendetwas!"
+        "ex": "Sag doch irgendetwas!",
+        "img": "assets/vocab-scenes/b1-1/k2/025.webp"
       },
       {
         "w": "kaputtgehen",
         "d": "Nicht mehr funktionieren oder beschädigt werden.",
         "ar": "يتعطّل / ينكسر",
         "cat": "Kapitel 2",
-        "ex": "Mein Kopfhörer ist nach zwei Jahren kaputtgegangen."
+        "ex": "Mein Kopfhörer ist nach zwei Jahren kaputtgegangen.",
+        "img": "assets/vocab-scenes/b1-1/k2/026.webp"
       },
       {
         "w": "kommen",
         "d": "Sich zu einem Ort bewegen und ihn erreichen.",
         "ar": "يأتي",
         "cat": "Kapitel 2",
-        "ex": "Der Techniker kommt morgen um zehn Uhr."
+        "ex": "Der Techniker kommt morgen um zehn Uhr.",
+        "img": "assets/vocab-scenes/b1-1/k2/027.webp"
       },
       {
         "w": "lohnen",
         "d": "Den Aufwand oder das Geld wert sein.",
         "ar": "يستحقّ العناء",
         "cat": "Kapitel 2",
-        "ex": "Die Reparatur lohnt sich bei einem so alten Gerät nicht."
+        "ex": "Die Reparatur lohnt sich bei einem so alten Gerät nicht.",
+        "img": "assets/vocab-scenes/b1-1/k2/028.webp"
       },
       {
         "w": "das Sonderangebot",
         "d": "Eine Ware, die für kurze Zeit besonders billig ist.",
         "ar": "العرض الخاص",
         "cat": "Kapitel 2",
-        "ex": "Den Kopfhörer habe ich im Sonderangebot gekauft."
+        "ex": "Den Kopfhörer habe ich im Sonderangebot gekauft.",
+        "img": "assets/vocab-scenes/b1-1/k2/029.webp"
       },
       {
         "w": "der Staubsauger",
         "d": "Ein elektrisches Gerät, mit dem man den Boden saubermacht.",
         "ar": "المكنسة الكهربائية",
         "cat": "Kapitel 2",
-        "ex": "Der neue Staubsauger arbeitet ohne Kabel."
+        "ex": "Der neue Staubsauger arbeitet ohne Kabel.",
+        "img": "assets/vocab-scenes/b1-1/k2/030.webp"
       },
       {
         "w": "stehen",
         "d": "Auf den Beinen sein, ohne sich zu bewegen; an einem Ort sein.",
         "ar": "يقف / يكون موجودًا",
         "cat": "Kapitel 2",
-        "ex": "Der Drucker steht neben dem Computer."
+        "ex": "Der Drucker steht neben dem Computer.",
+        "img": "assets/vocab-scenes/b1-1/k2/031.webp"
       },
       {
         "w": "technisch",
         "d": "Die Technik betreffend.",
         "ar": "تقني",
         "cat": "Kapitel 2",
-        "ex": "Bei dem Gerät gab es ein technisches Problem."
+        "ex": "Bei dem Gerät gab es ein technisches Problem.",
+        "img": "assets/vocab-scenes/b1-1/k2/032.webp"
       },
       {
         "w": "der Knopf",
         "d": "Ein kleines Bedienelement, das man drückt oder dreht.",
         "ar": "الزر",
         "cat": "Kapitel 2",
-        "ex": "Drücken Sie auf den grünen Knopf."
+        "ex": "Drücken Sie auf den grünen Knopf.",
+        "img": "assets/vocab-scenes/b1-1/k2/033.webp"
       },
       {
         "w": "nähen",
         "d": "Stoff mit Nadel und Faden verbinden.",
         "ar": "يخيط",
         "cat": "Kapitel 2",
-        "ex": "Meine Mutter näht mir eine neue Tasche."
+        "ex": "Meine Mutter näht mir eine neue Tasche.",
+        "img": "assets/vocab-scenes/b1-1/k2/034.webp"
       },
       {
         "w": "reinigen",
         "d": "Schmutz von etwas entfernen.",
         "ar": "ينظّف",
         "cat": "Kapitel 2",
-        "ex": "Bitte reinigen Sie den Filter regelmäßig."
+        "ex": "Bitte reinigen Sie den Filter regelmäßig.",
+        "img": "assets/vocab-scenes/b1-1/k2/035.webp"
       },
       {
         "w": "streichen",
         "d": "Farbe mit einem Pinsel auf eine Fläche auftragen.",
         "ar": "يدهن / يطلي",
         "cat": "Kapitel 2",
-        "ex": "Wir streichen die Wand im Wohnzimmer weiß."
+        "ex": "Wir streichen die Wand im Wohnzimmer weiß.",
+        "img": "assets/vocab-scenes/b1-1/k2/036.webp"
       },
       {
         "w": "der Kopfhörer",
         "d": "Ein Gerät, das man auf die Ohren setzt, um Musik zu hören.",
         "ar": "سماعات الرأس",
         "cat": "Kapitel 2",
-        "ex": "Im Zug höre ich Musik über Kopfhörer."
+        "ex": "Im Zug höre ich Musik über Kopfhörer.",
+        "img": "assets/vocab-scenes/b1-1/k2/037.webp"
       },
       {
         "w": "das Ladekabel",
         "d": "Ein Kabel, mit dem man einen Akku auflädt.",
         "ar": "كابل الشحن",
         "cat": "Kapitel 2",
-        "ex": "Mein Ladekabel liegt neben dem Handy."
+        "ex": "Mein Ladekabel liegt neben dem Handy.",
+        "img": "assets/vocab-scenes/b1-1/k2/038.webp"
       },
       {
         "w": "die Powerbank",
         "d": "Ein kleiner Akku, mit dem man unterwegs das Handy lädt.",
         "ar": "بطارية شحن محمولة",
         "cat": "Kapitel 2",
-        "ex": "Unterwegs lade ich mein Handy mit einer Powerbank."
+        "ex": "Unterwegs lade ich mein Handy mit einer Powerbank.",
+        "img": "assets/vocab-scenes/b1-1/k2/039.webp"
       },
       {
         "w": "daher",
         "d": "Aus diesem Grund; deshalb.",
         "ar": "لذلك",
         "cat": "Kapitel 2",
-        "ex": "Der Akku ist leer, daher kann ich nicht telefonieren."
+        "ex": "Der Akku ist leer, daher kann ich nicht telefonieren.",
+        "img": "assets/vocab-scenes/b1-1/k2/040.webp"
       },
       {
         "w": "darum",
         "d": "Aus diesem Grund.",
         "ar": "لهذا السبب",
         "cat": "Kapitel 2",
-        "ex": "Der Akku ist leer, darum lade ich das Handy."
+        "ex": "Der Akku ist leer, darum lade ich das Handy.",
+        "img": "assets/vocab-scenes/b1-1/k2/041.webp"
       },
       {
         "w": "deswegen",
         "d": "Aus diesem Grund.",
         "ar": "لهذا السبب",
         "cat": "Kapitel 2",
-        "ex": "Es regnet, deswegen bleiben wir zu Hause."
+        "ex": "Es regnet, deswegen bleiben wir zu Hause.",
+        "img": "assets/vocab-scenes/b1-1/k2/042.webp"
       },
       {
         "w": "der Handyakku",
         "d": "Der Akku eines Mobiltelefons.",
         "ar": "بطارية الهاتف الخليوي",
         "cat": "Kapitel 2",
-        "ex": "Der Handyakku ist leer und muss geladen werden."
+        "ex": "Der Handyakku ist leer und muss geladen werden.",
+        "img": "assets/vocab-scenes/b1-1/k2/043.webp"
       },
       {
         "w": "sodass",
@@ -1379,504 +1421,576 @@ window.B1_BOOK = [
         "d": "Ein kleiner Speicher, den man in den USB-Anschluss steckt.",
         "ar": "ذاكرة USB / فلاشة",
         "cat": "Kapitel 2",
-        "ex": "Ich kopiere die Fotos auf den Stick."
+        "ex": "Ich kopiere die Fotos auf den Stick.",
+        "img": "assets/vocab-scenes/b1-1/k2/045.webp"
       },
       {
         "w": "anhaben",
         "d": "Ein Kleidungsstück tragen; ein Gerät eingeschaltet haben.",
         "ar": "يرتدي",
         "cat": "Kapitel 2",
-        "ex": "Sie hat heute eine rote Jacke an."
+        "ex": "Sie hat heute eine rote Jacke an.",
+        "img": "assets/vocab-scenes/b1-1/k2/046.webp"
       },
       {
         "w": "anschalten",
         "d": "Ein Gerät mit einem Schalter einschalten.",
         "ar": "يُشغّل",
         "cat": "Kapitel 2",
-        "ex": "Schalte bitte das Licht an."
+        "ex": "Schalte bitte das Licht an.",
+        "img": "assets/vocab-scenes/b1-1/k2/047.webp"
       },
       {
         "w": "dabeihaben",
         "d": "Etwas bei sich tragen.",
         "ar": "يكون معه / يحمل معه",
         "cat": "Kapitel 2",
-        "ex": "Hast du die Fahrkarten dabei?"
+        "ex": "Hast du die Fahrkarten dabei?",
+        "img": "assets/vocab-scenes/b1-1/k2/048.webp"
       },
       {
         "w": "diesmal",
         "d": "Bei dieser Gelegenheit; dieses Mal.",
         "ar": "هذه المرة",
         "cat": "Kapitel 2",
-        "ex": "Diesmal hat alles gut funktioniert."
+        "ex": "Diesmal hat alles gut funktioniert.",
+        "img": "assets/vocab-scenes/b1-1/k2/049.webp"
       },
       {
         "w": "die EC-Karte",
         "d": "Eine Bankkarte zum Bezahlen oder Geldabheben.",
         "ar": "بطاقة EC",
         "cat": "Kapitel 2",
-        "ex": "Ich bezahle im Supermarkt mit meiner EC-Karte."
+        "ex": "Ich bezahle im Supermarkt mit meiner EC-Karte.",
+        "img": "assets/vocab-scenes/b1-1/k2/050.webp"
       },
       {
         "w": "die Gebrauchsanweisung",
         "d": "Ein Text, der erklärt, wie man ein Produkt richtig benutzt.",
         "ar": "تعليمات الاستخدام",
         "cat": "Kapitel 2",
-        "ex": "Lesen Sie bitte zuerst die Gebrauchsanweisung."
+        "ex": "Lesen Sie bitte zuerst die Gebrauchsanweisung.",
+        "img": "assets/vocab-scenes/b1-1/k2/051.webp"
       },
       {
         "w": "die Geheimzahl",
         "d": "Eine geheime Zahlenkombination, zum Beispiel für eine Bankkarte.",
         "ar": "الرقم السري",
         "cat": "Kapitel 2",
-        "ex": "Gib deine Geheimzahl an der Kasse niemals laut bekannt."
+        "ex": "Gib deine Geheimzahl an der Kasse niemals laut bekannt.",
+        "img": "assets/vocab-scenes/b1-1/k2/052.webp"
       },
       {
         "w": "der Geldautomat",
         "d": "Ein Automat, an dem man Geld von seinem Konto abhebt.",
         "ar": "الصرّاف الآلي",
         "cat": "Kapitel 2",
-        "ex": "Am Geldautomaten hebe ich hundert Euro ab."
+        "ex": "Am Geldautomaten hebe ich hundert Euro ab.",
+        "img": "assets/vocab-scenes/b1-1/k2/053.webp"
       },
       {
         "w": "das Girokonto",
         "d": "Ein Bankkonto für regelmäßige Zahlungen und Überweisungen.",
         "ar": "الحساب الجاري",
         "cat": "Kapitel 2",
-        "ex": "Er hat heute ein Girokonto eröffnet."
+        "ex": "Er hat heute ein Girokonto eröffnet.",
+        "img": "assets/vocab-scenes/b1-1/k2/054.webp"
       },
       {
         "w": "gratis",
         "d": "Kostenlos; ohne Bezahlung.",
         "ar": "مجانا",
         "cat": "Kapitel 2",
-        "ex": "Die Reparatur ist heute gratis."
+        "ex": "Die Reparatur ist heute gratis.",
+        "img": "assets/vocab-scenes/b1-1/k2/055.webp"
       },
       {
         "w": "nachsehen",
         "d": "Nachschauen, um etwas herauszufinden.",
         "ar": "يتحقّق / يراجع",
         "cat": "Kapitel 2",
-        "ex": "Ich sehe kurz im Internet nach, wann der Laden öffnet."
+        "ex": "Ich sehe kurz im Internet nach, wann der Laden öffnet.",
+        "img": "assets/vocab-scenes/b1-1/k2/056.webp"
       },
       {
         "w": "das Portemonnaie",
         "d": "Eine kleine Tasche für Geld und Karten.",
         "ar": "المحفظة",
         "cat": "Kapitel 2",
-        "ex": "Mein Portemonnaie liegt noch zu Hause."
+        "ex": "Mein Portemonnaie liegt noch zu Hause.",
+        "img": "assets/vocab-scenes/b1-1/k2/057.webp"
       },
       {
         "w": "der Rabatt",
         "d": "Ein Nachlass auf den normalen Preis.",
         "ar": "الخصم",
         "cat": "Kapitel 2",
-        "ex": "Auf die Hose gibt es zehn Prozent Rabatt."
+        "ex": "Auf die Hose gibt es zehn Prozent Rabatt.",
+        "img": "assets/vocab-scenes/b1-1/k2/058.webp"
       },
       {
         "w": "rein",
         "d": "Ganz und ohne etwas anderes; pur.",
         "ar": "نقي",
         "cat": "Kapitel 2",
-        "ex": "Das war reines Glück."
+        "ex": "Das war reines Glück.",
+        "img": "assets/vocab-scenes/b1-1/k2/059.webp"
       },
       {
         "w": "wieder",
         "d": "Noch einmal; wie schon früher.",
         "ar": "مرة أخرى",
         "cat": "Kapitel 2",
-        "ex": "Der Drucker funktioniert wieder."
+        "ex": "Der Drucker funktioniert wieder.",
+        "img": "assets/vocab-scenes/b1-1/k2/060.webp"
       },
       {
         "w": "verraten",
         "d": "Ein Geheimnis weitersagen.",
         "ar": "يُفشي سرًّا",
         "cat": "Kapitel 2",
-        "ex": "Bitte verrate niemandem meine Geheimzahl."
+        "ex": "Bitte verrate niemandem meine Geheimzahl.",
+        "img": "assets/vocab-scenes/b1-1/k2/061.webp"
       },
       {
         "w": "zurückgehen",
         "d": "Wieder dorthin gehen, wo man hergekommen ist; weniger werden.",
         "ar": "يعود / يتراجع",
         "cat": "Kapitel 2",
-        "ex": "Es ist spät, wir sollten langsam zurückgehen."
+        "ex": "Es ist spät, wir sollten langsam zurückgehen.",
+        "img": "assets/vocab-scenes/b1-1/k2/062.webp"
       },
       {
         "w": "zurückzahlen",
         "d": "Geliehenes Geld wieder zurückgeben.",
         "ar": "يسدّد / يردّ المال",
         "cat": "Kapitel 2",
-        "ex": "Ich zahle dir das Geld nächste Woche zurück."
+        "ex": "Ich zahle dir das Geld nächste Woche zurück.",
+        "img": "assets/vocab-scenes/b1-1/k2/063.webp"
       },
       {
         "w": "die Garantie",
         "d": "Versprechen des Herstellers, einen Fehler kostenlos zu beheben.",
         "ar": "الضمان",
         "cat": "Kapitel 2",
-        "ex": "Für das Gerät gilt eine zweijährige Garantie."
+        "ex": "Für das Gerät gilt eine zweijährige Garantie.",
+        "img": "assets/vocab-scenes/b1-1/k2/064.webp"
       },
       {
         "w": "laden",
         "d": "Etwas in ein Fahrzeug bringen; einen Akku mit Strom füllen.",
         "ar": "يُحمّل / يشحن",
         "cat": "Kapitel 2",
-        "ex": "Wir laden die Koffer in den Kofferraum."
+        "ex": "Wir laden die Koffer in den Kofferraum.",
+        "img": "assets/vocab-scenes/b1-1/k2/065.webp"
       },
       {
         "w": "fast",
         "d": "Beinahe, aber nicht ganz.",
         "ar": "تقريبا",
         "cat": "Kapitel 2",
-        "ex": "Der Akku ist fast leer."
+        "ex": "Der Akku ist fast leer.",
+        "img": "assets/vocab-scenes/b1-1/k2/066.webp"
       },
       {
         "w": "die Quittung",
         "d": "Ein Zettel, der beweist, dass man bezahlt hat.",
         "ar": "الإيصال",
         "cat": "Kapitel 2",
-        "ex": "Heben Sie die Quittung für die Garantie gut auf."
+        "ex": "Heben Sie die Quittung für die Garantie gut auf.",
+        "img": "assets/vocab-scenes/b1-1/k2/067.webp"
       },
       {
         "w": "reklamieren",
         "d": "Sich über eine kaputte oder falsche Ware beschweren.",
         "ar": "يقدّم شكوى / يطالب باستبدال",
         "cat": "Kapitel 2",
-        "ex": "Ich möchte diesen Kopfhörer reklamieren, er funktioniert nicht."
+        "ex": "Ich möchte diesen Kopfhörer reklamieren, er funktioniert nicht.",
+        "img": "assets/vocab-scenes/b1-1/k2/068.webp"
       },
       {
         "w": "testen",
         "d": "Prüfen, ob etwas funktioniert oder gut ist.",
         "ar": "يختبر / يجرّب",
         "cat": "Kapitel 2",
-        "ex": "Wir testen die neue App."
+        "ex": "Wir testen die neue App.",
+        "img": "assets/vocab-scenes/b1-1/k2/069.webp"
       },
       {
         "w": "die Technologie",
         "d": "Die moderne Technik und ihr Wissen.",
         "ar": "التكنولوجيا",
         "cat": "Kapitel 2",
-        "ex": "Die neue Technologie spart viel Energie."
+        "ex": "Die neue Technologie spart viel Energie.",
+        "img": "assets/vocab-scenes/b1-1/k2/070.webp"
       },
       {
         "w": "die Vorstellung",
         "d": "Ein Bild, das man im Kopf von etwas hat.",
         "ar": "الفكرة",
         "cat": "Kapitel 2",
-        "ex": "Ich habe eine klare Vorstellung von meinem neuen Zimmer."
+        "ex": "Ich habe eine klare Vorstellung von meinem neuen Zimmer.",
+        "img": "assets/vocab-scenes/b1-1/k2/071.webp"
       },
       {
         "w": "die Alarmanlage",
         "d": "Ein Gerät, das laut warnt, wenn jemand einbricht.",
         "ar": "نظام الإنذار",
         "cat": "Kapitel 2",
-        "ex": "Wir haben im Haus eine Alarmanlage einbauen lassen."
+        "ex": "Wir haben im Haus eine Alarmanlage einbauen lassen.",
+        "img": "assets/vocab-scenes/b1-1/k2/072.webp"
       },
       {
         "w": "die Ausnahme",
         "d": "Ein Fall, in dem eine Regel nicht gilt.",
         "ar": "الاستثناء",
         "cat": "Kapitel 2",
-        "ex": "Heute machen wir eine Ausnahme und bleiben länger."
+        "ex": "Heute machen wir eine Ausnahme und bleiben länger.",
+        "img": "assets/vocab-scenes/b1-1/k2/073.webp"
       },
       {
         "w": "bemerken",
         "d": "Etwas sehen oder merken.",
         "ar": "يلاحظ",
         "cat": "Kapitel 2",
-        "ex": "Ich habe den Fehler erst später bemerkt."
+        "ex": "Ich habe den Fehler erst später bemerkt.",
+        "img": "assets/vocab-scenes/b1-1/k2/074.webp"
       },
       {
         "w": "bereits",
         "d": "Schon; früher als erwartet.",
         "ar": "بالفعل",
         "cat": "Kapitel 2",
-        "ex": "Ich habe die Rechnung bereits bezahlt."
+        "ex": "Ich habe die Rechnung bereits bezahlt.",
+        "img": "assets/vocab-scenes/b1-1/k2/075.webp"
       },
       {
         "w": "berühren",
         "d": "Etwas mit der Hand anfassen.",
         "ar": "يلمس",
         "cat": "Kapitel 2",
-        "ex": "Bitte berühren Sie den Bildschirm nur leicht."
+        "ex": "Bitte berühren Sie den Bildschirm nur leicht.",
+        "img": "assets/vocab-scenes/b1-1/k2/076.webp"
       },
       {
         "w": "der Einbruch",
         "d": "Das heimliche Eindringen in ein Haus, um zu stehlen.",
         "ar": "الاقتحام",
         "cat": "Kapitel 2",
-        "ex": "Nach dem Einbruch haben sie eine Alarmanlage gekauft."
+        "ex": "Nach dem Einbruch haben sie eine Alarmanlage gekauft.",
+        "img": "assets/vocab-scenes/b1-1/k2/077.webp"
       },
       {
         "w": "gleichzeitig",
         "d": "Zur selben Zeit.",
         "ar": "في نفس الوقت",
         "cat": "Kapitel 2",
-        "ex": "Beide Türen öffnen sich gleichzeitig."
+        "ex": "Beide Türen öffnen sich gleichzeitig.",
+        "img": "assets/vocab-scenes/b1-1/k2/078.webp"
       },
       {
         "w": "die Haustür",
         "d": "Die Tür, durch die man ein Haus betritt.",
         "ar": "الباب الأمامي",
         "cat": "Kapitel 2",
-        "ex": "Die Haustür schließt automatisch."
+        "ex": "Die Haustür schließt automatisch.",
+        "img": "assets/vocab-scenes/b1-1/k2/079.webp"
       },
       {
         "w": "hinsehen",
         "d": "Den Blick auf etwas richten.",
         "ar": "ينظر إلى",
         "cat": "Kapitel 2",
-        "ex": "Sieh mal hin, das Licht blinkt."
+        "ex": "Sieh mal hin, das Licht blinkt.",
+        "img": "assets/vocab-scenes/b1-1/k2/080.webp"
       },
       {
         "w": "die Jalousie",
         "d": "Ein Sichtschutz am Fenster aus schmalen Leisten.",
         "ar": "ستارة / شيش النافذة",
         "cat": "Kapitel 2",
-        "ex": "Öffne bitte die Jalousie, es ist zu dunkel."
+        "ex": "Öffne bitte die Jalousie, es ist zu dunkel.",
+        "img": "assets/vocab-scenes/b1-1/k2/081.webp"
       },
       {
         "w": "machen",
         "d": "Etwas herstellen oder in einen bestimmten Zustand bringen.",
         "ar": "يصنع / يجعل",
         "cat": "Kapitel 2",
-        "ex": "Das laute Geräusch macht mich nervös."
+        "ex": "Das laute Geräusch macht mich nervös.",
+        "img": "assets/vocab-scenes/b1-1/k2/082.webp"
       },
       {
         "w": "das Magazin",
         "d": "Eine Zeitschrift, die regelmäßig erscheint.",
         "ar": "المجلة",
         "cat": "Kapitel 2",
-        "ex": "In dem Magazin steht ein Test über neue Handys."
+        "ex": "In dem Magazin steht ein Test über neue Handys.",
+        "img": "assets/vocab-scenes/b1-1/k2/083.webp"
       },
       {
         "w": "der Monitor",
         "d": "Der Bildschirm eines Computers.",
         "ar": "شاشة",
         "cat": "Kapitel 2",
-        "ex": "Mein Monitor ist größer als der alte."
+        "ex": "Mein Monitor ist größer als der alte.",
+        "img": "assets/vocab-scenes/b1-1/k2/084.webp"
       },
       {
         "w": "der Neubau",
         "d": "Ein Haus, das gerade erst gebaut wurde.",
         "ar": "المبنى الجديد",
         "cat": "Kapitel 2",
-        "ex": "Sie wohnen seit Januar in einem Neubau."
+        "ex": "Sie wohnen seit Januar in einem Neubau.",
+        "img": "assets/vocab-scenes/b1-1/k2/085.webp"
       },
       {
         "w": "die Nutzung",
         "d": "Das Benutzen von etwas.",
         "ar": "الاستخدام",
         "cat": "Kapitel 2",
-        "ex": "Die Nutzung des WLANs ist im Hotel kostenlos."
+        "ex": "Die Nutzung des WLANs ist im Hotel kostenlos.",
+        "img": "assets/vocab-scenes/b1-1/k2/086.webp"
       },
       {
         "w": "sicher",
         "d": "Ohne Gefahr oder Zweifel.",
         "ar": "بالتأكيد",
         "cat": "Kapitel 2",
-        "ex": "Mit der Alarmanlage fühle ich mich sicher."
+        "ex": "Mit der Alarmanlage fühle ich mich sicher.",
+        "img": "assets/vocab-scenes/b1-1/k2/087.webp"
       },
       {
         "w": "smart",
         "d": "Mit moderner digitaler Technik ausgestattet.",
         "ar": "ذكي",
         "cat": "Kapitel 2",
-        "ex": "Wir wohnen in einem smarten Haus."
+        "ex": "Wir wohnen in einem smarten Haus.",
+        "img": "assets/vocab-scenes/b1-1/k2/088.webp"
       },
       {
         "w": "das Smart Home",
         "d": "Eine Wohnung mit vernetzten und digital steuerbaren Geräten.",
         "ar": "المنزل الذكي",
         "cat": "Kapitel 2",
-        "ex": "Im Smart Home lassen sich Licht und Heizung per App steuern."
+        "ex": "Im Smart Home lassen sich Licht und Heizung per App steuern.",
+        "img": "assets/vocab-scenes/b1-1/k2/089.webp"
       },
       {
         "w": "steuern",
         "d": "Ein Fahrzeug oder ein Gerät lenken und kontrollieren.",
         "ar": "يتحكّم في / يقود",
         "cat": "Kapitel 2",
-        "ex": "Licht und Heizung kann man per App steuern."
+        "ex": "Licht und Heizung kann man per App steuern.",
+        "img": "assets/vocab-scenes/b1-1/k2/090.webp"
       },
       {
         "w": "der Tagesablauf",
         "d": "Die Reihenfolge der Dinge, die man an einem Tag tut.",
         "ar": "الروتين اليومي",
         "cat": "Kapitel 2",
-        "ex": "Mein Tagesablauf beginnt immer mit einem Kaffee."
+        "ex": "Mein Tagesablauf beginnt immer mit einem Kaffee.",
+        "img": "assets/vocab-scenes/b1-1/k2/091.webp"
       },
       {
         "w": "die Videonachricht",
         "d": "Eine Nachricht, die als Video aufgenommen und verschickt wird.",
         "ar": "رسالة الفيديو",
         "cat": "Kapitel 2",
-        "ex": "Sie schickte ihrer Freundin eine kurze Videonachricht."
+        "ex": "Sie schickte ihrer Freundin eine kurze Videonachricht.",
+        "img": "assets/vocab-scenes/b1-1/k2/092.webp"
       },
       {
         "w": "die Wand",
         "d": "Die senkrechte Fläche, die einen Raum begrenzt.",
         "ar": "الجدار",
         "cat": "Kapitel 2",
-        "ex": "An der Wand hängt ein großes Bild."
+        "ex": "An der Wand hängt ein großes Bild.",
+        "img": "assets/vocab-scenes/b1-1/k2/093.webp"
       },
       {
         "w": "die Zentrale",
         "d": "Der Hauptsitz einer Firma oder Organisation.",
         "ar": "المقر",
         "cat": "Kapitel 2",
-        "ex": "Die Zentrale der Firma ist in Hamburg."
+        "ex": "Die Zentrale der Firma ist in Hamburg.",
+        "img": "assets/vocab-scenes/b1-1/k2/094.webp"
       },
       {
         "w": "wessen",
         "d": "Fragewort nach dem Besitzer: von wem?",
         "ar": "لِمَن",
         "cat": "Kapitel 2",
-        "ex": "Wessen Handy liegt hier auf dem Tisch?"
+        "ex": "Wessen Handy liegt hier auf dem Tisch?",
+        "img": "assets/vocab-scenes/b1-1/k2/095.webp"
       },
       {
         "w": "anpassen",
         "d": "Etwas so ändern, dass es passt.",
         "ar": "يُلائم / يعدّل",
         "cat": "Kapitel 2",
-        "ex": "Du kannst die Lautstärke im Menü anpassen."
+        "ex": "Du kannst die Lautstärke im Menü anpassen.",
+        "img": "assets/vocab-scenes/b1-1/k2/096.webp"
       },
       {
         "w": "einschalten",
         "d": "Ein Gerät in Betrieb nehmen.",
         "ar": "يُشغّل",
         "cat": "Kapitel 2",
-        "ex": "Schalte bitte den Computer ein."
+        "ex": "Schalte bitte den Computer ein.",
+        "img": "assets/vocab-scenes/b1-1/k2/097.webp"
       },
       {
         "w": "Hightech",
         "d": "Besonders moderne und fortschrittliche Technik.",
         "ar": "التكنولوجيا الفائقة",
         "cat": "Kapitel 2",
-        "ex": "Das Krankenhaus arbeitet mit moderner Hightech."
+        "ex": "Das Krankenhaus arbeitet mit moderner Hightech.",
+        "img": "assets/vocab-scenes/b1-1/k2/098.webp"
       },
       {
         "w": "geschehen",
         "d": "Passieren; stattfinden.",
         "ar": "يحدث",
         "cat": "Kapitel 2",
-        "ex": "Was ist gestern geschehen?"
+        "ex": "Was ist gestern geschehen?",
+        "img": "assets/vocab-scenes/b1-1/k2/099.webp"
       },
       {
         "w": "leisten",
         "d": "Etwas bezahlen können oder sich etwas erlauben.",
         "ar": "يقدر على تحمّل تكلفة",
         "cat": "Kapitel 2",
-        "ex": "Wir können uns diese Reise nicht leisten."
+        "ex": "Wir können uns diese Reise nicht leisten.",
+        "img": "assets/vocab-scenes/b1-1/k2/100.webp"
       },
       {
         "w": "die Sorge",
         "d": "Ein unruhiges Gefühl, weil etwas Schlimmes passieren könnte.",
         "ar": "القلق",
         "cat": "Kapitel 2",
-        "ex": "Machen Sie sich keine Sorge, das Gerät ist sicher."
+        "ex": "Machen Sie sich keine Sorge, das Gerät ist sicher.",
+        "img": "assets/vocab-scenes/b1-1/k2/101.webp"
       },
       {
         "w": "entsprechen",
         "d": "Zu etwas passen oder eine Erwartung erfüllen.",
         "ar": "يطابق / يتوافق مع",
         "cat": "Kapitel 2",
-        "ex": "Das Gerät entspricht nicht meinen Erwartungen."
+        "ex": "Das Gerät entspricht nicht meinen Erwartungen.",
+        "img": "assets/vocab-scenes/b1-1/k2/102.webp"
       },
       {
         "w": "die Einkaufsliste",
         "d": "Eine Liste mit Dingen, die man einkaufen möchte.",
         "ar": "قائمة التسوق",
         "cat": "Kapitel 2",
-        "ex": "Nun können Sie Ihre Einkaufsliste zusammenstellen."
+        "ex": "Nun können Sie Ihre Einkaufsliste zusammenstellen.",
+        "img": "assets/vocab-scenes/b1-1/k2/103.webp"
       },
       {
         "w": "sparsam",
         "d": "So, dass man wenig verbraucht oder wenig Geld ausgibt.",
         "ar": "اقتصادي / موفّر",
         "cat": "Kapitel 2",
-        "ex": "Das neue Gerät ist sehr sparsam im Verbrauch."
+        "ex": "Das neue Gerät ist sehr sparsam im Verbrauch.",
+        "img": "assets/vocab-scenes/b1-1/k2/104.webp"
       },
       {
         "w": "die Gefahr",
         "d": "Die Möglichkeit, dass etwas Schlimmes passiert.",
         "ar": "الخطر",
         "cat": "Kapitel 2",
-        "ex": "Bei Gewitter besteht Gefahr für die Geräte."
+        "ex": "Bei Gewitter besteht Gefahr für die Geräte.",
+        "img": "assets/vocab-scenes/b1-1/k2/105.webp"
       },
       {
         "w": "die Werbeanzeige",
         "d": "Eine Anzeige, mit der ein Produkt oder eine Dienstleistung beworben wird.",
         "ar": "الإعلان",
         "cat": "Kapitel 2",
-        "ex": "Die Werbeanzeige verspricht einen günstigen Urlaub."
+        "ex": "Die Werbeanzeige verspricht einen günstigen Urlaub.",
+        "img": "assets/vocab-scenes/b1-1/k2/106.webp"
       },
       {
         "w": "ansprechend",
         "d": "Angenehm und attraktiv wirkend.",
         "ar": "جذابة",
         "cat": "Kapitel 2",
-        "ex": "Die Anzeige ist modern und ansprechend."
+        "ex": "Die Anzeige ist modern und ansprechend.",
+        "img": "assets/vocab-scenes/b1-1/k2/107.webp"
       },
       {
         "w": "unmodern",
         "d": "Nicht mehr modern; aus der Mode.",
         "ar": "غير عصري",
         "cat": "Kapitel 2",
-        "ex": "Das Design der Anzeige wirkt unmodern."
+        "ex": "Das Design der Anzeige wirkt unmodern.",
+        "img": "assets/vocab-scenes/b1-1/k2/108.webp"
       },
       {
         "w": "unverständlich",
         "d": "Nicht klar oder schwer zu verstehen.",
         "ar": "غير مفهوم",
         "cat": "Kapitel 2",
-        "ex": "Die Erklärung war leider unverständlich."
+        "ex": "Die Erklärung war leider unverständlich.",
+        "img": "assets/vocab-scenes/b1-1/k2/109.webp"
       },
       {
         "w": "ausgezeichnet",
         "d": "Sehr gut; von hoher Qualität.",
         "ar": "ممتاز",
         "cat": "Kapitel 2",
-        "ex": "Der Film ist ausgezeichnet."
+        "ex": "Der Film ist ausgezeichnet.",
+        "img": "assets/vocab-scenes/b1-1/k2/110.webp"
       },
       {
         "w": "frech",
         "d": "Nicht höflich; ohne Respekt.",
         "ar": "صفيق",
         "cat": "Kapitel 2",
-        "ex": "Der Junge gab eine freche Antwort."
+        "ex": "Der Junge gab eine freche Antwort.",
+        "img": "assets/vocab-scenes/b1-1/k2/111.webp"
       },
       {
         "w": "merkwürdig",
         "d": "Anders als normal; seltsam.",
         "ar": "غريب",
         "cat": "Kapitel 2",
-        "ex": "Es riecht hier merkwürdig."
+        "ex": "Es riecht hier merkwürdig.",
+        "img": "assets/vocab-scenes/b1-1/k2/112.webp"
       },
       {
         "w": "seltsam",
         "d": "Nicht normal; merkwürdig.",
         "ar": "غريب",
         "cat": "Kapitel 2",
-        "ex": "Dieser Apfel hat eine seltsame Form."
+        "ex": "Dieser Apfel hat eine seltsame Form.",
+        "img": "assets/vocab-scenes/b1-1/k2/113.webp"
       },
       {
         "w": "wirken",
         "d": "Eine Wirkung haben; auf jemanden einen Eindruck machen.",
         "ar": "يؤثّر / يبدو",
         "cat": "Kapitel 2",
-        "ex": "Die Werbung wirkt bei jungen Leuten besonders gut."
+        "ex": "Die Werbung wirkt bei jungen Leuten besonders gut.",
+        "img": "assets/vocab-scenes/b1-1/k2/114.webp"
       },
       {
         "w": "davon",
         "d": "Von dieser Sache; von dort weg.",
         "ar": "منه",
         "cat": "Kapitel 2",
-        "ex": "Wir haben drei Angebote, zwei davon sind günstig."
+        "ex": "Wir haben drei Angebote, zwei davon sind günstig.",
+        "img": "assets/vocab-scenes/b1-1/k2/115.webp"
       },
       {
         "w": "der Klebefilm",
         "d": "Ein dünner Klebestreifen zum Befestigen von Papier oder kleinen Gegenständen.",
         "ar": "الفيلم اللاصق",
         "cat": "Kapitel 2",
-        "ex": "Mit Klebefilm befestigte er das Foto an der Wand."
+        "ex": "Mit Klebefilm befestigte er das Foto an der Wand.",
+        "img": "assets/vocab-scenes/b1-1/k2/116.webp"
       },
       {
         "w": "der Markenname",
@@ -1890,98 +2004,112 @@ window.B1_BOOK = [
         "d": "Eine Tablette gegen Schmerzen.",
         "ar": "المسكن",
         "cat": "Kapitel 2",
-        "ex": "Gegen die Kopfschmerzen nahm sie eine Schmerztablette."
+        "ex": "Gegen die Kopfschmerzen nahm sie eine Schmerztablette.",
+        "img": "assets/vocab-scenes/b1-1/k2/118.webp"
       },
       {
         "w": "der Süßstoff",
         "d": "Ein Ersatz für Zucker, der süß schmeckt.",
         "ar": "محلٍّ صناعي / بديل السكر",
         "cat": "Kapitel 2",
-        "ex": "Er nimmt Süßstoff statt Zucker in den Tee."
+        "ex": "Er nimmt Süßstoff statt Zucker in den Tee.",
+        "img": "assets/vocab-scenes/b1-1/k2/119.webp"
       },
       {
         "w": "das Taschentuch",
         "d": "Ein kleines Tuch aus Papier oder Stoff für die Nase.",
         "ar": "المنديل",
         "cat": "Kapitel 2",
-        "ex": "Brauchst du ein Taschentuch?"
+        "ex": "Brauchst du ein Taschentuch?",
+        "img": "assets/vocab-scenes/b1-1/k2/120.webp"
       },
       {
         "w": "ansprechen",
         "d": "Jemanden anreden; jemandes Interesse wecken.",
         "ar": "يخاطب / يجذب الاهتمام",
         "cat": "Kapitel 2",
-        "ex": "Die Werbung spricht vor allem junge Leute an."
+        "ex": "Die Werbung spricht vor allem junge Leute an.",
+        "img": "assets/vocab-scenes/b1-1/k2/121.webp"
       },
       {
         "w": "aufmerksam",
         "d": "Mit voller Konzentration und Beachtung.",
         "ar": "منتبه",
         "cat": "Kapitel 2",
-        "ex": "Die Kinder hören aufmerksam zu."
+        "ex": "Die Kinder hören aufmerksam zu.",
+        "img": "assets/vocab-scenes/b1-1/k2/122.webp"
       },
       {
         "w": "automatisch",
         "d": "So, dass ein Gerät von allein arbeitet.",
         "ar": "تلقائيا",
         "cat": "Kapitel 2",
-        "ex": "Die Tür öffnet sich automatisch."
+        "ex": "Die Tür öffnet sich automatisch.",
+        "img": "assets/vocab-scenes/b1-1/k2/123.webp"
       },
       {
         "w": "beeinflussen",
         "d": "Auf jemanden oder etwas wirken und eine Veränderung bewirken.",
         "ar": "التأثير",
         "cat": "Kapitel 2",
-        "ex": "Werbung beeinflusst unser Kaufverhalten."
+        "ex": "Werbung beeinflusst unser Kaufverhalten.",
+        "img": "assets/vocab-scenes/b1-1/k2/124.webp"
       },
       {
         "w": "dabei",
         "d": "Gleichzeitig; während man etwas tut.",
         "ar": "في أثناء ذلك",
         "cat": "Kapitel 2",
-        "ex": "Er kocht und hört dabei Musik."
+        "ex": "Er kocht und hört dabei Musik.",
+        "img": "assets/vocab-scenes/b1-1/k2/125.webp"
       },
       {
         "w": "ebenfalls",
         "d": "Auch; genauso.",
         "ar": "ايضا",
         "cat": "Kapitel 2",
-        "ex": "Ich gehe ebenfalls nach Hause."
+        "ex": "Ich gehe ebenfalls nach Hause.",
+        "img": "assets/vocab-scenes/b1-1/k2/126.webp"
       },
       {
         "w": "die Erinnerung",
         "d": "Etwas, das man noch im Kopf behalten hat.",
         "ar": "الذاكرة",
         "cat": "Kapitel 2",
-        "ex": "Ich habe gute Erinnerungen an diese Zeit."
+        "ex": "Ich habe gute Erinnerungen an diese Zeit.",
+        "img": "assets/vocab-scenes/b1-1/k2/127.webp"
       },
       {
         "w": "genügen",
         "d": "Genug sein.",
         "ar": "يكفي",
         "cat": "Kapitel 2",
-        "ex": "Eine Tablette genügt für den ganzen Tag."
+        "ex": "Eine Tablette genügt für den ganzen Tag.",
+        "img": "assets/vocab-scenes/b1-1/k2/128.webp"
       },
       {
         "w": "interessiert",
         "d": "So, dass man etwas gern kennenlernen möchte.",
         "ar": "مهتم",
         "cat": "Kapitel 2",
-        "ex": "Sie ist sehr an Technik interessiert."
+        "ex": "Sie ist sehr an Technik interessiert.",
+        "img": "assets/vocab-scenes/b1-1/k2/129.webp"
       },
       {
         "w": "das Kaufverhalten",
         "d": "Die Art, wie Menschen Produkte auswählen und kaufen.",
         "ar": "السلوك الشرائي",
         "cat": "Kapitel 2",
-        "ex": "Werbung kann das Kaufverhalten der Kunden beeinflussen."
+        "ex": "Werbung kann das Kaufverhalten der Kunden beeinflussen.",
+        "img": "assets/vocab-scenes/b1-1/k2/130.webp"
       },
       {
         "w": "reichen",
         "d": "Genug sein; jemandem etwas geben.",
         "ar": "يكفي / يناول",
         "cat": "Kapitel 2",
-        "ex": "Das Geld reicht nicht bis zum Monatsende."
+        "ex": "Das Geld reicht nicht bis zum Monatsende.",
+        "img": "assets/vocab-scenes/b1-1/k2/131.webp"
       },
       {
         "w": "der Spruch",
@@ -1995,28 +2123,32 @@ window.B1_BOOK = [
         "d": "Von etwas Unerwartetem erstaunt.",
         "ar": "متفاجئ",
         "cat": "Kapitel 2",
-        "ex": "Ich war von der Nachricht überrascht."
+        "ex": "Ich war von der Nachricht überrascht.",
+        "img": "assets/vocab-scenes/b1-1/k2/133.webp"
       },
       {
         "w": "das Unternehmen",
         "d": "Eine Firma, die Waren herstellt oder verkauft.",
         "ar": "الشركة",
         "cat": "Kapitel 2",
-        "ex": "Das Unternehmen hat zweihundert Mitarbeiter."
+        "ex": "Das Unternehmen hat zweihundert Mitarbeiter.",
+        "img": "assets/vocab-scenes/b1-1/k2/134.webp"
       },
       {
         "w": "das Verhalten",
         "d": "Die Art, wie sich jemand benimmt.",
         "ar": "السلوك",
         "cat": "Kapitel 2",
-        "ex": "Sein Verhalten im Kurs war sehr freundlich."
+        "ex": "Sein Verhalten im Kurs war sehr freundlich.",
+        "img": "assets/vocab-scenes/b1-1/k2/135.webp"
       },
       {
         "w": "vertrauen",
         "d": "Sicher sein, dass jemand ehrlich und zuverlässig ist.",
         "ar": "يثق بـ",
         "cat": "Kapitel 2",
-        "ex": "Ich vertraue meiner Freundin."
+        "ex": "Ich vertraue meiner Freundin.",
+        "img": "assets/vocab-scenes/b1-1/k2/136.webp"
       },
       {
         "w": "die Werbesprache",
@@ -2030,7 +2162,8 @@ window.B1_BOOK = [
         "d": "Eine Methode der Werbung, mit der Menschen zum Kaufen bewegt werden sollen.",
         "ar": "خدعة الإعلان",
         "cat": "Kapitel 2",
-        "ex": "Der kostenlose Probemonat ist ein bekannter Werbetrick."
+        "ex": "Der kostenlose Probemonat ist ein bekannter Werbetrick.",
+        "img": "assets/vocab-scenes/b1-1/k2/138.webp"
       },
       {
         "w": "das Wortspiel",
@@ -2044,35 +2177,40 @@ window.B1_BOOK = [
         "d": "Eine Eigenschaft, an der man etwas erkennt.",
         "ar": "الميزة",
         "cat": "Kapitel 2",
-        "ex": "Ein Merkmal guter Werbung ist ein kurzer Satz."
+        "ex": "Ein Merkmal guter Werbung ist ein kurzer Satz.",
+        "img": "assets/vocab-scenes/b1-1/k2/140.webp"
       },
       {
         "w": "Finnland",
         "d": "Ein Land im Norden Europas.",
         "ar": "فنلندا",
         "cat": "Kapitel 2",
-        "ex": "Finnland ist reich an Seen und Wäldern."
+        "ex": "Finnland ist reich an Seen und Wäldern.",
+        "img": "assets/vocab-scenes/b1-1/k2/141.webp"
       },
       {
         "w": "italienisch",
         "d": "Zu Italien gehörend.",
         "ar": "ايطالي",
         "cat": "Kapitel 2",
-        "ex": "Wir essen heute in einem italienischen Restaurant."
+        "ex": "Wir essen heute in einem italienischen Restaurant.",
+        "img": "assets/vocab-scenes/b1-1/k2/142.webp"
       },
       {
         "w": "ungesund",
         "d": "Schlecht für die Gesundheit.",
         "ar": "غير صحي",
         "cat": "Kapitel 2",
-        "ex": "Zu viel Zucker ist ungesund."
+        "ex": "Zu viel Zucker ist ungesund.",
+        "img": "assets/vocab-scenes/b1-1/k2/143.webp"
       },
       {
         "w": "verbieten",
         "d": "Sagen, dass jemand etwas nicht tun darf.",
         "ar": "يمنع / يحظر",
         "cat": "Kapitel 2",
-        "ex": "Die Eltern verbieten ihm, so lange am Handy zu sitzen."
+        "ex": "Die Eltern verbieten ihm, so lange am Handy zu sitzen.",
+        "img": "assets/vocab-scenes/b1-1/k2/144.webp"
       },
       {
         "w": "das Adverb",
@@ -2086,7 +2224,8 @@ window.B1_BOOK = [
         "d": "Vor dieser Sache; vor diesem Zeitpunkt.",
         "ar": "قبل ذلك",
         "cat": "Kapitel 2",
-        "ex": "Wir essen um acht, davor gehen wir spazieren."
+        "ex": "Wir essen um acht, davor gehen wir spazieren.",
+        "img": "assets/vocab-scenes/b1-1/k2/146.webp"
       },
       {
         "w": "der Konsekutivsatz",
