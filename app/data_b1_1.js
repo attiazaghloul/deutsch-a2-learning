@@ -570,133 +570,152 @@ window.B1_BOOK = [
         "d": "Nicht mehr an einem Ort sein; verschwunden oder abwesend sein.",
         "ar": "يكون مفقودًا / غير موجود",
         "cat": "Kapitel 1",
-        "ex": "Mein Koffer ist weg – ich finde ihn nirgends."
+        "ex": "Mein Koffer ist weg – ich finde ihn nirgends.",
+        "img": "assets/vocab-scenes/b1-1/k1/069.webp"
       },
       {
         "w": "der Strandurlaub",
         "d": "Ein Urlaub an einem Strand.",
         "ar": "عطلة الشاطئ",
         "cat": "Kapitel 1",
-        "ex": "Im Sommer machen wir am liebsten Strandurlaub in Italien."
+        "ex": "Im Sommer machen wir am liebsten Strandurlaub in Italien.",
+        "img": "assets/vocab-scenes/b1-1/k1/070.webp"
       },
       {
         "w": "das Abenteuer",
         "d": "Ein spannendes Erlebnis, bei dem auch etwas Unerwartetes passieren kann.",
         "ar": "مغامرة",
         "cat": "Kapitel 1",
-        "ex": "Auf seinen Fahrten über das Meer erlebt der griechische Held Odysseus viele Abenteuer."
+        "ex": "Auf seinen Fahrten über das Meer erlebt der griechische Held Odysseus viele Abenteuer.",
+        "img": "assets/vocab-scenes/b1-1/k1/071.webp"
       },
       {
         "w": "aufbauen",
         "d": "Etwas montieren oder errichten.",
         "ar": "ينصب / يركّب",
         "cat": "Kapitel 1",
-        "ex": "Wir bauen das Zelt am See auf."
+        "ex": "Wir bauen das Zelt am See auf.",
+        "img": "assets/vocab-scenes/b1-1/k1/072.webp"
       },
       {
         "w": "die Bild-Geschichte",
         "d": "Eine Geschichte, die mit Bildern erzählt wird.",
         "ar": "قصة الصورة",
         "cat": "Kapitel 1",
-        "ex": "Die Kinder erzählen die Bild-Geschichte in der richtigen Reihenfolge."
+        "ex": "Die Kinder erzählen die Bild-Geschichte in der richtigen Reihenfolge.",
+        "img": "assets/vocab-scenes/b1-1/k1/073.webp"
       },
       {
         "w": "Bock",
         "d": "Umgangssprachlich in „Bock haben“: Lust auf etwas haben.",
         "ar": "رغبة (تعبير عامي: Bock haben = عنده رغبة)",
         "cat": "Kapitel 1",
-        "ex": "Hast du Bock, morgen mit ans Meer zu fahren?"
+        "ex": "Hast du Bock, morgen mit ans Meer zu fahren?",
+        "img": "assets/vocab-scenes/b1-1/k1/074.webp"
       },
       {
         "w": "brennen",
         "d": "In Flammen stehen; Feuer haben.",
         "ar": "يحترق / يشتعل",
         "cat": "Kapitel 1",
-        "ex": "Das Holz brennt schon."
+        "ex": "Das Holz brennt schon.",
+        "img": "assets/vocab-scenes/b1-1/k1/075.webp"
       },
       {
         "w": "der Eimer",
         "d": "Ein rundes Gefäß mit Henkel, in dem man zum Beispiel Wasser trägt.",
         "ar": "الدلو",
         "cat": "Kapitel 1",
-        "ex": "Gieß bitte mal das Wasser aus dem Eimer."
+        "ex": "Gieß bitte mal das Wasser aus dem Eimer.",
+        "img": "assets/vocab-scenes/b1-1/k1/076.webp"
       },
       {
         "w": "der Kofferraum",
         "d": "Der Raum im Auto, in dem das Gepäck liegt.",
         "ar": "صندوق السيارة",
         "cat": "Kapitel 1",
-        "ex": "Die Koffer passen alle in den Kofferraum."
+        "ex": "Die Koffer passen alle in den Kofferraum.",
+        "img": "assets/vocab-scenes/b1-1/k1/077.webp"
       },
       {
         "w": "mehrfach",
         "d": "Mehr als einmal; mehrere Male.",
         "ar": "عدة مرات",
         "cat": "Kapitel 1",
-        "ex": "Sie geht mehrfach im Monat ins Kino."
+        "ex": "Sie geht mehrfach im Monat ins Kino.",
+        "img": "assets/vocab-scenes/b1-1/k1/078.webp"
       },
       {
         "w": "schiefgehen",
         "d": "Nicht wie geplant funktionieren.",
         "ar": "يفشل / يسوء",
         "cat": "Kapitel 1",
-        "ex": "Bei der Reise kann immer etwas schiefgehen."
+        "ex": "Bei der Reise kann immer etwas schiefgehen.",
+        "img": "assets/vocab-scenes/b1-1/k1/079.webp"
       },
       {
         "w": "tragen",
         "d": "Etwas in den Händen oder auf dem Rücken transportieren.",
         "ar": "يحمل",
         "cat": "Kapitel 1",
-        "ex": "Er trägt den schweren Koffer die Treppe hinauf."
+        "ex": "Er trägt den schweren Koffer die Treppe hinauf.",
+        "img": "assets/vocab-scenes/b1-1/k1/080.webp"
       },
       {
         "w": "verzweifelt",
         "d": "Sehr traurig und ohne Hoffnung.",
         "ar": "يائس",
         "cat": "Kapitel 1",
-        "ex": "Er war verzweifelt, weil er den Zug verpasst hatte."
+        "ex": "Er war verzweifelt, weil er den Zug verpasst hatte.",
+        "img": "assets/vocab-scenes/b1-1/k1/081.webp"
       },
       {
         "w": "die Wiese",
         "d": "Eine Fläche mit Gras, auf der man sitzen oder spielen kann.",
         "ar": "المرج",
         "cat": "Kapitel 1",
-        "ex": "Auf der Wiese vor unserem Haus kann man gut Frisbee spielen."
+        "ex": "Auf der Wiese vor unserem Haus kann man gut Frisbee spielen.",
+        "img": "assets/vocab-scenes/b1-1/k1/082.webp"
       },
       {
         "w": "das Zeug",
         "d": "Umgangssprachlich für Sachen oder Dinge.",
         "ar": "الأغراض / الأشياء",
         "cat": "Kapitel 1",
-        "ex": "Nimm dein Zeug mit, wir fahren gleich."
+        "ex": "Nimm dein Zeug mit, wir fahren gleich.",
+        "img": "assets/vocab-scenes/b1-1/k1/083.webp"
       },
       {
         "w": "fest machen",
         "d": "Etwas sicher befestigen.",
         "ar": "يثبّت / يربط بإحكام",
         "cat": "Kapitel 1",
-        "ex": "Mach bitte den Koffer fest."
+        "ex": "Mach bitte den Koffer fest.",
+        "img": "assets/vocab-scenes/b1-1/k1/084.webp"
       },
       {
         "w": "die Perspektive",
         "d": "Die Sicht, aus der man etwas betrachtet.",
         "ar": "وجهة النظر / المنظور",
         "cat": "Kapitel 1",
-        "ex": "Aus meiner Perspektive war der Urlaub perfekt."
+        "ex": "Aus meiner Perspektive war der Urlaub perfekt.",
+        "img": "assets/vocab-scenes/b1-1/k1/085.webp"
       },
       {
         "w": "diktieren",
         "d": "Etwas langsam vorsprechen, damit jemand es aufschreibt.",
         "ar": "يُملي",
         "cat": "Kapitel 1",
-        "ex": "Die Lehrerin diktiert einen Satz."
+        "ex": "Die Lehrerin diktiert einen Satz.",
+        "img": "assets/vocab-scenes/b1-1/k1/086.webp"
       },
       {
         "w": "der ICE",
         "d": "Der schnellste Fernzug der Deutschen Bahn.",
         "ar": "قطار سريع بين المدن",
         "cat": "Kapitel 1",
-        "ex": "Mit dem ICE sind wir in vier Stunden in Hamburg."
+        "ex": "Mit dem ICE sind wir in vier Stunden in Hamburg.",
+        "img": "assets/vocab-scenes/b1-1/k1/087.webp"
       },
       {
         "w": "die Zugnummer",
@@ -710,259 +729,296 @@ window.B1_BOOK = [
         "d": "Ein Ort, an dem ein Bus hält und Fahrgäste ein- oder aussteigen.",
         "ar": "محطة الحافلات",
         "cat": "Kapitel 1",
-        "ex": "An der Bushaltestelle warten schon viele Menschen."
+        "ex": "An der Bushaltestelle warten schon viele Menschen.",
+        "img": "assets/vocab-scenes/b1-1/k1/089.webp"
       },
       {
         "w": "das Gepäckband",
         "d": "Ein Förderband, auf dem Koffer am Flughafen ankommen.",
         "ar": "سير الأمتعة",
         "cat": "Kapitel 1",
-        "ex": "Am Flughafen warten wir am Gepäckband auf unsere Koffer."
+        "ex": "Am Flughafen warten wir am Gepäckband auf unsere Koffer.",
+        "img": "assets/vocab-scenes/b1-1/k1/090.webp"
       },
       {
         "w": "der Tiergarten",
         "d": "Ein Park oder Zoo, in dem Tiere gehalten werden.",
         "ar": "حديقة الحيوان",
         "cat": "Kapitel 1",
-        "ex": "Am Sonntag gehen wir mit den Kindern in den Tiergarten."
+        "ex": "Am Sonntag gehen wir mit den Kindern in den Tiergarten.",
+        "img": "assets/vocab-scenes/b1-1/k1/091.webp"
       },
       {
         "w": "der Hauptbahnhof",
         "d": "Der wichtigste Bahnhof einer Stadt.",
         "ar": "المحطة الرئيسية",
         "cat": "Kapitel 1",
-        "ex": "Der Zug kommt um 16.00 Uhr am Hauptbahnhof an."
+        "ex": "Der Zug kommt um 16.00 Uhr am Hauptbahnhof an.",
+        "img": "assets/vocab-scenes/b1-1/k1/092.webp"
       },
       {
         "w": "die Alm",
         "d": "Eine Wiese hoch in den Bergen, auf der im Sommer Kühe weiden.",
         "ar": "مَرعى جبلي في الألب",
         "cat": "Kapitel 1",
-        "ex": "Im Sommer treiben die Bauern die Kühe auf die Alm."
+        "ex": "Im Sommer treiben die Bauern die Kühe auf die Alm.",
+        "img": "assets/vocab-scenes/b1-1/k1/093.webp"
       },
       {
         "w": "der Almsommer",
         "d": "Ein Sommer, den man auf einer Alm verbringt.",
         "ar": "الصيف في المراعي الجبلية",
         "cat": "Kapitel 1",
-        "ex": "Den Almsommer verbringt die Familie in den Bergen."
+        "ex": "Den Almsommer verbringt die Familie in den Bergen.",
+        "img": "assets/vocab-scenes/b1-1/k1/094.webp"
       },
       {
         "w": "der Almurlaub",
         "d": "Ein Urlaub auf einer Alm in den Bergen.",
         "ar": "عطلة في المراعي الجبلية",
         "cat": "Kapitel 1",
-        "ex": "Im Almurlaub genießen wir die Ruhe und die frische Luft."
+        "ex": "Im Almurlaub genießen wir die Ruhe und die frische Luft.",
+        "img": "assets/vocab-scenes/b1-1/k1/095.webp"
       },
       {
         "w": "begeistert",
         "d": "Sehr erfreut und voller Freude oder Interesse.",
         "ar": "متحمّس",
         "cat": "Kapitel 1",
-        "ex": "Die Kinder sind vom Ausflug begeistert."
+        "ex": "Die Kinder sind vom Ausflug begeistert.",
+        "img": "assets/vocab-scenes/b1-1/k1/096.webp"
       },
       {
         "w": "beinahe",
         "d": "Fast, aber noch nicht ganz.",
         "ar": "تقريبا",
         "cat": "Kapitel 1",
-        "ex": "Wir hätten den Bus beinahe verpasst."
+        "ex": "Wir hätten den Bus beinahe verpasst.",
+        "img": "assets/vocab-scenes/b1-1/k1/097.webp"
       },
       {
         "w": "eher",
         "d": "Mehr in diese Richtung; lieber oder vielmehr.",
         "ar": "بالأحرى",
         "cat": "Kapitel 1",
-        "ex": "Ich fahre eher im Sommer in Urlaub."
+        "ex": "Ich fahre eher im Sommer in Urlaub.",
+        "img": "assets/vocab-scenes/b1-1/k1/098.webp"
       },
       {
         "w": "die Einsamkeit",
         "d": "Das Gefühl, allein zu sein.",
         "ar": "الوحدة",
         "cat": "Kapitel 1",
-        "ex": "In der großen Stadt fühlt er manchmal Einsamkeit."
+        "ex": "In der großen Stadt fühlt er manchmal Einsamkeit.",
+        "img": "assets/vocab-scenes/b1-1/k1/099.webp"
       },
       {
         "w": "der Empfang",
         "d": "Die Begrüßung von Gästen; auch der Ort im Hotel, wo man ankommt.",
         "ar": "الاستقبال",
         "cat": "Kapitel 1",
-        "ex": "Der Empfang im Hotel ist rund um die Uhr geöffnet."
+        "ex": "Der Empfang im Hotel ist rund um die Uhr geöffnet.",
+        "img": "assets/vocab-scenes/b1-1/k1/100.webp"
       },
       {
         "w": "entschließen",
         "d": "Sich nach dem Überlegen für etwas entscheiden.",
         "ar": "يقرّر / يعزم على",
         "cat": "Kapitel 1",
-        "ex": "Wir haben uns entschlossen, mit dem Zug zu fahren."
+        "ex": "Wir haben uns entschlossen, mit dem Zug zu fahren.",
+        "img": "assets/vocab-scenes/b1-1/k1/101.webp"
       },
       {
         "w": "entschloss",
         "d": "Präteritum von „sich entschließen“: eine Entscheidung treffen.",
         "ar": "قرّر",
         "cat": "Kapitel 1",
-        "ex": "Er entschloss sich, die Reise allein zu machen."
+        "ex": "Er entschloss sich, die Reise allein zu machen.",
+        "img": "assets/vocab-scenes/b1-1/k1/102.webp"
       },
       {
         "w": "erholt",
         "d": "Nach einer Pause oder Ruhe wieder kräftig und entspannt.",
         "ar": "مرتاح / مستجمّ",
         "cat": "Kapitel 1",
-        "ex": "Nach dem Wochenende fühlte sie sich erholt und fit."
+        "ex": "Nach dem Wochenende fühlte sie sich erholt und fit.",
+        "img": "assets/vocab-scenes/b1-1/k1/103.webp"
       },
       {
         "w": "erkälten",
         "d": "Krank werden und Schnupfen oder Husten bekommen.",
         "ar": "يُصاب بالبرد / بالزكام",
         "cat": "Kapitel 1",
-        "ex": "Zieh eine Jacke an, sonst erkältest du dich."
+        "ex": "Zieh eine Jacke an, sonst erkältest du dich.",
+        "img": "assets/vocab-scenes/b1-1/k1/104.webp"
       },
       {
         "w": "falls",
         "d": "Wenn etwas Bestimmtes passiert.",
         "ar": "إذا",
         "cat": "Kapitel 1",
-        "ex": "Falls es regnet, bleiben wir im Hotel."
+        "ex": "Falls es regnet, bleiben wir im Hotel.",
+        "img": "assets/vocab-scenes/b1-1/k1/105.webp"
       },
       {
         "w": "das Gebirge",
         "d": "Eine große Gruppe von Bergen.",
         "ar": "الجبال",
         "cat": "Kapitel 1",
-        "ex": "Im Gebirge kann das Wetter schnell umschlagen."
+        "ex": "Im Gebirge kann das Wetter schnell umschlagen.",
+        "img": "assets/vocab-scenes/b1-1/k1/106.webp"
       },
       {
         "w": "heimfahren",
         "d": "Nach Hause fahren.",
         "ar": "يعود إلى البيت",
         "cat": "Kapitel 1",
-        "ex": "Am Sonntag fahren wir wieder heim."
+        "ex": "Am Sonntag fahren wir wieder heim.",
+        "img": "assets/vocab-scenes/b1-1/k1/107.webp"
       },
       {
         "w": "das Heimweh",
         "d": "Das traurige Gefühl, wenn man sein Zuhause vermisst.",
         "ar": "الحنين إلى الوطن",
         "cat": "Kapitel 1",
-        "ex": "Nach zwei Monaten im Ausland bekam er Heimweh."
+        "ex": "Nach zwei Monaten im Ausland bekam er Heimweh.",
+        "img": "assets/vocab-scenes/b1-1/k1/108.webp"
       },
       {
         "w": "hierher",
         "d": "An diesen Ort, zu mir.",
         "ar": "هنا",
         "cat": "Kapitel 1",
-        "ex": "Komm bitte hierher, hier ist noch ein Platz frei."
+        "ex": "Komm bitte hierher, hier ist noch ein Platz frei.",
+        "img": "assets/vocab-scenes/b1-1/k1/109.webp"
       },
       {
         "w": "die Hütte",
         "d": "Ein kleines, einfaches Haus, oft in den Bergen.",
         "ar": "الكوخ",
         "cat": "Kapitel 1",
-        "ex": "Wir übernachten in einer Hütte auf 1800 Metern."
+        "ex": "Wir übernachten in einer Hütte auf 1800 Metern.",
+        "img": "assets/vocab-scenes/b1-1/k1/110.webp"
       },
       {
         "w": "die Käserei",
         "d": "Ein Betrieb, in dem Käse hergestellt wird.",
         "ar": "معمل الألبان / مصنع الجبن",
         "cat": "Kapitel 1",
-        "ex": "In der Käserei kann man zusehen, wie Käse entsteht."
+        "ex": "In der Käserei kann man zusehen, wie Käse entsteht.",
+        "img": "assets/vocab-scenes/b1-1/k1/111.webp"
       },
       {
         "w": "melken",
         "d": "Einer Kuh oder Ziege die Milch abnehmen.",
         "ar": "يحلب",
         "cat": "Kapitel 1",
-        "ex": "Auf der Alm melkt der Bauer die Kühe jeden Morgen."
+        "ex": "Auf der Alm melkt der Bauer die Kühe jeden Morgen.",
+        "img": "assets/vocab-scenes/b1-1/k1/112.webp"
       },
       {
         "w": "momentan",
         "d": "Jetzt, in diesem Augenblick.",
         "ar": "حاليا",
         "cat": "Kapitel 1",
-        "ex": "Momentan habe ich wenig Zeit."
+        "ex": "Momentan habe ich wenig Zeit.",
+        "img": "assets/vocab-scenes/b1-1/k1/113.webp"
       },
       {
         "w": "die Neuigkeit",
         "d": "Eine neue Information über etwas, das gerade passiert ist.",
         "ar": "خبر جديد",
         "cat": "Kapitel 1",
-        "ex": "Ich habe eine gute Neuigkeit: Wir haben das Zimmer bekommen."
+        "ex": "Ich habe eine gute Neuigkeit: Wir haben das Zimmer bekommen.",
+        "img": "assets/vocab-scenes/b1-1/k1/114.webp"
       },
       {
         "w": "der Rückblick",
         "d": "Ein Blick zurück auf das, was vorher war.",
         "ar": "نظرة إلى الماضي / استعراض",
         "cat": "Kapitel 1",
-        "ex": "Im Rückblick war es der schönste Urlaub unseres Lebens."
+        "ex": "Im Rückblick war es der schönste Urlaub unseres Lebens.",
+        "img": "assets/vocab-scenes/b1-1/k1/115.webp"
       },
       {
         "w": "der Sonnenaufgang",
         "d": "Der Moment am Morgen, wenn die Sonne aufgeht.",
         "ar": "شروق الشمس",
         "cat": "Kapitel 1",
-        "ex": "Wir sind früh aufgestanden, um den Sonnenaufgang zu sehen."
+        "ex": "Wir sind früh aufgestanden, um den Sonnenaufgang zu sehen.",
+        "img": "assets/vocab-scenes/b1-1/k1/116.webp"
       },
       {
         "w": "der Terminkalender",
         "d": "Ein Kalender, in den man seine Termine schreibt.",
         "ar": "مفكرة المواعيد / الأجندة",
         "cat": "Kapitel 1",
-        "ex": "Ich trage den Flug gleich in meinen Terminkalender ein."
+        "ex": "Ich trage den Flug gleich in meinen Terminkalender ein.",
+        "img": "assets/vocab-scenes/b1-1/k1/117.webp"
       },
       {
         "w": "vorbei",
         "d": "Zu Ende; nicht mehr da.",
         "ar": "انتهى",
         "cat": "Kapitel 1",
-        "ex": "Der Urlaub ist leider schon vorbei."
+        "ex": "Der Urlaub ist leider schon vorbei.",
+        "img": "assets/vocab-scenes/b1-1/k1/118.webp"
       },
       {
         "w": "der Zeitpunkt",
         "d": "Der Moment, an dem etwas passiert.",
         "ar": "التوقيت",
         "cat": "Kapitel 1",
-        "ex": "Zu diesem Zeitpunkt waren wir schon am Flughafen."
+        "ex": "Zu diesem Zeitpunkt waren wir schon am Flughafen.",
+        "img": "assets/vocab-scenes/b1-1/k1/119.webp"
       },
       {
         "w": "der Almaufenthalt",
         "d": "Die Zeit, die man auf einer Alm in den Bergen verbringt.",
         "ar": "الإقامة في المرعى الجبلي",
         "cat": "Kapitel 1",
-        "ex": "Während des Almaufenthalts lernten wir viel über die Landwirtschaft."
+        "ex": "Während des Almaufenthalts lernten wir viel über die Landwirtschaft.",
+        "img": "assets/vocab-scenes/b1-1/k1/120.webp"
       },
       {
         "w": "mitarbeiten",
         "d": "Zusammen mit anderen an einer Aufgabe arbeiten.",
         "ar": "يشارك في العمل / يتعاون",
         "cat": "Kapitel 1",
-        "ex": "Alle Gäste dürfen auf dem Hof mitarbeiten."
+        "ex": "Alle Gäste dürfen auf dem Hof mitarbeiten.",
+        "img": "assets/vocab-scenes/b1-1/k1/121.webp"
       },
       {
         "w": "der Ferienclub",
         "d": "Ein Club mit Angeboten und Aktivitäten für Urlauber.",
         "ar": "نادي العطلة",
         "cat": "Kapitel 1",
-        "ex": "Im Ferienclub gibt es Sportangebote für die ganze Familie."
+        "ex": "Im Ferienclub gibt es Sportangebote für die ganze Familie.",
+        "img": "assets/vocab-scenes/b1-1/k1/122.webp"
       },
       {
         "w": "der Olivenbaum",
         "d": "Ein Baum aus dem Süden, an dem Oliven wachsen.",
         "ar": "شجرة الزيتون",
         "cat": "Kapitel 1",
-        "ex": "Im Garten steht ein alter Olivenbaum."
+        "ex": "Im Garten steht ein alter Olivenbaum.",
+        "img": "assets/vocab-scenes/b1-1/k1/123.webp"
       },
       {
         "w": "die Weihnachtsferien",
         "d": "Ferien rund um Weihnachten.",
         "ar": "عطلة عيد الميلاد",
         "cat": "Kapitel 1",
-        "ex": "In den Weihnachtsferien fahren wir zu meinen Eltern."
+        "ex": "In den Weihnachtsferien fahren wir zu meinen Eltern.",
+        "img": "assets/vocab-scenes/b1-1/k1/124.webp"
       },
       {
         "w": "die Abneigung",
         "d": "Ein Gefühl, dass man etwas nicht mag.",
         "ar": "النفور",
         "cat": "Kapitel 1",
-        "ex": "Sie hat eine Abneigung gegen lange Flüge."
+        "ex": "Sie hat eine Abneigung gegen lange Flüge.",
+        "img": "assets/vocab-scenes/b1-1/k1/125.webp"
       },
       {
         "w": "der Kausalsatz",
