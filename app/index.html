@@ -3503,7 +3503,7 @@ function renderB1Home(){
   <div class="section-label">📙 B1.1 · Kapitel 1–6</div>
   <section class="a1-roadmap">
     ${B1_BOOK.map(chapter=>`
-      <button type="button" class="lesson-item" onclick="go('${chapter.route}/wortschatz')">
+      <button type="button" class="lesson-item" onclick="go('${chapter.route}/ueberblick')">
         <div class="num">${chapter.num}</div>
         ${chapter.visual?`<img class="lesson-thumb" src="${chapter.visual.src}" alt="">`:''}
         <div class="ttl"><b>${chapter.title}</b><span class="sub">${chapter.subtitle} · ${chapter.vocab.length} Wörter</span>${ar(chapter.introAr)}</div>
@@ -5266,8 +5266,13 @@ const TABS = [
   ['quiz','Lerncheck'],
 ];
 const B1_TABS = [
-  ['wortschatz','Wortschatz'],
   ['ueberblick','Überblick'],
+  ['wortschatz','Wortschatz'],
+  ['lesen','Lesen'],
+  ['redemittel','Redemittel'],
+  ['grammatik','Grammatik'],
+  ['sprechen','Sprechen'],
+  ['quiz','Lerncheck'],
 ];
 
 function chapterTabs(c){

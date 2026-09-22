@@ -355,6 +355,8 @@ test('B1.1 chapters contain complete lesson sections', () => {
     });
   }
   assert.match(html, /data_b1_1_lessons\.js\?v=b1-1-lessons-1/);
+  assert.match(html, /const B1_TABS = \[[\s\S]*?\['lesen','Lesen'\][\s\S]*?\['redemittel','Redemittel'\][\s\S]*?\['grammatik','Grammatik'\][\s\S]*?\['sprechen','Sprechen'\][\s\S]*?\['quiz','Lerncheck'\]/);
+  assert.match(html, /go\('\$\{chapter\.route\}\/ueberblick'\)/);
 });
 
 test('the old B1.1 images and their code paths stay removed', () => {
@@ -611,7 +613,7 @@ test('next-generation shell and design system are wired into the offline app', (
   assert.match(worker, /data_lernwortschatz12\.js/);
   assert.match(worker, /data_vocab_topics7_12\.js/);
   assert.match(worker, /assets\/vocab-scenes\/k7\/145\.webp/);
-  assert.match(worker, /CACHE_VERSION = 'v58'/);
+  assert.match(worker, /CACHE_VERSION = 'v59'/);
   assert.match(worker, /vocab-scenes\\\/k7\\\/\\d\+\\\.webp/);
 });
 
