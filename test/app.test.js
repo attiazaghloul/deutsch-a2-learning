@@ -292,6 +292,8 @@ test('B1.1 vocabulary uses only reviewed photos and stays text-only otherwise', 
     2: 'der Slogan | sodass | der Markenname | der Spruch | die Werbesprache | das Wortspiel | das Adverb | der Konsekutivsatz | die Silbe',
     3: 'weshalb | zweimonatig | mittlerweile | seitdem | tätig | unverändert | veränderte | die Vergangenheitsform | der Sonnabend | jetzig | niemals | Und | der Aspekt | relativ | die Tempusform | nachher | beziehungsweise | duzen',
     4: 'ursprünglich | daran | die Konjunktivform | der Bedingungssatz | Wenn | kürzlich | aussagekräftig | darum | unser | frühere | jedoch | das PDF-Dokument | relevant | sämtlich | selbstverständlich | der Stand | zukünftig | der Zweck | darüber | das Pronominaladverb | danach | gesucht | absolut | der Faktor | lauter | möglichst',
+    5: 'Bio- | der Durchschnitt | mitrechnen | die Herkunft | aufhalten | ökologisch | der Begriff | allerdings | der Bedarf | effizient | der Fall | korrekt | das Resultat | die Seite | das Satzzeichen | der Absatz | allein | damit | gibt | jederzeit | sogenannt | zurück | der Satzanfang | die Ansicht | völlig | extra | immer',
+    6: 'die Bildunterschrift | irgendwann | die Prognose | fassen | das Futur | konkret | eventuell | die n-Deklination | das Zitat | die Vokallänge | heutig | längst | lauten | das Prinzip | voraussichtlich | der Anteil | umformulieren | der Kasus | möglicherweise | dahin | grad | die Liedzeile | die Umschreibung | verständlich | der Songtitel | bezeichnen | die Bezeichnung | der Internationalismus',
   };
   for (const [num, expected] of Object.entries(textOnly)) {
     const unit = context.window.B1_BOOK.find(chapter => chapter.num === Number(num)).vocab;
@@ -311,7 +313,7 @@ test('B1.1 vocabulary uses only reviewed photos and stays text-only otherwise', 
   assert.equal(cards.find(card => card.w === 'der Mars').ar, 'كوكب المريخ');
   assert.equal(cards.find(card => card.w === 'die Karotte').ar, 'جزرة');
   assert.equal(cards.find(card => card.w === 'die Vollpension').ar, 'إقامة كاملة تشمل الإفطار والغداء والعشاء');
-  assert.match(html, /data_b1_1\.js\?v=b1-1-vocab-17/);
+  assert.match(html, /data_b1_1\.js\?v=b1-1-vocab-19/);
   cards.forEach(card => {
     // definitions and examples must read as B1 sentences, not dictionary dumps
     assert.match(card.d, /^[A-ZÄÖÜ„]/, `Definition not a sentence: ${card.w}`);
@@ -361,8 +363,8 @@ test('B1.1 chapters contain complete lesson sections', () => {
     });
   }
   assert.match(html, /data_b1_1_lessons\.js\?v=b1-1-lessons-2/);
-  assert.match(html, /serviceWorker\.register\('sw\.js\?v=62'/);
-  assert.match(html, /sessionStorage\.setItem\('pwa-v62-reloaded','1'\)/);
+  assert.match(html, /serviceWorker\.register\('sw\.js\?v=64'/);
+  assert.match(html, /sessionStorage\.setItem\('pwa-v64-reloaded','1'\)/);
   assert.match(html, /const B1_TABS = \[[\s\S]*?\['lesen','Lesen'\][\s\S]*?\['redemittel','Redemittel'\][\s\S]*?\['grammatik','Grammatik'\][\s\S]*?\['sprechen','Sprechen'\][\s\S]*?\['quiz','Lerncheck'\]/);
   assert.match(html, /go\('\$\{chapter\.route\}\/ueberblick'\)/);
 });
@@ -621,7 +623,7 @@ test('next-generation shell and design system are wired into the offline app', (
   assert.match(worker, /data_lernwortschatz12\.js/);
   assert.match(worker, /data_vocab_topics7_12\.js/);
   assert.match(worker, /assets\/vocab-scenes\/k7\/145\.webp/);
-  assert.match(worker, /CACHE_VERSION = 'v62'/);
+  assert.match(worker, /CACHE_VERSION = 'v64'/);
   assert.match(worker, /vocab-scenes\\\/k7\\\/\\d\+\\\.webp/);
 });
 
@@ -671,8 +673,8 @@ test('offline dictionary worker uses the exact pre-cached asset keys', () => {
   assert.match(serviceWorker, /DICTIONARY_CACHE/);
   assert.match(serviceWorker, /cache-dictionary/);
   assert.match(serviceWorker, /dictionary-cache-status/);
-  assert.match(html, /register\('sw\.js\?v=62',\{updateViaCache:'none'\}\)/);
+  assert.match(html, /register\('sw\.js\?v=64',\{updateViaCache:'none'\}\)/);
   assert.match(html, /addEventListener\('controllerchange'/);
-  assert.match(html, /pwa-v62-reloaded/);
+  assert.match(html, /pwa-v64-reloaded/);
   assert.match(html, /controllerchange[^}]+location\.reload\(\)/s);
 });

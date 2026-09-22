@@ -5212,21 +5212,24 @@ window.B1_BOOK = [
         "d": "Dinge, die man nicht mehr braucht und wegwirft.",
         "ar": "النفايات",
         "cat": "Kapitel 5",
-        "ex": "Bitte trennen Sie den Abfall."
+        "ex": "Bitte trennen Sie den Abfall.",
+        "img": "assets/vocab-scenes/b1-1/k5/001.webp"
       },
       {
         "w": "der Autofahrer",
         "d": "Ein Mann, der ein Auto fährt.",
         "ar": "السائق",
         "cat": "Kapitel 5",
-        "ex": "Der Autofahrer hält an der roten Ampel."
+        "ex": "Der Autofahrer hält an der roten Ampel.",
+        "img": "assets/vocab-scenes/b1-1/k5/002.webp"
       },
       {
         "w": "die Autofahrerin",
         "d": "Eine Frau, die ein Auto fährt.",
         "ar": "السائقة",
         "cat": "Kapitel 5",
-        "ex": "Die Autofahrerin parkt vor dem Haus."
+        "ex": "Die Autofahrerin parkt vor dem Haus.",
+        "img": "assets/vocab-scenes/b1-1/k5/003.webp"
       },
       {
         "w": "Bio-",
@@ -5240,7 +5243,8 @@ window.B1_BOOK = [
         "d": "Mit Computertechnik arbeitend; nicht auf Papier.",
         "ar": "رقمي",
         "cat": "Kapitel 5",
-        "ex": "Die Rechnung bekomme ich nur noch digital."
+        "ex": "Die Rechnung bekomme ich nur noch digital.",
+        "img": "assets/vocab-scenes/b1-1/k5/005.webp"
       },
       {
         "w": "der Durchschnitt",
@@ -5254,35 +5258,40 @@ window.B1_BOOK = [
         "d": "Europa oder die Länder Europas betreffend.",
         "ar": "أوروبي",
         "cat": "Kapitel 5",
-        "ex": "Die Staaten suchen nach einer europäischen Lösung."
+        "ex": "Die Staaten suchen nach einer europäischen Lösung.",
+        "img": "assets/vocab-scenes/b1-1/k5/007.webp"
       },
       {
         "w": "der Fleischkonsum",
         "d": "Die Menge an Fleisch, die Menschen essen.",
         "ar": "استهلاك اللحوم",
         "cat": "Kapitel 5",
-        "ex": "Ihr Arzt hat ihr geraten, den Fleischkonsum zu reduzieren."
+        "ex": "Ihr Arzt hat ihr geraten, den Fleischkonsum zu reduzieren.",
+        "img": "assets/vocab-scenes/b1-1/k5/008.webp"
       },
       {
         "w": "das Huhn",
         "d": "Ein domestizierter Vogel, der Eier legt.",
         "ar": "دجاجة / دجاج",
         "cat": "Kapitel 5",
-        "ex": "Das Huhn läuft frei über den Bauernhof."
+        "ex": "Das Huhn läuft frei über den Bauernhof.",
+        "img": "assets/vocab-scenes/b1-1/k5/009.webp"
       },
       {
         "w": "liegen",
         "d": "Sich an einem Ort befinden oder waagerecht sein.",
         "ar": "يقع / يكون مستلقيًا",
         "cat": "Kapitel 5",
-        "ex": "Nach dem Fest liegt überall Müll im Park."
+        "ex": "Nach dem Fest liegt überall Müll im Park.",
+        "img": "assets/vocab-scenes/b1-1/k5/010.webp"
       },
       {
         "w": "der Marktanteil",
         "d": "Der Anteil eines Unternehmens am gesamten Markt.",
         "ar": "حصة السوق",
         "cat": "Kapitel 5",
-        "ex": "Der Marktanteil unseres Produkts wurde im letzten Jahr um fünf Prozent gesteigert."
+        "ex": "Der Marktanteil unseres Produkts wurde im letzten Jahr um fünf Prozent gesteigert.",
+        "img": "assets/vocab-scenes/b1-1/k5/011.webp"
       },
       {
         "w": "mitrechnen",
@@ -5296,91 +5305,104 @@ window.B1_BOOK = [
         "d": "Die Menge an Papier, die verbraucht wird.",
         "ar": "استهلاك الورق",
         "cat": "Kapitel 5",
-        "ex": "Doppelseitiges Drucken senkt den Papierverbrauch."
+        "ex": "Doppelseitiges Drucken senkt den Papierverbrauch.",
+        "img": "assets/vocab-scenes/b1-1/k5/013.webp"
       },
       {
         "w": "der Rekord",
         "d": "Die beste bisher gemessene Leistung oder der höchste Wert.",
         "ar": "رقم قياسي",
         "cat": "Kapitel 5",
-        "ex": "Die Sportlerin stellt einen neuen Rekord auf."
+        "ex": "Die Sportlerin stellt einen neuen Rekord auf.",
+        "img": "assets/vocab-scenes/b1-1/k5/014.webp"
       },
       {
         "w": "das Rind",
         "d": "Ein großes Nutztier aus der Familie der Rinder.",
         "ar": "بقرة / ماشية",
         "cat": "Kapitel 5",
-        "ex": "Das Rind frisst Gras auf der Weide."
+        "ex": "Das Rind frisst Gras auf der Weide.",
+        "img": "assets/vocab-scenes/b1-1/k5/015.webp"
       },
       {
         "w": "das Trinkwasser",
         "d": "Wasser, das man ohne Gefahr trinken kann.",
         "ar": "مياه الشرب",
         "cat": "Kapitel 5",
-        "ex": "Sauberes Trinkwasser ist die wichtigste Ressource der Erde."
+        "ex": "Sauberes Trinkwasser ist die wichtigste Ressource der Erde.",
+        "img": "assets/vocab-scenes/b1-1/k5/016.webp"
       },
       {
         "w": "verbrauchen",
         "d": "Etwas benutzen, bis weniger davon übrig ist.",
         "ar": "يستهلك",
         "cat": "Kapitel 5",
-        "ex": "Wir verbrauchen im Winter mehr Strom."
+        "ex": "Wir verbrauchen im Winter mehr Strom.",
+        "img": "assets/vocab-scenes/b1-1/k5/017.webp"
       },
       {
         "w": "der Verpackungsmüll",
         "d": "Müll, der durch Verpackungen entsteht.",
         "ar": "نفايات التغليف",
         "cat": "Kapitel 5",
-        "ex": "Plastikfolie um Gurken ist überflüssiger Verpackungsmüll."
+        "ex": "Plastikfolie um Gurken ist überflüssiger Verpackungsmüll.",
+        "img": "assets/vocab-scenes/b1-1/k5/018.webp"
       },
       {
         "w": "das Bioprodukt",
         "d": "Ein Produkt aus ökologischer Landwirtschaft.",
         "ar": "المنتج العضوي",
         "cat": "Kapitel 5",
-        "ex": "Bioprodukte sind meistens teurer, aber umweltfreundlicher."
+        "ex": "Bioprodukte sind meistens teurer, aber umweltfreundlicher.",
+        "img": "assets/vocab-scenes/b1-1/k5/019.webp"
       },
       {
         "w": "das Recycling",
         "d": "Das Wiederverwerten von Abfall zu neuen Produkten.",
         "ar": "إعادة التدوير",
         "cat": "Kapitel 5",
-        "ex": "Durch Recycling sparen wir viele Rohstoffe."
+        "ex": "Durch Recycling sparen wir viele Rohstoffe.",
+        "img": "assets/vocab-scenes/b1-1/k5/020.webp"
       },
       {
         "w": "die Region",
         "d": "Ein größeres Gebiet, das eine Einheit bildet.",
         "ar": "المنطقة",
         "cat": "Kapitel 5",
-        "ex": "In unserer Region gibt es viele kleine Bauernhöfe."
+        "ex": "In unserer Region gibt es viele kleine Bauernhöfe.",
+        "img": "assets/vocab-scenes/b1-1/k5/021.webp"
       },
       {
         "w": "regional",
         "d": "Aus der eigenen Region stammend.",
         "ar": "إقليمي",
         "cat": "Kapitel 5",
-        "ex": "Wir kaufen am liebsten regionales Obst."
+        "ex": "Wir kaufen am liebsten regionales Obst.",
+        "img": "assets/vocab-scenes/b1-1/k5/022.webp"
       },
       {
         "w": "schützen",
         "d": "Vor Gefahr oder Schaden bewahren.",
         "ar": "يحمي",
         "cat": "Kapitel 5",
-        "ex": "Bäume schützen das Klima."
+        "ex": "Bäume schützen das Klima.",
+        "img": "assets/vocab-scenes/b1-1/k5/023.webp"
       },
       {
         "w": "der Transportweg",
         "d": "Der Weg, über den Waren transportiert werden.",
         "ar": "طريق النقل",
         "cat": "Kapitel 5",
-        "ex": "Regionale Produkte haben einen kurzen Transportweg."
+        "ex": "Regionale Produkte haben einen kurzen Transportweg.",
+        "img": "assets/vocab-scenes/b1-1/k5/024.webp"
       },
       {
         "w": "extrem",
         "d": "Sehr weit von der Mitte entfernt; außerordentlich stark.",
         "ar": "متطرّف / شديد للغاية",
         "cat": "Kapitel 5",
-        "ex": "Gestern war es extrem heiß."
+        "ex": "Gestern war es extrem heiß.",
+        "img": "assets/vocab-scenes/b1-1/k5/025.webp"
       },
       {
         "w": "die Herkunft",
@@ -5394,14 +5416,16 @@ window.B1_BOOK = [
         "d": "Ein geschützter Name für ein Produkt.",
         "ar": "العلامة التجارية",
         "cat": "Kapitel 5",
-        "ex": "Diese Marke verkauft nur Bio-Lebensmittel."
+        "ex": "Diese Marke verkauft nur Bio-Lebensmittel.",
+        "img": "assets/vocab-scenes/b1-1/k5/027.webp"
       },
       {
         "w": "das Abgas",
         "d": "Das Gas, das bei einer Verbrennung entsteht, zum Beispiel aus dem Auto.",
         "ar": "غاز العادم",
         "cat": "Kapitel 5",
-        "ex": "Die Abgase der Autos verschmutzen die Luft."
+        "ex": "Die Abgase der Autos verschmutzen die Luft.",
+        "img": "assets/vocab-scenes/b1-1/k5/028.webp"
       },
       {
         "w": "aufhalten",
@@ -5415,105 +5439,120 @@ window.B1_BOOK = [
         "d": "Aktiv gegen etwas vorgehen.",
         "ar": "يكافح",
         "cat": "Kapitel 5",
-        "ex": "Wir müssen die Umweltverschmutzung bekämpfen."
+        "ex": "Wir müssen die Umweltverschmutzung bekämpfen.",
+        "img": "assets/vocab-scenes/b1-1/k5/030.webp"
       },
       {
         "w": "beobachten",
         "d": "Etwas aufmerksam ansehen und verfolgen.",
         "ar": "يراقب / يلاحظ",
         "cat": "Kapitel 5",
-        "ex": "Die Wissenschaftler beobachten das Wetter."
+        "ex": "Die Wissenschaftler beobachten das Wetter.",
+        "img": "assets/vocab-scenes/b1-1/k5/031.webp"
       },
       {
         "w": "durchsetzen",
         "d": "Ein Ziel trotz Widerstand erreichen.",
         "ar": "يفرض / يحقّق مراده",
         "cat": "Kapitel 5",
-        "ex": "Die Stadt hat das Fahrverbot durchgesetzt."
+        "ex": "Die Stadt hat das Fahrverbot durchgesetzt.",
+        "img": "assets/vocab-scenes/b1-1/k5/032.webp"
       },
       {
         "w": "durchstreichen",
         "d": "Etwas mit einem Strich ungültig machen.",
         "ar": "يشطب",
         "cat": "Kapitel 5",
-        "ex": "Ich streiche die Namen durch, die abgesagt haben."
+        "ex": "Ich streiche die Namen durch, die abgesagt haben.",
+        "img": "assets/vocab-scenes/b1-1/k5/033.webp"
       },
       {
         "w": "die Erde",
         "d": "Unser Planet; auch der Boden, auf dem Pflanzen wachsen.",
         "ar": "الأرض",
         "cat": "Kapitel 5",
-        "ex": "Wir müssen die Erde für die nächsten Generationen schützen."
+        "ex": "Wir müssen die Erde für die nächsten Generationen schützen.",
+        "img": "assets/vocab-scenes/b1-1/k5/034.webp"
       },
       {
         "w": "erforschen",
         "d": "Etwas wissenschaftlich untersuchen.",
         "ar": "يبحث / يدرس علميًا",
         "cat": "Kapitel 5",
-        "ex": "Forscher erforschen den Klimawandel."
+        "ex": "Forscher erforschen den Klimawandel.",
+        "img": "assets/vocab-scenes/b1-1/k5/035.webp"
       },
       {
         "w": "ergreifen",
         "d": "Etwas mit der Hand fassen; auch: eine Maßnahme beschließen.",
         "ar": "يُمسك بـ / يتّخذ (إجراءً)",
         "cat": "Kapitel 5",
-        "ex": "Die Regierung ergreift Maßnahmen gegen die Luftverschmutzung."
+        "ex": "Die Regierung ergreift Maßnahmen gegen die Luftverschmutzung.",
+        "img": "assets/vocab-scenes/b1-1/k5/036.webp"
       },
       {
         "w": "die Ernte",
         "d": "Das Einholen der reifen Früchte vom Feld.",
         "ar": "الحصاد",
         "cat": "Kapitel 5",
-        "ex": "Die Ernte war dieses Jahr sehr gut."
+        "ex": "Die Ernte war dieses Jahr sehr gut.",
+        "img": "assets/vocab-scenes/b1-1/k5/037.webp"
       },
       {
         "w": "ernten",
         "d": "Reife Früchte oder Gemüse vom Feld holen.",
         "ar": "يحصد",
         "cat": "Kapitel 5",
-        "ex": "Im Herbst ernten die Bauern die Äpfel."
+        "ex": "Im Herbst ernten die Bauern die Äpfel.",
+        "img": "assets/vocab-scenes/b1-1/k5/038.webp"
       },
       {
         "w": "fördern",
         "d": "Eine Entwicklung unterstützen und stärker machen.",
         "ar": "يدعم / يُشجّع",
         "cat": "Kapitel 5",
-        "ex": "Die Stadt fördert das Recycling."
+        "ex": "Die Stadt fördert das Recycling.",
+        "img": "assets/vocab-scenes/b1-1/k5/039.webp"
       },
       {
         "w": "der Fortschritt",
         "d": "Eine Entwicklung nach vorn; eine Verbesserung.",
         "ar": "التقدم",
         "cat": "Kapitel 5",
-        "ex": "Beim Umweltschutz gibt es langsam Fortschritte."
+        "ex": "Beim Umweltschutz gibt es langsam Fortschritte.",
+        "img": "assets/vocab-scenes/b1-1/k5/040.webp"
       },
       {
         "w": "die Klimaerwärmung",
         "d": "Der Anstieg der Durchschnittstemperatur auf der Erde.",
         "ar": "الاحتباس الحراري",
         "cat": "Kapitel 5",
-        "ex": "Die Klimaerwärmung gehört zu den größten Gefahren unserer Zeit."
+        "ex": "Die Klimaerwärmung gehört zu den größten Gefahren unserer Zeit.",
+        "img": "assets/vocab-scenes/b1-1/k5/041.webp"
       },
       {
         "w": "der Klimawandel",
         "d": "Langfristige Veränderungen des Klimas.",
         "ar": "تغير المناخ",
         "cat": "Kapitel 5",
-        "ex": "Der Klimawandel verändert das Wetter auf der ganzen Welt."
+        "ex": "Der Klimawandel verändert das Wetter auf der ganzen Welt.",
+        "img": "assets/vocab-scenes/b1-1/k5/042.webp"
       },
       {
         "w": "die Maßnahme",
         "d": "Eine Handlung, mit der man ein Ziel erreichen will.",
         "ar": "إجراء / تدبير",
         "cat": "Kapitel 5",
-        "ex": "Die Stadt beschließt Maßnahmen für sauberere Luft."
+        "ex": "Die Stadt beschließt Maßnahmen für sauberere Luft.",
+        "img": "assets/vocab-scenes/b1-1/k5/043.webp"
       },
       {
         "w": "messen",
         "d": "Eine Größe mit einem Messgerät bestimmen.",
         "ar": "يقيس",
         "cat": "Kapitel 5",
-        "ex": "Wir messen jeden Monat den Stromverbrauch."
+        "ex": "Wir messen jeden Monat den Stromverbrauch.",
+        "img": "assets/vocab-scenes/b1-1/k5/044.webp"
       },
       {
         "w": "ökologisch",
@@ -5527,77 +5566,88 @@ window.B1_BOOK = [
         "d": "Ein Rohstoff der Natur, zum Beispiel Wasser oder Öl.",
         "ar": "المورد",
         "cat": "Kapitel 5",
-        "ex": "Wasser ist eine wertvolle Ressource."
+        "ex": "Wasser ist eine wertvolle Ressource.",
+        "img": "assets/vocab-scenes/b1-1/k5/046.webp"
       },
       {
         "w": "schädlich",
         "d": "So, dass etwas oder jemand Schaden nimmt.",
         "ar": "ضار",
         "cat": "Kapitel 5",
-        "ex": "Abgase sind schädlich für die Umwelt."
+        "ex": "Abgase sind schädlich für die Umwelt.",
+        "img": "assets/vocab-scenes/b1-1/k5/047.webp"
       },
       {
         "w": "stoppen",
         "d": "Etwas zum Stehen bringen; mit etwas aufhören.",
         "ar": "يوقف",
         "cat": "Kapitel 5",
-        "ex": "Wir müssen die Verschmutzung der Meere stoppen."
+        "ex": "Wir müssen die Verschmutzung der Meere stoppen.",
+        "img": "assets/vocab-scenes/b1-1/k5/048.webp"
       },
       {
         "w": "der Umweltschutz",
         "d": "Alles, was man tut, um die Natur zu schützen.",
         "ar": "حماية البيئة",
         "cat": "Kapitel 5",
-        "ex": "Umweltschutz beginnt im eigenen Haushalt."
+        "ex": "Umweltschutz beginnt im eigenen Haushalt.",
+        "img": "assets/vocab-scenes/b1-1/k5/049.webp"
       },
       {
         "w": "die Umweltverschmutzung",
         "d": "Die Verunreinigung von Luft, Wasser oder Boden.",
         "ar": "التلوث البيئي",
         "cat": "Kapitel 5",
-        "ex": "Wir müssen die Umweltverschmutzung in den Griff bekommen."
+        "ex": "Wir müssen die Umweltverschmutzung in den Griff bekommen.",
+        "img": "assets/vocab-scenes/b1-1/k5/050.webp"
       },
       {
         "w": "unterstützen",
         "d": "Jemandem helfen oder eine Sache fördern.",
         "ar": "يدعم / يساعد",
         "cat": "Kapitel 5",
-        "ex": "Viele Menschen unterstützen das Umweltprojekt."
+        "ex": "Viele Menschen unterstützen das Umweltprojekt.",
+        "img": "assets/vocab-scenes/b1-1/k5/051.webp"
       },
       {
         "w": "die Ursache",
         "d": "Der Grund, warum etwas passiert.",
         "ar": "السبب",
         "cat": "Kapitel 5",
-        "ex": "Die Ursache für den Müll ist zu viel Verpackung."
+        "ex": "Die Ursache für den Müll ist zu viel Verpackung.",
+        "img": "assets/vocab-scenes/b1-1/k5/052.webp"
       },
       {
         "w": "vernichten",
         "d": "Etwas völlig zerstören.",
         "ar": "يُدمّر / يُبيد",
         "cat": "Kapitel 5",
-        "ex": "Der Sturm hat die ganze Ernte vernichtet."
+        "ex": "Der Sturm hat die ganze Ernte vernichtet.",
+        "img": "assets/vocab-scenes/b1-1/k5/053.webp"
       },
       {
         "w": "verringern",
         "d": "Weniger machen oder werden lassen.",
         "ar": "يُقلّل",
         "cat": "Kapitel 5",
-        "ex": "Wir wollen unseren Stromverbrauch verringern."
+        "ex": "Wir wollen unseren Stromverbrauch verringern.",
+        "img": "assets/vocab-scenes/b1-1/k5/054.webp"
       },
       {
         "w": "verschwenden",
         "d": "Etwas unnötig verbrauchen oder wegwerfen.",
         "ar": "يُبدّد / يُهدر",
         "cat": "Kapitel 5",
-        "ex": "Bitte verschwende kein Wasser."
+        "ex": "Bitte verschwende kein Wasser.",
+        "img": "assets/vocab-scenes/b1-1/k5/055.webp"
       },
       {
         "w": "zerstören",
         "d": "Etwas vollständig kaputt machen.",
         "ar": "يُدمّر",
         "cat": "Kapitel 5",
-        "ex": "Umweltschäden zerstören viele Lebensräume."
+        "ex": "Umweltschäden zerstören viele Lebensräume.",
+        "img": "assets/vocab-scenes/b1-1/k5/056.webp"
       },
       {
         "w": "der Begriff",
@@ -5611,42 +5661,48 @@ window.B1_BOOK = [
         "d": "Etwas ausrechnen.",
         "ar": "يحسب",
         "cat": "Kapitel 5",
-        "ex": "Wir berechnen, wie viel CO2 die Reise verursacht."
+        "ex": "Wir berechnen, wie viel CO2 die Reise verursacht.",
+        "img": "assets/vocab-scenes/b1-1/k5/058.webp"
       },
       {
         "w": "der Fußabdruck",
         "d": "Die Spur eines Fußes; übertragen auch die Umweltwirkung einer Person.",
         "ar": "بصمة القدم / الأثر البيئي",
         "cat": "Kapitel 5",
-        "ex": "Wir möchten unseren ökologischen Fußabdruck verkleinern."
+        "ex": "Wir möchten unseren ökologischen Fußabdruck verkleinern.",
+        "img": "assets/vocab-scenes/b1-1/k5/059.webp"
       },
       {
         "w": "das Öko-Duell",
         "d": "Ein Vergleich zwischen zwei Personen oder Produkten nach ökologischen Kriterien.",
         "ar": "مقارنة بيئية تنافسية",
         "cat": "Kapitel 5",
-        "ex": "Im Öko-Duell vergleichen wir zwei Autos."
+        "ex": "Im Öko-Duell vergleichen wir zwei Autos.",
+        "img": "assets/vocab-scenes/b1-1/k5/060.webp"
       },
       {
         "w": "der Geschirrspüler",
         "d": "Eine Maschine, die Geschirr automatisch wäscht.",
         "ar": "غسالة الصحون",
         "cat": "Kapitel 5",
-        "ex": "Der Geschirrspüler verbraucht weniger Wasser als das Spülen mit der Hand."
+        "ex": "Der Geschirrspüler verbraucht weniger Wasser als das Spülen mit der Hand.",
+        "img": "assets/vocab-scenes/b1-1/k5/061.webp"
       },
       {
         "w": "die Glasflasche",
         "d": "Eine Flasche aus Glas.",
         "ar": "زجاجة زجاجية",
         "cat": "Kapitel 5",
-        "ex": "Mineralwasser wird oft in Glasflaschen verkauft."
+        "ex": "Mineralwasser wird oft in Glasflaschen verkauft.",
+        "img": "assets/vocab-scenes/b1-1/k5/062.webp"
       },
       {
         "w": "die Plastikflasche",
         "d": "Eine Flasche aus Kunststoff.",
         "ar": "الزجاجة البلاستيكية",
         "cat": "Kapitel 5",
-        "ex": "Die leere Plastikflasche gehört in den gelben Sack."
+        "ex": "Die leere Plastikflasche gehört in den gelben Sack.",
+        "img": "assets/vocab-scenes/b1-1/k5/063.webp"
       },
       {
         "w": "allerdings",
@@ -5667,7 +5723,8 @@ window.B1_BOOK = [
         "d": "Die Zeit, die man beim Duschen verbringt.",
         "ar": "وقت الاستحمام",
         "cat": "Kapitel 5",
-        "ex": "Eine kurze Duschzeit spart Wasser und Energie."
+        "ex": "Eine kurze Duschzeit spart Wasser und Energie.",
+        "img": "assets/vocab-scenes/b1-1/k5/066.webp"
       },
       {
         "w": "effizient",
@@ -5681,14 +5738,16 @@ window.B1_BOOK = [
         "d": "Eine Flasche, die nur einmal benutzt wird.",
         "ar": "زجاجة تُستخدم مرّة واحدة",
         "cat": "Kapitel 5",
-        "ex": "Eine Einwegflasche wird nach dem Gebrauch weggeworfen."
+        "ex": "Eine Einwegflasche wird nach dem Gebrauch weggeworfen.",
+        "img": "assets/vocab-scenes/b1-1/k5/068.webp"
       },
       {
         "w": "erwärmen",
         "d": "Warm machen; die Temperatur erhöhen.",
         "ar": "يُدفئ / يُسخّن",
         "cat": "Kapitel 5",
-        "ex": "Die Erde erwärmt sich immer schneller."
+        "ex": "Die Erde erwärmt sich immer schneller.",
+        "img": "assets/vocab-scenes/b1-1/k5/069.webp"
       },
       {
         "w": "der Fall",
@@ -5702,14 +5761,16 @@ window.B1_BOOK = [
         "d": "Auf Papier veröffentlicht; Partizip II von „drucken“.",
         "ar": "مطبوعة",
         "cat": "Kapitel 5",
-        "ex": "Der Artikel wurde gestern gedruckt."
+        "ex": "Der Artikel wurde gestern gedruckt.",
+        "img": "assets/vocab-scenes/b1-1/k5/071.webp"
       },
       {
         "w": "kommen",
         "d": "Sich zu einem Ort bewegen und ihn erreichen.",
         "ar": "يأتي",
         "cat": "Kapitel 5",
-        "ex": "Viele Bürger kommen zur Aktion gegen Plastikmüll."
+        "ex": "Viele Bürger kommen zur Aktion gegen Plastikmüll.",
+        "img": "assets/vocab-scenes/b1-1/k5/072.webp"
       },
       {
         "w": "korrekt",
@@ -5723,14 +5784,16 @@ window.B1_BOOK = [
         "d": "Eine Flasche, die zurückgegeben und mehrfach benutzt wird.",
         "ar": "الزجاجة القابلة لإعادة الاستخدام",
         "cat": "Kapitel 5",
-        "ex": "Eine Mehrwegflasche kann bis zu fünfzig Mal benutzt werden."
+        "ex": "Eine Mehrwegflasche kann bis zu fünfzig Mal benutzt werden.",
+        "img": "assets/vocab-scenes/b1-1/k5/074.webp"
       },
       {
         "w": "die Ökobilanz",
         "d": "Eine Bewertung der Umweltwirkungen eines Produkts oder einer Handlung.",
         "ar": "الأثر البيئي الإجمالي",
         "cat": "Kapitel 5",
-        "ex": "Die Ökobilanz der Mehrwegflasche ist deutlich besser."
+        "ex": "Die Ökobilanz der Mehrwegflasche ist deutlich besser.",
+        "img": "assets/vocab-scenes/b1-1/k5/075.webp"
       },
       {
         "w": "das Resultat",
@@ -5751,49 +5814,56 @@ window.B1_BOOK = [
         "d": "Jemandem begegnen; sich mit jemandem verabreden.",
         "ar": "يلتقي بـ",
         "cat": "Kapitel 5",
-        "ex": "Wir treffen uns am Samstag im Park."
+        "ex": "Wir treffen uns am Samstag im Park.",
+        "img": "assets/vocab-scenes/b1-1/k5/078.webp"
       },
       {
         "w": "unterscheiden",
         "d": "Erkennen, dass zwei oder mehrere Dinge nicht gleich sind.",
         "ar": "يُفرّق بين",
         "cat": "Kapitel 5",
-        "ex": "Man muss zwischen Meinung und Tatsache unterscheiden."
+        "ex": "Man muss zwischen Meinung und Tatsache unterscheiden.",
+        "img": "assets/vocab-scenes/b1-1/k5/079.webp"
       },
       {
         "w": "die Wahl",
         "d": "Die Entscheidung zwischen mehreren Möglichkeiten.",
         "ar": "الاختيار",
         "cat": "Kapitel 5",
-        "ex": "Du hast die Wahl zwischen Pfandbecher und eigenem Becher."
+        "ex": "Du hast die Wahl zwischen Pfandbecher und eigenem Becher.",
+        "img": "assets/vocab-scenes/b1-1/k5/080.webp"
       },
       {
         "w": "der Ökovergleich",
         "d": "Ein Vergleich, bei dem die Umweltfreundlichkeit beurteilt wird.",
         "ar": "المقارنة البيئية",
         "cat": "Kapitel 5",
-        "ex": "Der Ökovergleich zeigt, welches Produkt weniger Energie verbraucht."
+        "ex": "Der Ökovergleich zeigt, welches Produkt weniger Energie verbraucht.",
+        "img": "assets/vocab-scenes/b1-1/k5/081.webp"
       },
       {
         "w": "die Alternative",
         "d": "Eine andere Möglichkeit.",
         "ar": "البديل",
         "cat": "Kapitel 5",
-        "ex": "Der Pfandbecher ist eine gute Alternative zum Wegwerfbecher."
+        "ex": "Der Pfandbecher ist eine gute Alternative zum Wegwerfbecher.",
+        "img": "assets/vocab-scenes/b1-1/k5/082.webp"
       },
       {
         "w": "die Pfandflasche",
         "d": "Eine Flasche, für die man beim Kauf Pfand bezahlt und beim Zurückgeben zurückbekommt.",
         "ar": "زجاجة بتأمين مُسترَدّ",
         "cat": "Kapitel 5",
-        "ex": "Die Pfandflasche bringen wir in den Supermarkt zurück."
+        "ex": "Die Pfandflasche bringen wir in den Supermarkt zurück.",
+        "img": "assets/vocab-scenes/b1-1/k5/083.webp"
       },
       {
         "w": "die Energiekosten",
         "d": "Das Geld, das man für Strom, Gas oder andere Energie bezahlt.",
         "ar": "تكاليف الطاقة",
         "cat": "Kapitel 5",
-        "ex": "Durch die neue Heizung sinken die Energiekosten."
+        "ex": "Durch die neue Heizung sinken die Energiekosten.",
+        "img": "assets/vocab-scenes/b1-1/k5/084.webp"
       },
       {
         "w": "das Satzzeichen",
@@ -5807,7 +5877,8 @@ window.B1_BOOK = [
         "d": "Das Problem großer Mengen von Müll.",
         "ar": "مشكلة القمامة",
         "cat": "Kapitel 5",
-        "ex": "Auf vielen Inseln wächst das Müllproblem sehr schnell."
+        "ex": "Auf vielen Inseln wächst das Müllproblem sehr schnell.",
+        "img": "assets/vocab-scenes/b1-1/k5/086.webp"
       },
       {
         "w": "der Absatz",
@@ -5828,21 +5899,24 @@ window.B1_BOOK = [
         "d": "Die Seite, die außen liegt.",
         "ar": "الخارج",
         "cat": "Kapitel 5",
-        "ex": "Auf der Außenseite der Flasche steht das Pfand."
+        "ex": "Auf der Außenseite der Flasche steht das Pfand.",
+        "img": "assets/vocab-scenes/b1-1/k5/089.webp"
       },
       {
         "w": "beschädigt",
         "d": "Kaputt oder mit einem Schaden.",
         "ar": "تالف",
         "cat": "Kapitel 5",
-        "ex": "Die Flasche war beschädigt und wurde nicht angenommen."
+        "ex": "Die Flasche war beschädigt und wurde nicht angenommen.",
+        "img": "assets/vocab-scenes/b1-1/k5/090.webp"
       },
       {
         "w": "dagegen",
         "d": "Gegen eine Sache; auf der anderen Seite.",
         "ar": "ضدها",
         "cat": "Kapitel 5",
-        "ex": "Wenn Sie mich fragen, bin ich dagegen."
+        "ex": "Wenn Sie mich fragen, bin ich dagegen.",
+        "img": "assets/vocab-scenes/b1-1/k5/091.webp"
       },
       {
         "w": "damit",
@@ -5863,35 +5937,40 @@ window.B1_BOOK = [
         "d": "Neu anfangen zu existieren.",
         "ar": "ينشأ",
         "cat": "Kapitel 5",
-        "ex": "Beim Verbrennen von Holz entsteht viel Rauch."
+        "ex": "Beim Verbrennen von Holz entsteht viel Rauch.",
+        "img": "assets/vocab-scenes/b1-1/k5/094.webp"
       },
       {
         "w": "erhältlich",
         "d": "So, dass man es kaufen oder bekommen kann.",
         "ar": "متاح",
         "cat": "Kapitel 5",
-        "ex": "Das Getränk ist nur in Mehrwegflaschen erhältlich."
+        "ex": "Das Getränk ist nur in Mehrwegflaschen erhältlich.",
+        "img": "assets/vocab-scenes/b1-1/k5/095.webp"
       },
       {
         "w": "die Gegend",
         "d": "Ein Gebiet oder eine Landschaft.",
         "ar": "المنطقة",
         "cat": "Kapitel 5",
-        "ex": "In dieser Gegend gibt es viele Windräder."
+        "ex": "In dieser Gegend gibt es viele Windräder.",
+        "img": "assets/vocab-scenes/b1-1/k5/096.webp"
       },
       {
         "w": "die Geschäftsidee",
         "d": "Ein Einfall, womit man ein Geschäft aufbauen kann.",
         "ar": "فكرة العمل",
         "cat": "Kapitel 5",
-        "ex": "Ihre Geschäftsidee war ein Laden ganz ohne Verpackung."
+        "ex": "Ihre Geschäftsidee war ein Laden ganz ohne Verpackung.",
+        "img": "assets/vocab-scenes/b1-1/k5/097.webp"
       },
       {
         "w": "haltbar",
         "d": "So, dass es lange gut bleibt.",
         "ar": "دائم",
         "cat": "Kapitel 5",
-        "ex": "Die Milch ist nur noch drei Tage haltbar."
+        "ex": "Die Milch ist nur noch drei Tage haltbar.",
+        "img": "assets/vocab-scenes/b1-1/k5/098.webp"
       },
       {
         "w": "jederzeit",
@@ -5905,91 +5984,104 @@ window.B1_BOOK = [
         "d": "Ein Becher für Kaffee zum Mitnehmen.",
         "ar": "قدح القهوة",
         "cat": "Kapitel 5",
-        "ex": "Sie bringt jeden Morgen ihren eigenen Kaffeebecher mit."
+        "ex": "Sie bringt jeden Morgen ihren eigenen Kaffeebecher mit.",
+        "img": "assets/vocab-scenes/b1-1/k5/100.webp"
       },
       {
         "w": "krumm",
         "d": "Nicht gerade; gebogen.",
         "ar": "ملتوية",
         "cat": "Kapitel 5",
-        "ex": "Krumme Gurken werden oft weggeworfen."
+        "ex": "Krumme Gurken werden oft weggeworfen.",
+        "img": "assets/vocab-scenes/b1-1/k5/101.webp"
       },
       {
         "w": "der Kunststoff",
         "d": "Ein künstlich hergestelltes Material; Plastik.",
         "ar": "البلاستيك",
         "cat": "Kapitel 5",
-        "ex": "Die Verpackung ist aus Kunststoff."
+        "ex": "Die Verpackung ist aus Kunststoff.",
+        "img": "assets/vocab-scenes/b1-1/k5/102.webp"
       },
       {
         "w": "landen",
         "d": "Mit einem Flugzeug wieder auf den Boden kommen; irgendwo ankommen.",
         "ar": "يهبط / ينتهي به المطاف",
         "cat": "Kapitel 5",
-        "ex": "Viel Plastik landet am Ende im Meer."
+        "ex": "Viel Plastik landet am Ende im Meer.",
+        "img": "assets/vocab-scenes/b1-1/k5/103.webp"
       },
       {
         "w": "liefern",
         "d": "Eine Ware zum Kunden bringen.",
         "ar": "يُسلّم / يورّد",
         "cat": "Kapitel 5",
-        "ex": "Die bestellten Waren wurden noch nicht geliefert."
+        "ex": "Die bestellten Waren wurden noch nicht geliefert.",
+        "img": "assets/vocab-scenes/b1-1/k5/104.webp"
       },
       {
         "w": "der Müllberg",
         "d": "Eine sehr große Menge Müll.",
         "ar": "جبل القمامة",
         "cat": "Kapitel 5",
-        "ex": "In den Städten wachsen die Müllberge weiter."
+        "ex": "In den Städten wachsen die Müllberge weiter.",
+        "img": "assets/vocab-scenes/b1-1/k5/105.webp"
       },
       {
         "w": "der Mülleimer",
         "d": "Ein Behälter für Abfall.",
         "ar": "سلة المهملات",
         "cat": "Kapitel 5",
-        "ex": "Der Mülleimer müsste mal wieder geleert werden."
+        "ex": "Der Mülleimer müsste mal wieder geleert werden.",
+        "img": "assets/vocab-scenes/b1-1/k5/106.webp"
       },
       {
         "w": "nachhaltig",
         "d": "So, dass die Natur für die Zukunft erhalten bleibt.",
         "ar": "مستدام",
         "cat": "Kapitel 5",
-        "ex": "Wir wollen nachhaltiger einkaufen."
+        "ex": "Wir wollen nachhaltiger einkaufen.",
+        "img": "assets/vocab-scenes/b1-1/k5/107.webp"
       },
       {
         "w": "die Neugründung",
         "d": "Die Gründung eines neuen Unternehmens, Vereins oder Projekts.",
         "ar": "تأسيس جديد",
         "cat": "Kapitel 5",
-        "ex": "Die Neugründung des Vereins wurde im Frühjahr beschlossen."
+        "ex": "Die Neugründung des Vereins wurde im Frühjahr beschlossen.",
+        "img": "assets/vocab-scenes/b1-1/k5/108.webp"
       },
       {
         "w": "der Ökostrom",
         "d": "Strom aus erneuerbaren Energiequellen.",
         "ar": "الكهرباء الخضراء",
         "cat": "Kapitel 5",
-        "ex": "Bei der Produktion von Ökostrom wird weltweit am stärksten auf Windenergie gesetzt."
+        "ex": "Bei der Produktion von Ökostrom wird weltweit am stärksten auf Windenergie gesetzt.",
+        "img": "assets/vocab-scenes/b1-1/k5/109.webp"
       },
       {
         "w": "der Online-Shop",
         "d": "Ein Geschäft im Internet.",
         "ar": "المتجر الالكتروني",
         "cat": "Kapitel 5",
-        "ex": "Im Online-Shop bestelle ich nur noch selten."
+        "ex": "Im Online-Shop bestelle ich nur noch selten.",
+        "img": "assets/vocab-scenes/b1-1/k5/110.webp"
       },
       {
         "w": "das Pfand",
         "d": "Das Geld, das man beim Kauf zusätzlich zahlt und bei der Rückgabe zurückbekommt.",
         "ar": "تأمين مُسترَدّ على العبوة",
         "cat": "Kapitel 5",
-        "ex": "Auf diese Flasche zahlt man 25 Cent Pfand."
+        "ex": "Auf diese Flasche zahlt man 25 Cent Pfand.",
+        "img": "assets/vocab-scenes/b1-1/k5/111.webp"
       },
       {
         "w": "recycelbar",
         "d": "So, dass man es wiederverwerten kann.",
         "ar": "قابلة لإعادة التدوير",
         "cat": "Kapitel 5",
-        "ex": "Diese Verpackung ist vollständig recycelbar."
+        "ex": "Diese Verpackung ist vollständig recycelbar.",
+        "img": "assets/vocab-scenes/b1-1/k5/112.webp"
       },
       {
         "w": "sogenannt",
@@ -6003,63 +6095,72 @@ window.B1_BOOK = [
         "d": "Eine Platte, die Sonnenenergie in Strom umwandelt.",
         "ar": "اللوحة الشمسية",
         "cat": "Kapitel 5",
-        "ex": "Auf dem Dach liegen zwölf Solarpanels."
+        "ex": "Auf dem Dach liegen zwölf Solarpanels.",
+        "img": "assets/vocab-scenes/b1-1/k5/114.webp"
       },
       {
         "w": "die Sonnenenergie",
         "d": "Die Energie, die man aus dem Licht der Sonne gewinnt.",
         "ar": "الطاقة الشمسية",
         "cat": "Kapitel 5",
-        "ex": "Mit Sonnenenergie heizen wir unser Wasser."
+        "ex": "Mit Sonnenenergie heizen wir unser Wasser.",
+        "img": "assets/vocab-scenes/b1-1/k5/115.webp"
       },
       {
         "w": "das Start-up",
         "d": "Eine neu gegründete junge Firma.",
         "ar": "شركة ناشئة",
         "cat": "Kapitel 5",
-        "ex": "Das Start-up stellt Verpackungen aus Papier her."
+        "ex": "Das Start-up stellt Verpackungen aus Papier her.",
+        "img": "assets/vocab-scenes/b1-1/k5/116.webp"
       },
       {
         "w": "die Steckdose",
         "d": "Die Stelle in der Wand, an der man Geräte anschließt.",
         "ar": "المقبس",
         "cat": "Kapitel 5",
-        "ex": "Der Stecker passt nicht in diese Steckdose."
+        "ex": "Der Stecker passt nicht in diese Steckdose.",
+        "img": "assets/vocab-scenes/b1-1/k5/117.webp"
       },
       {
         "w": "die Tonne",
         "d": "Ein großer Behälter für Müll; auch ein Gewicht von 1000 Kilo.",
         "ar": "حاوية القمامة / طن",
         "cat": "Kapitel 5",
-        "ex": "Heute leert die Müllabfuhr die Tonnen."
+        "ex": "Heute leert die Müllabfuhr die Tonnen.",
+        "img": "assets/vocab-scenes/b1-1/k5/118.webp"
       },
       {
         "w": "verleihen",
         "d": "Etwas für eine Zeit an jemanden ausleihen.",
         "ar": "يُعير / يمنح",
         "cat": "Kapitel 5",
-        "ex": "Der Laden verleiht Werkzeuge für wenig Geld."
+        "ex": "Der Laden verleiht Werkzeuge für wenig Geld.",
+        "img": "assets/vocab-scenes/b1-1/k5/119.webp"
       },
       {
         "w": "vermeiden",
         "d": "Dafür sorgen, dass etwas nicht passiert.",
         "ar": "يتجنّب",
         "cat": "Kapitel 5",
-        "ex": "Wir vermeiden unnötigen Plastikmüll."
+        "ex": "Wir vermeiden unnötigen Plastikmüll.",
+        "img": "assets/vocab-scenes/b1-1/k5/120.webp"
       },
       {
         "w": "die Verschwendung",
         "d": "Der unnötige Verbrauch von etwas.",
         "ar": "الإهدار",
         "cat": "Kapitel 5",
-        "ex": "Das ist eine reine Verschwendung von Wasser."
+        "ex": "Das ist eine reine Verschwendung von Wasser.",
+        "img": "assets/vocab-scenes/b1-1/k5/121.webp"
       },
       {
         "w": "zurückbekommen",
         "d": "Etwas wiederbekommen, das man weggegeben hat.",
         "ar": "يستعيد",
         "cat": "Kapitel 5",
-        "ex": "Für die Flasche bekommt man das Pfand zurück."
+        "ex": "Für die Flasche bekommt man das Pfand zurück.",
+        "img": "assets/vocab-scenes/b1-1/k5/122.webp"
       },
       {
         "w": "zurück",
@@ -6073,70 +6174,80 @@ window.B1_BOOK = [
         "d": "Etwas wieder dorthin bringen, wo es herkam.",
         "ar": "يُعيد",
         "cat": "Kapitel 5",
-        "ex": "Wilhelm bringt die geliehenen Fahrzeuge immer vollgetankt zurück."
+        "ex": "Wilhelm bringt die geliehenen Fahrzeuge immer vollgetankt zurück.",
+        "img": "assets/vocab-scenes/b1-1/k5/124.webp"
       },
       {
         "w": "der Pfandbecher",
         "d": "Ein Becher, für den man beim Kauf eine Pfandgebühr bezahlt und sie bei der Rückgabe zurückbekommt.",
         "ar": "كوب قابل للاسترجاع مقابل وديعة",
         "cat": "Kapitel 5",
-        "ex": "Für den Pfandbecher zahlt man einen Euro zusätzlich."
+        "ex": "Für den Pfandbecher zahlt man einen Euro zusätzlich.",
+        "img": "assets/vocab-scenes/b1-1/k5/125.webp"
       },
       {
         "w": "retten",
         "d": "Jemanden oder etwas aus einer Gefahr befreien.",
         "ar": "يُنقذ",
         "cat": "Kapitel 5",
-        "ex": "Jeder kann helfen, die Umwelt zu retten."
+        "ex": "Jeder kann helfen, die Umwelt zu retten.",
+        "img": "assets/vocab-scenes/b1-1/k5/126.webp"
       },
       {
         "w": "verlangen",
         "d": "Etwas fordern oder haben wollen.",
         "ar": "يطلب / يتطلّب",
         "cat": "Kapitel 5",
-        "ex": "Der Laden verlangt für den Becher einen Euro Pfand."
+        "ex": "Der Laden verlangt für den Becher einen Euro Pfand.",
+        "img": "assets/vocab-scenes/b1-1/k5/127.webp"
       },
       {
         "w": "der Wegwerfbecher",
         "d": "Ein Becher, den man nach einmaligem Gebrauch wegwirft.",
         "ar": "كوب يُرمى بعد الاستعمال",
         "cat": "Kapitel 5",
-        "ex": "Wegwerfbecher verursachen sehr viel Müll."
+        "ex": "Wegwerfbecher verursachen sehr viel Müll.",
+        "img": "assets/vocab-scenes/b1-1/k5/128.webp"
       },
       {
         "w": "die Aktion",
         "d": "Eine Unternehmung, mit der man etwas erreichen will.",
         "ar": "حملة / نشاط",
         "cat": "Kapitel 5",
-        "ex": "Die Schule startet eine Aktion gegen Plastikmüll."
+        "ex": "Die Schule startet eine Aktion gegen Plastikmüll.",
+        "img": "assets/vocab-scenes/b1-1/k5/129.webp"
       },
       {
         "w": "elektronisch",
         "d": "Mit elektronischer Technik arbeitend.",
         "ar": "إلكترونيا",
         "cat": "Kapitel 5",
-        "ex": "Die Rechnung kommt elektronisch per E-Mail."
+        "ex": "Die Rechnung kommt elektronisch per E-Mail.",
+        "img": "assets/vocab-scenes/b1-1/k5/130.webp"
       },
       {
         "w": "der Stromverbrauch",
         "d": "Die Menge an Strom, die verbraucht wird.",
         "ar": "استهلاك الكهرباء",
         "cat": "Kapitel 5",
-        "ex": "Im Winter steigt unser Stromverbrauch deutlich."
+        "ex": "Im Winter steigt unser Stromverbrauch deutlich.",
+        "img": "assets/vocab-scenes/b1-1/k5/131.webp"
       },
       {
         "w": "der Umwelttipp",
         "d": "Ein Rat, wie man umweltfreundlicher handeln kann.",
         "ar": "النصيحة البيئية",
         "cat": "Kapitel 5",
-        "ex": "Unser Umwelttipp lautet: kurze Wege kann man zu Fuß gehen."
+        "ex": "Unser Umwelttipp lautet: kurze Wege kann man zu Fuß gehen.",
+        "img": "assets/vocab-scenes/b1-1/k5/132.webp"
       },
       {
         "w": "verschmutzen",
         "d": "Schmutzig machen.",
         "ar": "يُلوّث",
         "cat": "Kapitel 5",
-        "ex": "Abgase verschmutzen die Luft in der Stadt."
+        "ex": "Abgase verschmutzen die Luft in der Stadt.",
+        "img": "assets/vocab-scenes/b1-1/k5/133.webp"
       },
       {
         "w": "der Satzanfang",
@@ -6157,42 +6268,48 @@ window.B1_BOOK = [
         "d": "Ein Grund, mit dem man eine Meinung begründet.",
         "ar": "الحجة",
         "cat": "Kapitel 5",
-        "ex": "Das ist ein gutes Argument für Mehrwegflaschen."
+        "ex": "Das ist ein gutes Argument für Mehrwegflaschen.",
+        "img": "assets/vocab-scenes/b1-1/k5/136.webp"
       },
       {
         "w": "der Standpunkt",
         "d": "Die Meinung, die jemand zu einer Sache hat.",
         "ar": "وجهة نظر",
         "cat": "Kapitel 5",
-        "ex": "Sie vertritt einen klaren Standpunkt zum Umweltschutz."
+        "ex": "Sie vertritt einen klaren Standpunkt zum Umweltschutz.",
+        "img": "assets/vocab-scenes/b1-1/k5/137.webp"
       },
       {
         "w": "stehen",
         "d": "Auf den Beinen sein, ohne sich zu bewegen; an einem Ort sein.",
         "ar": "يقف / يكون موجودًا",
         "cat": "Kapitel 5",
-        "ex": "Die Tonnen stehen hinter dem Haus."
+        "ex": "Die Tonnen stehen hinter dem Haus.",
+        "img": "assets/vocab-scenes/b1-1/k5/138.webp"
       },
       {
         "w": "überzeugt",
         "d": "Ganz sicher, dass etwas richtig ist.",
         "ar": "مقتنع",
         "cat": "Kapitel 5",
-        "ex": "Ich bin überzeugt, dass dieser Plan funktioniert."
+        "ex": "Ich bin überzeugt, dass dieser Plan funktioniert.",
+        "img": "assets/vocab-scenes/b1-1/k5/139.webp"
       },
       {
         "w": "umsonst",
         "d": "Kostenlos; auch: ohne Erfolg.",
         "ar": "مجانا",
         "cat": "Kapitel 5",
-        "ex": "Wir warteten eine Stunde umsonst auf den Bus."
+        "ex": "Wir warteten eine Stunde umsonst auf den Bus.",
+        "img": "assets/vocab-scenes/b1-1/k5/140.webp"
       },
       {
         "w": "die Uni-Mensa",
         "d": "Eine Kantine an einer Universität.",
         "ar": "كافتيريا الجامعة",
         "cat": "Kapitel 5",
-        "ex": "In der Uni-Mensa kann man günstig zu Mittag essen."
+        "ex": "In der Uni-Mensa kann man günstig zu Mittag essen.",
+        "img": "assets/vocab-scenes/b1-1/k5/141.webp"
       },
       {
         "w": "völlig",
@@ -6206,161 +6323,184 @@ window.B1_BOOK = [
         "d": "Das Gegenteil von dem sagen, was ein anderer gesagt hat.",
         "ar": "يعترض / يناقض",
         "cat": "Kapitel 5",
-        "ex": "Ich muss Ihnen da leider widersprechen."
+        "ex": "Ich muss Ihnen da leider widersprechen.",
+        "img": "assets/vocab-scenes/b1-1/k5/143.webp"
       },
       {
         "w": "der Blitz",
         "d": "Das helle Licht am Himmel bei einem Gewitter.",
         "ar": "البرق",
         "cat": "Kapitel 5",
-        "ex": "An Blitz und Donner erkennt man ein Gewitter."
+        "ex": "An Blitz und Donner erkennt man ein Gewitter.",
+        "img": "assets/vocab-scenes/b1-1/k5/144.webp"
       },
       {
         "w": "blitzen",
         "d": "Wenn bei einem Gewitter ein Blitz am Himmel erscheint.",
         "ar": "يومض البرق",
         "cat": "Kapitel 5",
-        "ex": "Bei Gewittern blitzt es."
+        "ex": "Bei Gewittern blitzt es.",
+        "img": "assets/vocab-scenes/b1-1/k5/145.webp"
       },
       {
         "w": "der Donner",
         "d": "Das laute Geräusch, das nach einem Blitz kommt.",
         "ar": "الرعد",
         "cat": "Kapitel 5",
-        "ex": "Der Donner nach dem Blitz war gewaltig."
+        "ex": "Der Donner nach dem Blitz war gewaltig.",
+        "img": "assets/vocab-scenes/b1-1/k5/146.webp"
       },
       {
         "w": "donnern",
         "d": "Ein lautes Geräusch machen, wie bei einem Gewitter.",
         "ar": "يُرعد",
         "cat": "Kapitel 5",
-        "ex": "In der Ferne begann es laut zu donnern."
+        "ex": "In der Ferne begann es laut zu donnern.",
+        "img": "assets/vocab-scenes/b1-1/k5/147.webp"
       },
       {
         "w": "feucht",
         "d": "Ein bisschen nass.",
         "ar": "رطبة",
         "cat": "Kapitel 5",
-        "ex": "Nach dem Regen ist das Gras noch feucht."
+        "ex": "Nach dem Regen ist das Gras noch feucht.",
+        "img": "assets/vocab-scenes/b1-1/k5/148.webp"
       },
       {
         "w": "hageln",
         "d": "Wenn bei einem Gewitter Hagelkörner vom Himmel fallen.",
         "ar": "يتساقط البَرَد",
         "cat": "Kapitel 5",
-        "ex": "Wenn es hagelt, bleiben wir lieber im Haus."
+        "ex": "Wenn es hagelt, bleiben wir lieber im Haus.",
+        "img": "assets/vocab-scenes/b1-1/k5/149.webp"
       },
       {
         "w": "mild",
         "d": "Nicht stark; angenehm.",
         "ar": "خفيف",
         "cat": "Kapitel 5",
-        "ex": "Dieses Jahr war der Winter sehr mild."
+        "ex": "Dieses Jahr war der Winter sehr mild.",
+        "img": "assets/vocab-scenes/b1-1/k5/150.webp"
       },
       {
         "w": "neblig",
         "d": "So, dass Nebel in der Luft ist.",
         "ar": "ضبابي",
         "cat": "Kapitel 5",
-        "ex": "Heute Morgen war es sehr neblig."
+        "ex": "Heute Morgen war es sehr neblig.",
+        "img": "assets/vocab-scenes/b1-1/k5/151.webp"
       },
       {
         "w": "nieseln",
         "d": "Ganz fein und leicht regnen.",
         "ar": "رذاذ",
         "cat": "Kapitel 5",
-        "ex": "Draußen nieselt es seit Stunden."
+        "ex": "Draußen nieselt es seit Stunden.",
+        "img": "assets/vocab-scenes/b1-1/k5/152.webp"
       },
       {
         "w": "regnerisch",
         "d": "So, dass es oft regnet.",
         "ar": "ممطر",
         "cat": "Kapitel 5",
-        "ex": "Das Wochenende wird kühl und regnerisch."
+        "ex": "Das Wochenende wird kühl und regnerisch.",
+        "img": "assets/vocab-scenes/b1-1/k5/153.webp"
       },
       {
         "w": "schwül",
         "d": "Unangenehm heiß und feucht.",
         "ar": "قائظ",
         "cat": "Kapitel 5",
-        "ex": "Heute ist es wieder sehr schwül."
+        "ex": "Heute ist es wieder sehr schwül.",
+        "img": "assets/vocab-scenes/b1-1/k5/154.webp"
       },
       {
         "w": "stürmisch",
         "d": "Mit sehr starkem Wind.",
         "ar": "عاصف",
         "cat": "Kapitel 5",
-        "ex": "Bei stürmischem Wetter bleiben wir lieber zu Hause."
+        "ex": "Bei stürmischem Wetter bleiben wir lieber zu Hause.",
+        "img": "assets/vocab-scenes/b1-1/k5/155.webp"
       },
       {
         "w": "das Traumwetter",
         "d": "Besonders schönes Wetter, das man sich wünscht.",
         "ar": "طقس رائع كالحلم",
         "cat": "Kapitel 5",
-        "ex": "Bei diesem Traumwetter gehen wir an den See."
+        "ex": "Bei diesem Traumwetter gehen wir an den See.",
+        "img": "assets/vocab-scenes/b1-1/k5/156.webp"
       },
       {
         "w": "wolkig",
         "d": "Mit vielen Wolken am Himmel.",
         "ar": "غائم",
         "cat": "Kapitel 5",
-        "ex": "Morgen wird es wolkig, aber trocken."
+        "ex": "Morgen wird es wolkig, aber trocken.",
+        "img": "assets/vocab-scenes/b1-1/k5/157.webp"
       },
       {
         "w": "die Wettervorhersage",
         "d": "Die Aussage darüber, wie das Wetter wird.",
         "ar": "توقعات الطقس",
         "cat": "Kapitel 5",
-        "ex": "Laut Wettervorhersage soll es am Wochenende regnen."
+        "ex": "Laut Wettervorhersage soll es am Wochenende regnen.",
+        "img": "assets/vocab-scenes/b1-1/k5/158.webp"
       },
       {
         "w": "die Vorhersage",
         "d": "Eine Aussage darüber, wie etwas in der Zukunft sein wird.",
         "ar": "التنبؤ",
         "cat": "Kapitel 5",
-        "ex": "Die Vorhersage für morgen verspricht Sonne."
+        "ex": "Die Vorhersage für morgen verspricht Sonne.",
+        "img": "assets/vocab-scenes/b1-1/k5/159.webp"
       },
       {
         "w": "die Wetterbesserung",
         "d": "Eine Veränderung zu besserem Wetter.",
         "ar": "التحسن في الطقس",
         "cat": "Kapitel 5",
-        "ex": "Am Nachmittag ist eine Wetterbesserung zu erwarten."
+        "ex": "Am Nachmittag ist eine Wetterbesserung zu erwarten.",
+        "img": "assets/vocab-scenes/b1-1/k5/160.webp"
       },
       {
         "w": "das Gedächtnis",
         "d": "Die Fähigkeit, sich an etwas zu erinnern.",
         "ar": "الذاكرة",
         "cat": "Kapitel 5",
-        "ex": "Sie hat ein sehr gutes Gedächtnis für Namen."
+        "ex": "Sie hat ein sehr gutes Gedächtnis für Namen.",
+        "img": "assets/vocab-scenes/b1-1/k5/161.webp"
       },
       {
         "w": "der Herbststurm",
         "d": "Ein starker Wind im Herbst.",
         "ar": "عاصفة الخريف",
         "cat": "Kapitel 5",
-        "ex": "Der Herbststurm hat viele Äste abgebrochen."
+        "ex": "Der Herbststurm hat viele Äste abgebrochen.",
+        "img": "assets/vocab-scenes/b1-1/k5/162.webp"
       },
       {
         "w": "der Schneesturm",
         "d": "Starker Schneefall zusammen mit viel Wind.",
         "ar": "العاصفة الثلجية",
         "cat": "Kapitel 5",
-        "ex": "Wegen des Schneesturms fielen viele Züge aus."
+        "ex": "Wegen des Schneesturms fielen viele Züge aus.",
+        "img": "assets/vocab-scenes/b1-1/k5/163.webp"
       },
       {
         "w": "der Sturm",
         "d": "Ein sehr starker Wind.",
         "ar": "العاصفة",
         "cat": "Kapitel 5",
-        "ex": "Der Sturm hat gestern Nacht Bäume umgeworfen."
+        "ex": "Der Sturm hat gestern Nacht Bäume umgeworfen.",
+        "img": "assets/vocab-scenes/b1-1/k5/164.webp"
       },
       {
         "w": "stürmen",
         "d": "Sehr stark winden; auch: schnell irgendwohin laufen.",
         "ar": "يعصف / يندفع",
         "cat": "Kapitel 5",
-        "ex": "Draußen stürmt es seit dem Morgen."
+        "ex": "Draußen stürmt es seit dem Morgen.",
+        "img": "assets/vocab-scenes/b1-1/k5/165.webp"
       },
       
       {
@@ -6368,56 +6508,64 @@ window.B1_BOOK = [
         "d": "Etwas Unklares erklären oder herausfinden.",
         "ar": "يوضّح / يكشف",
         "cat": "Kapitel 5",
-        "ex": "Die Broschüre klärt über Mülltrennung auf."
+        "ex": "Die Broschüre klärt über Mülltrennung auf.",
+        "img": "assets/vocab-scenes/b1-1/k5/166.webp"
       },
       {
         "w": "beteiligen",
         "d": "Bei etwas mitmachen.",
         "ar": "يشارك في",
         "cat": "Kapitel 5",
-        "ex": "Viele Bürger beteiligen sich an der Aktion."
+        "ex": "Viele Bürger beteiligen sich an der Aktion.",
+        "img": "assets/vocab-scenes/b1-1/k5/167.webp"
       },
       {
         "w": "die Bevölkerung",
         "d": "Alle Menschen, die in einem Gebiet leben.",
         "ar": "السكان",
         "cat": "Kapitel 5",
-        "ex": "Die Bevölkerung der Stadt wächst jedes Jahr."
+        "ex": "Die Bevölkerung der Stadt wächst jedes Jahr.",
+        "img": "assets/vocab-scenes/b1-1/k5/168.webp"
       },
       {
         "w": "der Bürger",
         "d": "Ein Einwohner einer Stadt oder eines Staates.",
         "ar": "المواطن",
         "cat": "Kapitel 5",
-        "ex": "Die Bürger der Stadt sammeln gemeinsam Müll."
+        "ex": "Die Bürger der Stadt sammeln gemeinsam Müll.",
+        "img": "assets/vocab-scenes/b1-1/k5/169.webp"
       },
       {
         "w": "die Bürgerin",
         "d": "Eine Einwohnerin einer Stadt oder eines Staates.",
         "ar": "المواطنة",
         "cat": "Kapitel 5",
-        "ex": "Jede Bürgerin kann bei dem Projekt mitmachen."
+        "ex": "Jede Bürgerin kann bei dem Projekt mitmachen.",
+        "img": "assets/vocab-scenes/b1-1/k5/170.webp"
       },
       {
         "w": "dienen",
         "d": "Für etwas nützlich sein.",
         "ar": "يخدم / يفيد",
         "cat": "Kapitel 5",
-        "ex": "Die Mitfahrbank dient allen Menschen im Dorf."
+        "ex": "Die Mitfahrbank dient allen Menschen im Dorf.",
+        "img": "assets/vocab-scenes/b1-1/k5/171.webp"
       },
       {
         "w": "drehen",
         "d": "Etwas im Kreis bewegen.",
         "ar": "يُدير / يلفّ",
         "cat": "Kapitel 5",
-        "ex": "Dreh den Wasserhahn bitte richtig zu."
+        "ex": "Dreh den Wasserhahn bitte richtig zu.",
+        "img": "assets/vocab-scenes/b1-1/k5/172.webp"
       },
       {
         "w": "das Engagement",
         "d": "Aktiver Einsatz für eine Sache oder für andere Menschen.",
         "ar": "الالتزام",
         "cat": "Kapitel 5",
-        "ex": "Ihr Engagement im Verein hilft vielen Kindern."
+        "ex": "Ihr Engagement im Verein hilft vielen Kindern.",
+        "img": "assets/vocab-scenes/b1-1/k5/173.webp"
       },
       {
         "w": "extra",
@@ -6431,28 +6579,32 @@ window.B1_BOOK = [
         "d": "So, dass es vor Gefahr sicher ist.",
         "ar": "محمي",
         "cat": "Kapitel 5",
-        "ex": "Dieser Wald ist gesetzlich geschützt."
+        "ex": "Dieser Wald ist gesetzlich geschützt.",
+        "img": "assets/vocab-scenes/b1-1/k5/175.webp"
       },
       {
         "w": "die Hauskatze",
         "d": "Eine Katze, die als Haustier mit Menschen zusammenlebt.",
         "ar": "القط المنزلي",
         "cat": "Kapitel 5",
-        "ex": "Unsere Hauskatze schläft gern auf dem Sofa."
+        "ex": "Unsere Hauskatze schläft gern auf dem Sofa.",
+        "img": "assets/vocab-scenes/b1-1/k5/176.webp"
       },
       {
         "w": "hilflos",
         "d": "Ohne die Möglichkeit, sich selbst zu helfen.",
         "ar": "عاجز",
         "cat": "Kapitel 5",
-        "ex": "Das verletzte Tier lag hilflos am Weg."
+        "ex": "Das verletzte Tier lag hilflos am Weg.",
+        "img": "assets/vocab-scenes/b1-1/k5/177.webp"
       },
       {
         "w": "die Idee",
         "d": "Ein Gedanke, wie man etwas machen könnte.",
         "ar": "الفكرة",
         "cat": "Kapitel 5",
-        "ex": "Sie hatte die Idee, eine Mitfahrbank aufzustellen."
+        "ex": "Sie hatte die Idee, eine Mitfahrbank aufzustellen.",
+        "img": "assets/vocab-scenes/b1-1/k5/178.webp"
       },
       {
         "w": "immer",
@@ -6466,168 +6618,192 @@ window.B1_BOOK = [
         "d": "Material mit Informationen, zum Beispiel Broschüren oder Flyer.",
         "ar": "المادة المعلوماتية",
         "cat": "Kapitel 5",
-        "ex": "Am Eingang liegt Infomaterial über die Ausstellung."
+        "ex": "Am Eingang liegt Infomaterial über die Ausstellung.",
+        "img": "assets/vocab-scenes/b1-1/k5/180.webp"
       },
       {
         "w": "der Katzenfreund",
         "d": "Ein Mann, der Katzen sehr gern hat.",
         "ar": "عاشق القطط",
         "cat": "Kapitel 5",
-        "ex": "Als Katzenfreund hat er drei Katzen zu Hause."
+        "ex": "Als Katzenfreund hat er drei Katzen zu Hause.",
+        "img": "assets/vocab-scenes/b1-1/k5/181.webp"
       },
       {
         "w": "die Katzenfreundin",
         "d": "Eine Frau, die Katzen sehr gern hat.",
         "ar": "عاشقة القطط",
         "cat": "Kapitel 5",
-        "ex": "Als Katzenfreundin hilft sie im Tierheim."
+        "ex": "Als Katzenfreundin hilft sie im Tierheim.",
+        "img": "assets/vocab-scenes/b1-1/k5/182.webp"
       },
       {
         "w": "das Klima",
         "d": "Das durchschnittliche Wetter in einem Gebiet über viele Jahre.",
         "ar": "المناخ",
         "cat": "Kapitel 5",
-        "ex": "Das Klima auf der Erde verändert sich."
+        "ex": "Das Klima auf der Erde verändert sich.",
+        "img": "assets/vocab-scenes/b1-1/k5/183.webp"
       },
       {
         "w": "ländlich",
         "d": "Auf dem Land; nicht in der Stadt.",
         "ar": "ريفي",
         "cat": "Kapitel 5",
-        "ex": "Sie wohnt in einer ländlichen Gegend."
+        "ex": "Sie wohnt in einer ländlichen Gegend.",
+        "img": "assets/vocab-scenes/b1-1/k5/184.webp"
       },
       {
         "w": "die Mitfahrbank",
         "d": "Eine Bank, an der Menschen auf eine Mitfahrgelegenheit warten.",
         "ar": "مقعد مشاركة الرحلة",
         "cat": "Kapitel 5",
-        "ex": "An der Mitfahrbank warten Menschen auf eine kostenlose Mitfahrgelegenheit."
+        "ex": "An der Mitfahrbank warten Menschen auf eine kostenlose Mitfahrgelegenheit.",
+        "img": "assets/vocab-scenes/b1-1/k5/185.webp"
       },
       {
         "w": "das Nachbardorf",
         "d": "Ein Dorf in der Nähe.",
         "ar": "القرية المجاورة",
         "cat": "Kapitel 5",
-        "ex": "Im Nachbardorf gibt es jedes Jahr ein Feuerwehrfest."
+        "ex": "Im Nachbardorf gibt es jedes Jahr ein Feuerwehrfest.",
+        "img": "assets/vocab-scenes/b1-1/k5/186.webp"
       },
       {
         "w": "der Naturfreund",
         "d": "Ein Mann, der die Natur sehr liebt.",
         "ar": "عاشق الطبيعة",
         "cat": "Kapitel 5",
-        "ex": "Als Naturfreund wandert er jedes Wochenende."
+        "ex": "Als Naturfreund wandert er jedes Wochenende.",
+        "img": "assets/vocab-scenes/b1-1/k5/187.webp"
       },
       {
         "w": "die Naturfreundin",
         "d": "Eine Frau, die die Natur sehr liebt.",
         "ar": "عاشقة الطبيعة",
         "cat": "Kapitel 5",
-        "ex": "Als Naturfreundin ist sie so oft wie möglich draußen."
+        "ex": "Als Naturfreundin ist sie so oft wie möglich draußen.",
+        "img": "assets/vocab-scenes/b1-1/k5/188.webp"
       },
       {
         "w": "pflanzen",
         "d": "Eine Pflanze in die Erde setzen.",
         "ar": "يزرع",
         "cat": "Kapitel 5",
-        "ex": "Die Schüler pflanzen zwanzig junge Bäume."
+        "ex": "Die Schüler pflanzen zwanzig junge Bäume.",
+        "img": "assets/vocab-scenes/b1-1/k5/189.webp"
       },
       {
         "w": "schaden",
         "d": "Jemandem oder etwas einen Nachteil oder Schaden zufügen.",
         "ar": "يضرّ بـ",
         "cat": "Kapitel 5",
-        "ex": "Zu viel Zucker kann den Zähnen schaden."
+        "ex": "Zu viel Zucker kann den Zähnen schaden.",
+        "img": "assets/vocab-scenes/b1-1/k5/190.webp"
       },
       {
         "w": "die Schwierigkeit",
         "d": "Ein Problem oder etwas, das schwer ist.",
         "ar": "الصعوبة",
         "cat": "Kapitel 5",
-        "ex": "Bei dem Projekt gab es einige Schwierigkeiten."
+        "ex": "Bei dem Projekt gab es einige Schwierigkeiten.",
+        "img": "assets/vocab-scenes/b1-1/k5/191.webp"
       },
       {
         "w": "der Strauch",
         "d": "Eine Pflanze mit mehreren holzigen Zweigen, die niedriger als ein Baum ist.",
         "ar": "شجيرة",
         "cat": "Kapitel 5",
-        "ex": "Hinter dem Haus wächst ein großer Strauch."
+        "ex": "Hinter dem Haus wächst ein großer Strauch.",
+        "img": "assets/vocab-scenes/b1-1/k5/192.webp"
       },
       {
         "w": "die Themenwoche",
         "d": "Eine Woche, in der ein bestimmtes Thema im Mittelpunkt steht.",
         "ar": "الأسبوع الموضوعي",
         "cat": "Kapitel 5",
-        "ex": "In der Schule findet nächste Woche eine Themenwoche statt."
+        "ex": "In der Schule findet nächste Woche eine Themenwoche statt.",
+        "img": "assets/vocab-scenes/b1-1/k5/193.webp"
       },
       {
         "w": "verteilen",
         "d": "Etwas an mehrere Personen oder Orte geben.",
         "ar": "يوزّع",
         "cat": "Kapitel 5",
-        "ex": "Die Helfer verteilen Wasser an die Besucher."
+        "ex": "Die Helfer verteilen Wasser an die Besucher.",
+        "img": "assets/vocab-scenes/b1-1/k5/194.webp"
       },
       {
         "w": "der Vorort",
         "d": "Ein Stadtteil außerhalb des Zentrums, meist am Rand einer Stadt.",
         "ar": "الضاحية",
         "cat": "Kapitel 5",
-        "ex": "Sie wohnen in einem ruhigen Vorort von Hamburg."
+        "ex": "Sie wohnen in einem ruhigen Vorort von Hamburg.",
+        "img": "assets/vocab-scenes/b1-1/k5/195.webp"
       },
       {
         "w": "die Wildkatze",
         "d": "Eine Katze, die in freier Natur lebt.",
         "ar": "القط البري",
         "cat": "Kapitel 5",
-        "ex": "In diesem Wald leben noch einige Wildkatzen."
+        "ex": "In diesem Wald leben noch einige Wildkatzen.",
+        "img": "assets/vocab-scenes/b1-1/k5/196.webp"
       },
       {
         "w": "zählen",
         "d": "Die Anzahl von etwas feststellen.",
         "ar": "يعدّ",
         "cat": "Kapitel 5",
-        "ex": "Wir zählen die gesammelten Flaschen."
+        "ex": "Wir zählen die gesammelten Flaschen.",
+        "img": "assets/vocab-scenes/b1-1/k5/197.webp"
       },
       {
         "w": "das Zeichen",
         "d": "Etwas, das auf eine Sache hinweist.",
         "ar": "العلامة",
         "cat": "Kapitel 5",
-        "ex": "Das Zeichen auf der Verpackung bedeutet „recycelbar“."
+        "ex": "Das Zeichen auf der Verpackung bedeutet „recycelbar“.",
+        "img": "assets/vocab-scenes/b1-1/k5/198.webp"
       },
       {
         "w": "anschließen",
         "d": "Ein Gerät mit einem Kabel oder einem Netzwerk verbinden.",
         "ar": "يوصّل جهازًا",
         "cat": "Kapitel 5",
-        "ex": "Wir schließen die Solaranlage an das Stromnetz an."
+        "ex": "Wir schließen die Solaranlage an das Stromnetz an.",
+        "img": "assets/vocab-scenes/b1-1/k5/199.webp"
       },
       {
         "w": "aufheben",
         "d": "Etwas vom Boden nehmen; auch: etwas aufbewahren.",
         "ar": "يلتقط / يحتفظ بـ",
         "cat": "Kapitel 5",
-        "ex": "Beim Plogging hebt man unterwegs Müll auf."
+        "ex": "Beim Plogging hebt man unterwegs Müll auf.",
+        "img": "assets/vocab-scenes/b1-1/k5/200.webp"
       },
       {
         "w": "aufwändig",
         "d": "So, dass es viel Arbeit, Zeit oder Geld kostet.",
         "ar": "معقدة",
         "cat": "Kapitel 5",
-        "ex": "Das Recycling von Plastik ist sehr aufwändig."
+        "ex": "Das Recycling von Plastik ist sehr aufwändig.",
+        "img": "assets/vocab-scenes/b1-1/k5/201.webp"
       },
       {
         "w": "die Geschwindigkeit",
         "d": "Wie schnell sich etwas bewegt.",
         "ar": "السرعة",
         "cat": "Kapitel 5",
-        "ex": "Bei hoher Geschwindigkeit verbraucht das Auto mehr Benzin."
+        "ex": "Bei hoher Geschwindigkeit verbraucht das Auto mehr Benzin.",
+        "img": "assets/vocab-scenes/b1-1/k5/202.webp"
       },
       {
         "w": "das Plogging",
         "d": "Joggen und dabei Müll aufsammeln.",
         "ar": "البلوغينغ (الجري مع جمع القمامة)",
         "cat": "Kapitel 5",
-        "ex": "Beim Plogging sammelt sie jeden Morgen Müll im Park."
+        "ex": "Beim Plogging sammelt sie jeden Morgen Müll im Park.",
+        "img": "assets/vocab-scenes/b1-1/k5/203.webp"
       }
     ],
     "readings": [],
@@ -6673,28 +6849,32 @@ window.B1_BOOK = [
         "d": "Ein kleines elektronisches Bauteil in einem Gerät.",
         "ar": "الشريحة",
         "cat": "Kapitel 6",
-        "ex": "In der Karte ist ein kleiner Chip eingebaut."
+        "ex": "In der Karte ist ein kleiner Chip eingebaut.",
+        "img": "assets/vocab-scenes/b1-1/k6/002.webp"
       },
       {
         "w": "der Daten-Chip",
         "d": "Ein kleiner Chip, der Daten speichert oder verarbeitet.",
         "ar": "شريحة البيانات",
         "cat": "Kapitel 6",
-        "ex": "Der Daten-Chip speichert wichtige Informationen."
+        "ex": "Der Daten-Chip speichert wichtige Informationen.",
+        "img": "assets/vocab-scenes/b1-1/k6/003.webp"
       },
       {
         "w": "die Drohne",
         "d": "Ein unbemanntes Fluggerät, das ferngesteuert oder automatisch fliegt.",
         "ar": "طائرة مسيّرة / طائرة بدون طيار",
         "cat": "Kapitel 6",
-        "ex": "Die Drohne fotografiert das Gebiet aus der Luft."
+        "ex": "Die Drohne fotografiert das Gebiet aus der Luft.",
+        "img": "assets/vocab-scenes/b1-1/k6/004.webp"
       },
       {
         "w": "die Haut",
         "d": "Die äußere Schicht, die den Körper bedeckt.",
         "ar": "الجلد",
         "cat": "Kapitel 6",
-        "ex": "Im Sommer muss man die Haut vor der Sonne schützen."
+        "ex": "Im Sommer muss man die Haut vor der Sonne schützen.",
+        "img": "assets/vocab-scenes/b1-1/k6/005.webp"
       },
       {
         "w": "irgendwann",
@@ -6708,56 +6888,64 @@ window.B1_BOOK = [
         "d": "Der vierte Planet unseres Sonnensystems.",
         "ar": "كوكب المريخ",
         "cat": "Kapitel 6",
-        "ex": "Eine Raumsonde sendet neue Bilder vom Mars."
+        "ex": "Eine Raumsonde sendet neue Bilder vom Mars.",
+        "img": "assets/vocab-scenes/b1-1/k6/007.webp"
       },
       {
         "w": "die Mobilität",
         "d": "Die Möglichkeit, sich von einem Ort zum anderen zu bewegen.",
         "ar": "التنقل",
         "cat": "Kapitel 6",
-        "ex": "In der Stadt der Zukunft wird Mobilität ohne Auto möglich sein."
+        "ex": "In der Stadt der Zukunft wird Mobilität ohne Auto möglich sein.",
+        "img": "assets/vocab-scenes/b1-1/k6/008.webp"
       },
       {
         "w": "der Passagier",
         "d": "Ein Mann, der mit einem Verkehrsmittel mitfährt.",
         "ar": "الراكب",
         "cat": "Kapitel 6",
-        "ex": "Jeder Passagier braucht eine Fahrkarte."
+        "ex": "Jeder Passagier braucht eine Fahrkarte.",
+        "img": "assets/vocab-scenes/b1-1/k6/009.webp"
       },
       {
         "w": "die Passagierin",
         "d": "Eine Frau, die mit einem Verkehrsmittel mitfährt.",
         "ar": "الراكبة",
         "cat": "Kapitel 6",
-        "ex": "Die Passagierin steigt am Hauptbahnhof aus."
+        "ex": "Die Passagierin steigt am Hauptbahnhof aus.",
+        "img": "assets/vocab-scenes/b1-1/k6/010.webp"
       },
       {
         "w": "der Planet",
         "d": "Ein Himmelskörper, der sich um einen Stern bewegt.",
         "ar": "الكوكب",
         "cat": "Kapitel 6",
-        "ex": "Jupiter ist der größte Planet im Sonnensystem."
+        "ex": "Jupiter ist der größte Planet im Sonnensystem.",
+        "img": "assets/vocab-scenes/b1-1/k6/011.webp"
       },
       {
         "w": "staubsaugen",
         "d": "Mit einem Staubsauger Schmutz vom Boden entfernen.",
         "ar": "يكنس بالمكنسة الكهربائية",
         "cat": "Kapitel 6",
-        "ex": "Am Samstag staubsauge ich die ganze Wohnung."
+        "ex": "Am Samstag staubsauge ich die ganze Wohnung.",
+        "img": "assets/vocab-scenes/b1-1/k6/012.webp"
       },
       {
         "w": "übernehmen",
         "d": "Eine Aufgabe von jemandem bekommen und weiterführen.",
         "ar": "يتولّى / يأخذ على عاتقه",
         "cat": "Kapitel 6",
-        "ex": "Roboter übernehmen immer mehr schwere Arbeiten."
+        "ex": "Roboter übernehmen immer mehr schwere Arbeiten.",
+        "img": "assets/vocab-scenes/b1-1/k6/013.webp"
       },
       {
         "w": "die Wohnanlage",
         "d": "Mehrere Wohnungen oder Häuser, die zu einer Anlage gehören.",
         "ar": "المجمع السكني",
         "cat": "Kapitel 6",
-        "ex": "Die neue Wohnanlage hat einen großen Innenhof."
+        "ex": "Die neue Wohnanlage hat einen großen Innenhof.",
+        "img": "assets/vocab-scenes/b1-1/k6/014.webp"
       },
       {
         "w": "die Prognose",
@@ -6771,49 +6959,56 @@ window.B1_BOOK = [
         "d": "Der Grund oder das Ereignis, weshalb man etwas tut.",
         "ar": "المناسبة",
         "cat": "Kapitel 6",
-        "ex": "Aus Anlass des Jubiläums gibt es ein großes Fest."
+        "ex": "Aus Anlass des Jubiläums gibt es ein großes Fest.",
+        "img": "assets/vocab-scenes/b1-1/k6/016.webp"
       },
       {
         "w": "Silvester",
         "d": "Der letzte Tag des Jahres, der 31. Dezember.",
         "ar": "ليلة رأس السنة",
         "cat": "Kapitel 6",
-        "ex": "An Silvester schauen wir ein Feuerwerk an."
+        "ex": "An Silvester schauen wir ein Feuerwerk an.",
+        "img": "assets/vocab-scenes/b1-1/k6/017.webp"
       },
       {
         "w": "vornehmen",
         "d": "Etwas durchführen; sich etwas für die Zukunft fest planen.",
         "ar": "يُجري / يعزم على",
         "cat": "Kapitel 6",
-        "ex": "Für das neue Jahr habe ich mir mehr Sport vorgenommen."
+        "ex": "Für das neue Jahr habe ich mir mehr Sport vorgenommen.",
+        "img": "assets/vocab-scenes/b1-1/k6/018.webp"
       },
       {
         "w": "die Ausrede",
         "d": "Ein erfundener Grund, um sich zu rechtfertigen.",
         "ar": "العذر",
         "cat": "Kapitel 6",
-        "ex": "Er hatte wieder eine Ausrede, warum er zu spät kam."
+        "ex": "Er hatte wieder eine Ausrede, warum er zu spät kam.",
+        "img": "assets/vocab-scenes/b1-1/k6/019.webp"
       },
       {
         "w": "befragen",
         "d": "Jemandem Fragen stellen.",
         "ar": "يسأل / يستطلع رأي",
         "cat": "Kapitel 6",
-        "ex": "Die Zeitung hat hundert Jugendliche befragt."
+        "ex": "Die Zeitung hat hundert Jugendliche befragt.",
+        "img": "assets/vocab-scenes/b1-1/k6/020.webp"
       },
       {
         "w": "dauernd",
         "d": "Immer wieder; ohne Pause.",
         "ar": "باستمرار",
         "cat": "Kapitel 6",
-        "ex": "Sein Handy klingelt dauernd."
+        "ex": "Sein Handy klingelt dauernd.",
+        "img": "assets/vocab-scenes/b1-1/k6/021.webp"
       },
       {
         "w": "einfach",
         "d": "Nicht schwierig; leicht.",
         "ar": "سهل",
         "cat": "Kapitel 6",
-        "ex": "Die Aufgabe war überraschend einfach."
+        "ex": "Die Aufgabe war überraschend einfach.",
+        "img": "assets/vocab-scenes/b1-1/k6/022.webp"
       },
       {
         "w": "fassen",
@@ -6827,42 +7022,48 @@ window.B1_BOOK = [
         "d": "Gerade erst geerntet oder gemacht; auch angenehm kühl.",
         "ar": "طازج",
         "cat": "Kapitel 6",
-        "ex": "Am Morgen ist die Luft in der Stadt angenehm frisch."
+        "ex": "Am Morgen ist die Luft in der Stadt angenehm frisch.",
+        "img": "assets/vocab-scenes/b1-1/k6/024.webp"
       },
       {
         "w": "der Leser",
         "d": "Ein Mann, der einen Text oder ein Buch liest.",
         "ar": "القارئ",
         "cat": "Kapitel 6",
-        "ex": "Der Leser schreibt einen Kommentar zum Artikel."
+        "ex": "Der Leser schreibt einen Kommentar zum Artikel.",
+        "img": "assets/vocab-scenes/b1-1/k6/025.webp"
       },
       {
         "w": "die Leserin",
         "d": "Eine Frau, die einen Text oder ein Buch liest.",
         "ar": "قارئة",
         "cat": "Kapitel 6",
-        "ex": "Die Leserin empfiehlt den Roman ihrer Freundin."
+        "ex": "Die Leserin empfiehlt den Roman ihrer Freundin.",
+        "img": "assets/vocab-scenes/b1-1/k6/026.webp"
       },
       {
         "w": "Süßes",
         "d": "Etwas Süßes zum Essen, zum Beispiel Kuchen oder Schokolade.",
         "ar": "الحلويات",
         "cat": "Kapitel 6",
-        "ex": "Nach dem Essen möchte das Kind noch etwas Süßes."
+        "ex": "Nach dem Essen möchte das Kind noch etwas Süßes.",
+        "img": "assets/vocab-scenes/b1-1/k6/027.webp"
       },
       {
         "w": "der Vorsatz",
         "d": "Etwas, das man sich fest vorgenommen hat.",
         "ar": "القصد",
         "cat": "Kapitel 6",
-        "ex": "Mein guter Vorsatz für das neue Jahr ist mehr Bewegung."
+        "ex": "Mein guter Vorsatz für das neue Jahr ist mehr Bewegung.",
+        "img": "assets/vocab-scenes/b1-1/k6/028.webp"
       },
       {
         "w": "werden",
         "d": "Sich in einen anderen Zustand verändern; auch für die Zukunft.",
         "ar": "يصبح",
         "cat": "Kapitel 6",
-        "ex": "Sie will Ärztin werden."
+        "ex": "Sie will Ärztin werden.",
+        "img": "assets/vocab-scenes/b1-1/k6/029.webp"
       },
       {
         "w": "das Futur",
@@ -6876,28 +7077,32 @@ window.B1_BOOK = [
         "d": "Das, was wirklich stimmt.",
         "ar": "الحقيقة",
         "cat": "Kapitel 6",
-        "ex": "Am Ende sagte er doch die Wahrheit."
+        "ex": "Am Ende sagte er doch die Wahrheit.",
+        "img": "assets/vocab-scenes/b1-1/k6/031.webp"
       },
       {
         "w": "gelingen",
         "d": "Gut ausgehen; erfolgreich sein.",
         "ar": "ينجح / يُوفَّق",
         "cat": "Kapitel 6",
-        "ex": "Der Plan ist uns gut gelungen."
+        "ex": "Der Plan ist uns gut gelungen.",
+        "img": "assets/vocab-scenes/b1-1/k6/032.webp"
       },
       {
         "w": "realisieren",
         "d": "Einen Plan oder Wunsch in die Wirklichkeit umsetzen.",
         "ar": "يُحقّق / ينفّذ",
         "cat": "Kapitel 6",
-        "ex": "Sie will ihren Traum realisieren."
+        "ex": "Sie will ihren Traum realisieren.",
+        "img": "assets/vocab-scenes/b1-1/k6/033.webp"
       },
       {
         "w": "das Hauptproblem",
         "d": "Das wichtigste Problem.",
         "ar": "المشكلة الرئيسية",
         "cat": "Kapitel 6",
-        "ex": "Das Hauptproblem ist der fehlende Platz."
+        "ex": "Das Hauptproblem ist der fehlende Platz.",
+        "img": "assets/vocab-scenes/b1-1/k6/034.webp"
       },
       {
         "w": "konkret",
@@ -6925,14 +7130,16 @@ window.B1_BOOK = [
         "d": "Ein Mann, der in einem Betrieb praktische Berufserfahrung sammelt.",
         "ar": "متدرّب",
         "cat": "Kapitel 6",
-        "ex": "Der Praktikant arbeitet drei Monate in der Redaktion."
+        "ex": "Der Praktikant arbeitet drei Monate in der Redaktion.",
+        "img": "assets/vocab-scenes/b1-1/k6/038.webp"
       },
       {
         "w": "die Praktikantin",
         "d": "Eine Frau, die in einem Betrieb praktische Berufserfahrung sammelt.",
         "ar": "متدرّبة",
         "cat": "Kapitel 6",
-        "ex": "Die Praktikantin hilft heute im Kundenservice."
+        "ex": "Die Praktikantin hilft heute im Kundenservice.",
+        "img": "assets/vocab-scenes/b1-1/k6/039.webp"
       },
       {
         "w": "das Zitat",
@@ -6946,35 +7153,40 @@ window.B1_BOOK = [
         "d": "Ein Säugetier, das dem Menschen sehr ähnlich ist.",
         "ar": "القرد",
         "cat": "Kapitel 6",
-        "ex": "Im Tierpark klettern die Affen von Ast zu Ast."
+        "ex": "Im Tierpark klettern die Affen von Ast zu Ast.",
+        "img": "assets/vocab-scenes/b1-1/k6/041.webp"
       },
       {
         "w": "der Elefant",
         "d": "Ein sehr großes graues Tier mit einem Rüssel.",
         "ar": "الفيل",
         "cat": "Kapitel 6",
-        "ex": "Elefanten haben einen Rüssel und große Ohren."
+        "ex": "Elefanten haben einen Rüssel und große Ohren.",
+        "img": "assets/vocab-scenes/b1-1/k6/042.webp"
       },
       {
         "w": "der Löwe",
         "d": "Ein großes Raubtier aus Afrika und Asien; auch ein Sternzeichen.",
         "ar": "الأسد",
         "cat": "Kapitel 6",
-        "ex": "Der Löwe liegt ruhig in der Sonne."
+        "ex": "Der Löwe liegt ruhig in der Sonne.",
+        "img": "assets/vocab-scenes/b1-1/k6/043.webp"
       },
       {
         "w": "der Pädagoge",
         "d": "Ein Mann, der beruflich erzieht oder unterrichtet.",
         "ar": "المربّي / اختصاصي التربية",
         "cat": "Kapitel 6",
-        "ex": "Der Pädagoge arbeitet in einer Kindertagesstätte."
+        "ex": "Der Pädagoge arbeitet in einer Kindertagesstätte.",
+        "img": "assets/vocab-scenes/b1-1/k6/044.webp"
       },
       {
         "w": "die Pädagogin",
         "d": "Eine Frau, die beruflich erzieht oder unterrichtet.",
         "ar": "المربّية / اختصاصية التربية",
         "cat": "Kapitel 6",
-        "ex": "Die Pädagogin betreut eine Gruppe von zwanzig Kindern."
+        "ex": "Die Pädagogin betreut eine Gruppe von zwanzig Kindern.",
+        "img": "assets/vocab-scenes/b1-1/k6/045.webp"
       },
       {
         "w": "die Vokallänge",
@@ -6988,119 +7200,136 @@ window.B1_BOOK = [
         "d": "Ohne Namen oder ohne dass die Person bekannt ist.",
         "ar": "مجهول الهوية",
         "cat": "Kapitel 6",
-        "ex": "Die Umfrage ist anonym."
+        "ex": "Die Umfrage ist anonym.",
+        "img": "assets/vocab-scenes/b1-1/k6/047.webp"
       },
       {
         "w": "der Arbeitsort",
         "d": "Der Ort, an dem jemand arbeitet.",
         "ar": "مكان العمل",
         "cat": "Kapitel 6",
-        "ex": "Mein Arbeitsort liegt außerhalb der Stadt."
+        "ex": "Mein Arbeitsort liegt außerhalb der Stadt.",
+        "img": "assets/vocab-scenes/b1-1/k6/048.webp"
       },
       {
         "w": "aufhalten",
         "d": "Jemanden daran hindern weiterzugehen; eine Tür offen halten.",
         "ar": "يُعيق / يُوقف",
         "cat": "Kapitel 6",
-        "ex": "Der Regen hat uns eine halbe Stunde aufgehalten."
+        "ex": "Der Regen hat uns eine halbe Stunde aufgehalten.",
+        "img": "assets/vocab-scenes/b1-1/k6/049.webp"
       },
       {
         "w": "halten",
         "d": "Etwas mit der Hand festhalten oder in einer Position lassen.",
         "ar": "يمسك / يُبقي",
         "cat": "Kapitel 6",
-        "ex": "Der Bus hält direkt vor unserem Haus."
+        "ex": "Der Bus hält direkt vor unserem Haus.",
+        "img": "assets/vocab-scenes/b1-1/k6/050.webp"
       },
       {
         "w": "ausgehen",
         "d": "Einen Ort verlassen, um etwas zu unternehmen; auch: von etwas als Grundlage ausgehen.",
         "ar": "يخرج للترفيه",
         "cat": "Kapitel 6",
-        "ex": "Am Freitag gehen wir mit Freunden aus."
+        "ex": "Am Freitag gehen wir mit Freunden aus.",
+        "img": "assets/vocab-scenes/b1-1/k6/051.webp"
       },
       {
         "w": "ausgegangen",
         "d": "Partizip II von „ausgehen“: einen Ort verlassen oder von etwas ausgehen.",
         "ar": "خرج",
         "cat": "Kapitel 6",
-        "ex": "Wir sind gestern Abend zusammen ausgegangen."
+        "ex": "Wir sind gestern Abend zusammen ausgegangen.",
+        "img": "assets/vocab-scenes/b1-1/k6/052.webp"
       },
       {
         "w": "autonom",
         "d": "Selbstständig und unabhängig.",
         "ar": "ذاتي القيادة / مستقل",
         "cat": "Kapitel 6",
-        "ex": "Das Fahrzeug kann autonom fahren."
+        "ex": "Das Fahrzeug kann autonom fahren.",
+        "img": "assets/vocab-scenes/b1-1/k6/053.webp"
       },
       {
         "w": "befinden",
         "d": "An einem bestimmten Ort sein oder sich in einem bestimmten Zustand befinden.",
         "ar": "يقع",
         "cat": "Kapitel 6",
-        "ex": "Das Hotel befindet sich neben dem Bahnhof."
+        "ex": "Das Hotel befindet sich neben dem Bahnhof.",
+        "img": "assets/vocab-scenes/b1-1/k6/054.webp"
       },
       {
         "w": "begegnen",
         "d": "Jemanden zufällig treffen.",
         "ar": "يصادف / يلتقي بـ",
         "cat": "Kapitel 6",
-        "ex": "Ich bin ihm gestern auf der Straße begegnet."
+        "ex": "Ich bin ihm gestern auf der Straße begegnet.",
+        "img": "assets/vocab-scenes/b1-1/k6/055.webp"
       },
       {
         "w": "der Dienstleistungsbereich",
         "d": "Der Bereich der Wirtschaft, in dem Dienstleistungen angeboten werden.",
         "ar": "قطاع الخدمات",
         "cat": "Kapitel 6",
-        "ex": "Im Dienstleistungsbereich arbeiten viele Menschen im direkten Kontakt mit Kunden."
+        "ex": "Im Dienstleistungsbereich arbeiten viele Menschen im direkten Kontakt mit Kunden.",
+        "img": "assets/vocab-scenes/b1-1/k6/056.webp"
       },
       {
         "w": "die Erholungsmöglichkeit",
         "d": "Eine Möglichkeit, sich auszuruhen und neue Kraft zu bekommen.",
         "ar": "فرصة للاستجمام",
         "cat": "Kapitel 6",
-        "ex": "Der Park bietet eine gute Erholungsmöglichkeit nach der Arbeit."
+        "ex": "Der Park bietet eine gute Erholungsmöglichkeit nach der Arbeit.",
+        "img": "assets/vocab-scenes/b1-1/k6/057.webp"
       },
       {
         "w": "das Fünftel",
         "d": "Ein Teil von fünf gleich großen Teilen.",
         "ar": "الخُمس",
         "cat": "Kapitel 6",
-        "ex": "Ein Fünftel der Teilnehmer kam zu spät."
+        "ex": "Ein Fünftel der Teilnehmer kam zu spät.",
+        "img": "assets/vocab-scenes/b1-1/k6/058.webp"
       },
       {
         "w": "der Fußweg",
         "d": "Ein Weg, auf dem man zu Fuß geht.",
         "ar": "ممر المشاة",
         "cat": "Kapitel 6",
-        "ex": "Neben der Straße führt ein breiter Fußweg."
+        "ex": "Neben der Straße führt ein breiter Fußweg.",
+        "img": "assets/vocab-scenes/b1-1/k6/059.webp"
       },
       {
         "w": "die Grünfläche",
         "d": "Ein Stück Land mit Gras und Pflanzen in der Stadt.",
         "ar": "المنطقة الخضراء",
         "cat": "Kapitel 6",
-        "ex": "In der neuen Wohnanlage gibt es viele Grünflächen."
+        "ex": "In der neuen Wohnanlage gibt es viele Grünflächen.",
+        "img": "assets/vocab-scenes/b1-1/k6/060.webp"
       },
       {
         "w": "der Hausbewohner",
         "d": "Ein Mann, der in einem bestimmten Haus wohnt.",
         "ar": "شاغل المنزل",
         "cat": "Kapitel 6",
-        "ex": "Die Hausbewohner teilen sich den Innenhof."
+        "ex": "Die Hausbewohner teilen sich den Innenhof.",
+        "img": "assets/vocab-scenes/b1-1/k6/061.webp"
       },
       {
         "w": "die Hausbewohnerin",
         "d": "Eine Frau, die in einem bestimmten Haus wohnt.",
         "ar": "ساكنة المنزل",
         "cat": "Kapitel 6",
-        "ex": "Die Hausbewohnerin kennt alle Nachbarn im Haus."
+        "ex": "Die Hausbewohnerin kennt alle Nachbarn im Haus.",
+        "img": "assets/vocab-scenes/b1-1/k6/062.webp"
       },
       {
         "w": "die Hausfassade",
         "d": "Die Vorderseite eines Hauses.",
         "ar": "واجهة المنزل",
         "cat": "Kapitel 6",
-        "ex": "Die Hausfassade wird im Sommer neu gestrichen."
+        "ex": "Die Hausfassade wird im Sommer neu gestrichen.",
+        "img": "assets/vocab-scenes/b1-1/k6/063.webp"
       },
       {
         "w": "heutig",
@@ -7114,7 +7343,8 @@ window.B1_BOOK = [
         "d": "Das Arbeiten von zu Hause aus.",
         "ar": "مكتب المنزل",
         "cat": "Kapitel 6",
-        "ex": "Zwei Tage pro Woche arbeitet sie im Homeoffice."
+        "ex": "Zwei Tage pro Woche arbeitet sie im Homeoffice.",
+        "img": "assets/vocab-scenes/b1-1/k6/065.webp"
       },
       {
         "w": "längst",
@@ -7135,28 +7365,32 @@ window.B1_BOOK = [
         "d": "Wie gut und angenehm das Leben an einem Ort ist.",
         "ar": "جودة الحياة",
         "cat": "Kapitel 6",
-        "ex": "Viele Grünflächen erhöhen die Lebensqualität in der Stadt."
+        "ex": "Viele Grünflächen erhöhen die Lebensqualität in der Stadt.",
+        "img": "assets/vocab-scenes/b1-1/k6/068.webp"
       },
       {
         "w": "lebenswert",
         "d": "So, dass es sich zu leben lohnt.",
         "ar": "يستحق العيش",
         "cat": "Kapitel 6",
-        "ex": "Eine ruhige Stadt mit Parks ist besonders lebenswert."
+        "ex": "Eine ruhige Stadt mit Parks ist besonders lebenswert.",
+        "img": "assets/vocab-scenes/b1-1/k6/069.webp"
       },
       {
         "w": "das Mikro-Wohnen",
         "d": "Wohnen auf sehr kleiner Fläche mit möglichst wenig Platzbedarf.",
         "ar": "السكن في مساحة صغيرة",
         "cat": "Kapitel 6",
-        "ex": "Mikro-Wohnen ist in großen Städten immer beliebter."
+        "ex": "Mikro-Wohnen ist in großen Städten immer beliebter.",
+        "img": "assets/vocab-scenes/b1-1/k6/070.webp"
       },
       {
         "w": "miteinander",
         "d": "Zusammen und gegenseitig.",
         "ar": "مع بعضهم البعض",
         "cat": "Kapitel 6",
-        "ex": "Wir arbeiten gut miteinander."
+        "ex": "Wir arbeiten gut miteinander.",
+        "img": "assets/vocab-scenes/b1-1/k6/071.webp"
       },
       {
         "w": "das Prinzip",
@@ -7170,35 +7404,40 @@ window.B1_BOOK = [
         "d": "Ein Auto, das einer einzelnen Person gehört.",
         "ar": "السيارة الخاصة",
         "cat": "Kapitel 6",
-        "ex": "In der Innenstadt soll es bald weniger Privatautos geben."
+        "ex": "In der Innenstadt soll es bald weniger Privatautos geben.",
+        "img": "assets/vocab-scenes/b1-1/k6/073.webp"
       },
       {
         "w": "die Solarzelle",
         "d": "Ein Bauteil, das aus Sonnenlicht Strom macht.",
         "ar": "خلية شمسية",
         "cat": "Kapitel 6",
-        "ex": "Auf dem Dach sind Solarzellen montiert."
+        "ex": "Auf dem Dach sind Solarzellen montiert.",
+        "img": "assets/vocab-scenes/b1-1/k6/074.webp"
       },
       {
         "w": "spielen",
         "d": "Sich zum Vergnügen mit etwas beschäftigen; ein Instrument benutzen.",
         "ar": "يلعب / يعزف",
         "cat": "Kapitel 6",
-        "ex": "Mein Bruder spielt seit zehn Jahren Klavier."
+        "ex": "Mein Bruder spielt seit zehn Jahren Klavier.",
+        "img": "assets/vocab-scenes/b1-1/k6/075.webp"
       },
       {
         "w": "das Stadtviertel",
         "d": "Ein Teil einer Stadt.",
         "ar": "حيّ المدينة",
         "cat": "Kapitel 6",
-        "ex": "In unserem Stadtviertel gibt es viele kleine Läden."
+        "ex": "In unserem Stadtviertel gibt es viele kleine Läden.",
+        "img": "assets/vocab-scenes/b1-1/k6/076.webp"
       },
       {
         "w": "vergrößern",
         "d": "Etwas größer machen.",
         "ar": "يُكبّر",
         "cat": "Kapitel 6",
-        "ex": "Wir wollen das Foto vergrößern."
+        "ex": "Wir wollen das Foto vergrößern.",
+        "img": "assets/vocab-scenes/b1-1/k6/077.webp"
       },
       {
         "w": "voraussichtlich",
@@ -7212,91 +7451,104 @@ window.B1_BOOK = [
         "d": "Größer werden.",
         "ar": "ينمو / يكبر",
         "cat": "Kapitel 6",
-        "ex": "Die Stadt wächst jedes Jahr um tausend Einwohner."
+        "ex": "Die Stadt wächst jedes Jahr um tausend Einwohner.",
+        "img": "assets/vocab-scenes/b1-1/k6/079.webp"
       },
       {
         "w": "die Windturbine",
         "d": "Eine Anlage, die aus Wind Strom macht.",
         "ar": "توربين رياح",
         "cat": "Kapitel 6",
-        "ex": "Vor der Stadt stehen zwanzig Windturbinen."
+        "ex": "Vor der Stadt stehen zwanzig Windturbinen.",
+        "img": "assets/vocab-scenes/b1-1/k6/080.webp"
       },
       {
         "w": "die Akademie",
         "d": "Eine Einrichtung für Forschung, Kunst oder Ausbildung.",
         "ar": "الأكاديمية",
         "cat": "Kapitel 6",
-        "ex": "Sie studiert an einer Akademie für Musik."
+        "ex": "Sie studiert an einer Akademie für Musik.",
+        "img": "assets/vocab-scenes/b1-1/k6/081.webp"
       },
       {
         "w": "das Altenheim",
         "d": "Ein Haus, in dem alte Menschen wohnen und betreut werden.",
         "ar": "دار التقاعد",
         "cat": "Kapitel 6",
-        "ex": "Sonntags besuchen wir meine Großmutter im Altenheim."
+        "ex": "Sonntags besuchen wir meine Großmutter im Altenheim.",
+        "img": "assets/vocab-scenes/b1-1/k6/082.webp"
       },
       {
         "w": "das Fundbüro",
         "d": "Eine Stelle, bei der verlorene Gegenstände abgegeben und gesucht werden.",
         "ar": "مكتب المفقودات والموجودات",
         "cat": "Kapitel 6",
-        "ex": "Meine verlorene Tasche lag im Fundbüro."
+        "ex": "Meine verlorene Tasche lag im Fundbüro.",
+        "img": "assets/vocab-scenes/b1-1/k6/083.webp"
       },
       {
         "w": "die Fußgängerzone",
         "d": "Ein Bereich in der Stadt nur für Fußgänger.",
         "ar": "منطقة المشاة",
         "cat": "Kapitel 6",
-        "ex": "In der Fußgängerzone kann man in Ruhe einkaufen."
+        "ex": "In der Fußgängerzone kann man in Ruhe einkaufen.",
+        "img": "assets/vocab-scenes/b1-1/k6/084.webp"
       },
       {
         "w": "das Hallenbad",
         "d": "Ein Schwimmbad in einem geschlossenen Gebäude.",
         "ar": "حمام السباحة الداخلي",
         "cat": "Kapitel 6",
-        "ex": "Im Winter gehen wir ins Hallenbad."
+        "ex": "Im Winter gehen wir ins Hallenbad.",
+        "img": "assets/vocab-scenes/b1-1/k6/085.webp"
       },
       {
         "w": "die Kindertagesstätte",
         "d": "Eine Einrichtung, in der kleine Kinder tagsüber betreut werden.",
         "ar": "مركز الرعاية النهارية",
         "cat": "Kapitel 6",
-        "ex": "Unser Sohn geht seit August in die Kindertagesstätte."
+        "ex": "Unser Sohn geht seit August in die Kindertagesstätte.",
+        "img": "assets/vocab-scenes/b1-1/k6/086.webp"
       },
       {
         "w": "der Kiosk",
         "d": "Ein kleiner Stand, an dem man Zeitungen und Getränke kauft.",
         "ar": "الكشك",
         "cat": "Kapitel 6",
-        "ex": "Am Kiosk kaufe ich mir jeden Morgen eine Zeitung."
+        "ex": "Am Kiosk kaufe ich mir jeden Morgen eine Zeitung.",
+        "img": "assets/vocab-scenes/b1-1/k6/087.webp"
       },
       {
         "w": "die Klinik",
         "d": "Ein Krankenhaus.",
         "ar": "العيادة",
         "cat": "Kapitel 6",
-        "ex": "Nach dem Unfall kam er in die Klinik."
+        "ex": "Nach dem Unfall kam er in die Klinik.",
+        "img": "assets/vocab-scenes/b1-1/k6/088.webp"
       },
       {
         "w": "der Tierpark",
         "d": "Ein Park, in dem man Tiere anschauen kann.",
         "ar": "حديقة الحيوان",
         "cat": "Kapitel 6",
-        "ex": "Im Tierpark leben Löwen, Affen und Elefanten."
+        "ex": "Im Tierpark leben Löwen, Affen und Elefanten.",
+        "img": "assets/vocab-scenes/b1-1/k6/089.webp"
       },
       {
         "w": "die Volkshochschule",
         "d": "Eine Einrichtung, in der Erwachsene günstig Kurse besuchen können.",
         "ar": "مركز تعليم الكبار",
         "cat": "Kapitel 6",
-        "ex": "An der Volkshochschule lerne ich Spanisch."
+        "ex": "An der Volkshochschule lerne ich Spanisch.",
+        "img": "assets/vocab-scenes/b1-1/k6/090.webp"
       },
       {
         "w": "der Zirkus",
         "d": "Ein großes Zelt, in dem Artisten auftreten.",
         "ar": "السيرك",
         "cat": "Kapitel 6",
-        "ex": "Der Zirkus gastiert diese Woche in unserer Stadt."
+        "ex": "Der Zirkus gastiert diese Woche in unserer Stadt.",
+        "img": "assets/vocab-scenes/b1-1/k6/091.webp"
       },
       {
         "w": "der Anteil",
@@ -7324,21 +7576,24 @@ window.B1_BOOK = [
         "d": "Der Leiter einer Stadt oder Gemeinde.",
         "ar": "رئيس البلدية",
         "cat": "Kapitel 6",
-        "ex": "Der Bürgermeister eröffnet das neue Stadtviertel."
+        "ex": "Der Bürgermeister eröffnet das neue Stadtviertel.",
+        "img": "assets/vocab-scenes/b1-1/k6/095.webp"
       },
       {
         "w": "die Bürgermeisterin",
         "d": "Die Leiterin einer Stadt oder Gemeinde.",
         "ar": "رئيسة البلدية",
         "cat": "Kapitel 6",
-        "ex": "Die Bürgermeisterin stellt die Pläne für die Stadt vor."
+        "ex": "Die Bürgermeisterin stellt die Pläne für die Stadt vor.",
+        "img": "assets/vocab-scenes/b1-1/k6/096.webp"
       },
       {
         "w": "die Bildung",
         "d": "Das Entstehen oder Aufbauen von etwas; auch: Erziehung und Wissen.",
         "ar": "التعليم",
         "cat": "Kapitel 6",
-        "ex": "Bildung ist für die Zukunft eines Landes wichtig."
+        "ex": "Bildung ist für die Zukunft eines Landes wichtig.",
+        "img": "assets/vocab-scenes/b1-1/k6/097.webp"
       },
       {
         "w": "möglicherweise",
@@ -7352,42 +7607,48 @@ window.B1_BOOK = [
         "d": "Die Lage des Verkehrs an einem Ort.",
         "ar": "الوضع المروري",
         "cat": "Kapitel 6",
-        "ex": "Die Verkehrssituation vor der Schule ist gefährlich."
+        "ex": "Die Verkehrssituation vor der Schule ist gefährlich.",
+        "img": "assets/vocab-scenes/b1-1/k6/099.webp"
       },
       {
         "w": "der Wohnraum",
         "d": "Der Platz zum Wohnen; alle Wohnungen in einem Gebiet.",
         "ar": "مساحة المعيشة",
         "cat": "Kapitel 6",
-        "ex": "In der Stadt fehlt günstiger Wohnraum."
+        "ex": "In der Stadt fehlt günstiger Wohnraum.",
+        "img": "assets/vocab-scenes/b1-1/k6/100.webp"
       },
       {
         "w": "die Vorfreude",
         "d": "Freude auf etwas, das bald passiert.",
         "ar": "فرحة الترقّب",
         "cat": "Kapitel 6",
-        "ex": "Vorfreude ist die schönste Freude."
+        "ex": "Vorfreude ist die schönste Freude.",
+        "img": "assets/vocab-scenes/b1-1/k6/101.webp"
       },
       {
         "w": "die Melodie",
         "d": "Eine Folge von Tönen, die man als musikalische Linie erkennt.",
         "ar": "اللحن",
         "cat": "Kapitel 6",
-        "ex": "Ich kenne diese Melodie aus einem alten Film."
+        "ex": "Ich kenne diese Melodie aus einem alten Film.",
+        "img": "assets/vocab-scenes/b1-1/k6/102.webp"
       },
       {
         "w": "der Rhythmus",
         "d": "Die regelmäßige Folge von Schlägen, Bewegungen oder Tönen.",
         "ar": "الإيقاع",
         "cat": "Kapitel 6",
-        "ex": "Die Tänzer bewegen sich im Rhythmus der Musik."
+        "ex": "Die Tänzer bewegen sich im Rhythmus der Musik.",
+        "img": "assets/vocab-scenes/b1-1/k6/103.webp"
       },
       {
         "w": "der Stern",
         "d": "Ein Himmelskörper, der selbst leuchtet.",
         "ar": "النجم",
         "cat": "Kapitel 6",
-        "ex": "Heute Nacht sieht man sehr viele Sterne."
+        "ex": "Heute Nacht sieht man sehr viele Sterne.",
+        "img": "assets/vocab-scenes/b1-1/k6/104.webp"
       },
       {
         "w": "dahin",
@@ -7408,7 +7669,8 @@ window.B1_BOOK = [
         "d": "Ein Hindernis, das man überwinden muss.",
         "ar": "العقبة",
         "cat": "Kapitel 6",
-        "ex": "Die Sprache war für ihn die größte Hürde."
+        "ex": "Die Sprache war für ihn die größte Hürde.",
+        "img": "assets/vocab-scenes/b1-1/k6/107.webp"
       },
       {
         "w": "die Liedzeile",
@@ -7422,35 +7684,40 @@ window.B1_BOOK = [
         "d": "Sich über etwas längere Zeit Gedanken machen.",
         "ar": "يتأمّل / يفكّر مليًّا",
         "cat": "Kapitel 6",
-        "ex": "Ich muss über dein Angebot noch nachdenken."
+        "ex": "Ich muss über dein Angebot noch nachdenken.",
+        "img": "assets/vocab-scenes/b1-1/k6/109.webp"
       },
       {
         "w": "schweben",
         "d": "Langsam durch die Luft gleiten, ohne zu fallen.",
         "ar": "يحلّق / يطفو",
         "cat": "Kapitel 6",
-        "ex": "Ein Ballon schwebt über der Stadt."
+        "ex": "Ein Ballon schwebt über der Stadt.",
+        "img": "assets/vocab-scenes/b1-1/k6/110.webp"
       },
       {
         "w": "selber",
         "d": "Betont, dass jemand etwas selbst und nicht eine andere Person tut.",
         "ar": "بنفسه",
         "cat": "Kapitel 6",
-        "ex": "Ich repariere das Fahrrad selber."
+        "ex": "Ich repariere das Fahrrad selber.",
+        "img": "assets/vocab-scenes/b1-1/k6/111.webp"
       },
       {
         "w": "stapeln",
         "d": "Dinge ordentlich aufeinanderlegen.",
         "ar": "يكدّس",
         "cat": "Kapitel 6",
-        "ex": "Er stapelt das Brennholz vor dem Haus."
+        "ex": "Er stapelt das Brennholz vor dem Haus.",
+        "img": "assets/vocab-scenes/b1-1/k6/112.webp"
       },
       {
         "w": "die Tiefe",
         "d": "Der Abstand von der Oberfläche bis zu einem tieferen Punkt.",
         "ar": "العمق",
         "cat": "Kapitel 6",
-        "ex": "Die Tiefe des Sees beträgt an dieser Stelle zehn Meter."
+        "ex": "Die Tiefe des Sees beträgt an dieser Stelle zehn Meter.",
+        "img": "assets/vocab-scenes/b1-1/k6/113.webp"
       },
       {
         "w": "die Umschreibung",
@@ -7464,14 +7731,16 @@ window.B1_BOOK = [
         "d": "Etwas beurteilen und eine Meinung oder Note dazu geben.",
         "ar": "يُقيّم",
         "cat": "Kapitel 6",
-        "ex": "Die Jury bewertet den Auftritt."
+        "ex": "Die Jury bewertet den Auftritt.",
+        "img": "assets/vocab-scenes/b1-1/k6/115.webp"
       },
       {
         "w": "kitschig",
         "d": "Übertrieben gefühlvoll und wenig geschmackvoll.",
         "ar": "مبتذل / عاطفي بشكل مفتعل",
         "cat": "Kapitel 6",
-        "ex": "Der Text des Liedes ist mir zu kitschig."
+        "ex": "Der Text des Liedes ist mir zu kitschig.",
+        "img": "assets/vocab-scenes/b1-1/k6/116.webp"
       },
       {
         "w": "verständlich",
@@ -7485,119 +7754,136 @@ window.B1_BOOK = [
         "d": "Eine tiefe Singstimme oder ein tiefer Ton.",
         "ar": "الجهير",
         "cat": "Kapitel 6",
-        "ex": "Im Chor singt er Bass."
+        "ex": "Im Chor singt er Bass.",
+        "img": "assets/vocab-scenes/b1-1/k6/118.webp"
       },
       {
         "w": "die Flöte",
         "d": "Ein Blasinstrument aus Holz oder Metall.",
         "ar": "الفلوت",
         "cat": "Kapitel 6",
-        "ex": "Sie spielt seit ihrer Kindheit Flöte."
+        "ex": "Sie spielt seit ihrer Kindheit Flöte.",
+        "img": "assets/vocab-scenes/b1-1/k6/119.webp"
       },
       {
         "w": "das Musikinstrument",
         "d": "Ein Gegenstand, mit dem man Musik macht.",
         "ar": "الآلة الموسيقية",
         "cat": "Kapitel 6",
-        "ex": "Welches Musikinstrument möchtest du lernen?"
+        "ex": "Welches Musikinstrument möchtest du lernen?",
+        "img": "assets/vocab-scenes/b1-1/k6/120.webp"
       },
       {
         "w": "das Piano",
         "d": "Ein anderes Wort für Klavier.",
         "ar": "البيانو",
         "cat": "Kapitel 6",
-        "ex": "Im Wohnzimmer steht ein altes Piano."
+        "ex": "Im Wohnzimmer steht ein altes Piano.",
+        "img": "assets/vocab-scenes/b1-1/k6/121.webp"
       },
       {
         "w": "das Schlagzeug",
         "d": "Ein Musikinstrument aus verschiedenen Trommeln und Becken.",
         "ar": "آلة الطبل / الدرامز",
         "cat": "Kapitel 6",
-        "ex": "Mein Bruder spielt Schlagzeug in einer Band."
+        "ex": "Mein Bruder spielt Schlagzeug in einer Band.",
+        "img": "assets/vocab-scenes/b1-1/k6/122.webp"
       },
       {
         "w": "die Violine",
         "d": "Ein Streichinstrument mit vier Saiten; eine Geige.",
         "ar": "الكمان",
         "cat": "Kapitel 6",
-        "ex": "Sie spielt seit zehn Jahren Violine."
+        "ex": "Sie spielt seit zehn Jahren Violine.",
+        "img": "assets/vocab-scenes/b1-1/k6/123.webp"
       },
       {
         "w": "die Auszeichnung",
         "d": "Ein Preis oder eine Ehrung für eine besondere Leistung.",
         "ar": "الجائزة",
         "cat": "Kapitel 6",
-        "ex": "Die Sängerin bekam eine Auszeichnung für ihr Album."
+        "ex": "Die Sängerin bekam eine Auszeichnung für ihr Album.",
+        "img": "assets/vocab-scenes/b1-1/k6/124.webp"
       },
       {
         "w": "die Biografie",
         "d": "Die Beschreibung des Lebens einer Person.",
         "ar": "السيرة الذاتية",
         "cat": "Kapitel 6",
-        "ex": "Ich lese gerade die Biografie einer bekannten Sängerin."
+        "ex": "Ich lese gerade die Biografie einer bekannten Sängerin.",
+        "img": "assets/vocab-scenes/b1-1/k6/125.webp"
       },
       {
         "w": "die Casting-Show",
         "d": "Eine Fernsehsendung, in der Kandidaten ihr Talent zeigen und bewertet werden.",
         "ar": "برنامج اكتشاف المواهب",
         "cat": "Kapitel 6",
-        "ex": "In der Casting-Show suchen sie neue Sänger."
+        "ex": "In der Casting-Show suchen sie neue Sänger.",
+        "img": "assets/vocab-scenes/b1-1/k6/126.webp"
       },
       {
         "w": "die Charts",
         "d": "Listen, die zeigen, welche Musikstücke besonders erfolgreich sind.",
         "ar": "قائمة الأغاني الأكثر نجاحًا",
         "cat": "Kapitel 6",
-        "ex": "Der Song hält sich seit Wochen in den Charts."
+        "ex": "Der Song hält sich seit Wochen in den Charts.",
+        "img": "assets/vocab-scenes/b1-1/k6/127.webp"
       },
       {
         "w": "der Coversong",
         "d": "Ein Lied, das von einer anderen Person neu gesungen oder gespielt wird.",
         "ar": "أغنية مُعاد أداؤها",
         "cat": "Kapitel 6",
-        "ex": "Die Band spielte einen bekannten Coversong."
+        "ex": "Die Band spielte einen bekannten Coversong.",
+        "img": "assets/vocab-scenes/b1-1/k6/128.webp"
       },
       {
         "w": "die Jury",
         "d": "Eine Gruppe von Fachleuten, die einen Wettbewerb beurteilt oder über einen Preis entscheidet.",
         "ar": "هيئة المحلفين",
         "cat": "Kapitel 6",
-        "ex": "Die Jury entscheidet, wer den Wettbewerb gewinnt."
+        "ex": "Die Jury entscheidet, wer den Wettbewerb gewinnt.",
+        "img": "assets/vocab-scenes/b1-1/k6/129.webp"
       },
       {
         "w": "der Preis",
         "d": "Das Geld, das etwas kostet; auch eine Ehrung für eine Leistung.",
         "ar": "السعر / الجائزة",
         "cat": "Kapitel 6",
-        "ex": "Die Band gewann den Preis für den besten Song."
+        "ex": "Die Band gewann den Preis für den besten Song.",
+        "img": "assets/vocab-scenes/b1-1/k6/130.webp"
       },
       {
         "w": "der Songwriter",
         "d": "Ein Mann, der Lieder und Liedtexte schreibt.",
         "ar": "كاتب الأغاني",
         "cat": "Kapitel 6",
-        "ex": "Der Songwriter schreibt die Texte für die Band."
+        "ex": "Der Songwriter schreibt die Texte für die Band.",
+        "img": "assets/vocab-scenes/b1-1/k6/131.webp"
       },
       {
         "w": "die Songwriterin",
         "d": "Eine Frau, die Lieder und Liedtexte schreibt.",
         "ar": "كاتبة الأغاني",
         "cat": "Kapitel 6",
-        "ex": "Sie wurde als beste Songwriterin des Jahres geehrt."
+        "ex": "Sie wurde als beste Songwriterin des Jahres geehrt.",
+        "img": "assets/vocab-scenes/b1-1/k6/132.webp"
       },
       {
         "w": "mitsingen",
         "d": "Beim Singen mitmachen und gemeinsam mit anderen singen.",
         "ar": "يُغنّي مع الآخرين",
         "cat": "Kapitel 6",
-        "ex": "Das Publikum singt beim Refrain mit."
+        "ex": "Das Publikum singt beim Refrain mit.",
+        "img": "assets/vocab-scenes/b1-1/k6/133.webp"
       },
       {
         "w": "der Song",
         "d": "Ein Lied mit Strophe und Refrain.",
         "ar": "الأغنية",
         "cat": "Kapitel 6",
-        "ex": "Dieser Song läuft gerade überall im Radio."
+        "ex": "Dieser Song läuft gerade überall im Radio.",
+        "img": "assets/vocab-scenes/b1-1/k6/134.webp"
       },
       {
         "w": "der Songtitel",
@@ -7625,14 +7911,16 @@ window.B1_BOOK = [
         "d": "Ein Student, der an seiner Doktorarbeit arbeitet.",
         "ar": "طالب دكتوراه",
         "cat": "Kapitel 6",
-        "ex": "Der Doktorand arbeitet an seiner Forschungsarbeit."
+        "ex": "Der Doktorand arbeitet an seiner Forschungsarbeit.",
+        "img": "assets/vocab-scenes/b1-1/k6/138.webp"
       },
       {
         "w": "die Doktorandin",
         "d": "Eine Studentin, die an ihrer Doktorarbeit arbeitet.",
         "ar": "طالبة دكتوراه",
         "cat": "Kapitel 6",
-        "ex": "Die Doktorandin steht kurz vor der Prüfung."
+        "ex": "Die Doktorandin steht kurz vor der Prüfung.",
+        "img": "assets/vocab-scenes/b1-1/k6/139.webp"
       },
       {
         "w": "der Internationalismus",
