@@ -350,11 +350,15 @@ test('B1.1 chapters contain complete lesson sections', () => {
     assert.ok(chapter.quiz.length >= 3, `B1.1 K${chapter.num} needs a quiz`);
     chapter.readings.forEach(reading => {
       assert.ok(reading.text.length > 500);
+      assert.ok(reading.ar.length > 300, `${reading.title} needs a complete Arabic translation`);
+      assert.doesNotMatch(reading.ar, /^ملخص ومساعدة:/, `${reading.title} still contains the chapter summary`);
+      assert.equal((reading.ar.match(/<br><br>/g) || []).length, (reading.text.match(/<br><br>/g) || []).length,
+        `${reading.title} must preserve paragraph breaks in Arabic`);
       assert.ok(reading.glossary.length >= 6);
       assert.equal(reading.questions.length, 4);
     });
   }
-  assert.match(html, /data_b1_1_lessons\.js\?v=b1-1-lessons-1/);
+  assert.match(html, /data_b1_1_lessons\.js\?v=b1-1-lessons-2/);
   assert.match(html, /const B1_TABS = \[[\s\S]*?\['lesen','Lesen'\][\s\S]*?\['redemittel','Redemittel'\][\s\S]*?\['grammatik','Grammatik'\][\s\S]*?\['sprechen','Sprechen'\][\s\S]*?\['quiz','Lerncheck'\]/);
   assert.match(html, /go\('\$\{chapter\.route\}\/ueberblick'\)/);
 });
@@ -613,7 +617,7 @@ test('next-generation shell and design system are wired into the offline app', (
   assert.match(worker, /data_lernwortschatz12\.js/);
   assert.match(worker, /data_vocab_topics7_12\.js/);
   assert.match(worker, /assets\/vocab-scenes\/k7\/145\.webp/);
-  assert.match(worker, /CACHE_VERSION = 'v59'/);
+  assert.match(worker, /CACHE_VERSION = 'v60'/);
   assert.match(worker, /vocab-scenes\\\/k7\\\/\\d\+\\\.webp/);
 });
 
