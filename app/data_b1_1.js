@@ -722,7 +722,8 @@ window.B1_BOOK = [
         "d": "Die Nummer, an der man einen bestimmten Zug erkennt.",
         "ar": "رقم القطار",
         "cat": "Kapitel 1",
-        "ex": "Bitte prüfen Sie die Zugnummer auf der Anzeigetafel."
+        "ex": "Bitte prüfen Sie die Zugnummer auf der Anzeigetafel.",
+        "img": "assets/vocab-scenes/b1-1/k1/088.webp"
       },
       {
         "w": "die Bushaltestelle",
@@ -1025,14 +1026,16 @@ window.B1_BOOK = [
         "d": "Ein Nebensatz, der einen Grund nennt, zum Beispiel mit „weil“.",
         "ar": "جملة السبب (الجملة السببية)",
         "cat": "Kapitel 1",
-        "ex": "„Ich bleibe zu Hause, weil ich krank bin“ enthält einen Kausalsatz."
+        "ex": "„Ich bleibe zu Hause, weil ich krank bin“ enthält einen Kausalsatz.",
+        "img": "assets/vocab-scenes/b1-1/k1/126.webp"
       },
       {
         "w": "der Konzessivsatz",
         "d": "Ein Nebensatz, der einen Gegengrund nennt, zum Beispiel mit „obwohl“.",
         "ar": "جملة التنازل (الجملة الاستدراكية)",
         "cat": "Kapitel 1",
-        "ex": "„Wir gehen spazieren, obwohl es regnet“ enthält einen Konzessivsatz."
+        "ex": "„Wir gehen spazieren, obwohl es regnet“ enthält einen Konzessivsatz.",
+        "img": "assets/vocab-scenes/b1-1/k1/127.webp"
       }
     ],
     "readings": [],
@@ -1127,7 +1130,8 @@ window.B1_BOOK = [
         "d": "Ein kurzer Satz, den eine Firma in der Werbung immer wieder benutzt.",
         "ar": "الشعار",
         "cat": "Kapitel 2",
-        "ex": "Der Slogan der Firma ist kurz und leicht zu merken."
+        "ex": "Der Slogan der Firma ist kurz und leicht zu merken.",
+        "img": "assets/vocab-scenes/b1-1/k2/008.webp"
       },
       {
         "w": "die Taste",
@@ -1414,7 +1418,8 @@ window.B1_BOOK = [
         "d": "Leitet einen Nebensatz ein, der die Folge nennt.",
         "ar": "لذلك",
         "cat": "Kapitel 2",
-        "ex": "Der Akku war leer, sodass ich niemanden anrufen konnte."
+        "ex": "Der Akku war leer, sodass ich niemanden anrufen konnte.",
+        "img": "assets/vocab-scenes/b1-1/k2/044.webp"
       },
       {
         "w": "der Stick",
@@ -1997,7 +2002,8 @@ window.B1_BOOK = [
         "d": "Der Name, unter dem eine Firma ihre Produkte verkauft.",
         "ar": "اسم العلامة التجارية",
         "cat": "Kapitel 2",
-        "ex": "Der Markenname steht groß auf der Packung."
+        "ex": "Der Markenname steht groß auf der Packung.",
+        "img": "assets/vocab-scenes/b1-1/k2/117.webp"
       },
       {
         "w": "die Schmerztablette",
@@ -2116,7 +2122,8 @@ window.B1_BOOK = [
         "d": "Ein kurzer, oft witziger Satz, den man leicht behält.",
         "ar": "القول",
         "cat": "Kapitel 2",
-        "ex": "Der Spruch in der Werbung bleibt schnell im Kopf."
+        "ex": "Der Spruch in der Werbung bleibt schnell im Kopf.",
+        "img": "assets/vocab-scenes/b1-1/k2/132.webp"
       },
       {
         "w": "überrascht",
@@ -2155,7 +2162,8 @@ window.B1_BOOK = [
         "d": "Die besondere Sprache, die in der Werbung benutzt wird.",
         "ar": "لغة الإعلان",
         "cat": "Kapitel 2",
-        "ex": "In der Werbesprache gibt es viele kurze Sätze."
+        "ex": "In der Werbesprache gibt es viele kurze Sätze.",
+        "img": "assets/vocab-scenes/b1-1/k2/137.webp"
       },
       {
         "w": "der Werbetrick",
@@ -2170,7 +2178,8 @@ window.B1_BOOK = [
         "d": "Ein Spiel mit der doppelten Bedeutung von Wörtern.",
         "ar": "التورية",
         "cat": "Kapitel 2",
-        "ex": "Der Slogan enthält ein lustiges Wortspiel."
+        "ex": "Der Slogan enthält ein lustiges Wortspiel.",
+        "img": "assets/vocab-scenes/b1-1/k2/139.webp"
       },
       {
         "w": "das Merkmal",
@@ -2217,7 +2226,8 @@ window.B1_BOOK = [
         "d": "Ein Wort, das genauer sagt, wie, wann oder wo etwas passiert.",
         "ar": "الظرف",
         "cat": "Kapitel 2",
-        "ex": "In „Er kommt heute“ ist „heute“ ein Adverb."
+        "ex": "In „Er kommt heute“ ist „heute“ ein Adverb.",
+        "img": "assets/vocab-scenes/b1-1/k2/145.webp"
       },
       {
         "w": "davor",
@@ -2232,14 +2242,16 @@ window.B1_BOOK = [
         "d": "Ein Nebensatz, der eine Folge oder Konsequenz ausdrückt.",
         "ar": "جملة النتيجة",
         "cat": "Kapitel 2",
-        "ex": "Im Konsekutivsatz erklärt „sodass“ die Folge einer Handlung."
+        "ex": "Im Konsekutivsatz erklärt „sodass“ die Folge einer Handlung.",
+        "img": "assets/vocab-scenes/b1-1/k2/147.webp"
       },
       {
         "w": "die Silbe",
         "d": "Ein Teil eines Wortes, den man in einem Zug spricht.",
         "ar": "المقطع",
         "cat": "Kapitel 2",
-        "ex": "Das Wort „Handy“ hat zwei Silben."
+        "ex": "Das Wort „Handy“ hat zwei Silben.",
+        "img": "assets/vocab-scenes/b1-1/k2/148.webp"
       }
     ],
     "readings": [],
@@ -2598,7 +2610,8 @@ window.B1_BOOK = [
         "d": "Aus welchem Grund; warum.",
         "ar": "لماذا / ولهذا",
         "cat": "Kapitel 3",
-        "ex": "Weshalb hast du die Reise abgesagt?"
+        "ex": "Weshalb hast du die Reise abgesagt?",
+        "img": "assets/vocab-scenes/b1-1/k3/041.webp"
       },
       {
         "w": "führen",
@@ -2893,7 +2906,8 @@ window.B1_BOOK = [
         "d": "Zwei Monate dauernd.",
         "ar": "لمدة شهرين",
         "cat": "Kapitel 3",
-        "ex": "Sie macht ein zweimonatiges Praktikum."
+        "ex": "Sie macht ein zweimonatiges Praktikum.",
+        "img": "assets/vocab-scenes/b1-1/k3/078.webp"
       },
       {
         "w": "abwärts",
@@ -2997,7 +3011,8 @@ window.B1_BOOK = [
         "d": "Inzwischen; nach einiger Zeit.",
         "ar": "في هذه الأثناء / الآن",
         "cat": "Kapitel 3",
-        "ex": "Mittlerweile arbeitet sie in Berlin."
+        "ex": "Mittlerweile arbeitet sie in Berlin.",
+        "img": "assets/vocab-scenes/b1-1/k3/091.webp"
       },
       {
         "w": "der Oberkörper",
@@ -3068,7 +3083,8 @@ window.B1_BOOK = [
         "d": "Von diesem Zeitpunkt an bis heute.",
         "ar": "منذ ذلك الحين",
         "cat": "Kapitel 3",
-        "ex": "Seitdem lernt er jeden Tag Deutsch."
+        "ex": "Seitdem lernt er jeden Tag Deutsch.",
+        "img": "assets/vocab-scenes/b1-1/k3/100.webp"
       },
       {
         "w": "die Selbstständigkeit",
@@ -3099,21 +3115,24 @@ window.B1_BOOK = [
         "d": "In einem Beruf arbeitend.",
         "ar": "يعمل في / مُزاوِل",
         "cat": "Kapitel 3",
-        "ex": "Sie ist als Ärztin in einer Klinik tätig."
+        "ex": "Sie ist als Ärztin in einer Klinik tätig.",
+        "img": "assets/vocab-scenes/b1-1/k3/104.webp"
       },
       {
         "w": "unverändert",
         "d": "Gleich geblieben; ohne Veränderung.",
         "ar": "دون تغيير",
         "cat": "Kapitel 3",
-        "ex": "Sein Gewicht blieb unverändert."
+        "ex": "Sein Gewicht blieb unverändert.",
+        "img": "assets/vocab-scenes/b1-1/k3/105.webp"
       },
       {
         "w": "veränderte",
         "d": "Präteritum von „verändern“: anders machen oder anders werden.",
         "ar": "غيّر",
         "cat": "Kapitel 3",
-        "ex": "Die neue Arbeit veränderte seinen Tagesablauf."
+        "ex": "Die neue Arbeit veränderte seinen Tagesablauf.",
+        "img": "assets/vocab-scenes/b1-1/k3/106.webp"
       },
       {
         "w": "die Wahl",
@@ -3168,7 +3187,8 @@ window.B1_BOOK = [
         "d": "Eine grammatische Zeitform für Ereignisse in der Vergangenheit.",
         "ar": "صيغة الماضي",
         "cat": "Kapitel 3",
-        "ex": "Im Gespräch benutzt man meistens das Perfekt als Vergangenheitsform."
+        "ex": "Im Gespräch benutzt man meistens das Perfekt als Vergangenheitsform.",
+        "img": "assets/vocab-scenes/b1-1/k3/113.webp"
       },
       {
         "w": "der Zeitungsartikel",
@@ -3303,7 +3323,8 @@ window.B1_BOOK = [
         "d": "Ein anderes Wort für Samstag.",
         "ar": "السبت",
         "cat": "Kapitel 3",
-        "ex": "Am Sonnabend gehen wir auf das Stadtfest."
+        "ex": "Am Sonnabend gehen wir auf das Stadtfest.",
+        "img": "assets/vocab-scenes/b1-1/k3/130.webp"
       },
       {
         "w": "verlieben",
@@ -3334,7 +3355,8 @@ window.B1_BOOK = [
         "d": "Der Gegenwart entsprechend; von jetzt.",
         "ar": "حاليا",
         "cat": "Kapitel 3",
-        "ex": "Mit meiner jetzigen Arbeit bin ich sehr zufrieden."
+        "ex": "Mit meiner jetzigen Arbeit bin ich sehr zufrieden.",
+        "img": "assets/vocab-scenes/b1-1/k3/134.webp"
       },
       {
         "w": "das Klinikum",
@@ -3437,7 +3459,8 @@ window.B1_BOOK = [
         "d": "Zu keiner Zeit; nie.",
         "ar": "أبدا",
         "cat": "Kapitel 3",
-        "ex": "Das werde ich niemals vergessen."
+        "ex": "Das werde ich niemals vergessen.",
+        "img": "assets/vocab-scenes/b1-1/k3/147.webp"
       },
       {
         "w": "wegziehen",
@@ -3452,7 +3475,8 @@ window.B1_BOOK = [
         "d": "Verbindet Wörter, Satzteile und Sätze.",
         "ar": "و",
         "cat": "Kapitel 3",
-        "ex": "Die Sonne scheint und es ist warm."
+        "ex": "Die Sonne scheint und es ist warm.",
+        "img": "assets/vocab-scenes/b1-1/k3/149.webp"
       },
       {
         "w": "der/die Büroangestellte",
@@ -3483,7 +3507,8 @@ window.B1_BOOK = [
         "d": "Ein bestimmter Gesichtspunkt einer Sache.",
         "ar": "الجانب",
         "cat": "Kapitel 3",
-        "ex": "Diesen Aspekt haben wir noch nicht besprochen."
+        "ex": "Diesen Aspekt haben wir noch nicht besprochen.",
+        "img": "assets/vocab-scenes/b1-1/k3/153.webp"
       },
       {
         "w": "der Blogeintrag",
@@ -3538,7 +3563,8 @@ window.B1_BOOK = [
         "d": "Im Vergleich zu etwas anderem; ziemlich.",
         "ar": "نسبيا",
         "cat": "Kapitel 3",
-        "ex": "Die Wohnung ist relativ günstig."
+        "ex": "Die Wohnung ist relativ günstig.",
+        "img": "assets/vocab-scenes/b1-1/k3/160.webp"
       },
       {
         "w": "veröffentlichen",
@@ -3577,7 +3603,8 @@ window.B1_BOOK = [
         "d": "Eine grammatische Form, die die Zeit eines Geschehens zeigt.",
         "ar": "صيغة الزمن",
         "cat": "Kapitel 3",
-        "ex": "Das Präteritum ist eine Tempusform der Vergangenheit."
+        "ex": "Das Präteritum ist eine Tempusform der Vergangenheit.",
+        "img": "assets/vocab-scenes/b1-1/k3/165.webp"
       },
       {
         "w": "aussuchen",
@@ -3592,7 +3619,8 @@ window.B1_BOOK = [
         "d": "Später am selben Tag; nach dieser Sache.",
         "ar": "بعد ذلك",
         "cat": "Kapitel 3",
-        "ex": "Ich gehe nachher schwimmen."
+        "ex": "Ich gehe nachher schwimmen.",
+        "img": "assets/vocab-scenes/b1-1/k3/167.webp"
       },
       {
         "w": "Höflich",
@@ -3671,14 +3699,16 @@ window.B1_BOOK = [
         "d": "Oder genauer gesagt.",
         "ar": "أو بالأحرى",
         "cat": "Kapitel 3",
-        "ex": "Wir treffen uns am Montag beziehungsweise am Dienstag."
+        "ex": "Wir treffen uns am Montag beziehungsweise am Dienstag.",
+        "img": "assets/vocab-scenes/b1-1/k3/177.webp"
       },
       {
         "w": "duzen",
         "d": "Jemanden mit „du“ anreden.",
         "ar": "يخاطب بصيغة (du) غير الرسمية",
         "cat": "Kapitel 3",
-        "ex": "In der Firma duzen sich alle Kollegen."
+        "ex": "In der Firma duzen sich alle Kollegen.",
+        "img": "assets/vocab-scenes/b1-1/k3/178.webp"
       },
       {
         "w": "der Gastgeber",
@@ -4173,7 +4203,8 @@ window.B1_BOOK = [
         "d": "So, wie es am Anfang war.",
         "ar": "في الأصل",
         "cat": "Kapitel 4",
-        "ex": "Ursprünglich wollte sie Ärztin werden."
+        "ex": "Ursprünglich wollte sie Ärztin werden.",
+        "img": "assets/vocab-scenes/b1-1/k4/046.webp"
       },
       {
         "w": "der Augenblick",
@@ -4188,7 +4219,8 @@ window.B1_BOOK = [
         "d": "An dieser Sache; an diesen Umstand.",
         "ar": "عليه",
         "cat": "Kapitel 4",
-        "ex": "Daran habe ich gar nicht gedacht."
+        "ex": "Daran habe ich gar nicht gedacht.",
+        "img": "assets/vocab-scenes/b1-1/k4/048.webp"
       },
       {
         "w": "die Entwicklung",
@@ -4235,14 +4267,16 @@ window.B1_BOOK = [
         "d": "Eine Verbform für Wünsche, Möglichkeiten oder indirekte Aussagen.",
         "ar": "صيغة الشرط (الكونيونكتيف)",
         "cat": "Kapitel 4",
-        "ex": "„Wäre“ ist eine Konjunktivform von „sein“."
+        "ex": "„Wäre“ ist eine Konjunktivform von „sein“.",
+        "img": "assets/vocab-scenes/b1-1/k4/054.webp"
       },
       {
         "w": "der Bedingungssatz",
         "d": "Ein Satz, der eine Bedingung ausdrückt.",
         "ar": "الجملة الشرطية",
         "cat": "Kapitel 4",
-        "ex": "„Wenn ich Zeit habe, komme ich mit“ ist ein Bedingungssatz."
+        "ex": "„Wenn ich Zeit habe, komme ich mit“ ist ein Bedingungssatz.",
+        "img": "assets/vocab-scenes/b1-1/k4/055.webp"
       },
       {
         "w": "freinehmen",
@@ -4265,7 +4299,8 @@ window.B1_BOOK = [
         "d": "Leitet einen Nebensatz mit einer Bedingung ein.",
         "ar": "إذا",
         "cat": "Kapitel 4",
-        "ex": "Wenn ich Zeit habe, rufe ich dich an."
+        "ex": "Wenn ich Zeit habe, rufe ich dich an.",
+        "img": "assets/vocab-scenes/b1-1/k4/058.webp"
       },
       {
         "w": "das Besteck",
@@ -4440,7 +4475,8 @@ window.B1_BOOK = [
         "d": "Vor kurzer Zeit.",
         "ar": "مؤخرا",
         "cat": "Kapitel 4",
-        "ex": "Kürzlich habe ich sie im Zug getroffen."
+        "ex": "Kürzlich habe ich sie im Zug getroffen.",
+        "img": "assets/vocab-scenes/b1-1/k4/080.webp"
       },
       {
         "w": "unfreundlich",
@@ -4487,7 +4523,8 @@ window.B1_BOOK = [
         "d": "So, dass es viel über etwas aussagt.",
         "ar": "ذات معنى",
         "cat": "Kapitel 4",
-        "ex": "Das Zeugnis ist sehr aussagekräftig."
+        "ex": "Das Zeugnis ist sehr aussagekräftig.",
+        "img": "assets/vocab-scenes/b1-1/k4/086.webp"
       },
       {
         "w": "die Bescheinigung",
@@ -4534,14 +4571,16 @@ window.B1_BOOK = [
         "d": "Aus diesem Grund.",
         "ar": "لهذا السبب",
         "cat": "Kapitel 4",
-        "ex": "Die Stelle ist interessant, darum bewerbe ich mich."
+        "ex": "Die Stelle ist interessant, darum bewerbe ich mich.",
+        "img": "assets/vocab-scenes/b1-1/k4/092.webp"
       },
       {
         "w": "unser",
         "d": "Possessivwort der 1. Person Plural: von uns.",
         "ar": "لنا / خاصتنا",
         "cat": "Kapitel 4",
-        "ex": "Unser Chef ist heute nicht im Büro."
+        "ex": "Unser Chef ist heute nicht im Büro.",
+        "img": "assets/vocab-scenes/b1-1/k4/093.webp"
       },
       {
         "w": "der Download",
@@ -4588,7 +4627,8 @@ window.B1_BOOK = [
         "d": "Aus einer Zeit, die vor der Gegenwart liegt.",
         "ar": "سابق / سابقة",
         "cat": "Kapitel 4",
-        "ex": "Meine frühere Kollegin arbeitet jetzt in München."
+        "ex": "Meine frühere Kollegin arbeitet jetzt in München.",
+        "img": "assets/vocab-scenes/b1-1/k4/099.webp"
       },
       {
         "w": "die Geduld",
@@ -4611,7 +4651,8 @@ window.B1_BOOK = [
         "d": "Aber; im Gegensatz dazu.",
         "ar": "ومع ذلك",
         "cat": "Kapitel 4",
-        "ex": "Er hat sich beworben, jedoch keine Antwort bekommen."
+        "ex": "Er hat sich beworben, jedoch keine Antwort bekommen.",
+        "img": "assets/vocab-scenes/b1-1/k4/102.webp"
       },
       {
         "w": "die Jobsuche",
@@ -4642,7 +4683,8 @@ window.B1_BOOK = [
         "d": "Ein Dokument im PDF-Format.",
         "ar": "وثيقة PDF",
         "cat": "Kapitel 4",
-        "ex": "Bitte schicken Sie das ausgefüllte PDF-Dokument per E-Mail."
+        "ex": "Bitte schicken Sie das ausgefüllte PDF-Dokument per E-Mail.",
+        "img": "assets/vocab-scenes/b1-1/k4/106.webp"
       },
       {
         "w": "die Personalabteilung",
@@ -4697,21 +4739,24 @@ window.B1_BOOK = [
         "d": "Wichtig für eine bestimmte Sache.",
         "ar": "ذات الصلة",
         "cat": "Kapitel 4",
-        "ex": "Nur relevante Erfahrungen gehören in den Lebenslauf."
+        "ex": "Nur relevante Erfahrungen gehören in den Lebenslauf.",
+        "img": "assets/vocab-scenes/b1-1/k4/113.webp"
       },
       {
         "w": "sämtlich",
         "d": "Alle zusammen; ohne Ausnahme.",
         "ar": "جميع / كافة",
         "cat": "Kapitel 4",
-        "ex": "Bitte senden Sie sämtliche Unterlagen mit."
+        "ex": "Bitte senden Sie sämtliche Unterlagen mit.",
+        "img": "assets/vocab-scenes/b1-1/k4/114.webp"
       },
       {
         "w": "selbstverständlich",
         "d": "So klar, dass man nicht darüber reden muss.",
         "ar": "بالطبع",
         "cat": "Kapitel 4",
-        "ex": "Selbstverständlich helfe ich dir."
+        "ex": "Selbstverständlich helfe ich dir.",
+        "img": "assets/vocab-scenes/b1-1/k4/115.webp"
       },
       {
         "w": "seriös",
@@ -4726,7 +4771,8 @@ window.B1_BOOK = [
         "d": "Der jetzige Zustand einer Sache; auch ein kleiner Verkaufsplatz.",
         "ar": "الحالة / المستوى",
         "cat": "Kapitel 4",
-        "ex": "Wie ist der Stand Ihrer Bewerbung?"
+        "ex": "Wie ist der Stand Ihrer Bewerbung?",
+        "img": "assets/vocab-scenes/b1-1/k4/117.webp"
       },
       {
         "w": "die Voraussetzung",
@@ -4749,28 +4795,32 @@ window.B1_BOOK = [
         "d": "In der Zukunft; kommend.",
         "ar": "في المستقبل",
         "cat": "Kapitel 4",
-        "ex": "Ihr zukünftiger Chef stellt sich kurz vor."
+        "ex": "Ihr zukünftiger Chef stellt sich kurz vor.",
+        "img": "assets/vocab-scenes/b1-1/k4/120.webp"
       },
       {
         "w": "der Zweck",
         "d": "Das Ziel, das man mit etwas erreichen will.",
         "ar": "الغرض",
         "cat": "Kapitel 4",
-        "ex": "Zu welchem Zweck brauchen Sie diese Bescheinigung?"
+        "ex": "Zu welchem Zweck brauchen Sie diese Bescheinigung?",
+        "img": "assets/vocab-scenes/b1-1/k4/121.webp"
       },
       {
         "w": "darüber",
         "d": "Über dieser Sache; auch: zu diesem Thema.",
         "ar": "عنه",
         "cat": "Kapitel 4",
-        "ex": "Darüber möchte ich im Gespräch gern reden."
+        "ex": "Darüber möchte ich im Gespräch gern reden.",
+        "img": "assets/vocab-scenes/b1-1/k4/122.webp"
       },
       {
         "w": "das Pronominaladverb",
         "d": "Ein Wort aus da(r)-, hier- oder wo(r)- und einer Präposition.",
         "ar": "ظرف ضميري (مثل darüber وwozu)",
         "cat": "Kapitel 4",
-        "ex": "„Darüber“ und „wozu“ sind Pronominaladverbien."
+        "ex": "„Darüber“ und „wozu“ sind Pronominaladverbien.",
+        "img": "assets/vocab-scenes/b1-1/k4/123.webp"
       },
       {
         "w": "befriedigend",
@@ -4793,7 +4843,8 @@ window.B1_BOOK = [
         "d": "Nach diesem Zeitpunkt; anschließend.",
         "ar": "بعد ذلك",
         "cat": "Kapitel 4",
-        "ex": "Erst das Gespräch, danach die Führung durch die Firma."
+        "ex": "Erst das Gespräch, danach die Führung durch die Firma.",
+        "img": "assets/vocab-scenes/b1-1/k4/126.webp"
       },
       {
         "w": "der Arbeitnehmer",
@@ -4857,7 +4908,8 @@ window.B1_BOOK = [
         "d": "Partizip II von „suchen“: was eine Firma braucht.",
         "ar": "مطلوب",
         "cat": "Kapitel 4",
-        "ex": "Gesucht wird eine Mitarbeiterin für das Büro."
+        "ex": "Gesucht wird eine Mitarbeiterin für das Büro.",
+        "img": "assets/vocab-scenes/b1-1/k4/134.webp"
       },
       {
         "w": "das Inserat",
@@ -4968,7 +5020,8 @@ window.B1_BOOK = [
         "d": "Völlig; ganz und gar.",
         "ar": "على الاطلاق",
         "cat": "Kapitel 4",
-        "ex": "Da haben Sie absolut recht."
+        "ex": "Da haben Sie absolut recht.",
+        "img": "assets/vocab-scenes/b1-1/k4/148.webp"
       },
       {
         "w": "aggressiv",
@@ -5071,7 +5124,8 @@ window.B1_BOOK = [
         "d": "Ein Teil, der bei etwas mitwirkt.",
         "ar": "العامل",
         "cat": "Kapitel 4",
-        "ex": "Der Lohn ist nicht der einzige Faktor bei der Jobwahl."
+        "ex": "Der Lohn ist nicht der einzige Faktor bei der Jobwahl.",
+        "img": "assets/vocab-scenes/b1-1/k4/161.webp"
       },
       {
         "w": "gesamt",
@@ -5118,7 +5172,8 @@ window.B1_BOOK = [
         "d": "Nichts anderes als; nur.",
         "ar": "ليس إلا / كلّهم",
         "cat": "Kapitel 4",
-        "ex": "Auf der Feier waren lauter nette Leute."
+        "ex": "Auf der Feier waren lauter nette Leute.",
+        "img": "assets/vocab-scenes/b1-1/k4/167.webp"
       },
       {
         "w": "locker",
@@ -5141,7 +5196,8 @@ window.B1_BOOK = [
         "d": "So sehr es geht.",
         "ar": "ممكن",
         "cat": "Kapitel 4",
-        "ex": "Bitte antworten Sie möglichst schnell."
+        "ex": "Bitte antworten Sie möglichst schnell.",
+        "img": "assets/vocab-scenes/b1-1/k4/170.webp"
       },
       {
         "w": "offen",
@@ -5236,7 +5292,8 @@ window.B1_BOOK = [
         "d": "Aus biologischer und umweltfreundlicher Landwirtschaft.",
         "ar": "عضوي",
         "cat": "Kapitel 5",
-        "ex": "Wir kaufen Bio-Produkte."
+        "ex": "Wir kaufen Bio-Produkte.",
+        "img": "assets/vocab-scenes/b1-1/k5/004.webp"
       },
       {
         "w": "digital",
@@ -5251,7 +5308,8 @@ window.B1_BOOK = [
         "d": "Ein mittlerer Wert, der aus mehreren Werten berechnet wird.",
         "ar": "المتوسط",
         "cat": "Kapitel 5",
-        "ex": "Im Durchschnitt verbraucht jede Person weniger Wasser als früher."
+        "ex": "Im Durchschnitt verbraucht jede Person weniger Wasser als früher.",
+        "img": "assets/vocab-scenes/b1-1/k5/006.webp"
       },
       {
         "w": "europäisch",
@@ -5298,7 +5356,8 @@ window.B1_BOOK = [
         "d": "Etwas in eine Rechnung mit einbeziehen.",
         "ar": "يحسب معه / يأخذ في الحساب",
         "cat": "Kapitel 5",
-        "ex": "Wenn man den Transport mitrechnet, ist das Produkt teurer."
+        "ex": "Wenn man den Transport mitrechnet, ist das Produkt teurer.",
+        "img": "assets/vocab-scenes/b1-1/k5/012.webp"
       },
       {
         "w": "der Papierverbrauch",
@@ -5409,7 +5468,8 @@ window.B1_BOOK = [
         "d": "Der Ort oder das Land, woher jemand oder etwas kommt.",
         "ar": "الأصل",
         "cat": "Kapitel 5",
-        "ex": "Die Herkunft dieser Äpfel ist nirgends verzeichnet."
+        "ex": "Die Herkunft dieser Äpfel ist nirgends verzeichnet.",
+        "img": "assets/vocab-scenes/b1-1/k5/026.webp"
       },
       {
         "w": "die Marke",
@@ -5432,7 +5492,8 @@ window.B1_BOOK = [
         "d": "Jemanden daran hindern weiterzugehen; eine Tür offen halten.",
         "ar": "يُعيق / يُوقف",
         "cat": "Kapitel 5",
-        "ex": "Wir können den Klimawandel nicht allein aufhalten."
+        "ex": "Wir können den Klimawandel nicht allein aufhalten.",
+        "img": "assets/vocab-scenes/b1-1/k5/029.webp"
       },
       {
         "w": "bekämpfen",
@@ -5559,7 +5620,8 @@ window.B1_BOOK = [
         "d": "Die Umwelt und die Natur betreffend.",
         "ar": "بيئية",
         "cat": "Kapitel 5",
-        "ex": "Das ist die ökologisch bessere Lösung."
+        "ex": "Das ist die ökologisch bessere Lösung.",
+        "img": "assets/vocab-scenes/b1-1/k5/045.webp"
       },
       {
         "w": "die Ressource",
@@ -5654,7 +5716,8 @@ window.B1_BOOK = [
         "d": "Ein Wort mit einer bestimmten Bedeutung; ein Fachausdruck.",
         "ar": "المصطلح",
         "cat": "Kapitel 5",
-        "ex": "„Nachhaltigkeit“ ist ein wichtiger Begriff im Umweltschutz."
+        "ex": "„Nachhaltigkeit“ ist ein wichtiger Begriff im Umweltschutz.",
+        "img": "assets/vocab-scenes/b1-1/k5/057.webp"
       },
       {
         "w": "berechnen",
@@ -5709,14 +5772,16 @@ window.B1_BOOK = [
         "d": "Aber; schränkt das Gesagte ein.",
         "ar": "ومع ذلك",
         "cat": "Kapitel 5",
-        "ex": "Die Wanderer wollten aufbrechen, sie hatten allerdings keinen Proviant."
+        "ex": "Die Wanderer wollten aufbrechen, sie hatten allerdings keinen Proviant.",
+        "img": "assets/vocab-scenes/b1-1/k5/064.webp"
       },
       {
         "w": "der Bedarf",
         "d": "Das, was jemand braucht.",
         "ar": "الحاجة",
         "cat": "Kapitel 5",
-        "ex": "Bei Bedarf können Sie noch einen Becher bekommen."
+        "ex": "Bei Bedarf können Sie noch einen Becher bekommen.",
+        "img": "assets/vocab-scenes/b1-1/k5/065.webp"
       },
       {
         "w": "die Duschzeit",
@@ -5731,7 +5796,8 @@ window.B1_BOOK = [
         "d": "So, dass man mit wenig Aufwand viel erreicht.",
         "ar": "فعّال / عالي الكفاءة",
         "cat": "Kapitel 5",
-        "ex": "Die neue Heizung arbeitet sehr effizient."
+        "ex": "Die neue Heizung arbeitet sehr effizient.",
+        "img": "assets/vocab-scenes/b1-1/k5/067.webp"
       },
       {
         "w": "die Einwegflasche",
@@ -5754,7 +5820,8 @@ window.B1_BOOK = [
         "d": "Eine bestimmte Situation; ein einzelnes Beispiel.",
         "ar": "الحالة",
         "cat": "Kapitel 5",
-        "ex": "In diesem Fall ist die Glasflasche besser."
+        "ex": "In diesem Fall ist die Glasflasche besser.",
+        "img": "assets/vocab-scenes/b1-1/k5/070.webp"
       },
       {
         "w": "gedruckt",
@@ -5777,7 +5844,8 @@ window.B1_BOOK = [
         "d": "Richtig; den Regeln entsprechend.",
         "ar": "صحيح",
         "cat": "Kapitel 5",
-        "ex": "Ihre Rechnung ist völlig korrekt."
+        "ex": "Ihre Rechnung ist völlig korrekt.",
+        "img": "assets/vocab-scenes/b1-1/k5/073.webp"
       },
       {
         "w": "die Mehrwegflasche",
@@ -5800,14 +5868,16 @@ window.B1_BOOK = [
         "d": "Das, was am Ende herauskommt.",
         "ar": "النتيجة",
         "cat": "Kapitel 5",
-        "ex": "Das Resultat der Untersuchung war eindeutig."
+        "ex": "Das Resultat der Untersuchung war eindeutig.",
+        "img": "assets/vocab-scenes/b1-1/k5/076.webp"
       },
       {
         "w": "die Seite",
         "d": "Ein Blatt in einem Buch; auch eine der Flächen oder Richtungen von etwas.",
         "ar": "الصفحة",
         "cat": "Kapitel 5",
-        "ex": "Diese Sache hat auch eine positive Seite."
+        "ex": "Diese Sache hat auch eine positive Seite.",
+        "img": "assets/vocab-scenes/b1-1/k5/077.webp"
       },
       {
         "w": "treffen",
@@ -5870,7 +5940,8 @@ window.B1_BOOK = [
         "d": "Ein Zeichen wie Punkt oder Komma, das einen Satz gliedert.",
         "ar": "علامة الترقيم",
         "cat": "Kapitel 5",
-        "ex": "Am Ende des Satzes fehlt ein Satzzeichen."
+        "ex": "Am Ende des Satzes fehlt ein Satzzeichen.",
+        "img": "assets/vocab-scenes/b1-1/k5/085.webp"
       },
       {
         "w": "das Müllproblem",
@@ -5885,14 +5956,16 @@ window.B1_BOOK = [
         "d": "Ein Teil eines Textes, der aus mehreren Sätzen besteht und meist mit einer neuen Zeile beginnt.",
         "ar": "الفقرة",
         "cat": "Kapitel 5",
-        "ex": "Der Text besteht aus vier kurzen Absätzen."
+        "ex": "Der Text besteht aus vier kurzen Absätzen.",
+        "img": "assets/vocab-scenes/b1-1/k5/087.webp"
       },
       {
         "w": "allein",
         "d": "Ohne andere Personen; nur.",
         "ar": "وحده",
         "cat": "Kapitel 5",
-        "ex": "Allein durch Recycling kann man viel Müll sparen."
+        "ex": "Allein durch Recycling kann man viel Müll sparen.",
+        "img": "assets/vocab-scenes/b1-1/k5/088.webp"
       },
       {
         "w": "die Außenseite",
@@ -5923,14 +5996,16 @@ window.B1_BOOK = [
         "d": "Mit diesem Wort bezeichnet man ein Mittel oder einen Zweck: mit dieser Sache oder zu diesem Zweck.",
         "ar": "مع ذلك",
         "cat": "Kapitel 5",
-        "ex": "Ist Ihre Frage damit beantwortet?"
+        "ex": "Ist Ihre Frage damit beantwortet?",
+        "img": "assets/vocab-scenes/b1-1/k5/092.webp"
       },
       {
         "w": "gibt",
         "d": "Form von „geben“; in „es gibt“ bedeutet es: etwas ist vorhanden.",
         "ar": "يعطي",
         "cat": "Kapitel 5",
-        "ex": "In dieser Stadt gibt es viele Fahrradwege."
+        "ex": "In dieser Stadt gibt es viele Fahrradwege.",
+        "img": "assets/vocab-scenes/b1-1/k5/093.webp"
       },
       {
         "w": "entstehen",
@@ -5977,7 +6052,8 @@ window.B1_BOOK = [
         "d": "Zu jeder Zeit; immer wenn man will.",
         "ar": "في أي وقت",
         "cat": "Kapitel 5",
-        "ex": "Eine Änderung ist jederzeit möglich."
+        "ex": "Eine Änderung ist jederzeit möglich.",
+        "img": "assets/vocab-scenes/b1-1/k5/099.webp"
       },
       {
         "w": "der Kaffeebecher",
@@ -6088,7 +6164,8 @@ window.B1_BOOK = [
         "d": "So bezeichnet, ohne dass dies unbedingt die offizielle oder echte Bezeichnung ist.",
         "ar": "ما يسمى",
         "cat": "Kapitel 5",
-        "ex": "Das sogenannte nachhaltige Produkt enthält viel Plastik."
+        "ex": "Das sogenannte nachhaltige Produkt enthält viel Plastik.",
+        "img": "assets/vocab-scenes/b1-1/k5/113.webp"
       },
       {
         "w": "das Solarpanel",
@@ -6167,7 +6244,8 @@ window.B1_BOOK = [
         "d": "Wieder an den Ausgangspunkt.",
         "ar": "العودة",
         "cat": "Kapitel 5",
-        "ex": "Bring die Flaschen bitte zurück in den Laden."
+        "ex": "Bring die Flaschen bitte zurück in den Laden.",
+        "img": "assets/vocab-scenes/b1-1/k5/123.webp"
       },
       {
         "w": "zurückbringen",
@@ -6254,14 +6332,16 @@ window.B1_BOOK = [
         "d": "Das erste Wort eines Satzes.",
         "ar": "بداية الجملة",
         "cat": "Kapitel 5",
-        "ex": "Am Satzanfang schreibt man immer groß."
+        "ex": "Am Satzanfang schreibt man immer groß.",
+        "img": "assets/vocab-scenes/b1-1/k5/134.webp"
       },
       {
         "w": "die Ansicht",
         "d": "Eine Meinung oder die Art, wie man etwas sieht.",
         "ar": "الرأي / وجهة النظر",
         "cat": "Kapitel 5",
-        "ex": "Meiner Ansicht nach ist diese Lösung besser."
+        "ex": "Meiner Ansicht nach ist diese Lösung besser.",
+        "img": "assets/vocab-scenes/b1-1/k5/135.webp"
       },
       {
         "w": "das Argument",
@@ -6316,7 +6396,8 @@ window.B1_BOOK = [
         "d": "Ganz und gar; vollständig.",
         "ar": "تماما",
         "cat": "Kapitel 5",
-        "ex": "Das ist völlig richtig."
+        "ex": "Das ist völlig richtig.",
+        "img": "assets/vocab-scenes/b1-1/k5/142.webp"
       },
       {
         "w": "widersprechen",
@@ -6572,7 +6653,8 @@ window.B1_BOOK = [
         "d": "Zusätzlich; auch: mit Absicht.",
         "ar": "اضافية",
         "cat": "Kapitel 5",
-        "ex": "Für den Becher zahlt man einen Euro extra."
+        "ex": "Für den Becher zahlt man einen Euro extra.",
+        "img": "assets/vocab-scenes/b1-1/k5/174.webp"
       },
       {
         "w": "geschützt",
@@ -6611,7 +6693,8 @@ window.B1_BOOK = [
         "d": "Zu jeder Zeit; jedes Mal.",
         "ar": "دائما",
         "cat": "Kapitel 5",
-        "ex": "Sie kommt immer pünktlich zur Arbeit."
+        "ex": "Sie kommt immer pünktlich zur Arbeit.",
+        "img": "assets/vocab-scenes/b1-1/k5/179.webp"
       },
       {
         "w": "das Infomaterial",
@@ -6842,7 +6925,8 @@ window.B1_BOOK = [
         "d": "Ein kurzer Text unter einem Bild.",
         "ar": "التسمية التوضيحية",
         "cat": "Kapitel 6",
-        "ex": "Unter jedem Foto steht eine kurze Bildunterschrift."
+        "ex": "Unter jedem Foto steht eine kurze Bildunterschrift.",
+        "img": "assets/vocab-scenes/b1-1/k6/001.webp"
       },
       {
         "w": "der Chip",
@@ -6881,7 +6965,8 @@ window.B1_BOOK = [
         "d": "Zu einem nicht genau bestimmten Zeitpunkt.",
         "ar": "في مرحلة ما",
         "cat": "Kapitel 6",
-        "ex": "Irgendwann möchte ich nach Österreich reisen."
+        "ex": "Irgendwann möchte ich nach Österreich reisen.",
+        "img": "assets/vocab-scenes/b1-1/k6/006.webp"
       },
       {
         "w": "der Mars",
@@ -6952,7 +7037,8 @@ window.B1_BOOK = [
         "d": "Eine Vorhersage, wie sich etwas entwickeln wird.",
         "ar": "التوقعات",
         "cat": "Kapitel 6",
-        "ex": "Die Prognose für die nächsten Jahre ist positiv."
+        "ex": "Die Prognose für die nächsten Jahre ist positiv.",
+        "img": "assets/vocab-scenes/b1-1/k6/015.webp"
       },
       {
         "w": "der Anlass",
@@ -7015,7 +7101,8 @@ window.B1_BOOK = [
         "d": "Etwas greifen; auch einen Gedanken verstehen oder einen Entschluss bilden.",
         "ar": "يمسك / يستوعب",
         "cat": "Kapitel 6",
-        "ex": "Sie fasst den Entschluss, ihr Ziel zu verfolgen."
+        "ex": "Sie fasst den Entschluss, ihr Ziel zu verfolgen.",
+        "img": "assets/vocab-scenes/b1-1/k6/023.webp"
       },
       {
         "w": "frisch",
@@ -7070,7 +7157,8 @@ window.B1_BOOK = [
         "d": "Die Zeitform des Verbs für die Zukunft.",
         "ar": "زمن المستقبل",
         "cat": "Kapitel 6",
-        "ex": "Das Futur von „ich gehe“ ist „ich werde gehen“."
+        "ex": "Das Futur von „ich gehe“ ist „ich werde gehen“.",
+        "img": "assets/vocab-scenes/b1-1/k6/030.webp"
       },
       {
         "w": "die Wahrheit",
@@ -7109,21 +7197,24 @@ window.B1_BOOK = [
         "d": "Genau und deutlich; nicht allgemein.",
         "ar": "ملموسة",
         "cat": "Kapitel 6",
-        "ex": "Machen Sie bitte einen konkreten Vorschlag."
+        "ex": "Machen Sie bitte einen konkreten Vorschlag.",
+        "img": "assets/vocab-scenes/b1-1/k6/035.webp"
       },
       {
         "w": "eventuell",
         "d": "Vielleicht; möglicherweise.",
         "ar": "ربما",
         "cat": "Kapitel 6",
-        "ex": "Eventuell komme ich später."
+        "ex": "Eventuell komme ich später.",
+        "img": "assets/vocab-scenes/b1-1/k6/036.webp"
       },
       {
         "w": "die n-Deklination",
         "d": "Eine Gruppe maskuliner Nomen, die im Singular außer im Nominativ die Endung -n oder -en bekommen.",
         "ar": "تصريف الأسماء بإضافة n أو en",
         "cat": "Kapitel 6",
-        "ex": "Das Wort „Student“ folgt der n-Deklination."
+        "ex": "Das Wort „Student“ folgt der n-Deklination.",
+        "img": "assets/vocab-scenes/b1-1/k6/037.webp"
       },
       {
         "w": "der Praktikant",
@@ -7146,7 +7237,8 @@ window.B1_BOOK = [
         "d": "Eine wörtlich wiedergegebene Aussage von jemandem.",
         "ar": "الاقتباس",
         "cat": "Kapitel 6",
-        "ex": "In seinem Text steht ein Zitat von Goethe."
+        "ex": "In seinem Text steht ein Zitat von Goethe.",
+        "img": "assets/vocab-scenes/b1-1/k6/040.webp"
       },
       {
         "w": "der Affe",
@@ -7193,7 +7285,8 @@ window.B1_BOOK = [
         "d": "Die Dauer, mit der ein Vokal gesprochen wird.",
         "ar": "طول حرف العلّة",
         "cat": "Kapitel 6",
-        "ex": "Die Vokallänge kann die Bedeutung eines Wortes verändern."
+        "ex": "Die Vokallänge kann die Bedeutung eines Wortes verändern.",
+        "img": "assets/vocab-scenes/b1-1/k6/046.webp"
       },
       {
         "w": "anonym",
@@ -7336,7 +7429,8 @@ window.B1_BOOK = [
         "d": "Von heute; die Gegenwart betreffend.",
         "ar": "الحالي / الخاص باليوم",
         "cat": "Kapitel 6",
-        "ex": "Die heutige Stadt ist lauter als früher."
+        "ex": "Die heutige Stadt ist lauter als früher.",
+        "img": "assets/vocab-scenes/b1-1/k6/064.webp"
       },
       {
         "w": "das Homeoffice",
@@ -7351,14 +7445,17 @@ window.B1_BOOK = [
         "d": "Schon seit langer Zeit; bereits vor längerer Zeit.",
         "ar": "منذ فترة طويلة",
         "cat": "Kapitel 6",
-        "ex": "Der Zug ist längst abgefahren."
+        "ex": "Der Zug ist längst abgefahren.",
+        "img": "assets/vocab-scenes/b1-1/k6/066.webp",
+        "still": "assets/vocab-scenes/b1-1/k6/066-still.webp"
       },
       {
         "w": "lauten",
         "d": "Einen bestimmten Wortlaut haben.",
         "ar": "يكون نصّه / ينصّ على",
         "cat": "Kapitel 6",
-        "ex": "Die Frage lautet: Wie wollen wir leben?"
+        "ex": "Die Frage lautet: Wie wollen wir leben?",
+        "img": "assets/vocab-scenes/b1-1/k6/067.webp"
       },
       {
         "w": "die Lebensqualität",
@@ -7397,7 +7494,8 @@ window.B1_BOOK = [
         "d": "Ein Grundsatz oder Grundgedanke.",
         "ar": "المبدأ",
         "cat": "Kapitel 6",
-        "ex": "Das Prinzip des Mikro-Wohnens ist wenig Platz gut zu nutzen."
+        "ex": "Das Prinzip des Mikro-Wohnens ist wenig Platz gut zu nutzen.",
+        "img": "assets/vocab-scenes/b1-1/k6/072.webp"
       },
       {
         "w": "das Privatauto",
@@ -7444,7 +7542,8 @@ window.B1_BOOK = [
         "d": "So, wie man es erwartet; wahrscheinlich.",
         "ar": "المتوقع",
         "cat": "Kapitel 6",
-        "ex": "Der Bau dauert voraussichtlich zwei Jahre."
+        "ex": "Der Bau dauert voraussichtlich zwei Jahre.",
+        "img": "assets/vocab-scenes/b1-1/k6/078.webp"
       },
       {
         "w": "wachsen",
@@ -7555,21 +7654,24 @@ window.B1_BOOK = [
         "d": "Ein Teil von einem Ganzen.",
         "ar": "الحصة",
         "cat": "Kapitel 6",
-        "ex": "Der Anteil der Radfahrer in der Stadt steigt."
+        "ex": "Der Anteil der Radfahrer in der Stadt steigt.",
+        "img": "assets/vocab-scenes/b1-1/k6/092.webp"
       },
       {
         "w": "umformulieren",
         "d": "Etwas mit anderen Worten noch einmal sagen.",
         "ar": "يُعيد الصياغة",
         "cat": "Kapitel 6",
-        "ex": "Können Sie den Satz bitte einfacher umformulieren?"
+        "ex": "Können Sie den Satz bitte einfacher umformulieren?",
+        "img": "assets/vocab-scenes/b1-1/k6/093.webp"
       },
       {
         "w": "der Kasus",
         "d": "Der grammatische Fall eines Nomens, zum Beispiel Dativ.",
         "ar": "الحالة الإعرابية",
         "cat": "Kapitel 6",
-        "ex": "In „dem Mann“ steht das Nomen im Kasus Dativ."
+        "ex": "In „dem Mann“ steht das Nomen im Kasus Dativ.",
+        "img": "assets/vocab-scenes/b1-1/k6/094.webp"
       },
       {
         "w": "der Bürgermeister",
@@ -7600,7 +7702,8 @@ window.B1_BOOK = [
         "d": "Vielleicht; es kann sein.",
         "ar": "ربما",
         "cat": "Kapitel 6",
-        "ex": "Möglicherweise wird die Miete wieder teurer."
+        "ex": "Möglicherweise wird die Miete wieder teurer.",
+        "img": "assets/vocab-scenes/b1-1/k6/098.webp"
       },
       {
         "w": "die Verkehrssituation",
@@ -7655,14 +7758,16 @@ window.B1_BOOK = [
         "d": "An diesen Ort; bis zu diesem Zeitpunkt.",
         "ar": "هناك",
         "cat": "Kapitel 6",
-        "ex": "Bis dahin haben wir noch viel Zeit."
+        "ex": "Bis dahin haben wir noch viel Zeit.",
+        "img": "assets/vocab-scenes/b1-1/k6/105.webp"
       },
       {
         "w": "grad",
         "d": "Umgangssprachlich für „gerade“: in diesem Moment.",
         "ar": "الآن تمامًا (عامية لـ gerade)",
         "cat": "Kapitel 6",
-        "ex": "Ich habe grad keine Zeit, ruf mich später an."
+        "ex": "Ich habe grad keine Zeit, ruf mich später an.",
+        "img": "assets/vocab-scenes/b1-1/k6/106.webp"
       },
       {
         "w": "die Hürde",
@@ -7677,7 +7782,8 @@ window.B1_BOOK = [
         "d": "Eine einzelne Zeile aus einem Lied.",
         "ar": "سطر من أغنية",
         "cat": "Kapitel 6",
-        "ex": "Diese Liedzeile geht mir nicht aus dem Kopf."
+        "ex": "Diese Liedzeile geht mir nicht aus dem Kopf.",
+        "img": "assets/vocab-scenes/b1-1/k6/108.webp"
       },
       {
         "w": "nachdenken",
@@ -7724,7 +7830,8 @@ window.B1_BOOK = [
         "d": "Das Erklären einer Sache mit anderen Worten.",
         "ar": "الوصف",
         "cat": "Kapitel 6",
-        "ex": "Wenn dir das Wort fehlt, hilft eine Umschreibung."
+        "ex": "Wenn dir das Wort fehlt, hilft eine Umschreibung.",
+        "img": "assets/vocab-scenes/b1-1/k6/114.webp"
       },
       {
         "w": "bewerten",
@@ -7747,7 +7854,8 @@ window.B1_BOOK = [
         "d": "Klar und leicht zu verstehen.",
         "ar": "مفهوم / واضح",
         "cat": "Kapitel 6",
-        "ex": "Die Erklärung ist verständlich."
+        "ex": "Die Erklärung ist verständlich.",
+        "img": "assets/vocab-scenes/b1-1/k6/117.webp"
       },
       {
         "w": "der Bass",
@@ -7890,21 +7998,24 @@ window.B1_BOOK = [
         "d": "Der Name eines Liedes.",
         "ar": "عنوان الأغنية",
         "cat": "Kapitel 6",
-        "ex": "Der Songtitel steht auf dem Plakat."
+        "ex": "Der Songtitel steht auf dem Plakat.",
+        "img": "assets/vocab-scenes/b1-1/k6/135.webp"
       },
       {
         "w": "bezeichnen",
         "d": "Etwas mit einem Namen oder Ausdruck benennen.",
         "ar": "يسمّي / يطلِق اسمًا على",
         "cat": "Kapitel 6",
-        "ex": "Man bezeichnet dieses Wort als Internationalismus."
+        "ex": "Man bezeichnet dieses Wort als Internationalismus.",
+        "img": "assets/vocab-scenes/b1-1/k6/136.webp"
       },
       {
         "w": "die Bezeichnung",
         "d": "Das Wort, mit dem man etwas benennt.",
         "ar": "التسمية / المصطلح",
         "cat": "Kapitel 6",
-        "ex": "Auf der Verpackung steht die genaue Bezeichnung des Produkts."
+        "ex": "Auf der Verpackung steht die genaue Bezeichnung des Produkts.",
+        "img": "assets/vocab-scenes/b1-1/k6/137.webp"
       },
       {
         "w": "der Doktorand",
@@ -7927,7 +8038,8 @@ window.B1_BOOK = [
         "d": "Ein Wort, das in mehreren Sprachen ähnlich aussieht und dasselbe bedeutet.",
         "ar": "كلمة دولية مشتركة بين لغات",
         "cat": "Kapitel 6",
-        "ex": "Hotel ist in vielen Sprachen ein Internationalismus."
+        "ex": "Hotel ist in vielen Sprachen ein Internationalismus.",
+        "img": "assets/vocab-scenes/b1-1/k6/140.webp"
       }
     ],
     "readings": [],

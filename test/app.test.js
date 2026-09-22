@@ -274,30 +274,27 @@ test('Kapitel 12 includes its Lernwortschatz with matching square photos', () =>
   assert.match(html, /data_lernwortschatz12\.js\?v=lernwortschatz12-1/);
 });
 
-test('B1.1 vocabulary uses only reviewed photos and stays text-only otherwise', () => {
+test('every B1.1 card carries its own reviewed photo', () => {
   const context = vm.createContext({ window: {} });
   vm.runInContext(readFileSync(join(root, 'app', 'data_b1_1.js'), 'utf8'), context);
   const cards = context.window.B1_BOOK.flatMap(chapter => chapter.vocab);
   assert.equal(cards.length, 982);
-  // photos come only from the reviewed, generated set; every other card is text-only
+  // photos come only from the reviewed, generated set, and no card is left without one
   const withImg = cards.filter(card => 'img' in card);
+  assert.deepEqual(cards.filter(card => !card.img).map(card => card.w).join(' | '), '', 'a B1.1 card has no photo');
   withImg.forEach(card => {
     assert.match(card.img, /^assets\/vocab-scenes\/b1-1\/k\d+\/\d{3}\.webp$/, `Unexpected image path: ${card.w}`);
     assert.ok(existsSync(join(root, 'app', card.img)), `Missing ${card.img}`);
+    // a looping story card also ships its first frame for readers who ask for less motion
+    if (card.still) {
+      assert.equal(card.still, card.img.replace(/\.webp$/, '-still.webp'), `Unexpected still frame: ${card.w}`);
+      assert.ok(existsSync(join(root, 'app', card.still)), `Missing ${card.still}`);
+    }
   });
   assert.equal(new Set(withImg.map(card => card.img)).size, withImg.length, 'an image is shared by two cards');
-  // illustrated units: every card has its photo except words a picture cannot show without text
-  const textOnly = {
-    1: 'die Zugnummer | der Kausalsatz | der Konzessivsatz',
-    2: 'der Slogan | sodass | der Markenname | der Spruch | die Werbesprache | das Wortspiel | das Adverb | der Konsekutivsatz | die Silbe',
-    3: 'weshalb | zweimonatig | mittlerweile | seitdem | tätig | unverändert | veränderte | die Vergangenheitsform | der Sonnabend | jetzig | niemals | Und | der Aspekt | relativ | die Tempusform | nachher | beziehungsweise | duzen',
-    4: 'ursprünglich | daran | die Konjunktivform | der Bedingungssatz | Wenn | kürzlich | aussagekräftig | darum | unser | frühere | jedoch | das PDF-Dokument | relevant | sämtlich | selbstverständlich | der Stand | zukünftig | der Zweck | darüber | das Pronominaladverb | danach | gesucht | absolut | der Faktor | lauter | möglichst',
-    5: 'Bio- | der Durchschnitt | mitrechnen | die Herkunft | aufhalten | ökologisch | der Begriff | allerdings | der Bedarf | effizient | der Fall | korrekt | das Resultat | die Seite | das Satzzeichen | der Absatz | allein | damit | gibt | jederzeit | sogenannt | zurück | der Satzanfang | die Ansicht | völlig | extra | immer',
-    6: 'die Bildunterschrift | irgendwann | die Prognose | fassen | das Futur | konkret | eventuell | die n-Deklination | das Zitat | die Vokallänge | heutig | längst | lauten | das Prinzip | voraussichtlich | der Anteil | umformulieren | der Kasus | möglicherweise | dahin | grad | die Liedzeile | die Umschreibung | verständlich | der Songtitel | bezeichnen | die Bezeichnung | der Internationalismus',
-  };
-  for (const [num, expected] of Object.entries(textOnly)) {
-    const unit = context.window.B1_BOOK.find(chapter => chapter.num === Number(num)).vocab;
-    assert.equal(unit.filter(card => !card.img).map(card => card.w).join(' | '), expected, `Unit ${num} text-only set changed`);
+  // each unit's photos are numbered by card position
+  for (const chapter of context.window.B1_BOOK) {
+    const num = chapter.num, unit = chapter.vocab;
     unit.forEach((card, index) => {
       if (card.img) assert.equal(card.img, `assets/vocab-scenes/b1-1/k${num}/${String(index + 1).padStart(3, '0')}.webp`, `Photo out of order: ${card.w}`);
     });
@@ -313,7 +310,7 @@ test('B1.1 vocabulary uses only reviewed photos and stays text-only otherwise', 
   assert.equal(cards.find(card => card.w === 'der Mars').ar, 'كوكب المريخ');
   assert.equal(cards.find(card => card.w === 'die Karotte').ar, 'جزرة');
   assert.equal(cards.find(card => card.w === 'die Vollpension').ar, 'إقامة كاملة تشمل الإفطار والغداء والعشاء');
-  assert.match(html, /data_b1_1\.js\?v=b1-1-vocab-19/);
+  assert.match(html, /data_b1_1\.js\?v=b1-1-vocab-20/);
   cards.forEach(card => {
     // definitions and examples must read as B1 sentences, not dictionary dumps
     assert.match(card.d, /^[A-ZÄÖÜ„]/, `Definition not a sentence: ${card.w}`);
@@ -363,8 +360,8 @@ test('B1.1 chapters contain complete lesson sections', () => {
     });
   }
   assert.match(html, /data_b1_1_lessons\.js\?v=b1-1-lessons-2/);
-  assert.match(html, /serviceWorker\.register\('sw\.js\?v=64'/);
-  assert.match(html, /sessionStorage\.setItem\('pwa-v64-reloaded','1'\)/);
+  assert.match(html, /serviceWorker\.register\('sw\.js\?v=65'/);
+  assert.match(html, /sessionStorage\.setItem\('pwa-v65-reloaded','1'\)/);
   assert.match(html, /const B1_TABS = \[[\s\S]*?\['lesen','Lesen'\][\s\S]*?\['redemittel','Redemittel'\][\s\S]*?\['grammatik','Grammatik'\][\s\S]*?\['sprechen','Sprechen'\][\s\S]*?\['quiz','Lerncheck'\]/);
   assert.match(html, /go\('\$\{chapter\.route\}\/ueberblick'\)/);
 });
@@ -383,8 +380,8 @@ test('the old B1.1 images and their code paths stay removed', () => {
   assert.doesNotMatch(shell, /Karteikarten mit Bildern/);
   // B1.1 must not fall back to the A2 emoji stickers either: those keywords
   // mismatch B1 words (Insekt -> football), which is what images were removed for.
-  assert.match(html, /startsWith\('b1\.1\/'\)\)\{[\s\S]{0,900}?fc-visual--plain/);
-  assert.doesNotMatch(html, /startsWith\('b1\.1\/'\)\)\{[\s\S]{0,900}?fallbackVocabSticker/);
+  assert.match(html, /startsWith\('b1\.1\/'\)\)\{[\s\S]{0,1600}?fc-visual--plain/);
+  assert.doesNotMatch(html, /startsWith\('b1\.1\/'\)\)\{[\s\S]{0,1600}?fallbackVocabSticker/);
 });
 
 test('fixed vocabulary speech covers every word in chapters 7 through 12', () => {
@@ -623,7 +620,7 @@ test('next-generation shell and design system are wired into the offline app', (
   assert.match(worker, /data_lernwortschatz12\.js/);
   assert.match(worker, /data_vocab_topics7_12\.js/);
   assert.match(worker, /assets\/vocab-scenes\/k7\/145\.webp/);
-  assert.match(worker, /CACHE_VERSION = 'v64'/);
+  assert.match(worker, /CACHE_VERSION = 'v65'/);
   assert.match(worker, /vocab-scenes\\\/k7\\\/\\d\+\\\.webp/);
 });
 
@@ -673,8 +670,8 @@ test('offline dictionary worker uses the exact pre-cached asset keys', () => {
   assert.match(serviceWorker, /DICTIONARY_CACHE/);
   assert.match(serviceWorker, /cache-dictionary/);
   assert.match(serviceWorker, /dictionary-cache-status/);
-  assert.match(html, /register\('sw\.js\?v=64',\{updateViaCache:'none'\}\)/);
+  assert.match(html, /register\('sw\.js\?v=65',\{updateViaCache:'none'\}\)/);
   assert.match(html, /addEventListener\('controllerchange'/);
-  assert.match(html, /pwa-v64-reloaded/);
+  assert.match(html, /pwa-v65-reloaded/);
   assert.match(html, /controllerchange[^}]+location\.reload\(\)/s);
 });
