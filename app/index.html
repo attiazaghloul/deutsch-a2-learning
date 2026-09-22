@@ -1120,6 +1120,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <script src="data_book1.js"></script>
 <script src="data_book2.js"></script>
 <script src="data_b1_1.js?v=b1-1-vocab-15"></script>
+<script src="data_b1_1_lessons.js?v=b1-1-lessons-1"></script>
 <script src="data_extra.js"></script>
 <script src="data_lernwortschatz8.js?v=lernwortschatz8-1"></script>
 <script src="data_lernwortschatz9.js?v=lernwortschatz9-3"></script>
@@ -2876,7 +2877,7 @@ const A2_SECTIONS=[
 ];
 
 const B1_SECTIONS=[
-  {route:'b1.1/lessons',icon:'1',title:'Lektionen',text:'Sechs Kapitel B1.1 mit Wortschatzkarten und Bildern.',ar:'ست وحدات B1.1 مع كلمات وبطاقات وصور.'}
+  {route:'b1.1/lessons',icon:'1',title:'Lektionen',text:'Sechs vollständige Kapitel mit Wortschatz, Lesen, Grammatik, Sprechen und Quiz.',ar:'ست وحدات كاملة مع الكلمات والقراءة والقواعد والمحادثة والاختبارات.'}
 ];
 
 /* ===================== home ===================== */
@@ -2947,8 +2948,8 @@ function renderLevelSelector(){
     <button type="button" class="level-card b1" onclick="go('b1.1')">
       <span class="level-code">B1.1</span>
       <h3>Netzwerk neu B1.1</h3>
-      <p>Sechs Kapitel mit 982 Wortschatzkarten, arabischer Bedeutung und Beispielsätzen.</p>
-      ${ar('ست وحدات B1.1 مع 982 كلمة مع المعنى العربي وأمثلة وبطاقات تفاعلية.')}
+      <p>Sechs vollständige Kapitel mit Wortschatzkarten, Lesetexten, Grammatik, Redemitteln und Quiz.</p>
+      ${ar('ست وحدات B1.1 كاملة مع الكلمات والقراءة والقواعد والمحادثة والاختبارات.')}
       <div class="level-meta"><span class="level-pill">Kapitel 1-6</span><span class="level-pill">neu</span></div>
     </button>
     <article class="level-card soon locked">
@@ -3496,8 +3497,8 @@ function renderB1Home(){
   view.innerHTML = (window.NextUI?.featureTabs('b1.1','lessons')||'') + `
   <section class="hero">
     <h2>Netzwerk neu B1.1</h2>
-    <p>Die ersten sechs Kapitel aus dem Kapitelwortschatz: 982 Wörter mit arabischer Bedeutung, Beispielsätzen und Karteikarten.</p>
-    ${ar('أول ست وحدات من مفردات Netzwerk neu B1.1: 982 كلمة بالمعنى العربي وأمثلة ونظام الكروت.')}
+    <p>Sechs vollständige Kapitel aus Netzwerk neu B1.1: Wortschatz, Lesetexte, Grammatik, Redemittel, Sprechen und Quiz.</p>
+    ${ar('ست وحدات كاملة من Netzwerk neu B1.1: كلمات وقراءة وقواعد وتعبيرات ومحادثة واختبارات.')}
   </section>
   <div class="section-label">📙 B1.1 · Kapitel 1–6</div>
   <section class="a1-roadmap">

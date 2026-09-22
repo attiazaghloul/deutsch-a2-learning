@@ -334,6 +334,29 @@ test('B1.1 vocabulary uses only reviewed photos and stays text-only otherwise', 
   });
 });
 
+test('B1.1 chapters contain complete lesson sections', () => {
+  const context = vm.createContext({ window: {} });
+  for (const file of ['data_b1_1.js', 'data_b1_1_lessons.js']) {
+    vm.runInContext(readFileSync(join(root, 'app', file), 'utf8'), context);
+  }
+
+  assert.equal(context.window.B1_BOOK.length, 6);
+  assert.equal(context.window.B1_BOOK.reduce((sum, chapter) => sum + chapter.readings.length, 0), 16);
+  for (const chapter of context.window.B1_BOOK) {
+    assert.ok(chapter.readings.length >= 2, `B1.1 K${chapter.num} needs readings`);
+    assert.ok(chapter.grammar.length >= 2, `B1.1 K${chapter.num} needs grammar`);
+    assert.ok(chapter.redemittel.length >= 2, `B1.1 K${chapter.num} needs phrases`);
+    assert.ok(chapter.speaking.questions.length >= 4, `B1.1 K${chapter.num} needs speaking prompts`);
+    assert.ok(chapter.quiz.length >= 3, `B1.1 K${chapter.num} needs a quiz`);
+    chapter.readings.forEach(reading => {
+      assert.ok(reading.text.length > 500);
+      assert.ok(reading.glossary.length >= 6);
+      assert.equal(reading.questions.length, 4);
+    });
+  }
+  assert.match(html, /data_b1_1_lessons\.js\?v=b1-1-lessons-1/);
+});
+
 test('the old B1.1 images and their code paths stay removed', () => {
   assert.ok(!existsSync(join(root, 'app', 'assets', 'vocab-scenes', 'b1.1')), 'b1.1 asset folder still exists');
   assert.doesNotMatch(html, /vocab-scenes\/b1\.1/);
@@ -588,7 +611,7 @@ test('next-generation shell and design system are wired into the offline app', (
   assert.match(worker, /data_lernwortschatz12\.js/);
   assert.match(worker, /data_vocab_topics7_12\.js/);
   assert.match(worker, /assets\/vocab-scenes\/k7\/145\.webp/);
-  assert.match(worker, /CACHE_VERSION = 'v57'/);
+  assert.match(worker, /CACHE_VERSION = 'v58'/);
   assert.match(worker, /vocab-scenes\\\/k7\\\/\\d\+\\\.webp/);
 });
 
