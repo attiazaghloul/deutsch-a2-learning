@@ -359,6 +359,8 @@ test('B1.1 chapters contain complete lesson sections', () => {
     });
   }
   assert.match(html, /data_b1_1_lessons\.js\?v=b1-1-lessons-2/);
+  assert.match(html, /serviceWorker\.register\('sw\.js\?v=60'/);
+  assert.match(html, /sessionStorage\.setItem\('pwa-v60-reloaded','1'\)/);
   assert.match(html, /const B1_TABS = \[[\s\S]*?\['lesen','Lesen'\][\s\S]*?\['redemittel','Redemittel'\][\s\S]*?\['grammatik','Grammatik'\][\s\S]*?\['sprechen','Sprechen'\][\s\S]*?\['quiz','Lerncheck'\]/);
   assert.match(html, /go\('\$\{chapter\.route\}\/ueberblick'\)/);
 });
