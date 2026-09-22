@@ -2278,280 +2278,320 @@ window.B1_BOOK = [
         "d": "Ein Mann, der beruflich meist körperliche Arbeit leistet.",
         "ar": "العامل",
         "cat": "Kapitel 3",
-        "ex": "Der Arbeiter kontrolliert die fertigen Teile."
+        "ex": "Der Arbeiter kontrolliert die fertigen Teile.",
+        "img": "assets/vocab-scenes/b1-1/k3/001.webp"
       },
       {
         "w": "die Arbeiterin",
         "d": "Eine Frau, die beruflich meist körperliche Arbeit leistet.",
         "ar": "عاملة",
         "cat": "Kapitel 3",
-        "ex": "Die Arbeiterin kontrolliert die fertigen Teile."
+        "ex": "Die Arbeiterin kontrolliert die fertigen Teile.",
+        "img": "assets/vocab-scenes/b1-1/k3/002.webp"
       },
       {
         "w": "automatisiert",
         "d": "So gesteuert, dass ein Vorgang selbstständig von einer Maschine oder einem Programm abläuft.",
         "ar": "الآلي",
         "cat": "Kapitel 3",
-        "ex": "Die automatisierte Anlage sortiert die Pakete selbstständig."
+        "ex": "Die automatisierte Anlage sortiert die Pakete selbstständig.",
+        "img": "assets/vocab-scenes/b1-1/k3/003.webp"
       },
       {
         "w": "die Bedingung",
         "d": "Etwas, das erfüllt sein muss, damit etwas möglich wird.",
         "ar": "شرط / متطلَّب",
         "cat": "Kapitel 3",
-        "ex": "Gute Deutschkenntnisse sind eine wichtige Bedingung für die Stelle."
+        "ex": "Gute Deutschkenntnisse sind eine wichtige Bedingung für die Stelle.",
+        "img": "assets/vocab-scenes/b1-1/k3/004.webp"
       },
       {
         "w": "die Behandlung",
         "d": "Die Maßnahmen, mit denen ein Arzt einen Patienten gesund macht.",
         "ar": "العلاج",
         "cat": "Kapitel 3",
-        "ex": "Die Behandlung dauert etwa zwei Wochen."
+        "ex": "Die Behandlung dauert etwa zwei Wochen.",
+        "img": "assets/vocab-scenes/b1-1/k3/005.webp"
       },
       {
         "w": "die Diagnose",
         "d": "Die Feststellung des Arztes, welche Krankheit jemand hat.",
         "ar": "التشخيص",
         "cat": "Kapitel 3",
-        "ex": "Der Arzt stellte schnell die richtige Diagnose."
+        "ex": "Der Arzt stellte schnell die richtige Diagnose.",
+        "img": "assets/vocab-scenes/b1-1/k3/006.webp"
       },
       {
         "w": "die Gruppenarbeit",
         "d": "Eine Aufgabe, die mehrere Lernende gemeinsam bearbeiten.",
         "ar": "العمل الجماعي",
         "cat": "Kapitel 3",
-        "ex": "Bei der Gruppenarbeit lösen die Lernenden die Aufgabe gemeinsam."
+        "ex": "Bei der Gruppenarbeit lösen die Lernenden die Aufgabe gemeinsam.",
+        "img": "assets/vocab-scenes/b1-1/k3/007.webp"
       },
       {
         "w": "die Handarbeit",
         "d": "Arbeit, die man mit den Händen und ohne Maschinen macht.",
         "ar": "العمل اليدوي",
         "cat": "Kapitel 3",
-        "ex": "Diese Schuhe sind reine Handarbeit."
+        "ex": "Diese Schuhe sind reine Handarbeit.",
+        "img": "assets/vocab-scenes/b1-1/k3/008.webp"
       },
       {
         "w": "die Hygiene",
         "d": "Alles, was man für Sauberkeit und Gesundheit tut.",
         "ar": "النظافة",
         "cat": "Kapitel 3",
-        "ex": "Im Krankenhaus ist Hygiene besonders wichtig."
+        "ex": "Im Krankenhaus ist Hygiene besonders wichtig.",
+        "img": "assets/vocab-scenes/b1-1/k3/009.webp"
       },
       {
         "w": "die Konkurrenz",
         "d": "Andere Firmen oder Personen, die dasselbe anbieten wollen.",
         "ar": "المنافسة",
         "cat": "Kapitel 3",
-        "ex": "Die Konkurrenz in dieser Branche ist sehr hart."
+        "ex": "Die Konkurrenz in dieser Branche ist sehr hart.",
+        "img": "assets/vocab-scenes/b1-1/k3/010.webp"
       },
       {
         "w": "medizinisch",
         "d": "Die Medizin betreffend.",
         "ar": "طبي",
         "cat": "Kapitel 3",
-        "ex": "Sie braucht dringend medizinische Hilfe."
+        "ex": "Sie braucht dringend medizinische Hilfe.",
+        "img": "assets/vocab-scenes/b1-1/k3/011.webp"
       },
       {
         "w": "monoton",
         "d": "Immer gleich und darum langweilig.",
         "ar": "رتيب",
         "cat": "Kapitel 3",
-        "ex": "Die Arbeit am Band ist sehr monoton."
+        "ex": "Die Arbeit am Band ist sehr monoton.",
+        "img": "assets/vocab-scenes/b1-1/k3/012.webp"
       },
       {
         "w": "operieren",
         "d": "Einen medizinischen Eingriff an einem Patienten durchführen.",
         "ar": "يُجري عملية جراحية",
         "cat": "Kapitel 3",
-        "ex": "Die Ärztin operiert den Patienten morgen."
+        "ex": "Die Ärztin operiert den Patienten morgen.",
+        "img": "assets/vocab-scenes/b1-1/k3/013.webp"
       },
       {
         "w": "die Pflegekraft",
         "d": "Eine Person, die sich beruflich um kranke oder alte Menschen kümmert.",
         "ar": "ممرّض / مقدّم رعاية",
         "cat": "Kapitel 3",
-        "ex": "Die Pflegekraft hilft den Patienten beim Aufstehen."
+        "ex": "Die Pflegekraft hilft den Patienten beim Aufstehen.",
+        "img": "assets/vocab-scenes/b1-1/k3/014.webp"
       },
       {
         "w": "die Schulbildung",
         "d": "Alles, was man in der Schule gelernt hat.",
         "ar": "التعليم المدرسي",
         "cat": "Kapitel 3",
-        "ex": "Ohne gute Schulbildung ist die Jobsuche schwerer."
+        "ex": "Ohne gute Schulbildung ist die Jobsuche schwerer.",
+        "img": "assets/vocab-scenes/b1-1/k3/015.webp"
       },
       {
         "w": "die Strafe",
         "d": "Eine negative Folge, die jemand für ein Fehlverhalten bekommt.",
         "ar": "العقوبة",
         "cat": "Kapitel 3",
-        "ex": "Für zu schnelles Fahren muss er eine Strafe zahlen."
+        "ex": "Für zu schnelles Fahren muss er eine Strafe zahlen.",
+        "img": "assets/vocab-scenes/b1-1/k3/016.webp"
       },
       {
         "w": "tolerant",
         "d": "So, dass man die Meinung und die Lebensweise anderer akzeptiert.",
         "ar": "متسامح",
         "cat": "Kapitel 3",
-        "ex": "Ich schätze ihn, weil er so tolerant ist."
+        "ex": "Ich schätze ihn, weil er so tolerant ist.",
+        "img": "assets/vocab-scenes/b1-1/k3/017.webp"
       },
       {
         "w": "die Unterrichtsform",
         "d": "Die Art, wie Unterricht organisiert und durchgeführt wird.",
         "ar": "أسلوب التدريس",
         "cat": "Kapitel 3",
-        "ex": "Die Lehrerin probiert heute eine neue Unterrichtsform aus."
+        "ex": "Die Lehrerin probiert heute eine neue Unterrichtsform aus.",
+        "img": "assets/vocab-scenes/b1-1/k3/018.webp"
       },
       {
         "w": "der Gegensatz",
         "d": "Das Gegenteil; ein deutlicher Unterschied.",
         "ar": "التضاد / النقيض",
         "cat": "Kapitel 3",
-        "ex": "Im Gegensatz zu dir arbeite ich gern früh am Morgen."
+        "ex": "Im Gegensatz zu dir arbeite ich gern früh am Morgen.",
+        "img": "assets/vocab-scenes/b1-1/k3/019.webp"
       },
       {
         "w": "minimal",
         "d": "Sehr klein; so gering wie möglich.",
         "ar": "الحد الأدنى",
         "cat": "Kapitel 3",
-        "ex": "Die Kosten für die Fahrt waren minimal."
+        "ex": "Die Kosten für die Fahrt waren minimal.",
+        "img": "assets/vocab-scenes/b1-1/k3/020.webp"
       },
       {
         "w": "ausschließlich",
         "d": "Nur; nichts anderes als das.",
         "ar": "حصريا",
         "cat": "Kapitel 3",
-        "ex": "Das Restaurant kocht ausschließlich vegetarisch."
+        "ex": "Das Restaurant kocht ausschließlich vegetarisch.",
+        "img": "assets/vocab-scenes/b1-1/k3/021.webp"
       },
       {
         "w": "bewusst",
         "d": "Mit Absicht; mit klarem Verstand.",
         "ar": "بوعي",
         "cat": "Kapitel 3",
-        "ex": "Sie ernährt sich ganz bewusst gesund."
+        "ex": "Sie ernährt sich ganz bewusst gesund.",
+        "img": "assets/vocab-scenes/b1-1/k3/022.webp"
       },
       {
         "w": "biologisch",
         "d": "Die Biologie betreffend oder natürlich erzeugt.",
         "ar": "بيولوجي / عضوي",
         "cat": "Kapitel 3",
-        "ex": "Der Hof baut biologisches Gemüse an."
+        "ex": "Der Hof baut biologisches Gemüse an.",
+        "img": "assets/vocab-scenes/b1-1/k3/023.webp"
       },
       {
         "w": "die Diät",
         "d": "Eine besondere Ernährung, zum Beispiel um abzunehmen.",
         "ar": "النظام الغذائي",
         "cat": "Kapitel 3",
-        "ex": "Der Arzt hat ihm eine strenge Diät verordnet."
+        "ex": "Der Arzt hat ihm eine strenge Diät verordnet.",
+        "img": "assets/vocab-scenes/b1-1/k3/024.webp"
       },
       {
         "w": "ernähren",
         "d": "Essen zu sich nehmen oder jemanden mit Essen versorgen.",
         "ar": "يتغذّى / يُطعم",
         "cat": "Kapitel 3",
-        "ex": "Wir ernähren uns gesund."
+        "ex": "Wir ernähren uns gesund.",
+        "img": "assets/vocab-scenes/b1-1/k3/025.webp"
       },
       {
         "w": "die Ernährung",
         "d": "Die Art und Weise, wie man sich ernährt.",
         "ar": "النظام الغذائي",
         "cat": "Kapitel 3",
-        "ex": "Eine ausgewogene Ernährung ist wichtig."
+        "ex": "Eine ausgewogene Ernährung ist wichtig.",
+        "img": "assets/vocab-scenes/b1-1/k3/026.webp"
       },
       {
         "w": "die Fitness",
         "d": "Der gute körperliche Zustand eines Menschen.",
         "ar": "اللياقة البدنية",
         "cat": "Kapitel 3",
-        "ex": "Er tut viel für seine Fitness und läuft jeden Tag."
+        "ex": "Er tut viel für seine Fitness und läuft jeden Tag.",
+        "img": "assets/vocab-scenes/b1-1/k3/027.webp"
       },
       {
         "w": "die Form",
         "d": "Die äußere Gestalt von etwas; auch die Art, wie etwas gemacht ist.",
         "ar": "الشكل / الهيئة",
         "cat": "Kapitel 3",
-        "ex": "Die Karotte hat eine seltsame Form."
+        "ex": "Die Karotte hat eine seltsame Form.",
+        "img": "assets/vocab-scenes/b1-1/k3/028.webp"
       },
       {
         "w": "die Frucht",
         "d": "Der essbare Teil einer Pflanze, zum Beispiel ein Apfel.",
         "ar": "الفاكهة",
         "cat": "Kapitel 3",
-        "ex": "Diese Frucht schmeckt süß und ist sehr gesund."
+        "ex": "Diese Frucht schmeckt süß und ist sehr gesund.",
+        "img": "assets/vocab-scenes/b1-1/k3/029.webp"
       },
       {
         "w": "halten",
         "d": "Etwas mit der Hand festhalten oder in einer Position lassen.",
         "ar": "يمسك / يُبقي",
         "cat": "Kapitel 3",
-        "ex": "Bitte halten Sie die Tür einen Moment offen."
+        "ex": "Bitte halten Sie die Tür einen Moment offen.",
+        "img": "assets/vocab-scenes/b1-1/k3/030.webp"
       },
       {
         "w": "die Karotte",
         "d": "Ein längliches orangefarbenes Gemüse.",
         "ar": "جزرة",
         "cat": "Kapitel 3",
-        "ex": "Für den Salat schneide ich eine Karotte klein."
+        "ex": "Für den Salat schneide ich eine Karotte klein.",
+        "img": "assets/vocab-scenes/b1-1/k3/031.webp"
       },
       {
         "w": "das Nahrungsmittel",
         "d": "Etwas, das man isst oder trinkt.",
         "ar": "الطعام",
         "cat": "Kapitel 3",
-        "ex": "Frisches Gemüse ist ein gesundes Nahrungsmittel."
+        "ex": "Frisches Gemüse ist ein gesundes Nahrungsmittel.",
+        "img": "assets/vocab-scenes/b1-1/k3/032.webp"
       },
       {
         "w": "produziert",
         "d": "Hergestellt oder erzeugt; Partizip II von „produzieren“.",
         "ar": "مُنتَج / تم إنتاجه",
         "cat": "Kapitel 3",
-        "ex": "Die Firma produziert ihre Möbel in Deutschland."
+        "ex": "Die Firma produziert ihre Möbel in Deutschland.",
+        "img": "assets/vocab-scenes/b1-1/k3/033.webp"
       },
       {
         "w": "die Speise",
         "d": "Ein zubereitetes Essen; ein Gericht.",
         "ar": "الطعام",
         "cat": "Kapitel 3",
-        "ex": "Im Hotel gibt es warme und kalte Speisen."
+        "ex": "Im Hotel gibt es warme und kalte Speisen.",
+        "img": "assets/vocab-scenes/b1-1/k3/034.webp"
       },
       {
         "w": "der Trend",
         "d": "Eine Entwicklung, die gerade in eine bestimmte Richtung geht.",
         "ar": "الاتجاه",
         "cat": "Kapitel 3",
-        "ex": "Vegetarisch zu essen ist ein klarer Trend."
+        "ex": "Vegetarisch zu essen ist ein klarer Trend.",
+        "img": "assets/vocab-scenes/b1-1/k3/035.webp"
       },
       {
         "w": "vegan",
         "d": "Ohne alle Produkte vom Tier, also auch ohne Milch und Eier.",
         "ar": "نباتي صِرف (فيغان)",
         "cat": "Kapitel 3",
-        "ex": "Sie lebt seit zwei Jahren vegan."
+        "ex": "Sie lebt seit zwei Jahren vegan.",
+        "img": "assets/vocab-scenes/b1-1/k3/036.webp"
       },
       {
         "w": "vegetarisch",
         "d": "Ohne Fleisch und Fisch.",
         "ar": "نباتي",
         "cat": "Kapitel 3",
-        "ex": "Sie isst seit Jahren vegetarisch."
+        "ex": "Sie isst seit Jahren vegetarisch.",
+        "img": "assets/vocab-scenes/b1-1/k3/037.webp"
       },
       {
         "w": "das Vitamin",
         "d": "Ein Stoff im Essen, den der Körper zum Leben braucht.",
         "ar": "الفيتامين",
         "cat": "Kapitel 3",
-        "ex": "Obst enthält viele Vitamine."
+        "ex": "Obst enthält viele Vitamine.",
+        "img": "assets/vocab-scenes/b1-1/k3/038.webp"
       },
       {
         "w": "das Workout",
         "d": "Ein sportliches Training für den Körper.",
         "ar": "تمرين رياضي",
         "cat": "Kapitel 3",
-        "ex": "Nach der Arbeit mache ich ein kurzes Workout."
+        "ex": "Nach der Arbeit mache ich ein kurzes Workout.",
+        "img": "assets/vocab-scenes/b1-1/k3/039.webp"
       },
       {
         "w": "erben",
         "d": "Nach dem Tod eines Menschen dessen Besitz bekommen.",
         "ar": "يرث",
         "cat": "Kapitel 3",
-        "ex": "Sie hat das Haus von ihrer Großmutter geerbt."
+        "ex": "Sie hat das Haus von ihrer Großmutter geerbt.",
+        "img": "assets/vocab-scenes/b1-1/k3/040.webp"
       },
       {
         "w": "weshalb",
@@ -2565,252 +2605,288 @@ window.B1_BOOK = [
         "d": "Jemanden irgendwohin bringen; zu einem Ergebnis kommen.",
         "ar": "يقود / يؤدّي إلى",
         "cat": "Kapitel 3",
-        "ex": "Dieser Weg führt direkt zum Bahnhof."
+        "ex": "Dieser Weg führt direkt zum Bahnhof.",
+        "img": "assets/vocab-scenes/b1-1/k3/042.webp"
       },
       {
         "w": "gewohnt",
         "d": "Bekannt und normal, weil man es oft erlebt hat.",
         "ar": "المعتاد",
         "cat": "Kapitel 3",
-        "ex": "Er sitzt auf seinem gewohnten Platz."
+        "ex": "Er sitzt auf seinem gewohnten Platz.",
+        "img": "assets/vocab-scenes/b1-1/k3/043.webp"
       },
       {
         "w": "die Krisensituation",
         "d": "Eine schwierige Lage, in der schnell gehandelt werden muss.",
         "ar": "وضع الأزمة",
         "cat": "Kapitel 3",
-        "ex": "In einer Krisensituation muss man ruhig bleiben."
+        "ex": "In einer Krisensituation muss man ruhig bleiben.",
+        "img": "assets/vocab-scenes/b1-1/k3/044.webp"
       },
       {
         "w": "die Lebensgeschichte",
         "d": "Die Geschichte und Entwicklung im Leben einer Person.",
         "ar": "قصة الحياة",
         "cat": "Kapitel 3",
-        "ex": "In dem Buch erzählt sie ihre ganze Lebensgeschichte."
+        "ex": "In dem Buch erzählt sie ihre ganze Lebensgeschichte.",
+        "img": "assets/vocab-scenes/b1-1/k3/045.webp"
       },
       {
         "w": "der Lebensweg",
         "d": "Der Weg, den jemand im Leben nimmt.",
         "ar": "طريق الحياة",
         "cat": "Kapitel 3",
-        "ex": "Sein Lebensweg führte ihn von Kairo nach Berlin."
+        "ex": "Sein Lebensweg führte ihn von Kairo nach Berlin.",
+        "img": "assets/vocab-scenes/b1-1/k3/046.webp"
       },
       {
         "w": "der Prozess",
         "d": "Eine Entwicklung in mehreren Schritten; auch ein Verfahren vor Gericht.",
         "ar": "العملية / الدعوى القضائية",
         "cat": "Kapitel 3",
-        "ex": "Deutsch zu lernen ist ein langer Prozess."
+        "ex": "Deutsch zu lernen ist ein langer Prozess.",
+        "img": "assets/vocab-scenes/b1-1/k3/047.webp"
       },
       {
         "w": "raus",
         "d": "Umgangssprachlich für „heraus“ oder „hinaus“.",
         "ar": "خارج",
         "cat": "Kapitel 3",
-        "ex": "Komm doch raus, die Sonne scheint!"
+        "ex": "Komm doch raus, die Sonne scheint!",
+        "img": "assets/vocab-scenes/b1-1/k3/048.webp"
       },
       {
         "w": "der Todesfall",
         "d": "Der Tod eines Menschen.",
         "ar": "الموت",
         "cat": "Kapitel 3",
-        "ex": "Wegen eines Todesfalls in der Familie fuhr sie nach Hause."
+        "ex": "Wegen eines Todesfalls in der Familie fuhr sie nach Hause.",
+        "img": "assets/vocab-scenes/b1-1/k3/049.webp"
       },
       {
         "w": "die Trennung",
         "d": "Das Ende einer Beziehung; auch das Auseinandergehen von zwei Dingen.",
         "ar": "الانفصال",
         "cat": "Kapitel 3",
-        "ex": "Nach der Trennung zog er in eine andere Stadt."
+        "ex": "Nach der Trennung zog er in eine andere Stadt.",
+        "img": "assets/vocab-scenes/b1-1/k3/050.webp"
       },
       {
         "w": "der Wendepunkt",
         "d": "Der Moment, in dem sich etwas stark verändert.",
         "ar": "نقطة التحول",
         "cat": "Kapitel 3",
-        "ex": "Die Geburt seiner Tochter war ein Wendepunkt in seinem Leben."
+        "ex": "Die Geburt seiner Tochter war ein Wendepunkt in seinem Leben.",
+        "img": "assets/vocab-scenes/b1-1/k3/051.webp"
       },
       {
         "w": "der Zeitschriftenartikel",
         "d": "Ein Text, der in einer Zeitschrift steht.",
         "ar": "مقالة المجلة",
         "cat": "Kapitel 3",
-        "ex": "Ich habe einen interessanten Zeitschriftenartikel gelesen."
+        "ex": "Ich habe einen interessanten Zeitschriftenartikel gelesen.",
+        "img": "assets/vocab-scenes/b1-1/k3/052.webp"
       },
       {
         "w": "Afrika",
         "d": "Der Kontinent südlich von Europa.",
         "ar": "أفريقيا",
         "cat": "Kapitel 3",
-        "ex": "Sie hat zwei Jahre in Afrika gearbeitet."
+        "ex": "Sie hat zwei Jahre in Afrika gearbeitet.",
+        "img": "assets/vocab-scenes/b1-1/k3/053.webp"
       },
       {
         "w": "das Anliegen",
         "d": "Ein Wunsch oder eine Bitte, die man jemandem sagt.",
         "ar": "طلب / مسألة مهمة",
         "cat": "Kapitel 3",
-        "ex": "Ich habe ein wichtiges Anliegen an Sie."
+        "ex": "Ich habe ein wichtiges Anliegen an Sie.",
+        "img": "assets/vocab-scenes/b1-1/k3/054.webp"
       },
       {
         "w": "der Berufssoldat",
         "d": "Ein Mann, der den Soldatenberuf als festen Beruf ausübt.",
         "ar": "الجندي المحترف",
         "cat": "Kapitel 3",
-        "ex": "Als Berufssoldat war er oft im Ausland."
+        "ex": "Als Berufssoldat war er oft im Ausland.",
+        "img": "assets/vocab-scenes/b1-1/k3/055.webp"
       },
       {
         "w": "die Berufssoldatin",
         "d": "Eine Frau, die den Soldatenberuf als festen Beruf ausübt.",
         "ar": "الجندية المحترفة",
         "cat": "Kapitel 3",
-        "ex": "Seit 2001 können Frauen in Deutschland Berufssoldatin werden."
+        "ex": "Seit 2001 können Frauen in Deutschland Berufssoldatin werden.",
+        "img": "assets/vocab-scenes/b1-1/k3/056.webp"
       },
       {
         "w": "der Buchautor",
         "d": "Ein Mann, der ein Buch geschrieben hat.",
         "ar": "مؤلف الكتاب",
         "cat": "Kapitel 3",
-        "ex": "Der Buchautor liest heute Abend aus seinem Roman."
+        "ex": "Der Buchautor liest heute Abend aus seinem Roman.",
+        "img": "assets/vocab-scenes/b1-1/k3/057.webp"
       },
       {
         "w": "die Buchautorin",
         "d": "Eine Frau, die ein Buch geschrieben hat.",
         "ar": "مؤلفة الكتاب",
         "cat": "Kapitel 3",
-        "ex": "Die Buchautorin schreibt gerade ihr drittes Buch."
+        "ex": "Die Buchautorin schreibt gerade ihr drittes Buch.",
+        "img": "assets/vocab-scenes/b1-1/k3/058.webp"
       },
       {
         "w": "die Bundeswehrzeit",
         "d": "Die Zeit, in der jemand bei der deutschen Bundeswehr war.",
         "ar": "فترة الجيش الألماني",
         "cat": "Kapitel 3",
-        "ex": "Über seine Bundeswehrzeit erzählt er nur selten."
+        "ex": "Über seine Bundeswehrzeit erzählt er nur selten.",
+        "img": "assets/vocab-scenes/b1-1/k3/059.webp"
       },
       {
         "w": "einsetzen",
         "d": "Etwas an die vorgesehene Stelle setzen oder für einen Zweck verwenden.",
         "ar": "يُدخل / يستخدم",
         "cat": "Kapitel 3",
-        "ex": "Die Firma setzt moderne Maschinen ein."
+        "ex": "Die Firma setzt moderne Maschinen ein.",
+        "img": "assets/vocab-scenes/b1-1/k3/060.webp"
       },
       {
         "w": "die Herausforderung",
         "d": "Eine schwere Aufgabe, für die man sich anstrengen muss.",
         "ar": "التحدي",
         "cat": "Kapitel 3",
-        "ex": "Diese Arbeit ist eine wirkliche Herausforderung."
+        "ex": "Diese Arbeit ist eine wirkliche Herausforderung.",
+        "img": "assets/vocab-scenes/b1-1/k3/061.webp"
       },
       {
         "w": "die Lebenswende",
         "d": "Eine große Veränderung im Leben.",
         "ar": "نقطة تحوّل في الحياة",
         "cat": "Kapitel 3",
-        "ex": "Der Umzug in eine andere Stadt war eine wichtige Lebenswende."
+        "ex": "Der Umzug in eine andere Stadt war eine wichtige Lebenswende.",
+        "img": "assets/vocab-scenes/b1-1/k3/062.webp"
       },
       {
         "w": "der Mut",
         "d": "Die Kraft, etwas Schwieriges oder Gefährliches zu tun.",
         "ar": "الشجاعة",
         "cat": "Kapitel 3",
-        "ex": "Er hatte den Mut, noch einmal neu anzufangen."
+        "ex": "Er hatte den Mut, noch einmal neu anzufangen.",
+        "img": "assets/vocab-scenes/b1-1/k3/063.webp"
       },
       {
         "w": "machen",
         "d": "Etwas herstellen oder in einen bestimmten Zustand bringen.",
         "ar": "يصنع / يجعل",
         "cat": "Kapitel 3",
-        "ex": "Der Lärm macht mich nervös."
+        "ex": "Der Lärm macht mich nervös.",
+        "img": "assets/vocab-scenes/b1-1/k3/064.webp"
       },
       {
         "w": "Namibia",
         "d": "Ein Land im Südwesten von Afrika.",
         "ar": "ناميبيا",
         "cat": "Kapitel 3",
-        "ex": "In Namibia sprechen einige Menschen Deutsch."
+        "ex": "In Namibia sprechen einige Menschen Deutsch.",
+        "img": "assets/vocab-scenes/b1-1/k3/065.webp"
       },
       {
         "w": "die Rückkehr",
         "d": "Das Zurückkommen an den früheren Ort.",
         "ar": "العودة",
         "cat": "Kapitel 3",
-        "ex": "Nach seiner Rückkehr suchte er sofort eine Arbeit."
+        "ex": "Nach seiner Rückkehr suchte er sofort eine Arbeit.",
+        "img": "assets/vocab-scenes/b1-1/k3/066.webp"
       },
       {
         "w": "sammeln",
         "d": "Mehrere Dinge zusammentragen und aufbewahren.",
         "ar": "يجمع",
         "cat": "Kapitel 3",
-        "ex": "Ich sammle Briefmarken aus aller Welt."
+        "ex": "Ich sammle Briefmarken aus aller Welt.",
+        "img": "assets/vocab-scenes/b1-1/k3/067.webp"
       },
       {
         "w": "schließlich",
         "d": "Am Ende oder nach allem anderen.",
         "ar": "في النهاية",
         "cat": "Kapitel 3",
-        "ex": "Schließlich fand er eine gute Lösung."
+        "ex": "Schließlich fand er eine gute Lösung.",
+        "img": "assets/vocab-scenes/b1-1/k3/068.webp"
       },
       {
         "w": "das Schutzprojekt",
         "d": "Ein Projekt, das Menschen, Tiere oder Natur schützen soll.",
         "ar": "مشروع الحماية",
         "cat": "Kapitel 3",
-        "ex": "Das Schutzprojekt rettet bedrohte Tiere."
+        "ex": "Das Schutzprojekt rettet bedrohte Tiere.",
+        "img": "assets/vocab-scenes/b1-1/k3/069.webp"
       },
       {
         "w": "die Sehnsucht",
         "d": "Ein starker Wunsch nach jemandem oder etwas.",
         "ar": "الشوق",
         "cat": "Kapitel 3",
-        "ex": "Im Ausland hatte sie große Sehnsucht nach ihrer Familie."
+        "ex": "Im Ausland hatte sie große Sehnsucht nach ihrer Familie.",
+        "img": "assets/vocab-scenes/b1-1/k3/070.webp"
       },
       {
         "w": "verursachen",
         "d": "Der Grund für etwas sein.",
         "ar": "يسبّب",
         "cat": "Kapitel 3",
-        "ex": "Der Sturm hat große Schäden verursacht."
+        "ex": "Der Sturm hat große Schäden verursacht.",
+        "img": "assets/vocab-scenes/b1-1/k3/071.webp"
       },
       {
         "w": "wesentlich",
         "d": "Sehr wichtig; einen großen Teil ausmachend.",
         "ar": "جوهري / أساسي",
         "cat": "Kapitel 3",
-        "ex": "Sie hatte einen wesentlichen Anteil am Erfolg."
+        "ex": "Sie hatte einen wesentlichen Anteil am Erfolg.",
+        "img": "assets/vocab-scenes/b1-1/k3/072.webp"
       },
       {
         "w": "der Wildhüter",
         "d": "Ein Mann, der beruflich wilde Tiere schützt.",
         "ar": "حارس الحياة البرية",
         "cat": "Kapitel 3",
-        "ex": "Der Wildhüter kontrolliert den Wald und schützt die Tiere."
+        "ex": "Der Wildhüter kontrolliert den Wald und schützt die Tiere.",
+        "img": "assets/vocab-scenes/b1-1/k3/073.webp"
       },
       {
         "w": "die Wildhüterin",
         "d": "Eine Frau, die beruflich Wildtiere und ihren Lebensraum schützt.",
         "ar": "حارسة الحياة البرية",
         "cat": "Kapitel 3",
-        "ex": "Die Wildhüterin beobachtet die Tiere im Wald."
+        "ex": "Die Wildhüterin beobachtet die Tiere im Wald.",
+        "img": "assets/vocab-scenes/b1-1/k3/074.webp"
       },
       {
         "w": "das Wildtier",
         "d": "Ein Tier, das frei in der Natur lebt.",
         "ar": "الحيوان البري",
         "cat": "Kapitel 3",
-        "ex": "In diesem Park kann man viele Wildtiere beobachten."
+        "ex": "In diesem Park kann man viele Wildtiere beobachten.",
+        "img": "assets/vocab-scenes/b1-1/k3/075.webp"
       },
       {
         "w": "die Wildtierstation",
         "d": "Eine Einrichtung, in der verletzte oder hilfsbedürftige Wildtiere versorgt werden.",
         "ar": "محطة الحياة البرية",
         "cat": "Kapitel 3",
-        "ex": "Verletzte Vögel werden in der Wildtierstation versorgt."
+        "ex": "Verletzte Vögel werden in der Wildtierstation versorgt.",
+        "img": "assets/vocab-scenes/b1-1/k3/076.webp"
       },
       {
         "w": "zufällig",
         "d": "Nicht geplant oder absichtlich.",
         "ar": "بالصدفة",
         "cat": "Kapitel 3",
-        "ex": "Ich habe sie zufällig im Zug getroffen."
+        "ex": "Ich habe sie zufällig im Zug getroffen.",
+        "img": "assets/vocab-scenes/b1-1/k3/077.webp"
       },
       {
         "w": "zweimonatig",
@@ -2824,42 +2900,48 @@ window.B1_BOOK = [
         "d": "Nach unten.",
         "ar": "إلى الأسفل",
         "cat": "Kapitel 3",
-        "ex": "Der Weg führt von hier aus abwärts ins Tal."
+        "ex": "Der Weg führt von hier aus abwärts ins Tal.",
+        "img": "assets/vocab-scenes/b1-1/k3/079.webp"
       },
       {
         "w": "der Bahnradfahrer",
         "d": "Ein Sportler, der mit einem Fahrrad auf einer Radrennbahn fährt.",
         "ar": "متسابق دراجات المضمار",
         "cat": "Kapitel 3",
-        "ex": "Der Bahnradfahrer trainiert jeden Morgen auf der Rennbahn."
+        "ex": "Der Bahnradfahrer trainiert jeden Morgen auf der Rennbahn.",
+        "img": "assets/vocab-scenes/b1-1/k3/080.webp"
       },
       {
         "w": "die Bahnradfahrerin",
         "d": "Eine Sportlerin, die mit einem Fahrrad auf einer Radrennbahn fährt.",
         "ar": "متسابقة الدراجات على المضمار",
         "cat": "Kapitel 3",
-        "ex": "Die Bahnradfahrerin gewann das Finale deutlich."
+        "ex": "Die Bahnradfahrerin gewann das Finale deutlich.",
+        "img": "assets/vocab-scenes/b1-1/k3/081.webp"
       },
       {
         "w": "ehren",
         "d": "Jemandem öffentlich Respekt und Anerkennung zeigen.",
         "ar": "يُكرّم",
         "cat": "Kapitel 3",
-        "ex": "Die Stadt ehrt die Sportlerin mit einem Fest."
+        "ex": "Die Stadt ehrt die Sportlerin mit einem Fest.",
+        "img": "assets/vocab-scenes/b1-1/k3/082.webp"
       },
       {
         "w": "engagiert",
         "d": "So, dass man sich stark für eine Sache einsetzt.",
         "ar": "ملتزم",
         "cat": "Kapitel 3",
-        "ex": "Sie ist sehr engagiert und hilft jede Woche im Verein."
+        "ex": "Sie ist sehr engagiert und hilft jede Woche im Verein.",
+        "img": "assets/vocab-scenes/b1-1/k3/083.webp"
       },
       {
         "w": "ereignen",
         "d": "Passieren; stattfinden.",
         "ar": "يقع / يحدث",
         "cat": "Kapitel 3",
-        "ex": "Auf dem Heimweg ereignete sich ein Unfall."
+        "ex": "Auf dem Heimweg ereignete sich ein Unfall.",
+        "img": "assets/vocab-scenes/b1-1/k3/084.webp"
       },
       
       {
@@ -2867,42 +2949,48 @@ window.B1_BOOK = [
         "d": "So krank oder verletzt, dass man sich nicht mehr bewegen kann.",
         "ar": "مشلول",
         "cat": "Kapitel 3",
-        "ex": "Nach dem Unfall war sein Bein gelähmt."
+        "ex": "Nach dem Unfall war sein Bein gelähmt.",
+        "img": "assets/vocab-scenes/b1-1/k3/085.webp"
       },
       {
         "w": "der Held",
         "d": "Jemand, der etwas sehr Mutiges für andere tut; auch die Hauptperson einer Geschichte.",
         "ar": "البطل",
         "cat": "Kapitel 3",
-        "ex": "Dieser Held rettete seine Familie aus dem brennenden Haus."
+        "ex": "Dieser Held rettete seine Familie aus dem brennenden Haus.",
+        "img": "assets/vocab-scenes/b1-1/k3/086.webp"
       },
       {
         "w": "die Heldin",
         "d": "Eine Frau, die etwas sehr Mutiges tut; auch die Hauptperson einer Geschichte.",
         "ar": "البطلة",
         "cat": "Kapitel 3",
-        "ex": "Die Heldin des Romans reist allein um die Welt."
+        "ex": "Die Heldin des Romans reist allein um die Welt.",
+        "img": "assets/vocab-scenes/b1-1/k3/087.webp"
       },
       {
         "w": "der Höhepunkt",
         "d": "Der schönste oder wichtigste Moment einer Sache.",
         "ar": "الذروة",
         "cat": "Kapitel 3",
-        "ex": "Der Höhepunkt der Reise war der Sonnenaufgang am Meer."
+        "ex": "Der Höhepunkt der Reise war der Sonnenaufgang am Meer.",
+        "img": "assets/vocab-scenes/b1-1/k3/088.webp"
       },
       {
         "w": "kämpfen",
         "d": "Sich stark für etwas einsetzen; gegen jemanden streiten.",
         "ar": "يكافح / يقاتل",
         "cat": "Kapitel 3",
-        "ex": "Sie kämpft für bessere Arbeitsbedingungen."
+        "ex": "Sie kämpft für bessere Arbeitsbedingungen.",
+        "img": "assets/vocab-scenes/b1-1/k3/089.webp"
       },
       {
         "w": "lokal",
         "d": "Nur einen bestimmten Ort betreffend; örtlich.",
         "ar": "محلي",
         "cat": "Kapitel 3",
-        "ex": "Die lokale Zeitung berichtet über das Stadtfest."
+        "ex": "Die lokale Zeitung berichtet über das Stadtfest.",
+        "img": "assets/vocab-scenes/b1-1/k3/090.webp"
       },
       {
         "w": "mittlerweile",
@@ -2916,56 +3004,64 @@ window.B1_BOOK = [
         "d": "Der Körper ohne Kopf und Gliedmaßen.",
         "ar": "الجزء العلوي من الجسم",
         "cat": "Kapitel 3",
-        "ex": "Bitte machen Sie den Oberkörper frei."
+        "ex": "Bitte machen Sie den Oberkörper frei.",
+        "img": "assets/vocab-scenes/b1-1/k3/092.webp"
       },
       {
         "w": "der Olympiasieger",
         "d": "Ein Sportler, der bei den Olympischen Spielen gewonnen hat.",
         "ar": "البطل الأولمبي",
         "cat": "Kapitel 3",
-        "ex": "Der Olympiasieger wurde zu Hause groß gefeiert."
+        "ex": "Der Olympiasieger wurde zu Hause groß gefeiert.",
+        "img": "assets/vocab-scenes/b1-1/k3/093.webp"
       },
       {
         "w": "die Olympiasiegerin",
         "d": "Eine Sportlerin, die bei den Olympischen Spielen gewonnen hat.",
         "ar": "البطلة الأولمبية",
         "cat": "Kapitel 3",
-        "ex": "Die Olympiasiegerin trainiert weiter für die nächsten Spiele."
+        "ex": "Die Olympiasiegerin trainiert weiter für die nächsten Spiele.",
+        "img": "assets/vocab-scenes/b1-1/k3/094.webp"
       },
       {
         "w": "der Optimismus",
         "d": "Die Haltung, dass alles gut werden wird.",
         "ar": "التفاؤل",
         "cat": "Kapitel 3",
-        "ex": "Trotz der Probleme verlor sie ihren Optimismus nicht."
+        "ex": "Trotz der Probleme verlor sie ihren Optimismus nicht.",
+        "img": "assets/vocab-scenes/b1-1/k3/095.webp"
       },
       {
         "w": "politisch",
         "d": "Die Politik betreffend.",
         "ar": "سياسي",
         "cat": "Kapitel 3",
-        "ex": "Über politische Themen diskutieren sie oft."
+        "ex": "Über politische Themen diskutieren sie oft.",
+        "img": "assets/vocab-scenes/b1-1/k3/096.webp"
       },
       {
         "w": "die Powerfrau",
         "d": "Eine selbstbewusste, tatkräftige und leistungsstarke Frau.",
         "ar": "امرأة قوية وناجحة",
         "cat": "Kapitel 3",
-        "ex": "Sie ist eine Powerfrau und organisiert alles allein."
+        "ex": "Sie ist eine Powerfrau und organisiert alles allein.",
+        "img": "assets/vocab-scenes/b1-1/k3/097.webp"
       },
       {
         "w": "das Privatleben",
         "d": "Der Teil des Lebens außerhalb von Beruf und Öffentlichkeit.",
         "ar": "الحياة الخاصة",
         "cat": "Kapitel 3",
-        "ex": "Über sein Privatleben spricht er nicht gern."
+        "ex": "Über sein Privatleben spricht er nicht gern.",
+        "img": "assets/vocab-scenes/b1-1/k3/098.webp"
       },
       {
         "w": "radikal",
         "d": "Sehr stark und weit von der Mitte entfernt; völlig.",
         "ar": "جذري",
         "cat": "Kapitel 3",
-        "ex": "Er hat sein Leben radikal verändert."
+        "ex": "Er hat sein Leben radikal verändert.",
+        "img": "assets/vocab-scenes/b1-1/k3/099.webp"
       },
       {
         "w": "seitdem",
@@ -2979,21 +3075,24 @@ window.B1_BOOK = [
         "d": "Das Arbeiten in eigener Firma, ohne Chef.",
         "ar": "الاستقلال",
         "cat": "Kapitel 3",
-        "ex": "Nach zehn Jahren wagte sie den Schritt in die Selbstständigkeit."
+        "ex": "Nach zehn Jahren wagte sie den Schritt in die Selbstständigkeit.",
+        "img": "assets/vocab-scenes/b1-1/k3/101.webp"
       },
       {
         "w": "der Stadtrat",
         "d": "Das politische Gremium einer Stadt.",
         "ar": "مجلس المدينة",
         "cat": "Kapitel 3",
-        "ex": "Der Stadtrat hat den Bau des neuen Kindergartens beschlossen."
+        "ex": "Der Stadtrat hat den Bau des neuen Kindergartens beschlossen.",
+        "img": "assets/vocab-scenes/b1-1/k3/102.webp"
       },
       {
         "w": "stürzen",
         "d": "Plötzlich und ungewollt hinfallen.",
         "ar": "يسقط / يقع",
         "cat": "Kapitel 3",
-        "ex": "Sie ist vom Fahrrad gestürzt."
+        "ex": "Sie ist vom Fahrrad gestürzt.",
+        "img": "assets/vocab-scenes/b1-1/k3/103.webp"
       },
       {
         "w": "tätig",
@@ -3021,42 +3120,48 @@ window.B1_BOOK = [
         "d": "Die Entscheidung zwischen mehreren Möglichkeiten; auch das Wählen in der Politik.",
         "ar": "الاختيار",
         "cat": "Kapitel 3",
-        "ex": "Du hast die Wahl zwischen Fisch und Fleisch."
+        "ex": "Du hast die Wahl zwischen Fisch und Fleisch.",
+        "img": "assets/vocab-scenes/b1-1/k3/107.webp"
       },
       {
         "w": "der Weltmeister",
         "d": "Ein Sportler, der eine Weltmeisterschaft gewonnen hat.",
         "ar": "بطل العالم",
         "cat": "Kapitel 3",
-        "ex": "Er wurde zum zweiten Mal Weltmeister."
+        "ex": "Er wurde zum zweiten Mal Weltmeister.",
+        "img": "assets/vocab-scenes/b1-1/k3/108.webp"
       },
       {
         "w": "die Weltmeisterin",
         "d": "Eine Sportlerin, die eine Weltmeisterschaft gewonnen hat.",
         "ar": "بطلة العالم",
         "cat": "Kapitel 3",
-        "ex": "Die Weltmeisterin verteidigte ihren Titel."
+        "ex": "Die Weltmeisterin verteidigte ihren Titel.",
+        "img": "assets/vocab-scenes/b1-1/k3/109.webp"
       },
       {
         "w": "die Wirbelsäule",
         "d": "Die Knochenreihe im Rücken, die den Körper trägt.",
         "ar": "العمود الفقري",
         "cat": "Kapitel 3",
-        "ex": "Falsches Sitzen ist schlecht für die Wirbelsäule."
+        "ex": "Falsches Sitzen ist schlecht für die Wirbelsäule.",
+        "img": "assets/vocab-scenes/b1-1/k3/110.webp"
       },
       {
         "w": "literarisch",
         "d": "Die Literatur betreffend.",
         "ar": "الأدبية",
         "cat": "Kapitel 3",
-        "ex": "Der Film folgt genau der literarischen Vorlage."
+        "ex": "Der Film folgt genau der literarischen Vorlage.",
+        "img": "assets/vocab-scenes/b1-1/k3/111.webp"
       },
       {
         "w": "das Vergangenes",
         "d": "Etwas, das früher passiert ist.",
         "ar": "الماضي",
         "cat": "Kapitel 3",
-        "ex": "Über Vergangenes zu sprechen hilft manchmal beim Verstehen."
+        "ex": "Über Vergangenes zu sprechen hilft manchmal beim Verstehen.",
+        "img": "assets/vocab-scenes/b1-1/k3/112.webp"
       },
       {
         "w": "die Vergangenheitsform",
@@ -3070,112 +3175,128 @@ window.B1_BOOK = [
         "d": "Ein kurzer Text in einer Zeitung.",
         "ar": "مقال الصحيفة",
         "cat": "Kapitel 3",
-        "ex": "In der Zeitung stand ein Artikel über das Stadtfest."
+        "ex": "In der Zeitung stand ein Artikel über das Stadtfest.",
+        "img": "assets/vocab-scenes/b1-1/k3/114.webp"
       },
       {
         "w": "begeistern",
         "d": "Jemanden sehr erfreuen und für etwas gewinnen.",
         "ar": "يُحمّس / يثير حماس",
         "cat": "Kapitel 3",
-        "ex": "Die Lehrerin begeistert ihre Schüler für Biologie."
+        "ex": "Die Lehrerin begeistert ihre Schüler für Biologie.",
+        "img": "assets/vocab-scenes/b1-1/k3/115.webp"
       },
       {
         "w": "historisch",
         "d": "Die Geschichte betreffend; geschichtlich wichtig.",
         "ar": "تاريخي",
         "cat": "Kapitel 3",
-        "ex": "Das historische Rathaus steht mitten in der Stadt."
+        "ex": "Das historische Rathaus steht mitten in der Stadt.",
+        "img": "assets/vocab-scenes/b1-1/k3/116.webp"
       },
       {
         "w": "das Stadtfest",
         "d": "Ein öffentliches Fest in einer Stadt.",
         "ar": "مهرجان المدينة",
         "cat": "Kapitel 3",
-        "ex": "Beim Stadtfest gibt es Musik und Essen aus vielen Ländern."
+        "ex": "Beim Stadtfest gibt es Musik und Essen aus vielen Ländern.",
+        "img": "assets/vocab-scenes/b1-1/k3/117.webp"
       },
       {
         "w": "erstellen",
         "d": "Etwas anfertigen oder aufbauen.",
         "ar": "يُنشئ / يُعِدّ",
         "cat": "Kapitel 3",
-        "ex": "Wir erstellen einen Plan für das Projekt."
+        "ex": "Wir erstellen einen Plan für das Projekt.",
+        "img": "assets/vocab-scenes/b1-1/k3/118.webp"
       },
       {
         "w": "der/die Alte",
         "d": "Umgangssprachlich für einen alten Mann oder eine alte Frau.",
         "ar": "الرجل / المرأة المسنّة",
         "cat": "Kapitel 3",
-        "ex": "Der Alte von nebenan erzählt gern aus seiner Jugend."
+        "ex": "Der Alte von nebenan erzählt gern aus seiner Jugend.",
+        "img": "assets/vocab-scenes/b1-1/k3/119.webp"
       },
       {
         "w": "aufwachen",
         "d": "Nach dem Schlafen wach werden.",
         "ar": "يستيقظ",
         "cat": "Kapitel 3",
-        "ex": "Ich wache jeden Morgen früh auf."
+        "ex": "Ich wache jeden Morgen früh auf.",
+        "img": "assets/vocab-scenes/b1-1/k3/120.webp"
       },
       {
         "w": "außerhalb",
         "d": "Draußen; nicht im Inneren von etwas.",
         "ar": "خارج",
         "cat": "Kapitel 3",
-        "ex": "Sie wohnt außerhalb der Stadt."
+        "ex": "Sie wohnt außerhalb der Stadt.",
+        "img": "assets/vocab-scenes/b1-1/k3/121.webp"
       },
       {
         "w": "frisch",
         "d": "Gerade erst geerntet oder gemacht; auch angenehm kühl.",
         "ar": "طازج",
         "cat": "Kapitel 3",
-        "ex": "Am liebsten koche ich mit frischem Gemüse."
+        "ex": "Am liebsten koche ich mit frischem Gemüse.",
+        "img": "assets/vocab-scenes/b1-1/k3/122.webp"
       },
       {
         "w": "gemacht",
         "d": "Partizip II von „machen“: hergestellt oder getan.",
         "ar": "مصنوع / تم عمله",
         "cat": "Kapitel 3",
-        "ex": "Die Hausaufgaben habe ich schon gemacht."
+        "ex": "Die Hausaufgaben habe ich schon gemacht.",
+        "img": "assets/vocab-scenes/b1-1/k3/123.webp"
       },
       {
         "w": "Klamotten",
         "d": "Umgangssprachliches Wort für Kleidung.",
         "ar": "ملابس",
         "cat": "Kapitel 3",
-        "ex": "Für die Reise packe ich bequeme Klamotten ein."
+        "ex": "Für die Reise packe ich bequeme Klamotten ein.",
+        "img": "assets/vocab-scenes/b1-1/k3/124.webp"
       },
       {
         "w": "innerhalb",
         "d": "Im Inneren von etwas; in einem bestimmten Zeitraum.",
         "ar": "داخل",
         "cat": "Kapitel 3",
-        "ex": "Die Reparatur ist innerhalb von zwei Wochen fertig."
+        "ex": "Die Reparatur ist innerhalb von zwei Wochen fertig.",
+        "img": "assets/vocab-scenes/b1-1/k3/125.webp"
       },
       {
         "w": "liebevoll",
         "d": "Mit viel Liebe und Sorgfalt.",
         "ar": "بمحبة",
         "cat": "Kapitel 3",
-        "ex": "Sie hat das Zimmer liebevoll eingerichtet."
+        "ex": "Sie hat das Zimmer liebevoll eingerichtet.",
+        "img": "assets/vocab-scenes/b1-1/k3/126.webp"
       },
       {
         "w": "der Nachtisch",
         "d": "Die süße Speise am Ende einer Mahlzeit.",
         "ar": "الحلوى",
         "cat": "Kapitel 3",
-        "ex": "Zum Nachtisch gibt es Obst."
+        "ex": "Zum Nachtisch gibt es Obst.",
+        "img": "assets/vocab-scenes/b1-1/k3/127.webp"
       },
       {
         "w": "schwach",
         "d": "Ohne Kraft.",
         "ar": "ضعيف",
         "cat": "Kapitel 3",
-        "ex": "Nach der Krankheit fühlte er sich noch schwach."
+        "ex": "Nach der Krankheit fühlte er sich noch schwach.",
+        "img": "assets/vocab-scenes/b1-1/k3/128.webp"
       },
       {
         "w": "die Schwiegereltern",
         "d": "Die Eltern des Ehepartners.",
         "ar": "الأصهار",
         "cat": "Kapitel 3",
-        "ex": "Morgen kommen meine Schwiegereltern zu Besuch."
+        "ex": "Morgen kommen meine Schwiegereltern zu Besuch.",
+        "img": "assets/vocab-scenes/b1-1/k3/129.webp"
       },
       {
         "w": "der Sonnabend",
@@ -3189,21 +3310,24 @@ window.B1_BOOK = [
         "d": "Anfangen, jemanden zu lieben.",
         "ar": "يقع في الحب",
         "cat": "Kapitel 3",
-        "ex": "Er hat sich in seine Kollegin verliebt."
+        "ex": "Er hat sich in seine Kollegin verliebt.",
+        "img": "assets/vocab-scenes/b1-1/k3/131.webp"
       },
       {
         "w": "verschwinden",
         "d": "Nicht mehr zu sehen oder nicht mehr da sein.",
         "ar": "تختفي",
         "cat": "Kapitel 3",
-        "ex": "Mein Schlüssel ist verschwunden."
+        "ex": "Mein Schlüssel ist verschwunden.",
+        "img": "assets/vocab-scenes/b1-1/k3/132.webp"
       },
       {
         "w": "der Regentag",
         "d": "Ein Tag, an dem es regnet.",
         "ar": "اليوم الممطر",
         "cat": "Kapitel 3",
-        "ex": "An Regentagen spielen die Kinder meistens im Haus."
+        "ex": "An Regentagen spielen die Kinder meistens im Haus.",
+        "img": "assets/vocab-scenes/b1-1/k3/133.webp"
       },
       {
         "w": "jetzig",
@@ -3217,84 +3341,96 @@ window.B1_BOOK = [
         "d": "Ein großes Krankenhaus.",
         "ar": "العيادة",
         "cat": "Kapitel 3",
-        "ex": "Sie arbeitet als Ärztin im Klinikum."
+        "ex": "Sie arbeitet als Ärztin im Klinikum.",
+        "img": "assets/vocab-scenes/b1-1/k3/135.webp"
       },
       {
         "w": "die Krise",
         "d": "Eine schwierige Zeit, in der etwas nicht gut läuft.",
         "ar": "الأزمة",
         "cat": "Kapitel 3",
-        "ex": "Nach der Krise ging es der Firma wieder besser."
+        "ex": "Nach der Krise ging es der Firma wieder besser.",
+        "img": "assets/vocab-scenes/b1-1/k3/136.webp"
       },
       {
         "w": "lieb",
         "d": "Nett und freundlich; gern gemocht.",
         "ar": "لطيف / عزيز",
         "cat": "Kapitel 3",
-        "ex": "Das war sehr lieb von dir, danke!"
+        "ex": "Das war sehr lieb von dir, danke!",
+        "img": "assets/vocab-scenes/b1-1/k3/137.webp"
       },
       {
         "w": "das Verhältnis",
         "d": "Die Art, wie zwei Menschen oder Dinge zueinander stehen.",
         "ar": "العلاقة",
         "cat": "Kapitel 3",
-        "ex": "Zu meinen Kollegen habe ich ein gutes Verhältnis."
+        "ex": "Zu meinen Kollegen habe ich ein gutes Verhältnis.",
+        "img": "assets/vocab-scenes/b1-1/k3/138.webp"
       },
       {
         "w": "die Zuneigung",
         "d": "Ein warmes Gefühl für einen anderen Menschen.",
         "ar": "المودة",
         "cat": "Kapitel 3",
-        "ex": "Sie zeigt ihre Zuneigung durch kleine Geschenke."
+        "ex": "Sie zeigt ihre Zuneigung durch kleine Geschenke.",
+        "img": "assets/vocab-scenes/b1-1/k3/139.webp"
       },
       {
         "w": "die Botschaft",
         "d": "Eine Nachricht; auch die Vertretung eines Staates im Ausland.",
         "ar": "الرسالة",
         "cat": "Kapitel 3",
-        "ex": "Das Visum bekommt man bei der deutschen Botschaft."
+        "ex": "Das Visum bekommt man bei der deutschen Botschaft.",
+        "img": "assets/vocab-scenes/b1-1/k3/140.webp"
       },
       {
         "w": "das Konsulat",
         "d": "Eine kleinere Vertretung eines Staates im Ausland.",
         "ar": "القنصلية",
         "cat": "Kapitel 3",
-        "ex": "Im Konsulat kann man seinen Pass verlängern lassen."
+        "ex": "Im Konsulat kann man seinen Pass verlängern lassen.",
+        "img": "assets/vocab-scenes/b1-1/k3/141.webp"
       },
       {
         "w": "der Reisepass",
         "d": "Das Dokument, das man für Reisen ins Ausland braucht.",
         "ar": "جواز السفر",
         "cat": "Kapitel 3",
-        "ex": "Ohne Reisepass kommen Sie nicht über die Grenze."
+        "ex": "Ohne Reisepass kommen Sie nicht über die Grenze.",
+        "img": "assets/vocab-scenes/b1-1/k3/142.webp"
       },
       {
         "w": "überqueren",
         "d": "Von einer Seite auf die andere gehen oder fahren.",
         "ar": "يعبر",
         "cat": "Kapitel 3",
-        "ex": "Wir überqueren die Straße an der Ampel."
+        "ex": "Wir überqueren die Straße an der Ampel.",
+        "img": "assets/vocab-scenes/b1-1/k3/143.webp"
       },
       {
         "w": "der Zoll",
         "d": "Die Behörde an der Grenze, die kontrolliert, was man einführen darf.",
         "ar": "الجمارك",
         "cat": "Kapitel 3",
-        "ex": "Am Zoll muss man bestimmte Waren anmelden."
+        "ex": "Am Zoll muss man bestimmte Waren anmelden.",
+        "img": "assets/vocab-scenes/b1-1/k3/144.webp"
       },
       {
         "w": "aufgeben",
         "d": "Mit etwas aufhören, weil es zu schwer ist.",
         "ar": "يستسلم / يتخلّى عن",
         "cat": "Kapitel 3",
-        "ex": "Der Läufer gab nach einem Sturz auf."
+        "ex": "Der Läufer gab nach einem Sturz auf.",
+        "img": "assets/vocab-scenes/b1-1/k3/145.webp"
       },
       {
         "w": "die Liebesgeschichte",
         "d": "Eine Erzählung über die Liebe zwischen zwei Menschen.",
         "ar": "قصة الحب",
         "cat": "Kapitel 3",
-        "ex": "Der Film erzählt eine schöne Liebesgeschichte."
+        "ex": "Der Film erzählt eine schöne Liebesgeschichte.",
+        "img": "assets/vocab-scenes/b1-1/k3/146.webp"
       },
       {
         "w": "niemals",
@@ -3308,7 +3444,8 @@ window.B1_BOOK = [
         "d": "In eine andere Stadt oder Wohnung ziehen.",
         "ar": "ينتقل للسكن في مكان آخر",
         "cat": "Kapitel 3",
-        "ex": "Nach dem Studium ist sie aus dem Dorf weggezogen."
+        "ex": "Nach dem Studium ist sie aus dem Dorf weggezogen.",
+        "img": "assets/vocab-scenes/b1-1/k3/148.webp"
       },
       {
         "w": "Und",
@@ -3322,21 +3459,24 @@ window.B1_BOOK = [
         "d": "Eine Person, die in einem Büro arbeitet.",
         "ar": "موظف / موظفة مكتب",
         "cat": "Kapitel 3",
-        "ex": "Die Büroangestellte beantwortet die E-Mails."
+        "ex": "Die Büroangestellte beantwortet die E-Mails.",
+        "img": "assets/vocab-scenes/b1-1/k3/150.webp"
       },
       {
         "w": "das Camping",
         "d": "Urlaub im Zelt oder im Wohnwagen.",
         "ar": "التخييم",
         "cat": "Kapitel 3",
-        "ex": "In diesen Ferien machen wir Camping am See."
+        "ex": "In diesen Ferien machen wir Camping am See.",
+        "img": "assets/vocab-scenes/b1-1/k3/151.webp"
       },
       {
         "w": "die Espresso-Kanne",
         "d": "Eine kleine Kanne, mit der man Espresso oder Kaffee zubereitet.",
         "ar": "وعاء الاسبريسو",
         "cat": "Kapitel 3",
-        "ex": "Mit der Espresso-Kanne bereite ich morgens Kaffee zu."
+        "ex": "Mit der Espresso-Kanne bereite ich morgens Kaffee zu.",
+        "img": "assets/vocab-scenes/b1-1/k3/152.webp"
       },
       {
         "w": "der Aspekt",
@@ -3350,42 +3490,48 @@ window.B1_BOOK = [
         "d": "Ein einzelner Text in einem Blog.",
         "ar": "دخول المدونة",
         "cat": "Kapitel 3",
-        "ex": "Ihr neuer Blogeintrag handelt von einer Reise nach Wien."
+        "ex": "Ihr neuer Blogeintrag handelt von einer Reise nach Wien.",
+        "img": "assets/vocab-scenes/b1-1/k3/154.webp"
       },
       {
         "w": "das Fach",
         "d": "Ein Gebiet, das man in der Schule oder im Studium lernt.",
         "ar": "مادة دراسية",
         "cat": "Kapitel 3",
-        "ex": "Mein liebstes Fach in der Schule war Biologie."
+        "ex": "Mein liebstes Fach in der Schule war Biologie.",
+        "img": "assets/vocab-scenes/b1-1/k3/155.webp"
       },
       {
         "w": "gucken",
         "d": "Umgangssprachlich für schauen oder sehen.",
         "ar": "ينظر (عامية)",
         "cat": "Kapitel 3",
-        "ex": "Guck mal, was ich hier habe!"
+        "ex": "Guck mal, was ich hier habe!",
+        "img": "assets/vocab-scenes/b1-1/k3/156.webp"
       },
       {
         "w": "jahrelang",
         "d": "Viele Jahre lang.",
         "ar": "لسنوات",
         "cat": "Kapitel 3",
-        "ex": "Er hat jahrelang als Koch gearbeitet."
+        "ex": "Er hat jahrelang als Koch gearbeitet.",
+        "img": "assets/vocab-scenes/b1-1/k3/157.webp"
       },
       {
         "w": "der Lehrling",
         "d": "Eine junge Person, die einen Beruf lernt.",
         "ar": "المتدرب",
         "cat": "Kapitel 3",
-        "ex": "Als Lehrling verdient man noch wenig."
+        "ex": "Als Lehrling verdient man noch wenig.",
+        "img": "assets/vocab-scenes/b1-1/k3/158.webp"
       },
       {
         "w": "der Pfennig",
         "d": "Eine alte deutsche Münze vor dem Euro.",
         "ar": "الفِنِّغ (عملة ألمانية قديمة)",
         "cat": "Kapitel 3",
-        "ex": "Früher kostete ein Brötchen nur wenige Pfennige."
+        "ex": "Früher kostete ein Brötchen nur wenige Pfennige.",
+        "img": "assets/vocab-scenes/b1-1/k3/159.webp"
       },
       {
         "w": "relativ",
@@ -3399,28 +3545,32 @@ window.B1_BOOK = [
         "d": "Etwas für alle zugänglich machen, zum Beispiel ein Buch.",
         "ar": "ينشر",
         "cat": "Kapitel 3",
-        "ex": "Das Buch wurde 1958 veröffentlicht."
+        "ex": "Das Buch wurde 1958 veröffentlicht.",
+        "img": "assets/vocab-scenes/b1-1/k3/161.webp"
       },
       {
         "w": "der Baustein",
         "d": "Ein einzelner Teil, aus dem etwas Größeres besteht.",
         "ar": "لبنة البناء",
         "cat": "Kapitel 3",
-        "ex": "Gute Sprachkenntnisse sind ein wichtiger Baustein für den Beruf."
+        "ex": "Gute Sprachkenntnisse sind ein wichtiger Baustein für den Beruf.",
+        "img": "assets/vocab-scenes/b1-1/k3/162.webp"
       },
       {
         "w": "das Muster",
         "d": "Eine Form, die sich regelmäßig wiederholt.",
         "ar": "النمط",
         "cat": "Kapitel 3",
-        "ex": "Die Vorhänge haben ein sehr schönes Muster."
+        "ex": "Die Vorhänge haben ein sehr schönes Muster.",
+        "img": "assets/vocab-scenes/b1-1/k3/163.webp"
       },
       {
         "w": "die Struktur",
         "d": "Der Aufbau einer Sache aus mehreren Teilen.",
         "ar": "الهيكل",
         "cat": "Kapitel 3",
-        "ex": "Der Text hat eine klare Struktur."
+        "ex": "Der Text hat eine klare Struktur.",
+        "img": "assets/vocab-scenes/b1-1/k3/164.webp"
       },
       {
         "w": "die Tempusform",
@@ -3434,7 +3584,8 @@ window.B1_BOOK = [
         "d": "Aus mehreren Möglichkeiten eine wählen.",
         "ar": "يختار",
         "cat": "Kapitel 3",
-        "ex": "Ich habe mir diese Schuhe ausgesucht."
+        "ex": "Ich habe mir diese Schuhe ausgesucht.",
+        "img": "assets/vocab-scenes/b1-1/k3/166.webp"
       },
       {
         "w": "nachher",
@@ -3448,63 +3599,72 @@ window.B1_BOOK = [
         "d": "Freundlich und mit guten Umgangsformen.",
         "ar": "مهذبا",
         "cat": "Kapitel 3",
-        "ex": "Er grüßt immer höflich."
+        "ex": "Er grüßt immer höflich.",
+        "img": "assets/vocab-scenes/b1-1/k3/168.webp"
       },
       {
         "w": "begrüßen",
         "d": "Jemanden bei der Ankunft freundlich empfangen.",
         "ar": "يُرحّب بـ / يُحيّي",
         "cat": "Kapitel 3",
-        "ex": "Die Gastgeber begrüßen ihre Gäste."
+        "ex": "Die Gastgeber begrüßen ihre Gäste.",
+        "img": "assets/vocab-scenes/b1-1/k3/169.webp"
       },
       {
         "w": "das Benehmen",
         "d": "Die Art, wie man sich anderen gegenüber verhält.",
         "ar": "السلوك",
         "cat": "Kapitel 3",
-        "ex": "Sein gutes Benehmen fiel allen auf."
+        "ex": "Sein gutes Benehmen fiel allen auf.",
+        "img": "assets/vocab-scenes/b1-1/k3/170.webp"
       },
       {
         "w": "anwesend",
         "d": "An einem Ort da sein.",
         "ar": "الحاضر",
         "cat": "Kapitel 3",
-        "ex": "Fast alle Kollegen waren bei der Sitzung anwesend."
+        "ex": "Fast alle Kollegen waren bei der Sitzung anwesend.",
+        "img": "assets/vocab-scenes/b1-1/k3/171.webp"
       },
       {
         "w": "aufhalten",
         "d": "Jemanden daran hindern weiterzugehen; eine Tür offen halten.",
         "ar": "يُعيق / يُوقف",
         "cat": "Kapitel 3",
-        "ex": "Der Stau hat uns eine Stunde aufgehalten."
+        "ex": "Der Stau hat uns eine Stunde aufgehalten.",
+        "img": "assets/vocab-scenes/b1-1/k3/172.webp"
       },
       {
         "w": "aufgehalten",
         "d": "Daran gehindert, weiterzugehen oder weiterzufahren; Partizip II von „aufhalten“.",
         "ar": "تم إعاقته / تأخّر",
         "cat": "Kapitel 3",
-        "ex": "Wegen eines Staus wurde ich eine Stunde aufgehalten."
+        "ex": "Wegen eines Staus wurde ich eine Stunde aufgehalten.",
+        "img": "assets/vocab-scenes/b1-1/k3/173.webp"
       },
       {
         "w": "die Begrüßung",
         "d": "Die Worte oder Gesten, mit denen man jemanden willkommen heißt.",
         "ar": "التحية",
         "cat": "Kapitel 3",
-        "ex": "Zur Begrüßung gibt man sich in Deutschland die Hand."
+        "ex": "Zur Begrüßung gibt man sich in Deutschland die Hand.",
+        "img": "assets/vocab-scenes/b1-1/k3/174.webp"
       },
       {
         "w": "das Benimmbuch",
         "d": "Ein Buch mit Regeln für gutes Benehmen.",
         "ar": "كتاب الآداب",
         "cat": "Kapitel 3",
-        "ex": "Im Benimmbuch steht, wie man den Tisch richtig deckt."
+        "ex": "Im Benimmbuch steht, wie man den Tisch richtig deckt.",
+        "img": "assets/vocab-scenes/b1-1/k3/175.webp"
       },
       {
         "w": "die Beziehung",
         "d": "Das Verhältnis zwischen Menschen oder Gruppen.",
         "ar": "العلاقة",
         "cat": "Kapitel 3",
-        "ex": "Zu meinen Nachbarn habe ich eine gute Beziehung."
+        "ex": "Zu meinen Nachbarn habe ich eine gute Beziehung.",
+        "img": "assets/vocab-scenes/b1-1/k3/176.webp"
       },
       {
         "w": "beziehungsweise",
@@ -3525,84 +3685,96 @@ window.B1_BOOK = [
         "d": "Ein Mann, der Gäste zu sich einlädt.",
         "ar": "المضيف",
         "cat": "Kapitel 3",
-        "ex": "Wir dankten dem Gastgeber für den schönen Abend."
+        "ex": "Wir dankten dem Gastgeber für den schönen Abend.",
+        "img": "assets/vocab-scenes/b1-1/k3/179.webp"
       },
       {
         "w": "die Gastgeberin",
         "d": "Eine Frau, die Gäste zu sich einlädt.",
         "ar": "المضيفة",
         "cat": "Kapitel 3",
-        "ex": "Die Gastgeberin begrüßte uns an der Tür."
+        "ex": "Die Gastgeberin begrüßte uns an der Tür.",
+        "img": "assets/vocab-scenes/b1-1/k3/180.webp"
       },
       {
         "w": "die Geschäftsfrau",
         "d": "Eine Frau, die eine Firma führt oder Geschäfte macht.",
         "ar": "سيدة أعمال",
         "cat": "Kapitel 3",
-        "ex": "Als Geschäftsfrau reist sie viel ins Ausland."
+        "ex": "Als Geschäftsfrau reist sie viel ins Ausland.",
+        "img": "assets/vocab-scenes/b1-1/k3/181.webp"
       },
       {
         "w": "der Geschäftsmann",
         "d": "Ein Mann, der eine Firma führt oder Geschäfte macht.",
         "ar": "رجل الأعمال",
         "cat": "Kapitel 3",
-        "ex": "Der Geschäftsmann hat heute drei Termine."
+        "ex": "Der Geschäftsmann hat heute drei Termine.",
+        "img": "assets/vocab-scenes/b1-1/k3/182.webp"
       },
       {
         "w": "die Gewohnheit",
         "d": "Etwas, das man immer wieder und fast automatisch tut.",
         "ar": "العادة",
         "cat": "Kapitel 3",
-        "ex": "Früh aufzustehen ist bei ihm eine feste Gewohnheit."
+        "ex": "Früh aufzustehen ist bei ihm eine feste Gewohnheit.",
+        "img": "assets/vocab-scenes/b1-1/k3/183.webp"
       },
       {
         "w": "hierarchisch",
         "d": "So, dass es klare Stufen von oben nach unten gibt.",
         "ar": "هرمي",
         "cat": "Kapitel 3",
-        "ex": "Die Firma ist streng hierarchisch aufgebaut."
+        "ex": "Die Firma ist streng hierarchisch aufgebaut.",
+        "img": "assets/vocab-scenes/b1-1/k3/184.webp"
       },
       {
         "w": "ignorieren",
         "d": "Etwas absichtlich nicht beachten.",
         "ar": "يتجاهل",
         "cat": "Kapitel 3",
-        "ex": "Man sollte wichtige Regeln nicht ignorieren."
+        "ex": "Man sollte wichtige Regeln nicht ignorieren.",
+        "img": "assets/vocab-scenes/b1-1/k3/185.webp"
       },
       {
         "w": "klagen",
         "d": "Sich über etwas beschweren; auch vor Gericht gehen.",
         "ar": "يشكو / يرفع دعوى",
         "cat": "Kapitel 3",
-        "ex": "Die Nachbarn klagen über den Lärm."
+        "ex": "Die Nachbarn klagen über den Lärm.",
+        "img": "assets/vocab-scenes/b1-1/k3/186.webp"
       },
       {
         "w": "der Kuss",
         "d": "Die Berührung mit den Lippen als Zeichen von Liebe oder Freundschaft.",
         "ar": "القبلة",
         "cat": "Kapitel 3",
-        "ex": "Sie gab ihm einen kurzen Kuss auf die Wange."
+        "ex": "Sie gab ihm einen kurzen Kuss auf die Wange.",
+        "img": "assets/vocab-scenes/b1-1/k3/187.webp"
       },
       {
         "w": "der Lift",
         "d": "Ein Aufzug in einem Gebäude.",
         "ar": "المصعد",
         "cat": "Kapitel 3",
-        "ex": "Wir nehmen den Lift in den fünften Stock."
+        "ex": "Wir nehmen den Lift in den fünften Stock.",
+        "img": "assets/vocab-scenes/b1-1/k3/188.webp"
       },
       {
         "w": "niesen",
         "d": "Laut und plötzlich Luft durch die Nase ausstoßen.",
         "ar": "يعطس",
         "cat": "Kapitel 3",
-        "ex": "Ich muss den ganzen Tag niesen, ich bin erkältet."
+        "ex": "Ich muss den ganzen Tag niesen, ich bin erkältet.",
+        "img": "assets/vocab-scenes/b1-1/k3/189.webp"
       },
       {
         "w": "das Personal",
         "d": "Alle Mitarbeiter einer Firma oder eines Hauses.",
         "ar": "الموظفين",
         "cat": "Kapitel 3",
-        "ex": "Das Hotel sucht neues Personal für die Küche."
+        "ex": "Das Hotel sucht neues Personal für die Küche.",
+        "img": "assets/vocab-scenes/b1-1/k3/190.webp"
       }
     ],
     "readings": [],

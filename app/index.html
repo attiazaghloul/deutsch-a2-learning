@@ -1119,7 +1119,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <script src="data_book0_expansion.js"></script>
 <script src="data_book1.js"></script>
 <script src="data_book2.js"></script>
-<script src="data_b1_1.js?v=b1-1-vocab-15"></script>
+<script src="data_b1_1.js?v=b1-1-vocab-16"></script>
 <script src="data_b1_1_lessons.js?v=b1-1-lessons-2"></script>
 <script src="data_extra.js"></script>
 <script src="data_lernwortschatz8.js?v=lernwortschatz8-1"></script>
@@ -6063,8 +6063,8 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker.addEventListener('controllerchange',()=>{
     // Reload exactly once so an installed mobile PWA immediately reads the
     // data and image paths from the newly activated versioned cache.
-    if(sessionStorage.getItem('pwa-v60-reloaded')!=='1'){
-      sessionStorage.setItem('pwa-v60-reloaded','1');
+    if(sessionStorage.getItem('pwa-v61-reloaded')!=='1'){
+      sessionStorage.setItem('pwa-v61-reloaded','1');
       location.reload();
       return;
     }
@@ -6072,7 +6072,7 @@ if ('serviceWorker' in navigator) {
     if($('#offlineDictionaryStatus')) syncOfflineDictionaryStatus();
   });
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('sw.js?v=60',{updateViaCache:'none'})
+    navigator.serviceWorker.register('sw.js?v=61',{updateViaCache:'none'})
       .then(registration=>registration.update())
       .catch(() => {});
   });
