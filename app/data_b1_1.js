@@ -3813,315 +3813,360 @@ window.B1_BOOK = [
         "d": "Eine Sammlung von Papieren zu einem Fall oder einer Person.",
         "ar": "الملف",
         "cat": "Kapitel 4",
-        "ex": "Der Rechtsanwalt liest die Akte vor der Verhandlung."
+        "ex": "Der Rechtsanwalt liest die Akte vor der Verhandlung.",
+        "img": "assets/vocab-scenes/b1-1/k4/001.webp"
       },
       {
         "w": "anbauen",
         "d": "Pflanzen auf einem Feld pflanzen, um sie zu ernten; ein Gebäude erweitern.",
         "ar": "يزرع / يبني ملحقًا",
         "cat": "Kapitel 4",
-        "ex": "Der Bauer baut hier Kartoffeln an."
+        "ex": "Der Bauer baut hier Kartoffeln an.",
+        "img": "assets/vocab-scenes/b1-1/k4/002.webp"
       },
       {
         "w": "der/die Angeklagte",
         "d": "Eine Person, gegen die vor Gericht verhandelt wird.",
         "ar": "المتهم / المتهمة",
         "cat": "Kapitel 4",
-        "ex": "Der Angeklagte sagt vor dem Richter aus."
+        "ex": "Der Angeklagte sagt vor dem Richter aus.",
+        "img": "assets/vocab-scenes/b1-1/k4/003.webp"
       },
       {
         "w": "die Anlage",
         "d": "Eine technische Einrichtung; auch eine Datei, die man an eine E-Mail hängt.",
         "ar": "المنشأة",
         "cat": "Kapitel 4",
-        "ex": "Meinen Lebenslauf finden Sie in der Anlage."
+        "ex": "Meinen Lebenslauf finden Sie in der Anlage.",
+        "img": "assets/vocab-scenes/b1-1/k4/004.webp"
       },
       {
         "w": "beschäftigen",
         "d": "Jemandem Arbeit geben; sich mit einer Sache genau befassen.",
         "ar": "يُشغّل / يشغل بال",
         "cat": "Kapitel 4",
-        "ex": "Die Firma beschäftigt zweihundert Mitarbeiter."
+        "ex": "Die Firma beschäftigt zweihundert Mitarbeiter.",
+        "img": "assets/vocab-scenes/b1-1/k4/005.webp"
       },
       {
         "w": "das Einkommen",
         "d": "Das Geld, das jemand für seine Arbeit bekommt.",
         "ar": "الدخل",
         "cat": "Kapitel 4",
-        "ex": "Mit diesem Einkommen kann man in der Stadt gut leben."
+        "ex": "Mit diesem Einkommen kann man in der Stadt gut leben.",
+        "img": "assets/vocab-scenes/b1-1/k4/006.webp"
       },
       {
         "w": "der Elektroingenieur",
         "d": "Ein Fachmann für Elektrotechnik mit Hochschulabschluss.",
         "ar": "المهندس الكهربائي",
         "cat": "Kapitel 4",
-        "ex": "Als Elektroingenieur plant er Stromnetze."
+        "ex": "Als Elektroingenieur plant er Stromnetze.",
+        "img": "assets/vocab-scenes/b1-1/k4/007.webp"
       },
       {
         "w": "die Elektroingenieurin",
         "d": "Eine Fachfrau für Elektrotechnik mit Hochschulabschluss.",
         "ar": "المهندسة الكهربائية",
         "cat": "Kapitel 4",
-        "ex": "Die Elektroingenieurin prüft die neue Anlage."
+        "ex": "Die Elektroingenieurin prüft die neue Anlage.",
+        "img": "assets/vocab-scenes/b1-1/k4/008.webp"
       },
       {
         "w": "fair",
         "d": "Gerecht und nach den Regeln.",
         "ar": "عادل",
         "cat": "Kapitel 4",
-        "ex": "Der Chef behandelt alle Mitarbeiter fair."
+        "ex": "Der Chef behandelt alle Mitarbeiter fair.",
+        "img": "assets/vocab-scenes/b1-1/k4/009.webp"
       },
       {
         "w": "der Fernsehsender",
         "d": "Ein Unternehmen, das Fernsehprogramme ausstrahlt.",
         "ar": "محطة التلفزيون",
         "cat": "Kapitel 4",
-        "ex": "Sie arbeitet bei einem großen Fernsehsender."
+        "ex": "Sie arbeitet bei einem großen Fernsehsender.",
+        "img": "assets/vocab-scenes/b1-1/k4/010.webp"
       },
       {
         "w": "gerecht",
         "d": "So, dass alle das bekommen, was ihnen zusteht.",
         "ar": "عادل",
         "cat": "Kapitel 4",
-        "ex": "Die Arbeit wird gerecht auf alle verteilt."
+        "ex": "Die Arbeit wird gerecht auf alle verteilt.",
+        "img": "assets/vocab-scenes/b1-1/k4/011.webp"
       },
       {
         "w": "das Gericht",
         "d": "Die staatliche Stelle, die über Recht und Unrecht entscheidet.",
         "ar": "المحكمة",
         "cat": "Kapitel 4",
-        "ex": "Der Streit endete vor Gericht."
+        "ex": "Der Streit endete vor Gericht.",
+        "img": "assets/vocab-scenes/b1-1/k4/012.webp"
       },
       {
         "w": "die Gerichtsverhandlung",
         "d": "Der Termin, an dem ein Fall vor Gericht besprochen wird.",
         "ar": "جلسة المحكمة",
         "cat": "Kapitel 4",
-        "ex": "Die Gerichtsverhandlung beginnt um neun Uhr."
+        "ex": "Die Gerichtsverhandlung beginnt um neun Uhr.",
+        "img": "assets/vocab-scenes/b1-1/k4/013.webp"
       },
       {
         "w": "herstellen",
         "d": "Eine Ware produzieren.",
         "ar": "يُنتج / يصنع",
         "cat": "Kapitel 4",
-        "ex": "Die Firma stellt Möbel aus Holz her."
+        "ex": "Die Firma stellt Möbel aus Holz her.",
+        "img": "assets/vocab-scenes/b1-1/k4/014.webp"
       },
       {
         "w": "die Industrie",
         "d": "Alle Betriebe, die Waren mit Maschinen produzieren.",
         "ar": "الصناعة",
         "cat": "Kapitel 4",
-        "ex": "In dieser Region gibt es viel Industrie."
+        "ex": "In dieser Region gibt es viel Industrie.",
+        "img": "assets/vocab-scenes/b1-1/k4/015.webp"
       },
       {
         "w": "die Landwirtschaft",
         "d": "Die Arbeit auf dem Feld und mit Tieren, um Nahrung zu erzeugen.",
         "ar": "الزراعة",
         "cat": "Kapitel 4",
-        "ex": "In der Landwirtschaft muss man körperlich hart arbeiten."
+        "ex": "In der Landwirtschaft muss man körperlich hart arbeiten.",
+        "img": "assets/vocab-scenes/b1-1/k4/016.webp"
       },
       {
         "w": "die Menschenkenntnis",
         "d": "Die Fähigkeit, andere Menschen gut einzuschätzen.",
         "ar": "معرفة الطبيعة البشرية",
         "cat": "Kapitel 4",
-        "ex": "Für diesen Beruf braucht man viel Menschenkenntnis."
+        "ex": "Für diesen Beruf braucht man viel Menschenkenntnis.",
+        "img": "assets/vocab-scenes/b1-1/k4/017.webp"
       },
       {
         "w": "die Öffentlichkeit",
         "d": "Alle Menschen, die etwas erfahren oder sehen können.",
         "ar": "الجمهور",
         "cat": "Kapitel 4",
-        "ex": "Das Urteil wurde der Öffentlichkeit mitgeteilt."
+        "ex": "Das Urteil wurde der Öffentlichkeit mitgeteilt.",
+        "img": "assets/vocab-scenes/b1-1/k4/018.webp"
       },
       {
         "w": "die Partei",
         "d": "Eine politische Gruppe; auch eine Seite in einem Streit.",
         "ar": "الحزب / الطرف",
         "cat": "Kapitel 4",
-        "ex": "Bei einem Streit gibt es meistens zwei Parteien."
+        "ex": "Bei einem Streit gibt es meistens zwei Parteien.",
+        "img": "assets/vocab-scenes/b1-1/k4/019.webp"
       },
       {
         "w": "der Rechtsanwalt",
         "d": "Ein Jurist, der Menschen berät und vor Gericht vertritt.",
         "ar": "المحامي",
         "cat": "Kapitel 4",
-        "ex": "Der Rechtsanwalt vertritt seinen Mandanten vor Gericht."
+        "ex": "Der Rechtsanwalt vertritt seinen Mandanten vor Gericht.",
+        "img": "assets/vocab-scenes/b1-1/k4/020.webp"
       },
       {
         "w": "die Rechtsanwältin",
         "d": "Eine Juristin, die Menschen rechtlich berät und vor Gericht vertritt.",
         "ar": "محامية",
         "cat": "Kapitel 4",
-        "ex": "Die Rechtsanwältin spricht vor der Verhandlung mit ihrer Mandantin."
+        "ex": "Die Rechtsanwältin spricht vor der Verhandlung mit ihrer Mandantin.",
+        "img": "assets/vocab-scenes/b1-1/k4/021.webp"
       },
       {
         "w": "die Reportage",
         "d": "Ein Bericht, für den der Journalist selbst vor Ort war.",
         "ar": "التقرير",
         "cat": "Kapitel 4",
-        "ex": "Die Reportage zeigt den Alltag in einem Krankenhaus."
+        "ex": "Die Reportage zeigt den Alltag in einem Krankenhaus.",
+        "img": "assets/vocab-scenes/b1-1/k4/022.webp"
       },
       {
         "w": "der Reporter",
         "d": "Ein Journalist, der über Ereignisse vor Ort berichtet.",
         "ar": "مراسل صحفي",
         "cat": "Kapitel 4",
-        "ex": "Der Reporter berichtet live vom Gericht."
+        "ex": "Der Reporter berichtet live vom Gericht.",
+        "img": "assets/vocab-scenes/b1-1/k4/023.webp"
       },
       {
         "w": "die Reporterin",
         "d": "Eine Journalistin, die vor Ort über Ereignisse berichtet.",
         "ar": "المراسلة",
         "cat": "Kapitel 4",
-        "ex": "Die Reporterin berichtet live vom Gericht."
+        "ex": "Die Reporterin berichtet live vom Gericht.",
+        "img": "assets/vocab-scenes/b1-1/k4/024.webp"
       },
       {
         "w": "der Richter",
         "d": "Ein Mann, der an einem Gericht Urteile spricht.",
         "ar": "قاضٍ",
         "cat": "Kapitel 4",
-        "ex": "Der Richter hört beide Seiten an."
+        "ex": "Der Richter hört beide Seiten an.",
+        "img": "assets/vocab-scenes/b1-1/k4/025.webp"
       },
       {
         "w": "die Richterin",
         "d": "Eine Frau, die an einem Gericht Urteile spricht.",
         "ar": "قاضية",
         "cat": "Kapitel 4",
-        "ex": "Die Richterin verkündet am Ende das Urteil."
+        "ex": "Die Richterin verkündet am Ende das Urteil.",
+        "img": "assets/vocab-scenes/b1-1/k4/026.webp"
       },
       {
         "w": "der Schreiner",
         "d": "Ein Handwerker, der aus Holz Möbel, Fenster und Türen macht.",
         "ar": "النجار",
         "cat": "Kapitel 4",
-        "ex": "Den Schrank haben wir beim Schreiner bestellt."
+        "ex": "Den Schrank haben wir beim Schreiner bestellt.",
+        "img": "assets/vocab-scenes/b1-1/k4/027.webp"
       },
       {
         "w": "die Schreinerin",
         "d": "Eine Handwerkerin, die aus Holz Möbel, Fenster und Türen macht.",
         "ar": "النجّارة",
         "cat": "Kapitel 4",
-        "ex": "Die Schreinerin baut uns einen neuen Tisch."
+        "ex": "Die Schreinerin baut uns einen neuen Tisch.",
+        "img": "assets/vocab-scenes/b1-1/k4/028.webp"
       },
       {
         "w": "der Spezialist",
         "d": "Ein Mann mit besonders guten Kenntnissen auf einem Fachgebiet.",
         "ar": "المتخصص",
         "cat": "Kapitel 4",
-        "ex": "Er ist Spezialist für erneuerbare Energien."
+        "ex": "Er ist Spezialist für erneuerbare Energien.",
+        "img": "assets/vocab-scenes/b1-1/k4/029.webp"
       },
       {
         "w": "die Spezialistin",
         "d": "Eine Frau mit besonders guten Kenntnissen auf einem Fachgebiet.",
         "ar": "متخصصة / خبيرة",
         "cat": "Kapitel 4",
-        "ex": "Sie ist Spezialistin für erneuerbare Energien."
+        "ex": "Sie ist Spezialistin für erneuerbare Energien.",
+        "img": "assets/vocab-scenes/b1-1/k4/030.webp"
       },
       {
         "w": "das Urteil",
         "d": "Die Entscheidung des Gerichts am Ende eines Verfahrens.",
         "ar": "الحكم",
         "cat": "Kapitel 4",
-        "ex": "Das Urteil wird morgen verkündet."
+        "ex": "Das Urteil wird morgen verkündet.",
+        "img": "assets/vocab-scenes/b1-1/k4/031.webp"
       },
       {
         "w": "das Verbrechen",
         "d": "Eine besonders schwere Straftat.",
         "ar": "الجريمة",
         "cat": "Kapitel 4",
-        "ex": "Die Polizei konnte das Verbrechen schnell aufklären."
+        "ex": "Die Polizei konnte das Verbrechen schnell aufklären.",
+        "img": "assets/vocab-scenes/b1-1/k4/032.webp"
       },
       {
         "w": "die Analyse",
         "d": "Die genaue Untersuchung einer Sache in ihren Einzelteilen.",
         "ar": "التحليل",
         "cat": "Kapitel 4",
-        "ex": "Die Analyse der Daten dauert eine Woche."
+        "ex": "Die Analyse der Daten dauert eine Woche.",
+        "img": "assets/vocab-scenes/b1-1/k4/033.webp"
       },
       {
         "w": "austragen",
         "d": "Post oder Zeitungen an viele Empfänger bringen.",
         "ar": "يوزّع (البريد)",
         "cat": "Kapitel 4",
-        "ex": "Er trägt seit dreißig Jahren die Post aus."
+        "ex": "Er trägt seit dreißig Jahren die Post aus.",
+        "img": "assets/vocab-scenes/b1-1/k4/034.webp"
       },
       {
         "w": "der Briefträger",
         "d": "Ein Mann, der beruflich die Post bringt.",
         "ar": "ساعي البريد",
         "cat": "Kapitel 4",
-        "ex": "Der Briefträger kommt jeden Morgen um neun."
+        "ex": "Der Briefträger kommt jeden Morgen um neun.",
+        "img": "assets/vocab-scenes/b1-1/k4/035.webp"
       },
       {
         "w": "die Briefträgerin",
         "d": "Eine Frau, die beruflich die Post bringt.",
         "ar": "ساعية البريد",
         "cat": "Kapitel 4",
-        "ex": "Die Briefträgerin bringt uns ein Paket."
+        "ex": "Die Briefträgerin bringt uns ein Paket.",
+        "img": "assets/vocab-scenes/b1-1/k4/036.webp"
       },
       {
         "w": "der Chemiker",
         "d": "Ein Fachmann für Chemie mit Hochschulabschluss.",
         "ar": "الكيميائي",
         "cat": "Kapitel 4",
-        "ex": "Der Chemiker arbeitet im Labor."
+        "ex": "Der Chemiker arbeitet im Labor.",
+        "img": "assets/vocab-scenes/b1-1/k4/037.webp"
       },
       {
         "w": "die Chemikerin",
         "d": "Eine Fachfrau für Chemie mit Hochschulabschluss.",
         "ar": "الكيميائية",
         "cat": "Kapitel 4",
-        "ex": "Die Chemikerin untersucht die Proben im Labor."
+        "ex": "Die Chemikerin untersucht die Proben im Labor.",
+        "img": "assets/vocab-scenes/b1-1/k4/038.webp"
       },
       {
         "w": "die Elektronik",
         "d": "Der Bereich der Technik mit elektronischen Bauteilen.",
         "ar": "الالكترونيات",
         "cat": "Kapitel 4",
-        "ex": "Die Elektronik des Autos ist kaputt."
+        "ex": "Die Elektronik des Autos ist kaputt.",
+        "img": "assets/vocab-scenes/b1-1/k4/039.webp"
       },
       {
         "w": "exakt",
         "d": "Ganz genau.",
         "ar": "بالضبط",
         "cat": "Kapitel 4",
-        "ex": "Nennen Sie mir bitte die exakte Uhrzeit."
+        "ex": "Nennen Sie mir bitte die exakte Uhrzeit.",
+        "img": "assets/vocab-scenes/b1-1/k4/040.webp"
       },
       {
         "w": "geregelt",
         "d": "Fest und nach klaren Regeln geordnet.",
         "ar": "منظَّم / ثابت",
         "cat": "Kapitel 4",
-        "ex": "Sie sucht eine Stelle mit geregelten Arbeitszeiten."
+        "ex": "Sie sucht eine Stelle mit geregelten Arbeitszeiten.",
+        "img": "assets/vocab-scenes/b1-1/k4/041.webp"
       },
       {
         "w": "der Mechatroniker",
         "d": "Ein Fachmann, der mit Mechanik, Elektronik und Informatik arbeitet.",
         "ar": "مهندس الميكاترونكس",
         "cat": "Kapitel 4",
-        "ex": "Der Mechatroniker repariert die Maschine."
+        "ex": "Der Mechatroniker repariert die Maschine.",
+        "img": "assets/vocab-scenes/b1-1/k4/042.webp"
       },
       {
         "w": "die Mechatronikerin",
         "d": "Eine Fachfrau, die mit Mechanik, Elektronik und Informatik arbeitet.",
         "ar": "مهندسة ميكاترونكس",
         "cat": "Kapitel 4",
-        "ex": "Die Mechatronikerin repariert den Roboter."
+        "ex": "Die Mechatronikerin repariert den Roboter.",
+        "img": "assets/vocab-scenes/b1-1/k4/043.webp"
       },
       {
         "w": "das Metall",
         "d": "Ein harter Stoff wie Eisen oder Kupfer, der Strom leitet.",
         "ar": "المعدن",
         "cat": "Kapitel 4",
-        "ex": "Der Zaun ist aus Metall."
+        "ex": "Der Zaun ist aus Metall.",
+        "img": "assets/vocab-scenes/b1-1/k4/044.webp"
       },
       {
         "w": "zustellen",
         "d": "Einen Brief oder ein Paket zum Empfänger bringen.",
         "ar": "يُسلّم (بريدًا)",
         "cat": "Kapitel 4",
-        "ex": "Das Paket wird morgen zugestellt."
+        "ex": "Das Paket wird morgen zugestellt.",
+        "img": "assets/vocab-scenes/b1-1/k4/045.webp"
       },
       {
         "w": "ursprünglich",
@@ -4135,7 +4180,8 @@ window.B1_BOOK = [
         "d": "Ein sehr kurzer Moment.",
         "ar": "اللحظة",
         "cat": "Kapitel 4",
-        "ex": "Einen Augenblick bitte, ich komme sofort."
+        "ex": "Einen Augenblick bitte, ich komme sofort.",
+        "img": "assets/vocab-scenes/b1-1/k4/047.webp"
       },
       {
         "w": "daran",
@@ -4149,35 +4195,40 @@ window.B1_BOOK = [
         "d": "Die Veränderung von etwas im Laufe der Zeit.",
         "ar": "التطوير",
         "cat": "Kapitel 4",
-        "ex": "Die Entwicklung der Firma verlief sehr positiv."
+        "ex": "Die Entwicklung der Firma verlief sehr positiv.",
+        "img": "assets/vocab-scenes/b1-1/k4/049.webp"
       },
       {
         "w": "ernst",
         "d": "Ohne Spaß; auch: mit möglichen schlimmen Folgen.",
         "ar": "على محمل الجد",
         "cat": "Kapitel 4",
-        "ex": "Die Lage ist ernst, wir müssen handeln."
+        "ex": "Die Lage ist ernst, wir müssen handeln.",
+        "img": "assets/vocab-scenes/b1-1/k4/050.webp"
       },
       {
         "w": "aushalten",
         "d": "Etwas Unangenehmes ertragen können.",
         "ar": "يتحمّل",
         "cat": "Kapitel 4",
-        "ex": "Den Lärm auf der Baustelle halte ich kaum aus."
+        "ex": "Den Lärm auf der Baustelle halte ich kaum aus.",
+        "img": "assets/vocab-scenes/b1-1/k4/051.webp"
       },
       {
         "w": "der Wunschberuf",
         "d": "Der Beruf, den jemand besonders gern ausüben möchte.",
         "ar": "الوظيفة المرغوبة",
         "cat": "Kapitel 4",
-        "ex": "Arzt zu werden war schon als Kind sein Wunschberuf."
+        "ex": "Arzt zu werden war schon als Kind sein Wunschberuf.",
+        "img": "assets/vocab-scenes/b1-1/k4/052.webp"
       },
       {
         "w": "Gespräche",
         "d": "Mündliche Unterhaltungen zwischen zwei oder mehreren Personen.",
         "ar": "المحادثات",
         "cat": "Kapitel 4",
-        "ex": "Gute Gespräche helfen, ein Problem gemeinsam zu lösen."
+        "ex": "Gute Gespräche helfen, ein Problem gemeinsam zu lösen.",
+        "img": "assets/vocab-scenes/b1-1/k4/053.webp"
       },
       {
         "w": "die Konjunktivform",
@@ -4198,14 +4249,16 @@ window.B1_BOOK = [
         "d": "Sich Urlaub oder einen freien Tag nehmen.",
         "ar": "يأخذ إجازة",
         "cat": "Kapitel 4",
-        "ex": "Morgen kann ich mir endlich freinehmen."
+        "ex": "Morgen kann ich mir endlich freinehmen.",
+        "img": "assets/vocab-scenes/b1-1/k4/056.webp"
       },
       {
         "w": "irreal",
         "d": "Nicht wirklich; nur gedacht.",
         "ar": "غير واقعي",
         "cat": "Kapitel 4",
-        "ex": "Eine Welt ohne Krieg scheint vielen irreal."
+        "ex": "Eine Welt ohne Krieg scheint vielen irreal.",
+        "img": "assets/vocab-scenes/b1-1/k4/057.webp"
       },
       {
         "w": "Wenn",
@@ -4219,147 +4272,168 @@ window.B1_BOOK = [
         "d": "Messer, Gabel und Löffel zum Essen.",
         "ar": "أدوات المائدة",
         "cat": "Kapitel 4",
-        "ex": "Bitte leg das Besteck neben die Teller."
+        "ex": "Bitte leg das Besteck neben die Teller.",
+        "img": "assets/vocab-scenes/b1-1/k4/059.webp"
       },
       {
         "w": "die Bürste",
         "d": "Ein Gegenstand mit Borsten zum Reinigen oder Kämmen.",
         "ar": "الفرشاة",
         "cat": "Kapitel 4",
-        "ex": "Mit der Bürste reinigt er seine Schuhe."
+        "ex": "Mit der Bürste reinigt er seine Schuhe.",
+        "img": "assets/vocab-scenes/b1-1/k4/060.webp"
       },
       {
         "w": "färben",
         "d": "Die Farbe von etwas verändern.",
         "ar": "يصبغ",
         "cat": "Kapitel 4",
-        "ex": "Seit Jahren färbt sie ihre Haare rot."
+        "ex": "Seit Jahren färbt sie ihre Haare rot.",
+        "img": "assets/vocab-scenes/b1-1/k4/061.webp"
       },
       {
         "w": "föhnen",
         "d": "Die Haare mit einem Föhn trocknen.",
         "ar": "يجفّف الشعر بالمجفِّف",
         "cat": "Kapitel 4",
-        "ex": "Ich muss mir noch die Haare föhnen."
+        "ex": "Ich muss mir noch die Haare föhnen.",
+        "img": "assets/vocab-scenes/b1-1/k4/062.webp"
       },
       {
         "w": "die Gaststätte",
         "d": "Ein Lokal, in dem man essen und trinken kann.",
         "ar": "المطعم",
         "cat": "Kapitel 4",
-        "ex": "Nach der Wanderung kehren wir in einer Gaststätte ein."
+        "ex": "Nach der Wanderung kehren wir in einer Gaststätte ein.",
+        "img": "assets/vocab-scenes/b1-1/k4/063.webp"
       },
       {
         "w": "der Hammer",
         "d": "Ein Werkzeug, mit dem man Nägel in die Wand schlägt.",
         "ar": "المطرقة",
         "cat": "Kapitel 4",
-        "ex": "Gib mir bitte den Hammer und ein paar Nägel."
+        "ex": "Gib mir bitte den Hammer und ein paar Nägel.",
+        "img": "assets/vocab-scenes/b1-1/k4/064.webp"
       },
       {
         "w": "der Imbiss",
         "d": "Eine kleine Mahlzeit; auch ein Stand, an dem man sie kauft.",
         "ar": "الوجبة الخفيفة",
         "cat": "Kapitel 4",
-        "ex": "Mittags essen wir schnell etwas am Imbiss."
+        "ex": "Mittags essen wir schnell etwas am Imbiss.",
+        "img": "assets/vocab-scenes/b1-1/k4/065.webp"
       },
       {
         "w": "der Kamm",
         "d": "Ein Gegenstand mit Zinken, mit dem man die Haare ordnet.",
         "ar": "المشط",
         "cat": "Kapitel 4",
-        "ex": "Sie sucht einen Kamm für ihre Haare."
+        "ex": "Sie sucht einen Kamm für ihre Haare.",
+        "img": "assets/vocab-scenes/b1-1/k4/066.webp"
       },
       {
         "w": "der Karton",
         "d": "Eine Schachtel aus fester Pappe.",
         "ar": "الصندوق",
         "cat": "Kapitel 4",
-        "ex": "Die Bücher sind in einem großen Karton."
+        "ex": "Die Bücher sind in einem großen Karton.",
+        "img": "assets/vocab-scenes/b1-1/k4/067.webp"
       },
       {
         "w": "der Rechner",
         "d": "Ein Computer.",
         "ar": "الكمبيوتر",
         "cat": "Kapitel 4",
-        "ex": "Mein Rechner ist heute sehr langsam."
+        "ex": "Mein Rechner ist heute sehr langsam.",
+        "img": "assets/vocab-scenes/b1-1/k4/068.webp"
       },
       {
         "w": "die Schere",
         "d": "Ein Werkzeug zum Schneiden von Papier oder Stoff.",
         "ar": "المقص",
         "cat": "Kapitel 4",
-        "ex": "Schneide das Papier bitte mit der Schere."
+        "ex": "Schneide das Papier bitte mit der Schere.",
+        "img": "assets/vocab-scenes/b1-1/k4/069.webp"
       },
       {
         "w": "der Umschlag",
         "d": "Eine Hülle aus Papier für einen Brief.",
         "ar": "المغلف",
         "cat": "Kapitel 4",
-        "ex": "Sie steckt den Brief in einen Umschlag."
+        "ex": "Sie steckt den Brief in einen Umschlag.",
+        "img": "assets/vocab-scenes/b1-1/k4/070.webp"
       },
       {
         "w": "irren",
         "d": "Sich täuschen; etwas Falsches glauben.",
         "ar": "يخطئ",
         "cat": "Kapitel 4",
-        "ex": "Da hast du dich geirrt, der Termin ist am Montag."
+        "ex": "Da hast du dich geirrt, der Termin ist am Montag.",
+        "img": "assets/vocab-scenes/b1-1/k4/071.webp"
       },
       {
         "w": "schütten",
         "d": "Eine Flüssigkeit aus einem Gefäß fließen lassen.",
         "ar": "يسكب / يصبّ",
         "cat": "Kapitel 4",
-        "ex": "Er schüttet das Wasser in den Eimer."
+        "ex": "Er schüttet das Wasser in den Eimer.",
+        "img": "assets/vocab-scenes/b1-1/k4/072.webp"
       },
       {
         "w": "das Versehen",
         "d": "Ein Fehler, den man nicht mit Absicht gemacht hat.",
         "ar": "السهو / الخطأ غير المقصود",
         "cat": "Kapitel 4",
-        "ex": "Aus Versehen habe ich die falsche Datei geschickt."
+        "ex": "Aus Versehen habe ich die falsche Datei geschickt.",
+        "img": "assets/vocab-scenes/b1-1/k4/073.webp"
       },
       {
         "w": "verwechseln",
         "d": "Zwei Dinge oder Personen nicht auseinanderhalten können.",
         "ar": "يخلط بين / يُخطئ التمييز",
         "cat": "Kapitel 4",
-        "ex": "Immer wieder verwechselt er die Zwillinge."
+        "ex": "Immer wieder verwechselt er die Zwillinge.",
+        "img": "assets/vocab-scenes/b1-1/k4/074.webp"
       },
       {
         "w": "zusammensitzen",
         "d": "Gemütlich mit anderen zusammen sitzen.",
         "ar": "الجلوس معا",
         "cat": "Kapitel 4",
-        "ex": "Nach der Arbeit sitzen die Kollegen noch kurz zusammen."
+        "ex": "Nach der Arbeit sitzen die Kollegen noch kurz zusammen.",
+        "img": "assets/vocab-scenes/b1-1/k4/075.webp"
       },
       {
         "w": "zusammen",
         "d": "Miteinander; gemeinsam.",
         "ar": "معًا",
         "cat": "Kapitel 4",
-        "ex": "Die Nachbarskinder spielten zusammen."
+        "ex": "Die Nachbarskinder spielten zusammen.",
+        "img": "assets/vocab-scenes/b1-1/k4/076.webp"
       },
       {
         "w": "die Absicht",
         "d": "Das, was jemand mit einer Handlung erreichen will.",
         "ar": "النية",
         "cat": "Kapitel 4",
-        "ex": "Er hat die Absicht, sich neu zu bewerben."
+        "ex": "Er hat die Absicht, sich neu zu bewerben.",
+        "img": "assets/vocab-scenes/b1-1/k4/077.webp"
       },
       {
         "w": "schrecklich",
         "d": "Sehr schlimm; Angst machend.",
         "ar": "رهيب",
         "cat": "Kapitel 4",
-        "ex": "Das Wetter war gestern schrecklich."
+        "ex": "Das Wetter war gestern schrecklich.",
+        "img": "assets/vocab-scenes/b1-1/k4/078.webp"
       },
       {
         "w": "verzeihen",
         "d": "Jemandem einen Fehler nicht mehr übelnehmen.",
         "ar": "يغفر",
         "cat": "Kapitel 4",
-        "ex": "Bitte verzeih mir, ich habe den Termin vergessen."
+        "ex": "Bitte verzeih mir, ich habe den Termin vergessen.",
+        "img": "assets/vocab-scenes/b1-1/k4/079.webp"
       },
       {
         "w": "kürzlich",
@@ -4373,35 +4447,40 @@ window.B1_BOOK = [
         "d": "Nicht nett; abweisend.",
         "ar": "غير ودود",
         "cat": "Kapitel 4",
-        "ex": "Sei nicht so unfreundlich zu deiner Tante!"
+        "ex": "Sei nicht so unfreundlich zu deiner Tante!",
+        "img": "assets/vocab-scenes/b1-1/k4/081.webp"
       },
       {
         "w": "die Variante",
         "d": "Eine etwas andere Form derselben Sache.",
         "ar": "البديل",
         "cat": "Kapitel 4",
-        "ex": "Es gibt zwei Varianten des Vertrags."
+        "ex": "Es gibt zwei Varianten des Vertrags.",
+        "img": "assets/vocab-scenes/b1-1/k4/082.webp"
       },
       {
         "w": "abschreiben",
         "d": "Den Text eines anderen kopieren und als eigenen ausgeben.",
         "ar": "ينقل / ينسخ غشًّا",
         "cat": "Kapitel 4",
-        "ex": "In der Klausur haben viele abgeschrieben."
+        "ex": "In der Klausur haben viele abgeschrieben.",
+        "img": "assets/vocab-scenes/b1-1/k4/083.webp"
       },
       {
         "w": "der Anhang",
         "d": "Eine Datei, die man an eine E-Mail hängt.",
         "ar": "الملحق",
         "cat": "Kapitel 4",
-        "ex": "Den Lebenslauf schicke ich Ihnen im Anhang."
+        "ex": "Den Lebenslauf schicke ich Ihnen im Anhang.",
+        "img": "assets/vocab-scenes/b1-1/k4/084.webp"
       },
       {
         "w": "ankommen",
         "d": "Einen Ort erreichen.",
         "ar": "يصل",
         "cat": "Kapitel 4",
-        "ex": "Ich kam gestern in Bremen an."
+        "ex": "Ich kam gestern in Bremen an.",
+        "img": "assets/vocab-scenes/b1-1/k4/085.webp"
       },
       {
         "w": "aussagekräftig",
@@ -4415,35 +4494,40 @@ window.B1_BOOK = [
         "d": "Ein Papier, das etwas offiziell bestätigt.",
         "ar": "الشهادة",
         "cat": "Kapitel 4",
-        "ex": "Der Arzt stellt mir eine Bescheinigung aus."
+        "ex": "Der Arzt stellt mir eine Bescheinigung aus.",
+        "img": "assets/vocab-scenes/b1-1/k4/087.webp"
       },
       {
         "w": "das Bewerbungsfoto",
         "d": "Ein Foto, das man zusammen mit einer Bewerbung abgibt.",
         "ar": "صورة للتقديم على وظيفة",
         "cat": "Kapitel 4",
-        "ex": "Für den Lebenslauf brauche ich ein aktuelles Bewerbungsfoto."
+        "ex": "Für den Lebenslauf brauche ich ein aktuelles Bewerbungsfoto.",
+        "img": "assets/vocab-scenes/b1-1/k4/088.webp"
       },
       {
         "w": "das Bewerbungsportal",
         "d": "Eine Internetseite, auf der man sich online um eine Stelle bewirbt.",
         "ar": "بوابة التقديم على الوظائف",
         "cat": "Kapitel 4",
-        "ex": "Die Bewerbung muss über das Bewerbungsportal geschickt werden."
+        "ex": "Die Bewerbung muss über das Bewerbungsportal geschickt werden.",
+        "img": "assets/vocab-scenes/b1-1/k4/089.webp"
       },
       {
         "w": "das Bewerbungsschreiben",
         "d": "Der Brief, in dem man sich um eine Stelle bewirbt.",
         "ar": "خطاب التقديم للوظيفة",
         "cat": "Kapitel 4",
-        "ex": "Das Bewerbungsschreiben sollte nur eine Seite lang sein."
+        "ex": "Das Bewerbungsschreiben sollte nur eine Seite lang sein.",
+        "img": "assets/vocab-scenes/b1-1/k4/090.webp"
       },
       {
         "w": "das Bewerbungstraining",
         "d": "Eine Vorbereitung auf Bewerbungen und Vorstellungsgespräche.",
         "ar": "التدريب على التقديم للوظائف",
         "cat": "Kapitel 4",
-        "ex": "Im Bewerbungstraining üben wir typische Fragen."
+        "ex": "Im Bewerbungstraining üben wir typische Fragen.",
+        "img": "assets/vocab-scenes/b1-1/k4/091.webp"
       },
       {
         "w": "darum",
@@ -4464,35 +4548,40 @@ window.B1_BOOK = [
         "d": "Das Herunterladen von Daten aus dem Internet.",
         "ar": "التنزيل",
         "cat": "Kapitel 4",
-        "ex": "Der Download der Datei dauert nur wenige Sekunden."
+        "ex": "Der Download der Datei dauert nur wenige Sekunden.",
+        "img": "assets/vocab-scenes/b1-1/k4/094.webp"
       },
       {
         "w": "eignen",
         "d": "Die nötigen Eigenschaften für etwas haben.",
         "ar": "يصلح لـ / يكون مناسبًا",
         "cat": "Kapitel 4",
-        "ex": "Sie eignet sich gut für diese Stelle."
+        "ex": "Sie eignet sich gut für diese Stelle.",
+        "img": "assets/vocab-scenes/b1-1/k4/095.webp"
       },
       {
         "w": "enthalten",
         "d": "Etwas als Bestandteil oder Inhalt haben.",
         "ar": "يحتوي على",
         "cat": "Kapitel 4",
-        "ex": "Die Bewerbungsunterlagen enthalten auch die Zeugnisse."
+        "ex": "Die Bewerbungsunterlagen enthalten auch die Zeugnisse.",
+        "img": "assets/vocab-scenes/b1-1/k4/096.webp"
       },
       {
         "w": "erkundigen",
         "d": "Nachfragen, um etwas zu erfahren.",
         "ar": "يستفسر عن",
         "cat": "Kapitel 4",
-        "ex": "Ich erkundige mich nach den Arbeitszeiten."
+        "ex": "Ich erkundige mich nach den Arbeitszeiten.",
+        "img": "assets/vocab-scenes/b1-1/k4/097.webp"
       },
       {
         "w": "die Fortbildung",
         "d": "Ein Kurs, in dem man im Beruf dazulernt.",
         "ar": "تدريب مهني إضافي",
         "cat": "Kapitel 4",
-        "ex": "Die Firma zahlt ihm eine Fortbildung."
+        "ex": "Die Firma zahlt ihm eine Fortbildung.",
+        "img": "assets/vocab-scenes/b1-1/k4/098.webp"
       },
       {
         "w": "frühere",
@@ -4506,14 +4595,16 @@ window.B1_BOOK = [
         "d": "Die Fähigkeit, ruhig zu warten.",
         "ar": "الصبر",
         "cat": "Kapitel 4",
-        "ex": "Bei der Jobsuche braucht man viel Geduld."
+        "ex": "Bei der Jobsuche braucht man viel Geduld.",
+        "img": "assets/vocab-scenes/b1-1/k4/100.webp"
       },
       {
         "w": "die Institution",
         "d": "Eine feste Einrichtung oder Organisation.",
         "ar": "المؤسسة",
         "cat": "Kapitel 4",
-        "ex": "Die Schule ist eine wichtige Institution."
+        "ex": "Die Schule ist eine wichtige Institution.",
+        "img": "assets/vocab-scenes/b1-1/k4/101.webp"
       },
       {
         "w": "jedoch",
@@ -4527,21 +4618,24 @@ window.B1_BOOK = [
         "d": "Die Suche nach einer Arbeitsstelle.",
         "ar": "البحث عن وظيفة",
         "cat": "Kapitel 4",
-        "ex": "Die Jobsuche dauerte fast ein halbes Jahr."
+        "ex": "Die Jobsuche dauerte fast ein halbes Jahr.",
+        "img": "assets/vocab-scenes/b1-1/k4/103.webp"
       },
       {
         "w": "der Lebenslauf",
         "d": "Eine Übersicht über Ausbildung und Arbeit einer Person.",
         "ar": "السيرة الذاتية",
         "cat": "Kapitel 4",
-        "ex": "Bitte schicken Sie uns Ihren Lebenslauf."
+        "ex": "Bitte schicken Sie uns Ihren Lebenslauf.",
+        "img": "assets/vocab-scenes/b1-1/k4/104.webp"
       },
       {
         "w": "mitschicken",
         "d": "Etwas zusammen mit etwas anderem schicken.",
         "ar": "يُرفق ويُرسل معه",
         "cat": "Kapitel 4",
-        "ex": "Schick bitte auch die Zeugnisse mit."
+        "ex": "Schick bitte auch die Zeugnisse mit.",
+        "img": "assets/vocab-scenes/b1-1/k4/105.webp"
       },
       {
         "w": "das PDF-Dokument",
@@ -4555,42 +4649,48 @@ window.B1_BOOK = [
         "d": "Die Abteilung eines Unternehmens, die sich um Mitarbeiter kümmert.",
         "ar": "قسم الموارد البشرية",
         "cat": "Kapitel 4",
-        "ex": "Die Personalabteilung lädt sie zum Gespräch ein."
+        "ex": "Die Personalabteilung lädt sie zum Gespräch ein.",
+        "img": "assets/vocab-scenes/b1-1/k4/107.webp"
       },
       {
         "w": "der Personalchef",
         "d": "Der Leiter der Personalabteilung.",
         "ar": "مدير شؤون الموظفين",
         "cat": "Kapitel 4",
-        "ex": "Der Personalchef führt das Vorstellungsgespräch."
+        "ex": "Der Personalchef führt das Vorstellungsgespräch.",
+        "img": "assets/vocab-scenes/b1-1/k4/108.webp"
       },
       {
         "w": "die Personalchefin",
         "d": "Die Leiterin der Personalabteilung.",
         "ar": "مديرة شؤون الموظفين",
         "cat": "Kapitel 4",
-        "ex": "Die Personalchefin begrüßt die Bewerberin."
+        "ex": "Die Personalchefin begrüßt die Bewerberin.",
+        "img": "assets/vocab-scenes/b1-1/k4/109.webp"
       },
       {
         "w": "die Personalien",
         "d": "Persönliche Daten wie Name, Geburtsdatum und Adresse.",
         "ar": "التفاصيل الشخصية",
         "cat": "Kapitel 4",
-        "ex": "Die Polizei nahm seine Personalien auf."
+        "ex": "Die Polizei nahm seine Personalien auf.",
+        "img": "assets/vocab-scenes/b1-1/k4/110.webp"
       },
       {
         "w": "der Profi",
         "d": "Jemand, der etwas sehr gut kann oder beruflich macht.",
         "ar": "المحترف",
         "cat": "Kapitel 4",
-        "ex": "Beim Bewerbungsfoto hilft am besten ein Profi."
+        "ex": "Beim Bewerbungsfoto hilft am besten ein Profi.",
+        "img": "assets/vocab-scenes/b1-1/k4/111.webp"
       },
       {
         "w": "der Ratgeber",
         "d": "Eine Person, die Rat gibt; auch ein Buch mit Tipps.",
         "ar": "المستشار",
         "cat": "Kapitel 4",
-        "ex": "Dieser Ratgeber hilft bei der Bewerbung."
+        "ex": "Dieser Ratgeber hilft bei der Bewerbung.",
+        "img": "assets/vocab-scenes/b1-1/k4/112.webp"
       },
       {
         "w": "relevant",
@@ -4618,7 +4718,8 @@ window.B1_BOOK = [
         "d": "Ernsthaft und vertrauenswürdig.",
         "ar": "جادّ / موثوق",
         "cat": "Kapitel 4",
-        "ex": "Die Firma macht einen seriösen Eindruck."
+        "ex": "Die Firma macht einen seriösen Eindruck.",
+        "img": "assets/vocab-scenes/b1-1/k4/116.webp"
       },
       {
         "w": "der Stand",
@@ -4632,14 +4733,16 @@ window.B1_BOOK = [
         "d": "Etwas, das erfüllt sein muss, bevor etwas anderes möglich ist.",
         "ar": "الشرط الأساسي",
         "cat": "Kapitel 4",
-        "ex": "Gute Deutschkenntnisse sind eine Voraussetzung für die Stelle."
+        "ex": "Gute Deutschkenntnisse sind eine Voraussetzung für die Stelle.",
+        "img": "assets/vocab-scenes/b1-1/k4/118.webp"
       },
       {
         "w": "die Vorlage",
         "d": "Ein Muster, nach dem man etwas erstellt.",
         "ar": "القالب",
         "cat": "Kapitel 4",
-        "ex": "Für den Lebenslauf benutze ich eine Vorlage."
+        "ex": "Für den Lebenslauf benutze ich eine Vorlage.",
+        "img": "assets/vocab-scenes/b1-1/k4/119.webp"
       },
       {
         "w": "zukünftig",
@@ -4674,14 +4777,16 @@ window.B1_BOOK = [
         "d": "So, dass man damit zufrieden sein kann.",
         "ar": "مرضية",
         "cat": "Kapitel 4",
-        "ex": "Das Ergebnis der Prüfung war befriedigend."
+        "ex": "Das Ergebnis der Prüfung war befriedigend.",
+        "img": "assets/vocab-scenes/b1-1/k4/124.webp"
       },
       {
         "w": "beziehen",
         "d": "In eine Wohnung einziehen; etwas regelmäßig bekommen.",
         "ar": "ينتقل إلى سكن / يحصل على",
         "cat": "Kapitel 4",
-        "ex": "Wann können wir das neue Büro beziehen?"
+        "ex": "Wann können wir das neue Büro beziehen?",
+        "img": "assets/vocab-scenes/b1-1/k4/125.webp"
       },
       {
         "w": "danach",
@@ -4695,42 +4800,48 @@ window.B1_BOOK = [
         "d": "Ein Mann, der bei einer Firma angestellt ist.",
         "ar": "العامل / الموظف",
         "cat": "Kapitel 4",
-        "ex": "Jeder Arbeitnehmer hat Anspruch auf Urlaub."
+        "ex": "Jeder Arbeitnehmer hat Anspruch auf Urlaub.",
+        "img": "assets/vocab-scenes/b1-1/k4/127.webp"
       },
       {
         "w": "die Arbeitnehmerin",
         "d": "Eine Frau, die bei einer Firma angestellt ist.",
         "ar": "العاملة / الموظفة",
         "cat": "Kapitel 4",
-        "ex": "Die Arbeitnehmerin arbeitet dreißig Stunden pro Woche."
+        "ex": "Die Arbeitnehmerin arbeitet dreißig Stunden pro Woche.",
+        "img": "assets/vocab-scenes/b1-1/k4/128.webp"
       },
       {
         "w": "der Eindruck",
         "d": "Das Bild, das jemand oder etwas bei einem hinterlässt.",
         "ar": "الانطباع",
         "cat": "Kapitel 4",
-        "ex": "Im Gespräch machte sie einen sehr guten Eindruck."
+        "ex": "Im Gespräch machte sie einen sehr guten Eindruck.",
+        "img": "assets/vocab-scenes/b1-1/k4/129.webp"
       },
       {
         "w": "kleinmachen",
         "d": "Jemanden abwerten oder ihm das Gefühl geben, nicht gut genug zu sein.",
         "ar": "يُقلّل من شأن شخص",
         "cat": "Kapitel 4",
-        "ex": "Man sollte andere Menschen nicht kleinmachen."
+        "ex": "Man sollte andere Menschen nicht kleinmachen.",
+        "img": "assets/vocab-scenes/b1-1/k4/130.webp"
       },
       {
         "w": "überzeugen",
         "d": "Jemanden dazu bringen, etwas zu glauben oder zu tun.",
         "ar": "يُقنع",
         "cat": "Kapitel 4",
-        "ex": "Seine Argumente haben mich überzeugt."
+        "ex": "Seine Argumente haben mich überzeugt.",
+        "img": "assets/vocab-scenes/b1-1/k4/131.webp"
       },
       {
         "w": "qualifiziert",
         "d": "Für eine Aufgabe gut ausgebildet und geeignet.",
         "ar": "مؤهل",
         "cat": "Kapitel 4",
-        "ex": "Sie ist für die Stelle gut qualifiziert."
+        "ex": "Sie ist für die Stelle gut qualifiziert.",
+        "img": "assets/vocab-scenes/b1-1/k4/132.webp"
       },
       
       {
@@ -4738,7 +4849,8 @@ window.B1_BOOK = [
         "d": "Eine Vereinbarung darüber, wer was tut.",
         "ar": "الاتفاقية",
         "cat": "Kapitel 4",
-        "ex": "Nach Absprache mit dem Chef nehme ich frei."
+        "ex": "Nach Absprache mit dem Chef nehme ich frei.",
+        "img": "assets/vocab-scenes/b1-1/k4/133.webp"
       },
       {
         "w": "gesucht",
@@ -4752,91 +4864,104 @@ window.B1_BOOK = [
         "d": "Eine Anzeige in einer Zeitung oder im Internet.",
         "ar": "الإعلان",
         "cat": "Kapitel 4",
-        "ex": "Im Inserat steht, dass ein Koch gesucht wird."
+        "ex": "Im Inserat steht, dass ein Koch gesucht wird.",
+        "img": "assets/vocab-scenes/b1-1/k4/135.webp"
       },
       {
         "w": "kommunikativ",
         "d": "Gern mit anderen sprechend und im Austausch.",
         "ar": "اجتماعي / يجيد التواصل",
         "cat": "Kapitel 4",
-        "ex": "Sie ist offen und sehr kommunikativ."
+        "ex": "Sie ist offen und sehr kommunikativ.",
+        "img": "assets/vocab-scenes/b1-1/k4/136.webp"
       },
       {
         "w": "der Nachtportier",
         "d": "Ein Mitarbeiter, der nachts an der Hotelrezeption arbeitet.",
         "ar": "موظف استقبال ليلي",
         "cat": "Kapitel 4",
-        "ex": "Der Nachtportier gibt den Gästen die Schlüssel."
+        "ex": "Der Nachtportier gibt den Gästen die Schlüssel.",
+        "img": "assets/vocab-scenes/b1-1/k4/137.webp"
       },
       {
         "w": "der Stundenlohn",
         "d": "Das Geld, das man für eine Arbeitsstunde bekommt.",
         "ar": "الأجر بالساعة",
         "cat": "Kapitel 4",
-        "ex": "Der Stundenlohn liegt bei fünfzehn Euro."
+        "ex": "Der Stundenlohn liegt bei fünfzehn Euro.",
+        "img": "assets/vocab-scenes/b1-1/k4/138.webp"
       },
       {
         "w": "der Teilzeitjob",
         "d": "Eine Arbeit, bei der man weniger als die übliche volle Arbeitszeit arbeitet.",
         "ar": "وظيفة بدوام جزئي",
         "cat": "Kapitel 4",
-        "ex": "Neben dem Studium hat sie einen Teilzeitjob."
+        "ex": "Neben dem Studium hat sie einen Teilzeitjob.",
+        "img": "assets/vocab-scenes/b1-1/k4/139.webp"
       },
       {
         "w": "das Vergnügen",
         "d": "Freude und gute Laune.",
         "ar": "المتعة",
         "cat": "Kapitel 4",
-        "ex": "Die Arbeit im Team macht ihr großes Vergnügen."
+        "ex": "Die Arbeit im Team macht ihr großes Vergnügen.",
+        "img": "assets/vocab-scenes/b1-1/k4/140.webp"
       },
       {
         "w": "die Zeiteinteilung",
         "d": "Die Art, wie man seine Zeit plant.",
         "ar": "تنظيم الوقت",
         "cat": "Kapitel 4",
-        "ex": "Eine gute Zeiteinteilung hilft beim Lernen."
+        "ex": "Eine gute Zeiteinteilung hilft beim Lernen.",
+        "img": "assets/vocab-scenes/b1-1/k4/141.webp"
       },
       {
         "w": "der Bereich",
         "d": "Ein abgegrenztes Gebiet oder Fachgebiet.",
         "ar": "المنطقة",
         "cat": "Kapitel 4",
-        "ex": "Sie arbeitet im Bereich Marketing."
+        "ex": "Sie arbeitet im Bereich Marketing.",
+        "img": "assets/vocab-scenes/b1-1/k4/142.webp"
       },
       {
         "w": "die Bewerbungsunterlagen",
         "d": "Alle Dokumente, die man für eine Bewerbung einreicht.",
         "ar": "مستندات التقديم للوظيفة",
         "cat": "Kapitel 4",
-        "ex": "Bitte schicken Sie die vollständigen Bewerbungsunterlagen."
+        "ex": "Bitte schicken Sie die vollständigen Bewerbungsunterlagen.",
+        "img": "assets/vocab-scenes/b1-1/k4/143.webp"
       },
       {
         "w": "der Interessent",
         "d": "Ein Mann, der sich für eine Sache interessiert.",
         "ar": "الطرف المهتم",
         "cat": "Kapitel 4",
-        "ex": "Für die Wohnung gab es viele Interessenten."
+        "ex": "Für die Wohnung gab es viele Interessenten.",
+        "img": "assets/vocab-scenes/b1-1/k4/144.webp"
       },
       {
         "w": "die Interessentin",
         "d": "Eine Frau, die sich für eine Sache interessiert.",
         "ar": "المهتمّة",
         "cat": "Kapitel 4",
-        "ex": "Die Interessentin ruft morgen noch einmal an."
+        "ex": "Die Interessentin ruft morgen noch einmal an.",
+        "img": "assets/vocab-scenes/b1-1/k4/145.webp"
       },
       {
         "w": "vorbeikommen",
         "d": "Jemanden kurz besuchen oder kurz an einem Ort halten.",
         "ar": "يمرّ على / يزور سريعًا",
         "cat": "Kapitel 4",
-        "ex": "Komm heute Nachmittag gern kurz bei mir vorbei."
+        "ex": "Komm heute Nachmittag gern kurz bei mir vorbei.",
+        "img": "assets/vocab-scenes/b1-1/k4/146.webp"
       },
       {
         "w": "das Vorstellungsgespräch",
         "d": "Das Gespräch, in dem sich eine Firma und ein Bewerber kennenlernen.",
         "ar": "المقابلة",
         "cat": "Kapitel 4",
-        "ex": "Am Montag habe ich ein Vorstellungsgespräch."
+        "ex": "Am Montag habe ich ein Vorstellungsgespräch.",
+        "img": "assets/vocab-scenes/b1-1/k4/147.webp"
       },
       {
         "w": "absolut",
@@ -4850,84 +4975,96 @@ window.B1_BOOK = [
         "d": "Angriffslustig und unfreundlich.",
         "ar": "عدواني",
         "cat": "Kapitel 4",
-        "ex": "Im Gespräch sollte man nie aggressiv wirken."
+        "ex": "Im Gespräch sollte man nie aggressiv wirken.",
+        "img": "assets/vocab-scenes/b1-1/k4/149.webp"
       },
       {
         "w": "die Anfahrt",
         "d": "Der Weg zu einem Ort.",
         "ar": "الطريق إلى المكان / مسافة الوصول",
         "cat": "Kapitel 4",
-        "ex": "Die Anfahrt zur Firma dauert eine halbe Stunde."
+        "ex": "Die Anfahrt zur Firma dauert eine halbe Stunde.",
+        "img": "assets/vocab-scenes/b1-1/k4/150.webp"
       },
       {
         "w": "die Aufmerksamkeit",
         "d": "Das genaue Zuhören und Hinsehen.",
         "ar": "الاهتمام",
         "cat": "Kapitel 4",
-        "ex": "Danke für Ihre Aufmerksamkeit."
+        "ex": "Danke für Ihre Aufmerksamkeit.",
+        "img": "assets/vocab-scenes/b1-1/k4/151.webp"
       },
       {
         "w": "die Aufregung",
         "d": "Ein unruhiges, angespanntes Gefühl.",
         "ar": "الإثارة",
         "cat": "Kapitel 4",
-        "ex": "Vor dem Gespräch war ihre Aufregung groß."
+        "ex": "Vor dem Gespräch war ihre Aufregung groß.",
+        "img": "assets/vocab-scenes/b1-1/k4/152.webp"
       },
       {
         "w": "der Auftritt",
         "d": "Das Erscheinen vor anderen Menschen.",
         "ar": "المظهر",
         "cat": "Kapitel 4",
-        "ex": "Ihr Auftritt im Gespräch war ruhig und sicher."
+        "ex": "Ihr Auftritt im Gespräch war ruhig und sicher.",
+        "img": "assets/vocab-scenes/b1-1/k4/153.webp"
       },
       {
         "w": "die Beurteilung",
         "d": "Die Einschätzung, wie gut jemand oder etwas ist.",
         "ar": "التقييم",
         "cat": "Kapitel 4",
-        "ex": "Der Chef schreibt eine gute Beurteilung."
+        "ex": "Der Chef schreibt eine gute Beurteilung.",
+        "img": "assets/vocab-scenes/b1-1/k4/154.webp"
       },
       {
         "w": "der Bewerber",
         "d": "Ein Mann, der sich um eine Stelle bewirbt.",
         "ar": "مقدم الطلب",
         "cat": "Kapitel 4",
-        "ex": "Für die Stelle gab es zwanzig Bewerber."
+        "ex": "Für die Stelle gab es zwanzig Bewerber.",
+        "img": "assets/vocab-scenes/b1-1/k4/155.webp"
       },
       {
         "w": "die Bewerberin",
         "d": "Eine Frau, die sich um eine Stelle bewirbt.",
         "ar": "مقدِّمة الطلب",
         "cat": "Kapitel 4",
-        "ex": "Die Bewerberin kommt pünktlich zum Gespräch."
+        "ex": "Die Bewerberin kommt pünktlich zum Gespräch.",
+        "img": "assets/vocab-scenes/b1-1/k4/156.webp"
       },
       {
         "w": "die Branche",
         "d": "Ein bestimmter Wirtschaftsbereich.",
         "ar": "القطاع / المجال المهني",
         "cat": "Kapitel 4",
-        "ex": "In dieser Branche werden viele Fachkräfte gesucht."
+        "ex": "In dieser Branche werden viele Fachkräfte gesucht.",
+        "img": "assets/vocab-scenes/b1-1/k4/157.webp"
       },
       {
         "w": "die Einstellung",
         "d": "Die Haltung zu einer Sache; auch das Anstellen von Mitarbeitern.",
         "ar": "الموقف / التوظيف",
         "cat": "Kapitel 4",
-        "ex": "Sie hat eine positive Einstellung zur Arbeit."
+        "ex": "Sie hat eine positive Einstellung zur Arbeit.",
+        "img": "assets/vocab-scenes/b1-1/k4/158.webp"
       },
       {
         "w": "entspannt",
         "d": "Ruhig und ohne Stress.",
         "ar": "مسترخٍ / هادئ",
         "cat": "Kapitel 4",
-        "ex": "Trotz des Problems blieb er entspannt."
+        "ex": "Trotz des Problems blieb er entspannt.",
+        "img": "assets/vocab-scenes/b1-1/k4/159.webp"
       },
       {
         "w": "die Fähigkeit",
         "d": "Das, was jemand kann.",
         "ar": "القدرة",
         "cat": "Kapitel 4",
-        "ex": "Teamarbeit ist eine wichtige Fähigkeit."
+        "ex": "Teamarbeit ist eine wichtige Fähigkeit.",
+        "img": "assets/vocab-scenes/b1-1/k4/160.webp"
       },
       {
         "w": "der Faktor",
@@ -4941,35 +5078,40 @@ window.B1_BOOK = [
         "d": "Ganz; alle zusammen.",
         "ar": "المجموع",
         "cat": "Kapitel 4",
-        "ex": "Das gesamte Team war bei der Sitzung."
+        "ex": "Das gesamte Team war bei der Sitzung.",
+        "img": "assets/vocab-scenes/b1-1/k4/162.webp"
       },
       {
         "w": "heraussuchen",
         "d": "Aus vielen Dingen das passende auswählen.",
         "ar": "ينتقي / يختار",
         "cat": "Kapitel 4",
-        "ex": "Ich suche die passenden Zeugnisse heraus."
+        "ex": "Ich suche die passenden Zeugnisse heraus.",
+        "img": "assets/vocab-scenes/b1-1/k4/163.webp"
       },
       {
         "w": "konservativ",
         "d": "Am Alten festhaltend; eher zurückhaltend.",
         "ar": "محافظ",
         "cat": "Kapitel 4",
-        "ex": "Zum Gespräch trägt er konservative Kleidung."
+        "ex": "Zum Gespräch trägt er konservative Kleidung.",
+        "img": "assets/vocab-scenes/b1-1/k4/164.webp"
       },
       {
         "w": "die Körperhaltung",
         "d": "Die Haltung und Position des Körpers.",
         "ar": "وضعية الجسم",
         "cat": "Kapitel 4",
-        "ex": "Der Mensch hat eine aufrechte Körperhaltung."
+        "ex": "Der Mensch hat eine aufrechte Körperhaltung.",
+        "img": "assets/vocab-scenes/b1-1/k4/165.webp"
       },
       {
         "w": "die Körpersprache",
         "d": "Was man mit Haltung und Bewegungen ausdrückt.",
         "ar": "لغة الجسد",
         "cat": "Kapitel 4",
-        "ex": "Im Gespräch ist die Körpersprache sehr wichtig."
+        "ex": "Im Gespräch ist die Körpersprache sehr wichtig.",
+        "img": "assets/vocab-scenes/b1-1/k4/166.webp"
       },
       {
         "w": "lauter",
@@ -4983,14 +5125,16 @@ window.B1_BOOK = [
         "d": "Entspannt und ohne Anspannung; nicht fest.",
         "ar": "فضفاض",
         "cat": "Kapitel 4",
-        "ex": "Mein Chef sieht die meisten Dinge ziemlich locker."
+        "ex": "Mein Chef sieht die meisten Dinge ziemlich locker.",
+        "img": "assets/vocab-scenes/b1-1/k4/168.webp"
       },
       {
         "w": "menschlich",
         "d": "Den Menschen betreffend; auch freundlich und verständnisvoll.",
         "ar": "إنساني / بشري",
         "cat": "Kapitel 4",
-        "ex": "Der Chef ist fachlich stark und dazu sehr menschlich."
+        "ex": "Der Chef ist fachlich stark und dazu sehr menschlich.",
+        "img": "assets/vocab-scenes/b1-1/k4/169.webp"
       },
       {
         "w": "möglichst",
@@ -5004,28 +5148,32 @@ window.B1_BOOK = [
         "d": "Nicht geschlossen; auch: ehrlich und direkt.",
         "ar": "مفتوح",
         "cat": "Kapitel 4",
-        "ex": "Sie spricht im Gespräch offen über ihre Wünsche."
+        "ex": "Sie spricht im Gespräch offen über ihre Wünsche.",
+        "img": "assets/vocab-scenes/b1-1/k4/171.webp"
       },
       {
         "w": "optimistisch",
         "d": "An eine gute Entwicklung glaubend.",
         "ar": "متفائل",
         "cat": "Kapitel 4",
-        "ex": "Er bleibt auch in schwierigen Situationen optimistisch."
+        "ex": "Er bleibt auch in schwierigen Situationen optimistisch.",
+        "img": "assets/vocab-scenes/b1-1/k4/172.webp"
       },
       {
         "w": "das Outfit",
         "d": "Die Kleidung, die jemand trägt.",
         "ar": "الزي",
         "cat": "Kapitel 4",
-        "ex": "Für das Vorstellungsgespräch wählt sie ein schlichtes Outfit."
+        "ex": "Für das Vorstellungsgespräch wählt sie ein schlichtes Outfit.",
+        "img": "assets/vocab-scenes/b1-1/k4/173.webp"
       },
       {
         "w": "die Persönlichkeit",
         "d": "Die Gesamtheit der Eigenschaften eines Menschen.",
         "ar": "الشخصية",
         "cat": "Kapitel 4",
-        "ex": "Im Gespräch zählt auch die Persönlichkeit."
+        "ex": "Im Gespräch zählt auch die Persönlichkeit.",
+        "img": "assets/vocab-scenes/b1-1/k4/174.webp"
       }
     ],
     "readings": [],
