@@ -107,11 +107,19 @@ self.addEventListener('activate', event => {
       .map(request => media.delete(request)));
 
     await self.clients.claim();
+    // Tell open pages a new version is live so they can refresh themselves.
+    const windows = await self.clients.matchAll({ type: 'window' });
+    windows.forEach(client => client.postMessage({ type: 'sw-activated', version: CACHE_VERSION }));
   })());
 });
 
 self.addEventListener('message', event => {
   if (event.data === 'skipWaiting') { self.skipWaiting(); return; }
+
+  if (event.data && event.data.type === 'get-version') {
+    event.source?.postMessage({ type: 'sw-version', version: CACHE_VERSION });
+    return;
+  }
 
   if (event.data && event.data.type === 'cache-dictionary') {
     const source = event.source;
@@ -185,6 +193,31 @@ self.addEventListener('message', event => {
   }
 });
 
+function isAppCode(url) {
+  return /\.(?:js|css|json|html)$/.test(url.pathname)
+    && !url.pathname.includes('/dictionary-data/')
+    && !url.pathname.endsWith('/sw.js');
+}
+
+async function networkFirst(req) {
+  const shell = await caches.open(CACHE);
+  try {
+    const response = await Promise.race([
+      fetch(req, { cache: 'no-cache' }),
+      new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 5000))
+    ]);
+    if (response && response.status === 200 && response.type === 'basic') {
+      shell.put(req, response.clone());
+      return response;
+    }
+    return (await shell.match(req, { ignoreSearch: true })) || response;
+  } catch (_) {
+    const cached = await shell.match(req, { ignoreSearch: true });
+    if (cached) return cached;
+    throw _;
+  }
+}
+
 self.addEventListener('fetch', event => {
   const req = event.request;
   if (req.method !== 'GET') return;
@@ -193,8 +226,15 @@ self.addEventListener('fetch', event => {
 
   if (req.mode === 'navigate') {
     event.respondWith(
-      fetch(req).catch(() => caches.match('index.html', { ignoreSearch: true }).then(r => r || caches.match('./', { ignoreSearch: true })))
+      fetch(req, { cache: 'no-cache' }).catch(() => caches.match('index.html', { ignoreSearch: true }).then(r => r || caches.match('./', { ignoreSearch: true })))
     );
+    return;
+  }
+
+  // App code (scripts, styles, manifest) is network-first so every open of the
+  // app runs the newest deploy; the versioned cache is the offline fallback.
+  if (isAppCode(url)) {
+    event.respondWith(networkFirst(req));
     return;
   }
 

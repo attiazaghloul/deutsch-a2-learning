@@ -367,8 +367,7 @@ test('B1.1 chapters contain complete lesson sections', () => {
     });
   }
   assert.match(html, /data_b1_1_lessons\.js\?v=b1-1-lessons-2/);
-  assert.match(html, /serviceWorker\.register\('sw\.js\?v=65'/);
-  assert.match(html, /sessionStorage\.setItem\('pwa-v65-reloaded','1'\)/);
+  assert.match(html, /serviceWorker\.register\('sw\.js'/);
   assert.match(html, /const B1_TABS = \[[\s\S]*?\['lesen','Lesen'\][\s\S]*?\['redemittel','Redemittel'\][\s\S]*?\['grammatik','Grammatik'\][\s\S]*?\['sprechen','Sprechen'\][\s\S]*?\['quiz','Lerncheck'\]/);
   assert.match(html, /go\('\$\{chapter\.route\}\/ueberblick'\)/);
 });
@@ -677,10 +676,10 @@ test('offline dictionary worker uses the exact pre-cached asset keys', () => {
   assert.match(serviceWorker, /DICTIONARY_CACHE/);
   assert.match(serviceWorker, /cache-dictionary/);
   assert.match(serviceWorker, /dictionary-cache-status/);
-  assert.match(html, /register\('sw\.js\?v=65',\{updateViaCache:'none'\}\)/);
+  assert.match(html, /register\('sw\.js',\{updateViaCache:'none'\}\)/);
   assert.match(html, /addEventListener\('controllerchange'/);
-  assert.match(html, /pwa-v65-reloaded/);
-  assert.match(html, /controllerchange[^}]+location\.reload\(\)/s);
+  assert.match(html, /data.type==='sw-activated'/);
+  assert.match(html, /location\.reload\(\)/);
 });
 
 test('B1.1 sub-sections navigate back to their level hub', () => {
@@ -804,4 +803,17 @@ test('recorded speech ships exactly two voices and no retired recordings', () =>
   }
   const speechFiles = readdirSync(join(root, 'app', 'assets', 'speech'));
   assert.deepEqual(speechFiles.filter(file => /jonas|samir/.test(file)), []);
+});
+
+test('app code is network-first and open pages reload when a new version goes live', () => {
+  const sw = readFileSync(join(root, 'app', 'sw.js'), 'utf8');
+  assert.match(sw, /function isAppCode\(/);
+  assert.match(sw, /if \(isAppCode\(url\)\) \{\s*event\.respondWith\(networkFirst\(req\)\)/);
+  assert.match(sw, /type: 'sw-activated', version: CACHE_VERSION/);
+  assert.match(sw, /fetch\(req, \{ cache: 'no-cache' \}\)/);
+  const page = readFileSync(join(root, 'app', 'js', 'offline-download.js'), 'utf8');
+  assert.match(page, /addEventListener\('visibilitychange'/);
+  assert.match(page, /data\.type==='sw-activated'/);
+  assert.doesNotMatch(page, /pwa-v65-reloaded/);
+  assert.match(page, /sessionStorage\.setItem\(RELOAD_GUARD_KEY,pendingVersion\)/);
 });
