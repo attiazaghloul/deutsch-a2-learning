@@ -620,7 +620,7 @@ test('next-generation shell and design system are wired into the offline app', (
   assert.match(worker, /data_lernwortschatz12\.js/);
   assert.match(worker, /data_vocab_topics7_12\.js/);
   assert.match(worker, /assets\/vocab-scenes\/k7\/145\.webp/);
-  assert.match(worker, /CACHE_VERSION = 'v65'/);
+  assert.match(worker, /CACHE_VERSION = 'v\d+'/);
   assert.match(worker, /vocab-scenes\\\/k7\\\/\\d\+\\\.webp/);
 });
 
@@ -747,4 +747,17 @@ test('progress backups only accept files exported by this app', () => {
   assert.deepEqual(JSON.parse(JSON.stringify(entries)), [['favoriteWordsV1', '[]']]);
   assert.throws(() => context.parseBackup(JSON.stringify({ app: 'other', data: {} })));
   assert.throws(() => context.parseBackup('not json'));
+});
+
+test('service-worker cache version changes whenever a precached file changes', () => {
+  const { shellVersion } = require('../scripts/stamp_service_worker.js');
+  const appDir = join(root, 'app');
+  const source = readFileSync(join(appDir, 'sw.js'), 'utf8');
+  const version = shellVersion(appDir, source);
+  assert.match(version, /^v\d+-[0-9a-f]{10}$/);
+  assert.equal(shellVersion(appDir, source), version, 'hash must be deterministic');
+  const restamped = source.replace(/const CACHE_VERSION = '[^']*';/, `const CACHE_VERSION = '${version}';`);
+  assert.equal(shellVersion(appDir, restamped), version, 'stamping must be idempotent');
+  const changedShell = source.replace("'manifest.json',", "'manifest.json','index.html',");
+  assert.notEqual(shellVersion(appDir, changedShell), version);
 });
