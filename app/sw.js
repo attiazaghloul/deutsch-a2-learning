@@ -27,12 +27,12 @@ const CORE = [
   // JS data files
   'data_a1.js','data_a12.js','data_a1_grammar_full.js','data_a1_grammar_lessons.js','data_a1_verbs.js',
   'data_a21_library.js','data_a2_grammar_lessons.js','data_book0.js','data_book0_expansion.js','data_book1.js',
-  'data_book2.js','data_b1_1.js','data_b1_1_lessons.js','data_b1_verbs.js','data_exam_b1.js','data_lernwortschatz8.js','data_lernwortschatz9.js','data_lernwortschatz10.js','data_lernwortschatz11.js','data_lernwortschatz12.js','dictionary-worker.js','data_enrichment.js','data_vocab_topics7_12.js','data_exam.js','data_extra.js','data_gram.js','data_gram_complete.js',
+  'data_book2.js','data_b1_1.js','data_b1_1_lessons.js','data_b1_1_conversations.js','data_b1_verbs.js','data_exam_b1.js','data_lernwortschatz8.js','data_lernwortschatz9.js','data_lernwortschatz10.js','data_lernwortschatz11.js','data_lernwortschatz12.js','dictionary-worker.js','data_enrichment.js','data_vocab_topics7_12.js','data_exam.js','data_extra.js','data_gram.js','data_gram_complete.js',
   'data_gram_extra.js','data_hoeren.js','data_hoeren_a1.js','data_hoeren_a1_figures.js','data_hoeren_a1_interactive.js',
   'data_hoeren_figures.js','data_hoeren_interactive.js','data_phonetik_a1.js','data_phonetik_a1_figures.js',
   'data_phonetik_a1_interactive.js','data_podcast.js','data_speech_a1.js','data_speech_b1.js','data_speech_clean.js','data_verbs.js',
   'ui-next.js','styles/ui-next.css','styles/app.css',
-  'js/01-core.js','js/02-translation.js','js/03-speech.js','js/04-router.js','js/05-levels.js','js/06-listening.js','js/07-word-search.js','js/08-dictionary.js','js/09-podcast.js','js/10-games.js','js/11-exam.js','js/12-chapter.js','js/13-flashcards.js','js/14-quiz-grammar.js','js/15-conjugation.js','js/16-word-trainer.js','js/offline-download.js',
+  'js/01-core.js','js/02-translation.js','js/03-speech.js','js/04-router.js','js/05-levels.js','js/06-listening.js','js/07-word-search.js','js/08-dictionary.js','js/09-podcast.js','js/10-games.js','js/11-exam.js','js/12-chapter.js','js/13-flashcards.js','js/14-quiz-grammar.js','js/15-conjugation.js','js/16-word-trainer.js','js/17-conversations.js','js/offline-download.js',
   // Chapter covers (A2) – ~2 MB
   'assets/chapters/chapter-1.webp','assets/chapters/chapter-2.webp','assets/chapters/chapter-3.webp',
   'assets/chapters/chapter-4.webp','assets/chapters/chapter-5.webp','assets/chapters/chapter-6.webp',

@@ -888,3 +888,24 @@ test('word trainer checks answers tolerantly and schedules words with Leitner bo
   assert.ok(!picked.some(word => word.id === 'w1'), 'words not yet due are skipped');
   assert.equal(picked.length, 9);
 });
+
+test('every B1.1 chapter offers five conversation situations with dialogues', () => {
+  const context = vm.createContext({ window: {} });
+  for (const file of ['data_b1_1.js', 'data_b1_1_lessons.js', 'data_b1_1_conversations.js']) {
+    vm.runInContext(readFileSync(join(root, 'app', file), 'utf8'), context);
+  }
+  for (const chapter of context.window.B1_BOOK) {
+    assert.equal(chapter.conversations.length, 5, `Kapitel ${chapter.num}`);
+    for (const item of chapter.conversations) {
+      assert.ok(item.situation && /[؀-ۿ]/.test(item.situationAr));
+      assert.ok(item.phrases.length >= 8, item.situation);
+      assert.ok(item.dialogue.length >= 6, item.situation);
+      [...item.phrases, ...item.dialogue].forEach(line => {
+        assert.ok(line.de && /[؀-ۿ]/.test(line.ar), `${item.situation}: ${line.de}`);
+      });
+      assert.ok(item.task && item.taskAr);
+      assert.ok(chapter.redemittel.some(group => group.cat === item.situation), 'phrases feed the Redemittel');
+    }
+  }
+  assert.match(functionSource('renderChapterTab'), /conversationsHtml\(c\)/);
+});

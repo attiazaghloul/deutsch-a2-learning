@@ -219,7 +219,7 @@ function renderChapterTab(c, tab){
     return h;
   }
   if(tab==='sprechen'){
-    let h = `<div class="card">
+    let h = conversationsHtml(c) + `<div class="card">
       <h3 style="color:var(--green-d);margin-bottom:8px">Sprich über das Thema! 🗣️</h3>
       <p style="font-size:13.5px;color:var(--ink-2)">Beantworte die Fragen laut. Benutze die Redemittel aus diesem Kapitel.</p>
       ${ar('جاوب على الأسئلة دي بصوت عالي. استخدم جُمل الكلام (Redemittel) اللي في الفصل. ده أهم تمرين عشان تقدر تتكلم عن الموضوع.')}

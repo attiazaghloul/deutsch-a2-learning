@@ -1067,3 +1067,18 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 .trainer-results li.bad{border-color:#efc1bd}
 .trainer-results li [lang="ar"]{font-family:"Cairo","Tahoma",sans-serif;color:var(--ar)}
 .trainer-results li small{grid-column:1/-1;color:var(--ink-2);font-size:12px}
+/* Conversation situations */
+.conversation-card{padding:16px}
+.conversation-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:10px}
+.conversation-head h3{color:var(--green-d);font-size:17px}
+.conversation-play{flex:none;border:0;border-radius:999px;background:var(--green);color:#fff;font:inherit;font-weight:700;font-size:13px;padding:8px 14px;cursor:pointer}
+.conversation-play.playing{background:var(--red)}
+.conversation-lines{display:grid;gap:8px}
+.conversation-line{max-width:88%;padding:9px 12px;border-radius:14px;background:var(--green-l);transition:box-shadow .2s}
+.conversation-line.right{justify-self:end;background:var(--blue-l)}
+.conversation-line.active{box-shadow:0 0 0 2px var(--green)}
+.conversation-line p{margin:0;font-size:15px}
+.conversation-speaker{display:block;font-size:11.5px;font-weight:800;color:var(--ink-2);text-transform:uppercase;letter-spacing:.04em}
+.conversation-phrases{margin-top:12px;border-top:1px solid var(--line);padding-top:8px}
+.conversation-phrases summary{cursor:pointer;font-weight:700;color:var(--green-d);padding:4px 0}
+.conversation-task{margin-top:12px;padding:10px 12px;border-radius:12px;background:var(--amber-l);font-size:14.5px}
