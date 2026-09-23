@@ -5,7 +5,14 @@ const vm = require('node:vm');
 const test = require('node:test');
 
 const root = join(__dirname, '..');
-const html = readFileSync(join(root, 'app', 'index.html'), 'utf8');
+const jsDir = join(root, 'app', 'js');
+// The app shell is split into index.html plus ordered classic scripts; tests
+// inspect them as one source so helpers can be loaded regardless of file.
+const html = [
+  readFileSync(join(root, 'app', 'index.html'), 'utf8'),
+  ...readdirSync(jsDir).filter(file => file.endsWith('.js')).sort().map(file => readFileSync(join(jsDir, file), 'utf8')),
+  readFileSync(join(root, 'app', 'styles', 'app.css'), 'utf8')
+].join('\n');
 
 function functionSource(name) {
   const start = html.indexOf(`function ${name}(`);
