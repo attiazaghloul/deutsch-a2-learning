@@ -853,3 +853,38 @@ test('Arabic help stays a quiet line and long translations fold away', () => {
   assert.match(context.ar('ترجمة '.repeat(60)), /<details class="ar ar-long"/);
   assert.ok(typeof ar === 'function');
 });
+
+test('word trainer checks answers tolerantly and schedules words with Leitner boxes', () => {
+  const source = readFileSync(join(root, 'app', 'js', '16-word-trainer.js'), 'utf8').replace(/^(const|let) /gm, 'var ');
+  const context = vm.createContext({ Date, Math, JSON, localStorage: { getItem: () => null, setItem() {} } });
+  vm.runInContext(source, context);
+  const check = (input, expected, article = '') => context.checkTrainerAnswer(input, expected, { article });
+  assert.equal(check('der Fahrplan', 'der Fahrplan', 'der').ok, true);
+  assert.equal(check('  Der FAHRPLAN. ', 'der Fahrplan', 'der').ok, true);
+  const wrongArticle = check('die Fahrplan', 'der Fahrplan', 'der');
+  assert.equal(wrongArticle.ok, false);
+  assert.match(wrongArticle.note, /Artikel: der/);
+  assert.match(check('Fahrplan', 'der Fahrplan', 'der').note, /Mit Artikel/);
+  const umlaut = check('die Kuehlung', 'die Kühlung', 'die');
+  assert.equal(umlaut.ok, true);
+  assert.equal(umlaut.close, true);
+  assert.equal(check('Aufenthalt', 'Aufenthalte').ok, true, 'one typo in a long word is accepted');
+  assert.equal(check('Haus', 'Maus').ok, false, 'short words must be exact');
+
+  const store = {};
+  let record = context.trainerRecordResult(store, 'w1', true);
+  assert.equal(record.box, 1);
+  record = context.trainerRecordResult(store, 'w1', true);
+  assert.equal(record.box, 2);
+  assert.ok(record.due - Date.now() > 2.9 * 24 * 60 * 60 * 1000);
+  record = context.trainerRecordResult(store, 'w1', false);
+  assert.equal(record.box, 1);
+  assert.ok(record.due - Date.now() <= 10 * 60 * 1000);
+
+  const words = Array.from({ length: 30 }, (_, index) => ({ id: `w${index}` }));
+  const schedule = { w0: { box: 2, due: 0 }, w1: { box: 3, due: Date.now() + 1e9 } };
+  const picked = context.pickTrainerWords(words, schedule, { size: 14, newLimit: 8 });
+  assert.equal(picked[0].id, 'w0', 'due words come first');
+  assert.ok(!picked.some(word => word.id === 'w1'), 'words not yet due are skipped');
+  assert.equal(picked.length, 9);
+});

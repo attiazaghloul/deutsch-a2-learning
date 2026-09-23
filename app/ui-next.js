@@ -103,7 +103,7 @@
 
   function routeGroup(hash){
     if(!hash) return 'home';
-    if(hash==='review'||hash==='favorites'||hash==='word-search') return 'review';
+    if(hash==='review'||hash==='favorites'||hash==='word-search'||hash==='train'||hash.startsWith('train/')) return 'review';
     if(hash==='progress') return 'progress';
     if(hash==='listen'||hash.startsWith('listen/')||hash==='podcast'||hash.startsWith('podcast/')||hash.includes('/listen')) return 'listen';
     return 'learn';
@@ -272,7 +272,7 @@
           <article class="home-content-card featured"><span class="home-content-icon">${icons.exam}</span><div><h3>Training & Prüfung</h3><p>Aktive Spiele, Podcasts und Goethe-A2 Modelltraining mit Timer.</p></div><div class="home-content-links"><button type="button" onclick="go('games')">Training</button><button type="button" onclick="go('exam')">A2 Prüfung</button></div></article>
         </div>
       </section>
-      <section class="home-tools"><div><span class="home-kicker">Direktzugriff</span><h2>Nützliche Werkzeuge</h2></div><div class="home-tool-links"><button type="button" onclick="go('word-search')">${icons.search}<span><b>Wortsuche</b><small>Im gesamten Programm</small></span></button><button type="button" onclick="go('review')">${icons.cards}<span><b>Wiederholen</b><small>Favoriten und Fehler</small></span></button><button type="button" onclick="go('${listenRoute}')">${icons.listen}<span><b>Hörstudio</b><small>${level.toUpperCase()} ist ausgewählt</small></span></button></div></section>
+      <section class="home-tools"><div><span class="home-kicker">Direktzugriff</span><h2>Nützliche Werkzeuge</h2></div><div class="home-tool-links"><button type="button" onclick="go('word-search')">${icons.search}<span><b>Wortsuche</b><small>Im gesamten Programm</small></span></button><button type="button" onclick="go('train')">${icons.cards}<span><b>Wort-Trainer</b><small>Wörter dauerhaft lernen</small></span></button><button type="button" onclick="go('review')">${icons.review}<span><b>Wiederholen</b><small>Favoriten und Fehler</small></span></button><button type="button" onclick="go('${listenRoute}')">${icons.listen}<span><b>Hörstudio</b><small>${level.toUpperCase()} ist ausgewählt</small></span></button></div></section>
     </div>`;
   }
 
@@ -455,6 +455,7 @@
   function dailyPlan(){
     const minutes=Number(state.profile.minutes||15);
     const due=dueReviewItems().length;
+    const trainerDue=typeof trainerDueCount==='function'?trainerDueCount():0;
     const level=state.profile.level||'a2';
     const lessonRoute=level==='a1'?'a1/lessons':level==='b1.1'?'b1.1/lessons':'a2/lessons';
     const listenRoute=level==='a1'?'a1/listen':level==='b1.1'?'b1.1/games':'listen';
@@ -464,8 +465,9 @@
     const doneLesson=today.some(item=>/\/k\d+|^k\d+/.test(item.route||''));
     const doneSkill=today.some(item=>/listen|games|podcast|exam/.test(item.route||''));
     return [
-      {done:doneReview||!due,route:'review',title:due?`${due} fällige Karten wiederholen`:'Keine Karten fällig',ar:'راجع الكروت المستحقة النهارده.'},
-      {done:doneLesson,route:state.lastLearningRoute&&state.lastLearningRoute!==level?state.lastLearningRoute:lessonRoute,title:`${newWords} neue Wörter oder eine Lernetappe`,ar:'كمّل الدرس من المكان اللي وقفت عنده.'},
+      {done:(doneReview||!due)&&!trainerDue,route:trainerDue?'train/due':'review',title:trainerDue?`${trainerDue} Wörter im Trainer wiederholen`:due?`${due} fällige Karten wiederholen`:'Keine Wiederholung fällig',ar:'راجع الكلمات المستحقة النهارده في المدرب.'},
+      {done:doneLesson||today.some(item=>/^train\/(a1|a2|b1)\//.test(item.route||'')),route:'train',title:`${newWords} neue Wörter im Wort-Trainer`,ar:'اتعلم كلمات جديدة من الوحدة اللي بتذاكرها.'},
+      {done:doneLesson,route:state.lastLearningRoute&&state.lastLearningRoute!==level?state.lastLearningRoute:lessonRoute,title:'Eine Lernetappe im Kapitel',ar:'كمّل الدرس من المكان اللي وقفت عنده.'},
       {done:doneSkill,route:listenRoute,title:level==='b1.1'?'Eine Trainingsrunde':'Eine Hör- oder Trainingseinheit',ar:'تمرين استماع أو لعبة قصيرة.'}
     ];
   }

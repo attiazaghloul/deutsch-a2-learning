@@ -32,7 +32,7 @@ const CORE = [
   'data_hoeren_figures.js','data_hoeren_interactive.js','data_phonetik_a1.js','data_phonetik_a1_figures.js',
   'data_phonetik_a1_interactive.js','data_podcast.js','data_speech_a1.js','data_speech_b1.js','data_speech_clean.js','data_verbs.js',
   'ui-next.js','styles/ui-next.css','styles/app.css',
-  'js/01-core.js','js/02-translation.js','js/03-speech.js','js/04-router.js','js/05-levels.js','js/06-listening.js','js/07-word-search.js','js/08-dictionary.js','js/09-podcast.js','js/10-games.js','js/11-exam.js','js/12-chapter.js','js/13-flashcards.js','js/14-quiz-grammar.js','js/15-conjugation.js','js/offline-download.js',
+  'js/01-core.js','js/02-translation.js','js/03-speech.js','js/04-router.js','js/05-levels.js','js/06-listening.js','js/07-word-search.js','js/08-dictionary.js','js/09-podcast.js','js/10-games.js','js/11-exam.js','js/12-chapter.js','js/13-flashcards.js','js/14-quiz-grammar.js','js/15-conjugation.js','js/16-word-trainer.js','js/offline-download.js',
   // Chapter covers (A2) – ~2 MB
   'assets/chapters/chapter-1.webp','assets/chapters/chapter-2.webp','assets/chapters/chapter-3.webp',
   'assets/chapters/chapter-4.webp','assets/chapters/chapter-5.webp','assets/chapters/chapter-6.webp',

@@ -149,6 +149,7 @@ function renderChapterTab(c, tab){
     let h = `<div class="fc-bar">
       <button class="btn btn-green" id="fcStart" style="display:none">🃏 Mit Karten üben</button>
       <button class="btn btn-ghost" id="fcStop">📃 Liste zeigen</button>
+      <button class="btn btn-green" type="button" onclick="go('train/${{'A1':'a1','A2':'a2','B1.1':'b1'}[chapterLevel(c)]}/${c.num}')">🧠 Wörter trainieren</button>
       <button class="btn btn-ghost" type="button" onclick="addChapterWordsToReview('${chapterLevel(c)}',${c.num})">🔁 Alle Wörter ins Review</button>
     </div>
     <div id="fcArea"></div>

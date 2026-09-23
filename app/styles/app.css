@@ -1011,3 +1011,59 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 .conj-table dl div:last-child{border-bottom:0}
 .conj-table dt{color:var(--ink-2);font-size:12.5px}
 .conj-table dd{margin:0;font-weight:600;color:var(--ink)}
+/* Word trainer */
+.trainer-hero-actions{margin-top:14px}
+.trainer-hero-actions .btn[disabled]{opacity:.55}
+.trainer-legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-2);margin:4px 2px 10px}
+.trainer-legend i{display:inline-block;width:12px;height:12px;border-radius:4px;background:var(--line);margin-inline-end:5px;vertical-align:-1px}
+.trainer-legend i.mastered,.trainer-bar .mastered{background:var(--green)}
+.trainer-legend i.learning,.trainer-bar .learning{background:var(--amber)}
+.trainer-bar{display:flex;height:7px;border-radius:999px;background:var(--line);overflow:hidden;margin-top:6px}
+.trainer-bar span{height:100%}
+.trainer-level-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.trainer-level-head h3{color:var(--green-d)}
+.trainer-level-head span{font-size:13px;color:var(--ink-2)}
+.trainer-chapters{display:grid;gap:8px;margin-top:14px}
+.trainer-chapter{display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;align-items:center;text-align:left;padding:10px;border:1px solid var(--line);border-radius:14px;background:var(--card);font:inherit;color:inherit;cursor:pointer}
+.trainer-chapter-num{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--green-l);color:var(--green-d);font-weight:800}
+.trainer-chapter-copy b{display:block;font-size:14.5px}
+.trainer-chapter-copy small{display:block;color:var(--ink-2);font-size:12px}
+.trainer-progress{height:6px;border-radius:999px;background:var(--line);overflow:hidden;margin:0 0 12px}
+.trainer-progress span{display:block;height:100%;background:var(--green);transition:width .3s}
+.trainer-card{text-align:center;padding:22px 18px}
+.trainer-kind{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--green-d);background:var(--green-l);border-radius:999px;padding:4px 12px;margin-bottom:14px}
+.trainer-intro .fc-visual{max-width:260px;margin:0 auto 12px}
+.trainer-word{font-size:27px;font-weight:700;color:var(--ink);margin:6px 0}
+.trainer-meaning{font-family:"Cairo","Tahoma",sans-serif;font-size:18px;color:var(--ar);margin:6px 0}
+.trainer-meaning.big{font-size:24px;color:var(--ink);margin:10px 0 16px}
+.trainer-def{color:var(--ink-2);font-size:14.5px;margin-top:8px}
+.trainer-example,.trainer-sentence{font-style:italic;color:var(--ink);margin-top:8px;font-size:16px}
+.trainer-sentence{font-style:normal;font-size:19px;line-height:1.7}
+.trainer-gap{display:inline-block;min-width:70px;border-bottom:2px solid var(--green);color:var(--green)}
+.trainer-hint{font-size:13px;color:var(--ink-2)}
+.trainer-audio,.trainer-listen{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 12px;font-size:16px;cursor:pointer}
+.trainer-listen{font-size:17px;padding:12px 22px;margin:8px 0 16px;font-weight:700;color:var(--green-d)}
+.trainer-options{display:grid;gap:9px;margin-top:10px}
+.trainer-option{padding:13px 14px;border:1.5px solid var(--line);border-radius:14px;background:var(--card);font:inherit;font-size:16px;cursor:pointer;color:var(--ink)}
+.trainer-option[lang="ar"]{font-family:"Cairo","Tahoma",sans-serif}
+.trainer-option.correct{border-color:var(--green);background:var(--green-l);color:var(--green-d);font-weight:700}
+.trainer-option.wrong{border-color:var(--red);background:var(--red-l);color:var(--red)}
+.trainer-type{display:flex;gap:8px;margin-top:14px}
+.trainer-type input{flex:1;min-width:0;font:inherit;font-size:18px;padding:11px 13px;border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
+.trainer-umlauts{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:10px}
+.trainer-umlauts button{min-width:40px;padding:7px 10px;border:1px solid var(--line);border-radius:10px;background:var(--card);font:inherit;font-weight:700;cursor:pointer}
+.trainer-umlauts .trainer-skip{font-weight:500;color:var(--ink-2)}
+.trainer-feedback{display:none;margin-top:16px;padding:14px;border-radius:14px;text-align:center}
+.trainer-feedback.show{display:block}
+.trainer-feedback.good{background:var(--green-l);color:var(--green-d)}
+.trainer-feedback.bad{background:var(--red-l);color:var(--red)}
+.trainer-solution{margin-top:6px;font-size:17px;color:var(--ink);font-weight:600}
+.trainer-solution [lang="ar"]{font-family:"Cairo","Tahoma",sans-serif;font-weight:500}
+.trainer-next{margin-top:12px;min-width:160px}
+.trainer-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+.trainer-done{text-align:center}
+.trainer-results{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:6px;text-align:left}
+.trainer-results li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;padding:9px 12px;border-radius:12px;background:var(--card);border:1px solid var(--line)}
+.trainer-results li.bad{border-color:#efc1bd}
+.trainer-results li [lang="ar"]{font-family:"Cairo","Tahoma",sans-serif;color:var(--ar)}
+.trainer-results li small{grid-column:1/-1;color:var(--ink-2);font-size:12px}
