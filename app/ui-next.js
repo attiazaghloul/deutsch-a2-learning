@@ -87,6 +87,7 @@
     const settingsPanel=document.querySelector('#settingsModal .modal-panel');
     if(settingsPanel&&!settingsPanel.querySelector('[data-motion-setting]')){
       settingsPanel.insertAdjacentHTML('beforeend',`<div class="setting-row" data-motion-setting><b>Bewegung und Übergänge</b><p>Reduziere Animationen, wenn du eine ruhigere Oberfläche bevorzugst.</p><div class="motion-choice" role="group" aria-label="Bewegung"><button type="button" data-motion-value="auto">Systemstandard</button><button type="button" data-motion-value="reduced">Reduziert</button></div></div>`);
+      settingsPanel.insertAdjacentHTML('beforeend',`<div class="setting-row" data-backup-setting><b>Fortschritt sichern</b><p>Dein Fortschritt wird nur in diesem Browser gespeichert. Exportiere eine Sicherung, um ihn auf ein anderes Gerät zu übertragen.</p><div class="ar" lang="ar" dir="rtl">التقدم محفوظ في المتصفح ده بس. صدّر نسخة احتياطية عشان تنقلها لجهاز تاني أو ترجعها لو اتمسحت بيانات المتصفح.</div><div class="motion-choice" role="group" aria-label="Sicherung"><button type="button" data-backup-export>Sicherung exportieren</button><button type="button" data-backup-import>Sicherung importieren</button></div><input type="file" accept="application/json,.json" data-backup-file hidden></div>`);
       updateMotionSetting();
     }
   }
@@ -123,7 +124,7 @@
     const items=level==='a1'
       ?[['lessons','Lektionen','a1/lessons'],['dict','Wörterbuch','a1/dict'],['verbs','Verben','a1/verbs'],['phrases','Redemittel','a1/phrases'],['listen','Hören','a1/listen']]
       :level==='b1.1'
-        ?[['lessons','Lektionen','b1.1/lessons']]
+        ?[['lessons','Lektionen','b1.1/lessons'],['dict','Wörterbuch','b1.1/dict'],['verbs','Verben','b1.1/verbs'],['phrases','Redemittel','b1.1/phrases'],['games','Training','b1.1/games'],['exam','Prüfung','b1.1/exam']]
         :[['lessons','Lektionen','a2/lessons'],['dict','Wörterbuch','dict'],['verbs','Verben','verbs'],['phrases','Redemittel','phrases'],['podcast','Podcast','podcast'],['games','Training','games'],['listen','Hören','listen'],['exam','Prüfung','exam']];
     return `<nav class="feature-tabs" aria-label="${level.toUpperCase()} Bereiche">${items.map(([id,label,route])=>`<button type="button" class="feature-tab" onclick="go('${route}')" ${id===active?'aria-current="page"':''}>${label}</button>`).join('')}</nav>`;
   }
@@ -205,8 +206,8 @@
         if(key.startsWith('grammarPractice:')) grammar+=Object.values(getJSON(key,{})).filter(Boolean).length;
       }
     }catch{}
-    const games=getJSON('a2GameBestScores',{});
-    const exams=getJSON('a2ExamScores',{});
+    const games={...getJSON('a2GameBestScores',{}),...Object.fromEntries(Object.entries(getJSON('b1GameBestScores',{})).map(([key,value])=>[`b1-${key}`,value]))};
+    const exams={...getJSON('a2ExamScores',{}),...Object.fromEntries(Object.entries(getJSON('b1ExamScores',{})).map(([key,value])=>[`b1-${key}`,value]))};
     const gameBest=Math.max(0,...Object.values(games).map(Number).filter(Number.isFinite));
     const examBest=Math.max(0,...Object.values(exams).map(Number).filter(Number.isFinite));
     return {favorites,listening,grammar,gameBest,examBest};
@@ -245,14 +246,15 @@
       <section class="home-hero" aria-labelledby="homeHeroTitle">
         <div class="home-hero-copy">
           <div class="home-eyebrow"><span>Deutsch lernen</span><span>A1 + A2 + B1.1</span></div>
-          <h2 id="homeHeroTitle">Vom ersten Satz bis zur A2-Prüfung.</h2>
+          <h2 id="homeHeroTitle">Vom ersten Satz bis B1.</h2>
           <p>Ein vollständiger, kostenloser Lernbereich mit Lektionen, Wortschatz, Grammatik, Hören, Sprechen und interaktivem Training.</p>
-          <p class="home-ar" lang="ar" dir="rtl">برنامج متكامل لتعلّم الألمانية من البداية حتى نهاية مستوى A2، وكل المحتوى مرتب حسب المستوى والمهارة.</p>
+          <p class="home-ar" lang="ar" dir="rtl">برنامج متكامل لتعلّم الألمانية من البداية حتى مستوى B1.1، وكل المحتوى مرتب حسب المستوى والمهارة.</p>
           <div class="home-hero-actions"><button type="button" class="home-level-cta a1" onclick="go('a1')"><b>A1</b><span>Für Anfänger</span>${icons.arrow}</button><button type="button" class="home-level-cta a2" onclick="go('a2')"><b>A2</b><span>Weiterlernen</span>${icons.arrow}</button><button type="button" class="home-level-cta b1" onclick="go('b1.1')"><b>B1.1</b><span>Neu</span>${icons.arrow}</button></div>
         </div>
-        <div class="home-overview" aria-label="Programmübersicht"><div><b>30</b><span>Lektionen</span></div><div><b>3</b><span>Niveaus</span></div><div><b>10+</b><span>Lernbereiche</span></div><div><b>Offline</b><span>verfügbar</span></div></div>
+        <div class="home-overview" aria-label="Programmübersicht"><div><b>30</b><span>Kapitel</span></div><div><b>3</b><span>Niveaus</span></div><div><b>10+</b><span>Lernbereiche</span></div><div><b>Offline</b><span>verfügbar</span></div></div>
       </section>
       ${hasHistory?`<section class="home-continue"><span class="home-continue-icon">${icons.learn}</span><div><small>Zuletzt geöffnet · ${level.toUpperCase()}</small><b>${escapeHtml(routeLabel(continueRoute))}</b></div><button type="button" class="next-primary" onclick="go('${escapeHtml(continueRoute)}')">Weiterlernen ${icons.arrow}</button></section>`:''}
+      ${dailyPlanMarkup()}
       <section class="home-section" aria-labelledby="levelsTitle"><div class="next-section-head home-heading"><div><span class="home-kicker">Wähle dein Niveau</span><h2 id="levelsTitle">Was möchtest du lernen?</h2><p class="home-ar" lang="ar" dir="rtl">اختر المستوى وشاهد المحتوى المتاح داخله قبل أن تبدأ.</p></div></div>
         <div class="home-level-grid">
           <article class="home-level-card a1"><img src="assets/a1/chapters/chapter-1.webp" alt="Deutsch A1 Lernbereich" loading="eager"><div class="home-level-body"><div class="home-level-top"><span class="home-level-code">A1</span><span class="home-level-state">Anfänger</span></div><h3>Grundlagen sicher aufbauen</h3><p>Netzwerk neu A1.1 + A1.2 mit zwölf vollständigen Kapiteln.</p><ul><li>Lektionen & interaktive Übungen</li><li>Wortschatz, Grammatik & Verben</li><li>Hören, Phonetik & Redemittel</li></ul><div class="home-card-actions"><button type="button" class="next-primary" onclick="go('a1')">A1 entdecken ${icons.arrow}</button><button type="button" class="next-secondary" onclick="go('a1/lessons')">12 Lektionen</button></div></div></article>
@@ -262,7 +264,7 @@
       </section>
       <section class="home-section" aria-labelledby="contentTitle"><div class="next-section-head home-heading"><div><span class="home-kicker">Alles im Programm</span><h2 id="contentTitle">Lerne nach Thema oder Fähigkeit</h2><p>Du musst keinen festen Plan einrichten. Öffne direkt den Bereich, den du gerade brauchst.</p><p class="home-ar" lang="ar" dir="rtl">تقدر تدخل مباشرة على الدروس أو الكلمات أو القواعد أو الاستماع من غير إعداد خطة مذاكرة.</p></div></div>
         <div class="home-content-grid">
-          <article class="home-content-card"><span class="home-content-icon">${icons.learn}</span><div><h3>Lektionen</h3><p>24 Kapitel aus Netzwerk neu A1 und A2, jeweils mit Wortschatz, Lesen, Grammatik, Sprechen und Quiz.</p></div><div class="home-content-links"><button type="button" onclick="go('a1/lessons')">A1</button><button type="button" onclick="go('a2/lessons')">A2</button></div></article>
+          <article class="home-content-card"><span class="home-content-icon">${icons.learn}</span><div><h3>Lektionen</h3><p>30 Kapitel aus Netzwerk neu A1, A2 und B1.1, jeweils mit Wortschatz, Lesen, Grammatik, Sprechen und Quiz.</p></div><div class="home-content-links"><button type="button" onclick="go('a1/lessons')">A1</button><button type="button" onclick="go('a2/lessons')">A2</button><button type="button" onclick="go('b1.1/lessons')">B1.1</button></div></article>
           <article class="home-content-card"><span class="home-content-icon">${icons.dictionary}</span><div><h3>Wortschatz & Wörterbücher</h3><p>Kapitelwörter, Suche auf Deutsch oder Arabisch und ein großes Offline-Wörterbuch.</p></div><div class="home-content-links"><button type="button" onclick="go('a1/dict')">A1 Wörter</button><button type="button" onclick="go('full-dict')">Großes Wörterbuch</button></div></article>
           <article class="home-content-card"><span class="home-content-icon">${icons.cards}</span><div><h3>Grammatik & Verben</h3><p>Regeln, Beispiele, Konjugation und Übungen mit sofortiger Korrektur.</p></div><div class="home-content-links"><button type="button" onclick="go('a1/verbs')">A1 Verben</button><button type="button" onclick="go('verbs')">A2 Verben</button></div></article>
           <article class="home-content-card"><span class="home-content-icon">${icons.listen}</span><div><h3>Hören & Aussprache</h3><p>Hörbücher, Phonetik, Buchseiten und interaktive Aufgaben zum Mitmachen.</p></div><div class="home-content-links"><button type="button" onclick="go('a1/listen')">A1 Hören</button><button type="button" onclick="go('listen')">A2 Hören</button></div></article>
@@ -290,9 +292,9 @@
     const due=all.filter(item=>Number(item.dueAt||0)<=Date.now()).sort((a,b)=>Number(a.dueAt||0)-Number(b.dueAt||0));
     const current=due[0];
     const item=current?.item||{};
-    const word=item.displayWord||item.word||item.selected||'Wort';
-    const meaning=item.meaning||item.translation||'';
-    const context=item.context||item.example||'';
+    const word=item.displayWord||item.word||item.w||item.selected||'Wort';
+    const meaning=item.meaning||item.translation||item.ar||item.d||'';
+    const context=item.context||item.example||item.ex||'';
     view.innerHTML=`<section class="next-hero"><div class="next-hero-eyebrow">Review Center</div><h2>Erinnern statt nur wiederlesen</h2><p>${due.length?`${due.length} Karten sind jetzt fällig.`:'Für heute ist deine Wiederholung geschafft.'}</p><div class="ar" lang="ar" dir="rtl">حاول تفتكر المعنى أولًا، ثم اكشف الإجابة وقيّم صعوبتها.</div></section>
       <div class="review-layout"><section>
       ${current?`<article class="review-card" data-review-id="${escapeHtml(current.id)}"><div class="review-word">${escapeHtml(word)}</div><div class="review-answer" ${reviewRevealed?'':'hidden'}><div class="review-meaning" lang="ar" dir="rtl">${escapeHtml(meaning||'—')}</div>${context?`<div class="review-context">${escapeHtml(context)}</div>`:''}</div>${reviewRevealed?`<div class="review-ratings"><button class="review-rating" data-rating="again">Nochmal</button><button class="review-rating" data-rating="hard">Schwer</button><button class="review-rating" data-rating="good">Gut</button><button class="review-rating" data-rating="easy">Leicht</button></div>`:`<div style="margin-top:24px"><button class="next-primary" data-review-reveal>Antwort zeigen</button></div>`}</article>`:`<div class="review-empty"><h2>Alles erledigt</h2><p>Speichere neue Wörter mit dem Herz oder öffne deine Favoriten.</p><div style="margin-top:16px"><button class="next-secondary" onclick="go('favorites')">Favoriten öffnen</button></div></div>`}
@@ -394,6 +396,86 @@
     }else{update();finish();}
   }
 
+  const BACKUP_PREFIXES=['deutschLearning','a1','a2','b1','hoeren','podcast','grammarPractice:','speech','showAr','listenMode','favorite','FAVORITE'];
+
+  function backupKeys(){
+    const keys=[];
+    try{
+      for(let index=0;index<localStorage.length;index+=1){
+        const key=localStorage.key(index)||'';
+        if(BACKUP_PREFIXES.some(prefix=>key.startsWith(prefix))||key===FAVORITE_WORDS_KEY) keys.push(key);
+      }
+    }catch{}
+    return keys;
+  }
+
+  function exportBackup(){
+    const data={};
+    backupKeys().forEach(key=>{data[key]=storage.get(key);});
+    const payload=JSON.stringify({app:'deutsch-learning',version:1,exportedAt:new Date().toISOString(),data},null,2);
+    const link=document.createElement('a');
+    link.href=URL.createObjectURL(new Blob([payload],{type:'application/json'}));
+    link.download=`deutsch-learning-backup-${new Date().toISOString().slice(0,10)}.json`;
+    document.body.appendChild(link);link.click();link.remove();
+    setTimeout(()=>URL.revokeObjectURL(link.href),1000);
+    toast('Sicherung exportiert');
+  }
+
+  function parseBackup(text){
+    const parsed=JSON.parse(text);
+    if(!parsed||parsed.app!=='deutsch-learning'||!parsed.data||typeof parsed.data!=='object') throw new Error('invalid backup');
+    return Object.entries(parsed.data).filter(([key,value])=>typeof key==='string'&&typeof value==='string');
+  }
+
+  function importBackup(file){
+    if(!file) return;
+    file.text().then(text=>{
+      const entries=parseBackup(text);
+      entries.forEach(([key,value])=>storage.set(key,value));
+      state=loadState();
+      toast(`Sicherung importiert (${entries.length} Einträge)`);
+      setTimeout(()=>location.reload(),600);
+    }).catch(()=>toast('Diese Datei ist keine gültige Sicherung'));
+  }
+
+  function addWordsToReview(items,context=''){
+    const perDay=20;
+    let added=0;
+    items.forEach(entry=>{
+      if(!entry?.id||state.review[entry.id]) return;
+      state.review[entry.id]={id:entry.id,dueAt:Date.now()+Math.floor(added/perDay)*DAY,interval:0,lapses:0,successes:0,
+        item:{w:entry.w,d:entry.d||'',ar:entry.ar||'',ex:entry.ex||''},source:'lesson',context};
+      added+=1;
+    });
+    saveState();
+    toast(added?`${added} Wörter im Review · ${perDay} neue pro Tag`:'Alle Wörter sind schon im Review');
+    return added;
+  }
+
+  function dailyPlan(){
+    const minutes=Number(state.profile.minutes||15);
+    const due=dueReviewItems().length;
+    const level=state.profile.level||'a2';
+    const lessonRoute=level==='a1'?'a1/lessons':level==='b1.1'?'b1.1/lessons':'a2/lessons';
+    const listenRoute=level==='a1'?'a1/listen':level==='b1.1'?'b1.1/games':'listen';
+    const newWords=minutes>=30?20:minutes>=20?15:10;
+    const today=todayHistory();
+    const doneReview=today.some(item=>item.route==='review');
+    const doneLesson=today.some(item=>/\/k\d+|^k\d+/.test(item.route||''));
+    const doneSkill=today.some(item=>/listen|games|podcast|exam/.test(item.route||''));
+    return [
+      {done:doneReview||!due,route:'review',title:due?`${due} fällige Karten wiederholen`:'Keine Karten fällig',ar:'راجع الكروت المستحقة النهارده.'},
+      {done:doneLesson,route:state.lastLearningRoute&&state.lastLearningRoute!==level?state.lastLearningRoute:lessonRoute,title:`${newWords} neue Wörter oder eine Lernetappe`,ar:'كمّل الدرس من المكان اللي وقفت عنده.'},
+      {done:doneSkill,route:listenRoute,title:level==='b1.1'?'Eine Trainingsrunde':'Eine Hör- oder Trainingseinheit',ar:'تمرين استماع أو لعبة قصيرة.'}
+    ];
+  }
+
+  function dailyPlanMarkup(){
+    const steps=dailyPlan();
+    const done=steps.filter(step=>step.done).length;
+    return `<section class="home-section daily-plan" aria-labelledby="dailyPlanTitle"><div class="next-section-head home-heading"><div><span class="home-kicker">Heute · ${Number(state.profile.minutes||15)} Minuten</span><h2 id="dailyPlanTitle">Dein Tagesplan (${done}/${steps.length})</h2><p class="home-ar" lang="ar" dir="rtl">خطة قصيرة لكل يوم: مراجعة، كلمات جديدة، وتمرين مهارة.</p></div></div><ol class="daily-plan-list">${steps.map(step=>`<li class="${step.done?'done':''}"><button type="button" onclick="go('${escapeHtml(step.route)}')"><span class="daily-plan-check" aria-hidden="true">${step.done?'✓':''}</span><span><b>${escapeHtml(step.title)}</b><small lang="ar" dir="rtl">${escapeHtml(step.ar)}</small></span>${icons.arrow}</button></li>`).join('')}</ol></section>`;
+  }
+
   function toast(message){
     const stack=document.querySelector('#nextToastStack');if(!stack) return;
     const item=document.createElement('div');item.className='next-toast';item.textContent=message;stack.appendChild(item);
@@ -416,14 +498,21 @@
     if(event.target.closest('[data-review-reveal]')){reviewRevealed=true;renderReviewCenter();document.querySelector('.review-rating')?.focus();return;}
     const rating=event.target.closest('[data-rating]');
     if(rating){const card=rating.closest('[data-review-id]');if(card) rateReview(card.dataset.reviewId,rating.dataset.rating);}
+    if(event.target.closest('[data-backup-export]')){exportBackup();return;}
+    if(event.target.closest('[data-backup-import]')){document.querySelector('[data-backup-file]')?.click();return;}
     const motion=event.target.closest('[data-motion-value]');
     if(motion){state.settings.motion=motion.dataset.motionValue;saveState();updateMotionSetting();toast('Bewegungseinstellung gespeichert');}
+  });
+
+  document.addEventListener('change',event=>{
+    const input=event.target.closest?.('[data-backup-file]');
+    if(input){importBackup(input.files?.[0]);input.value='';}
   });
 
   installShell();
   window.NextUI={
     storage,state:()=>state,featureTabs,renderDashboard,renderLearningHub,renderReviewCenter,renderProgressDashboard,
-    transitionRoute,syncFavorite,addMistake,toast,icons,routeLabel,lessonProgress,lessonNext,lessonStart
+    transitionRoute,syncFavorite,addMistake,addWordsToReview,parseBackup,dailyPlan,toast,icons,routeLabel,lessonProgress,lessonNext,lessonStart
   };
 
   route();

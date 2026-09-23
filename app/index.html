@@ -1122,6 +1122,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <script src="data_book2.js"></script>
 <script src="data_b1_1.js?v=b1-1-vocab-20"></script>
 <script src="data_b1_1_lessons.js?v=b1-1-lessons-2"></script>
+<script src="data_b1_verbs.js"></script>
 <script src="data_extra.js"></script>
 <script src="data_lernwortschatz8.js?v=lernwortschatz8-1"></script>
 <script src="data_lernwortschatz9.js?v=lernwortschatz9-3"></script>
@@ -1140,6 +1141,7 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <script src="data_hoeren_figures.js"></script>
 <script src="data_hoeren_interactive.js"></script>
 <script src="data_exam.js"></script>
+<script src="data_exam_b1.js"></script>
 <script src="data_speech_clean.js?v=speech-clean-7"></script>
 <script src="data_speech_a1.js?v=a1-fixed-voices-1"></script>
 <script src="data_podcast.js?v=word-sync-3"></script>
@@ -2239,6 +2241,8 @@ function fallbackBackTarget(hash){
   if(h==='#b1.1/lessons') return 'b1.1';
   if(/^#b1\.1\/k\d+\//.test(h)) return path.split('/').slice(0,2).join('/');
   if(/^#b1\.1\/k\d+$/.test(h)) return 'b1.1/lessons';
+  if(/^#b1\.1\/(games|exam)\//.test(h)) return path.split('/').slice(0,2).join('/');
+  if(/^#b1\.1\/(dict|verbs|phrases|games|exam)$/.test(h)) return 'b1.1';
   if(h==='#b1.1') return '';
   if(/^#podcast\//.test(h)) return 'podcast';
   if(/^#games\//.test(h)) return 'games';
@@ -2303,7 +2307,7 @@ function renderCurrentRoute(){
   stopExamTimer();
   stopGameTimers();
   stopPodcast();
-  const examMode=h==='exam'||h.startsWith('exam/');
+  const examMode=h==='exam'||h.startsWith('exam/')||h==='b1.1/exam'||h.startsWith('b1.1/exam/');
   document.body.classList.toggle('exam-mode',examMode);
   if(examMode){
     translationRequest++;
@@ -2355,6 +2359,15 @@ function renderCurrentRoute(){
   if(h==='a2/lessons'){ renderHome(); return; }
   if(h==='b1.1'){ if(window.NextUI) window.NextUI.renderLearningHub('b1.1'); else renderB1Hub(); return; }
   if(h==='b1.1/lessons'){ renderB1Home(); return; }
+  if(h==='b1.1/dict'){ renderB1Dictionary(); return; }
+  if(h==='b1.1/verbs'){ renderB1Verbs(); return; }
+  if(h==='b1.1/phrases'){ renderB1Expressions(); return; }
+  if(h==='b1.1/games'){ gameLevel='b1.1'; renderGamesHome(); return; }
+  const b1GameMatch=h.match(/^b1\.1\/games\/(speed|memory|artikel|sentence)$/);
+  if(b1GameMatch){ gameLevel='b1.1'; renderGame(b1GameMatch[1]); return; }
+  if(h==='b1.1/exam'){ examLevel='b1.1'; renderExamHome(); return; }
+  const b1ExamMatch=h.match(/^b1\.1\/exam\/(lesen|hoeren|schreiben|sprechen)$/);
+  if(b1ExamMatch){ examLevel='b1.1'; renderExamModule(b1ExamMatch[1]); return; }
   const b1Match=h.match(/^b1\.1\/k(\d+)(?:\/(\w+))?$/);
   if(b1Match){
     const chapter=B1_BOOK.find(item=>item.num===Number(b1Match[1]));
@@ -2368,13 +2381,13 @@ function renderCurrentRoute(){
   if(h==='podcast'){ renderPodcastHome(); return; }
   const podcastMatch=h.match(/^podcast\/(\d+)$/);
   if(podcastMatch){ renderPodcastEpisode(Number(podcastMatch[1])); return; }
-  if(h==='games'){ renderGamesHome(); return; }
+  if(h==='games'){ gameLevel='a2'; renderGamesHome(); return; }
   const gameMatch=h.match(/^games\/(speed|memory|artikel|sentence)$/);
-  if(gameMatch){ renderGame(gameMatch[1]); return; }
+  if(gameMatch){ gameLevel='a2'; renderGame(gameMatch[1]); return; }
   if(h==='listen'){ renderListeningHome(); return; }
-  if(h==='exam'){ renderExamHome(); return; }
+  if(h==='exam'){ examLevel='a2'; renderExamHome(); return; }
   const examMatch=h.match(/^exam\/(lesen|hoeren|schreiben|sprechen)$/);
-  if(examMatch){ renderExamModule(examMatch[1]); return; }
+  if(examMatch){ examLevel='a2'; renderExamModule(examMatch[1]); return; }
   const listenMatch=h.match(/^listen\/([A-I])(?:\/(\d+))?$/);
   if(listenMatch){
     const chapter=HOEREN.chapters.find(item=>item.id===listenMatch[1]);
@@ -2878,7 +2891,12 @@ const A2_SECTIONS=[
 ];
 
 const B1_SECTIONS=[
-  {route:'b1.1/lessons',icon:'1',title:'Lektionen',text:'Sechs vollständige Kapitel mit Wortschatz, Lesen, Grammatik, Sprechen und Quiz.',ar:'ست وحدات كاملة مع الكلمات والقراءة والقواعد والمحادثة والاختبارات.'}
+  {route:'b1.1/lessons',icon:'1',title:'Lektionen',text:'Sechs vollständige Kapitel mit Wortschatz, Lesen, Grammatik, Sprechen und Quiz.',ar:'ست وحدات كاملة مع الكلمات والقراءة والقواعد والمحادثة والاختبارات.'},
+  {route:'b1.1/dict',icon:'W',title:'Wörterbuch',text:'Alle B1.1-Wörter mit Suche, Beispielen und Kapitelfilter.',ar:'قاموس كل كلمات B1.1.'},
+  {route:'b1.1/verbs',icon:'V',title:'Verben',text:'Wichtige B1-Verben mit Präteritum, Perfekt und Präpositionen.',ar:'أهم أفعال B1 مع الماضي وحروف الجر.'},
+  {route:'b1.1/phrases',icon:'R',title:'Redemittel',text:'Alle Redemittel aus den sechs Kapiteln an einem Ort.',ar:'كل التعبيرات الجاهزة من الوحدات الست.'},
+  {route:'b1.1/games',icon:'T',title:'Training',text:'Schnell-Challenge, Memory, Artikel und Satz-Puzzle mit B1-Wörtern.',ar:'ألعاب تدريب بكلمات وجمل B1.1.'},
+  {route:'b1.1/exam',icon:'P',title:'Prüfung',text:'Goethe-B1 Modelltraining: Lesen, Hören, Schreiben und Sprechen.',ar:'تدريب على نموذج امتحان Goethe B1.'}
 ];
 
 /* ===================== home ===================== */
@@ -2914,8 +2932,8 @@ function renderB1Hub(){
   setTop('Deutsch B1.1','Wähle einen Bereich',true);
   view.innerHTML=`
     <section class="hero hub-hero"><h2>Netzwerk neu B1.1</h2>
-      <p>ست وحدات جديدة من الملزمة، والكلمات هي أول خطوة في كل وحدة — مع ترجمة عربية وكروت وصور.</p>
-      ${ar('ابدأ بالكلمات، اقلب البطاقة، ثم راجع كل وحدة بالترتيب.')}
+      <p>ست وحدات من Netzwerk neu B1.1 مع قاموس وأفعال وتعبيرات وتدريب وامتحان نموذجي.</p>
+      ${ar('ابدأ بالكلمات، اقلب البطاقة، ثم راجع كل وحدة بالترتيب واختبر نفسك في التدريب والامتحان.')}
     </section>
     ${sectionCards(B1_SECTIONS)}`;
 }
@@ -2951,7 +2969,7 @@ function renderLevelSelector(){
       <h3>Netzwerk neu B1.1</h3>
       <p>Sechs vollständige Kapitel mit Wortschatzkarten, Lesetexten, Grammatik, Redemitteln und Quiz.</p>
       ${ar('ست وحدات B1.1 كاملة مع الكلمات والقراءة والقواعد والمحادثة والاختبارات.')}
-      <div class="level-meta"><span class="level-pill">Kapitel 1-6</span><span class="level-pill">neu</span></div>
+      <div class="level-meta"><span class="level-pill">Kapitel 1-6</span><span class="level-pill">Prüfung B1</span></div>
     </button>
     <article class="level-card soon locked">
       <span class="level-code">B2</span>
@@ -3511,6 +3529,136 @@ function renderB1Home(){
         <div class="chev">›</div>
       </button>`).join('')}
   </section>`;
+}
+
+function b1Tabs(active){
+  return window.NextUI?.featureTabs('b1.1',active)||'';
+}
+
+function bindListFilter({listSelector,itemSelector,searchSelector,filters=[],countSelector,total,unit}){
+  const search=$(searchSelector);
+  const controls=filters.map(([selector,key])=>[$(selector),key]);
+  const filter=()=>{
+    const query=search.value.trim().toLocaleLowerCase('de-DE');
+    let visible=0;
+    $$(`${listSelector} ${itemSelector}`).forEach(entry=>{
+      const show=(!query||entry.dataset.search.includes(query))&&controls.every(([control,key])=>!control.value||entry.dataset[key]===control.value);
+      entry.hidden=!show; if(show) visible++;
+    });
+    $(countSelector).textContent=`${visible} / ${total} ${unit}`;
+  };
+  search.addEventListener('input',filter);
+  controls.forEach(([control])=>control.addEventListener('change',filter));
+  filter();
+}
+
+function b1ChapterOptions(){
+  return `<option value="">Alle Kapitel</option>${B1_BOOK.map(c=>`<option value="${c.num}">Kapitel ${c.num}: ${escapeHtml(c.title)}</option>`).join('')}`;
+}
+
+function renderB1Dictionary(){
+  setTop('B1.1 Wörterbuch','Alle Wörter aus den Kapiteln 1–6',true);
+  const words=B1_BOOK.flatMap(chapter=>chapter.vocab.map((item,index)=>({...item,chapter:chapter.num,id:wordEntryId('B1.1',chapter,index,item)})))
+    .sort((a,b)=>bareWordKey(a.w).localeCompare(bareWordKey(b.w),'de'));
+  const favoriteIds=new Set(favoriteList().flatMap(item=>[item.id,item.dictionaryId]).filter(Boolean));
+  view.innerHTML=b1Tabs('dict')+`
+    <div class="hero"><h2>Wörterbuch B1.1</h2>
+      <p>Suche auf Deutsch oder Arabisch. Mit dem Herz speicherst du ein Wort für die Wiederholung.</p>
+      ${ar('ابحث بالألماني أو العربي في كل كلمات B1.1. اضغط على القلب عشان تحفظ الكلمة للمراجعة.')}</div>
+    <div class="search-panel">
+      <div class="search-row">
+        <input class="library-search" id="b1DictSearch" type="search" placeholder="Deutsch oder Arabisch suchen..." aria-label="Wörter suchen">
+        <select class="library-filter" id="b1DictChapter" aria-label="Kapitel filtern">${b1ChapterOptions()}</select>
+      </div>
+      <div class="result-count" id="b1DictCount"></div>
+    </div>
+    <div class="card" id="b1DictList">${words.map(v=>`
+      <article class="dictionary-entry" data-chapter="${v.chapter}"
+        data-search="${escapeHtml(`${v.w} ${v.d} ${v.ex||''} ${v.ar||''}`.toLocaleLowerCase('de-DE'))}">
+        <div><div class="dictionary-word">${fmtWord(v.w)}</div>
+          <div class="dictionary-definition">${v.d}</div>
+          ${v.ex?`<div class="dictionary-example">„${v.ex}“</div>`:''}${ar(v.ar)}</div>
+        <span class="dictionary-meta">K${v.chapter}
+          <button type="button" class="favorite-btn ${favoriteIds.has(v.id)?'active':''}" data-favorite-id="${escapeHtml(v.id)}" aria-pressed="${favoriteIds.has(v.id)}" aria-label="Wort speichern" onclick="toggleDictionaryFavorite('${escapeHtml(v.id)}')">${favoriteIds.has(v.id)?'&#9829;':'&#9825;'}</button>
+        </span>
+      </article>`).join('')}</div>`;
+  bindListFilter({listSelector:'#b1DictList',itemSelector:'.dictionary-entry',searchSelector:'#b1DictSearch',
+    filters:[['#b1DictChapter','chapter']],countSelector:'#b1DictCount',total:words.length,unit:'Wörter'});
+}
+
+function renderB1Verbs(){
+  setTop('B1.1 Verben','Präteritum, Perfekt & Rektion',true);
+  const verbs=window.B1_VERBS||[];
+  const perfectAux=aux=>aux==='sein'?'ist':'hat';
+  view.innerHTML=b1Tabs('verbs')+`
+    <div class="hero"><h2>Verben B1.1</h2>
+      <p>Wichtige Verben aus den Kapiteln 1–6 mit Präsens (er/sie/es), Präteritum, Perfekt und der passenden Präposition.</p>
+      ${ar('أهم أفعال B1.1 مع المضارع للغائب، والماضي البسيط، والـPerfekt، والحرف والحالة اللي بييجوا مع الفعل — وده من أهم نقاط مستوى B1.')}</div>
+    <div class="search-panel">
+      <div class="search-row">
+        <input class="library-search" id="b1VerbSearch" type="search" placeholder="Verb, Präposition oder Bedeutung..." aria-label="Verben suchen">
+        <select class="library-filter" id="b1VerbAux" aria-label="Hilfsverb filtern">
+          <option value="">haben + sein</option><option value="haben">mit haben</option><option value="sein">mit sein</option>
+        </select>
+        <select class="library-filter" id="b1VerbChapter" aria-label="Kapitel filtern">${b1ChapterOptions()}</select>
+      </div>
+      <div class="result-count" id="b1VerbCount"></div>
+    </div>
+    <div id="b1VerbList">${verbs.map(verb=>`
+      <article class="card verb-card open" data-aux="${verb.aux}" data-chapter="${verb.chapter}"
+        data-search="${escapeHtml(`${verb.inf} ${verb.praes} ${verb.praet} ${verb.part} ${verb.rektion} ${verb.ar} ${verb.example}`.toLocaleLowerCase('de-DE'))}">
+        <div class="verb-summary">
+          <div><div class="verb-inf">${verb.inf}</div>
+            <div class="verb-summary-line">${verb.praes} · ${verb.praet} · ${perfectAux(verb.aux)} ${verb.part}</div></div>
+          <span class="verb-aux ${verb.aux}">${verb.aux}</span>
+        </div>
+        <div class="verb-details" style="display:block">
+          ${verb.rektion&&verb.rektion!=='—'?`<div class="verb-perfect"><small>Rektion</small> ${verb.rektion}</div>`:''}
+          ${ar(verb.ar)}
+          <div class="dictionary-example">„${verb.example}“</div>
+          <span class="dictionary-meta">K${verb.chapter}</span>
+        </div>
+      </article>`).join('')}</div>`;
+  bindListFilter({listSelector:'#b1VerbList',itemSelector:'.verb-card',searchSelector:'#b1VerbSearch',
+    filters:[['#b1VerbAux','aux'],['#b1VerbChapter','chapter']],countSelector:'#b1VerbCount',total:verbs.length,unit:'Verben'});
+}
+
+function renderB1Expressions(){
+  setTop('B1.1 Redemittel','Fertige Sätze aus allen Kapiteln',true);
+  const phrases=B1_BOOK.flatMap(chapter=>(chapter.redemittel||[]).flatMap(group=>
+    group.items.map(item=>({de:item.de,ar:item.ar,cat:group.cat,chapter:chapter.num}))));
+  view.innerHTML=b1Tabs('phrases')+`
+    <div class="hero"><h2>Redemittel B1.1</h2>
+      <p>Meinung sagen, Vorschläge machen, reklamieren, sich bewerben und mehr – alle Redemittel der Kapitel 1–6.</p>
+      ${ar('جمل جاهزة لإبداء الرأي والاقتراح والشكوى والتقديم على وظيفة وغيرها — من كل وحدات B1.1.')}</div>
+    <div class="search-panel">
+      <div class="search-row">
+        <input class="library-search" id="b1PhraseSearch" type="search" placeholder="Ausdruck suchen..." aria-label="Ausdrücke suchen">
+        <select class="library-filter" id="b1PhraseChapter" aria-label="Kapitel filtern">${b1ChapterOptions()}</select>
+      </div>
+      <div class="result-count" id="b1PhraseCount"></div>
+    </div>
+    <div id="b1PhraseList">${phrases.map(item=>`
+      <article class="card expression-card" data-chapter="${item.chapter}"
+        data-search="${escapeHtml(`${item.de} ${item.ar} ${item.cat}`.toLocaleLowerCase('de-DE'))}">
+        <span class="expression-tag">K${item.chapter} · ${item.cat}</span>
+        <div class="expression-de">${item.de}</div>
+        ${ar(item.ar)}
+      </article>`).join('')}</div>`;
+  bindListFilter({listSelector:'#b1PhraseList',itemSelector:'.expression-card',searchSelector:'#b1PhraseSearch',
+    filters:[['#b1PhraseChapter','chapter']],countSelector:'#b1PhraseCount',total:phrases.length,unit:'Ausdrücke'});
+}
+
+function chapterLevel(c){
+  return c?.route?.startsWith('a1/')?'A1':c?.route?.startsWith('b1.1/')?'B1.1':'A2';
+}
+
+function addChapterWordsToReview(level,num){
+  const book=level==='A1'?A1_BOOK:level==='B1.1'?B1_BOOK:BOOK;
+  const chapter=book.find(item=>item.num===Number(num));
+  if(!chapter||!window.NextUI?.addWordsToReview) return;
+  const items=chapter.vocab.map((item,index)=>({id:wordEntryId(level,chapter,index,item),w:plainText(item.w),d:plainText(item.d),ar:item.ar||'',ex:plainText(item.ex||'')}));
+  window.NextUI.addWordsToReview(items,`${level} · Kapitel ${chapter.num}`);
 }
 
 function renderHome(){
@@ -4574,28 +4722,48 @@ function plainText(value){
   return (node.textContent||'').replace(/\s+/g,' ').trim();
 }
 
+let gameLevel='a2';
+
+function gameBook(){
+  return gameLevel==='b1.1'?B1_BOOK:BOOK;
+}
+
+function gameRoute(id=''){
+  const base=gameLevel==='b1.1'?'b1.1/games':'games';
+  return id?`${base}/${id}`:base;
+}
+
+function gameTabs(){
+  return window.NextUI?.featureTabs(gameLevel,'games')||'';
+}
+
 function gameChapterOptions(includeAll=true){
-  return `${includeAll?'<option value="all">Alle Kapitel 1–12</option>':''}`+
-    BOOK.map(chapter=>`<option value="${chapter.num}">Kapitel ${chapter.num}: ${chapter.title}</option>`).join('');
+  const book=gameBook();
+  return `${includeAll?`<option value="all">Alle Kapitel 1–${book.length}</option>`:''}`+
+    book.map(chapter=>`<option value="${chapter.num}">Kapitel ${chapter.num}: ${chapter.title}</option>`).join('');
+}
+
+function gameScoresKey(){
+  return gameLevel==='b1.1'?'b1GameBestScores':'a2GameBestScores';
 }
 
 function gameBestScores(){
-  try{return JSON.parse(localStorage.getItem('a2GameBestScores')||'{}');}
+  try{return JSON.parse(localStorage.getItem(gameScoresKey())||'{}');}
   catch{return {};}
 }
 
 function saveGameBest(id,score){
   const scores=gameBestScores();
   scores[id]=Math.max(Number(scores[id]||0),score);
-  localStorage.setItem('a2GameBestScores',JSON.stringify(scores));
+  localStorage.setItem(gameScoresKey(),JSON.stringify(scores));
   return scores[id];
 }
 
 function renderGamesHome(){
-  setTop('Practice Lab','Gezielt trainieren · sicherer anwenden',false);
+  setTop(`Practice Lab ${gameLevel==='b1.1'?'B1.1':'A2'}`,'Gezielt trainieren · sicherer anwenden',false);
   const best=gameBestScores();
   document.body.classList.add('has-back');
-  view.innerHTML=mainTabs('games')+`
+  view.innerHTML=gameTabs()+`
     <section class="card games-hero">
       <span class="next-hero-eyebrow">Practice Lab</span><h2>Kurze, fokussierte Trainingseinheiten</h2>
       <p>Trainiere Wortschatz, Satzbau und Grammatik in kompakten Sessions. Fehler werden automatisch für deine nächste Wiederholung vorgemerkt.</p>
@@ -4608,22 +4776,22 @@ function renderGamesHome(){
       </div>
     </section>
     <div class="game-grid">
-      <button type="button" class="card game-tile" onclick="go('games/speed')">
+      <button type="button" class="card game-tile" onclick="go(gameRoute('speed'))">
         <div class="game-icon">01</div><h3>Schnell-Challenge</h3>
         <p>Vier Antworten, laufende Zeit und mehr Punkte für schnelle richtige Antworten.</p>
         <span class="game-tag">Fokus · gemischte Fragen</span>
       </button>
-      <button type="button" class="card game-tile" onclick="go('games/memory')">
+      <button type="button" class="card game-tile" onclick="go(gameRoute('memory'))">
         <div class="game-icon">02</div><h3>Memory Match</h3>
         <p>Finde die passenden Paare aus deutschem Wort und Bedeutung.</p>
         <span class="game-tag">12 Karten · 6 Paare</span>
       </button>
-      <button type="button" class="card game-tile" onclick="go('games/artikel')">
+      <button type="button" class="card game-tile" onclick="go(gameRoute('artikel'))">
         <div class="game-icon">03</div><h3>Artikel-Challenge</h3>
         <p>Wähle den richtigen Artikel und trainiere das Genus der Nomen.</p>
         <span class="game-tag">10 Wörter pro Runde</span>
       </button>
-      <button type="button" class="card game-tile" onclick="go('games/sentence')">
+      <button type="button" class="card game-tile" onclick="go(gameRoute('sentence'))">
         <div class="game-icon">04</div><h3>Satz-Puzzle</h3>
         <p>Bringe die Wörter aus den Redemitteln wieder in die richtige Reihenfolge.</p>
         <span class="game-tag">Sprechen · Satzbau</span>
@@ -4641,7 +4809,7 @@ function renderGame(id){
 }
 
 function gameSetupCard(title,description,action,extra=''){
-  return mainTabs('games')+`<section class="card game-setup">
+  return gameTabs()+`<section class="card game-setup">
     <h2>${title}</h2><p style="color:var(--ink-2);margin-top:5px">${description}</p>
     <label for="gameChapter">Kapitel auswählen</label>
     <select class="game-select" id="gameChapter">${gameChapterOptions()}</select>
@@ -4652,7 +4820,8 @@ function gameSetupCard(title,description,action,extra=''){
 
 function selectedGameChapters(){
   const selected=$('#gameChapter')?.value||'all';
-  return selected==='all'?BOOK:BOOK.filter(chapter=>String(chapter.num)===selected);
+  const book=gameBook();
+  return selected==='all'?book:book.filter(chapter=>String(chapter.num)===selected);
 }
 
 function wordLabel(value){
@@ -4725,7 +4894,7 @@ function buildSpeedPool(chapters){
     });
   });
   const chapterNumbers=new Set(chapters.map(chapter=>chapter.num));
-  CONNECTOR_GAME_QUESTIONS.filter(item=>chapterNumbers.has(item.chapter)).forEach(item=>{
+  CONNECTOR_GAME_QUESTIONS.filter(item=>chapters.every(chapter=>BOOK.includes(chapter))&&chapterNumbers.has(item.chapter)).forEach(item=>{
     pool.push({
       kind:`Kapitel ${item.chapter} · Konnektor`,
       q:item.q,
@@ -4763,7 +4932,7 @@ function drawSpeedQuestion(){
   const question=state.questions[state.index];
   state.timeLeft=state.seconds;
   state.locked=false;
-  view.innerHTML=mainTabs('games')+`<section class="speed-stage">
+  view.innerHTML=gameTabs()+`<section class="speed-stage">
     <div class="game-play-head">
       <div class="game-progress"><span style="width:${state.index/state.questions.length*100}%"></span></div>
       <span class="game-counter">${state.index+1} / ${state.questions.length}</span>
@@ -4822,7 +4991,7 @@ function finishSpeedGame(){
   const state=speedState;
   const best=saveGameBest('speed',state.score);
   const accuracy=Math.round(state.correct/state.questions.length*100);
-  view.innerHTML=mainTabs('games')+`<section class="card game-result">
+  view.innerHTML=gameTabs()+`<section class="card game-result">
     <div class="result-medal">${accuracy>=90?'🏆':accuracy>=60?'⭐':'↻'}</div>
     <h2>Runde beendet</h2><div class="result-score">${state.score} Punkte</div>
     <p>Bestscore: <b>${best}</b></p>
@@ -4832,7 +5001,7 @@ function finishSpeedGame(){
       <div class="result-stat"><b>${state.bestStreak}</b><small>beste Serie</small></div>
     </div>
     <div class="game-actions"><button class="btn btn-green" onclick="renderSpeedSetup()">Noch einmal</button>
-      <button class="btn btn-ghost" onclick="go('games')">Alle Spiele</button></div>
+      <button class="btn btn-ghost" onclick="go(gameRoute())">Alle Spiele</button></div>
   </section>`;
 }
 
@@ -4851,7 +5020,7 @@ function startMemoryGame(){
 
 function drawMemoryGame(){
   const state=memoryState;
-  view.innerHTML=mainTabs('games')+`<section>
+  view.innerHTML=gameTabs()+`<section>
     <div class="game-play-head"><div class="game-progress"><span style="width:${state.matched.size/6*100}%"></span></div>
       <span class="game-counter">${state.moves} Züge</span></div>
     <div class="memory-board">${state.cards.map((card,index)=>{
@@ -4886,12 +5055,12 @@ function finishMemoryGame(){
   const moves=memoryState.moves;
   const scores=gameBestScores();
   scores.memory=scores.memory?Math.min(scores.memory,moves):moves;
-  localStorage.setItem('a2GameBestScores',JSON.stringify(scores));
-  view.innerHTML=mainTabs('games')+`<section class="card game-result">
+  localStorage.setItem(gameScoresKey(),JSON.stringify(scores));
+  view.innerHTML=gameTabs()+`<section class="card game-result">
     <div class="result-medal">▦</div><h2>Alle Paare gefunden</h2>
     <div class="result-score">${moves} Züge</div><p>Dein Rekord: <b>${scores.memory} Züge</b></p>
     <div class="game-actions"><button class="btn btn-green" onclick="startMemoryGame()">Neue Karten</button>
-      <button class="btn btn-ghost" onclick="go('games')">Alle Spiele</button></div></section>`;
+      <button class="btn btn-ghost" onclick="go(gameRoute())">Alle Spiele</button></div></section>`;
 }
 
 function renderArtikelSetup(){
@@ -4912,7 +5081,7 @@ function drawArtikelQuestion(){
   if(state.index>=state.questions.length){finishArtikelGame();return;}
   const entry=state.questions[state.index];
   state.locked=false;
-  view.innerHTML=mainTabs('games')+`<section class="card game-setup">
+  view.innerHTML=gameTabs()+`<section class="card game-setup">
     <div class="game-play-head"><div class="game-progress"><span style="width:${state.index/state.questions.length*100}%"></span></div>
       <span class="game-counter">${state.index+1} / ${state.questions.length}</span></div>
     <div class="artikel-word">${escapeHtml(wordLabel(entry.item.w))}</div>
@@ -4944,11 +5113,11 @@ function answerArtikel(article){
 function finishArtikelGame(){
   const state=artikelState;
   saveGameBest('artikel',state.score);
-  view.innerHTML=mainTabs('games')+`<section class="card game-result">
+  view.innerHTML=gameTabs()+`<section class="card game-result">
     <div class="result-medal">${state.score>=9?'🏆':'der·die·das'}</div><h2>Fertig!</h2>
     <div class="result-score">${state.score} / ${state.questions.length}</div>
     <div class="game-actions"><button class="btn btn-green" onclick="startArtikelGame()">Noch einmal</button>
-      <button class="btn btn-ghost" onclick="go('games')">Alle Spiele</button></div></section>`;
+      <button class="btn btn-ghost" onclick="go(gameRoute())">Alle Spiele</button></div></section>`;
 }
 
 function renderSentenceSetup(){
@@ -4974,7 +5143,7 @@ function prepareSentenceQuestion(){
 
 function drawSentenceQuestion(message=''){
   const state=sentenceState;
-  view.innerHTML=mainTabs('games')+`<section class="card game-setup">
+  view.innerHTML=gameTabs()+`<section class="card game-setup">
     <div class="game-play-head"><div class="game-progress"><span style="width:${state.index/state.questions.length*100}%"></span></div>
       <span class="game-counter">${state.index+1} / ${state.questions.length}</span></div>
     <p style="text-align:center;color:var(--ink-2)">Baue den richtigen Satz:</p>
@@ -5015,24 +5184,43 @@ function checkSentence(){
 function finishSentenceGame(){
   const state=sentenceState;
   saveGameBest('sentence',state.score);
-  view.innerHTML=mainTabs('games')+`<section class="card game-result">
+  view.innerHTML=gameTabs()+`<section class="card game-result">
     <div class="result-medal">✓</div><h2>Sehr gut!</h2><div class="result-score">${state.score} / ${state.questions.length}</div>
     <div class="game-actions"><button class="btn btn-green" onclick="startSentenceGame()">Neue Sätze</button>
-      <button class="btn btn-ghost" onclick="go('games')">Alle Spiele</button></div></section>`;
+      <button class="btn btn-ghost" onclick="go(gameRoute())">Alle Spiele</button></div></section>`;
 }
 
 /* ===================== Goethe A2 exam training ===================== */
 let examTimerId=null;
 
+let examLevel='a2';
+
+function activeExam(){
+  return examLevel==='b1.1'?window.B1_EXAM:EXAM;
+}
+
+function examRoute(id=''){
+  const base=examLevel==='b1.1'?'b1.1/exam':'exam';
+  return id?`${base}/${id}`:base;
+}
+
+function examTabs(){
+  return window.NextUI?.featureTabs(examLevel,'exam')||'';
+}
+
+function examScoresKey(){
+  return examLevel==='b1.1'?'b1ExamScores':'a2ExamScores';
+}
+
 function getExamScores(){
-  try{return JSON.parse(localStorage.getItem('a2ExamScores')||'{}');}
+  try{return JSON.parse(localStorage.getItem(examScoresKey())||'{}');}
   catch{return {};}
 }
 
 function saveExamScore(module,score){
   const scores=getExamScores();
   scores[module]=Math.round(score*10)/10;
-  localStorage.setItem('a2ExamScores',JSON.stringify(scores));
+  localStorage.setItem(examScoresKey(),JSON.stringify(scores));
 }
 
 function stopExamTimer(){
@@ -5062,26 +5250,28 @@ function startExamTimer(seconds,targetId='examTimer'){
 }
 
 function examModuleDescription(id){
-  return {
-    lesen:'4 Teile · 20 Fragen · automatische Korrektur',
-    hoeren:'4 Teile · 20 Fragen · Hörtexte mit Wiedergabelimit',
-    schreiben:'2 Aufgaben · Wortzähler · Checkliste und Modelle',
-    sprechen:'3 Teile · Vorbereitung und Sprechzeit'
-  }[id];
+  const module=activeExam().modules[id];
+  const questions=module?.parts?.reduce((sum,part)=>sum+part.questions.length,0)||0;
+  if(id==='lesen') return `${module.parts.length} Teile · ${questions} Fragen · automatische Korrektur`;
+  if(id==='hoeren') return `${module.parts.length} Teile · ${questions} Fragen · Hörtexte mit Wiedergabelimit`;
+  if(id==='schreiben') return `${module.tasks.length} Aufgaben · Wortzähler · Checkliste und Modelle`;
+  if(id==='sprechen') return `${module.tasks.length} Teile · Vorbereitung und Sprechzeit`;
+  return '';
 }
 
 function renderExamHome(){
-  setTop('Prüfungstraining A2','Goethe-Zertifikat A2 · interaktives Modelltraining',true);
+  const levelLabel=examLevel==='b1.1'?'B1':'A2';
+  setTop(`Prüfungstraining ${levelLabel}`,`Goethe-Zertifikat ${levelLabel} · interaktives Modelltraining`,true);
   const scores=getExamScores();
   const ids=['lesen','hoeren','schreiben','sprechen'];
   const total=ids.reduce((sum,id)=>sum+Number(scores[id]||0),0);
-  view.innerHTML=mainTabs('exam')+`
+  view.innerHTML=examTabs()+`
     <section class="card exam-hero">
-      <h2>${EXAM.title}</h2>
-      <p>${EXAM.note}</p>
-      ${ar('نموذج تدريبي أصلي وتفاعلي على نفس هيكل امتحان Goethe A2 الحالي للبالغين، مع وقت ودرجات وتصحيح.')}
+      <h2>${activeExam().title}</h2>
+      <p>${activeExam().note}</p>
+      ${ar(`نموذج تدريبي أصلي وتفاعلي على هيكل امتحان Goethe ${levelLabel} للبالغين، مع وقت ودرجات وتصحيح.`)}
       <div class="exam-stats">
-        ${ids.map(id=>`<div class="exam-stat"><b>${EXAM.modules[id].duration} Min.</b><small>${EXAM.modules[id].title}</small></div>`).join('')}
+        ${ids.map(id=>`<div class="exam-stat"><b>${activeExam().modules[id].duration} Min.</b><small>${activeExam().modules[id].title}</small></div>`).join('')}
       </div>
     </section>
     <div class="card">
@@ -5091,8 +5281,8 @@ function renderExamHome(){
     </div>
     <div class="exam-module-grid">
       ${ids.map((id,index)=>{
-        const module=EXAM.modules[id];
-        return `<button type="button" class="card exam-module" onclick="go('exam/${id}')">
+        const module=activeExam().modules[id];
+        return `<button type="button" class="card exam-module" onclick="go('${examRoute(id)}')">
           <span class="exam-module-score">${scores[id]!==undefined?scores[id]+' / 25':'noch offen'}</span>
           <div class="num" style="margin-bottom:10px">${index+1}</div>
           <h3>${module.title}</h3>
@@ -5100,14 +5290,14 @@ function renderExamHome(){
         </button>`;
       }).join('')}
     </div>
-    <div class="intro-note"><b>Hinweis:</b> Dieses Training verwendet vollständig neu geschriebene Aufgaben. Aufbau, Zeitrahmen und Module orientieren sich an der offiziellen Goethe-A2-Prüfungsstruktur.</div>`;
+    <div class="intro-note"><b>Hinweis:</b> Dieses Training verwendet vollständig neu geschriebene Aufgaben. Aufbau, Zeitrahmen und Module orientieren sich an der offiziellen Goethe-${levelLabel}-Prüfungsstruktur.</div>`;
 }
 
 function renderExamModule(id){
-  const module=EXAM.modules[id];
+  const module=activeExam().modules[id];
   if(!module){renderExamHome();return;}
   setTop(`${module.title} · Prüfungstraining`,`${module.duration} Minuten · ${module.points} Punkte`,true);
-  let html=mainTabs('exam')+`
+  let html=examTabs()+`
     <div class="exam-toolbar">
       <div><b>${module.title}</b><div style="font-size:12px;color:var(--ink-2)">${examModuleDescription(id)}</div></div>
       <div style="display:flex;gap:8px;align-items:center">
@@ -5133,9 +5323,9 @@ function renderObjectiveExam(id,module){
           <span>maximal ${part.plays===1?'einmal':part.plays+'-mal'} · <b class="play-count">0 / ${part.plays}</b></span>
         </div>`}
       ${part.questions.map((question,questionIndex)=>{
-        const number=partIndex*5+questionIndex+1;
+        const number=module.parts.slice(0,partIndex).reduce((sum,item)=>sum+item.questions.length,0)+questionIndex+1;
         return `<div class="exam-question" data-answer="${question.a}" data-number="${number}">
-          <b>${number}. ${question.q}</b>
+          <b>${number}. ${String(question.q).replace(/^\d+\.\s*/,'')}</b>
           ${question.o.map((option,optionIndex)=>`<label class="exam-option">
             <input type="radio" name="${id}-${number}" value="${optionIndex}"> ${option}
           </label>`).join('')}
@@ -5147,7 +5337,7 @@ function renderObjectiveExam(id,module){
 }
 
 function playExamAudio(partId,button){
-  const part=EXAM.modules.hoeren.parts.find(item=>item.id===partId);
+  const part=activeExam().modules.hoeren.parts.find(item=>item.id===partId);
   if(!part||button.disabled)return;
   const count=Number(button.dataset.plays||0)+1;
   button.dataset.plays=String(count);
@@ -5173,11 +5363,11 @@ function checkExamObjective(id){
     }
     question.querySelectorAll('input').forEach(input=>input.disabled=true);
   });
-  const score=correct*1.25;
+  const score=questions.length?correct/questions.length*25:0;
   saveExamScore(id,score);
   const result=$('#examResult');
   result.className=`exam-result show ${score>=15?'good':'retry'}`;
-  result.innerHTML=`${correct} / 20 richtig · <b>${score.toFixed(2)} / 25 Punkte</b>
+  result.innerHTML=`${correct} / ${questions.length} richtig · <b>${score.toFixed(2)} / 25 Punkte</b>
     ${ar(score>=15?'نتيجة تدريبية جيدة في هذا القسم.':'راجع الأخطاء وحاول القسم مرة ثانية بعد المذاكرة.')}`;
   result.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'});
 }
@@ -5205,9 +5395,9 @@ function initWritingExam(){
       const target=$(`#writingCount${index}`);
       target.textContent=`${words} Wörter · Ziel: mindestens ${area.dataset.min}`;
       target.style.color=words>=Number(area.dataset.min)?'var(--green-d)':'';
-      localStorage.setItem(`a2Writing${index}`,area.value);
+      localStorage.setItem(`${examLevel==='b1.1'?'b1':'a2'}Writing${index}`,area.value);
     };
-    area.value=localStorage.getItem(`a2Writing${index}`)||'';
+    area.value=localStorage.getItem(`${examLevel==='b1.1'?'b1':'a2'}Writing${index}`)||'';
     area.addEventListener('input',update);update();
   });
 }
@@ -5215,7 +5405,7 @@ function initWritingExam(){
 function assessWritingExam(){
   const checks=$$('.writing-check');
   const checked=checks.filter(item=>item.checked).length;
-  const score=checked*2.5;
+  const score=checks.length?checked/checks.length*25:0;
   saveExamScore('schreiben',score);
   const result=$('#examResult');
   result.className=`exam-result show ${score>=15?'good':'retry'}`;
@@ -5248,7 +5438,7 @@ function renderSpeakingExam(module){
 function assessSpeakingExam(){
   const checks=$$('.speaking-check');
   const checked=checks.filter(item=>item.checked).length;
-  const score=checked*5;
+  const score=checks.length?Math.round(checked/checks.length*250)/10:0;
   saveExamScore('sprechen',score);
   const result=$('#examResult');
   result.className=`exam-result show ${score>=15?'good':'retry'}`;
@@ -5407,6 +5597,7 @@ function renderChapterTab(c, tab){
     let h = `<div class="fc-bar">
       <button class="btn btn-green" id="fcStart" style="display:none">🃏 Mit Karten üben</button>
       <button class="btn btn-ghost" id="fcStop">📃 Liste zeigen</button>
+      <button class="btn btn-ghost" type="button" onclick="addChapterWordsToReview('${chapterLevel(c)}',${c.num})">🔁 Alle Wörter ins Review</button>
     </div>
     <div id="fcArea"></div>
     ${c.vocabSummary?`<div class="card vocab-summary">

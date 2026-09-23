@@ -675,3 +675,76 @@ test('offline dictionary worker uses the exact pre-cached asset keys', () => {
   assert.match(html, /pwa-v65-reloaded/);
   assert.match(html, /controllerchange[^}]+location\.reload\(\)/s);
 });
+
+test('B1.1 sub-sections navigate back to their level hub', () => {
+  const { fallbackBackTarget } = loadFunctions(['fallbackBackTarget']);
+  assert.equal(fallbackBackTarget('b1.1/dict'), 'b1.1');
+  assert.equal(fallbackBackTarget('b1.1/games/memory'), 'b1.1/games');
+  assert.equal(fallbackBackTarget('b1.1/exam/lesen'), 'b1.1/exam');
+  assert.equal(fallbackBackTarget('b1.1/exam'), 'b1.1');
+});
+
+test('B1 exam training is complete and every answer index is valid', () => {
+  const context = vm.createContext({ window: {} });
+  vm.runInContext(readFileSync(join(root, 'app', 'data_exam_b1.js'), 'utf8'), context);
+  const exam = context.window.B1_EXAM;
+  assert.deepEqual(Object.keys(exam.modules), ['lesen', 'hoeren', 'schreiben', 'sprechen']);
+  for (const id of ['lesen', 'hoeren']) {
+    const questions = exam.modules[id].parts.flatMap(part => part.questions);
+    assert.equal(questions.length, 20, `${id} should have 20 questions`);
+    questions.forEach(question => {
+      assert.ok(Number.isInteger(question.a) && question.a >= 0 && question.a < question.o.length, question.q);
+    });
+  }
+  exam.modules.hoeren.parts.forEach(part => {
+    assert.ok(part.id && part.script.length > 200 && part.plays >= 1, part.title);
+  });
+  assert.equal(exam.modules.schreiben.tasks.length, 3);
+  assert.ok(exam.modules.sprechen.checklist.length >= 5);
+});
+
+test('B1 verb reference has complete forms for every verb', () => {
+  const context = vm.createContext({ window: {} });
+  vm.runInContext(readFileSync(join(root, 'app', 'data_b1_verbs.js'), 'utf8'), context);
+  const verbs = context.window.B1_VERBS;
+  assert.ok(verbs.length >= 60);
+  const seen = new Set();
+  verbs.forEach(verb => {
+    ['inf', 'praes', 'praet', 'part', 'rektion', 'ar', 'example'].forEach(key => assert.ok(verb[key], `${verb.inf} misses ${key}`));
+    assert.ok(['haben', 'sein'].includes(verb.aux), verb.inf);
+    assert.ok(verb.chapter >= 1 && verb.chapter <= 6, verb.inf);
+    assert.ok(!seen.has(verb.inf), `duplicate ${verb.inf}`);
+    seen.add(verb.inf);
+  });
+});
+
+test('B1.1 exposes dictionary, verbs, phrases, training and exam routes', () => {
+  ['renderB1Dictionary', 'renderB1Verbs', 'renderB1Expressions'].forEach(name => functionSource(name));
+  for (const route of ['b1.1/dict', 'b1.1/verbs', 'b1.1/phrases', 'b1.1/games', 'b1.1/exam']) {
+    assert.ok(html.includes(`h==='${route}'`), `router misses ${route}`);
+  }
+  const ui = readFileSync(join(root, 'app', 'ui-next.js'), 'utf8');
+  assert.match(ui, /\['exam','Prüfung','b1\.1\/exam'\]/);
+  const sw = readFileSync(join(root, 'app', 'sw.js'), 'utf8');
+  assert.match(sw, /'data_exam_b1\.js'/);
+  assert.match(sw, /'data_b1_verbs\.js'/);
+});
+
+test('games and exams keep separate scores per level', () => {
+  const games = loadFunctions(['gameScoresKey']);
+  assert.equal(vm.runInContext("let gameLevel='b1.1';gameScoresKey()", games), 'b1GameBestScores');
+  const exams = loadFunctions(['examScoresKey']);
+  assert.equal(vm.runInContext("let examLevel='a2';examScoresKey()", exams), 'a2ExamScores');
+});
+
+test('progress backups only accept files exported by this app', () => {
+  const ui = readFileSync(join(root, 'app', 'ui-next.js'), 'utf8');
+  const start = ui.indexOf('  function parseBackup(');
+  const end = ui.indexOf('\n  }\n', start) + 4;
+  const context = vm.createContext({});
+  vm.runInContext(`${ui.slice(start, end)}\nthis.parseBackup=parseBackup;`, context);
+  const entries = context.parseBackup(JSON.stringify({ app: 'deutsch-learning', version: 1, data: { favoriteWordsV1: '[]', bad: 5 } }));
+  assert.deepEqual(JSON.parse(JSON.stringify(entries)), [['favoriteWordsV1', '[]']]);
+  assert.throws(() => context.parseBackup(JSON.stringify({ app: 'other', data: {} })));
+  assert.throws(() => context.parseBackup('not json'));
+});
