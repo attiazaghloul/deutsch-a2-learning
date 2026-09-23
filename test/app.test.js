@@ -761,3 +761,15 @@ test('service-worker cache version changes whenever a precached file changes', (
   const changedShell = source.replace("'manifest.json',", "'manifest.json','index.html',");
   assert.notEqual(shellVersion(appDir, changedShell), version);
 });
+
+test('large podcast and speech bundles are loaded on demand, not at startup', () => {
+  for (const file of ['data_podcast.js', 'data_speech_clean.js', 'data_speech_a1.js']) {
+    assert.doesNotMatch(html, new RegExp(`<script[^>]+${file.replace('.', '\\.')}`), `${file} must not block startup`);
+    assert.ok(html.includes(`'${file}?v=`), `${file} must be listed in LAZY_SCRIPTS`);
+  }
+  functionSource('ensurePodcasts');
+  functionSource('ensureSpeechLibraries');
+  assert.match(functionSource('renderPodcastEpisode'), /renderLazyDataLoading/);
+  const sw = readFileSync(join(root, 'app', 'sw.js'), 'utf8');
+  assert.match(sw, /'data_podcast\.js'/, 'lazy bundles stay precached for offline use');
+});

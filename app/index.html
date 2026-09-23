@@ -1142,9 +1142,6 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 <script src="data_hoeren_interactive.js"></script>
 <script src="data_exam.js"></script>
 <script src="data_exam_b1.js"></script>
-<script src="data_speech_clean.js?v=speech-clean-7"></script>
-<script src="data_speech_a1.js?v=a1-fixed-voices-1"></script>
-<script src="data_podcast.js?v=word-sync-3"></script>
 <script>
 /* ===================== state & helpers ===================== */
 const $ = s => document.querySelector(s);
@@ -1205,11 +1202,59 @@ const A1_LISTEN_BOOKS = {
   }
 };
 const EXAM = window.A2_EXAM;
-const PODCASTS = window.A2_PODCASTS || [];
-const FIXED_SPEECH = window.A2_FIXED_SPEECH || {texts:[],voices:[]};
-const FIXED_SPEECH_INDEX = new Map(FIXED_SPEECH.texts.map((text,index)=>[text,index]));
-const A1_FIXED_SPEECH = window.A1_FIXED_SPEECH || {texts:[],voices:[]};
-const A1_FIXED_SPEECH_INDEX = new Map(A1_FIXED_SPEECH.texts.map((text,index)=>[text,index]));
+/* Large data bundles load on demand so the first screen does not wait for them. */
+const LAZY_SCRIPTS={
+  podcast:'data_podcast.js?v=word-sync-3',
+  speechA2:'data_speech_clean.js?v=speech-clean-7',
+  speechA1:'data_speech_a1.js?v=a1-fixed-voices-1'
+};
+const lazyScriptLoads=new Map();
+function loadScriptOnce(src){
+  if(!lazyScriptLoads.has(src)){
+    lazyScriptLoads.set(src,new Promise((resolve,reject)=>{
+      const script=document.createElement('script');
+      script.src=src;
+      script.onload=()=>resolve();
+      script.onerror=()=>{lazyScriptLoads.delete(src);reject(new Error(`Could not load ${src}`));};
+      document.head.appendChild(script);
+    }));
+  }
+  return lazyScriptLoads.get(src);
+}
+
+let PODCASTS = window.A2_PODCASTS || [];
+function ensurePodcasts(){
+  if(window.A2_PODCASTS) return Promise.resolve(PODCASTS=window.A2_PODCASTS);
+  return loadScriptOnce(LAZY_SCRIPTS.podcast).then(()=>PODCASTS=window.A2_PODCASTS||[]);
+}
+
+let FIXED_SPEECH = {texts:[],voices:[]};
+let FIXED_SPEECH_INDEX = new Map();
+let A1_FIXED_SPEECH = {texts:[],voices:[]};
+let A1_FIXED_SPEECH_INDEX = new Map();
+function applySpeechLibraries(){
+  FIXED_SPEECH = window.A2_FIXED_SPEECH || {texts:[],voices:[]};
+  FIXED_SPEECH_INDEX = new Map(FIXED_SPEECH.texts.map((text,index)=>[text,index]));
+  A1_FIXED_SPEECH = window.A1_FIXED_SPEECH || {texts:[],voices:[]};
+  A1_FIXED_SPEECH_INDEX = new Map(A1_FIXED_SPEECH.texts.map((text,index)=>[text,index]));
+}
+let speechLibrariesLoad=null;
+function ensureSpeechLibraries(){
+  if(!speechLibrariesLoad){
+    speechLibrariesLoad=Promise.all([loadScriptOnce(LAZY_SCRIPTS.speechA2),loadScriptOnce(LAZY_SCRIPTS.speechA1)])
+      .then(()=>{
+        applySpeechLibraries();
+        if($('#settingsModal')?.classList.contains('open')) populateVoiceOptions();
+      })
+      .catch(error=>{speechLibrariesLoad=null;throw error;});
+  }
+  return speechLibrariesLoad;
+}
+applySpeechLibraries();
+window.addEventListener('load',()=>{
+  const idle=window.requestIdleCallback||(callback=>setTimeout(callback,600));
+  idle(()=>ensureSpeechLibraries().catch(()=>{}),{timeout:2500});
+});
 function escapeHtml(value){
   return String(value).replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]));
 }
@@ -1654,7 +1699,7 @@ function updateSpeedUI(){
 function populateVoiceOptions(){
   const select=$('#speechVoice');
   const voices=FIXED_SPEECH.voices;
-  if(!voices.some(voice=>voice.id===speechVoiceURI)) speechVoiceURI=voices[0]?.id||'';
+  if(voices.length&&!voices.some(voice=>voice.id===speechVoiceURI)) speechVoiceURI=voices[0].id;
   select.innerHTML=voices.map(voice=>
     `<option value="${escapeHtml(voice.id)}">${escapeHtml(voice.name)} · ${escapeHtml(voice.description)}</option>`).join('');
   select.value=speechVoiceURI;
@@ -2084,6 +2129,9 @@ function speakText(text, lang, voiceURIOverride=''){
   const isArabic=lang==='ar' || /[\u0600-\u06ff]/.test(value.slice(0,40));
   // Priorität: aufgenommene Stimme. Wenn keine vorhanden ist, das Geräte-/Browser-TTS nutzen (nicht stumm bleiben).
   if(!isArabic&&playFixedSpeech(value,voiceURIOverride||speechVoiceURI))return;
+  // Recorded voices are still loading: speak with the browser voice now
+  // (keeps the tap's user gesture) and use the recordings from the next tap.
+  if(!isArabic&&!window.A2_FIXED_SPEECH) ensureSpeechLibraries().catch(()=>{});
   stopFixedSpeech();
   fallbackBrowserSpeech(value,lang,voiceURIOverride);
 }
@@ -4357,7 +4405,21 @@ function podcastCover(chapter){
   return chapter?.visual?.src||`assets/chapters/chapter-${chapter?.num||1}.webp`;
 }
 
+function renderLazyDataLoading(title,loader,render){
+  const route=location.hash;
+  if(loader.ready()) return false;
+  setTop(title,'Wird geladen …',true);
+  view.innerHTML=`<div class="card" role="status" aria-live="polite" style="text-align:center;padding:28px">Inhalte werden geladen …${ar('جاري تحميل المحتوى…')}</div>`;
+  loader.load().then(()=>{ if(location.hash===route) render(); })
+    .catch(()=>{ if(location.hash===route) view.innerHTML=`<div class="card" role="alert" style="text-align:center;padding:28px">Die Inhalte konnten nicht geladen werden. Bitte prüfe deine Verbindung.${ar('تعذر تحميل المحتوى. تأكد من الاتصال بالإنترنت.')}</div>`; });
+  return true;
+}
+
+const PODCAST_LOADER={ready:()=>Boolean(window.A2_PODCASTS),load:ensurePodcasts};
+
 function renderPodcastHome(){
+  if(renderLazyDataLoading('Podcast',PODCAST_LOADER,renderPodcastHome)) return;
+  PODCASTS=window.A2_PODCASTS;
   setTop('Podcast','12 Kapitel · hören und mitlesen',false);
   document.body.classList.add('has-back');
   view.innerHTML=mainTabs('podcast')+`
@@ -4392,6 +4454,8 @@ function podcastLineValue(line,key,index){
 }
 
 function renderPodcastEpisode(chapterNumber){
+  if(renderLazyDataLoading('Podcast',PODCAST_LOADER,()=>renderPodcastEpisode(chapterNumber))) return;
+  PODCASTS=window.A2_PODCASTS;
   const episode=PODCASTS.find(item=>item.chapter===chapterNumber);
   const chapter=BOOK.find(item=>item.num===chapterNumber);
   if(!episode){renderPodcastHome();return;}
