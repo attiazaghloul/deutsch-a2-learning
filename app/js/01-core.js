@@ -47,7 +47,8 @@ const EXAM = window.A2_EXAM;
 const LAZY_SCRIPTS={
   podcast:'data_podcast.js?v=word-sync-3',
   speechA2:'data_speech_clean.js?v=speech-clean-7',
-  speechA1:'data_speech_a1.js?v=a1-fixed-voices-1'
+  speechA1:'data_speech_a1.js?v=a1-fixed-voices-1',
+  speechB1:'data_speech_b1.js?v=b1-fixed-voices-1'
 };
 const lazyScriptLoads=new Map();
 function loadScriptOnce(src){
@@ -73,16 +74,20 @@ let FIXED_SPEECH = {texts:[],voices:[]};
 let FIXED_SPEECH_INDEX = new Map();
 let A1_FIXED_SPEECH = {texts:[],voices:[]};
 let A1_FIXED_SPEECH_INDEX = new Map();
+let B1_FIXED_SPEECH = {texts:[],voices:[]};
+let B1_FIXED_SPEECH_INDEX = new Map();
 function applySpeechLibraries(){
   FIXED_SPEECH = window.A2_FIXED_SPEECH || {texts:[],voices:[]};
   FIXED_SPEECH_INDEX = new Map(FIXED_SPEECH.texts.map((text,index)=>[text,index]));
   A1_FIXED_SPEECH = window.A1_FIXED_SPEECH || {texts:[],voices:[]};
   A1_FIXED_SPEECH_INDEX = new Map(A1_FIXED_SPEECH.texts.map((text,index)=>[text,index]));
+  B1_FIXED_SPEECH = window.B1_FIXED_SPEECH || {texts:[],voices:[]};
+  B1_FIXED_SPEECH_INDEX = new Map(B1_FIXED_SPEECH.texts.map((text,index)=>[text,index]));
 }
 let speechLibrariesLoad=null;
 function ensureSpeechLibraries(){
   if(!speechLibrariesLoad){
-    speechLibrariesLoad=Promise.all([loadScriptOnce(LAZY_SCRIPTS.speechA2),loadScriptOnce(LAZY_SCRIPTS.speechA1)])
+    speechLibrariesLoad=Promise.all([loadScriptOnce(LAZY_SCRIPTS.speechA2),loadScriptOnce(LAZY_SCRIPTS.speechA1),loadScriptOnce(LAZY_SCRIPTS.speechB1).catch(()=>{})])
       .then(()=>{
         applySpeechLibraries();
         if($('#settingsModal')?.classList.contains('open')) populateVoiceOptions();

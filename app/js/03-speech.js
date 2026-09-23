@@ -58,7 +58,8 @@ function fixedSpeechProfileRate(){
 function findFixedSpeechClip(value,voiceId){
   const libraries=[
     {id:'a2', data:FIXED_SPEECH, index:FIXED_SPEECH_INDEX},
-    {id:'a1', data:A1_FIXED_SPEECH, index:A1_FIXED_SPEECH_INDEX}
+    {id:'a1', data:A1_FIXED_SPEECH, index:A1_FIXED_SPEECH_INDEX},
+    {id:'b1', data:B1_FIXED_SPEECH, index:B1_FIXED_SPEECH_INDEX}
   ];
   for(const library of libraries){
     const voice=library.data.voices?.find(item=>item.id===voiceId)||library.data.voices?.[0];

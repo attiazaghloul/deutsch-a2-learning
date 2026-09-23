@@ -780,3 +780,18 @@ test('large podcast and speech bundles are loaded on demand, not at startup', ()
   const sw = readFileSync(join(root, 'app', 'sw.js'), 'utf8');
   assert.match(sw, /'data_podcast\.js'/, 'lazy bundles stay precached for offline use');
 });
+
+test('B1.1 recorded speech plugs into the same lazy speech lookup', () => {
+  assert.ok(html.includes("speechB1:'data_speech_b1.js?v="));
+  assert.match(functionSource('findFixedSpeechClip'), /id:'b1', data:B1_FIXED_SPEECH/);
+  const context = vm.createContext({ window: {} });
+  vm.runInContext(readFileSync(join(root, 'app', 'data_speech_b1.js'), 'utf8'), context);
+  const speech = context.window.B1_FIXED_SPEECH;
+  assert.ok(Array.isArray(speech.texts) && Array.isArray(speech.voices));
+  for (const voice of speech.voices) {
+    assert.equal(voice.timings.length, speech.texts.length);
+    assert.ok(existsSync(join(root, 'app', voice.audio.split('?')[0])), `Missing ${voice.audio}`);
+  }
+  assert.ok(existsSync(join(root, 'scripts', 'generate_b1_fixed_speech.py')));
+  assert.ok(existsSync(join(root, 'scripts', 'extract_b1_speech_library.js')));
+});

@@ -42,6 +42,20 @@ http://localhost:8742
 - `app/data_*.js`: المحتوى. ملفات البودكاست والأصوات المسجلة بتتحمّل عند الحاجة (`LAZY_SCRIPTS` في `01-core.js`).
 - `app/sw.js`: الـ Service Worker. رقم الكاش بيتحدّث تلقائيًا وقت النشر (`scripts/stamp_service_worker.js`).
 
+## تسجيل أصوات B1.1
+
+كلمات وجمل B1.1 بتتنطق حاليًا بصوت المتصفح. لتسجيلها بنفس أصوات التطبيق (محتاج إنترنت):
+
+```powershell
+pip install -r scripts/requirements-podcast.txt
+node scripts/extract_b1_speech_library.js
+cd scripts
+python generate_b1_fixed_speech.py --voices mia,tarek
+```
+
+السكربت بيكتب `app/assets/speech/b1-<voice>.mp3` و`app/data_speech_b1.js`، والتطبيق بيستخدمهم تلقائيًا.
+صوتين بس (mia,tarek) حوالي 70MB، والأربعة حوالي 140MB.
+
 ## الاختبارات
 
 ```powershell
