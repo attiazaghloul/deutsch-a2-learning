@@ -50,11 +50,11 @@ http://localhost:8742
 pip install -r scripts/requirements-podcast.txt
 node scripts/extract_b1_speech_library.js
 cd scripts
-python generate_b1_fixed_speech.py --voices mia,tarek
+python generate_b1_fixed_speech.py
 ```
 
 السكربت بيكتب `app/assets/speech/b1-<voice>.mp3` و`app/data_speech_b1.js`، والتطبيق بيستخدمهم تلقائيًا.
-صوتين بس (mia,tarek) حوالي 70MB، والأربعة حوالي 140MB.
+التطبيق بيستخدم صوتين: Mia وTarek، وتسجيل B1.1 بيزوّد حوالي 70MB.
 
 ## الاختبارات
 

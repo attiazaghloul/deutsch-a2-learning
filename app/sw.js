@@ -93,6 +93,12 @@ self.addEventListener('activate', event => {
       .map(request => media.delete(request)));
 
 
+    // The app keeps two recorded voices (Mia, Tarek). Free the space the
+    // retired Jonas and Samir recordings take on devices that cached them.
+    await Promise.all(mediaRequests
+      .filter(request => /\/assets\/speech\/(?:a1-)?(?:jonas|samir)(?:-words)?\.mp3$/.test(new URL(request.url).pathname))
+      .map(request => media.delete(request)));
+
     // B1.1 vocabulary is picture-free since v52. Drop the durable copies of
     // its old card photos so devices that already downloaded them reclaim the
     // space and can never show them again.

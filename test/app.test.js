@@ -409,7 +409,7 @@ test('fixed vocabulary speech covers every word in chapters 7 through 12', () =>
     .replace(/\s+/g, ' ')
     .trim();
 
-  assert.equal(speech.aliases.voices.length, 4);
+  assert.equal(speech.aliases.voices.map(voice => voice.id).join(','), 'mia,tarek');
   for (const voice of speech.aliases.voices) {
     assert.equal(voice.timings.length, speech.aliases.texts.length);
     assert.match(voice.audio, /-words\.mp3\?v=fixed-voices-6$/);
@@ -794,4 +794,14 @@ test('B1.1 recorded speech plugs into the same lazy speech lookup', () => {
   }
   assert.ok(existsSync(join(root, 'scripts', 'generate_b1_fixed_speech.py')));
   assert.ok(existsSync(join(root, 'scripts', 'extract_b1_speech_library.js')));
+});
+
+test('recorded speech ships exactly two voices and no retired recordings', () => {
+  for (const [file, name] of [['data_speech_clean.js', 'A2_FIXED_SPEECH'], ['data_speech_a1.js', 'A1_FIXED_SPEECH']]) {
+    const context = vm.createContext({ window: {} });
+    vm.runInContext(readFileSync(join(root, 'app', file), 'utf8'), context);
+    assert.equal(context.window[name].voices.map(voice => voice.id).join(','), 'mia,tarek', file);
+  }
+  const speechFiles = readdirSync(join(root, 'app', 'assets', 'speech'));
+  assert.deepEqual(speechFiles.filter(file => /jonas|samir/.test(file)), []);
 });
