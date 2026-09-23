@@ -1082,3 +1082,58 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 .conversation-phrases{margin-top:12px;border-top:1px solid var(--line);padding-top:8px}
 .conversation-phrases summary{cursor:pointer;font-weight:700;color:var(--green-d);padding:4px 0}
 .conversation-task{margin-top:12px;padding:10px 12px;border-radius:12px;background:var(--amber-l);font-size:14.5px}
+/* Detailed grammar */
+.gram-toc{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 10px;scrollbar-width:none}
+.gram-toc a{flex:none;display:grid;gap:1px;padding:9px 13px;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);text-decoration:none;max-width:240px}
+.gram-toc a b{font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gram-toc a small{font-size:11.5px;color:var(--ink-2)}
+.gram-topic{padding:18px}
+.gram-topic-head h3{font-size:20px;color:var(--green-d)}
+.gram-summary{margin:12px 0 4px;padding:12px 14px;border-radius:14px;background:var(--green-l)}
+.gram-summary p{margin:0;font-size:15.5px}
+.gram-section{margin-top:18px}
+.gram-section h4{font-size:16px;color:var(--ink);margin-bottom:4px}
+.gram-section>p{font-size:15px;margin-top:6px}
+.gram-table-wrap{overflow-x:auto;margin:10px 0}
+.gram-table{width:100%;border-collapse:collapse;font-size:14px;min-width:280px}
+.gram-table th{background:var(--green-l);color:var(--green-d);text-align:left;padding:7px 9px;font-size:12.5px}
+.gram-table td{border-top:1px solid var(--line);padding:7px 9px;vertical-align:top}
+.gram-examples{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:6px}
+.gram-examples li{padding:8px 12px;border-radius:12px;background:var(--card);border:1px solid var(--line)}
+.gram-example-de{font-weight:600}
+.gram-pitfalls{margin-top:18px;padding:12px 14px;border-radius:14px;background:var(--amber-l)}
+.gram-pitfalls h4{font-size:15px}
+.gram-pitfall{margin-top:10px}
+.gram-pitfall .wrong{color:var(--red);text-decoration:line-through;text-decoration-thickness:1px}
+.gram-pitfall .right{color:var(--green-d);font-weight:700}
+.gram-practice{margin-top:22px;border-top:2px dashed var(--line);padding-top:14px}
+.gram-practice-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.gram-practice-head h4,.gram-practice-head h3{color:var(--green-d)}
+.gram-score{font-size:13px;font-weight:700;color:var(--ink-2);white-space:nowrap}
+.gx{margin-top:12px;padding:13px 14px;border:1.5px solid var(--line);border-radius:14px;background:var(--card)}
+.gx.is-right{border-color:color-mix(in srgb,var(--green) 55%,transparent)}
+.gx.is-wrong{border-color:color-mix(in srgb,var(--red) 45%,transparent)}
+.gx-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.gx-num{display:grid;place-items:center;width:24px;height:24px;border-radius:8px;background:var(--green-l);color:var(--green-d);font-size:12px;font-weight:800}
+.gx-label{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;color:var(--ink-2)}
+.gx-q{font-size:16px;margin:4px 0 8px}
+.gx-options{display:grid;gap:7px}
+.gx-options--row{grid-template-columns:1fr 1fr}
+.gx-option{padding:10px 12px;border:1.5px solid var(--line);border-radius:12px;background:#fff;font:inherit;font-size:15px;text-align:left;cursor:pointer;color:var(--ink)}
+.gx-option.correct{border-color:var(--green);background:var(--green-l);color:var(--green-d);font-weight:700}
+.gx-option.wrong{border-color:var(--red);background:var(--red-l);color:var(--red)}
+.gx-built{display:inline;border-bottom:2px solid var(--green);color:var(--green-d);font-weight:600}
+.gx-chips{display:flex;flex-wrap:wrap;gap:7px}
+.gx-chip{padding:7px 12px;border:1.5px solid var(--line);border-radius:999px;background:#fff;font:inherit;font-size:15px;cursor:pointer}
+.gx-chip.used{opacity:.35}
+.gx-actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;margin-top:10px}
+.gx-input{width:100%;font:inherit;font-size:16px;padding:10px 12px;border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);resize:vertical}
+.gx-feedback{display:none;margin-top:10px;padding:10px 12px;border-radius:12px;font-size:14.5px}
+.gx-feedback.show{display:block}
+.gx-feedback.good{background:var(--green-l);color:var(--green-d)}
+.gx-feedback.bad{background:var(--red-l);color:var(--red)}
+.gx-feedback.hint{background:var(--amber-l);color:var(--ink)}
+.gx-feedback .ar{color:var(--ink)}
+.gx-solution{margin-top:6px;color:var(--ink);font-weight:700}
+.gx-solution small{display:block;font-weight:400;color:var(--ink-2);margin-top:3px}
+.gram-test{padding:18px}

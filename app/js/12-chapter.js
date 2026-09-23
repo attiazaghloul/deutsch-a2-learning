@@ -211,6 +211,9 @@ function renderChapterTab(c, tab){
         </div>
       </article>`).join('');
   }
+  if(tab==='grammatik'&&chapterGrammar(c).length){
+    return renderGrammarTopics(c);
+  }
   if(tab==='grammatik'){
     let h = '';
     c.grammar.forEach(g => {
@@ -233,6 +236,7 @@ function renderChapterTab(c, tab){
     return h;
   }
   if(tab==='quiz'){
+    if(chapterGrammar(c).length) return renderGrammarTest(c)+`<div class="section-label">⚡ Kurzquiz</div><div id="quizArea"></div>`;
     return `<div id="quizArea"></div>`;
   }
   return '';

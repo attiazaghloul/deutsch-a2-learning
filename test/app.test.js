@@ -909,3 +909,44 @@ test('every B1.1 chapter offers five conversation situations with dialogues', ()
   }
   assert.match(functionSource('renderChapterTab'), /conversationsHtml\(c\)/);
 });
+
+test('B1.1 grammar has detailed topics with at least eight varied exercises each', () => {
+  const context = vm.createContext({ window: {} });
+  for (const file of ['data_b1_1_grammar_1.js', 'data_b1_1_grammar_2.js', 'data_b1_1_grammar_3.js']) {
+    vm.runInContext(readFileSync(join(root, 'app', file), 'utf8'), context);
+  }
+  const grammar = context.window.B1_GRAMMAR;
+  const normalize = value => String(value).replace(/[„“"'‚‘’]/g, '').replace(/[.,!?;:–—-]/g, ' ').replace(/\s+/g, ' ').trim().toLowerCase();
+  const ids = new Set();
+  for (let chapter = 1; chapter <= 6; chapter += 1) {
+    assert.ok(grammar[chapter]?.length >= 2, `Kapitel ${chapter}`);
+    for (const topic of grammar[chapter]) {
+      assert.ok(!ids.has(topic.id), `duplicate ${topic.id}`);
+      ids.add(topic.id);
+      assert.ok(topic.summary && /[؀-ۿ]/.test(topic.summaryAr), topic.id);
+      assert.ok(topic.sections.length >= 2, `${topic.id} sections`);
+      assert.ok(topic.sections.some(section => section.table), `${topic.id} table`);
+      assert.ok(topic.pitfalls.length >= 2, `${topic.id} pitfalls`);
+      assert.ok(topic.exercises.length >= 8, `${topic.id} exercises`);
+      assert.ok(new Set(topic.exercises.map(exercise => exercise.type)).size >= 4, `${topic.id} variety`);
+      for (const exercise of topic.exercises) {
+        assert.ok(exercise.why, `${topic.id} explanation`);
+        if (exercise.type === 'choice') assert.ok(exercise.a >= 0 && exercise.a < exercise.o.length);
+        if (exercise.type === 'truefalse') assert.equal(typeof exercise.a, 'boolean');
+        if (['gap', 'transform', 'error', 'order'].includes(exercise.type)) assert.ok(exercise.a.length >= 1);
+        if (exercise.type === 'order') {
+          const bag = words => normalize(words).split(' ').sort().join(' ');
+          assert.ok(exercise.a.some(answer => bag(answer) === bag(exercise.words.join(' '))), `${topic.id} order`);
+        }
+        if (exercise.type === 'error') assert.ok(!exercise.a.some(answer => normalize(answer) === normalize(exercise.q)));
+      }
+    }
+  }
+  assert.ok([...ids].length >= 17);
+  const { grammarNormalize, grammarAnswerMatches } = loadFunctions(['grammarNormalize', 'grammarAnswerMatches']);
+  assert.equal(grammarNormalize(' Ich habe „keine“ Zeit. '), 'ich habe keine zeit');
+  assert.equal(grammarAnswerMatches('ich lasse mein auto reparieren', ['Ich lasse mein Auto reparieren.']), true);
+  assert.equal(grammarAnswerMatches('', ['x']), false);
+  assert.match(functionSource('renderChapterTab'), /renderGrammarTopics\(c\)/);
+  assert.match(functionSource('renderChapterTab'), /renderGrammarTest\(c\)/);
+});
