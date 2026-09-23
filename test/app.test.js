@@ -5,7 +5,14 @@ const vm = require('node:vm');
 const test = require('node:test');
 
 const root = join(__dirname, '..');
-const html = readFileSync(join(root, 'app', 'index.html'), 'utf8');
+const jsDir = join(root, 'app', 'js');
+// The app shell is split into index.html plus ordered classic scripts; tests
+// inspect them as one source so helpers can be loaded regardless of file.
+const html = [
+  readFileSync(join(root, 'app', 'index.html'), 'utf8'),
+  ...readdirSync(jsDir).filter(file => file.endsWith('.js')).sort().map(file => readFileSync(join(jsDir, file), 'utf8')),
+  readFileSync(join(root, 'app', 'styles', 'app.css'), 'utf8')
+].join('\n');
 
 function functionSource(name) {
   const start = html.indexOf(`function ${name}(`);
@@ -402,7 +409,7 @@ test('fixed vocabulary speech covers every word in chapters 7 through 12', () =>
     .replace(/\s+/g, ' ')
     .trim();
 
-  assert.equal(speech.aliases.voices.length, 4);
+  assert.equal(speech.aliases.voices.map(voice => voice.id).join(','), 'mia,tarek');
   for (const voice of speech.aliases.voices) {
     assert.equal(voice.timings.length, speech.aliases.texts.length);
     assert.match(voice.audio, /-words\.mp3\?v=fixed-voices-6$/);
@@ -620,7 +627,7 @@ test('next-generation shell and design system are wired into the offline app', (
   assert.match(worker, /data_lernwortschatz12\.js/);
   assert.match(worker, /data_vocab_topics7_12\.js/);
   assert.match(worker, /assets\/vocab-scenes\/k7\/145\.webp/);
-  assert.match(worker, /CACHE_VERSION = 'v65'/);
+  assert.match(worker, /CACHE_VERSION = 'v\d+'/);
   assert.match(worker, /vocab-scenes\\\/k7\\\/\\d\+\\\.webp/);
 });
 
@@ -674,4 +681,127 @@ test('offline dictionary worker uses the exact pre-cached asset keys', () => {
   assert.match(html, /addEventListener\('controllerchange'/);
   assert.match(html, /pwa-v65-reloaded/);
   assert.match(html, /controllerchange[^}]+location\.reload\(\)/s);
+});
+
+test('B1.1 sub-sections navigate back to their level hub', () => {
+  const { fallbackBackTarget } = loadFunctions(['fallbackBackTarget']);
+  assert.equal(fallbackBackTarget('b1.1/dict'), 'b1.1');
+  assert.equal(fallbackBackTarget('b1.1/games/memory'), 'b1.1/games');
+  assert.equal(fallbackBackTarget('b1.1/exam/lesen'), 'b1.1/exam');
+  assert.equal(fallbackBackTarget('b1.1/exam'), 'b1.1');
+});
+
+test('B1 exam training is complete and every answer index is valid', () => {
+  const context = vm.createContext({ window: {} });
+  vm.runInContext(readFileSync(join(root, 'app', 'data_exam_b1.js'), 'utf8'), context);
+  const exam = context.window.B1_EXAM;
+  assert.deepEqual(Object.keys(exam.modules), ['lesen', 'hoeren', 'schreiben', 'sprechen']);
+  for (const id of ['lesen', 'hoeren']) {
+    const questions = exam.modules[id].parts.flatMap(part => part.questions);
+    assert.equal(questions.length, 20, `${id} should have 20 questions`);
+    questions.forEach(question => {
+      assert.ok(Number.isInteger(question.a) && question.a >= 0 && question.a < question.o.length, question.q);
+    });
+  }
+  exam.modules.hoeren.parts.forEach(part => {
+    assert.ok(part.id && part.script.length > 200 && part.plays >= 1, part.title);
+  });
+  assert.equal(exam.modules.schreiben.tasks.length, 3);
+  assert.ok(exam.modules.sprechen.checklist.length >= 5);
+});
+
+test('B1 verb reference has complete forms for every verb', () => {
+  const context = vm.createContext({ window: {} });
+  vm.runInContext(readFileSync(join(root, 'app', 'data_b1_verbs.js'), 'utf8'), context);
+  const verbs = context.window.B1_VERBS;
+  assert.ok(verbs.length >= 60);
+  const seen = new Set();
+  verbs.forEach(verb => {
+    ['inf', 'praes', 'praet', 'part', 'rektion', 'ar', 'example'].forEach(key => assert.ok(verb[key], `${verb.inf} misses ${key}`));
+    assert.ok(['haben', 'sein'].includes(verb.aux), verb.inf);
+    assert.ok(verb.chapter >= 1 && verb.chapter <= 6, verb.inf);
+    assert.ok(!seen.has(verb.inf), `duplicate ${verb.inf}`);
+    seen.add(verb.inf);
+  });
+});
+
+test('B1.1 exposes dictionary, verbs, phrases, training and exam routes', () => {
+  ['renderB1Dictionary', 'renderB1Verbs', 'renderB1Expressions'].forEach(name => functionSource(name));
+  for (const route of ['b1.1/dict', 'b1.1/verbs', 'b1.1/phrases', 'b1.1/games', 'b1.1/exam']) {
+    assert.ok(html.includes(`h==='${route}'`), `router misses ${route}`);
+  }
+  const ui = readFileSync(join(root, 'app', 'ui-next.js'), 'utf8');
+  assert.match(ui, /\['exam','Prüfung','b1\.1\/exam'\]/);
+  const sw = readFileSync(join(root, 'app', 'sw.js'), 'utf8');
+  assert.match(sw, /'data_exam_b1\.js'/);
+  assert.match(sw, /'data_b1_verbs\.js'/);
+});
+
+test('games and exams keep separate scores per level', () => {
+  const games = loadFunctions(['gameScoresKey']);
+  assert.equal(vm.runInContext("let gameLevel='b1.1';gameScoresKey()", games), 'b1GameBestScores');
+  const exams = loadFunctions(['examScoresKey']);
+  assert.equal(vm.runInContext("let examLevel='a2';examScoresKey()", exams), 'a2ExamScores');
+});
+
+test('progress backups only accept files exported by this app', () => {
+  const ui = readFileSync(join(root, 'app', 'ui-next.js'), 'utf8');
+  const start = ui.indexOf('  function parseBackup(');
+  const end = ui.indexOf('\n  }\n', start) + 4;
+  const context = vm.createContext({});
+  vm.runInContext(`${ui.slice(start, end)}\nthis.parseBackup=parseBackup;`, context);
+  const entries = context.parseBackup(JSON.stringify({ app: 'deutsch-learning', version: 1, data: { favoriteWordsV1: '[]', bad: 5 } }));
+  assert.deepEqual(JSON.parse(JSON.stringify(entries)), [['favoriteWordsV1', '[]']]);
+  assert.throws(() => context.parseBackup(JSON.stringify({ app: 'other', data: {} })));
+  assert.throws(() => context.parseBackup('not json'));
+});
+
+test('service-worker cache version changes whenever a precached file changes', () => {
+  const { shellVersion } = require('../scripts/stamp_service_worker.js');
+  const appDir = join(root, 'app');
+  const source = readFileSync(join(appDir, 'sw.js'), 'utf8');
+  const version = shellVersion(appDir, source);
+  assert.match(version, /^v\d+-[0-9a-f]{10}$/);
+  assert.equal(shellVersion(appDir, source), version, 'hash must be deterministic');
+  const restamped = source.replace(/const CACHE_VERSION = '[^']*';/, `const CACHE_VERSION = '${version}';`);
+  assert.equal(shellVersion(appDir, restamped), version, 'stamping must be idempotent');
+  const changedShell = source.replace("'manifest.json',", "'manifest.json','index.html',");
+  assert.notEqual(shellVersion(appDir, changedShell), version);
+});
+
+test('large podcast and speech bundles are loaded on demand, not at startup', () => {
+  for (const file of ['data_podcast.js', 'data_speech_clean.js', 'data_speech_a1.js']) {
+    assert.doesNotMatch(html, new RegExp(`<script[^>]+${file.replace('.', '\\.')}`), `${file} must not block startup`);
+    assert.ok(html.includes(`'${file}?v=`), `${file} must be listed in LAZY_SCRIPTS`);
+  }
+  functionSource('ensurePodcasts');
+  functionSource('ensureSpeechLibraries');
+  assert.match(functionSource('renderPodcastEpisode'), /renderLazyDataLoading/);
+  const sw = readFileSync(join(root, 'app', 'sw.js'), 'utf8');
+  assert.match(sw, /'data_podcast\.js'/, 'lazy bundles stay precached for offline use');
+});
+
+test('B1.1 recorded speech plugs into the same lazy speech lookup', () => {
+  assert.ok(html.includes("speechB1:'data_speech_b1.js?v="));
+  assert.match(functionSource('findFixedSpeechClip'), /id:'b1', data:B1_FIXED_SPEECH/);
+  const context = vm.createContext({ window: {} });
+  vm.runInContext(readFileSync(join(root, 'app', 'data_speech_b1.js'), 'utf8'), context);
+  const speech = context.window.B1_FIXED_SPEECH;
+  assert.ok(Array.isArray(speech.texts) && Array.isArray(speech.voices));
+  for (const voice of speech.voices) {
+    assert.equal(voice.timings.length, speech.texts.length);
+    assert.ok(existsSync(join(root, 'app', voice.audio.split('?')[0])), `Missing ${voice.audio}`);
+  }
+  assert.ok(existsSync(join(root, 'scripts', 'generate_b1_fixed_speech.py')));
+  assert.ok(existsSync(join(root, 'scripts', 'extract_b1_speech_library.js')));
+});
+
+test('recorded speech ships exactly two voices and no retired recordings', () => {
+  for (const [file, name] of [['data_speech_clean.js', 'A2_FIXED_SPEECH'], ['data_speech_a1.js', 'A1_FIXED_SPEECH']]) {
+    const context = vm.createContext({ window: {} });
+    vm.runInContext(readFileSync(join(root, 'app', file), 'utf8'), context);
+    assert.equal(context.window[name].voices.map(voice => voice.id).join(','), 'mia,tarek', file);
+  }
+  const speechFiles = readdirSync(join(root, 'app', 'assets', 'speech'));
+  assert.deepEqual(speechFiles.filter(file => /jonas|samir/.test(file)), []);
 });

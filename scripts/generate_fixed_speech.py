@@ -36,22 +36,6 @@ VOICES = [
         "rate": "+9%",
         "pitch": "+0Hz",
     },
-    {
-        "id": "jonas",
-        "name": "Jonas",
-        "description": "Mann, jung und lebendig",
-        "voice": "de-DE-KillianNeural",
-        "rate": "+10%",
-        "pitch": "+1Hz",
-    },
-    {
-        "id": "samir",
-        "name": "Samir",
-        "description": "Mann, tief und gelassen",
-        "voice": "de-DE-FlorianMultilingualNeural",
-        "rate": "+6%",
-        "pitch": "-2Hz",
-    },
 ]
 
 

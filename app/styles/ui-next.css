@@ -348,3 +348,12 @@ html[data-nav-direction="tab"]::view-transition-new(app-view){animation-name:rou
 }
 
 html[data-motion="reduced"]{--motion-instant:.01ms;--motion-fast:.01ms;--motion-base:.01ms;--motion-slow:.01ms;--motion-emphasis:.01ms;scroll-behavior:auto!important}html[data-motion="reduced"] *,html[data-motion="reduced"] *::before,html[data-motion="reduced"] *::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+/* Daily plan */
+.daily-plan-list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.daily-plan-list button{display:grid;grid-template-columns:30px minmax(0,1fr) 18px;align-items:center;gap:12px;width:100%;padding:13px 14px;border:1px solid var(--ds-border);border-radius:16px;background:var(--ds-surface);color:inherit;font:inherit;text-align:left;cursor:pointer;box-shadow:var(--ds-shadow-1)}
+.daily-plan-list button svg{width:17px;height:17px;color:var(--ds-text-soft)}
+.daily-plan-list b{display:block;font-size:14.5px}
+.daily-plan-list small{display:block;color:var(--ds-text-soft);font-size:12.5px;margin-top:2px}
+.daily-plan-check{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;border:2px solid var(--ds-border);font-weight:800;color:#fff}
+.daily-plan-list li.done .daily-plan-check{background:var(--ds-accent-strong);border-color:var(--ds-accent-strong)}
+.daily-plan-list li.done b{text-decoration:line-through;color:var(--ds-text-soft)}

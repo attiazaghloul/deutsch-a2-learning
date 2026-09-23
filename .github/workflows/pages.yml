@@ -32,6 +32,9 @@ jobs:
       - name: Build and verify offline dictionary
         run: npm test
 
+      - name: Stamp service-worker cache version
+        run: node scripts/stamp_service_worker.js
+
       - name: Configure Pages
         uses: actions/configure-pages@v6
 
