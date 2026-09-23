@@ -81,9 +81,17 @@ header.topbar h1 small{display:block;font-size:11px;font-weight:400;opacity:.85}
 body.show-ar .ar-toggle{background:#fff;color:var(--green-d)}
 body.show-ar .ar-toggle .dot{background:var(--green)}
 /* ---------- Arabic blocks ---------- */
-.ar{display:none;direction:rtl;text-align:right;color:var(--ar);
-  background:var(--ar-l);border:1px solid #eee7ef;border-radius:9px;padding:5px 10px;margin-top:5px;
-  font-size:.79em;font-weight:400;line-height:1.75}
+.ar{display:none;direction:rtl;text-align:right;color:var(--ar);unicode-bidi:plaintext;
+  background:none;border:0;border-inline-start:3px solid color-mix(in srgb,var(--green) 35%,transparent);border-radius:0;
+  padding:1px 10px 1px 0;padding-inline:10px 0;margin-top:6px;
+  font-size:14px;font-weight:400;line-height:1.85}
+details.ar-long{border-inline-start-color:transparent;padding-inline:0;margin-top:10px}
+details.ar-long summary{display:inline-flex;align-items:center;gap:6px;cursor:pointer;list-style:none;
+  font-size:13px;font-weight:600;color:var(--green-d);background:var(--green-l);border-radius:999px;padding:4px 12px}
+details.ar-long summary::-webkit-details-marker{display:none}
+details.ar-long summary::before{content:"＋";font-weight:700}
+details.ar-long[open] summary::before{content:"－"}
+.ar-long-body{margin-top:8px;padding-inline-start:10px;border-inline-start:3px solid color-mix(in srgb,var(--green) 35%,transparent)}
 .ar b,.ar strong{font-weight:500}
 body.show-ar .ar{display:block}
 span.ar{display:none;background:none;border:0;padding:0 4px;margin:0;border-radius:6px}
@@ -98,7 +106,7 @@ body.exam-mode .ar{display:none!important}
   border-radius:var(--radius);padding:24px 20px;margin-bottom:18px;box-shadow:var(--shadow)}
 .hero h2{font-size:22px;margin-bottom:6px}
 .hero p{font-size:14px;opacity:.95}
-.hero .ar{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.14);color:rgba(255,255,255,.86)}
+.hero .ar{background:none;border-inline-start-color:rgba(255,255,255,.45);color:rgba(255,255,255,.9)}
 .section-label{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;
   color:var(--ink-2);margin:22px 4px 10px}
 .level-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-bottom:18px}
@@ -994,3 +1002,12 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}
 }
+/* Full conjugation tables */
+.conj-tables{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin:12px 0}
+.conj-table{border:1px solid var(--line);border-radius:12px;background:var(--card);overflow:hidden}
+.conj-table h4{margin:0;padding:7px 11px;font-size:12.5px;letter-spacing:.03em;text-transform:uppercase;color:var(--green-d);background:var(--green-l)}
+.conj-table dl{margin:0;padding:4px 11px 8px}
+.conj-table dl div{display:grid;grid-template-columns:74px minmax(0,1fr);gap:8px;padding:4px 0;border-bottom:1px dashed var(--line);font-size:14px}
+.conj-table dl div:last-child{border-bottom:0}
+.conj-table dt{color:var(--ink-2);font-size:12.5px}
+.conj-table dd{margin:0;font-weight:600;color:var(--ink)}

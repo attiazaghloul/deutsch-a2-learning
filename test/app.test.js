@@ -817,3 +817,39 @@ test('app code is network-first and open pages reload when a new version goes li
   assert.doesNotMatch(page, /pwa-v65-reloaded/);
   assert.match(page, /sessionStorage\.setItem\(RELOAD_GUARD_KEY,pendingVersion\)/);
 });
+
+test('verb cards of every level expand into full six-tense conjugation tables', () => {
+  const context = vm.createContext({ window: {}, escapeHtml: value => String(value) });
+  for (const file of ['data_a1_verbs.js', 'data_verbs.js', 'data_b1_verbs.js']) {
+    vm.runInContext(readFileSync(join(root, 'app', file), 'utf8'), context);
+  }
+  vm.runInContext(readFileSync(join(root, 'app', 'js', '15-conjugation.js'), 'utf8').replace(/^const /gm, 'var '), context);
+  const all = [...context.window.A1_VERBS, ...context.window.A2_VERBS, ...context.window.B1_VERBS];
+  for (const verb of all) {
+    const tables = context.conjugateVerb(verb);
+    assert.equal(tables.length, 6, `${verb.inf} should have six tenses`);
+    tables.forEach(([tense, forms]) => forms.forEach(form => assert.ok(form && !/undefined/.test(form), `${verb.inf} ${tense}`)));
+  }
+  const table = verb => Object.fromEntries(context.conjugateVerb(context.window.B1_VERBS.find(item => item.inf === verb)));
+  assert.equal(table('sich aufhalten')['Präsens'][1], 'hältst dich auf');
+  assert.equal(table('sich aufhalten')['Präteritum'][3], 'hielten uns auf');
+  assert.equal(table('sich vornehmen')['Perfekt'][0], 'habe mir vorgenommen');
+  assert.equal(table('ankommen')['Perfekt'][2], 'ist angekommen');
+  assert.equal(table('messen')['Präteritum'][1], 'maßest');
+  assert.equal(table('bewerten')['Präteritum'][4], 'bewertetet');
+  assert.equal(table('verzeihen')['Futur I'][1], 'wirst verzeihen');
+  assert.ok(context.window.B1_VERBS.every(verb => verb.forms.length === 6));
+  for (const page of ['05-levels.js', '08-dictionary.js']) {
+    assert.match(readFileSync(join(root, 'app', 'js', page), 'utf8'), /conjugationTableHtml\(verb\)/);
+  }
+});
+
+test('Arabic help stays a quiet line and long translations fold away', () => {
+  const { ar } = loadFunctions(['ar']);
+  const context = vm.createContext({ location: { hash: '' } });
+  vm.runInContext(`${functionSource('ar')}\nthis.ar=ar;`, context);
+  assert.equal(context.ar('Vorlieben und Abneigungen'), '', 'German-only text is not repeated as Arabic');
+  assert.match(context.ar('مرحبا'), /^<div class="ar"/);
+  assert.match(context.ar('ترجمة '.repeat(60)), /<details class="ar ar-long"/);
+  assert.ok(typeof ar === 'function');
+});

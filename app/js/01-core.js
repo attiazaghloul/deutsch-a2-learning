@@ -116,5 +116,11 @@ setAr(localStorage.getItem('showArUserChoice') === '1');   // default OFF
 
 function ar(txt){
   if(location.hash.includes('a1/listen/phonetik')) return '';
-  return txt ? `<div class="ar" lang="ar" dir="rtl">${txt}</div>` : '';
+  // Skip empty values and "translations" without Arabic letters (duplicated German).
+  if(!txt||!/[\u0600-\u06ff]/.test(String(txt))) return '';
+  // Long translations fold away so German texts keep their rhythm.
+  if(String(txt).replace(/<[^>]+>/g,'').length>260){
+    return `<details class="ar ar-long" lang="ar" dir="rtl"><summary>الترجمة العربية</summary><div class="ar-long-body">${txt}</div></details>`;
+  }
+  return `<div class="ar" lang="ar" dir="rtl">${txt}</div>`;
 }

@@ -94,7 +94,6 @@ function renderDictionary(){
 
 function renderVerbs(){
   setTop('A2 Verbwörterbuch','Konjugation, Präteritum & Perfekt',true);
-  const pronouns=['ich','du','er/sie/es','wir','ihr','sie/Sie'];
   view.innerHTML=mainTabs('verbs')+`
     <div class="hero"><h2>Verben A2</h2>
       <p>Präsens mit allen Personen, Präteritum und Perfekt mit <b>haben</b> oder <b>sein</b>.</p>
@@ -121,13 +120,7 @@ function renderVerbs(){
         </div>
         <div class="verb-details">
           <div class="verb-head"><div>${ar(verb.ar)}</div><span class="verb-aux ${verb.aux}">Perfekt mit ${verb.aux}</span></div>
-          <div class="verb-tense">Präsens</div>
-          <div class="verb-grid">${verb.forms.map((form,formIndex)=>`
-            <div class="verb-form"><small>${pronouns[formIndex]}</small>${form}</div>`).join('')}</div>
-          <div class="verb-tense">Präteritum</div>
-          <div class="verb-grid">${verb.praetForms.map((form,formIndex)=>`
-            <div class="verb-form"><small>${pronouns[formIndex]}</small>${form}</div>`).join('')}</div>
-          <div class="verb-perfect"><small>Perfekt</small> ${verb.aux} ${verb.part}</div>
+          ${conjugationTableHtml(verb)}
           <div class="dictionary-example">„${verb.example}“</div>
           <span class="dictionary-meta">K${verb.chapter}</span>
         </div>
