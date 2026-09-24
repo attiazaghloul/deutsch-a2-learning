@@ -52,8 +52,8 @@ function fallbackBackTarget(hash){
   if(h==='#b1.1/lessons') return 'b1.1';
   if(/^#b1\.1\/k\d+\//.test(h)) return path.split('/').slice(0,2).join('/');
   if(/^#b1\.1\/k\d+$/.test(h)) return 'b1.1/lessons';
-  if(/^#b1\.1\/(games|exam)\//.test(h)) return path.split('/').slice(0,2).join('/');
-  if(/^#b1\.1\/(dict|verbs|phrases|games|exam)$/.test(h)) return 'b1.1';
+  if(/^#b1\.1\/(games|exam|listen|podcast)\//.test(h)) return path.split('/').slice(0,2).join('/');
+  if(/^#b1\.1\/(dict|verbs|phrases|games|exam|listen|podcast)$/.test(h)) return 'b1.1';
   if(h==='#b1.1') return '';
   if(/^#train\//.test(h)) return 'train';
   if(h==='#train') return '';
@@ -120,6 +120,7 @@ function renderCurrentRoute(){
   stopExamTimer();
   stopGameTimers();
   stopPodcast();
+  stopB1Listening();
   const examMode=h==='exam'||h.startsWith('exam/')||h==='b1.1/exam'||h.startsWith('b1.1/exam/');
   document.body.classList.toggle('exam-mode',examMode);
   if(examMode){
@@ -179,6 +180,12 @@ function renderCurrentRoute(){
   if(h==='b1.1/dict'){ renderB1Dictionary(); return; }
   if(h==='b1.1/verbs'){ renderB1Verbs(); return; }
   if(h==='b1.1/phrases'){ renderB1Expressions(); return; }
+  if(h==='b1.1/listen'){ renderB1ListenHome(); return; }
+  const b1ListenMatch=h.match(/^b1\.1\/listen\/(\d+)\/(\d+)$/);
+  if(b1ListenMatch){ renderB1ListenTask(Number(b1ListenMatch[1]),Number(b1ListenMatch[2])); return; }
+  if(h==='b1.1/podcast'){ podcastLevel='b1.1'; renderPodcastHome(); return; }
+  const b1PodcastMatch=h.match(/^b1\.1\/podcast\/(\d+)$/);
+  if(b1PodcastMatch){ podcastLevel='b1.1'; renderPodcastEpisode(Number(b1PodcastMatch[1])); return; }
   if(h==='b1.1/games'){ gameLevel='b1.1'; renderGamesHome(); return; }
   const b1GameMatch=h.match(/^b1\.1\/games\/(speed|memory|artikel|sentence)$/);
   if(b1GameMatch){ gameLevel='b1.1'; renderGame(b1GameMatch[1]); return; }
@@ -195,9 +202,9 @@ function renderCurrentRoute(){
   if(h==='full-dict'){ renderFullDictionary(); return; }
   if(h==='verbs'){ renderVerbs(); return; }
   if(h==='phrases'){ renderExpressions(); return; }
-  if(h==='podcast'){ renderPodcastHome(); return; }
+  if(h==='podcast'){ podcastLevel='a2'; renderPodcastHome(); return; }
   const podcastMatch=h.match(/^podcast\/(\d+)$/);
-  if(podcastMatch){ renderPodcastEpisode(Number(podcastMatch[1])); return; }
+  if(podcastMatch){ podcastLevel='a2'; renderPodcastEpisode(Number(podcastMatch[1])); return; }
   if(h==='games'){ gameLevel='a2'; renderGamesHome(); return; }
   const gameMatch=h.match(/^games\/(speed|memory|artikel|sentence)$/);
   if(gameMatch){ gameLevel='a2'; renderGame(gameMatch[1]); return; }
@@ -715,6 +722,8 @@ const B1_SECTIONS=[
   {route:'b1.1/dict',icon:'W',title:'Wörterbuch',text:'Alle B1.1-Wörter mit Suche, Beispielen und Kapitelfilter.',ar:'قاموس كل كلمات B1.1.'},
   {route:'b1.1/verbs',icon:'V',title:'Verben',text:'Wichtige B1-Verben mit Präteritum, Perfekt und Präpositionen.',ar:'أهم أفعال B1 مع الماضي وحروف الجر.'},
   {route:'b1.1/phrases',icon:'R',title:'Redemittel',text:'Alle Redemittel aus den sechs Kapiteln an einem Ort.',ar:'كل التعبيرات الجاهزة من الوحدات الست.'},
+  {route:'b1.1/listen',icon:'H',title:'Hören',text:'18 Hörtexte: Gespräche, Durchsagen, Radio – mit Aufgaben und Transkript.',ar:'١٨ نص استماع بأسئلة ونص مكتوب مع الترجمة.'},
+  {route:'b1.1/podcast',icon:'🎧',title:'Podcast',text:'Sechs Folgen zu den Kapiteln – hören und mitlesen.',ar:'ست حلقات بودكاست، حلقة لكل وحدة.'},
   {route:'b1.1/games',icon:'T',title:'Training',text:'Schnell-Challenge, Memory, Artikel und Satz-Puzzle mit B1-Wörtern.',ar:'ألعاب تدريب بكلمات وجمل B1.1.'},
   {route:'b1.1/exam',icon:'P',title:'Prüfung',text:'Goethe-B1 Modelltraining: Lesen, Hören, Schreiben und Sprechen.',ar:'تدريب على نموذج امتحان Goethe B1.'}
 ];

@@ -1137,3 +1137,19 @@ footer.fnote{text-align:center;font-size:12px;color:#9aa6b2;margin-top:26px}
 .gx-solution{margin-top:6px;color:var(--ink);font-weight:700}
 .gx-solution small{display:block;font-weight:400;color:var(--ink-2);margin-top:3px}
 .gram-test{padding:18px}
+/* B1.1 listening */
+.b1-listen-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.b1-listen-card{display:grid;grid-template-columns:84px minmax(0,1fr);gap:12px;align-items:center;width:100%;padding:10px;text-align:left;font:inherit;color:inherit;cursor:pointer}
+.b1-listen-card img{width:84px;height:84px;object-fit:cover;border-radius:12px}
+.b1-listen-card.completed{border-color:#7db39f;box-shadow:0 8px 22px rgba(39,113,89,.13)}
+.b1-listen-copy{display:grid;gap:3px;min-width:0}
+.b1-listen-copy b{font-size:15px}
+.b1-listen-copy small{color:var(--ink-2);font-size:12px}
+.b1-listen-type{display:inline-block;justify-self:start;font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--green-d);background:var(--green-l);border-radius:999px;padding:2px 9px}
+.b1-listen-task h2{margin:8px 0 2px}
+.b1-listen-task .exam-audio button.playing{background:var(--red)}
+.b1-listen-why{margin-top:8px;padding:8px 10px;border-radius:10px;background:var(--amber-l);font-size:13.5px}
+.b1-listen-transcript{padding:14px 16px}
+.b1-listen-transcript summary{cursor:pointer;font-weight:700;color:var(--green-d);padding:4px 0 8px}
+.b1-listen-transcript .conversation-line{cursor:pointer}
+.b1-listen-nav{display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap;margin:6px 0 18px}

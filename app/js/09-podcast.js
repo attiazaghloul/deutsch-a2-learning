@@ -36,23 +36,42 @@ function renderLazyDataLoading(title,loader,render){
   return true;
 }
 
-const PODCAST_LOADER={ready:()=>Boolean(window.A2_PODCASTS),load:ensurePodcasts};
+let podcastLevel='a2';
+const PODCAST_LEVELS={
+  a2:{
+    loader:{ready:()=>Boolean(window.A2_PODCASTS),load:ensurePodcasts},
+    episodes:()=>window.A2_PODCASTS||[], book:()=>BOOK, tabs:active=>mainTabs(active),
+    route:'podcast', progressKey:'podcastProgress', title:'Deutsch im Ohr', sub:'12 Kapitel · hören und mitlesen',
+    text:'Zwölf kurze Gespräche auf A2-Niveau. Jede Folge wiederholt Wortschatz, Redemittel und Grammatik aus einem Kapitel.',
+    textAr:'١٢ حلقة قصيرة، حلقة لكل درس. اسمع الحوار وتابع السكريبت المتزامن، وشغّل الترجمة بالطريقة المناسبة لك.'
+  },
+  'b1.1':{
+    loader:{ready:()=>Boolean(window.B1_PODCASTS),load:()=>loadScriptOnce(LAZY_SCRIPTS.podcastB1)},
+    episodes:()=>window.B1_PODCASTS||[], book:()=>B1_BOOK, tabs:active=>b1Tabs(active),
+    route:'b1.1/podcast', progressKey:'b1PodcastProgress', title:'Deutsch im Ohr B1', sub:'6 Kapitel · hören und mitlesen',
+    text:'Sechs Gespräche auf B1-Niveau. Jede Folge wiederholt Wortschatz, Redemittel und Grammatik aus einem Kapitel von Netzwerk neu B1.1.',
+    textAr:'ست حلقات بمستوى B1، حلقة لكل وحدة. اسمع الحوار وتابع النص، وشغّل الترجمة بالطريقة المناسبة لك.'
+  }
+};
+function podcastConfig(){ return PODCAST_LEVELS[podcastLevel]||PODCAST_LEVELS.a2; }
+function podcastProgressKey(chapter){ return `${podcastConfig().progressKey}:${chapter}`; }
 
 function renderPodcastHome(){
-  if(renderLazyDataLoading('Podcast',PODCAST_LOADER,renderPodcastHome)) return;
-  PODCASTS=window.A2_PODCASTS;
-  setTop('Podcast','12 Kapitel · hören und mitlesen',false);
+  const config=podcastConfig();
+  if(renderLazyDataLoading('Podcast',config.loader,renderPodcastHome)) return;
+  PODCASTS=config.episodes();
+  setTop('Podcast',config.sub,false);
   document.body.classList.add('has-back');
-  view.innerHTML=mainTabs('podcast')+`
+  view.innerHTML=config.tabs('podcast')+`
     <section class="card podcast-hero">
-      <h2>Deutsch im Ohr</h2>
-      <p>Zwölf kurze Gespräche auf A2-Niveau. Jede Folge wiederholt Wortschatz, Redemittel und Grammatik aus einem Kapitel.</p>
-      ${ar('١٢ حلقة قصيرة، حلقة لكل درس. اسمع الحوار وتابع السكريبت المتزامن، وشغّل الترجمة بالطريقة المناسبة لك.')}
+      <h2>${config.title}</h2>
+      <p>${config.text}</p>
+      ${ar(config.textAr)}
     </section>
     <div class="podcast-grid">${PODCASTS.map(episode=>{
-      const chapter=BOOK.find(item=>item.num===episode.chapter);
-      const saved=Number(localStorage.getItem(`podcastProgress:${episode.chapter}`)||0);
-      return `<button type="button" class="card podcast-card" onclick="go('podcast/${episode.chapter}')">
+      const chapter=config.book().find(item=>item.num===episode.chapter);
+      const saved=Number(localStorage.getItem(podcastProgressKey(episode.chapter))||0);
+      return `<button type="button" class="card podcast-card" onclick="go('${config.route}/${episode.chapter}')">
         <div class="podcast-cover"><img src="${podcastCover(chapter)}" alt=""><span class="podcast-number">Folge ${episode.chapter}</span></div>
         <div class="podcast-copy"><h3>${episode.title}</h3><p>${episode.intro}</p>
           <div class="podcast-meta"><span>${episode.duration}</span><span>${episode.speakers.join(' + ')}</span>
@@ -75,15 +94,16 @@ function podcastLineValue(line,key,index){
 }
 
 function renderPodcastEpisode(chapterNumber){
-  if(renderLazyDataLoading('Podcast',PODCAST_LOADER,()=>renderPodcastEpisode(chapterNumber))) return;
-  PODCASTS=window.A2_PODCASTS;
+  const config=podcastConfig();
+  if(renderLazyDataLoading('Podcast',config.loader,()=>renderPodcastEpisode(chapterNumber))) return;
+  PODCASTS=config.episodes();
   const episode=PODCASTS.find(item=>item.chapter===chapterNumber);
-  const chapter=BOOK.find(item=>item.num===chapterNumber);
+  const chapter=config.book().find(item=>item.num===chapterNumber);
   if(!episode){renderPodcastHome();return;}
-  const saved=Math.min(Number(localStorage.getItem(`podcastProgress:${chapterNumber}`)||0),episode.lines.length-1);
+  const saved=Math.min(Number(localStorage.getItem(podcastProgressKey(chapterNumber))||0),episode.lines.length-1);
   podcastState={episode,index:saved,playing:false,paused:false};
   setTop(`Podcast ${chapterNumber}`,episode.title,true);
-  view.innerHTML=mainTabs('podcast')+`
+  view.innerHTML=config.tabs('podcast')+`
     <article class="card podcast-player">
       <div class="podcast-player-cover"><img src="${podcastCover(chapter)}" alt="${escapeHtml(episode.title)}">
         <div class="podcast-player-title"><small>FOLGE ${chapterNumber} · ${episode.duration}</small>
@@ -147,10 +167,10 @@ function playPodcast(fromIndex=podcastState?.index||0){
   setPodcastActiveLine(podcastState.index);
   highlightPodcastWord(podcastState.index,0);
   if(episode.audio){
-    if(!podcastAudio||podcastAudio.dataset.chapter!==String(episode.chapter)){
+    if(!podcastAudio||podcastAudio.dataset.src!==episode.audio){
       if(podcastAudio)podcastAudio.pause();
       podcastAudio=new Audio(episode.audio);
-      podcastAudio.dataset.chapter=String(episode.chapter);
+      podcastAudio.dataset.src=episode.audio;
       podcastAudio.preload='metadata';
       podcastAudio.addEventListener('ended',finishPodcastAudio);
       podcastAudio.addEventListener('error',()=>showSpeechStatus('تعذر تحميل ملف الحلقة'));
@@ -210,7 +230,7 @@ function playPodcastWithSpeech(){
     utterance.onend=()=>{
       if(session!==podcastSession)return;
       clearPodcastWords(index);
-      localStorage.setItem(`podcastProgress:${episode.chapter}`,String(Math.min(index+1,episode.lines.length)));
+      localStorage.setItem(podcastProgressKey(episode.chapter),String(Math.min(index+1,episode.lines.length)));
       if(index===episode.lines.length-1){
         podcastState.playing=false;
         podcastState.paused=false;
@@ -239,7 +259,7 @@ function syncPodcastAudio(){
   if(index!==podcastState.index){
     podcastState.index=index;
     setPodcastActiveLine(index);
-    localStorage.setItem(`podcastProgress:${podcastState.episode.chapter}`,String(index));
+    localStorage.setItem(podcastProgressKey(podcastState.episode.chapter),String(index));
   }
   highlightPodcastWordByTime(index,time);
   updatePodcastControls();

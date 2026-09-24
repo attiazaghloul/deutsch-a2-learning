@@ -16,6 +16,14 @@ SEGMENTS = BUILD / "podcast-segments"
 OUTPUT = ROOT / "app" / "assets" / "podcasts"
 FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
 PODCAST_VERSION = "word-sync-3"
+LEVELS = {
+    # a2 reads build/podcasts-long.json (scripts/build_long_podcasts.js);
+    # b1 reads its episode lines straight from app/data_podcast_b1.js.
+    "a2": {"data": ROOT / "app" / "data_podcast.js", "variable": "A2_PODCASTS", "prefix": "",
+           "segments": SEGMENTS, "version": PODCAST_VERSION, "label": "A2"},
+    "b1": {"data": ROOT / "app" / "data_podcast_b1.js", "variable": "B1_PODCASTS", "prefix": "b1-",
+           "segments": BUILD / "podcast-segments-b1", "version": "b1-podcast-1", "label": "B1.1"},
+}
 
 
 def voice_settings(person):
@@ -161,9 +169,9 @@ def duration(path):
     return float(MP3(path).info.length)
 
 
-async def generate_episode(episode, concurrency):
+async def generate_episode(episode, concurrency, level=LEVELS["a2"]):
     chapter = int(episode["chapter"])
-    chapter_dir = SEGMENTS / f"k{chapter}"
+    chapter_dir = level["segments"] / f"k{chapter}"
     chapter_dir.mkdir(parents=True, exist_ok=True)
     OUTPUT.mkdir(parents=True, exist_ok=True)
     semaphore = asyncio.Semaphore(concurrency)
@@ -198,7 +206,7 @@ async def generate_episode(episode, concurrency):
         "\n".join(f"file '{str(path.resolve()).replace(chr(39), chr(39) * 2)}'" for path in concat_paths),
         encoding="utf-8"
     )
-    audio_target = OUTPUT / f"chapter-{chapter}.mp3"
+    audio_target = OUTPUT / f"{level['prefix']}chapter-{chapter}.mp3"
     subprocess.run(
         [
             FFMPEG, "-y", "-f", "concat", "-safe", "0", "-i", str(concat_file),
@@ -208,7 +216,7 @@ async def generate_episode(episode, concurrency):
         check=True
     )
     episode["lines"] = timeline
-    episode["audio"] = f"assets/podcasts/chapter-{chapter}.mp3?v={PODCAST_VERSION}"
+    episode["audio"] = f"assets/podcasts/{level['prefix']}chapter-{chapter}.mp3?v={level['version']}"
     episode["durationSeconds"] = round(duration(audio_target), 2)
     episode["duration"] = f"{round(episode['durationSeconds'] / 60)} Min."
     print(
@@ -217,10 +225,15 @@ async def generate_episode(episode, concurrency):
     )
 
 
-def write_javascript(episodes):
+def read_javascript(level):
+    text = level["data"].read_text(encoding="utf-8")
+    return json.loads(text.split(f"window.{level['variable']}=", 1)[1].rsplit(";", 1)[0])
+
+
+def write_javascript(episodes, level=LEVELS["a2"]):
     payload = json.dumps(episodes, ensure_ascii=False, separators=(",", ":"))
-    (ROOT / "app" / "data_podcast.js").write_text(
-        "/* Generated synchronized A2 podcast data. */\nwindow.A2_PODCASTS=" + payload + ";\n",
+    level["data"].write_text(
+        f"/* Generated synchronized {level['label']} podcast data. */\nwindow.{level['variable']}=" + payload + ";\n",
         encoding="utf-8"
     )
 
@@ -229,26 +242,28 @@ async def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--chapters", default="all")
     parser.add_argument("--concurrency", type=int, default=6)
+    parser.add_argument("--level", choices=sorted(LEVELS), default="a2")
     args = parser.parse_args()
-    episodes = json.loads((BUILD / "podcasts-long.json").read_text(encoding="utf-8"))
+    level = LEVELS[args.level]
+    if args.level == "a2":
+        episodes = json.loads((BUILD / "podcasts-long.json").read_text(encoding="utf-8"))
+    else:
+        episodes = read_javascript(level)
     selected = (
         {int(value) for value in args.chapters.split(",")}
         if args.chapters != "all"
         else {episode["chapter"] for episode in episodes}
     )
     existing = {}
-    current_js = ROOT / "app" / "data_podcast.js"
-    if current_js.exists() and "durationSeconds" in current_js.read_text(encoding="utf-8"):
-        text = current_js.read_text(encoding="utf-8")
-        existing_items = json.loads(text.split("window.A2_PODCASTS=", 1)[1].rsplit(";", 1)[0])
-        existing = {item["chapter"]: item for item in existing_items}
+    if level["data"].exists() and "durationSeconds" in level["data"].read_text(encoding="utf-8"):
+        existing = {item["chapter"]: item for item in read_javascript(level)}
     for episode in episodes:
         if episode["chapter"] in selected:
-            await generate_episode(episode, args.concurrency)
+            await generate_episode(episode, args.concurrency, level)
         elif episode["chapter"] in existing:
             episode = existing[episode["chapter"]]
         existing[episode["chapter"]] = episode
-    write_javascript([existing[number] for number in sorted(existing)])
+    write_javascript([existing[number] for number in sorted(existing)], level)
 
 
 if __name__ == "__main__":

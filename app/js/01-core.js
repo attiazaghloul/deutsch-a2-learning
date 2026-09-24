@@ -46,6 +46,7 @@ const EXAM = window.A2_EXAM;
 /* Large data bundles load on demand so the first screen does not wait for them. */
 const LAZY_SCRIPTS={
   podcast:'data_podcast.js?v=word-sync-3',
+  podcastB1:'data_podcast_b1.js?v=b1-podcast-1',
   speechA2:'data_speech_clean.js?v=speech-clean-7',
   speechA1:'data_speech_a1.js?v=a1-fixed-voices-1',
   speechB1:'data_speech_b1.js?v=b1-fixed-voices-1'

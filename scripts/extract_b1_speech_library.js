@@ -4,18 +4,19 @@ const vm = require('vm');
 const sandbox = {window: {}, console};
 vm.createContext(sandbox);
 fs.readdirSync('app')
-  .filter(file => file.startsWith('data_') && file.endsWith('.js') && !['data_podcast.js', 'data_speech_b1.js', 'data_dictionary_de_ar.js'].includes(file))
+  .filter(file => file.startsWith('data_') && file.endsWith('.js') && !['data_podcast.js', 'data_podcast_b1.js', 'data_speech_b1.js', 'data_dictionary_de_ar.js'].includes(file))
   .forEach(file => {
     vm.runInContext(fs.readFileSync(`app/${file}`, 'utf8'), sandbox, {filename: file});
   });
 
-/* Collects every German text of the B1.1 level (lessons, verbs, exam) that
-   is not already recorded in the A2 or A1 libraries. Output feeds
+/* Collects every German text of the B1.1 level (lessons, verbs, exam,
+   grammar, listening) that is not already recorded in the A2 or A1
+   libraries. Output feeds
    scripts/generate_b1_fixed_speech.py. */
-const roots = ['B1_BOOK', 'B1_VERBS', 'B1_EXAM'];
+const roots = ['B1_BOOK', 'B1_VERBS', 'B1_EXAM', 'B1_GRAMMAR', 'B1_HOEREN'];
 const ignoredKeys = new Set([
   'ar', 'fbAr', 'image', 'img', 'audio', 'src', 'cover', 'pageImage',
-  'poster', 'icon', 'illustration'
+  'poster', 'icon', 'illustration', 'id', 'type', 's'
 ]);
 const texts = new Set();
 
@@ -36,6 +37,7 @@ function isGermanSpeech(value) {
     && value.length <= 900
     && /[A-Za-zÄÖÜäöüß]/.test(value)
     && !/[\u0600-\u06ff]/.test(value)
+    && !/_{2,}/.test(value)
     && !/^(?:assets\/|https?:|data:|#)/i.test(value)
     && !/\.(?:avif|gif|jpe?g|mp3|png|svg|webp)(?:\?.*)?$/i.test(value);
 }

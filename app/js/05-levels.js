@@ -66,8 +66,8 @@ function renderLevelSelector(){
     <button type="button" class="level-card b1" onclick="go('b1.1')">
       <span class="level-code">B1.1</span>
       <h3>Netzwerk neu B1.1</h3>
-      <p>Sechs vollständige Kapitel mit Wortschatzkarten, Lesetexten, Grammatik, Redemitteln und Quiz.</p>
-      ${ar('ست وحدات B1.1 كاملة مع الكلمات والقراءة والقواعد والمحادثة والاختبارات.')}
+      <p>Sechs vollständige Kapitel mit Wortschatzkarten, Lesetexten, Grammatik, Redemitteln, Hören, Podcast und Quiz.</p>
+      ${ar('ست وحدات B1.1 كاملة مع الكلمات والقراءة والقواعد والمحادثة والاستماع والبودكاست والاختبارات.')}
       <div class="level-meta"><span class="level-pill">Kapitel 1-6</span><span class="level-pill">Prüfung B1</span></div>
     </button>
     <article class="level-card soon locked">

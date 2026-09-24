@@ -950,3 +950,47 @@ test('B1.1 grammar has detailed topics with at least eight varied exercises each
   assert.match(functionSource('renderChapterTab'), /renderGrammarTopics\(c\)/);
   assert.match(functionSource('renderChapterTab'), /renderGrammarTest\(c\)/);
 });
+
+test('B1.1 listening has three answerable tasks per chapter with Arabic support', () => {
+  const context = vm.createContext({ window: {} });
+  vm.runInContext(readFileSync(join(root, 'app', 'data_b1_1_hoeren.js'), 'utf8'), context);
+  const data = context.window.B1_HOEREN;
+  const ids = new Set();
+  for (let chapter = 1; chapter <= 6; chapter += 1) {
+    assert.equal(data[chapter]?.tasks.length, 3, `Kapitel ${chapter}`);
+    for (const task of data[chapter].tasks) {
+      assert.ok(!ids.has(task.id), `duplicate ${task.id}`);
+      ids.add(task.id);
+      assert.ok(task.title && /[؀-ۿ]/.test(task.titleAr) && /[؀-ۿ]/.test(task.situationAr), task.id);
+      assert.ok(task.lines.length >= 5, task.id);
+      task.lines.forEach(line => assert.ok(line.s && line.de && /[؀-ۿ]/.test(line.ar), `${task.id}: ${line.de}`));
+      assert.ok(task.questions.length >= 4, task.id);
+      task.questions.forEach(question => {
+        assert.ok(Number.isInteger(question.a) && question.a >= 0 && question.a < question.o.length, `${task.id}: ${question.q}`);
+        assert.ok(question.why && /[؀-ۿ]/.test(question.qAr) && /[؀-ۿ]/.test(question.whyAr), `${task.id}: ${question.q}`);
+      });
+    }
+  }
+  assert.match(html, /<script src="js\/19-b1-listening\.js"><\/script>/);
+  assert.match(html, /<script src="data_b1_1_hoeren\.js"><\/script>/);
+  assert.match(functionSource('renderCurrentRoute'), /renderB1ListenTask/);
+});
+
+test('B1.1 podcast has one episode per chapter that the player can read', () => {
+  const context = vm.createContext({ window: {} });
+  vm.runInContext(readFileSync(join(root, 'app', 'data_podcast_b1.js'), 'utf8'), context);
+  const episodes = context.window.B1_PODCASTS;
+  assert.deepEqual([...episodes.map(episode => episode.chapter)], [1, 2, 3, 4, 5, 6]);
+  for (const episode of episodes) {
+    assert.ok(episode.title && episode.intro && episode.keywords.length, `Folge ${episode.chapter}`);
+    assert.deepEqual([...episode.people.map(person => person.name)], [...episode.speakers]);
+    episode.lines.forEach(line => {
+      assert.ok(episode.speakers.includes(line.speaker), line.de);
+      assert.ok(line.de && /[؀-ۿ]/.test(line.ar), line.de);
+    });
+  }
+  // The audio generator parses the file as JSON after the assignment.
+  const source = readFileSync(join(root, 'app', 'data_podcast_b1.js'), 'utf8');
+  JSON.parse(source.split('window.B1_PODCASTS=')[1].trim().replace(/;$/, ''));
+  assert.match(functionSource('renderCurrentRoute'), /podcastLevel='b1\.1'/);
+});

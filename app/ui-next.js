@@ -64,9 +64,9 @@
 
   const primaryNav=[
     {id:'home',label:'Start',route:'',icon:icons.home},
-    {id:'learn',label:'Inhalte',route:()=>state.profile.level==='a1'?'a1':'a2',icon:icons.learn},
+    {id:'learn',label:'Inhalte',route:()=>state.profile.level==='a1'?'a1':state.profile.level==='b1.1'?'b1.1':'a2',icon:icons.learn},
     {id:'review',label:'Wörter',route:'word-search',icon:icons.search},
-    {id:'listen',label:'Hören',route:()=>state.profile.level==='a1'?'a1/listen':'listen',icon:icons.listen},
+    {id:'listen',label:'Hören',route:()=>state.profile.level==='a1'?'a1/listen':state.profile.level==='b1.1'?'b1.1/listen':'listen',icon:icons.listen},
     {id:'progress',label:'Fortschritt',route:'progress',icon:icons.progress}
   ];
 
@@ -105,7 +105,7 @@
     if(!hash) return 'home';
     if(hash==='review'||hash==='favorites'||hash==='word-search'||hash==='train'||hash.startsWith('train/')) return 'review';
     if(hash==='progress') return 'progress';
-    if(hash==='listen'||hash.startsWith('listen/')||hash==='podcast'||hash.startsWith('podcast/')||hash.includes('/listen')) return 'listen';
+    if(hash==='listen'||hash.startsWith('listen/')||hash==='podcast'||hash.startsWith('podcast/')||hash.includes('/listen')||hash.includes('/podcast')) return 'listen';
     return 'learn';
   }
 
@@ -124,7 +124,7 @@
     const items=level==='a1'
       ?[['lessons','Lektionen','a1/lessons'],['dict','Wörterbuch','a1/dict'],['verbs','Verben','a1/verbs'],['phrases','Redemittel','a1/phrases'],['listen','Hören','a1/listen']]
       :level==='b1.1'
-        ?[['lessons','Lektionen','b1.1/lessons'],['dict','Wörterbuch','b1.1/dict'],['verbs','Verben','b1.1/verbs'],['phrases','Redemittel','b1.1/phrases'],['games','Training','b1.1/games'],['exam','Prüfung','b1.1/exam']]
+        ?[['lessons','Lektionen','b1.1/lessons'],['dict','Wörterbuch','b1.1/dict'],['verbs','Verben','b1.1/verbs'],['phrases','Redemittel','b1.1/phrases'],['listen','Hören','b1.1/listen'],['podcast','Podcast','b1.1/podcast'],['games','Training','b1.1/games'],['exam','Prüfung','b1.1/exam']]
         :[['lessons','Lektionen','a2/lessons'],['dict','Wörterbuch','dict'],['verbs','Verben','verbs'],['phrases','Redemittel','phrases'],['podcast','Podcast','podcast'],['games','Training','games'],['listen','Hören','listen'],['exam','Prüfung','exam']];
     return `<nav class="feature-tabs" aria-label="${level.toUpperCase()} Bereiche">${items.map(([id,label,route])=>`<button type="button" class="feature-tab" onclick="go('${route}')" ${id===active?'aria-current="page"':''}>${label}</button>`).join('')}</nav>`;
   }
@@ -240,7 +240,7 @@
     setTop('Deutsch Learning','A1 + A2 + B1.1 · Alle Inhalte auf einen Blick',false);
     const level=state.profile.level;
     const continueRoute=state.lastLearningRoute||level;
-    const listenRoute=level==='a1'?'a1/listen':'listen';
+    const listenRoute=level==='a1'?'a1/listen':level==='b1.1'?'b1.1/listen':'listen';
     const hasHistory=state.history.length>0;
     view.innerHTML=`<div class="next-dashboard">
       <section class="home-hero" aria-labelledby="homeHeroTitle">
@@ -259,7 +259,7 @@
         <div class="home-level-grid">
           <article class="home-level-card a1"><img src="assets/a1/chapters/chapter-1.webp" alt="Deutsch A1 Lernbereich" loading="eager"><div class="home-level-body"><div class="home-level-top"><span class="home-level-code">A1</span><span class="home-level-state">Anfänger</span></div><h3>Grundlagen sicher aufbauen</h3><p>Netzwerk neu A1.1 + A1.2 mit zwölf vollständigen Kapiteln.</p><ul><li>Lektionen & interaktive Übungen</li><li>Wortschatz, Grammatik & Verben</li><li>Hören, Phonetik & Redemittel</li></ul><div class="home-card-actions"><button type="button" class="next-primary" onclick="go('a1')">A1 entdecken ${icons.arrow}</button><button type="button" class="next-secondary" onclick="go('a1/lessons')">12 Lektionen</button></div></div></article>
           <article class="home-level-card a2"><img src="assets/chapters/chapter-7.webp" alt="Deutsch A2 Lernbereich" loading="eager"><div class="home-level-body"><div class="home-level-top"><span class="home-level-code">A2</span><span class="home-level-state">Grundkenntnisse</span></div><h3>Selbstständig Deutsch anwenden</h3><p>Netzwerk neu A2.1 + A2.2 plus gezieltes Prüfungstraining.</p><ul><li>Zwölf Kapitel & Grammatik-Skript</li><li>Podcast, Hören & Gesprächstraining</li><li>Spiele & Goethe-A2 Modelltraining</li></ul><div class="home-card-actions"><button type="button" class="next-primary" onclick="go('a2')">A2 entdecken ${icons.arrow}</button><button type="button" class="next-secondary" onclick="go('a2/lessons')">12 Lektionen</button></div></div></article>
-          <article class="home-level-card b1"><img src="assets/chapters/chapter-1.webp" alt="Deutsch B1.1 Lernbereich" loading="lazy"><div class="home-level-body"><div class="home-level-top"><span class="home-level-code">B1.1</span><span class="home-level-state">Neu</span></div><h3>Mit vollständigen Lektionen weiterlernen</h3><p>Netzwerk neu B1.1 · sechs Kapitel mit Lesen, Grammatik und Sprechen.</p><ul><li>Wortschatz und vollständige Lesetexte</li><li>Grammatik mit arabischer Erklärung</li><li>Redemittel, Sprechen und Quiz</li></ul><div class="home-card-actions"><button type="button" class="next-primary" onclick="go('b1.1')">B1.1 entdecken ${icons.arrow}</button><button type="button" class="next-secondary" onclick="go('b1.1/lessons')">6 Kapitel</button></div></div></article>
+          <article class="home-level-card b1"><img src="assets/chapters/chapter-1.webp" alt="Deutsch B1.1 Lernbereich" loading="lazy"><div class="home-level-body"><div class="home-level-top"><span class="home-level-code">B1.1</span><span class="home-level-state">Neu</span></div><h3>Mit vollständigen Lektionen weiterlernen</h3><p>Netzwerk neu B1.1 · sechs Kapitel mit Lesen, Grammatik und Sprechen.</p><ul><li>Wortschatz und vollständige Lesetexte</li><li>Grammatik mit arabischer Erklärung</li><li>Hören, Podcast und Goethe-B1-Training</li></ul><div class="home-card-actions"><button type="button" class="next-primary" onclick="go('b1.1')">B1.1 entdecken ${icons.arrow}</button><button type="button" class="next-secondary" onclick="go('b1.1/lessons')">6 Kapitel</button></div></div></article>
         </div>
       </section>
       <section class="home-section" aria-labelledby="contentTitle"><div class="next-section-head home-heading"><div><span class="home-kicker">Alles im Programm</span><h2 id="contentTitle">Lerne nach Thema oder Fähigkeit</h2><p>Du musst keinen festen Plan einrichten. Öffne direkt den Bereich, den du gerade brauchst.</p><p class="home-ar" lang="ar" dir="rtl">تقدر تدخل مباشرة على الدروس أو الكلمات أو القواعد أو الاستماع من غير إعداد خطة مذاكرة.</p></div></div>
@@ -267,7 +267,7 @@
           <article class="home-content-card"><span class="home-content-icon">${icons.learn}</span><div><h3>Lektionen</h3><p>30 Kapitel aus Netzwerk neu A1, A2 und B1.1, jeweils mit Wortschatz, Lesen, Grammatik, Sprechen und Quiz.</p></div><div class="home-content-links"><button type="button" onclick="go('a1/lessons')">A1</button><button type="button" onclick="go('a2/lessons')">A2</button><button type="button" onclick="go('b1.1/lessons')">B1.1</button></div></article>
           <article class="home-content-card"><span class="home-content-icon">${icons.dictionary}</span><div><h3>Wortschatz & Wörterbücher</h3><p>Kapitelwörter, Suche auf Deutsch oder Arabisch und ein großes Offline-Wörterbuch.</p></div><div class="home-content-links"><button type="button" onclick="go('a1/dict')">A1 Wörter</button><button type="button" onclick="go('full-dict')">Großes Wörterbuch</button></div></article>
           <article class="home-content-card"><span class="home-content-icon">${icons.cards}</span><div><h3>Grammatik & Verben</h3><p>Regeln, Beispiele, Konjugation und Übungen mit sofortiger Korrektur.</p></div><div class="home-content-links"><button type="button" onclick="go('a1/verbs')">A1 Verben</button><button type="button" onclick="go('verbs')">A2 Verben</button></div></article>
-          <article class="home-content-card"><span class="home-content-icon">${icons.listen}</span><div><h3>Hören & Aussprache</h3><p>Hörbücher, Phonetik, Buchseiten und interaktive Aufgaben zum Mitmachen.</p></div><div class="home-content-links"><button type="button" onclick="go('a1/listen')">A1 Hören</button><button type="button" onclick="go('listen')">A2 Hören</button></div></article>
+          <article class="home-content-card"><span class="home-content-icon">${icons.listen}</span><div><h3>Hören & Aussprache</h3><p>Hörbücher, Phonetik, Buchseiten und interaktive Aufgaben zum Mitmachen.</p></div><div class="home-content-links"><button type="button" onclick="go('a1/listen')">A1 Hören</button><button type="button" onclick="go('listen')">A2 Hören</button><button type="button" onclick="go('b1.1/listen')">B1.1 Hören</button></div></article>
           <article class="home-content-card"><span class="home-content-icon">${icons.review}</span><div><h3>Sprechen & Redemittel</h3><p>Fertige Wendungen und Beispielsätze für Alltag, Arbeit und Gespräche.</p></div><div class="home-content-links"><button type="button" onclick="go('a1/phrases')">A1 Redemittel</button><button type="button" onclick="go('phrases')">A2 Redemittel</button></div></article>
           <article class="home-content-card featured"><span class="home-content-icon">${icons.exam}</span><div><h3>Training & Prüfung</h3><p>Aktive Spiele, Podcasts und Goethe-A2 Modelltraining mit Timer.</p></div><div class="home-content-links"><button type="button" onclick="go('games')">Training</button><button type="button" onclick="go('exam')">A2 Prüfung</button></div></article>
         </div>
@@ -458,7 +458,7 @@
     const trainerDue=typeof trainerDueCount==='function'?trainerDueCount():0;
     const level=state.profile.level||'a2';
     const lessonRoute=level==='a1'?'a1/lessons':level==='b1.1'?'b1.1/lessons':'a2/lessons';
-    const listenRoute=level==='a1'?'a1/listen':level==='b1.1'?'b1.1/games':'listen';
+    const listenRoute=level==='a1'?'a1/listen':level==='b1.1'?'b1.1/listen':'listen';
     const newWords=minutes>=30?20:minutes>=20?15:10;
     const today=todayHistory();
     const doneReview=today.some(item=>item.route==='review');
@@ -468,7 +468,7 @@
       {done:(doneReview||!due)&&!trainerDue,route:trainerDue?'train/due':'review',title:trainerDue?`${trainerDue} Wörter im Trainer wiederholen`:due?`${due} fällige Karten wiederholen`:'Keine Wiederholung fällig',ar:'راجع الكلمات المستحقة النهارده في المدرب.'},
       {done:doneLesson||today.some(item=>/^train\/(a1|a2|b1)\//.test(item.route||'')),route:'train',title:`${newWords} neue Wörter im Wort-Trainer`,ar:'اتعلم كلمات جديدة من الوحدة اللي بتذاكرها.'},
       {done:doneLesson,route:state.lastLearningRoute&&state.lastLearningRoute!==level?state.lastLearningRoute:lessonRoute,title:'Eine Lernetappe im Kapitel',ar:'كمّل الدرس من المكان اللي وقفت عنده.'},
-      {done:doneSkill,route:listenRoute,title:level==='b1.1'?'Eine Trainingsrunde':'Eine Hör- oder Trainingseinheit',ar:'تمرين استماع أو لعبة قصيرة.'}
+      {done:doneSkill,route:listenRoute,title:'Eine Hör- oder Trainingseinheit',ar:'تمرين استماع أو لعبة قصيرة.'}
     ];
   }
 
