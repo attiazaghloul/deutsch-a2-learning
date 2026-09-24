@@ -55,6 +55,8 @@ function fallbackBackTarget(hash){
   if(/^#b1\.1\/(games|exam)\//.test(h)) return path.split('/').slice(0,2).join('/');
   if(/^#b1\.1\/(dict|verbs|phrases|games|exam)$/.test(h)) return 'b1.1';
   if(h==='#b1.1') return '';
+  if(/^#train\//.test(h)) return 'train';
+  if(h==='#train') return '';
   if(/^#podcast\//.test(h)) return 'podcast';
   if(/^#games\//.test(h)) return 'games';
   if(/^#exam\//.test(h)) return 'exam';
@@ -133,6 +135,10 @@ function renderCurrentRoute(){
   if(h==='review'){ if(window.NextUI) window.NextUI.renderReviewCenter(); else renderFavorites(); return; }
   if(h==='progress'){ if(window.NextUI) window.NextUI.renderProgressDashboard(); else renderLevelSelector(); return; }
   if(h==='word-search'){ renderWordSearch(); return; }
+  if(h==='train'){ renderTrainerHome(); return; }
+  if(h==='train/due'){ startDueTrainerSession(); return; }
+  const trainMatch=h.match(/^train\/(a1|a2|b1)\/(\d+)$/);
+  if(trainMatch){ startTrainerSession(trainMatch[1],Number(trainMatch[2])); return; }
   if(h==='favorites'){ renderFavorites(); return; }
   if(h==='a1'){ if(window.NextUI) window.NextUI.renderLearningHub('a1'); else renderA1Hub(); return; }
   if(h==='a1/lessons'){ renderA1Home(); return; }
@@ -237,6 +243,7 @@ function sectionCards(items, extraClass=''){
 
 const A1_SECTIONS=[
   {route:'a1/lessons',icon:'1',title:'Lektionen',text:'12 Kapitel mit Wortschatz, Grammatik, Lesen, Sprechen und Quiz.',ar:'الدروس الكاملة لمستوى A1.'},
+  {route:'train',icon:'🧠',title:'Wort-Trainer',text:'Wörter mit System lernen: erkennen, hören, schreiben – mit Wiederholung zur richtigen Zeit.',ar:'حفظ الكلمات بنظام التكرار المتباعد.'},
   {route:'a1/dict',icon:'W',title:'Wörterbuch',text:'Alle A1-Wörter mit Suche und Kapitelfilter.',ar:'قاموس كل كلمات A1.'},
   {route:'a1/verbs',icon:'V',title:'Verben',text:'A1-Verben mit Formen, Perfekt und Beispielen.',ar:'تصريف الأفعال الأساسية.'},
   {route:'a1/phrases',icon:'R',title:'Redemittel',text:'Fertige Sätze für Alltag und einfache Gespräche.',ar:'جمل جاهزة للكلام.'},
@@ -691,6 +698,7 @@ const A1_GRAM=A1_GRAMMAR_SCRIPT.map(lesson=>({
 
 const A2_SECTIONS=[
   {route:'a2/lessons',icon:'2',title:'Lektionen',text:'Netzwerk neu A2.1 + A2.2 und Grammatik-Skript.',ar:'دروس A2 ومذكرة القواعد.'},
+  {route:'train',icon:'🧠',title:'Wort-Trainer',text:'Wörter mit System lernen: erkennen, hören, schreiben – mit Wiederholung zur richtigen Zeit.',ar:'حفظ الكلمات بنظام التكرار المتباعد.'},
   {route:'dict',icon:'W',title:'Wörterbuch',text:'Alle A2-Wörter mit Suche und Kapitelfilter.',ar:'قاموس كل كلمات A2.'},
   {route:'full-dict',icon:'D',title:'Offline-Wörterbuch',text:'Großes Deutsch–Arabisch-Wörterbuch, komplett ohne Internet.',ar:'قاموس ألماني–عربي شامل يعمل أوفلاين.'},
   {route:'verbs',icon:'V',title:'Verben',text:'Konjugation, Präteritum und Perfekt.',ar:'تصريف الأفعال.'},
@@ -703,6 +711,7 @@ const A2_SECTIONS=[
 
 const B1_SECTIONS=[
   {route:'b1.1/lessons',icon:'1',title:'Lektionen',text:'Sechs vollständige Kapitel mit Wortschatz, Lesen, Grammatik, Sprechen und Quiz.',ar:'ست وحدات كاملة مع الكلمات والقراءة والقواعد والمحادثة والاختبارات.'},
+  {route:'train',icon:'🧠',title:'Wort-Trainer',text:'Wörter mit System lernen: erkennen, hören, schreiben – mit Wiederholung zur richtigen Zeit.',ar:'حفظ الكلمات بنظام التكرار المتباعد.'},
   {route:'b1.1/dict',icon:'W',title:'Wörterbuch',text:'Alle B1.1-Wörter mit Suche, Beispielen und Kapitelfilter.',ar:'قاموس كل كلمات B1.1.'},
   {route:'b1.1/verbs',icon:'V',title:'Verben',text:'Wichtige B1-Verben mit Präteritum, Perfekt und Präpositionen.',ar:'أهم أفعال B1 مع الماضي وحروف الجر.'},
   {route:'b1.1/phrases',icon:'R',title:'Redemittel',text:'Alle Redemittel aus den sechs Kapiteln an einem Ort.',ar:'كل التعبيرات الجاهزة من الوحدات الست.'},

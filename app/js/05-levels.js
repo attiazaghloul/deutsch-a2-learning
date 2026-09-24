@@ -123,7 +123,6 @@ function renderA1Dictionary(){
 
 function renderA1Verbs(){
   setTop('A1 Verbwörterbuch','Konjugation, Präteritum & Perfekt',true);
-  const pronouns=['ich','du','er/sie/es','wir','ihr','sie/Sie'];
   view.innerHTML=a1MainTabs('verbs')+`
     <div class="hero"><h2>Verben A1</h2>
       <p>Die wichtigsten Verben aus A1 – Präsens mit allen Personen, Präteritum und Perfekt mit <b>haben</b> oder <b>sein</b>.</p>
@@ -150,12 +149,7 @@ function renderA1Verbs(){
         </div>
         <div class="verb-details">
           <div class="verb-head"><div>${ar(verb.ar)}</div><span class="verb-aux ${verb.aux}">Perfekt mit ${verb.aux}</span></div>
-          <div class="verb-tense">Präsens</div>
-          <div class="verb-grid">${verb.forms.map((form,formIndex)=>`
-            <div class="verb-form"><small>${pronouns[formIndex]}</small>${form}</div>`).join('')}</div>
-          <div class="verb-tense">Präteritum</div>
-          <div class="verb-perfect"><small>er/sie/es</small> ${verb.praet}</div>
-          <div class="verb-perfect"><small>Perfekt</small> ${verb.aux} ${verb.part}</div>
+          ${conjugationTableHtml(verb)}
           <div class="dictionary-example">„${verb.example}“</div>
           <span class="dictionary-meta">K${verb.chapter}</span>
         </div>
@@ -691,8 +685,8 @@ function renderB1Verbs(){
   const perfectAux=aux=>aux==='sein'?'ist':'hat';
   view.innerHTML=b1Tabs('verbs')+`
     <div class="hero"><h2>Verben B1.1</h2>
-      <p>Wichtige Verben aus den Kapiteln 1–6 mit Präsens (er/sie/es), Präteritum, Perfekt und der passenden Präposition.</p>
-      ${ar('أهم أفعال B1.1 مع المضارع للغائب، والماضي البسيط، والـPerfekt، والحرف والحالة اللي بييجوا مع الفعل — وده من أهم نقاط مستوى B1.')}</div>
+      <p>Wichtige Verben aus den Kapiteln 1–6. Tippe auf ein Verb für die komplette Konjugation in sechs Zeitformen und die passende Präposition.</p>
+      ${ar('أهم أفعال B1.1. اضغط على أي فعل عشان تشوف تصريفه الكامل في ست أزمنة، والحرف والحالة اللي بييجوا معاه.')}</div>
     <div class="search-panel">
       <div class="search-row">
         <input class="library-search" id="b1VerbSearch" type="search" placeholder="Verb, Präposition oder Bedeutung..." aria-label="Verben suchen">
@@ -704,20 +698,22 @@ function renderB1Verbs(){
       <div class="result-count" id="b1VerbCount"></div>
     </div>
     <div id="b1VerbList">${verbs.map(verb=>`
-      <article class="card verb-card open" data-aux="${verb.aux}" data-chapter="${verb.chapter}"
+      <article class="card verb-card" data-aux="${verb.aux}" data-chapter="${verb.chapter}" tabindex="0" role="button" aria-expanded="false"
         data-search="${escapeHtml(`${verb.inf} ${verb.praes} ${verb.praet} ${verb.part} ${verb.rektion} ${verb.ar} ${verb.example}`.toLocaleLowerCase('de-DE'))}">
         <div class="verb-summary">
           <div><div class="verb-inf">${verb.inf}</div>
             <div class="verb-summary-line">${verb.praes} · ${verb.praet} · ${perfectAux(verb.aux)} ${verb.part}</div></div>
-          <span class="verb-aux ${verb.aux}">${verb.aux}</span>
+          <span class="verb-chevron">⌄</span>
         </div>
-        <div class="verb-details" style="display:block">
+        <div class="verb-details">
+          <div class="verb-head"><div>${ar(verb.ar)}</div><span class="verb-aux ${verb.aux}">Perfekt mit ${verb.aux}</span></div>
           ${verb.rektion&&verb.rektion!=='—'?`<div class="verb-perfect"><small>Rektion</small> ${verb.rektion}</div>`:''}
-          ${ar(verb.ar)}
+          ${conjugationTableHtml(verb)}
           <div class="dictionary-example">„${verb.example}“</div>
           <span class="dictionary-meta">K${verb.chapter}</span>
         </div>
       </article>`).join('')}</div>`;
+  bindVerbCardToggles('#b1VerbList');
   bindListFilter({listSelector:'#b1VerbList',itemSelector:'.verb-card',searchSelector:'#b1VerbSearch',
     filters:[['#b1VerbAux','aux'],['#b1VerbChapter','chapter']],countSelector:'#b1VerbCount',total:verbs.length,unit:'Verben'});
 }

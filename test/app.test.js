@@ -367,8 +367,7 @@ test('B1.1 chapters contain complete lesson sections', () => {
     });
   }
   assert.match(html, /data_b1_1_lessons\.js\?v=b1-1-lessons-2/);
-  assert.match(html, /serviceWorker\.register\('sw\.js\?v=65'/);
-  assert.match(html, /sessionStorage\.setItem\('pwa-v65-reloaded','1'\)/);
+  assert.match(html, /serviceWorker\.register\('sw\.js'/);
   assert.match(html, /const B1_TABS = \[[\s\S]*?\['lesen','Lesen'\][\s\S]*?\['redemittel','Redemittel'\][\s\S]*?\['grammatik','Grammatik'\][\s\S]*?\['sprechen','Sprechen'\][\s\S]*?\['quiz','Lerncheck'\]/);
   assert.match(html, /go\('\$\{chapter\.route\}\/ueberblick'\)/);
 });
@@ -677,10 +676,10 @@ test('offline dictionary worker uses the exact pre-cached asset keys', () => {
   assert.match(serviceWorker, /DICTIONARY_CACHE/);
   assert.match(serviceWorker, /cache-dictionary/);
   assert.match(serviceWorker, /dictionary-cache-status/);
-  assert.match(html, /register\('sw\.js\?v=65',\{updateViaCache:'none'\}\)/);
+  assert.match(html, /register\('sw\.js',\{updateViaCache:'none'\}\)/);
   assert.match(html, /addEventListener\('controllerchange'/);
-  assert.match(html, /pwa-v65-reloaded/);
-  assert.match(html, /controllerchange[^}]+location\.reload\(\)/s);
+  assert.match(html, /data.type==='sw-activated'/);
+  assert.match(html, /location\.reload\(\)/);
 });
 
 test('B1.1 sub-sections navigate back to their level hub', () => {
@@ -804,4 +803,150 @@ test('recorded speech ships exactly two voices and no retired recordings', () =>
   }
   const speechFiles = readdirSync(join(root, 'app', 'assets', 'speech'));
   assert.deepEqual(speechFiles.filter(file => /jonas|samir/.test(file)), []);
+});
+
+test('app code is network-first and open pages reload when a new version goes live', () => {
+  const sw = readFileSync(join(root, 'app', 'sw.js'), 'utf8');
+  assert.match(sw, /function isAppCode\(/);
+  assert.match(sw, /if \(isAppCode\(url\)\) \{\s*event\.respondWith\(networkFirst\(req\)\)/);
+  assert.match(sw, /type: 'sw-activated', version: CACHE_VERSION/);
+  assert.match(sw, /fetch\(req, \{ cache: 'no-cache' \}\)/);
+  const page = readFileSync(join(root, 'app', 'js', 'offline-download.js'), 'utf8');
+  assert.match(page, /addEventListener\('visibilitychange'/);
+  assert.match(page, /data\.type==='sw-activated'/);
+  assert.doesNotMatch(page, /pwa-v65-reloaded/);
+  assert.match(page, /sessionStorage\.setItem\(RELOAD_GUARD_KEY,pendingVersion\)/);
+});
+
+test('verb cards of every level expand into full six-tense conjugation tables', () => {
+  const context = vm.createContext({ window: {}, escapeHtml: value => String(value) });
+  for (const file of ['data_a1_verbs.js', 'data_verbs.js', 'data_b1_verbs.js']) {
+    vm.runInContext(readFileSync(join(root, 'app', file), 'utf8'), context);
+  }
+  vm.runInContext(readFileSync(join(root, 'app', 'js', '15-conjugation.js'), 'utf8').replace(/^const /gm, 'var '), context);
+  const all = [...context.window.A1_VERBS, ...context.window.A2_VERBS, ...context.window.B1_VERBS];
+  for (const verb of all) {
+    const tables = context.conjugateVerb(verb);
+    assert.equal(tables.length, 6, `${verb.inf} should have six tenses`);
+    tables.forEach(([tense, forms]) => forms.forEach(form => assert.ok(form && !/undefined/.test(form), `${verb.inf} ${tense}`)));
+  }
+  const table = verb => Object.fromEntries(context.conjugateVerb(context.window.B1_VERBS.find(item => item.inf === verb)));
+  assert.equal(table('sich aufhalten')['Präsens'][1], 'hältst dich auf');
+  assert.equal(table('sich aufhalten')['Präteritum'][3], 'hielten uns auf');
+  assert.equal(table('sich vornehmen')['Perfekt'][0], 'habe mir vorgenommen');
+  assert.equal(table('ankommen')['Perfekt'][2], 'ist angekommen');
+  assert.equal(table('messen')['Präteritum'][1], 'maßest');
+  assert.equal(table('bewerten')['Präteritum'][4], 'bewertetet');
+  assert.equal(table('verzeihen')['Futur I'][1], 'wirst verzeihen');
+  assert.ok(context.window.B1_VERBS.every(verb => verb.forms.length === 6));
+  for (const page of ['05-levels.js', '08-dictionary.js']) {
+    assert.match(readFileSync(join(root, 'app', 'js', page), 'utf8'), /conjugationTableHtml\(verb\)/);
+  }
+});
+
+test('Arabic help stays a quiet line and long translations fold away', () => {
+  const { ar } = loadFunctions(['ar']);
+  const context = vm.createContext({ location: { hash: '' } });
+  vm.runInContext(`${functionSource('ar')}\nthis.ar=ar;`, context);
+  assert.equal(context.ar('Vorlieben und Abneigungen'), '', 'German-only text is not repeated as Arabic');
+  assert.match(context.ar('مرحبا'), /^<div class="ar"/);
+  assert.match(context.ar('ترجمة '.repeat(60)), /<details class="ar ar-long"/);
+  assert.ok(typeof ar === 'function');
+});
+
+test('word trainer checks answers tolerantly and schedules words with Leitner boxes', () => {
+  const source = readFileSync(join(root, 'app', 'js', '16-word-trainer.js'), 'utf8').replace(/^(const|let) /gm, 'var ');
+  const context = vm.createContext({ Date, Math, JSON, localStorage: { getItem: () => null, setItem() {} } });
+  vm.runInContext(source, context);
+  const check = (input, expected, article = '') => context.checkTrainerAnswer(input, expected, { article });
+  assert.equal(check('der Fahrplan', 'der Fahrplan', 'der').ok, true);
+  assert.equal(check('  Der FAHRPLAN. ', 'der Fahrplan', 'der').ok, true);
+  const wrongArticle = check('die Fahrplan', 'der Fahrplan', 'der');
+  assert.equal(wrongArticle.ok, false);
+  assert.match(wrongArticle.note, /Artikel: der/);
+  assert.match(check('Fahrplan', 'der Fahrplan', 'der').note, /Mit Artikel/);
+  const umlaut = check('die Kuehlung', 'die Kühlung', 'die');
+  assert.equal(umlaut.ok, true);
+  assert.equal(umlaut.close, true);
+  assert.equal(check('Aufenthalt', 'Aufenthalte').ok, true, 'one typo in a long word is accepted');
+  assert.equal(check('Haus', 'Maus').ok, false, 'short words must be exact');
+
+  const store = {};
+  let record = context.trainerRecordResult(store, 'w1', true);
+  assert.equal(record.box, 1);
+  record = context.trainerRecordResult(store, 'w1', true);
+  assert.equal(record.box, 2);
+  assert.ok(record.due - Date.now() > 2.9 * 24 * 60 * 60 * 1000);
+  record = context.trainerRecordResult(store, 'w1', false);
+  assert.equal(record.box, 1);
+  assert.ok(record.due - Date.now() <= 10 * 60 * 1000);
+
+  const words = Array.from({ length: 30 }, (_, index) => ({ id: `w${index}` }));
+  const schedule = { w0: { box: 2, due: 0 }, w1: { box: 3, due: Date.now() + 1e9 } };
+  const picked = context.pickTrainerWords(words, schedule, { size: 14, newLimit: 8 });
+  assert.equal(picked[0].id, 'w0', 'due words come first');
+  assert.ok(!picked.some(word => word.id === 'w1'), 'words not yet due are skipped');
+  assert.equal(picked.length, 9);
+});
+
+test('every B1.1 chapter offers five conversation situations with dialogues', () => {
+  const context = vm.createContext({ window: {} });
+  for (const file of ['data_b1_1.js', 'data_b1_1_lessons.js', 'data_b1_1_conversations.js']) {
+    vm.runInContext(readFileSync(join(root, 'app', file), 'utf8'), context);
+  }
+  for (const chapter of context.window.B1_BOOK) {
+    assert.equal(chapter.conversations.length, 5, `Kapitel ${chapter.num}`);
+    for (const item of chapter.conversations) {
+      assert.ok(item.situation && /[؀-ۿ]/.test(item.situationAr));
+      assert.ok(item.phrases.length >= 8, item.situation);
+      assert.ok(item.dialogue.length >= 6, item.situation);
+      [...item.phrases, ...item.dialogue].forEach(line => {
+        assert.ok(line.de && /[؀-ۿ]/.test(line.ar), `${item.situation}: ${line.de}`);
+      });
+      assert.ok(item.task && item.taskAr);
+      assert.ok(chapter.redemittel.some(group => group.cat === item.situation), 'phrases feed the Redemittel');
+    }
+  }
+  assert.match(functionSource('renderChapterTab'), /conversationsHtml\(c\)/);
+});
+
+test('B1.1 grammar has detailed topics with at least eight varied exercises each', () => {
+  const context = vm.createContext({ window: {} });
+  for (const file of ['data_b1_1_grammar_1.js', 'data_b1_1_grammar_2.js', 'data_b1_1_grammar_3.js']) {
+    vm.runInContext(readFileSync(join(root, 'app', file), 'utf8'), context);
+  }
+  const grammar = context.window.B1_GRAMMAR;
+  const normalize = value => String(value).replace(/[„“"'‚‘’]/g, '').replace(/[.,!?;:–—-]/g, ' ').replace(/\s+/g, ' ').trim().toLowerCase();
+  const ids = new Set();
+  for (let chapter = 1; chapter <= 6; chapter += 1) {
+    assert.ok(grammar[chapter]?.length >= 2, `Kapitel ${chapter}`);
+    for (const topic of grammar[chapter]) {
+      assert.ok(!ids.has(topic.id), `duplicate ${topic.id}`);
+      ids.add(topic.id);
+      assert.ok(topic.summary && /[؀-ۿ]/.test(topic.summaryAr), topic.id);
+      assert.ok(topic.sections.length >= 2, `${topic.id} sections`);
+      assert.ok(topic.sections.some(section => section.table), `${topic.id} table`);
+      assert.ok(topic.pitfalls.length >= 2, `${topic.id} pitfalls`);
+      assert.ok(topic.exercises.length >= 8, `${topic.id} exercises`);
+      assert.ok(new Set(topic.exercises.map(exercise => exercise.type)).size >= 4, `${topic.id} variety`);
+      for (const exercise of topic.exercises) {
+        assert.ok(exercise.why, `${topic.id} explanation`);
+        if (exercise.type === 'choice') assert.ok(exercise.a >= 0 && exercise.a < exercise.o.length);
+        if (exercise.type === 'truefalse') assert.equal(typeof exercise.a, 'boolean');
+        if (['gap', 'transform', 'error', 'order'].includes(exercise.type)) assert.ok(exercise.a.length >= 1);
+        if (exercise.type === 'order') {
+          const bag = words => normalize(words).split(' ').sort().join(' ');
+          assert.ok(exercise.a.some(answer => bag(answer) === bag(exercise.words.join(' '))), `${topic.id} order`);
+        }
+        if (exercise.type === 'error') assert.ok(!exercise.a.some(answer => normalize(answer) === normalize(exercise.q)));
+      }
+    }
+  }
+  assert.ok([...ids].length >= 17);
+  const { grammarNormalize, grammarAnswerMatches } = loadFunctions(['grammarNormalize', 'grammarAnswerMatches']);
+  assert.equal(grammarNormalize(' Ich habe „keine“ Zeit. '), 'ich habe keine zeit');
+  assert.equal(grammarAnswerMatches('ich lasse mein auto reparieren', ['Ich lasse mein Auto reparieren.']), true);
+  assert.equal(grammarAnswerMatches('', ['x']), false);
+  assert.match(functionSource('renderChapterTab'), /renderGrammarTopics\(c\)/);
+  assert.match(functionSource('renderChapterTab'), /renderGrammarTest\(c\)/);
 });

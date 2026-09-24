@@ -1,20 +1,54 @@
 /* PWA: Service Worker + Offline banner + Download-lesson */
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.addEventListener('controllerchange',()=>{
-    // Reload exactly once so an installed mobile PWA immediately reads the
-    // data and image paths from the newly activated versioned cache.
-    if(sessionStorage.getItem('pwa-v65-reloaded')!=='1'){
-      sessionStorage.setItem('pwa-v65-reloaded','1');
-      location.reload();
-      return;
+  // Keep every open copy of the app on the newest deploy: check for a new
+  // service worker on start, whenever the app comes back to the foreground and
+  // on navigation, and reload as soon as a new version is live (unless the
+  // learner is typing, then on the next navigation or return to the app).
+  const wasControlled=!!navigator.serviceWorker.controller;
+  let loadedVersion=null;
+  let pendingVersion=null;
+  let lastUpdateCheck=0;
+  const RELOAD_GUARD_KEY='pwa-reloaded-for';
+  const isTyping=()=>{
+    const active=document.activeElement;
+    return !!active&&(active.tagName==='TEXTAREA'||(active.tagName==='INPUT'&&!['button','checkbox','radio'].includes(active.type))||active.isContentEditable);
+  };
+  const applyPendingUpdate=()=>{
+    if(!pendingVersion||pendingVersion===loadedVersion||isTyping()) return;
+    if(sessionStorage.getItem(RELOAD_GUARD_KEY)===pendingVersion) return;
+    sessionStorage.setItem(RELOAD_GUARD_KEY,pendingVersion);
+    location.reload();
+  };
+  const checkForUpdate=(force=false)=>{
+    if(!force&&Date.now()-lastUpdateCheck<60*1000) return;
+    lastUpdateCheck=Date.now();
+    navigator.serviceWorker.getRegistration().then(registration=>registration?.update()).catch(()=>{});
+  };
+  navigator.serviceWorker.addEventListener('message',event=>{
+    const data=event.data||{};
+    if(data.type==='sw-version'&&!loadedVersion) loadedVersion=data.version;
+    if(data.type==='sw-activated'){
+      // A page opened without a service worker just got its first one: nothing to refresh.
+      if(!loadedVersion&&!wasControlled){ loadedVersion=data.version; return; }
+      pendingVersion=data.version;
+      if(document.visibilityState==='visible') applyPendingUpdate();
     }
-    showSpeechStatus('تم تحديث التطبيق إلى النسخة الجديدة');
+  });
+  navigator.serviceWorker.addEventListener('controllerchange',()=>{
     if($('#offlineDictionaryStatus')) syncOfflineDictionaryStatus();
   });
+  document.addEventListener('visibilitychange',()=>{
+    if(document.visibilityState!=='visible') return;
+    applyPendingUpdate();
+    checkForUpdate(true);
+  });
+  window.addEventListener('hashchange',()=>{ applyPendingUpdate(); checkForUpdate(); });
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('sw.js?v=65',{updateViaCache:'none'})
+    navigator.serviceWorker.controller?.postMessage({type:'get-version'});
+    navigator.serviceWorker.register('sw.js',{updateViaCache:'none'})
       .then(registration=>registration.update())
       .catch(() => {});
+    setInterval(()=>checkForUpdate(true),30*60*1000);
   });
 }
 
