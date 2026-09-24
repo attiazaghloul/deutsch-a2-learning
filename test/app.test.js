@@ -950,3 +950,95 @@ test('B1.1 grammar has detailed topics with at least eight varied exercises each
   assert.match(functionSource('renderChapterTab'), /renderGrammarTopics\(c\)/);
   assert.match(functionSource('renderChapterTab'), /renderGrammarTest\(c\)/);
 });
+
+function loadBausteine() {
+  const context = vm.createContext({ window: {} });
+  for (const file of ['data_bausteine.js', 'data_bausteine_2.js', 'data_core_dictionary.js']) {
+    vm.runInContext(readFileSync(join(root, 'app', file), 'utf8'), context);
+  }
+  return context.window;
+}
+
+test('Satzbaukasten data is complete, bilingual and uses valid cases', () => {
+  const { BAUSTEINE: data } = loadBausteine();
+  const arabic = /[؀-ۿ]/;
+  const levels = new Set(['A1', 'A2', 'B1']);
+  const verbLists = { reflexive: 80, prepVerbs: 60, dativeVerbs: 40, dativeAccusativeVerbs: 30 };
+  for (const [name, minimum] of Object.entries(verbLists)) {
+    assert.ok(data[name].length >= minimum, `${name} has only ${data[name].length} verbs`);
+    for (const item of data[name]) {
+      assert.ok(item.v && item.ex && arabic.test(item.ar), `${name}: ${item.v}`);
+      assert.ok(levels.has(item.lvl), `${name}: ${item.v} level`);
+      for (const [prep, kasus] of item.p || []) assert.ok(prep && ['A', 'D'].includes(kasus), `${item.v} ${prep}`);
+    }
+  }
+  assert.ok(data.reflexive.every(item => ['A', 'D'].includes(item.c)));
+  assert.ok(data.reflexive.some(item => item.c === 'D') && data.reflexive.some(item => item.only));
+  assert.ok(data.prepVerbs.every(item => item.p?.length));
+  assert.deepEqual(Array.from(data.connectors, group => group.id), ['pos0', 'nebensatz', 'pos1', 'zweiteilig', 'infinitiv']);
+  assert.ok(data.connectors.every(group => group.items.every(item => item.w && item.ex && arabic.test(item.ar))));
+  assert.ok(data.questions.length >= 20 && data.questions.every(item => item.ex && item.ans && arabic.test(item.ar)));
+  assert.deepEqual(Array.from(data.prepositions, group => group.id), ['akk', 'dat', 'wechsel', 'gen']);
+  assert.ok(data.prepositions.find(group => group.id === 'wechsel').items.every(item => item.wo && item.wohin));
+  for (const pattern of data.patterns) {
+    assert.ok(pattern.rows.every(row => row.cells.length === pattern.slots.length && arabic.test(row.ar)), pattern.id);
+  }
+  for (const table of data.tables) assert.ok(table.rows.every(row => row.length === table.head.length), table.id);
+  assert.ok(data.nounVerb.length >= 30 && data.starters.length >= 5 && data.time.length >= 4);
+  assert.deepEqual(Array.from(data.articleRules, group => group.art), ['der', 'die', 'das']);
+});
+
+test('Satzbaukasten builds question words and reads articles from lesson words', () => {
+  const { prepAdverb, prepQuestion, parseArticleNoun } = loadFunctions(['prepAdverb', 'prepQuestion', 'parseArticleNoun']);
+  assert.equal(prepAdverb('wo', 'auf'), 'worauf');
+  assert.equal(prepAdverb('da', 'über'), 'darüber');
+  assert.equal(prepAdverb('wo', 'mit'), 'womit');
+  assert.equal(prepAdverb('da', 'für'), 'dafür');
+  assert.deepEqual({ ...prepQuestion('auf', 'A') }, { thing: 'Worauf?', person: 'Auf wen?', pronoun: 'darauf' });
+  assert.equal(prepQuestion('mit', 'D').person, 'Mit wem?');
+  assert.deepEqual({ ...parseArticleNoun('die Suppe, -n') }, { article: 'die', noun: 'Suppe', plural: '-n' });
+  assert.deepEqual({ ...parseArticleNoun('das Viertel') }, { article: 'das', noun: 'Viertel', plural: '' });
+  assert.equal(parseArticleNoun('der/die Kollege'), null);
+  assert.equal(parseArticleNoun('gehen'), null);
+});
+
+test('Satzbaukasten is routed, linked from every level and precached', () => {
+  const { fallbackBackTarget } = loadFunctions(['fallbackBackTarget']);
+  assert.equal(fallbackBackTarget('bausteine/reflexiv'), 'bausteine');
+  assert.equal(fallbackBackTarget('bausteine'), '');
+  ['renderBausteineHome', 'renderBaustein'].forEach(name => functionSource(name));
+  assert.match(html, /h==='bausteine'/);
+  assert.equal((html.match(/\{route:'bausteine'/g) || []).length, 3, 'A1, A2 and B1 hubs link the Satzbaukasten');
+  const sw = readFileSync(join(root, 'app', 'sw.js'), 'utf8');
+  for (const file of ['data_bausteine.js', 'data_bausteine_2.js', 'data_core_dictionary.js', 'js/19-bausteine.js']) {
+    assert.ok(sw.includes(`'${file}'`), `${file} is not precached`);
+    assert.ok(html.includes(`src="${file}"`), `${file} is not loaded`);
+  }
+});
+
+test('dictionary shows reviewed translations before the machine-translated dictionary', () => {
+  const { CORE_DICTIONARY } = loadBausteine();
+  assert.ok(CORE_DICTIONARY.length >= 400);
+  assert.ok(CORE_DICTIONARY.every(entry => entry[0] && entry[1] && /[؀-ۿ]/.test(entry[2])));
+  const bekommen = CORE_DICTIONARY.find(entry => entry[0] === 'bekommen');
+  assert.match(bekommen[2], /يستلم/);
+
+  const context = loadFunctions(['normalizeWordForSearch', 'bareWordKey', 'rankCuratedEntries']);
+  const entry = (word, ar, rank = 0) => ({
+    word, ar, rank,
+    key: context.normalizeWordForSearch(word), bare: context.bareWordKey(word), arKey: context.normalizeWordForSearch(ar)
+  });
+  const entries = [entry('die Haustür', 'الباب الأمامي', 1), entry('das Haus', 'بيت'), entry('bekommen', 'يستلم / ياخد'), entry('abholen', 'يروح ياخد / يستلم', 1)];
+  assert.deepEqual(Array.from(context.rankCuratedEntries(entries, 'Haus'), item => item.word), ['das Haus', 'die Haustür']);
+  assert.deepEqual(Array.from(context.rankCuratedEntries(entries, 'يستلم'), item => item.word), ['bekommen', 'abholen']);
+  assert.deepEqual(Array.from(context.rankCuratedEntries(entries, 'x')), []);
+
+  const { onlineDictionaryLinks } = loadFunctions(['onlineDictionaryLinks']);
+  const links = Object.fromEntries(onlineDictionaryLinks('Haus'));
+  assert.match(links.PONS, /deutsch-arabisch\/Haus$/);
+  assert.match(links['Reverso Context'], /german-arabic\/Haus$/);
+  assert.match(Object.fromEntries(onlineDictionaryLinks('بيت'))['Google Übersetzer'], /sl=ar&tl=de/);
+
+  const build = readFileSync(join(root, 'scripts', 'build_dictionary_mobile_assets.js'), 'utf8');
+  assert.match(build, /function qualityPenalty\(entry\)/, 'Wiktionary entries must outrank FreeDict pivots');
+});

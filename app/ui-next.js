@@ -179,6 +179,7 @@
     if(hash==='b1.1/lessons') return 'B1.1 Lektionen';
     if(hash==='review') return 'Wiederholen';
     if(hash==='progress') return 'Fortschritt';
+    if(hash.startsWith('bausteine')) return 'Satzbaukasten';
     if(hash.includes('listen')||hash.startsWith('podcast')) return 'Hören und Sprechen';
     if(hash.includes('dict')) return 'Wörterbuch';
     if(hash.includes('verbs')) return 'Verben';
@@ -272,7 +273,7 @@
           <article class="home-content-card featured"><span class="home-content-icon">${icons.exam}</span><div><h3>Training & Prüfung</h3><p>Aktive Spiele, Podcasts und Goethe-A2 Modelltraining mit Timer.</p></div><div class="home-content-links"><button type="button" onclick="go('games')">Training</button><button type="button" onclick="go('exam')">A2 Prüfung</button></div></article>
         </div>
       </section>
-      <section class="home-tools"><div><span class="home-kicker">Direktzugriff</span><h2>Nützliche Werkzeuge</h2></div><div class="home-tool-links"><button type="button" onclick="go('word-search')">${icons.search}<span><b>Wortsuche</b><small>Im gesamten Programm</small></span></button><button type="button" onclick="go('train')">${icons.cards}<span><b>Wort-Trainer</b><small>Wörter dauerhaft lernen</small></span></button><button type="button" onclick="go('review')">${icons.review}<span><b>Wiederholen</b><small>Favoriten und Fehler</small></span></button><button type="button" onclick="go('${listenRoute}')">${icons.listen}<span><b>Hörstudio</b><small>${level.toUpperCase()} ist ausgewählt</small></span></button></div></section>
+      <section class="home-tools"><div><span class="home-kicker">Direktzugriff</span><h2>Nützliche Werkzeuge</h2></div><div class="home-tool-links"><button type="button" onclick="go('word-search')">${icons.search}<span><b>Wortsuche</b><small>Im gesamten Programm</small></span></button><button type="button" onclick="go('bausteine')">${icons.learn}<span><b>Satzbaukasten</b><small>Feste Regeln für jeden Satz</small></span></button><button type="button" onclick="go('train')">${icons.cards}<span><b>Wort-Trainer</b><small>Wörter dauerhaft lernen</small></span></button><button type="button" onclick="go('review')">${icons.review}<span><b>Wiederholen</b><small>Favoriten und Fehler</small></span></button><button type="button" onclick="go('${listenRoute}')">${icons.listen}<span><b>Hörstudio</b><small>${level.toUpperCase()} ist ausgewählt</small></span></button></div></section>
     </div>`;
   }
 
