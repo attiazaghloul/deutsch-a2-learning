@@ -671,7 +671,7 @@ test('offline dictionary worker uses the exact pre-cached asset keys', () => {
   assert.equal(manifest.entries, 138755);
   assert.ok(manifest.assets.length > 60);
   for (const asset of manifest.assets) assert.ok(existsSync(join(root, 'app', asset)), `Missing ${asset}`);
-  assert.match(html, /Suche im ganzen Programm/);
+  assert.match(functionSource('renderWordSearch'), /searchOfflineDictionary\(/);
   assert.match(html, /downloadOfflineDictionary/);
   assert.match(serviceWorker, /DICTIONARY_CACHE/);
   assert.match(serviceWorker, /cache-dictionary/);
@@ -1041,4 +1041,29 @@ test('dictionary shows reviewed translations before the machine-translated dicti
 
   const build = readFileSync(join(root, 'scripts', 'build_dictionary_mobile_assets.js'), 'utf8');
   assert.match(build, /function qualityPenalty\(entry\)/, 'Wiktionary entries must outrank FreeDict pivots');
+});
+
+test('word search ranks whole Arabic meanings first and honours the chosen sources', () => {
+  const context = loadFunctions(['normalizeWordForSearch', 'bareWordKey', 'rankCuratedEntries', 'filterWordSearchEntries']);
+  const entry = (word, ar, extra = {}) => ({
+    word, ar, rank: 1, kind: 'lesson', level: 'A1', ...extra,
+    key: context.normalizeWordForSearch(word), bare: context.bareWordKey(word), arKey: context.normalizeWordForSearch(ar),
+    arParts: ar.split(/\s*[\/،,;]\s*/).map(context.normalizeWordForSearch)
+  });
+  const entries = [
+    entry('verpassen', 'تفوته مواصلة أو موعد', { level: 'A2', kind: 'verb' }),
+    entry('der Termin', 'موعد'),
+    entry('vereinbaren', 'يتفق على موعد'),
+    entry('sagen', 'يقول', { kind: 'core', level: '', rank: 0 })
+  ];
+  assert.equal(context.rankCuratedEntries(entries, 'موعد')[0].word, 'der Termin');
+  const words = prefs => Array.from(context.filterWordSearchEntries(entries, prefs), item => item.word);
+  assert.deepEqual(words({ level: '', lessons: true, basics: true }), ['verpassen', 'der Termin', 'vereinbaren', 'sagen']);
+  assert.deepEqual(words({ level: 'A2', lessons: true, basics: true }), ['verpassen', 'sagen']);
+  assert.deepEqual(words({ level: '', lessons: false, basics: true }), ['sagen']);
+  assert.deepEqual(words({ level: '', lessons: true, basics: false }), ['verpassen', 'der Termin', 'vereinbaren']);
+  const search = functionSource('renderWordSearch');
+  assert.match(search, /data-ws-level/);
+  assert.match(search, /WORD_SEARCH_LEVELS/);
+  assert.match(html, /\['B1\.1','B1\.1'\]/, 'B1.1 can be chosen as a level');
 });

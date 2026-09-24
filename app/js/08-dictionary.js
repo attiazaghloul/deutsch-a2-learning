@@ -52,19 +52,7 @@ function renderFullDictionary(){
     $('#offlineDictionaryCount').textContent=`${curated.length} geprüfte + ${found.length} weitere Treffer`;
     results.innerHTML=head+'<div class="offline-dict-heading">Großes Wörterbuch <small>automatisch übersetzt – bitte prüfen</small></div>'+offlineDictionaryResultsHtml(found);
   };
-  results.addEventListener('click',event=>{
-    const button=event.target.closest('#onlineTranslateBtn');
-    if(!button) return;
-    const output=$('#onlineTranslateResult');
-    const text=button.dataset.query||'';
-    const fromArabic=/[\u0600-\u06ff]/.test(text);
-    button.disabled=true;
-    output.textContent='جارٍ الترجمة…';
-    requestTranslation(text,fromArabic?'ar':'de',fromArabic?'de':'ar')
-      .then(value=>{ output.textContent=value||'لا توجد ترجمة'; })
-      .catch(()=>{ output.textContent=navigator.onLine?'تعذرت الترجمة الآن':'محتاج إنترنت للترجمة الأونلاين'; })
-      .finally(()=>{ button.disabled=false; });
-  });
+  wireOnlineTranslate(results);
   input.addEventListener('input',()=>{ clearTimeout(timer); timer=setTimeout(draw,260); });
   input.focus();
 }
@@ -82,15 +70,17 @@ function curatedDictionaryEntries(){
     const key=`${normalizeWordForSearch(headword)}|${normalizeWordForSearch(arabic)}`;
     if(seen.has(key)) return;
     seen.add(key);
-    list.push({...entry,ar:arabic,key:normalizeWordForSearch(headword),bare:bareWordKey(headword),arKey:normalizeWordForSearch(arabic)});
+    list.push({...entry,ar:arabic,key:normalizeWordForSearch(headword),bare:bareWordKey(headword),arKey:normalizeWordForSearch(arabic),arParts:arabic.split(/\s*[\/،,;]\s*/).map(normalizeWordForSearch).filter(Boolean)});
   };
-  (window.CORE_DICTIONARY||[]).forEach(([word,pos,arabic,forms,example])=>add({word,pos,ar:arabic,forms,example,source:'Grundwortschatz',rank:0}));
+  // Lesson words come first so a duplicate keeps its photo and lesson link.
+  allVocabularyEntries().forEach(entry=>add({word:entry.word,pos:'',ar:entry.item.ar,forms:'',example:plainText(entry.item.ex||''),definition:plainText(entry.item.d||''),source:`${entry.level} · Kapitel ${entry.chapter.num}`,rank:1,route:entry.route,kind:'lesson',level:entry.level,vocab:entry}));
   const perfect=verb=>verb.part?`${verb.praet||''} · ${verb.aux==='sein'?'ist':'hat'} ${verb.part}`:'';
-  [...A1_VERBS,...VERBS,...(window.B1_VERBS||[])].forEach(verb=>add({word:verb.inf,pos:'v',ar:verb.ar,forms:[perfect(verb),verb.rektion||''].filter(Boolean).join(' · '),example:verb.example,source:'Verbliste',rank:1}));
+  [['A1',A1_VERBS],['A2',VERBS],['B1.1',window.B1_VERBS||[]]].forEach(([level,verbs])=>verbs.forEach(verb=>add({word:verb.inf,pos:'v',ar:verb.ar,forms:[perfect(verb),verb.rektion||''].filter(Boolean).join(' · '),example:verb.example,source:`Verben ${level}`,rank:1,kind:'verb',level,route:level==='A1'?'a1/verbs':level==='A2'?'verbs':'b1.1/verbs'})));
   const bs=window.BAUSTEINE||{};
-  [...(bs.reflexive||[]),...(bs.prepVerbs||[])].forEach(item=>add({word:item.v,pos:'v',ar:item.ar,forms:(item.p||[]).map(([prep,kasus])=>`${prep} + ${kasus==='A'?'Akk':'Dat'}`).join(' · '),example:item.ex,source:'Satzbaukasten',rank:1,route:item.p&&!item.v.startsWith('sich')?'bausteine/praepverben':'bausteine/reflexiv'}));
-  (bs.dativeVerbs||[]).forEach(item=>add({word:item.v,pos:'v',ar:item.ar,forms:'+ Dativ',example:item.ex,source:'Satzbaukasten',rank:1,route:'bausteine/dativverben'}));
-  allVocabularyEntries().forEach(entry=>add({word:entry.word,pos:'',ar:entry.item.ar,forms:'',example:plainText(entry.item.ex||''),definition:plainText(entry.item.d||''),source:`${entry.level} · Kapitel ${entry.chapter.num}`,rank:1,route:entry.route}));
+  const bsLevel=level=>level==='B1'?'B1.1':level;
+  [...(bs.reflexive||[]),...(bs.prepVerbs||[])].forEach(item=>add({word:item.v,pos:'v',ar:item.ar,forms:(item.p||[]).map(([prep,kasus])=>`${prep} + ${kasus==='A'?'Akk':'Dat'}`).join(' · '),example:item.ex,source:'Satzbaukasten',rank:1,kind:'baustein',level:bsLevel(item.lvl),route:item.p&&!item.v.startsWith('sich')?'bausteine/praepverben':'bausteine/reflexiv'}));
+  (bs.dativeVerbs||[]).forEach(item=>add({word:item.v,pos:'v',ar:item.ar,forms:'+ Dativ',example:item.ex,source:'Satzbaukasten',rank:1,kind:'baustein',level:bsLevel(item.lvl),route:'bausteine/dativverben'}));
+  (window.CORE_DICTIONARY||[]).forEach(([word,pos,arabic,forms,example])=>add({word,pos,ar:arabic,forms,example,source:'Grundwortschatz',rank:0,kind:'core',level:''}));
   curatedDictionaryCache=list;
   return list;
 }
@@ -104,10 +94,13 @@ function rankCuratedEntries(entries,value,limit=12){
   for(const entry of entries){
     let score=-1;
     if(arabic){
+      // A whole meaning ("موعد") beats a meaning that only contains the word ("تفوته مواصلة أو موعد").
       const tokens=entry.arKey.split(' ');
-      if(entry.arKey===query||tokens.includes(query)) score=0;
-      else if(tokens.some(token=>token.startsWith(query)||token.replace(/^ال/,'')===query.replace(/^ال/,''))) score=1;
-      else if(entry.arKey.includes(query)) score=2;
+      const bareQuery=query.replace(/^ال/,'');
+      if(entry.arKey===query||(entry.arParts||[]).some(part=>part===query||part.replace(/^ال/,'')===bareQuery)) score=0;
+      else if(tokens.includes(query)) score=1;
+      else if(tokens.some(token=>token.startsWith(query)||token.replace(/^ال/,'')===bareQuery)) score=2;
+      else if(entry.arKey.includes(query)) score=3;
     }else{
       if(entry.key===query||entry.bare===bare) score=0;
       else if(entry.key.startsWith(query)||entry.bare.startsWith(bare)) score=1;
@@ -159,6 +152,22 @@ function onlineDictionaryHtml(value){
     <div class="online-dict-links">${onlineDictionaryLinks(value).map(([label,url])=>`<a href="${escapeHtml(url)}" target="_blank" rel="noopener">${label} ↗</a>`).join('')}</div>
     <div class="online-dict-translate"><button type="button" id="onlineTranslateBtn" data-query="${escapeHtml(value)}">Jetzt übersetzen</button><span id="onlineTranslateResult" lang="ar" dir="auto"></span></div>
   </section>`;
+}
+
+function wireOnlineTranslate(container){
+  container.addEventListener('click',event=>{
+    const button=event.target.closest('#onlineTranslateBtn');
+    if(!button) return;
+    const output=$('#onlineTranslateResult');
+    const text=button.dataset.query||'';
+    const fromArabic=/[\u0600-\u06ff]/.test(text);
+    button.disabled=true;
+    output.textContent='جارٍ الترجمة…';
+    requestTranslation(text,fromArabic?'ar':'de',fromArabic?'de':'ar')
+      .then(value=>{ output.textContent=value||'لا توجد ترجمة'; })
+      .catch(()=>{ output.textContent=navigator.onLine?'تعذرت الترجمة الآن':'محتاج إنترنت للترجمة الأونلاين'; })
+      .finally(()=>{ button.disabled=false; });
+  });
 }
 
 function renderDictionary(){
