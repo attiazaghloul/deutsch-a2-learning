@@ -4,8 +4,8 @@ function renderFullDictionary(){
   const total=Number(OFFLINE_DICTIONARY_META.entries).toLocaleString('de-DE');
   view.innerHTML=`
     <div class="hero"><h2>Deutsch–Arabisch Offline</h2>
-      <p>Ein umfassendes Wörterbuch mit deutschen Stichwörtern, arabischen Bedeutungen, Wortarten, Formen und Beispielen.</p>
-      <div class="ar" style="display:block">قاموس ألماني–عربي شامل داخل التطبيق. لتشغيله بالكامل بدون إنترنت اضغط حفظ القاموس أوفلاين وانتظر اكتمال كل الملفات.</div>
+      <p>Zuerst siehst du geprüfte Übersetzungen aus den Lektionen und dem Grundwortschatz, danach das große Offline-Wörterbuch und Links zu PONS, Langenscheidt und Reverso.</p>
+      <div class="ar" style="display:block">النتايج الأول من ترجمات مراجَعة (كلمات الدروس + أهم كلمات اللغة)، بعدها القاموس الكبير (ترجمة آلية تقريبية)، وفي الآخر روابط لقواميس أونلاين أدق. لتشغيل القاموس الكبير بدون إنترنت اضغط حفظ القاموس أوفلاين.</div>
       <div class="offline-dict-actions"><div class="offline-ready" id="offlineDictionaryStatus">${total} Einträge · wird vorbereitet…</div><button type="button" class="offline-dict-download" id="offlineDictionaryDownload" onclick="downloadOfflineDictionary(this)">⬇ Wörterbuch offline speichern</button></div>
     </div>
     <div class="search-panel">
@@ -15,7 +15,7 @@ function renderFullDictionary(){
       <div class="result-count" id="offlineDictionaryCount">${total} Wörter und Ausdrücke</div>
     </div>
     <div class="offline-dict-results" id="offlineDictionaryResults"><div class="card word-result-empty">Gib mindestens zwei Zeichen ein.</div></div>
-    <div class="offline-dict-source">Quellen: Deutsches Wiktionary, aufbereitet mit Kaikki/Wiktextract (CC BY-SA 4.0), sowie FreeDict Deutsch–Englisch und Englisch–Arabisch (GPL/AGPL). Die direkte Wiktionary-Übersetzung wird bevorzugt; FreeDict erweitert die Abdeckung über gemeinsame englische Bedeutungen.</div>`;
+    <div class="offline-dict-source">Quellen: geprüfter Grundwortschatz und Lektionswörter dieses Programms; Deutsches Wiktionary, aufbereitet mit Kaikki/Wiktextract (CC BY-SA 4.0), sowie FreeDict Deutsch–Englisch und Englisch–Arabisch (GPL/AGPL). FreeDict-Einträge sind über das Englische übersetzt und deshalb nur ungefähr.</div>`;
   const input=$('#offlineDictionarySearch');
   const results=$('#offlineDictionaryResults');
   let timer=null;
@@ -35,23 +35,130 @@ function renderFullDictionary(){
       results.innerHTML='<div class="card word-result-empty">Gib mindestens zwei Zeichen ein.</div>';
       return;
     }
-    $('#offlineDictionaryCount').textContent='Suche läuft…';
-    results.innerHTML='<div class="card word-result-empty">Wörterbuch wird durchsucht…</div>';
+    const curated=curatedDictionaryMatches(query,12);
+    const head=curatedDictionaryResultsHtml(curated)+onlineDictionaryHtml(query);
+    $('#offlineDictionaryCount').textContent=`${curated.length} geprüfte Treffer · großes Wörterbuch wird durchsucht…`;
+    results.innerHTML=head+'<div class="offline-dict-heading">Großes Wörterbuch <small>automatisch übersetzt – bitte prüfen</small></div><div class="card word-result-empty">Wörterbuch wird durchsucht…</div>';
     let found=[];
     try{
-      found=await searchOfflineDictionary(query,80);
+      found=await searchOfflineDictionary(query,60);
     }catch(error){
       if(requestId!==drawRequest) return;
-      $('#offlineDictionaryCount').textContent='Wörterbuch nicht verfügbar';
-      results.innerHTML='<div class="card word-result-empty">Das Offline-Wörterbuch konnte nicht geladen werden.</div>';
+      $('#offlineDictionaryCount').textContent=`${curated.length} geprüfte Treffer · großes Wörterbuch nicht verfügbar`;
+      results.innerHTML=head+'<div class="card word-result-empty">Das große Offline-Wörterbuch konnte nicht geladen werden.</div>';
       return;
     }
     if(requestId!==drawRequest) return;
-    $('#offlineDictionaryCount').textContent=`${found.length} Treffer`;
-    results.innerHTML=offlineDictionaryResultsHtml(found);
+    $('#offlineDictionaryCount').textContent=`${curated.length} geprüfte + ${found.length} weitere Treffer`;
+    results.innerHTML=head+'<div class="offline-dict-heading">Großes Wörterbuch <small>automatisch übersetzt – bitte prüfen</small></div>'+offlineDictionaryResultsHtml(found);
   };
+  results.addEventListener('click',event=>{
+    const button=event.target.closest('#onlineTranslateBtn');
+    if(!button) return;
+    const output=$('#onlineTranslateResult');
+    const text=button.dataset.query||'';
+    const fromArabic=/[\u0600-\u06ff]/.test(text);
+    button.disabled=true;
+    output.textContent='جارٍ الترجمة…';
+    requestTranslation(text,fromArabic?'ar':'de',fromArabic?'de':'ar')
+      .then(value=>{ output.textContent=value||'لا توجد ترجمة'; })
+      .catch(()=>{ output.textContent=navigator.onLine?'تعذرت الترجمة الآن':'محتاج إنترنت للترجمة الأونلاين'; })
+      .finally(()=>{ button.disabled=false; });
+  });
   input.addEventListener('input',()=>{ clearTimeout(timer); timer=setTimeout(draw,260); });
   input.focus();
+}
+
+let curatedDictionaryCache=null;
+function curatedDictionaryEntries(){
+  if(curatedDictionaryCache) return curatedDictionaryCache;
+  const list=[];
+  const seen=new Set();
+  const add=entry=>{
+    const arabic=plainText(entry.ar||'');
+    if(!entry.word||!/[\u0600-\u06ff]/.test(arabic)) return;
+    // "das Haus, -er" and "das Haus" are the same headword; the plural is only a form.
+    const headword=String(entry.word).replace(/\s*[,(].*$/,'');
+    const key=`${normalizeWordForSearch(headword)}|${normalizeWordForSearch(arabic)}`;
+    if(seen.has(key)) return;
+    seen.add(key);
+    list.push({...entry,ar:arabic,key:normalizeWordForSearch(headword),bare:bareWordKey(headword),arKey:normalizeWordForSearch(arabic)});
+  };
+  (window.CORE_DICTIONARY||[]).forEach(([word,pos,arabic,forms,example])=>add({word,pos,ar:arabic,forms,example,source:'Grundwortschatz',rank:0}));
+  const perfect=verb=>verb.part?`${verb.praet||''} · ${verb.aux==='sein'?'ist':'hat'} ${verb.part}`:'';
+  [...A1_VERBS,...VERBS,...(window.B1_VERBS||[])].forEach(verb=>add({word:verb.inf,pos:'v',ar:verb.ar,forms:[perfect(verb),verb.rektion||''].filter(Boolean).join(' · '),example:verb.example,source:'Verbliste',rank:1}));
+  const bs=window.BAUSTEINE||{};
+  [...(bs.reflexive||[]),...(bs.prepVerbs||[])].forEach(item=>add({word:item.v,pos:'v',ar:item.ar,forms:(item.p||[]).map(([prep,kasus])=>`${prep} + ${kasus==='A'?'Akk':'Dat'}`).join(' · '),example:item.ex,source:'Satzbaukasten',rank:1,route:item.p&&!item.v.startsWith('sich')?'bausteine/praepverben':'bausteine/reflexiv'}));
+  (bs.dativeVerbs||[]).forEach(item=>add({word:item.v,pos:'v',ar:item.ar,forms:'+ Dativ',example:item.ex,source:'Satzbaukasten',rank:1,route:'bausteine/dativverben'}));
+  allVocabularyEntries().forEach(entry=>add({word:entry.word,pos:'',ar:entry.item.ar,forms:'',example:plainText(entry.item.ex||''),definition:plainText(entry.item.d||''),source:`${entry.level} · Kapitel ${entry.chapter.num}`,rank:1,route:entry.route}));
+  curatedDictionaryCache=list;
+  return list;
+}
+
+function rankCuratedEntries(entries,value,limit=12){
+  const query=normalizeWordForSearch(value);
+  if(query.length<2) return [];
+  const bare=bareWordKey(value);
+  const arabic=/[\u0600-\u06ff]/.test(query);
+  const scored=[];
+  for(const entry of entries){
+    let score=-1;
+    if(arabic){
+      const tokens=entry.arKey.split(' ');
+      if(entry.arKey===query||tokens.includes(query)) score=0;
+      else if(tokens.some(token=>token.startsWith(query)||token.replace(/^ال/,'')===query.replace(/^ال/,''))) score=1;
+      else if(entry.arKey.includes(query)) score=2;
+    }else{
+      if(entry.key===query||entry.bare===bare) score=0;
+      else if(entry.key.startsWith(query)||entry.bare.startsWith(bare)) score=1;
+      else if(entry.key.split(' ').includes(query)) score=1;
+      else if(query.length>=4&&entry.key.includes(query)) score=2;
+    }
+    if(score>=0) scored.push({entry,score:score*10+(entry.rank||0)});
+  }
+  return scored.sort((a,b)=>a.score-b.score||a.entry.word.length-b.entry.word.length)
+    .slice(0,limit).map(item=>item.entry);
+}
+
+function curatedDictionaryMatches(value,limit=12){
+  return rankCuratedEntries(curatedDictionaryEntries(),value,limit);
+}
+
+function curatedDictionaryCard(entry){
+  return `<article class="offline-dict-card curated-dict-card">
+    <div class="offline-dict-head"><div class="offline-dict-word">${fmtWord(escapeHtml(entry.word))}</div><span class="offline-dict-pos verified">✓ ${escapeHtml(entry.source)}</span></div>
+    <div class="offline-dict-ar" lang="ar">${escapeHtml(entry.ar)}</div>
+    ${entry.forms?`<div class="offline-dict-details"><span class="offline-dict-chip">${escapeHtml(entry.forms)}</span></div>`:''}
+    ${entry.definition?`<div class="offline-dict-note">${escapeHtml(entry.definition)}</div>`:''}
+    ${entry.example?`<div class="dictionary-example">„${escapeHtml(entry.example)}“</div>`:''}
+    ${entry.route?`<button type="button" class="curated-dict-link" onclick="go('${escapeHtml(entry.route)}')">Zur Lektion / Liste →</button>`:''}
+  </article>`;
+}
+
+function curatedDictionaryResultsHtml(entries){
+  if(!entries.length) return '';
+  return `<div class="offline-dict-heading">Geprüfte Übersetzungen <small>aus Lektionen und Grundwortschatz</small></div>${entries.map(curatedDictionaryCard).join('')}`;
+}
+
+function onlineDictionaryLinks(value){
+  const text=String(value||'').trim();
+  const q=encodeURIComponent(text);
+  const fromArabic=/[\u0600-\u06ff]/.test(text);
+  return [
+    ['PONS',`https://de.pons.com/${encodeURIComponent('übersetzung')}/${fromArabic?'arabisch-deutsch':'deutsch-arabisch'}/${q}`],
+    ['Langenscheidt',`https://de.langenscheidt.com/${fromArabic?'arabisch-deutsch':'deutsch-arabisch'}/${q}`],
+    ['Reverso Context',`https://context.reverso.net/translation/${fromArabic?'arabic-german':'german-arabic'}/${q}`],
+    ['Glosbe',`https://de.glosbe.com/${fromArabic?'ar/de':'de/ar'}/${q}`],
+    ['Google Übersetzer',`https://translate.google.com/?sl=${fromArabic?'ar':'de'}&tl=${fromArabic?'de':'ar'}&text=${q}&op=translate`]
+  ];
+}
+
+function onlineDictionaryHtml(value){
+  return `<section class="online-dict-panel">
+    <div class="offline-dict-heading">Online genauer nachschlagen <small>braucht Internet</small></div>
+    <div class="online-dict-links">${onlineDictionaryLinks(value).map(([label,url])=>`<a href="${escapeHtml(url)}" target="_blank" rel="noopener">${label} ↗</a>`).join('')}</div>
+    <div class="online-dict-translate"><button type="button" id="onlineTranslateBtn" data-query="${escapeHtml(value)}">Jetzt übersetzen</button><span id="onlineTranslateResult" lang="ar" dir="auto"></span></div>
+  </section>`;
 }
 
 function renderDictionary(){

@@ -176,10 +176,10 @@ function offlineDictionaryCard(entry){
   const displayWord=article&&!word.toLocaleLowerCase('de-DE').startsWith(`${article} `)?`${article} ${word}`:word;
   const germanGloss=(glosses||[]).find(item=>!item.startsWith('Englisch:'))||'';
   const usefulForms=(forms||[]).filter(form=>normalizeWordForSearch(form)!==normalizeWordForSearch(word)).slice(0,5);
-  const sourceLabel=source?.includes('wiktionary')?'Wiktionary + FreeDict':'FreeDict';
+  const sourceLabel=source?.includes('wiktionary')?'Wiktionary':'FreeDict · über Englisch, ungefähr';
   return `<article class="offline-dict-card">
     <div class="offline-dict-head"><div class="offline-dict-word">${escapeHtml(displayWord)}</div><span class="offline-dict-pos">${escapeHtml(OFFLINE_POS_LABELS[pos]||pos||'Wort')}</span></div>
-    <div class="offline-dict-ar" lang="ar">${escapeHtml((arabic||[]).join(' ، '))}</div>
+    <div class="offline-dict-ar" lang="ar">${escapeHtml((arabic||[]).slice(0,source==='freedict'?4:8).join(' ، '))}</div>
     <div class="offline-dict-details">
       ${ipa?`<span class="offline-dict-chip">IPA ${escapeHtml(ipa)}</span>`:''}
       ${(plurals||[]).length?`<span class="offline-dict-chip">Plural: ${escapeHtml(plurals.join(', '))}</span>`:''}
@@ -558,10 +558,12 @@ function selectionContext(selection){
 }
 
 function knownWordTranslation(value){
+  const normalized=bareWordKey(value);
+  const core=(window.CORE_DICTIONARY||[]).find(item=>bareWordKey(item[0])===normalized);
+  if(core) return core[2];
   const entry=findWordEntry(value);
   if(entry?.item?.ar) return entry.item.ar;
-  const normalized=bareWordKey(value);
-  const verb=[...A1_VERBS,...VERBS].find(item=>bareWordKey(item.inf)===normalized);
+  const verb=[...A1_VERBS,...VERBS,...(window.B1_VERBS||[])].find(item=>bareWordKey(item.inf)===normalized);
   return verb?.ar||null;
 }
 

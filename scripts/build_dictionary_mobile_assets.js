@@ -60,20 +60,29 @@ for (let start = 0, chunk = 0; start < dictionary.entries.length; start += CHUNK
 
 const german = Array.from({ length: INDEX_BUCKETS }, () => []);
 const arabic = Array.from({ length: INDEX_BUCKETS }, () => []);
+// FreeDict entries are pivoted through English and often pick the wrong sense,
+// so direct Wiktionary translations rank first within the same match type.
+function qualityPenalty(entry) {
+  return String(entry[9] || '').includes('wiktionary') ? 0 : 3;
+}
+
 dictionary.entries.forEach((entry, entryIndex) => {
   const word = entry[0] || '';
+  const penalty = qualityPenalty(entry);
   const articleWord = entry[5] ? `${entry[5]} ${word}` : '';
-  const germanValues = [[word, 0], [articleWord, 0]];
-  for (const form of entry[7] || []) germanValues.push([form, 1]);
-  for (const token of normalize(word).split(' ')) germanValues.push([token, 2]);
+  const germanValues = [[word, penalty], [articleWord, penalty]];
+  for (const form of entry[7] || []) germanValues.push([form, 1 + penalty]);
+  for (const token of normalize(word).split(' ')) germanValues.push([token, 2 + penalty]);
   addEntryPairs(german, germanValues, entryIndex);
 
   const arabicValues = [];
-  for (const translation of entry[2] || []) {
+  // FreeDict appends unrelated English senses, so only its first translations are indexed.
+  const translations = penalty ? (entry[2] || []).slice(0, 4) : (entry[2] || []);
+  for (const translation of translations) {
     const value = normalize(translation);
-    arabicValues.push([value, 0]);
-    if (value.startsWith('ال')) arabicValues.push([value.slice(2), 1]);
-    for (const token of value.split(' ')) arabicValues.push([token, 2]);
+    arabicValues.push([value, penalty]);
+    if (value.startsWith('ال')) arabicValues.push([value.slice(2), 1 + penalty]);
+    for (const token of value.split(' ')) arabicValues.push([token, 2 + penalty]);
   }
   addEntryPairs(arabic, arabicValues, entryIndex);
 });
