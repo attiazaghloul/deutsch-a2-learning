@@ -193,7 +193,23 @@ window.A1_VOCAB_11_IMAGES = {
  "3|die Wegbeschreibung, -en": "assets/a1/vocab_ai/new/k3-die-wegbeschreibung-en.webp",
  "3|der Plan, ¨-e": "assets/a1/vocab_ai/new/k3-der-plan-e.webp",
  "3|hoch": "assets/a1/vocab_ai/new/k3-hoch.webp",
- "3|der Meter, -": "assets/a1/vocab_ai/new/k3-der-meter.webp"
+ "3|der Meter, -": "assets/a1/vocab_ai/new/k3-der-meter.webp",
+ "3|der Februar": "assets/a1/vocab_ai/new/k3-der-februar.webp",
+ "3|der März": "assets/a1/vocab_ai/new/k3-der-maerz.webp",
+ "3|der April": "assets/a1/vocab_ai/new/k3-der-april.webp",
+ "3|der Mai": "assets/a1/vocab_ai/new/k3-der-mai.webp",
+ "3|der Juni": "assets/a1/vocab_ai/new/k3-der-juni.webp",
+ "3|der August": "assets/a1/vocab_ai/new/k3-der-august.webp",
+ "3|der September": "assets/a1/vocab_ai/new/k3-der-september.webp",
+ "3|der Oktober": "assets/a1/vocab_ai/new/k3-der-oktober.webp",
+ "3|der November": "assets/a1/vocab_ai/new/k3-der-november.webp",
+ "3|der Dezember": "assets/a1/vocab_ai/new/k3-der-dezember.webp",
+ "3|schnell": "assets/a1/vocab_ai/new/k3-schnell.webp",
+ "3|zeichnen": "assets/a1/vocab_ai/new/k3-zeichnen.webp",
+ "3|würfeln": "assets/a1/vocab_ai/new/k3-wuerfeln.webp",
+ "3|klopfen": "assets/a1/vocab_ai/new/k3-klopfen.webp",
+ "3|der Arm, -e": "assets/a1/vocab_ai/new/k3-der-arm-e.webp",
+ "3|der Tisch, -e": "assets/a1/vocab_ai/new/k3-der-tisch-e.webp"
 };
 
 (function applyA11Images(){
