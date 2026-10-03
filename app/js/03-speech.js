@@ -174,8 +174,8 @@ function germanVoices(){
   });
 }
 
-function speakReadingWithPeople(chapterNumber, readingIndex){
-  const chapter=BOOK.find(item=>item.num===chapterNumber);
+function speakReadingWithPeople(chapterNumber, readingIndex, route=''){
+  const chapter=[...BOOK,...A1_BOOK,...B1_BOOK].find(item=>route?(item.route||`k${item.num}`)===route:item.num===chapterNumber);
   const reading=chapter?.readings?.[readingIndex];
   if(!reading) return;
   const holder=document.createElement('div');

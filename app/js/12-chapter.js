@@ -196,7 +196,7 @@ function renderChapterTab(c, tab){
         </figure>`:`<h3 style="color:var(--green-d);margin-bottom:8px">${r.kind}: ${r.title}</h3>`}
         <div class="reading-body">
           <div class="reading-tools">
-            <button type="button" class="people-read" onclick="speakReadingWithPeople(${c.num},${ri})">Mehrere Sprecher hören</button>
+            <button type="button" class="people-read" onclick="speakReadingWithPeople(${c.num},${ri},'${c.route||`k${c.num}`}')">Mehrere Sprecher hören</button>
           </div>
           <p class="reading-text">${r.text}</p>
           ${ar(r.ar)}
