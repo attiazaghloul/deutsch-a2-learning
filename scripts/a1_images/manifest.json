@@ -1,0 +1,2965 @@
+{
+ "grid": 4,
+ "sheets": [
+  {
+   "sheet": 1,
+   "cells": [
+    {
+     "id": "k1-gruessen",
+     "chapter": 1,
+     "word": "grüßen",
+     "ar": "يسلّم على / يحيّي",
+     "subject": "two friendly people waving hello to each other on a sunny street"
+    },
+    {
+     "id": "k1-sich-verabschieden",
+     "chapter": 1,
+     "word": "sich verabschieden",
+     "ar": "يودّع",
+     "subject": "friends waving goodbye to each other at a train station"
+    },
+    {
+     "id": "k1-der-herr-en",
+     "chapter": 1,
+     "word": "der Herr, -en",
+     "ar": "السيد",
+     "subject": "an elegant middle-aged gentleman in a suit and tie, polite smile"
+    },
+    {
+     "id": "k1-der-reisefuehrer",
+     "chapter": 1,
+     "word": "der Reiseführer, -",
+     "ar": "مرشد سياحي",
+     "subject": "a male tour guide holding a small flag leading a group of tourists in an old town"
+    },
+    {
+     "id": "k1-die-reisefuehrerin-nen",
+     "chapter": 1,
+     "word": "die Reiseführerin, -nen",
+     "ar": "مرشدة سياحية",
+     "subject": "a female tour guide holding an umbrella leading tourists through a city square"
+    },
+    {
+     "id": "k1-der-kranke-n",
+     "chapter": 1,
+     "word": "der Kranke, -n",
+     "ar": "المريض",
+     "subject": "a sick man lying in bed with a thermometer, tissues and a cup of tea"
+    },
+    {
+     "id": "k1-das-telefon-e",
+     "chapter": 1,
+     "word": "das Telefon, -e",
+     "ar": "تليفون",
+     "subject": "a classic landline desk telephone"
+    },
+    {
+     "id": "k1-die-handynummer-n",
+     "chapter": 1,
+     "word": "die Handynummer, -n",
+     "ar": "رقم الموبايل",
+     "subject": "a hand holding a smartphone showing a dial pad, dialing a number"
+    },
+    {
+     "id": "k1-algerien",
+     "chapter": 1,
+     "word": "Algerien",
+     "ar": "الجزائر",
+     "subject": "the Martyrs' Memorial (Maqam Echahid) in Algiers under a blue sky"
+    },
+    {
+     "id": "k1-brasilien",
+     "chapter": 1,
+     "word": "Brasilien",
+     "ar": "البرازيل",
+     "subject": "Christ the Redeemer statue above Rio de Janeiro"
+    },
+    {
+     "id": "k1-frankreich",
+     "chapter": 1,
+     "word": "Frankreich",
+     "ar": "فرنسا",
+     "subject": "the Eiffel Tower in Paris"
+    },
+    {
+     "id": "k1-griechenland",
+     "chapter": 1,
+     "word": "Griechenland",
+     "ar": "اليونان",
+     "subject": "the Parthenon on the Acropolis in Athens"
+    },
+    {
+     "id": "k1-italien",
+     "chapter": 1,
+     "word": "Italien",
+     "ar": "إيطاليا",
+     "subject": "the Colosseum in Rome"
+    },
+    {
+     "id": "k1-japan",
+     "chapter": 1,
+     "word": "Japan",
+     "ar": "اليابان",
+     "subject": "Mount Fuji with a red pagoda and cherry blossoms"
+    },
+    {
+     "id": "k1-mexiko",
+     "chapter": 1,
+     "word": "Mexiko",
+     "ar": "المكسيك",
+     "subject": "the pyramid of Chichén Itzá"
+    },
+    {
+     "id": "k1-polen",
+     "chapter": 1,
+     "word": "Polen",
+     "ar": "بولندا",
+     "subject": "the colorful Old Town Market Square of Warsaw"
+    }
+   ]
+  },
+  {
+   "sheet": 2,
+   "cells": [
+    {
+     "id": "k1-portugal",
+     "chapter": 1,
+     "word": "Portugal",
+     "ar": "البرتغال",
+     "subject": "a yellow tram climbing a Lisbon street"
+    },
+    {
+     "id": "k1-russland",
+     "chapter": 1,
+     "word": "Russland",
+     "ar": "روسيا",
+     "subject": "Saint Basil's Cathedral on Red Square in Moscow"
+    },
+    {
+     "id": "k1-spanien",
+     "chapter": 1,
+     "word": "Spanien",
+     "ar": "إسبانيا",
+     "subject": "the Sagrada Família in Barcelona"
+    },
+    {
+     "id": "k1-thailand",
+     "chapter": 1,
+     "word": "Thailand",
+     "ar": "تايلاند",
+     "subject": "the Wat Arun temple in Bangkok with a long-tail boat"
+    },
+    {
+     "id": "k1-die-tuerkei",
+     "chapter": 1,
+     "word": "die Türkei",
+     "ar": "تركيا",
+     "subject": "the Hagia Sophia in Istanbul with a hot-air balloon above"
+    },
+    {
+     "id": "k1-die-usa-pl",
+     "chapter": 1,
+     "word": "die USA (Pl.)",
+     "ar": "الولايات المتحدة",
+     "subject": "the Statue of Liberty in New York"
+    },
+    {
+     "id": "k1-die-ukraine",
+     "chapter": 1,
+     "word": "die Ukraine",
+     "ar": "أوكرانيا",
+     "subject": "the golden-domed Saint Sophia Cathedral in Kyiv"
+    },
+    {
+     "id": "k1-china",
+     "chapter": 1,
+     "word": "China",
+     "ar": "الصين",
+     "subject": "the Great Wall of China winding over green mountains"
+    },
+    {
+     "id": "k1-daenemark",
+     "chapter": 1,
+     "word": "Dänemark",
+     "ar": "الدنمارك",
+     "subject": "the colorful houses and boats of Nyhavn in Copenhagen"
+    },
+    {
+     "id": "k1-der-irak",
+     "chapter": 1,
+     "word": "der Irak",
+     "ar": "العراق",
+     "subject": "the ancient Ziggurat of Ur in the desert at sunset"
+    },
+    {
+     "id": "k1-der-iran",
+     "chapter": 1,
+     "word": "der Iran",
+     "ar": "إيران",
+     "subject": "Naqsh-e Jahan Square mosque with blue tiles in Isfahan"
+    },
+    {
+     "id": "k1-der-jemen",
+     "chapter": 1,
+     "word": "der Jemen",
+     "ar": "اليمن",
+     "subject": "the tall mud-brick tower houses of old Sana'a"
+    },
+    {
+     "id": "k1-kanada",
+     "chapter": 1,
+     "word": "Kanada",
+     "ar": "كندا",
+     "subject": "a red maple leaf in front of the Rocky Mountains and a turquoise lake"
+    },
+    {
+     "id": "k1-der-libanon",
+     "chapter": 1,
+     "word": "der Libanon",
+     "ar": "لبنان",
+     "subject": "the Raouche Pigeon Rocks of Beirut and a cedar tree"
+    },
+    {
+     "id": "k1-neuseeland",
+     "chapter": 1,
+     "word": "Neuseeland",
+     "ar": "نيوزيلندا",
+     "subject": "Milford Sound with fjord and mountains in New Zealand"
+    },
+    {
+     "id": "k1-die-niederlande-pl",
+     "chapter": 1,
+     "word": "die Niederlande (Pl.)",
+     "ar": "هولندا",
+     "subject": "a windmill and a field of colorful tulips"
+    }
+   ]
+  },
+  {
+   "sheet": 3,
+   "cells": [
+    {
+     "id": "k1-die-slowakei",
+     "chapter": 1,
+     "word": "die Slowakei",
+     "ar": "سلوفاكيا",
+     "subject": "Bratislava Castle on a hill above the Danube"
+    },
+    {
+     "id": "k1-syrien",
+     "chapter": 1,
+     "word": "Syrien",
+     "ar": "سوريا",
+     "subject": "the Umayyad Mosque courtyard in Damascus"
+    },
+    {
+     "id": "k1-tunesien",
+     "chapter": 1,
+     "word": "Tunesien",
+     "ar": "تونس",
+     "subject": "the blue and white houses of Sidi Bou Said"
+    },
+    {
+     "id": "k1-ungarn",
+     "chapter": 1,
+     "word": "Ungarn",
+     "ar": "المجر",
+     "subject": "the Hungarian Parliament Building on the Danube at dusk"
+    },
+    {
+     "id": "k1-der-kindergarten",
+     "chapter": 1,
+     "word": "der Kindergarten, ¨-",
+     "ar": "روضة أطفال",
+     "subject": "happy children playing with toys in a colorful kindergarten room"
+    },
+    {
+     "id": "k1-der-koffer",
+     "chapter": 1,
+     "word": "der Koffer, -",
+     "ar": "شنطة سفر",
+     "subject": "a packed rolling suitcase standing in a hallway"
+    },
+    {
+     "id": "k1-das-handtuch-er",
+     "chapter": 1,
+     "word": "das Handtuch, ¨-er",
+     "ar": "فوطة / منشفة",
+     "subject": "a stack of folded fluffy white towels in a bathroom"
+    },
+    {
+     "id": "k1-das-butterbrot-e",
+     "chapter": 1,
+     "word": "das Butterbrot, -e",
+     "ar": "شريحة عيش بالزبدة",
+     "subject": "a slice of bread with butter on a wooden board"
+    },
+    {
+     "id": "k1-das-wuerstchen",
+     "chapter": 1,
+     "word": "das Würstchen, -",
+     "ar": "سجق صغير / هوت دوج",
+     "subject": "two small boiled sausages with mustard on a plate"
+    },
+    {
+     "id": "k1-die-nudel-n",
+     "chapter": 1,
+     "word": "die Nudel, -n",
+     "ar": "مكرونة",
+     "subject": "cooked pasta noodles on a plate with a fork"
+    },
+    {
+     "id": "k1-die-autobahn-en",
+     "chapter": 1,
+     "word": "die Autobahn, -en",
+     "ar": "طريق سريع",
+     "subject": "a multi-lane highway with cars driving"
+    },
+    {
+     "id": "k1-das-gespraech-e",
+     "chapter": 1,
+     "word": "das Gespräch, -e",
+     "ar": "محادثة",
+     "subject": "two people talking over coffee at a cafe table"
+    },
+    {
+     "id": "k1-das-interview-s",
+     "chapter": 1,
+     "word": "das Interview, -s",
+     "ar": "مقابلة / حوار بأسئلة",
+     "subject": "a reporter holding a microphone interviewing a person"
+    },
+    {
+     "id": "k1-hoeren",
+     "chapter": 1,
+     "word": "hören",
+     "ar": "يسمع",
+     "subject": "a person listening to music with headphones, eyes closed"
+    },
+    {
+     "id": "k1-schreiben",
+     "chapter": 1,
+     "word": "schreiben",
+     "ar": "يكتب",
+     "subject": "a hand writing in a notebook with a pen"
+    },
+    {
+     "id": "k1-fragen",
+     "chapter": 1,
+     "word": "fragen",
+     "ar": "يسأل",
+     "subject": "a student raising a hand to ask a question in class"
+    }
+   ]
+  },
+  {
+   "sheet": 4,
+   "cells": [
+    {
+     "id": "k1-unterstreichen",
+     "chapter": 1,
+     "word": "unterstreichen",
+     "ar": "يحط خط تحت",
+     "subject": "a pencil underlining a line in a book (text is blurry and unreadable)"
+    },
+    {
+     "id": "k1-sammeln",
+     "chapter": 1,
+     "word": "sammeln",
+     "ar": "يجمع",
+     "subject": "a person collecting apples from a tree into a basket"
+    },
+    {
+     "id": "k2-der-fussball",
+     "chapter": 2,
+     "word": "der Fußball",
+     "ar": "كرة القدم",
+     "subject": "a football (soccer ball) on grass in front of a goal"
+    },
+    {
+     "id": "k2-der-basketball",
+     "chapter": 2,
+     "word": "der Basketball",
+     "ar": "كرة السلة",
+     "subject": "a basketball going through the hoop"
+    },
+    {
+     "id": "k2-das-tennis",
+     "chapter": 2,
+     "word": "das Tennis",
+     "ar": "التنس",
+     "subject": "a tennis racket and a yellow ball on a clay court"
+    },
+    {
+     "id": "k2-karate",
+     "chapter": 2,
+     "word": "Karate",
+     "ar": "الكاراتيه",
+     "subject": "a person in a white karate uniform performing a high kick"
+    },
+    {
+     "id": "k2-yoga",
+     "chapter": 2,
+     "word": "Yoga",
+     "ar": "اليوجا",
+     "subject": "a woman doing a yoga pose on a mat at sunrise"
+    },
+    {
+     "id": "k2-zumba",
+     "chapter": 2,
+     "word": "Zumba",
+     "ar": "الزومبا",
+     "subject": "a group of people dancing in a colorful fitness class"
+    },
+    {
+     "id": "k2-reisen",
+     "chapter": 2,
+     "word": "reisen",
+     "ar": "يسافر",
+     "subject": "a traveler with a backpack looking at a world map in an airport"
+    },
+    {
+     "id": "k2-die-musik",
+     "chapter": 2,
+     "word": "die Musik",
+     "ar": "موسيقى",
+     "subject": "a guitar, headphones and musical notes on a table"
+    },
+    {
+     "id": "k2-das-theater",
+     "chapter": 2,
+     "word": "das Theater, -",
+     "ar": "مسرح",
+     "subject": "a theater stage with a red curtain and a spotlight"
+    },
+    {
+     "id": "k2-der-club-s",
+     "chapter": 2,
+     "word": "der Club, -s",
+     "ar": "نادي",
+     "subject": "a dance floor in a nightclub with colorful lights and people dancing"
+    },
+    {
+     "id": "k2-der-sportclub-s",
+     "chapter": 2,
+     "word": "der Sportclub, -s",
+     "ar": "نادي رياضي",
+     "subject": "a team in matching jerseys cheering together outside a sports club"
+    },
+    {
+     "id": "k2-das-stadion-stadien",
+     "chapter": 2,
+     "word": "das Stadion, Stadien",
+     "ar": "ملعب / استاد",
+     "subject": "a football stadium full of cheering fans"
+    },
+    {
+     "id": "k2-das-schwimmbad-er",
+     "chapter": 2,
+     "word": "das Schwimmbad, ¨-er",
+     "ar": "حمّام سباحة",
+     "subject": "an indoor swimming pool with lanes and a swimmer"
+    },
+    {
+     "id": "k2-die-spaghetti-pl",
+     "chapter": 2,
+     "word": "die Spaghetti (Pl.)",
+     "ar": "سباغيتي",
+     "subject": "a plate of spaghetti with tomato sauce and basil"
+    }
+   ]
+  },
+  {
+   "sheet": 5,
+   "cells": [
+    {
+     "id": "k2-nachts",
+     "chapter": 2,
+     "word": "nachts",
+     "ar": "بالليل",
+     "subject": "a city street at night with a full moon and lit windows"
+    },
+    {
+     "id": "k2-die-verabredung-en",
+     "chapter": 2,
+     "word": "die Verabredung, -en",
+     "ar": "ميعاد / لقاء متفق عليه",
+     "subject": "two friends meeting at a cafe, one checking a wristwatch"
+    },
+    {
+     "id": "k2-freihaben",
+     "chapter": 2,
+     "word": "freihaben",
+     "ar": "عنده إجازة",
+     "subject": "a person relaxing in a hammock between trees on a day off"
+    },
+    {
+     "id": "k2-die-firma-firmen",
+     "chapter": 2,
+     "word": "die Firma, Firmen",
+     "ar": "شركة",
+     "subject": "a modern company office building with a glass facade"
+    },
+    {
+     "id": "k2-der-architekt-en",
+     "chapter": 2,
+     "word": "der Architekt, -en",
+     "ar": "مهندس معماري",
+     "subject": "a male architect looking at building plans and a model house"
+    },
+    {
+     "id": "k2-die-architektin-nen",
+     "chapter": 2,
+     "word": "die Architektin, -nen",
+     "ar": "مهندسة معمارية",
+     "subject": "a female architect with a blueprint and hard hat at a building site"
+    },
+    {
+     "id": "k2-der-arzt-e",
+     "chapter": 2,
+     "word": "der Arzt, ¨-e",
+     "ar": "دكتور",
+     "subject": "a male doctor in a white coat with a stethoscope"
+    },
+    {
+     "id": "k2-die-aerztin-nen",
+     "chapter": 2,
+     "word": "die Ärztin, -nen",
+     "ar": "دكتورة",
+     "subject": "a female doctor in a white coat smiling in a clinic"
+    },
+    {
+     "id": "k2-der-elektriker",
+     "chapter": 2,
+     "word": "der Elektriker, -",
+     "ar": "كهربائي",
+     "subject": "a male electrician working on a fuse box"
+    },
+    {
+     "id": "k2-die-elektrikerin-nen",
+     "chapter": 2,
+     "word": "die Elektrikerin, -nen",
+     "ar": "كهربائية",
+     "subject": "a female electrician with tools and cables"
+    },
+    {
+     "id": "k2-der-erzieher",
+     "chapter": 2,
+     "word": "der Erzieher, -",
+     "ar": "مربّي أطفال",
+     "subject": "a male kindergarten teacher reading to children"
+    },
+    {
+     "id": "k2-die-erzieherin-nen",
+     "chapter": 2,
+     "word": "die Erzieherin, -nen",
+     "ar": "مربّية أطفال",
+     "subject": "a female kindergarten teacher playing with children"
+    },
+    {
+     "id": "k2-der-friseur-e",
+     "chapter": 2,
+     "word": "der Friseur, -e",
+     "ar": "حلاق",
+     "subject": "a male hairdresser cutting a customer's hair"
+    },
+    {
+     "id": "k2-die-friseurin-nen",
+     "chapter": 2,
+     "word": "die Friseurin, -nen",
+     "ar": "كوافيرة",
+     "subject": "a female hairdresser blow-drying a customer's hair in a salon"
+    },
+    {
+     "id": "k2-der-handwerker",
+     "chapter": 2,
+     "word": "der Handwerker, -",
+     "ar": "صنايعي",
+     "subject": "a male craftsman with a hard hat and toolbox"
+    },
+    {
+     "id": "k2-die-handwerkerin-nen",
+     "chapter": 2,
+     "word": "die Handwerkerin, -nen",
+     "ar": "صنايعية",
+     "subject": "a female craftswoman repairing a wooden window"
+    }
+   ]
+  },
+  {
+   "sheet": 6,
+   "cells": [
+    {
+     "id": "k2-der-informatiker",
+     "chapter": 2,
+     "word": "der Informatiker, -",
+     "ar": "مبرمج / متخصص كمبيوتر",
+     "subject": "a male programmer working at a computer with code on screen"
+    },
+    {
+     "id": "k2-die-informatikerin-nen",
+     "chapter": 2,
+     "word": "die Informatikerin, -nen",
+     "ar": "مبرمجة",
+     "subject": "a female programmer typing at a laptop in an office"
+    },
+    {
+     "id": "k2-der-journalist-en",
+     "chapter": 2,
+     "word": "der Journalist, -en",
+     "ar": "صحفي",
+     "subject": "a male journalist with a notebook and a camera"
+    },
+    {
+     "id": "k2-die-journalistin-nen",
+     "chapter": 2,
+     "word": "die Journalistin, -nen",
+     "ar": "صحفية",
+     "subject": "a female journalist with a microphone reporting"
+    },
+    {
+     "id": "k2-der-jurist-en",
+     "chapter": 2,
+     "word": "der Jurist, -en",
+     "ar": "قانوني",
+     "subject": "a male lawyer in a suit with law books"
+    },
+    {
+     "id": "k2-die-juristin-nen",
+     "chapter": 2,
+     "word": "die Juristin, -nen",
+     "ar": "قانونية",
+     "subject": "a female lawyer in a suit holding documents in a courthouse"
+    },
+    {
+     "id": "k2-der-kellner",
+     "chapter": 2,
+     "word": "der Kellner, -",
+     "ar": "جرسون",
+     "subject": "a male waiter carrying plates in a restaurant"
+    },
+    {
+     "id": "k2-die-kellnerin-nen",
+     "chapter": 2,
+     "word": "die Kellnerin, -nen",
+     "ar": "جرسونة",
+     "subject": "a female waitress serving drinks on a tray"
+    },
+    {
+     "id": "k2-die-koechin-nen",
+     "chapter": 2,
+     "word": "die Köchin, -nen",
+     "ar": "طباخة / شيف",
+     "subject": "a female chef in a white uniform cooking in a kitchen"
+    },
+    {
+     "id": "k2-der-krankenpfleger",
+     "chapter": 2,
+     "word": "der Krankenpfleger, -",
+     "ar": "ممرّض",
+     "subject": "a male nurse in scrubs helping a patient"
+    },
+    {
+     "id": "k2-die-krankenpflegerin-nen",
+     "chapter": 2,
+     "word": "die Krankenpflegerin, -nen",
+     "ar": "ممرّضة",
+     "subject": "a female nurse in scrubs with a clipboard"
+    },
+    {
+     "id": "k2-der-mechaniker",
+     "chapter": 2,
+     "word": "der Mechaniker, -",
+     "ar": "ميكانيكي",
+     "subject": "a male mechanic repairing a car engine"
+    },
+    {
+     "id": "k2-die-mechanikerin-nen",
+     "chapter": 2,
+     "word": "die Mechanikerin, -nen",
+     "ar": "ميكانيكية",
+     "subject": "a female mechanic in overalls working under a car hood"
+    },
+    {
+     "id": "k2-der-polizist-en",
+     "chapter": 2,
+     "word": "der Polizist, -en",
+     "ar": "ضابط / شرطي",
+     "subject": "a male police officer in uniform next to a police car"
+    },
+    {
+     "id": "k2-die-polizistin-nen",
+     "chapter": 2,
+     "word": "die Polizistin, -nen",
+     "ar": "شرطية",
+     "subject": "a female police officer in uniform on the street"
+    },
+    {
+     "id": "k2-der-student-en",
+     "chapter": 2,
+     "word": "der Student, -en",
+     "ar": "طالب (جامعي)",
+     "subject": "a male student with a backpack and books on a campus"
+    }
+   ]
+  },
+  {
+   "sheet": 7,
+   "cells": [
+    {
+     "id": "k2-die-studentin-nen",
+     "chapter": 2,
+     "word": "die Studentin, -nen",
+     "ar": "طالبة (جامعية)",
+     "subject": "a female student studying with a laptop on campus lawn"
+    },
+    {
+     "id": "k2-studieren",
+     "chapter": 2,
+     "word": "studieren",
+     "ar": "يدرس في الجامعة",
+     "subject": "a student studying at a table in a university library"
+    },
+    {
+     "id": "k2-der-taxifahrer",
+     "chapter": 2,
+     "word": "der Taxifahrer, -",
+     "ar": "سواق تاكسي",
+     "subject": "a male taxi driver smiling in his cab"
+    },
+    {
+     "id": "k2-die-taxifahrerin-nen",
+     "chapter": 2,
+     "word": "die Taxifahrerin, -nen",
+     "ar": "سواقة تاكسي",
+     "subject": "a female taxi driver at the wheel of a taxi"
+    },
+    {
+     "id": "k2-der-kollege-n",
+     "chapter": 2,
+     "word": "der Kollege, -n",
+     "ar": "زميل (شغل)",
+     "subject": "a male colleague smiling at his desk in an office"
+    },
+    {
+     "id": "k2-die-kollegin-nen",
+     "chapter": 2,
+     "word": "die Kollegin, -nen",
+     "ar": "زميلة (شغل)",
+     "subject": "a female colleague smiling at her desk in an office"
+    },
+    {
+     "id": "k2-der-patient-en",
+     "chapter": 2,
+     "word": "der Patient, -en",
+     "ar": "مريض (عند الدكتور)",
+     "subject": "a male patient sitting on a doctor's examination bed"
+    },
+    {
+     "id": "k2-die-patientin-nen",
+     "chapter": 2,
+     "word": "die Patientin, -nen",
+     "ar": "مريضة",
+     "subject": "a female patient talking to a doctor in a practice"
+    },
+    {
+     "id": "k2-das-krankenhaus-er",
+     "chapter": 2,
+     "word": "das Krankenhaus, ¨-er",
+     "ar": "مستشفى",
+     "subject": "a hospital building with an ambulance in front"
+    },
+    {
+     "id": "k2-das-medikament-e",
+     "chapter": 2,
+     "word": "das Medikament, -e",
+     "ar": "دواء",
+     "subject": "several medicine boxes and bottles on a table"
+    },
+    {
+     "id": "k2-die-tablette-n",
+     "chapter": 2,
+     "word": "die Tablette, -n",
+     "ar": "قرص دواء",
+     "subject": "white tablets in a blister pack"
+    },
+    {
+     "id": "k2-die-spritze-n",
+     "chapter": 2,
+     "word": "die Spritze, -n",
+     "ar": "حقنة",
+     "subject": "a medical syringe"
+    },
+    {
+     "id": "k2-die-universitaet-en",
+     "chapter": 2,
+     "word": "die Universität, -en",
+     "ar": "جامعة",
+     "subject": "a university building with students on the steps"
+    },
+    {
+     "id": "k2-das-seminar-e",
+     "chapter": 2,
+     "word": "das Seminar, -e",
+     "ar": "سمنار / محاضرة صغيرة",
+     "subject": "students sitting around a seminar table with a lecturer"
+    },
+    {
+     "id": "k2-der-kurs-e",
+     "chapter": 2,
+     "word": "der Kurs, -e",
+     "ar": "كورس",
+     "subject": "adults learning in a language classroom with a teacher at the whiteboard"
+    },
+    {
+     "id": "k2-der-kursraum-e",
+     "chapter": 2,
+     "word": "der Kursraum, ¨-e",
+     "ar": "قاعة الكورس",
+     "subject": "an empty classroom with tables, chairs and a whiteboard"
+    }
+   ]
+  },
+  {
+   "sheet": 8,
+   "cells": [
+    {
+     "id": "k2-das-zimmer",
+     "chapter": 2,
+     "word": "das Zimmer, -",
+     "ar": "أوضة",
+     "subject": "a cozy room with a bed, a desk and a window"
+    },
+    {
+     "id": "k2-alt",
+     "chapter": 2,
+     "word": "alt",
+     "ar": "قديم / كبير في السن",
+     "subject": "an elderly man with white hair smiling"
+    },
+    {
+     "id": "k2-der-kilometer",
+     "chapter": 2,
+     "word": "der Kilometer, -",
+     "ar": "كيلومتر",
+     "subject": "a roadside kilometer marker post along a country road"
+    },
+    {
+     "id": "k2-die-hausnummer-n",
+     "chapter": 2,
+     "word": "die Hausnummer, -n",
+     "ar": "رقم المبنى",
+     "subject": "a house door with a big metal house number plate"
+    },
+    {
+     "id": "k2-die-e-mail-s",
+     "chapter": 2,
+     "word": "die E-Mail, -s",
+     "ar": "رسالة إيميل",
+     "subject": "a laptop showing an email inbox with an envelope icon"
+    },
+    {
+     "id": "k2-das-buch-er",
+     "chapter": 2,
+     "word": "das Buch, ¨-er",
+     "ar": "كتاب",
+     "subject": "a stack of books"
+    },
+    {
+     "id": "k2-die-zeichnung-en",
+     "chapter": 2,
+     "word": "die Zeichnung, -en",
+     "ar": "رسمة",
+     "subject": "a child's colorful drawing on paper with crayons"
+    },
+    {
+     "id": "k2-der-stift-e",
+     "chapter": 2,
+     "word": "der Stift, -e",
+     "ar": "قلم",
+     "subject": "colorful pens and pencils in a cup"
+    },
+    {
+     "id": "k2-der-schluessel",
+     "chapter": 2,
+     "word": "der Schlüssel, -",
+     "ar": "مفتاح",
+     "subject": "a bunch of keys on a ring"
+    },
+    {
+     "id": "k2-das-glas-er",
+     "chapter": 2,
+     "word": "das Glas, ¨-er",
+     "ar": "كوباية / زجاج",
+     "subject": "a glass of water"
+    },
+    {
+     "id": "k2-das-geld-er",
+     "chapter": 2,
+     "word": "das Geld, -er",
+     "ar": "فلوس",
+     "subject": "euro banknotes and coins"
+    },
+    {
+     "id": "k2-der-computer",
+     "chapter": 2,
+     "word": "der Computer, -",
+     "ar": "كمبيوتر",
+     "subject": "a desktop computer on an office desk"
+    },
+    {
+     "id": "k2-das-foto-s",
+     "chapter": 2,
+     "word": "das Foto, -s",
+     "ar": "صورة (فوتوغرافية)",
+     "subject": "a person taking a photo with a camera"
+    },
+    {
+     "id": "k2-die-farbe-n",
+     "chapter": 2,
+     "word": "die Farbe, -n",
+     "ar": "لون",
+     "subject": "colorful paint cans and a brush"
+    },
+    {
+     "id": "k2-blau",
+     "chapter": 2,
+     "word": "blau",
+     "ar": "أزرق",
+     "subject": "a bucket of blue paint with a brush"
+    },
+    {
+     "id": "k2-gruen",
+     "chapter": 2,
+     "word": "grün",
+     "ar": "أخضر",
+     "subject": "a bucket of green paint with a brush"
+    }
+   ]
+  },
+  {
+   "sheet": 9,
+   "cells": [
+    {
+     "id": "k2-rot",
+     "chapter": 2,
+     "word": "rot",
+     "ar": "أحمر",
+     "subject": "a bucket of red paint with a brush"
+    },
+    {
+     "id": "k2-gross",
+     "chapter": 2,
+     "word": "groß",
+     "ar": "كبير",
+     "subject": "a tall giraffe next to a car"
+    },
+    {
+     "id": "k2-die-lernkarte-n",
+     "chapter": 2,
+     "word": "die Lernkarte, -n",
+     "ar": "كارت حفظ",
+     "subject": "a hand holding flash cards (text unreadable)"
+    },
+    {
+     "id": "k2-das-woerterbuch-er",
+     "chapter": 2,
+     "word": "das Wörterbuch, ¨-er",
+     "ar": "قاموس",
+     "subject": "a thick open dictionary with reading glasses"
+    },
+    {
+     "id": "k2-das-uebungsbuch-er",
+     "chapter": 2,
+     "word": "das Übungsbuch, ¨-er",
+     "ar": "كتاب التمارين",
+     "subject": "an open workbook with exercises and a pencil"
+    },
+    {
+     "id": "k2-die-leute-pl",
+     "chapter": 2,
+     "word": "die Leute (Pl.)",
+     "ar": "ناس",
+     "subject": "a crowd of diverse people walking on a pedestrian street"
+    },
+    {
+     "id": "k2-maennlich",
+     "chapter": 2,
+     "word": "männlich",
+     "ar": "ذكر",
+     "subject": "a portrait of a smiling young man"
+    },
+    {
+     "id": "k2-weiblich",
+     "chapter": 2,
+     "word": "weiblich",
+     "ar": "أنثى",
+     "subject": "a portrait of a smiling young woman"
+    },
+    {
+     "id": "k2-die-frage-n",
+     "chapter": 2,
+     "word": "die Frage, -n",
+     "ar": "سؤال",
+     "subject": "a person with a big question mark above the head, thinking"
+    },
+    {
+     "id": "k2-die-notiz-en",
+     "chapter": 2,
+     "word": "die Notiz, -en",
+     "ar": "ملحوظة",
+     "subject": "yellow sticky notes on a computer monitor"
+    },
+    {
+     "id": "k2-ankreuzen",
+     "chapter": 2,
+     "word": "ankreuzen",
+     "ar": "يعلّم بعلامة ×",
+     "subject": "a hand ticking a checkbox on a paper form with a pen"
+    },
+    {
+     "id": "k2-markieren",
+     "chapter": 2,
+     "word": "markieren",
+     "ar": "يعلّم (بقلم)",
+     "subject": "a yellow highlighter marking a line of text (text unreadable)"
+    },
+    {
+     "id": "k2-tauschen",
+     "chapter": 2,
+     "word": "tauschen",
+     "ar": "يبدّل",
+     "subject": "two people swapping books"
+    },
+    {
+     "id": "k2-praesentieren",
+     "chapter": 2,
+     "word": "präsentieren",
+     "ar": "يقدّم / يعرض",
+     "subject": "a woman giving a presentation next to a projector screen"
+    },
+    {
+     "id": "k2-suchen",
+     "chapter": 2,
+     "word": "suchen",
+     "ar": "يدوّر على",
+     "subject": "a person searching for something with a magnifying glass over a map"
+    },
+    {
+     "id": "k2-zusammenpassen",
+     "chapter": 2,
+     "word": "zusammenpassen",
+     "ar": "يتناسبوا مع بعض",
+     "subject": "two puzzle pieces fitting together"
+    }
+   ]
+  },
+  {
+   "sheet": 10,
+   "cells": [
+    {
+     "id": "k3-die-stadttour-en",
+     "chapter": 3,
+     "word": "die Stadttour, -en",
+     "ar": "جولة في المدينة",
+     "subject": "a double-decker sightseeing bus driving through a city center"
+    },
+    {
+     "id": "k3-der-ort-e",
+     "chapter": 3,
+     "word": "der Ort, -e",
+     "ar": "مكان",
+     "subject": "a small village with a church tower and houses"
+    },
+    {
+     "id": "k3-das-haus-er",
+     "chapter": 3,
+     "word": "das Haus, ¨-er",
+     "ar": "بيت / مبنى",
+     "subject": "a typical house with a garden and a fence"
+    },
+    {
+     "id": "k3-der-hafen",
+     "chapter": 3,
+     "word": "der Hafen, ¨-",
+     "ar": "الميناء",
+     "subject": "a harbor with boats and cranes"
+    },
+    {
+     "id": "k3-das-hotel-s",
+     "chapter": 3,
+     "word": "das Hotel, -s",
+     "ar": "فندق",
+     "subject": "a hotel building with an entrance and a doorman"
+    },
+    {
+     "id": "k3-der-turm-e",
+     "chapter": 3,
+     "word": "der Turm, ¨-e",
+     "ar": "برج",
+     "subject": "a tall old stone tower with a clock"
+    },
+    {
+     "id": "k3-das-konzerthaus-er",
+     "chapter": 3,
+     "word": "das Konzerthaus, ¨-er",
+     "ar": "قاعة الحفلات",
+     "subject": "a concert hall building lit up at night"
+    },
+    {
+     "id": "k3-die-kunsthalle-n",
+     "chapter": 3,
+     "word": "die Kunsthalle, -n",
+     "ar": "قاعة فنون / متحف فن",
+     "subject": "a modern art museum hall with paintings on the walls"
+    },
+    {
+     "id": "k3-die-station-en",
+     "chapter": 3,
+     "word": "die Station, -en",
+     "ar": "محطة (مواصلات)",
+     "subject": "a tram stop with a shelter and a waiting passenger"
+    },
+    {
+     "id": "k3-das-meer-e",
+     "chapter": 3,
+     "word": "das Meer, -e",
+     "ar": "البحر",
+     "subject": "ocean waves rolling onto a sandy beach"
+    },
+    {
+     "id": "k3-der-see-n",
+     "chapter": 3,
+     "word": "der See, -n",
+     "ar": "بحيرة",
+     "subject": "a calm lake surrounded by mountains"
+    },
+    {
+     "id": "k3-der-fluss-e",
+     "chapter": 3,
+     "word": "der Fluss, ¨-e",
+     "ar": "نهر",
+     "subject": "a river flowing through a town with a bridge"
+    },
+    {
+     "id": "k3-die-welt-en",
+     "chapter": 3,
+     "word": "die Welt, -en",
+     "ar": "العالم",
+     "subject": "a globe of the planet Earth on a stand"
+    },
+    {
+     "id": "k3-die-gruppe-n",
+     "chapter": 3,
+     "word": "die Gruppe, -n",
+     "ar": "مجموعة",
+     "subject": "a group of friends posing together outdoors"
+    },
+    {
+     "id": "k3-der-besucher",
+     "chapter": 3,
+     "word": "der Besucher, -",
+     "ar": "زائر",
+     "subject": "a male visitor looking at a painting in a museum"
+    },
+    {
+     "id": "k3-die-besucherin-nen",
+     "chapter": 3,
+     "word": "die Besucherin, -nen",
+     "ar": "زائرة",
+     "subject": "a female visitor looking at a sculpture in a museum"
+    }
+   ]
+  },
+  {
+   "sheet": 11,
+   "cells": [
+    {
+     "id": "k3-das-festival-s",
+     "chapter": 3,
+     "word": "das Festival, -s",
+     "ar": "مهرجان",
+     "subject": "a music festival with a stage and a cheering crowd"
+    },
+    {
+     "id": "k3-das-theater-festival-s",
+     "chapter": 3,
+     "word": "das Theater-Festival, -s",
+     "ar": "مهرجان مسرح",
+     "subject": "an open-air theater performance with an audience"
+    },
+    {
+     "id": "k3-die-ausstellung-en",
+     "chapter": 3,
+     "word": "die Ausstellung, -en",
+     "ar": "معرض",
+     "subject": "an exhibition hall with art and visitors"
+    },
+    {
+     "id": "k3-die-konzertkarte-n",
+     "chapter": 3,
+     "word": "die Konzertkarte, -n",
+     "ar": "تذكرة حفلة",
+     "subject": "two concert tickets lying on a table"
+    },
+    {
+     "id": "k3-das-orchester",
+     "chapter": 3,
+     "word": "das Orchester, -",
+     "ar": "أوركسترا",
+     "subject": "a symphony orchestra performing on stage"
+    },
+    {
+     "id": "k3-der-chor-e",
+     "chapter": 3,
+     "word": "der Chor, ¨-e",
+     "ar": "كورال",
+     "subject": "a choir in robes singing together"
+    },
+    {
+     "id": "k3-dirigieren",
+     "chapter": 3,
+     "word": "dirigieren",
+     "ar": "يقود (أوركسترا)",
+     "subject": "a conductor with a baton in front of an orchestra"
+    },
+    {
+     "id": "k3-der-solist-en",
+     "chapter": 3,
+     "word": "der Solist, -en",
+     "ar": "عازف منفرد",
+     "subject": "a male violin soloist performing on stage"
+    },
+    {
+     "id": "k3-die-solistin-nen",
+     "chapter": 3,
+     "word": "die Solistin, -nen",
+     "ar": "عازفة / مغنية منفردة",
+     "subject": "a female opera singer performing on stage"
+    },
+    {
+     "id": "k3-das-publikum",
+     "chapter": 3,
+     "word": "das Publikum",
+     "ar": "الجمهور",
+     "subject": "an audience applauding in a theater"
+    },
+    {
+     "id": "k3-der-schauspieler",
+     "chapter": 3,
+     "word": "der Schauspieler, -",
+     "ar": "ممثل",
+     "subject": "a male actor in costume on stage"
+    },
+    {
+     "id": "k3-die-schauspielerin-nen",
+     "chapter": 3,
+     "word": "die Schauspielerin, -nen",
+     "ar": "ممثلة",
+     "subject": "a female actress in a dress on stage"
+    },
+    {
+     "id": "k3-der-regisseur-e",
+     "chapter": 3,
+     "word": "der Regisseur, -e",
+     "ar": "مخرج",
+     "subject": "a male film director with a megaphone on a movie set"
+    },
+    {
+     "id": "k3-die-regisseurin-nen",
+     "chapter": 3,
+     "word": "die Regisseurin, -nen",
+     "ar": "مخرجة",
+     "subject": "a female film director with a clapperboard"
+    },
+    {
+     "id": "k3-der-star-s",
+     "chapter": 3,
+     "word": "der Star, -s",
+     "ar": "نجم",
+     "subject": "a celebrity on a red carpet with photographers"
+    },
+    {
+     "id": "k3-der-film-e",
+     "chapter": 3,
+     "word": "der Film, -e",
+     "ar": "فيلم",
+     "subject": "a cinema screen with popcorn in the foreground"
+    }
+   ]
+  },
+  {
+   "sheet": 12,
+   "cells": [
+    {
+     "id": "k3-das-plakat-e",
+     "chapter": 3,
+     "word": "das Plakat, -e",
+     "ar": "بوستر / إعلان",
+     "subject": "a colorful poster on a street wall (text unreadable)"
+    },
+    {
+     "id": "k3-das-ticket-s",
+     "chapter": 3,
+     "word": "das Ticket, -s",
+     "ar": "تذكرة",
+     "subject": "a hand holding an event ticket at an entrance gate"
+    },
+    {
+     "id": "k3-der-start-s",
+     "chapter": 3,
+     "word": "der Start, -s",
+     "ar": "البداية",
+     "subject": "runners at the starting line of a race"
+    },
+    {
+     "id": "k3-das-ziel-e",
+     "chapter": 3,
+     "word": "das Ziel, -e",
+     "ar": "الهدف / الوجهة",
+     "subject": "a runner crossing the finish line with a ribbon"
+    },
+    {
+     "id": "k3-das-bild-er",
+     "chapter": 3,
+     "word": "das Bild, -er",
+     "ar": "صورة / لوحة",
+     "subject": "a framed painting hanging on a wall"
+    },
+    {
+     "id": "k3-die-s-bahn-en",
+     "chapter": 3,
+     "word": "die S-Bahn, -en",
+     "ar": "القطار السريع داخل المدينة",
+     "subject": "a modern suburban train at a station platform"
+    },
+    {
+     "id": "k3-der-zug-e",
+     "chapter": 3,
+     "word": "der Zug, ¨-e",
+     "ar": "القطر",
+     "subject": "an intercity train speeding through the countryside"
+    },
+    {
+     "id": "k3-das-flugzeug-e",
+     "chapter": 3,
+     "word": "das Flugzeug, -e",
+     "ar": "طيارة",
+     "subject": "an airplane taking off from a runway"
+    },
+    {
+     "id": "k3-das-schiff-e",
+     "chapter": 3,
+     "word": "das Schiff, -e",
+     "ar": "سفينة",
+     "subject": "a large ship sailing on the sea"
+    },
+    {
+     "id": "k3-die-fahrkarte-n",
+     "chapter": 3,
+     "word": "die Fahrkarte, -n",
+     "ar": "تذكرة مواصلات",
+     "subject": "a person buying a train ticket at a ticket machine"
+    },
+    {
+     "id": "k3-die-taxifahrt-en",
+     "chapter": 3,
+     "word": "die Taxifahrt, -en",
+     "ar": "مشوار تاكسي",
+     "subject": "a yellow taxi driving through a city street"
+    },
+    {
+     "id": "k3-zu-fuss",
+     "chapter": 3,
+     "word": "zu Fuß",
+     "ar": "مشي على الأقدام",
+     "subject": "a person walking on a sidewalk in the city"
+    },
+    {
+     "id": "k3-die-wegbeschreibung-en",
+     "chapter": 3,
+     "word": "die Wegbeschreibung, -en",
+     "ar": "وصف الطريق",
+     "subject": "a local person showing a tourist directions on a map"
+    },
+    {
+     "id": "k3-der-plan-e",
+     "chapter": 3,
+     "word": "der Plan, ¨-e",
+     "ar": "خريطة / خطة",
+     "subject": "a city map held open in two hands"
+    },
+    {
+     "id": "k3-hoch",
+     "chapter": 3,
+     "word": "hoch",
+     "ar": "عالي",
+     "subject": "a very tall skyscraper seen from below"
+    },
+    {
+     "id": "k3-der-meter",
+     "chapter": 3,
+     "word": "der Meter, -",
+     "ar": "متر",
+     "subject": "a yellow measuring tape"
+    }
+   ]
+  },
+  {
+   "sheet": 13,
+   "cells": [
+    {
+     "id": "k3-der-februar",
+     "chapter": 3,
+     "word": "der Februar",
+     "ar": "فبراير",
+     "subject": "people in colorful carnival costumes at a street parade"
+    },
+    {
+     "id": "k3-der-maerz",
+     "chapter": 3,
+     "word": "der März",
+     "ar": "مارس",
+     "subject": "crocuses and snowdrops blooming in early spring"
+    },
+    {
+     "id": "k3-der-april",
+     "chapter": 3,
+     "word": "der April",
+     "ar": "أبريل",
+     "subject": "rain and colorful umbrellas with tulips"
+    },
+    {
+     "id": "k3-der-mai",
+     "chapter": 3,
+     "word": "der Mai",
+     "ar": "مايو",
+     "subject": "a maypole decorated with ribbons in a village square"
+    },
+    {
+     "id": "k3-der-juni",
+     "chapter": 3,
+     "word": "der Juni",
+     "ar": "يونيو",
+     "subject": "a sunny summer meadow with wildflowers"
+    },
+    {
+     "id": "k3-der-august",
+     "chapter": 3,
+     "word": "der August",
+     "ar": "أغسطس",
+     "subject": "a crowded sunny beach with parasols"
+    },
+    {
+     "id": "k3-der-september",
+     "chapter": 3,
+     "word": "der September",
+     "ar": "سبتمبر",
+     "subject": "a harvest festival with beer tent and people in traditional clothes"
+    },
+    {
+     "id": "k3-der-oktober",
+     "chapter": 3,
+     "word": "der Oktober",
+     "ar": "أكتوبر",
+     "subject": "pumpkins and colorful autumn leaves"
+    },
+    {
+     "id": "k3-der-november",
+     "chapter": 3,
+     "word": "der November",
+     "ar": "نوفمبر",
+     "subject": "bare trees in thick fog on a grey day"
+    },
+    {
+     "id": "k3-der-dezember",
+     "chapter": 3,
+     "word": "der Dezember",
+     "ar": "ديسمبر",
+     "subject": "a Christmas market with lights and a decorated tree"
+    },
+    {
+     "id": "k3-schnell",
+     "chapter": 3,
+     "word": "schnell",
+     "ar": "سريع",
+     "subject": "a cheetah running at full speed"
+    },
+    {
+     "id": "k3-zeichnen",
+     "chapter": 3,
+     "word": "zeichnen",
+     "ar": "يرسم",
+     "subject": "a person drawing with a pencil at an easel"
+    },
+    {
+     "id": "k3-wuerfeln",
+     "chapter": 3,
+     "word": "würfeln",
+     "ar": "يرمي النرد",
+     "subject": "hands rolling dice on a board game"
+    },
+    {
+     "id": "k3-klopfen",
+     "chapter": 3,
+     "word": "klopfen",
+     "ar": "يخبط / يطرق",
+     "subject": "a hand knocking on a wooden door"
+    },
+    {
+     "id": "k3-der-arm-e",
+     "chapter": 3,
+     "word": "der Arm, -e",
+     "ar": "دراع",
+     "subject": "a strong human arm with an open hand"
+    },
+    {
+     "id": "k3-der-tisch-e",
+     "chapter": 3,
+     "word": "der Tisch, -e",
+     "ar": "ترابيزة",
+     "subject": "a wooden dining table with chairs"
+    }
+   ]
+  },
+  {
+   "sheet": 14,
+   "cells": [
+    {
+     "id": "k3-das-glueck",
+     "chapter": 3,
+     "word": "das Glück",
+     "ar": "الحظ السعيد",
+     "subject": "a four-leaf clover in grass"
+    },
+    {
+     "id": "k3-der-test-s",
+     "chapter": 3,
+     "word": "der Test, -s",
+     "ar": "اختبار",
+     "subject": "a student sitting an exam in a quiet classroom"
+    },
+    {
+     "id": "k3-sehen",
+     "chapter": 3,
+     "word": "sehen",
+     "ar": "يشوف",
+     "subject": "a close-up of a human eye"
+    },
+    {
+     "id": "k3-zeigen",
+     "chapter": 3,
+     "word": "zeigen",
+     "ar": "يوري / يشاور على",
+     "subject": "a person pointing with a finger at a map"
+    },
+    {
+     "id": "k4-morgens",
+     "chapter": 4,
+     "word": "morgens",
+     "ar": "الصبح (كل يوم)",
+     "subject": "a sunrise seen through a window with a cup of coffee"
+    },
+    {
+     "id": "k4-mittags",
+     "chapter": 4,
+     "word": "mittags",
+     "ar": "وقت الضهر (كل يوم)",
+     "subject": "people having lunch outside under a high midday sun"
+    },
+    {
+     "id": "k4-nachmittags",
+     "chapter": 4,
+     "word": "nachmittags",
+     "ar": "بعد الضهر (كل يوم)",
+     "subject": "a cafe table with coffee and cake in the afternoon sun"
+    },
+    {
+     "id": "k4-abends",
+     "chapter": 4,
+     "word": "abends",
+     "ar": "بالليل / المساء (كل يوم)",
+     "subject": "a sunset over a city with a dinner table on a balcony"
+    },
+    {
+     "id": "k4-wach",
+     "chapter": 4,
+     "word": "wach",
+     "ar": "صاحي",
+     "subject": "a person stretching in bed next to an alarm clock in the morning"
+    },
+    {
+     "id": "k4-die-birne-n",
+     "chapter": 4,
+     "word": "die Birne, -n",
+     "ar": "كمثرى",
+     "subject": "green pears on a branch"
+    },
+    {
+     "id": "k4-die-gurke-n",
+     "chapter": 4,
+     "word": "die Gurke, -n",
+     "ar": "خيارة",
+     "subject": "fresh cucumbers"
+    },
+    {
+     "id": "k4-der-champignon-s",
+     "chapter": 4,
+     "word": "der Champignon, -s",
+     "ar": "مشروم",
+     "subject": "white button mushrooms in a basket"
+    },
+    {
+     "id": "k4-die-olive-n",
+     "chapter": 4,
+     "word": "die Olive, -n",
+     "ar": "زيتونة",
+     "subject": "green and black olives in a bowl"
+    },
+    {
+     "id": "k4-das-muesli-s",
+     "chapter": 4,
+     "word": "das Müsli, -s",
+     "ar": "موسلي (حبوب الفطار)",
+     "subject": "a bowl of muesli with milk and fruits"
+    },
+    {
+     "id": "k4-der-keks-e",
+     "chapter": 4,
+     "word": "der Keks, -e",
+     "ar": "بسكويت",
+     "subject": "a plate of butter cookies"
+    },
+    {
+     "id": "k4-die-marmelade-n",
+     "chapter": 4,
+     "word": "die Marmelade, -n",
+     "ar": "مربى",
+     "subject": "a jar of strawberry jam with a spoon next to bread"
+    }
+   ]
+  },
+  {
+   "sheet": 15,
+   "cells": [
+    {
+     "id": "k4-der-emmentaler",
+     "chapter": 4,
+     "word": "der Emmentaler, -",
+     "ar": "جبنة إيمنتال",
+     "subject": "a wedge of Swiss cheese with holes"
+    },
+    {
+     "id": "k4-der-joghurt-s",
+     "chapter": 4,
+     "word": "der Joghurt, -s",
+     "ar": "زبادي",
+     "subject": "a bowl of yogurt with berries"
+    },
+    {
+     "id": "k4-die-sahne",
+     "chapter": 4,
+     "word": "die Sahne",
+     "ar": "كريمة",
+     "subject": "whipped cream on a cake"
+    },
+    {
+     "id": "k4-das-haehnchen",
+     "chapter": 4,
+     "word": "das Hähnchen, -",
+     "ar": "فرخة / فراخ",
+     "subject": "a roasted whole chicken on a plate"
+    },
+    {
+     "id": "k4-das-fischgericht-e",
+     "chapter": 4,
+     "word": "das Fischgericht, -e",
+     "ar": "أكلة سمك",
+     "subject": "a plate of grilled fish with lemon and vegetables"
+    },
+    {
+     "id": "k4-die-wurst-e",
+     "chapter": 4,
+     "word": "die Wurst, ¨-e",
+     "ar": "سجق / مرتديلا",
+     "subject": "different sausages and cold cuts on a wooden board"
+    },
+    {
+     "id": "k4-der-schinken",
+     "chapter": 4,
+     "word": "der Schinken, -",
+     "ar": "لحمة مدخنة (هام)",
+     "subject": "slices of ham on a plate"
+    },
+    {
+     "id": "k4-der-doener",
+     "chapter": 4,
+     "word": "der Döner, -",
+     "ar": "دونر / شاورما",
+     "subject": "a doner kebab sandwich with salad and meat"
+    },
+    {
+     "id": "k4-das-sushi-s",
+     "chapter": 4,
+     "word": "das Sushi, -s",
+     "ar": "سوشي",
+     "subject": "a plate of assorted sushi"
+    },
+    {
+     "id": "k4-die-pizza-s-pizzen",
+     "chapter": 4,
+     "word": "die Pizza, -s/Pizzen",
+     "ar": "بيتزا",
+     "subject": "a freshly baked pizza on a wooden board"
+    },
+    {
+     "id": "k4-die-pommes-frites-pl",
+     "chapter": 4,
+     "word": "die Pommes frites (Pl.)",
+     "ar": "بطاطس مقلية",
+     "subject": "a paper cone of french fries with ketchup"
+    },
+    {
+     "id": "k4-das-salz-e",
+     "chapter": 4,
+     "word": "das Salz, -e",
+     "ar": "ملح",
+     "subject": "a salt shaker with spilled salt"
+    },
+    {
+     "id": "k4-der-pfeffer",
+     "chapter": 4,
+     "word": "der Pfeffer",
+     "ar": "فلفل",
+     "subject": "a pepper mill with black peppercorns"
+    },
+    {
+     "id": "k4-der-zucker",
+     "chapter": 4,
+     "word": "der Zucker",
+     "ar": "سكر",
+     "subject": "a bowl of sugar with sugar cubes"
+    },
+    {
+     "id": "k4-das-oel-e",
+     "chapter": 4,
+     "word": "das Öl, -e",
+     "ar": "زيت",
+     "subject": "a bottle of olive oil with olives"
+    },
+    {
+     "id": "k4-der-essig-e",
+     "chapter": 4,
+     "word": "der Essig, -e",
+     "ar": "خل",
+     "subject": "a bottle of vinegar next to a salad"
+    }
+   ]
+  },
+  {
+   "sheet": 16,
+   "cells": [
+    {
+     "id": "k4-die-schokolade-n",
+     "chapter": 4,
+     "word": "die Schokolade, -n",
+     "ar": "شيكولاتة",
+     "subject": "a bar of chocolate with broken squares"
+    },
+    {
+     "id": "k4-das-dessert-s",
+     "chapter": 4,
+     "word": "das Dessert, -s",
+     "ar": "حلويات / تحلية",
+     "subject": "a cake slice on a plate as a dessert"
+    },
+    {
+     "id": "k4-das-gericht-e",
+     "chapter": 4,
+     "word": "das Gericht, -e",
+     "ar": "طبق / أكلة",
+     "subject": "a beautifully plated main dish in a restaurant"
+    },
+    {
+     "id": "k4-asiatisch",
+     "chapter": 4,
+     "word": "asiatisch",
+     "ar": "آسيوي",
+     "subject": "an Asian meal with rice, vegetables and chopsticks"
+    },
+    {
+     "id": "k4-das-getraenk-e",
+     "chapter": 4,
+     "word": "das Getränk, -e",
+     "ar": "مشروب",
+     "subject": "several glasses with different cold drinks"
+    },
+    {
+     "id": "k4-der-apfelsaft-e",
+     "chapter": 4,
+     "word": "der Apfelsaft, ¨-e",
+     "ar": "عصير تفاح",
+     "subject": "a glass of apple juice next to an apple"
+    },
+    {
+     "id": "k4-der-orangensaft-e",
+     "chapter": 4,
+     "word": "der Orangensaft, ¨-e",
+     "ar": "عصير برتقال",
+     "subject": "a glass of orange juice next to oranges"
+    },
+    {
+     "id": "k4-die-limonade-n",
+     "chapter": 4,
+     "word": "die Limonade, -n",
+     "ar": "ليمونادة",
+     "subject": "a glass of lemonade with ice and a lemon slice"
+    },
+    {
+     "id": "k4-die-cola",
+     "chapter": 4,
+     "word": "die Cola",
+     "ar": "كولا",
+     "subject": "a glass of cola with ice cubes"
+    },
+    {
+     "id": "k4-der-becher",
+     "chapter": 4,
+     "word": "der Becher, -",
+     "ar": "كوب كبير (بدون يد)",
+     "subject": "a paper cup with a hot drink"
+    },
+    {
+     "id": "k4-prost",
+     "chapter": 4,
+     "word": "prost",
+     "ar": "في صحتك",
+     "subject": "two beer glasses clinking together"
+    },
+    {
+     "id": "k4-zum-wohl",
+     "chapter": 4,
+     "word": "zum Wohl",
+     "ar": "في صحتك",
+     "subject": "two wine glasses clinking together"
+    },
+    {
+     "id": "k4-gesund",
+     "chapter": 4,
+     "word": "gesund",
+     "ar": "صحّي",
+     "subject": "fresh fruit and vegetables with a jogging person in the background"
+    },
+    {
+     "id": "k4-satt",
+     "chapter": 4,
+     "word": "satt",
+     "ar": "شبعان",
+     "subject": "a man holding his full stomach after a big meal"
+    },
+    {
+     "id": "k4-der-einkauf-e",
+     "chapter": 4,
+     "word": "der Einkauf, ¨-e",
+     "ar": "المشتريات / التسوق",
+     "subject": "shopping bags full of groceries"
+    },
+    {
+     "id": "k4-die-metzgerei-en",
+     "chapter": 4,
+     "word": "die Metzgerei, -en",
+     "ar": "جزارة",
+     "subject": "a butcher shop counter with meat and a butcher"
+    }
+   ]
+  },
+  {
+   "sheet": 17,
+   "cells": [
+    {
+     "id": "k4-der-einkaufszettel",
+     "chapter": 4,
+     "word": "der Einkaufszettel, -",
+     "ar": "قايمة مشتريات",
+     "subject": "a handwritten shopping list on a fridge (text unreadable)"
+    },
+    {
+     "id": "k4-der-einkaufswagen",
+     "chapter": 4,
+     "word": "der Einkaufswagen, ¨-",
+     "ar": "عربية التسوق",
+     "subject": "a shopping cart in a supermarket aisle"
+    },
+    {
+     "id": "k4-der-kassenzettel",
+     "chapter": 4,
+     "word": "der Kassenzettel, -",
+     "ar": "إيصال الكاشير",
+     "subject": "a long store receipt (text unreadable)"
+    },
+    {
+     "id": "k4-klein",
+     "chapter": 4,
+     "word": "klein",
+     "ar": "صغير",
+     "subject": "a tiny baby chick sitting on a hand"
+    },
+    {
+     "id": "k4-der-cent-s",
+     "chapter": 4,
+     "word": "der Cent, -s",
+     "ar": "سنت",
+     "subject": "a pile of copper cent coins"
+    },
+    {
+     "id": "k4-das-kilogramm",
+     "chapter": 4,
+     "word": "das Kilogramm",
+     "ar": "كيلوجرام",
+     "subject": "apples on a kitchen scale"
+    },
+    {
+     "id": "k4-der-liter",
+     "chapter": 4,
+     "word": "der Liter, -",
+     "ar": "لتر",
+     "subject": "a liter bottle of milk"
+    },
+    {
+     "id": "k4-das-stueck-e",
+     "chapter": 4,
+     "word": "das Stück, -e",
+     "ar": "قطعة",
+     "subject": "a piece of cake on a plate"
+    },
+    {
+     "id": "k4-das-paar-e",
+     "chapter": 4,
+     "word": "das Paar, -e",
+     "ar": "زوج / اتنين",
+     "subject": "a pair of shoes"
+    },
+    {
+     "id": "k4-die-tuete-n",
+     "chapter": 4,
+     "word": "die Tüte, -n",
+     "ar": "كيس",
+     "subject": "a paper shopping bag with vegetables"
+    },
+    {
+     "id": "k4-die-dose-n",
+     "chapter": 4,
+     "word": "die Dose, -n",
+     "ar": "علبة صفيح",
+     "subject": "several tin cans stacked"
+    },
+    {
+     "id": "k4-die-verpackung-en",
+     "chapter": 4,
+     "word": "die Verpackung, -en",
+     "ar": "غلاف / تغليف",
+     "subject": "packaged food boxes and wrappers"
+    },
+    {
+     "id": "k4-wechseln",
+     "chapter": 4,
+     "word": "wechseln",
+     "ar": "يصرف (فكة) / يبدّل",
+     "subject": "a currency exchange counter with banknotes"
+    },
+    {
+     "id": "k4-nehmen",
+     "chapter": 4,
+     "word": "nehmen",
+     "ar": "ياخد",
+     "subject": "a hand taking an apple from a basket"
+    },
+    {
+     "id": "k4-grillen",
+     "chapter": 4,
+     "word": "grillen",
+     "ar": "يشوي (على الجريل)",
+     "subject": "sausages and steaks on a barbecue grill"
+    },
+    {
+     "id": "k4-die-grillparty-s",
+     "chapter": 4,
+     "word": "die Grillparty, -s",
+     "ar": "حفلة شوي",
+     "subject": "friends having a barbecue party in a garden"
+    }
+   ]
+  },
+  {
+   "sheet": 18,
+   "cells": [
+    {
+     "id": "k4-schaelen",
+     "chapter": 4,
+     "word": "schälen",
+     "ar": "يقشّر",
+     "subject": "a person peeling a potato with a peeler"
+    },
+    {
+     "id": "k4-schneiden",
+     "chapter": 4,
+     "word": "schneiden",
+     "ar": "يقطّع",
+     "subject": "a person cutting vegetables with a knife"
+    },
+    {
+     "id": "k4-waschen",
+     "chapter": 4,
+     "word": "waschen",
+     "ar": "يغسل",
+     "subject": "hands washing under a running tap"
+    },
+    {
+     "id": "k4-zubereiten",
+     "chapter": 4,
+     "word": "zubereiten",
+     "ar": "يحضّر (أكل)",
+     "subject": "a chef preparing a meal in a kitchen"
+    },
+    {
+     "id": "k4-helfen",
+     "chapter": 4,
+     "word": "helfen",
+     "ar": "يساعد",
+     "subject": "a young person helping an elderly woman carry her bags"
+    },
+    {
+     "id": "k4-planen",
+     "chapter": 4,
+     "word": "planen",
+     "ar": "يخطط",
+     "subject": "a person planning with a calendar and sticky notes"
+    },
+    {
+     "id": "k4-probieren",
+     "chapter": 4,
+     "word": "probieren",
+     "ar": "يجرّب / يدوق",
+     "subject": "a woman tasting soup from a spoon"
+    },
+    {
+     "id": "k4-der-chef-s",
+     "chapter": 4,
+     "word": "der Chef, -s",
+     "ar": "المدير",
+     "subject": "a male boss in a suit sitting at a large desk"
+    },
+    {
+     "id": "k4-die-chefin-nen",
+     "chapter": 4,
+     "word": "die Chefin, -nen",
+     "ar": "المديرة",
+     "subject": "a female boss leading a meeting"
+    },
+    {
+     "id": "k4-die-kantine-n",
+     "chapter": 4,
+     "word": "die Kantine, -n",
+     "ar": "كافيتريا الشركة",
+     "subject": "a company canteen with people holding trays"
+    },
+    {
+     "id": "k4-das-team-s",
+     "chapter": 4,
+     "word": "das Team, -s",
+     "ar": "فريق",
+     "subject": "a team of coworkers stacking their hands together"
+    },
+    {
+     "id": "k4-die-arbeitszeit-en",
+     "chapter": 4,
+     "word": "die Arbeitszeit, -en",
+     "ar": "مواعيد الشغل",
+     "subject": "a wall clock in an office with people working"
+    },
+    {
+     "id": "k4-allein",
+     "chapter": 4,
+     "word": "allein",
+     "ar": "لوحده",
+     "subject": "one person sitting alone on a bench"
+    },
+    {
+     "id": "k4-stressig",
+     "chapter": 4,
+     "word": "stressig",
+     "ar": "مجهد / متعب",
+     "subject": "a stressed office worker surrounded by papers and phones"
+    },
+    {
+     "id": "k4-die-altstadt-e",
+     "chapter": 4,
+     "word": "die Altstadt, ¨-e",
+     "ar": "المدينة القديمة",
+     "subject": "a narrow old town street with half-timbered houses"
+    },
+    {
+     "id": "k4-die-nachricht-en",
+     "chapter": 4,
+     "word": "die Nachricht, -en",
+     "ar": "رسالة",
+     "subject": "a smartphone showing chat message bubbles"
+    }
+   ]
+  },
+  {
+   "sheet": 19,
+   "cells": [
+    {
+     "id": "k4-kreativ",
+     "chapter": 4,
+     "word": "kreativ",
+     "ar": "مبدع",
+     "subject": "an artist painting a colorful abstract picture"
+    },
+    {
+     "id": "k4-erzaehlen",
+     "chapter": 4,
+     "word": "erzählen",
+     "ar": "يحكي",
+     "subject": "a grandmother telling a story to children"
+    },
+    {
+     "id": "k4-die-mindmap-s",
+     "chapter": 4,
+     "word": "die Mindmap, -s",
+     "ar": "خريطة ذهنية",
+     "subject": "a mind map drawn on a whiteboard"
+    },
+    {
+     "id": "k4-recherchieren",
+     "chapter": 4,
+     "word": "recherchieren",
+     "ar": "يبحث (عن معلومات)",
+     "subject": "a person researching with a laptop and books"
+    },
+    {
+     "id": "k5-die-sekunde-n",
+     "chapter": 5,
+     "word": "die Sekunde, -n",
+     "ar": "ثانية",
+     "subject": "a stopwatch in a hand"
+    },
+    {
+     "id": "k5-die-verspaetung-en",
+     "chapter": 5,
+     "word": "die Verspätung, -en",
+     "ar": "تأخير",
+     "subject": "a person running late checking a watch on a train platform"
+    },
+    {
+     "id": "k5-zu-hause",
+     "chapter": 5,
+     "word": "zu Hause",
+     "ar": "في البيت",
+     "subject": "a family relaxing in a living room at home"
+    },
+    {
+     "id": "k5-zu-mittag-essen",
+     "chapter": 5,
+     "word": "zu Mittag essen",
+     "ar": "يتغدّى",
+     "subject": "colleagues having lunch together at a table"
+    },
+    {
+     "id": "k5-sitzen",
+     "chapter": 5,
+     "word": "sitzen",
+     "ar": "يقعد / قاعد",
+     "subject": "a person sitting on a chair at a table"
+    },
+    {
+     "id": "k5-offen",
+     "chapter": 5,
+     "word": "offen",
+     "ar": "مفتوح",
+     "subject": "an open door with sunlight coming in"
+    },
+    {
+     "id": "k5-das-familienfoto-s",
+     "chapter": 5,
+     "word": "das Familienfoto, -s",
+     "ar": "صورة العيلة",
+     "subject": "a family posing together for a portrait"
+    },
+    {
+     "id": "k5-der-grossvater",
+     "chapter": 5,
+     "word": "der Großvater, ¨-",
+     "ar": "الجد",
+     "subject": "a grandfather with a gray beard reading a newspaper"
+    },
+    {
+     "id": "k5-die-grossmutter",
+     "chapter": 5,
+     "word": "die Großmutter, ¨-",
+     "ar": "الجدة",
+     "subject": "a grandmother knitting in an armchair"
+    },
+    {
+     "id": "k5-der-onkel",
+     "chapter": 5,
+     "word": "der Onkel, -",
+     "ar": "العم / الخال",
+     "subject": "a friendly uncle playing with his niece"
+    },
+    {
+     "id": "k5-das-baby-s",
+     "chapter": 5,
+     "word": "das Baby, -s",
+     "ar": "بيبي / رضيع",
+     "subject": "a smiling baby lying on a blanket"
+    },
+    {
+     "id": "k5-der-junge-n",
+     "chapter": 5,
+     "word": "der Junge, -n",
+     "ar": "ولد",
+     "subject": "a boy playing with a toy car"
+    }
+   ]
+  },
+  {
+   "sheet": 20,
+   "cells": [
+    {
+     "id": "k5-das-maedchen",
+     "chapter": 5,
+     "word": "das Mädchen, -",
+     "ar": "بنت صغيرة",
+     "subject": "a girl with a ponytail on a swing"
+    },
+    {
+     "id": "k5-verheiratet",
+     "chapter": 5,
+     "word": "verheiratet",
+     "ar": "متجوّز",
+     "subject": "a bride and groom showing their wedding rings"
+    },
+    {
+     "id": "k5-der-hund-e",
+     "chapter": 5,
+     "word": "der Hund, -e",
+     "ar": "كلب",
+     "subject": "a happy dog sitting on grass"
+    },
+    {
+     "id": "k5-der-hamster",
+     "chapter": 5,
+     "word": "der Hamster, -",
+     "ar": "هامستر",
+     "subject": "a hamster eating a nut"
+    },
+    {
+     "id": "k5-die-maus-e",
+     "chapter": 5,
+     "word": "die Maus, ¨-e",
+     "ar": "فأر / ماوس",
+     "subject": "a small gray mouse"
+    },
+    {
+     "id": "k5-das-buero-s",
+     "chapter": 5,
+     "word": "das Büro, -s",
+     "ar": "مكتب",
+     "subject": "a modern office with desks and computers"
+    },
+    {
+     "id": "k5-die-mensa-mensen",
+     "chapter": 5,
+     "word": "die Mensa, Mensen",
+     "ar": "مطعم الجامعة",
+     "subject": "a university cafeteria with students eating"
+    },
+    {
+     "id": "k5-die-musikschule-n",
+     "chapter": 5,
+     "word": "die Musikschule, -n",
+     "ar": "مدرسة موسيقى",
+     "subject": "children playing instruments in a music lesson"
+    },
+    {
+     "id": "k5-die-sprachschule-n",
+     "chapter": 5,
+     "word": "die Sprachschule, -n",
+     "ar": "معهد لغات",
+     "subject": "a language school classroom with a world map"
+    },
+    {
+     "id": "k5-das-training-s",
+     "chapter": 5,
+     "word": "das Training, -s",
+     "ar": "تدريب",
+     "subject": "a person training with weights in a gym"
+    },
+    {
+     "id": "k5-der-sport",
+     "chapter": 5,
+     "word": "der Sport",
+     "ar": "رياضة",
+     "subject": "a family running together in a park"
+    },
+    {
+     "id": "k5-das-spiel-e",
+     "chapter": 5,
+     "word": "das Spiel, -e",
+     "ar": "لعبة / مباراة",
+     "subject": "friends playing a board game around a table"
+    },
+    {
+     "id": "k5-der-ball-e",
+     "chapter": 5,
+     "word": "der Ball, ¨-e",
+     "ar": "كورة",
+     "subject": "a colorful ball on grass"
+    },
+    {
+     "id": "k5-die-geige-n",
+     "chapter": 5,
+     "word": "die Geige, -n",
+     "ar": "كمان (آلة)",
+     "subject": "a violin and bow"
+    },
+    {
+     "id": "k5-die-trompete-n",
+     "chapter": 5,
+     "word": "die Trompete, -n",
+     "ar": "ترومبيت",
+     "subject": "a shiny trumpet"
+    },
+    {
+     "id": "k5-das-saxofon-e",
+     "chapter": 5,
+     "word": "das Saxofon, -e",
+     "ar": "ساكسفون",
+     "subject": "a golden saxophone"
+    }
+   ]
+  },
+  {
+   "sheet": 21,
+   "cells": [
+    {
+     "id": "k5-das-motorrad-er",
+     "chapter": 5,
+     "word": "das Motorrad, ¨-er",
+     "ar": "موتوسيكل",
+     "subject": "a motorcycle parked on a street"
+    },
+    {
+     "id": "k5-die-bar-s",
+     "chapter": 5,
+     "word": "die Bar, -s",
+     "ar": "بار",
+     "subject": "a bar counter with a bartender and bottles"
+    },
+    {
+     "id": "k5-der-mathe-test-s",
+     "chapter": 5,
+     "word": "der Mathe-Test, -s",
+     "ar": "اختبار رياضيات",
+     "subject": "a math exam paper with equations and a pencil"
+    },
+    {
+     "id": "k5-die-hausaufgabe-n",
+     "chapter": 5,
+     "word": "die Hausaufgabe, -n",
+     "ar": "واجب",
+     "subject": "a child doing homework at a desk"
+    },
+    {
+     "id": "k5-die-zeitung-en",
+     "chapter": 5,
+     "word": "die Zeitung, -en",
+     "ar": "جرنال",
+     "subject": "a person reading a newspaper at breakfast"
+    },
+    {
+     "id": "k5-das-telefongespraech-e",
+     "chapter": 5,
+     "word": "das Telefongespräch, -e",
+     "ar": "مكالمة تليفونية",
+     "subject": "a person talking on a phone while smiling"
+    },
+    {
+     "id": "k5-besuchen",
+     "chapter": 5,
+     "word": "besuchen",
+     "ar": "يزور",
+     "subject": "a person with flowers ringing a friend's doorbell"
+    },
+    {
+     "id": "k5-das-gaestebuch-er",
+     "chapter": 5,
+     "word": "das Gästebuch, ¨-er",
+     "ar": "دفتر الزوّار",
+     "subject": "an open guest book with a pen"
+    },
+    {
+     "id": "k5-der-kalender",
+     "chapter": 5,
+     "word": "der Kalender, -",
+     "ar": "تقويم / أجندة",
+     "subject": "a wall calendar with marked dates"
+    },
+    {
+     "id": "k5-die-homepage-s",
+     "chapter": 5,
+     "word": "die Homepage, -s",
+     "ar": "الصفحة الرئيسية للموقع",
+     "subject": "a website open on a laptop screen"
+    },
+    {
+     "id": "k5-die-praxis-praxen",
+     "chapter": 5,
+     "word": "die Praxis, Praxen",
+     "ar": "عيادة",
+     "subject": "a doctor's practice room with a stethoscope and desk"
+    },
+    {
+     "id": "k5-die-besprechung-en",
+     "chapter": 5,
+     "word": "die Besprechung, -en",
+     "ar": "اجتماع",
+     "subject": "colleagues in a meeting around a table"
+    },
+    {
+     "id": "k5-der-kunde-n",
+     "chapter": 5,
+     "word": "der Kunde, -n",
+     "ar": "عميل",
+     "subject": "a male customer at a shop counter"
+    },
+    {
+     "id": "k5-die-kundin-nen",
+     "chapter": 5,
+     "word": "die Kundin, -nen",
+     "ar": "عميلة",
+     "subject": "a female customer paying at a shop"
+    },
+    {
+     "id": "k5-der-techniker",
+     "chapter": 5,
+     "word": "der Techniker, -",
+     "ar": "فني",
+     "subject": "a male technician repairing a machine"
+    },
+    {
+     "id": "k5-die-technikerin-nen",
+     "chapter": 5,
+     "word": "die Technikerin, -nen",
+     "ar": "فنية",
+     "subject": "a female technician with tools and a tablet"
+    }
+   ]
+  },
+  {
+   "sheet": 22,
+   "cells": [
+    {
+     "id": "k5-krank",
+     "chapter": 5,
+     "word": "krank",
+     "ar": "عيّان",
+     "subject": "a woman with fever in bed with a hot tea"
+    },
+    {
+     "id": "k5-der-stress",
+     "chapter": 5,
+     "word": "der Stress",
+     "ar": "ضغط / توتر",
+     "subject": "a driver stressed in a traffic jam holding his head"
+    },
+    {
+     "id": "k5-die-idee-n",
+     "chapter": 5,
+     "word": "die Idee, -n",
+     "ar": "فكرة",
+     "subject": "a light bulb glowing above a person's head"
+    },
+    {
+     "id": "k5-die-fantasie",
+     "chapter": 5,
+     "word": "die Fantasie",
+     "ar": "خيال",
+     "subject": "a child imagining a dragon and a castle"
+    },
+    {
+     "id": "k5-cool",
+     "chapter": 5,
+     "word": "cool",
+     "ar": "حلو أوي",
+     "subject": "a young man with sunglasses doing a cool pose"
+    },
+    {
+     "id": "k5-ueberlegen",
+     "chapter": 5,
+     "word": "überlegen",
+     "ar": "يفكّر",
+     "subject": "a person thinking with a hand on the chin"
+    },
+    {
+     "id": "k5-falsch",
+     "chapter": 5,
+     "word": "falsch",
+     "ar": "غلط",
+     "subject": "a big red cross mark on a paper"
+    },
+    {
+     "id": "k5-die-karte-n",
+     "chapter": 5,
+     "word": "die Karte, -n",
+     "ar": "كارت",
+     "subject": "playing cards fanned out in a hand"
+    },
+    {
+     "id": "k5-ziehen",
+     "chapter": 5,
+     "word": "ziehen",
+     "ar": "يسحب",
+     "subject": "a hand drawing a card from a deck"
+    },
+    {
+     "id": "k5-der-stapel",
+     "chapter": 5,
+     "word": "der Stapel, -",
+     "ar": "كومة",
+     "subject": "a stack of papers on a desk"
+    },
+    {
+     "id": "k6-schicken",
+     "chapter": 6,
+     "word": "schicken",
+     "ar": "يبعت",
+     "subject": "a person putting a letter into a mailbox"
+    },
+    {
+     "id": "k6-die-anmeldung-en",
+     "chapter": 6,
+     "word": "die Anmeldung, -en",
+     "ar": "التسجيل",
+     "subject": "a person filling out a registration form at a desk"
+    },
+    {
+     "id": "k6-die-ueberraschung-en",
+     "chapter": 6,
+     "word": "die Überraschung, -en",
+     "ar": "مفاجأة",
+     "subject": "a surprise birthday party with people shouting and balloons"
+    },
+    {
+     "id": "k6-wandern",
+     "chapter": 6,
+     "word": "wandern",
+     "ar": "يتمشّى مسافات طويلة (هايكنج)",
+     "subject": "hikers walking on a mountain trail"
+    },
+    {
+     "id": "k6-laufen",
+     "chapter": 6,
+     "word": "laufen",
+     "ar": "يجري / يمشي",
+     "subject": "a jogger running in a park"
+    },
+    {
+     "id": "k6-der-marathon-s",
+     "chapter": 6,
+     "word": "der Marathon, -s",
+     "ar": "ماراثون",
+     "subject": "marathon runners in a crowd in a city"
+    }
+   ]
+  },
+  {
+   "sheet": 23,
+   "cells": [
+    {
+     "id": "k6-klettern",
+     "chapter": 6,
+     "word": "klettern",
+     "ar": "يتسلّق",
+     "subject": "a climber on a rock wall"
+    },
+    {
+     "id": "k6-das-fitness-studio-s",
+     "chapter": 6,
+     "word": "das Fitness-Studio, -s",
+     "ar": "جيم",
+     "subject": "a gym with exercise machines"
+    },
+    {
+     "id": "k6-der-ski",
+     "chapter": 6,
+     "word": "der Ski, -",
+     "ar": "جزمة تزلج (سكي)",
+     "subject": "skis and poles standing in snow"
+    },
+    {
+     "id": "k6-die-fahrradtour-en",
+     "chapter": 6,
+     "word": "die Fahrradtour, -en",
+     "ar": "رحلة بالعجلة",
+     "subject": "cyclists riding along a river"
+    },
+    {
+     "id": "k6-der-ausflug-e",
+     "chapter": 6,
+     "word": "der Ausflug, ¨-e",
+     "ar": "رحلة قصيرة",
+     "subject": "a family on a day trip at a lake"
+    },
+    {
+     "id": "k6-das-picknick-s",
+     "chapter": 6,
+     "word": "das Picknick, -s",
+     "ar": "بيكنيك",
+     "subject": "a picnic blanket with food in a park"
+    },
+    {
+     "id": "k6-der-spielplatz-e",
+     "chapter": 6,
+     "word": "der Spielplatz, ¨-e",
+     "ar": "ملعب أطفال",
+     "subject": "a children's playground with a slide and swings"
+    },
+    {
+     "id": "k6-die-bank-e",
+     "chapter": 6,
+     "word": "die Bank, ¨-e",
+     "ar": "دكة / مقعد خشب",
+     "subject": "a wooden park bench under a tree"
+    },
+    {
+     "id": "k6-verboten",
+     "chapter": 6,
+     "word": "verboten",
+     "ar": "ممنوع",
+     "subject": "a red round prohibition road sign"
+    },
+    {
+     "id": "k6-das-fussballspiel-e",
+     "chapter": 6,
+     "word": "das Fußballspiel, -e",
+     "ar": "مباراة كرة قدم",
+     "subject": "football players in action during a match"
+    },
+    {
+     "id": "k6-die-natur",
+     "chapter": 6,
+     "word": "die Natur",
+     "ar": "الطبيعة",
+     "subject": "a green forest landscape with a stream"
+    },
+    {
+     "id": "k6-draussen",
+     "chapter": 6,
+     "word": "draußen",
+     "ar": "بره",
+     "subject": "people enjoying the sun outdoors in a garden"
+    },
+    {
+     "id": "k6-die-sonne",
+     "chapter": 6,
+     "word": "die Sonne",
+     "ar": "الشمس",
+     "subject": "a bright sun in a blue sky"
+    },
+    {
+     "id": "k6-der-regen",
+     "chapter": 6,
+     "word": "der Regen",
+     "ar": "المطر",
+     "subject": "rain falling on a street with a person under an umbrella"
+    },
+    {
+     "id": "k6-das-wetter",
+     "chapter": 6,
+     "word": "das Wetter",
+     "ar": "الطقس",
+     "subject": "sun peeking through clouds with rain showers"
+    },
+    {
+     "id": "k6-warm",
+     "chapter": 6,
+     "word": "warm",
+     "ar": "دافي",
+     "subject": "a person in a T-shirt enjoying a sunny summer day"
+    }
+   ]
+  },
+  {
+   "sheet": 24,
+   "cells": [
+    {
+     "id": "k6-kalt",
+     "chapter": 6,
+     "word": "kalt",
+     "ar": "بارد",
+     "subject": "a person in a winter coat and scarf shivering in the snow"
+    },
+    {
+     "id": "k6-geniessen",
+     "chapter": 6,
+     "word": "genießen",
+     "ar": "يستمتع بـ",
+     "subject": "a woman enjoying the sun with closed eyes"
+    },
+    {
+     "id": "k6-die-pantomime",
+     "chapter": 6,
+     "word": "die Pantomime",
+     "ar": "تمثيل صامت",
+     "subject": "a mime artist with a white face performing"
+    },
+    {
+     "id": "k6-der-besuch-e",
+     "chapter": 6,
+     "word": "der Besuch, -e",
+     "ar": "زيارة / ضيف",
+     "subject": "guests arriving at the door with a gift"
+    },
+    {
+     "id": "k6-der-treffpunkt-e",
+     "chapter": 6,
+     "word": "der Treffpunkt, -e",
+     "ar": "مكان اللقاء",
+     "subject": "friends meeting at a fountain in a city square"
+    },
+    {
+     "id": "k6-das-programm-e",
+     "chapter": 6,
+     "word": "das Programm, -e",
+     "ar": "البرنامج",
+     "subject": "a printed event program leaflet in a hand (text unreadable)"
+    },
+    {
+     "id": "k6-das-open-air-kino-s",
+     "chapter": 6,
+     "word": "das Open-Air-Kino, -s",
+     "ar": "سينما في الهواء الطلق",
+     "subject": "an open-air cinema outdoors at night with a big screen"
+    },
+    {
+     "id": "k6-die-museumsnacht-e",
+     "chapter": 6,
+     "word": "die Museumsnacht, ¨-e",
+     "ar": "ليلة المتاحف",
+     "subject": "a museum at night with crowds entering"
+    },
+    {
+     "id": "k6-die-kneipe-n",
+     "chapter": 6,
+     "word": "die Kneipe, -n",
+     "ar": "بار / مقهى بسيط",
+     "subject": "a cozy pub interior with beer taps and guests"
+    },
+    {
+     "id": "k6-das-kaffeehaus-er",
+     "chapter": 6,
+     "word": "das Kaffeehaus, ¨-er",
+     "ar": "مقهى تقليدي",
+     "subject": "a traditional Viennese coffee house with marble tables"
+    },
+    {
+     "id": "k6-der-biergarten",
+     "chapter": 6,
+     "word": "der Biergarten, ¨-",
+     "ar": "حديقة بيرة",
+     "subject": "a beer garden under chestnut trees with wooden tables"
+    },
+    {
+     "id": "k6-die-strandbar-s",
+     "chapter": 6,
+     "word": "die Strandbar, -s",
+     "ar": "بار على الشاطئ",
+     "subject": "a beach bar with palm trees and deckchairs"
+    },
+    {
+     "id": "k6-die-selbstbedienung",
+     "chapter": 6,
+     "word": "die Selbstbedienung",
+     "ar": "سيلف سيرفيس",
+     "subject": "a self-service buffet counter with a tray"
+    },
+    {
+     "id": "k6-die-bestellung-en",
+     "chapter": 6,
+     "word": "die Bestellung, -en",
+     "ar": "الطلب",
+     "subject": "a waiter taking an order at a restaurant table"
+    },
+    {
+     "id": "k6-zahlen",
+     "chapter": 6,
+     "word": "zahlen",
+     "ar": "يدفع",
+     "subject": "a customer paying a waiter with a card"
+    },
+    {
+     "id": "k6-der-franken",
+     "chapter": 6,
+     "word": "der Franken, -",
+     "ar": "فرنك سويسري",
+     "subject": "Swiss franc coins and banknotes"
+    }
+   ]
+  },
+  {
+   "sheet": 25,
+   "cells": [
+    {
+     "id": "k6-die-tasse-n",
+     "chapter": 6,
+     "word": "die Tasse, -n",
+     "ar": "فنجان",
+     "subject": "a cup of coffee on a saucer"
+    },
+    {
+     "id": "k6-der-teller",
+     "chapter": 6,
+     "word": "der Teller, -",
+     "ar": "طبق",
+     "subject": "a white plate on a table"
+    },
+    {
+     "id": "k6-das-messer",
+     "chapter": 6,
+     "word": "das Messer, -",
+     "ar": "سكينة",
+     "subject": "a table knife"
+    },
+    {
+     "id": "k6-die-gabel-n",
+     "chapter": 6,
+     "word": "die Gabel, -n",
+     "ar": "شوكة",
+     "subject": "a fork"
+    },
+    {
+     "id": "k6-der-loeffel",
+     "chapter": 6,
+     "word": "der Löffel, -",
+     "ar": "معلقة",
+     "subject": "a spoon"
+    },
+    {
+     "id": "k6-die-serviette-n",
+     "chapter": 6,
+     "word": "die Serviette, -n",
+     "ar": "فوطة سفرة (منديل)",
+     "subject": "a folded napkin on a plate"
+    },
+    {
+     "id": "k6-das-schnitzel",
+     "chapter": 6,
+     "word": "das Schnitzel, -",
+     "ar": "شنيتزل",
+     "subject": "a Wiener schnitzel with a lemon slice and potatoes"
+    },
+    {
+     "id": "k6-die-pommes-pl",
+     "chapter": 6,
+     "word": "die Pommes (Pl.)",
+     "ar": "بطاطس",
+     "subject": "a portion of french fries on a plate"
+    },
+    {
+     "id": "k6-die-salami-s",
+     "chapter": 6,
+     "word": "die Salami, -s",
+     "ar": "سلامي",
+     "subject": "slices of salami on a board"
+    },
+    {
+     "id": "k6-der-sandwich-s",
+     "chapter": 6,
+     "word": "der Sandwich, -s",
+     "ar": "ساندويتش",
+     "subject": "a sandwich with ham, cheese and salad"
+    },
+    {
+     "id": "k6-das-eis",
+     "chapter": 6,
+     "word": "das Eis",
+     "ar": "آيس كريم / تلج",
+     "subject": "ice cream cones with different flavors"
+    },
+    {
+     "id": "k6-die-tomatensuppe-n",
+     "chapter": 6,
+     "word": "die Tomatensuppe, -n",
+     "ar": "شوربة طماطم",
+     "subject": "a bowl of tomato soup with basil"
+    },
+    {
+     "id": "k6-die-apfelsaftschorle-n",
+     "chapter": 6,
+     "word": "die Apfelsaftschorle, -n",
+     "ar": "عصير تفاح مع مية فوّارة",
+     "subject": "a glass of apple spritzer with ice"
+    },
+    {
+     "id": "k6-der-hunger",
+     "chapter": 6,
+     "word": "der Hunger",
+     "ar": "جوع",
+     "subject": "a hungry person looking at an empty plate"
+    },
+    {
+     "id": "k6-der-durst",
+     "chapter": 6,
+     "word": "der Durst",
+     "ar": "عطش",
+     "subject": "a thirsty person drinking water after running"
+    },
+    {
+     "id": "k6-voll",
+     "chapter": 6,
+     "word": "voll",
+     "ar": "مليان",
+     "subject": "a glass filled to the brim with water"
+    }
+   ]
+  },
+  {
+   "sheet": 26,
+   "grid": 2,
+   "repair": true,
+   "cells": [
+    {
+     "id": "k4-der-einkaufszettel",
+     "chapter": 4,
+     "word": "der Einkaufszettel, -",
+     "ar": "قايمة مشتريات",
+     "subject": "a handwritten shopping list stuck to a fridge door, the handwriting is only scribbled lines, no readable words, no title"
+    },
+    {
+     "id": "k5-das-gaestebuch-er",
+     "chapter": 5,
+     "word": "das Gästebuch, ¨-er",
+     "ar": "دفتر الزوّار",
+     "subject": "an open guest book with a pen on a table, pages full of scribbled handwriting, no printed title, no readable words"
+    },
+    {
+     "id": "k2-gross",
+     "chapter": 2,
+     "word": "groß",
+     "ar": "كبير",
+     "subject": "a very tall giraffe standing in a zoo enclosure next to a small child, clearly showing how big the giraffe is"
+    },
+    {
+     "id": "k6-verboten",
+     "chapter": 6,
+     "word": "verboten",
+     "ar": "ممنوع",
+     "subject": "a red round no-entry road sign (white horizontal bar in the red circle) mounted on a pole, no text"
+    }
+   ]
+  }
+ ]
+}
