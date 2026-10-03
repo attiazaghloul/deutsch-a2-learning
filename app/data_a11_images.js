@@ -288,7 +288,23 @@ window.A1_VOCAB_11_IMAGES = {
  "4|allein": "assets/a1/vocab_ai/new/k4-allein.webp",
  "4|stressig": "assets/a1/vocab_ai/new/k4-stressig.webp",
  "4|die Altstadt, ¨-e": "assets/a1/vocab_ai/new/k4-die-altstadt-e.webp",
- "4|die Nachricht, -en": "assets/a1/vocab_ai/new/k4-die-nachricht-en.webp"
+ "4|die Nachricht, -en": "assets/a1/vocab_ai/new/k4-die-nachricht-en.webp",
+ "4|kreativ": "assets/a1/vocab_ai/new/k4-kreativ.webp",
+ "4|erzählen": "assets/a1/vocab_ai/new/k4-erzaehlen.webp",
+ "4|die Mindmap, -s": "assets/a1/vocab_ai/new/k4-die-mindmap-s.webp",
+ "4|recherchieren": "assets/a1/vocab_ai/new/k4-recherchieren.webp",
+ "5|die Sekunde, -n": "assets/a1/vocab_ai/new/k5-die-sekunde-n.webp",
+ "5|die Verspätung, -en": "assets/a1/vocab_ai/new/k5-die-verspaetung-en.webp",
+ "5|zu Hause": "assets/a1/vocab_ai/new/k5-zu-hause.webp",
+ "5|zu Mittag essen": "assets/a1/vocab_ai/new/k5-zu-mittag-essen.webp",
+ "5|sitzen": "assets/a1/vocab_ai/new/k5-sitzen.webp",
+ "5|offen": "assets/a1/vocab_ai/new/k5-offen.webp",
+ "5|das Familienfoto, -s": "assets/a1/vocab_ai/new/k5-das-familienfoto-s.webp",
+ "5|der Großvater, ¨-": "assets/a1/vocab_ai/new/k5-der-grossvater.webp",
+ "5|die Großmutter, ¨-": "assets/a1/vocab_ai/new/k5-die-grossmutter.webp",
+ "5|der Onkel, -": "assets/a1/vocab_ai/new/k5-der-onkel.webp",
+ "5|das Baby, -s": "assets/a1/vocab_ai/new/k5-das-baby-s.webp",
+ "5|der Junge, -n": "assets/a1/vocab_ai/new/k5-der-junge-n.webp"
 };
 
 (function applyA11Images(){
