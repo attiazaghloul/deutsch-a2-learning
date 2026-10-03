@@ -65,7 +65,23 @@ window.A1_VOCAB_11_IMAGES = {
  "2|der Sportclub, -s": "assets/a1/vocab_ai/new/k2-der-sportclub-s.webp",
  "2|das Stadion, Stadien": "assets/a1/vocab_ai/new/k2-das-stadion-stadien.webp",
  "2|das Schwimmbad, ¨-er": "assets/a1/vocab_ai/new/k2-das-schwimmbad-er.webp",
- "2|die Spaghetti (Pl.)": "assets/a1/vocab_ai/new/k2-die-spaghetti-pl.webp"
+ "2|die Spaghetti (Pl.)": "assets/a1/vocab_ai/new/k2-die-spaghetti-pl.webp",
+ "2|nachts": "assets/a1/vocab_ai/new/k2-nachts.webp",
+ "2|die Verabredung, -en": "assets/a1/vocab_ai/new/k2-die-verabredung-en.webp",
+ "2|freihaben": "assets/a1/vocab_ai/new/k2-freihaben.webp",
+ "2|die Firma, Firmen": "assets/a1/vocab_ai/new/k2-die-firma-firmen.webp",
+ "2|der Architekt, -en": "assets/a1/vocab_ai/new/k2-der-architekt-en.webp",
+ "2|die Architektin, -nen": "assets/a1/vocab_ai/new/k2-die-architektin-nen.webp",
+ "2|der Arzt, ¨-e": "assets/a1/vocab_ai/new/k2-der-arzt-e.webp",
+ "2|die Ärztin, -nen": "assets/a1/vocab_ai/new/k2-die-aerztin-nen.webp",
+ "2|der Elektriker, -": "assets/a1/vocab_ai/new/k2-der-elektriker.webp",
+ "2|die Elektrikerin, -nen": "assets/a1/vocab_ai/new/k2-die-elektrikerin-nen.webp",
+ "2|der Erzieher, -": "assets/a1/vocab_ai/new/k2-der-erzieher.webp",
+ "2|die Erzieherin, -nen": "assets/a1/vocab_ai/new/k2-die-erzieherin-nen.webp",
+ "2|der Friseur, -e": "assets/a1/vocab_ai/new/k2-der-friseur-e.webp",
+ "2|die Friseurin, -nen": "assets/a1/vocab_ai/new/k2-die-friseurin-nen.webp",
+ "2|der Handwerker, -": "assets/a1/vocab_ai/new/k2-der-handwerker.webp",
+ "2|die Handwerkerin, -nen": "assets/a1/vocab_ai/new/k2-die-handwerkerin-nen.webp"
 };
 
 (function applyA11Images(){
