@@ -81,7 +81,23 @@ window.A1_VOCAB_11_IMAGES = {
  "2|der Friseur, -e": "assets/a1/vocab_ai/new/k2-der-friseur-e.webp",
  "2|die Friseurin, -nen": "assets/a1/vocab_ai/new/k2-die-friseurin-nen.webp",
  "2|der Handwerker, -": "assets/a1/vocab_ai/new/k2-der-handwerker.webp",
- "2|die Handwerkerin, -nen": "assets/a1/vocab_ai/new/k2-die-handwerkerin-nen.webp"
+ "2|die Handwerkerin, -nen": "assets/a1/vocab_ai/new/k2-die-handwerkerin-nen.webp",
+ "2|der Informatiker, -": "assets/a1/vocab_ai/new/k2-der-informatiker.webp",
+ "2|die Informatikerin, -nen": "assets/a1/vocab_ai/new/k2-die-informatikerin-nen.webp",
+ "2|der Journalist, -en": "assets/a1/vocab_ai/new/k2-der-journalist-en.webp",
+ "2|die Journalistin, -nen": "assets/a1/vocab_ai/new/k2-die-journalistin-nen.webp",
+ "2|der Jurist, -en": "assets/a1/vocab_ai/new/k2-der-jurist-en.webp",
+ "2|die Juristin, -nen": "assets/a1/vocab_ai/new/k2-die-juristin-nen.webp",
+ "2|der Kellner, -": "assets/a1/vocab_ai/new/k2-der-kellner.webp",
+ "2|die Kellnerin, -nen": "assets/a1/vocab_ai/new/k2-die-kellnerin-nen.webp",
+ "2|die Köchin, -nen": "assets/a1/vocab_ai/new/k2-die-koechin-nen.webp",
+ "2|der Krankenpfleger, -": "assets/a1/vocab_ai/new/k2-der-krankenpfleger.webp",
+ "2|die Krankenpflegerin, -nen": "assets/a1/vocab_ai/new/k2-die-krankenpflegerin-nen.webp",
+ "2|der Mechaniker, -": "assets/a1/vocab_ai/new/k2-der-mechaniker.webp",
+ "2|die Mechanikerin, -nen": "assets/a1/vocab_ai/new/k2-die-mechanikerin-nen.webp",
+ "2|der Polizist, -en": "assets/a1/vocab_ai/new/k2-der-polizist-en.webp",
+ "2|die Polizistin, -nen": "assets/a1/vocab_ai/new/k2-die-polizistin-nen.webp",
+ "2|der Student, -en": "assets/a1/vocab_ai/new/k2-der-student-en.webp"
 };
 
 (function applyA11Images(){
