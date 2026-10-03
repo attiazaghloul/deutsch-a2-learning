@@ -3,14 +3,17 @@ const vm = require('vm');
 
 const sandbox = {window: {}, console};
 vm.createContext(sandbox);
+// data_a11_*.js extend the A1 data, so they have to load after data_a1.js, data_a12.js and data_a1_verbs.js
+const a11Last = (left, right) => Number(left.startsWith('data_a11_')) - Number(right.startsWith('data_a11_')) || (left < right ? -1 : left > right ? 1 : 0);
 fs.readdirSync('app')
   .filter(file => file.startsWith('data_') && file.endsWith('.js') && file !== 'data_podcast.js')
+  .sort(a11Last)
   .forEach(file => {
     vm.runInContext(fs.readFileSync(`app/${file}`, 'utf8'), sandbox, {filename: file});
   });
 
 const roots = [
-  'A1_BOOK', 'A1_VERBS', 'HOEREN_A1_BOOK', 'HOEREN_A1_INTERACTIVE',
+  'A1_BOOK', 'A1_VERBS', 'A1_EXAM', 'HOEREN_A1_BOOK', 'HOEREN_A1_INTERACTIVE',
   'PHONETIK_A1_BOOK', 'PHONETIK_A1_INTERACTIVE'
 ];
 const ignoredKeys = new Set([

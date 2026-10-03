@@ -125,7 +125,7 @@ window.A1_VOCAB_11 = {
  "catAr": "التحية والوداع"
  },
  {
- "w": "die Frau, ¨-en",
+ "w": "die Frau, -en",
  "d": "Anrede für eine Frau; auch: erwachsene Person.",
  "ex": "Das ist Frau Weber.",
  "ar": "السيدة / امرأة",
