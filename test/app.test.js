@@ -1227,3 +1227,37 @@ test('A1.1 data files are loaded by the page and precached', () => {
     .map(file => page.indexOf(`src="${file}`));
   assert.deepEqual([...order].sort((a, b) => a - b), order, 'A1.1 files load after the base A1 data and in dependency order');
 });
+
+test('A1.1 verbs extend the A1 verb reference with complete forms in every tense', () => {
+  const context = vm.createContext({ window: {}, escapeHtml: value => String(value) });
+  for (const file of ['data_a1_verbs.js', 'data_a11_verbs.js']) {
+    vm.runInContext(readFileSync(join(root, 'app', file), 'utf8'), context);
+  }
+  vm.runInContext(readFileSync(join(root, 'app', 'js', '15-conjugation.js'), 'utf8').replace(/^const /gm, 'var '), context);
+  const verbs = context.window.A1_VERBS;
+  assert.ok(verbs.length >= 150, `only ${verbs.length} A1 verbs`);
+  const seen = new Set();
+  verbs.forEach(verb => {
+    ['inf', 'praet', 'part', 'ar', 'example'].forEach(key => assert.ok(verb[key], `${verb.inf} misses ${key}`));
+    assert.ok(/[؀-ۿ]/.test(verb.ar), `${verb.inf} needs Arabic`);
+    assert.ok(['haben', 'sein'].includes(verb.aux), verb.inf);
+    assert.equal(verb.forms.length, 6, verb.inf);
+    assert.ok(verb.chapter >= 1 && verb.chapter <= 12, verb.inf);
+    assert.ok(!seen.has(verb.inf), `duplicate ${verb.inf}`);
+    seen.add(verb.inf);
+    const tables = context.conjugateVerb(verb);
+    assert.equal(tables.length, 6, `${verb.inf} should have six tenses`);
+    tables.forEach(([tense, forms]) => forms.forEach(form => assert.ok(form && !/undefined/.test(form), `${verb.inf} ${tense}`)));
+  });
+  const chapters = Array.from(verbs, verb => verb.chapter);
+  assert.deepEqual(chapters, [...chapters].sort((a, b) => a - b), 'verbs stay sorted by chapter');
+  assert.ok(verbs.filter(verb => verb.chapter <= 6).length >= 110, 'A1.1 verbs from chapters 1-6');
+  const table = name => Object.fromEntries(context.conjugateVerb(verbs.find(item => item.inf === name)));
+  assert.equal(table('zuordnen')['Präteritum'][0], 'ordnete zu');
+  assert.equal(table('mitbringen')['Präsens'][1], 'bringst mit');
+  assert.equal(table('sich verabschieden')['Perfekt'][0], 'habe mich verabschiedet');
+  assert.equal(table('einfallen')['Perfekt'][2], 'ist eingefallen');
+  assert.equal(table('zeichnen')['Präsens'][1], 'zeichnest');
+  assert.equal(table('grüßen')['Präsens'][1], 'grüßt');
+  assert.equal(table('wissen')['Präsens'][2], 'weiß');
+});
