@@ -304,7 +304,23 @@ window.A1_VOCAB_11_IMAGES = {
  "5|die Großmutter, ¨-": "assets/a1/vocab_ai/new/k5-die-grossmutter.webp",
  "5|der Onkel, -": "assets/a1/vocab_ai/new/k5-der-onkel.webp",
  "5|das Baby, -s": "assets/a1/vocab_ai/new/k5-das-baby-s.webp",
- "5|der Junge, -n": "assets/a1/vocab_ai/new/k5-der-junge-n.webp"
+ "5|der Junge, -n": "assets/a1/vocab_ai/new/k5-der-junge-n.webp",
+ "5|das Mädchen, -": "assets/a1/vocab_ai/new/k5-das-maedchen.webp",
+ "5|verheiratet": "assets/a1/vocab_ai/new/k5-verheiratet.webp",
+ "5|der Hund, -e": "assets/a1/vocab_ai/new/k5-der-hund-e.webp",
+ "5|der Hamster, -": "assets/a1/vocab_ai/new/k5-der-hamster.webp",
+ "5|die Maus, ¨-e": "assets/a1/vocab_ai/new/k5-die-maus-e.webp",
+ "5|das Büro, -s": "assets/a1/vocab_ai/new/k5-das-buero-s.webp",
+ "5|die Mensa, Mensen": "assets/a1/vocab_ai/new/k5-die-mensa-mensen.webp",
+ "5|die Musikschule, -n": "assets/a1/vocab_ai/new/k5-die-musikschule-n.webp",
+ "5|die Sprachschule, -n": "assets/a1/vocab_ai/new/k5-die-sprachschule-n.webp",
+ "5|das Training, -s": "assets/a1/vocab_ai/new/k5-das-training-s.webp",
+ "5|der Sport": "assets/a1/vocab_ai/new/k5-der-sport.webp",
+ "5|das Spiel, -e": "assets/a1/vocab_ai/new/k5-das-spiel-e.webp",
+ "5|der Ball, ¨-e": "assets/a1/vocab_ai/new/k5-der-ball-e.webp",
+ "5|die Geige, -n": "assets/a1/vocab_ai/new/k5-die-geige-n.webp",
+ "5|die Trompete, -n": "assets/a1/vocab_ai/new/k5-die-trompete-n.webp",
+ "5|das Saxofon, -e": "assets/a1/vocab_ai/new/k5-das-saxofon-e.webp"
 };
 
 (function applyA11Images(){
