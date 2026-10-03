@@ -33,7 +33,23 @@ window.A1_VOCAB_11_IMAGES = {
  "1|Kanada": "assets/a1/vocab_ai/new/k1-kanada.webp",
  "1|der Libanon": "assets/a1/vocab_ai/new/k1-der-libanon.webp",
  "1|Neuseeland": "assets/a1/vocab_ai/new/k1-neuseeland.webp",
- "1|die Niederlande (Pl.)": "assets/a1/vocab_ai/new/k1-die-niederlande-pl.webp"
+ "1|die Niederlande (Pl.)": "assets/a1/vocab_ai/new/k1-die-niederlande-pl.webp",
+ "1|die Slowakei": "assets/a1/vocab_ai/new/k1-die-slowakei.webp",
+ "1|Syrien": "assets/a1/vocab_ai/new/k1-syrien.webp",
+ "1|Tunesien": "assets/a1/vocab_ai/new/k1-tunesien.webp",
+ "1|Ungarn": "assets/a1/vocab_ai/new/k1-ungarn.webp",
+ "1|der Kindergarten, ¨-": "assets/a1/vocab_ai/new/k1-der-kindergarten.webp",
+ "1|der Koffer, -": "assets/a1/vocab_ai/new/k1-der-koffer.webp",
+ "1|das Handtuch, ¨-er": "assets/a1/vocab_ai/new/k1-das-handtuch-er.webp",
+ "1|das Butterbrot, -e": "assets/a1/vocab_ai/new/k1-das-butterbrot-e.webp",
+ "1|das Würstchen, -": "assets/a1/vocab_ai/new/k1-das-wuerstchen.webp",
+ "1|die Nudel, -n": "assets/a1/vocab_ai/new/k1-die-nudel-n.webp",
+ "1|die Autobahn, -en": "assets/a1/vocab_ai/new/k1-die-autobahn-en.webp",
+ "1|das Gespräch, -e": "assets/a1/vocab_ai/new/k1-das-gespraech-e.webp",
+ "1|das Interview, -s": "assets/a1/vocab_ai/new/k1-das-interview-s.webp",
+ "1|hören": "assets/a1/vocab_ai/new/k1-hoeren.webp",
+ "1|schreiben": "assets/a1/vocab_ai/new/k1-schreiben.webp",
+ "1|fragen": "assets/a1/vocab_ai/new/k1-fragen.webp"
 };
 
 (function applyA11Images(){
