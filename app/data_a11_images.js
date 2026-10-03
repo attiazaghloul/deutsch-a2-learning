@@ -209,7 +209,23 @@ window.A1_VOCAB_11_IMAGES = {
  "3|würfeln": "assets/a1/vocab_ai/new/k3-wuerfeln.webp",
  "3|klopfen": "assets/a1/vocab_ai/new/k3-klopfen.webp",
  "3|der Arm, -e": "assets/a1/vocab_ai/new/k3-der-arm-e.webp",
- "3|der Tisch, -e": "assets/a1/vocab_ai/new/k3-der-tisch-e.webp"
+ "3|der Tisch, -e": "assets/a1/vocab_ai/new/k3-der-tisch-e.webp",
+ "3|das Glück": "assets/a1/vocab_ai/new/k3-das-glueck.webp",
+ "3|der Test, -s": "assets/a1/vocab_ai/new/k3-der-test-s.webp",
+ "3|sehen": "assets/a1/vocab_ai/new/k3-sehen.webp",
+ "3|zeigen": "assets/a1/vocab_ai/new/k3-zeigen.webp",
+ "4|morgens": "assets/a1/vocab_ai/new/k4-morgens.webp",
+ "4|mittags": "assets/a1/vocab_ai/new/k4-mittags.webp",
+ "4|nachmittags": "assets/a1/vocab_ai/new/k4-nachmittags.webp",
+ "4|abends": "assets/a1/vocab_ai/new/k4-abends.webp",
+ "4|wach": "assets/a1/vocab_ai/new/k4-wach.webp",
+ "4|die Birne, -n": "assets/a1/vocab_ai/new/k4-die-birne-n.webp",
+ "4|die Gurke, -n": "assets/a1/vocab_ai/new/k4-die-gurke-n.webp",
+ "4|der Champignon, -s": "assets/a1/vocab_ai/new/k4-der-champignon-s.webp",
+ "4|die Olive, -n": "assets/a1/vocab_ai/new/k4-die-olive-n.webp",
+ "4|das Müsli, -s": "assets/a1/vocab_ai/new/k4-das-muesli-s.webp",
+ "4|der Keks, -e": "assets/a1/vocab_ai/new/k4-der-keks-e.webp",
+ "4|die Marmelade, -n": "assets/a1/vocab_ai/new/k4-die-marmelade-n.webp"
 };
 
 (function applyA11Images(){
