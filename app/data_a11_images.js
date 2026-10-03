@@ -161,7 +161,23 @@ window.A1_VOCAB_11_IMAGES = {
  "3|die Welt, -en": "assets/a1/vocab_ai/new/k3-die-welt-en.webp",
  "3|die Gruppe, -n": "assets/a1/vocab_ai/new/k3-die-gruppe-n.webp",
  "3|der Besucher, -": "assets/a1/vocab_ai/new/k3-der-besucher.webp",
- "3|die Besucherin, -nen": "assets/a1/vocab_ai/new/k3-die-besucherin-nen.webp"
+ "3|die Besucherin, -nen": "assets/a1/vocab_ai/new/k3-die-besucherin-nen.webp",
+ "3|das Festival, -s": "assets/a1/vocab_ai/new/k3-das-festival-s.webp",
+ "3|das Theater-Festival, -s": "assets/a1/vocab_ai/new/k3-das-theater-festival-s.webp",
+ "3|die Ausstellung, -en": "assets/a1/vocab_ai/new/k3-die-ausstellung-en.webp",
+ "3|die Konzertkarte, -n": "assets/a1/vocab_ai/new/k3-die-konzertkarte-n.webp",
+ "3|das Orchester, -": "assets/a1/vocab_ai/new/k3-das-orchester.webp",
+ "3|der Chor, ¨-e": "assets/a1/vocab_ai/new/k3-der-chor-e.webp",
+ "3|dirigieren": "assets/a1/vocab_ai/new/k3-dirigieren.webp",
+ "3|der Solist, -en": "assets/a1/vocab_ai/new/k3-der-solist-en.webp",
+ "3|die Solistin, -nen": "assets/a1/vocab_ai/new/k3-die-solistin-nen.webp",
+ "3|das Publikum": "assets/a1/vocab_ai/new/k3-das-publikum.webp",
+ "3|der Schauspieler, -": "assets/a1/vocab_ai/new/k3-der-schauspieler.webp",
+ "3|die Schauspielerin, -nen": "assets/a1/vocab_ai/new/k3-die-schauspielerin-nen.webp",
+ "3|der Regisseur, -e": "assets/a1/vocab_ai/new/k3-der-regisseur-e.webp",
+ "3|die Regisseurin, -nen": "assets/a1/vocab_ai/new/k3-die-regisseurin-nen.webp",
+ "3|der Star, -s": "assets/a1/vocab_ai/new/k3-der-star-s.webp",
+ "3|der Film, -e": "assets/a1/vocab_ai/new/k3-der-film-e.webp"
 };
 
 (function applyA11Images(){
