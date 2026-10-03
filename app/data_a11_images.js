@@ -351,7 +351,23 @@ window.A1_VOCAB_11_IMAGES = {
  "6|die Überraschung, -en": "assets/a1/vocab_ai/new/k6-die-ueberraschung-en.webp",
  "6|wandern": "assets/a1/vocab_ai/new/k6-wandern.webp",
  "6|laufen": "assets/a1/vocab_ai/new/k6-laufen.webp",
- "6|der Marathon, -s": "assets/a1/vocab_ai/new/k6-der-marathon-s.webp"
+ "6|der Marathon, -s": "assets/a1/vocab_ai/new/k6-der-marathon-s.webp",
+ "6|klettern": "assets/a1/vocab_ai/new/k6-klettern.webp",
+ "6|das Fitness-Studio, -s": "assets/a1/vocab_ai/new/k6-das-fitness-studio-s.webp",
+ "6|der Ski, -": "assets/a1/vocab_ai/new/k6-der-ski.webp",
+ "6|die Fahrradtour, -en": "assets/a1/vocab_ai/new/k6-die-fahrradtour-en.webp",
+ "6|der Ausflug, ¨-e": "assets/a1/vocab_ai/new/k6-der-ausflug-e.webp",
+ "6|das Picknick, -s": "assets/a1/vocab_ai/new/k6-das-picknick-s.webp",
+ "6|der Spielplatz, ¨-e": "assets/a1/vocab_ai/new/k6-der-spielplatz-e.webp",
+ "6|die Bank, ¨-e": "assets/a1/vocab_ai/new/k6-die-bank-e.webp",
+ "6|verboten": "assets/a1/vocab_ai/new/k6-verboten.webp",
+ "6|das Fußballspiel, -e": "assets/a1/vocab_ai/new/k6-das-fussballspiel-e.webp",
+ "6|die Natur": "assets/a1/vocab_ai/new/k6-die-natur.webp",
+ "6|draußen": "assets/a1/vocab_ai/new/k6-draussen.webp",
+ "6|die Sonne": "assets/a1/vocab_ai/new/k6-die-sonne.webp",
+ "6|der Regen": "assets/a1/vocab_ai/new/k6-der-regen.webp",
+ "6|das Wetter": "assets/a1/vocab_ai/new/k6-das-wetter.webp",
+ "6|warm": "assets/a1/vocab_ai/new/k6-warm.webp"
 };
 
 (function applyA11Images(){
