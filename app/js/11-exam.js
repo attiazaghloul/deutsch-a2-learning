@@ -4,12 +4,16 @@ let examTimerId=null;
 let examLevel='a2';
 
 function activeExam(){
-  return examLevel==='b1.1'?window.B1_EXAM:EXAM;
+  return examLevel==='b1.1'?window.B1_EXAM:examLevel==='a1'?window.A1_EXAM:EXAM;
 }
 
 function examRoute(id=''){
-  const base=examLevel==='b1.1'?'b1.1/exam':'exam';
+  const base=examLevel==='b1.1'?'b1.1/exam':examLevel==='a1'?'a1/exam':'exam';
   return id?`${base}/${id}`:base;
+}
+
+function examStoragePrefix(){
+  return examLevel==='b1.1'?'b1':examLevel==='a1'?'a1':'a2';
 }
 
 function examTabs(){
@@ -17,7 +21,7 @@ function examTabs(){
 }
 
 function examScoresKey(){
-  return examLevel==='b1.1'?'b1ExamScores':'a2ExamScores';
+  return examLevel==='b1.1'?'b1ExamScores':examLevel==='a1'?'a1ExamScores':'a2ExamScores';
 }
 
 function getExamScores(){
@@ -68,7 +72,7 @@ function examModuleDescription(id){
 }
 
 function renderExamHome(){
-  const levelLabel=examLevel==='b1.1'?'B1':'A2';
+  const levelLabel=examLevel==='b1.1'?'B1':examLevel==='a1'?'A1':'A2';
   setTop(`Prüfungstraining ${levelLabel}`,`Goethe-Zertifikat ${levelLabel} · interaktives Modelltraining`,true);
   const scores=getExamScores();
   const ids=['lesen','hoeren','schreiben','sprechen'];
@@ -203,9 +207,9 @@ function initWritingExam(){
       const target=$(`#writingCount${index}`);
       target.textContent=`${words} Wörter · Ziel: mindestens ${area.dataset.min}`;
       target.style.color=words>=Number(area.dataset.min)?'var(--green-d)':'';
-      localStorage.setItem(`${examLevel==='b1.1'?'b1':'a2'}Writing${index}`,area.value);
+      localStorage.setItem(`${examStoragePrefix()}Writing${index}`,area.value);
     };
-    area.value=localStorage.getItem(`${examLevel==='b1.1'?'b1':'a2'}Writing${index}`)||'';
+    area.value=localStorage.getItem(`${examStoragePrefix()}Writing${index}`)||'';
     area.addEventListener('input',update);update();
   });
 }

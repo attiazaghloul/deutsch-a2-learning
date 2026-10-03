@@ -17,7 +17,17 @@ function saveGrammarResult(id,correct){
 }
 
 function chapterGrammar(chapter){
-  return chapter?.route?.startsWith('b1.1/')?(window.B1_GRAMMAR?.[chapter.num]||[]):[];
+  if(chapter?.route?.startsWith('b1.1/')) return window.B1_GRAMMAR?.[chapter.num]||[];
+  if(chapter?.route?.startsWith('a1/')) return window.A1_GRAMMAR?.[chapter.num]||[];
+  return [];
+}
+
+function allGrammarTopics(){
+  return [...Object.values(window.A1_GRAMMAR||{}).flat(),...Object.values(window.B1_GRAMMAR||{}).flat()];
+}
+
+function chapterByRoute(route){
+  return [...A1_BOOK,...BOOK,...B1_BOOK].find(item=>(item.route||`k${item.num}`)===route);
 }
 
 function grammarNormalize(value){
@@ -134,14 +144,14 @@ function grammarFeedback(id,correct,extra=''){
   if(!correct&&exercise){
     const answer=exercise.type==='choice'?exercise.o[exercise.a]:exercise.type==='truefalse'?(exercise.a?'Richtig':'Falsch')
       :exercise.type==='order'?`${exercise.prefix||''} ${exercise.a[0]}`.trim():exercise.a[0];
-    window.NextUI?.addMistake?.({prompt:exercise.q||exercise.prefix||'Grammatik',answer,context:'Grammatik B1.1'});
+    window.NextUI?.addMistake?.({prompt:exercise.q||exercise.prefix||'Grammatik',answer,context:id.replace(/^test-/,'').startsWith('a1-')?'Grammatik A1.1':'Grammatik B1.1'});
   }
   updateGrammarScores(id);
 }
 
 function updateGrammarScores(id){
   const topicId=id.replace(/-\d+$/,'');
-  const topic=Object.values(window.B1_GRAMMAR||{}).flat().find(item=>item.id===topicId);
+  const topic=allGrammarTopics().find(item=>item.id===topicId||`test-${item.id}`===topicId);
   const label=document.querySelector(`[data-score="${topicId}"]`);
   if(topic&&label){const score=grammarTopicScore(topic);label.textContent=`${score.right}/${score.total} richtig`;}
   updateGrammarTestScore();
@@ -244,7 +254,7 @@ function renderGrammarTest(chapter){
     <p>${test.length} gemischte Aufgaben aus allen Grammatikthemen des Kapitels – jedes Mal neu zusammengestellt.</p>
     ${ar('١٢ سؤال متنوع من كل قواعد الوحدة – كل مرة بيتغيروا.')}
     ${test.map(({exercise,topic,index},number)=>grammarExerciseHtml(exercise,`test-${grammarExerciseId(topic,index)}`,number+1)).join('')}
-    <div class="gx-actions"><button type="button" class="btn btn-green" onclick="renderChapter(B1_BOOK.find(item=>item.num===${chapter.num}),'quiz')">Neuer Test</button></div>
+    <div class="gx-actions"><button type="button" class="btn btn-green" onclick="renderChapter(chapterByRoute('${chapter.route||`k${chapter.num}`}'),'quiz')">Neuer Test</button></div>
   </section>`;
 }
 

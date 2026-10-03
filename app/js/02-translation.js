@@ -200,7 +200,10 @@ function stableFavoriteHash(value){
 }
 
 function wordEntryId(level,chapter,index,item){
-  return `${level}-k${chapter.num}-${index}-${stableFavoriteHash(item.w)}`;
+  /* Cards that existed before a vocabulary rebuild keep their original index and
+     spelling (item.legacy), so saved favorites, review and trainer progress survive. */
+  const origin=item.legacy||{index,w:item.w};
+  return `${level}-k${chapter.num}-${origin.index}-${stableFavoriteHash(origin.w)}`;
 }
 
 function allVocabularyEntries(){

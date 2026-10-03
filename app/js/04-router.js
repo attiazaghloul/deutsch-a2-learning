@@ -33,6 +33,7 @@ function fallbackBackTarget(hash){
   const h=hash?`#${hash}`:'';
   const path=hash;
   if(/^#a1\/k\d+\//.test(h)) return path.split('/').slice(0,2).join('/');
+  if(/^#a1\/(games|exam)\//.test(h)) return path.split('/').slice(0,2).join('/');
   if(/^#a1\/g\d+\/\d+$/.test(h)) return path.split('/').slice(0,2).join('/');
   if(/^#a1\/g\d+$/.test(h)) return 'a1/lessons';
   if(/^#a1\/k\d+$/.test(h)) return 'a1/lessons';
@@ -46,7 +47,7 @@ function fallbackBackTarget(hash){
     const parts=path.split('/');
     return ['a1','listen','hoeren',...parts.slice(2)].join('/');
   }
-  if(h==='#a1/listen'||/^#a1\/(dict|verbs|phrases)$/.test(h)) return 'a1';
+  if(h==='#a1/listen'||/^#a1\/(dict|verbs|phrases|games|exam)$/.test(h)) return 'a1';
   if(h==='#a1'||h==='#a2') return '';
   if(h==='#a2/lessons') return 'a2';
   if(h==='#b1.1/lessons') return 'b1.1';
@@ -122,7 +123,7 @@ function renderCurrentRoute(){
   stopExamTimer();
   stopGameTimers();
   stopPodcast();
-  const examMode=h==='exam'||h.startsWith('exam/')||h==='b1.1/exam'||h.startsWith('b1.1/exam/');
+  const examMode=h==='exam'||h.startsWith('exam/')||h==='b1.1/exam'||h.startsWith('b1.1/exam/')||h==='a1/exam'||h.startsWith('a1/exam/');
   document.body.classList.toggle('exam-mode',examMode);
   if(examMode){
     translationRequest++;
@@ -150,6 +151,12 @@ function renderCurrentRoute(){
   if(h==='a1/dict'){ renderA1Dictionary(); return; }
   if(h==='a1/verbs'){ renderA1Verbs(); return; }
   if(h==='a1/phrases'){ renderA1Expressions(); return; }
+  if(h==='a1/games'){ gameLevel='a1'; renderGamesHome(); return; }
+  const a1GameMatch=h.match(/^a1\/games\/(speed|memory|artikel|sentence)$/);
+  if(a1GameMatch){ gameLevel='a1'; renderGame(a1GameMatch[1]); return; }
+  if(h==='a1/exam'){ examLevel='a1'; renderExamHome(); return; }
+  const a1ExamMatch=h.match(/^a1\/exam\/(lesen|hoeren|schreiben|sprechen)$/);
+  if(a1ExamMatch){ examLevel='a1'; renderExamModule(a1ExamMatch[1]); return; }
   if(h==='a1/listen'){ renderA1ListenBookPicker(); return; }
   const a1ListenBookMatch=h.match(/^a1\/listen\/(hoeren|phonetik)$/);
   if(a1ListenBookMatch){ renderA1ListeningHome(a1ListenBookMatch[1]); return; }
@@ -253,6 +260,8 @@ const A1_SECTIONS=[
   {route:'a1/dict',icon:'W',title:'Wörterbuch',text:'Alle A1-Wörter mit Suche und Kapitelfilter.',ar:'قاموس كل كلمات A1.'},
   {route:'a1/verbs',icon:'V',title:'Verben',text:'A1-Verben mit Formen, Perfekt und Beispielen.',ar:'تصريف الأفعال الأساسية.'},
   {route:'a1/phrases',icon:'R',title:'Redemittel',text:'Fertige Sätze für Alltag und einfache Gespräche.',ar:'جمل جاهزة للكلام.'},
+  {route:'a1/games',icon:'T',title:'Training',text:'Schnell-Challenge, Memory, Artikel und Satz-Puzzle mit A1-Wörtern.',ar:'ألعاب تدريب بكلمات وجمل A1.'},
+  {route:'a1/exam',icon:'P',title:'Prüfung',text:'Goethe-A1 Modelltraining (Start Deutsch 1): Lesen, Hören, Schreiben und Sprechen.',ar:'تدريب على نموذج امتحان Goethe A1.'},
   {route:'a1/listen',icon:'H',title:'Hören',text:'A1-Hörbücher, Phonetik und interaktive Aufgaben.',ar:'استماع وتدريبات A1.'}
 ];
 

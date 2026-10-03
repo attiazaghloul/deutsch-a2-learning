@@ -291,7 +291,7 @@ function fallbackVocabSticker(v,chapterData,label='DE'){
 function vocabVisual(v,chapter){
   const chapterData=[...A1_BOOK, ...BOOK, ...B1_BOOK].find(item=>item.vocab?.includes(v));
   if(chapterData?.route?.startsWith('a1/')){
-    return `<div class="fc-visual fc-visual--full" role="img" aria-label="${escapeHtml(v.w)}">
+    return `<div class="fc-visual ${v.img?'fc-visual--full':'fc-visual--plain'}" role="img" aria-label="${escapeHtml(v.w)}">
       ${v.img?`<img class="fc-scene" src="${v.img}" alt="" width="420" height="420" loading="eager" decoding="async">`:
       `<div class="level-code" style="margin:auto">A1</div>`}
       <span class="sticker-category">${escapeHtml(v.cat||`Kapitel ${chapterData.num}`)}</span>

@@ -29,11 +29,11 @@ function plainText(value){
 let gameLevel='a2';
 
 function gameBook(){
-  return gameLevel==='b1.1'?B1_BOOK:BOOK;
+  return gameLevel==='b1.1'?B1_BOOK:gameLevel==='a1'?A1_BOOK:BOOK;
 }
 
 function gameRoute(id=''){
-  const base=gameLevel==='b1.1'?'b1.1/games':'games';
+  const base=gameLevel==='b1.1'?'b1.1/games':gameLevel==='a1'?'a1/games':'games';
   return id?`${base}/${id}`:base;
 }
 
@@ -48,7 +48,7 @@ function gameChapterOptions(includeAll=true){
 }
 
 function gameScoresKey(){
-  return gameLevel==='b1.1'?'b1GameBestScores':'a2GameBestScores';
+  return gameLevel==='b1.1'?'b1GameBestScores':gameLevel==='a1'?'a1GameBestScores':'a2GameBestScores';
 }
 
 function gameBestScores(){
@@ -64,7 +64,7 @@ function saveGameBest(id,score){
 }
 
 function renderGamesHome(){
-  setTop(`Practice Lab ${gameLevel==='b1.1'?'B1.1':'A2'}`,'Gezielt trainieren · sicherer anwenden',false);
+  setTop(`Practice Lab ${gameLevel==='b1.1'?'B1.1':gameLevel==='a1'?'A1':'A2'}`,'Gezielt trainieren · sicherer anwenden',false);
   const best=gameBestScores();
   document.body.classList.add('has-back');
   view.innerHTML=gameTabs()+`
@@ -428,9 +428,17 @@ function renderSentenceSetup(){
   view.innerHTML=gameSetupCard('Satz-Puzzle','Ordne die Wörter aus wichtigen Redemitteln. Satzzeichen bleiben am Wort.','startSentenceGame()');
 }
 
+/* A puzzle sentence must be one clean sentence: no "a / b" alternatives, no question-and-answer pairs. */
+function isPuzzleSentence(text){
+  const sentence=plainText(text);
+  const words=sentence.split(' ').length;
+  return words>=5&&words<=12&&!/ [\/–] |…|\(/.test(sentence)&&(sentence.match(/[.!?]/g)||[]).length<=1;
+}
+
 function startSentenceGame(){
-  const sentences=selectedGameChapters().flatMap(chapter=>chapter.redemittel.flatMap(group=>group.items))
-    .filter(item=>plainText(item.de).split(' ').length>=5&&plainText(item.de).split(' ').length<=12);
+  const items=selectedGameChapters().flatMap(chapter=>chapter.redemittel.flatMap(group=>group.items));
+  const clean=items.filter(item=>isPuzzleSentence(item.de));
+  const sentences=clean.length>=5?clean:items.filter(item=>plainText(item.de).split(' ').length>=5&&plainText(item.de).split(' ').length<=12);
   sentenceState={questions:shuffled(sentences).slice(0,5),index:0,score:0,selected:[],tokens:[]};
   prepareSentenceQuestion();
 }

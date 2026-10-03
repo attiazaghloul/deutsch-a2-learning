@@ -1067,3 +1067,250 @@ test('word search ranks whole Arabic meanings first and honours the chosen sourc
   assert.match(search, /WORD_SEARCH_LEVELS/);
   assert.match(html, /\['B1\.1','B1\.1'\]/, 'B1.1 can be chosen as a level');
 });
+
+/* ---------- A1.1 (Netzwerk neu A1.1, chapters 1-6) ---------- */
+function loadA11Data(files) {
+  const context = vm.createContext({ window: {} });
+  for (const file of files) vm.runInContext(readFileSync(join(root, 'app', file), 'utf8'), context);
+  return context.window;
+}
+const A11_FILES = ['data_a1.js', 'data_a12.js', 'data_a11_vocab.js', 'data_a11_lessons.js', 'data_a11_conversations.js',
+  'data_a11_grammar_1.js', 'data_a11_grammar_2.js', 'data_a11_grammar_3.js'];
+const ARABIC = /[؀-ۿ]/;
+
+test('A1.1 vocabulary carries the whole word list, grouped by topic, with explanations and Arabic', () => {
+  const win = loadA11Data(A11_FILES);
+  for (let number = 1; number <= 6; number += 1) {
+    const chapter = win.A1_BOOK.find(item => item.num === number);
+    assert.ok(chapter.vocab.length >= 140, `Kapitel ${number} has ${chapter.vocab.length} cards`);
+    const seen = new Set();
+    const closedGroups = new Set();
+    let current = '';
+    chapter.vocab.forEach(card => {
+      assert.ok(card.w && card.d && card.ex, `${number}: ${card.w}`);
+      assert.ok(ARABIC.test(card.ar), `${number}: ${card.w} needs Arabic`);
+      assert.ok(card.cat && ARABIC.test(card.catAr), `${number}: ${card.w} needs a group`);
+      assert.ok(!seen.has(card.w), `${number}: duplicate ${card.w}`);
+      seen.add(card.w);
+      if (card.cat !== current) {
+        assert.ok(!closedGroups.has(card.cat), `${number}: group ${card.cat} is split in two`);
+        if (current) closedGroups.add(current);
+        current = card.cat;
+      }
+    });
+    assert.ok(chapter.vocab.filter(card => card.img).length >= 30, `Kapitel ${number} keeps its existing photos`);
+    assert.ok(chapter.vocabSummary?.note, `Kapitel ${number} explains the word list`);
+  }
+  assert.ok(win.A1_BOOK.slice(0, 6).reduce((sum, chapter) => sum + chapter.vocab.length, 0) >= 1000);
+  assert.equal(win.A1_BOOK.find(item => item.num === 7).vocab.length, 46, 'chapters 7-12 stay untouched');
+});
+
+test('word ids of existing A1 cards stay stable after the A1.1 vocabulary rebuild', () => {
+  const before = loadA11Data(['data_a1.js', 'data_a12.js']);
+  const after = loadA11Data(A11_FILES);
+  const { wordEntryId } = loadFunctions(['stableFavoriteHash', 'wordEntryId']);
+  for (let number = 1; number <= 6; number += 1) {
+    const oldChapter = before.A1_BOOK.find(item => item.num === number);
+    const newChapter = after.A1_BOOK.find(item => item.num === number);
+    const newIds = new Set(newChapter.vocab.map((card, index) => wordEntryId('A1', newChapter, index, card)));
+    assert.equal(newIds.size, newChapter.vocab.length, `Kapitel ${number}: ids must be unique`);
+    oldChapter.vocab.forEach((card, index) => {
+      assert.ok(newIds.has(wordEntryId('A1', oldChapter, index, card)), `Kapitel ${number}: "${card.w}" keeps its id`);
+    });
+  }
+  assert.match(wordEntryId('a1', { num: 3 }, 2, { w: 'lernen' }), /^a1-k3-2-[a-z0-9]+$/);
+});
+
+test('A1.1 chapters contain complete lesson sections', () => {
+  const win = loadA11Data(A11_FILES);
+  for (let number = 1; number <= 6; number += 1) {
+    const chapter = win.A1_BOOK.find(item => item.num === number);
+    assert.ok(chapter.intro.length > 80 && ARABIC.test(chapter.introAr), `Kapitel ${number} intro`);
+    assert.ok(chapter.goals.length >= 6 && chapter.goals.every(goal => goal.de && ARABIC.test(goal.ar)), `Kapitel ${number} goals`);
+    assert.equal(chapter.readings.length, 3, `Kapitel ${number} readings`);
+    chapter.readings.forEach(reading => {
+      assert.ok(reading.text.length > 200 && ARABIC.test(reading.ar), `${reading.title} text`);
+      assert.equal(reading.questions.length, 4, `${reading.title} questions`);
+      assert.ok(reading.glossary.length >= 5 && reading.glossary.every(([de, ar]) => de && ARABIC.test(ar)), `${reading.title} glossary`);
+    });
+    assert.ok(chapter.redemittel.length >= 4, `Kapitel ${number} Redemittel`);
+    assert.ok(chapter.speaking.questions.length >= 5 && chapter.speaking.model && ARABIC.test(chapter.speaking.modelAr));
+    assert.equal(chapter.quiz.length, 8, `Kapitel ${number} quiz`);
+    chapter.quiz.forEach(item => {
+      assert.ok(item.a >= 0 && item.a < item.o.length && new Set(item.o).size === item.o.length, item.q);
+      assert.ok(item.fb && ARABIC.test(item.fbAr), item.q);
+    });
+  }
+});
+
+test('every A1.1 chapter offers five conversation situations with dialogues', () => {
+  const win = loadA11Data(A11_FILES);
+  for (let number = 1; number <= 6; number += 1) {
+    const chapter = win.A1_BOOK.find(item => item.num === number);
+    assert.equal(chapter.conversations.length, 5, `Kapitel ${number}`);
+    for (const item of chapter.conversations) {
+      assert.ok(item.situation && ARABIC.test(item.situationAr));
+      assert.ok(item.phrases.length >= 8, item.situation);
+      assert.ok(item.dialogue.length >= 6, item.situation);
+      assert.ok(new Set(item.dialogue.map(line => line.s)).size >= 2, `${item.situation}: two speakers`);
+      [...item.phrases, ...item.dialogue].forEach(line => {
+        assert.ok(line.de && ARABIC.test(line.ar), `${item.situation}: ${line.de}`);
+      });
+      assert.ok(item.task && item.taskAr);
+      assert.ok(chapter.redemittel.some(group => group.cat === item.situation), 'phrases feed the Redemittel');
+    }
+  }
+  assert.match(functionSource('playDialogue'), /route/, 'A1.1 and B1.1 share chapter numbers, so playback looks chapters up by route');
+});
+
+test('A1.1 grammar has detailed topics with varied exercises', () => {
+  const win = loadA11Data(['data_a11_grammar_1.js', 'data_a11_grammar_2.js', 'data_a11_grammar_3.js']);
+  const grammar = win.A1_GRAMMAR;
+  const normalize = value => String(value).replace(/[„“"'‚‘’]/g, '').replace(/[.,!?;:–—-]/g, ' ').replace(/\s+/g, ' ').trim().toLowerCase();
+  const ids = new Set();
+  const positions = new Set();
+  let exerciseCount = 0;
+  for (let chapter = 1; chapter <= 6; chapter += 1) {
+    assert.ok(grammar[chapter]?.length >= 3, `Kapitel ${chapter}`);
+    for (const topic of grammar[chapter]) {
+      assert.ok(topic.id.startsWith('a1-k'), `${topic.id} id prefix keeps A1 and B1.1 progress apart`);
+      assert.ok(!ids.has(topic.id), `duplicate ${topic.id}`);
+      ids.add(topic.id);
+      assert.ok(topic.summary && ARABIC.test(topic.summaryAr), topic.id);
+      assert.ok(topic.sections.length >= 3, `${topic.id} sections`);
+      assert.ok(topic.sections.some(section => section.table), `${topic.id} table`);
+      assert.ok(topic.sections.every(section => ARABIC.test(section.ar) && ARABIC.test(section.hAr)), `${topic.id} Arabic help`);
+      assert.ok(topic.pitfalls.length >= 3, `${topic.id} pitfalls`);
+      assert.ok(topic.exercises.length >= 9, `${topic.id} exercises`);
+      assert.ok(new Set(topic.exercises.map(exercise => exercise.type)).size >= 5, `${topic.id} variety`);
+      exerciseCount += topic.exercises.length;
+      for (const exercise of topic.exercises) {
+        assert.ok(ARABIC.test(exercise.why), `${topic.id} explanation`);
+        if (exercise.type === 'choice') {
+          assert.ok(exercise.a >= 0 && exercise.a < exercise.o.length);
+          assert.equal(new Set(exercise.o).size, exercise.o.length, `${topic.id}: duplicate options`);
+          positions.add(exercise.a);
+        }
+        if (exercise.type === 'truefalse') assert.equal(typeof exercise.a, 'boolean');
+        if (['gap', 'transform', 'error', 'order'].includes(exercise.type)) assert.ok(exercise.a.length >= 1);
+        if (exercise.type === 'gap') assert.match(exercise.q, /_{2,}/, `${topic.id}: gap marker`);
+        if (exercise.type === 'order') {
+          const bag = words => normalize(words).split(' ').sort().join(' ');
+          assert.ok(exercise.a.some(answer => bag(answer) === bag(exercise.words.join(' '))), `${topic.id} order`);
+        }
+        if (exercise.type === 'error') assert.ok(!exercise.a.some(answer => normalize(answer) === normalize(exercise.q)));
+      }
+    }
+  }
+  assert.ok(ids.size >= 24);
+  assert.ok(exerciseCount >= 250);
+  assert.ok(positions.size >= 3, 'the correct choice must not always be the same button');
+});
+
+test('grammar practice serves both A1.1 and B1.1 chapters', () => {
+  const context = vm.createContext({ window: { A1_GRAMMAR: { 1: ['a1'] }, B1_GRAMMAR: { 1: ['b1'] } } });
+  vm.runInContext(`${functionSource('chapterGrammar')}\nthis.chapterGrammar=chapterGrammar;`, context);
+  assert.deepEqual(Array.from(context.chapterGrammar({ route: 'a1/k1', num: 1 })), ['a1']);
+  assert.deepEqual(Array.from(context.chapterGrammar({ route: 'b1.1/k1', num: 1 })), ['b1']);
+  assert.deepEqual(Array.from(context.chapterGrammar({ num: 1 })), []);
+  assert.match(functionSource('renderGrammarTest'), /chapterByRoute/);
+});
+
+test('A1.1 data files are loaded by the page and precached', () => {
+  const sw = readFileSync(join(root, 'app', 'sw.js'), 'utf8');
+  const page = readFileSync(join(root, 'app', 'index.html'), 'utf8');
+  for (const file of ['data_a11_vocab.js', 'data_a11_lessons.js', 'data_a11_conversations.js', 'data_a11_grammar_1.js', 'data_a11_grammar_2.js', 'data_a11_grammar_3.js']) {
+    assert.match(sw, new RegExp(`'${file}'`), `${file} precached`);
+    assert.match(page, new RegExp(`src="${file}[?"]`), `${file} loaded`);
+  }
+  const order = ['data_a1.js', 'data_a12.js', 'data_a11_vocab.js', 'data_a11_lessons.js', 'data_a11_conversations.js']
+    .map(file => page.indexOf(`src="${file}`));
+  assert.deepEqual([...order].sort((a, b) => a - b), order, 'A1.1 files load after the base A1 data and in dependency order');
+});
+
+test('A1.1 verbs extend the A1 verb reference with complete forms in every tense', () => {
+  const context = vm.createContext({ window: {}, escapeHtml: value => String(value) });
+  for (const file of ['data_a1_verbs.js', 'data_a11_verbs.js']) {
+    vm.runInContext(readFileSync(join(root, 'app', file), 'utf8'), context);
+  }
+  vm.runInContext(readFileSync(join(root, 'app', 'js', '15-conjugation.js'), 'utf8').replace(/^const /gm, 'var '), context);
+  const verbs = context.window.A1_VERBS;
+  assert.ok(verbs.length >= 150, `only ${verbs.length} A1 verbs`);
+  const seen = new Set();
+  verbs.forEach(verb => {
+    ['inf', 'praet', 'part', 'ar', 'example'].forEach(key => assert.ok(verb[key], `${verb.inf} misses ${key}`));
+    assert.ok(/[؀-ۿ]/.test(verb.ar), `${verb.inf} needs Arabic`);
+    assert.ok(['haben', 'sein'].includes(verb.aux), verb.inf);
+    assert.equal(verb.forms.length, 6, verb.inf);
+    assert.ok(verb.chapter >= 1 && verb.chapter <= 12, verb.inf);
+    assert.ok(!seen.has(verb.inf), `duplicate ${verb.inf}`);
+    seen.add(verb.inf);
+    const tables = context.conjugateVerb(verb);
+    assert.equal(tables.length, 6, `${verb.inf} should have six tenses`);
+    tables.forEach(([tense, forms]) => forms.forEach(form => assert.ok(form && !/undefined/.test(form), `${verb.inf} ${tense}`)));
+  });
+  const chapters = Array.from(verbs, verb => verb.chapter);
+  assert.deepEqual(chapters, [...chapters].sort((a, b) => a - b), 'verbs stay sorted by chapter');
+  assert.ok(verbs.filter(verb => verb.chapter <= 6).length >= 110, 'A1.1 verbs from chapters 1-6');
+  const table = name => Object.fromEntries(context.conjugateVerb(verbs.find(item => item.inf === name)));
+  assert.equal(table('zuordnen')['Präteritum'][0], 'ordnete zu');
+  assert.equal(table('mitbringen')['Präsens'][1], 'bringst mit');
+  assert.equal(table('sich verabschieden')['Perfekt'][0], 'habe mich verabschiedet');
+  assert.equal(table('einfallen')['Perfekt'][2], 'ist eingefallen');
+  assert.equal(table('zeichnen')['Präsens'][1], 'zeichnest');
+  assert.equal(table('grüßen')['Präsens'][1], 'grüßt');
+  assert.equal(table('wissen')['Präsens'][2], 'weiß');
+});
+
+test('A1 exam training is complete, original and routed like the other levels', () => {
+  const win = loadA11Data(['data_exam_a1.js']);
+  const exam = win.A1_EXAM;
+  assert.deepEqual(Object.keys(exam.modules), ['lesen', 'hoeren', 'schreiben', 'sprechen']);
+  for (const id of ['lesen', 'hoeren']) {
+    const questions = exam.modules[id].parts.flatMap(part => part.questions);
+    assert.equal(questions.length, 15, `${id} should have 15 questions`);
+    questions.forEach(question => {
+      assert.ok(Number.isInteger(question.a) && question.a >= 0 && question.a < question.o.length, question.q);
+      assert.equal(new Set(question.o).size, question.o.length, question.q);
+    });
+  }
+  exam.modules.lesen.parts.forEach(part => assert.ok(part.title && part.instruction && part.text, part.title));
+  exam.modules.hoeren.parts.forEach(part => {
+    assert.ok(part.id && part.script.length > 250 && part.plays >= 1, part.title);
+  });
+  assert.equal(new Set(exam.modules.hoeren.parts.map(part => part.id)).size, 3, 'listening parts need unique ids');
+  assert.equal(exam.modules.schreiben.tasks.length, 2);
+  exam.modules.schreiben.tasks.forEach(task => assert.ok(task.prompt && task.model && task.minWords > 0 && task.checklist.length >= 4));
+  assert.equal(exam.modules.sprechen.tasks.length, 3);
+  exam.modules.sprechen.tasks.forEach(task => assert.ok(task.prompt && task.help.length >= 3 && task.prep > 0 && task.speak > 0));
+  assert.ok(exam.modules.sprechen.checklist.length >= 5);
+  assert.deepEqual(['lesen', 'hoeren', 'schreiben', 'sprechen'].map(id => exam.modules[id].points), [25, 25, 25, 25]);
+
+  const games = loadFunctions(['gameScoresKey']);
+  assert.equal(vm.runInContext("let gameLevel='a1';gameScoresKey()", games), 'a1GameBestScores');
+  const exams = loadFunctions(['examScoresKey']);
+  assert.equal(vm.runInContext("let examLevel='a1';examScoresKey()", exams), 'a1ExamScores');
+  for (const route of ['a1/games', 'a1/exam']) assert.ok(html.includes(`h==='${route}'`), `router misses ${route}`);
+  assert.match(html, /a1\\\/games\\\/\(speed\|memory\|artikel\|sentence\)/);
+  assert.match(html, /a1\\\/exam\\\/\(lesen\|hoeren\|schreiben\|sprechen\)/);
+  const ui = readFileSync(join(root, 'app', 'ui-next.js'), 'utf8');
+  assert.match(ui, /\['exam','Prüfung','a1\/exam'\]/);
+  assert.match(ui, /\['games','Training','a1\/games'\]/);
+  assert.match(readFileSync(join(root, 'app', 'sw.js'), 'utf8'), /'data_exam_a1\.js'/);
+  assert.match(readFileSync(join(root, 'app', 'index.html'), 'utf8'), /src="data_exam_a1\.js"/);
+  assert.equal(vm.runInContext("fallbackBackTarget('a1/exam/lesen')", loadFunctions(['fallbackBackTarget'])), 'a1/exam');
+  assert.equal(vm.runInContext("fallbackBackTarget('a1/games')", loadFunctions(['fallbackBackTarget'])), 'a1');
+});
+
+test('the sentence puzzle only uses one clean sentence at a time', () => {
+  const { plainText: _unused, isPuzzleSentence } = (() => {
+    const context = vm.createContext({ plainText: value => String(value) });
+    vm.runInContext(`${functionSource('isPuzzleSentence')}\nthis.isPuzzleSentence=isPuzzleSentence;`, context);
+    return context;
+  })();
+  assert.equal(isPuzzleSentence('Ich nehme das Schnitzel mit Pommes.'), true);
+  assert.equal(isPuzzleSentence('Ich nehme das Schnitzel. / Für mich eine Suppe.'), false);
+  assert.equal(isPuzzleSentence('Wie heißt du? – Ich heiße Niklas.'), false);
+  assert.equal(isPuzzleSentence('Hallo!'), false);
+  assert.equal(isPuzzleSentence('Gehen Sie bis zur Brücke und dann rechts.'), true);
+});

@@ -122,7 +122,7 @@
 
   function featureTabs(level,active){
     const items=level==='a1'
-      ?[['lessons','Lektionen','a1/lessons'],['dict','Wörterbuch','a1/dict'],['verbs','Verben','a1/verbs'],['phrases','Redemittel','a1/phrases'],['listen','Hören','a1/listen']]
+      ?[['lessons','Lektionen','a1/lessons'],['dict','Wörterbuch','a1/dict'],['verbs','Verben','a1/verbs'],['phrases','Redemittel','a1/phrases'],['games','Training','a1/games'],['exam','Prüfung','a1/exam'],['listen','Hören','a1/listen']]
       :level==='b1.1'
         ?[['lessons','Lektionen','b1.1/lessons'],['dict','Wörterbuch','b1.1/dict'],['verbs','Verben','b1.1/verbs'],['phrases','Redemittel','b1.1/phrases'],['games','Training','b1.1/games'],['exam','Prüfung','b1.1/exam']]
         :[['lessons','Lektionen','a2/lessons'],['dict','Wörterbuch','dict'],['verbs','Verben','verbs'],['phrases','Redemittel','phrases'],['podcast','Podcast','podcast'],['games','Training','games'],['listen','Hören','listen'],['exam','Prüfung','exam']];

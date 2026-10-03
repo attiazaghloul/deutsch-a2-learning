@@ -12,7 +12,7 @@ function conversationsHtml(chapter){
     <article class="card conversation-card">
       <div class="conversation-head">
         <div><h3>${escapeHtml(item.situation)}</h3>${ar(escapeHtml(item.situationAr))}</div>
-        <button type="button" class="conversation-play" onclick="playDialogue(${chapter.num},${index},this)" aria-label="Dialog anhören">▶ Dialog</button>
+        <button type="button" class="conversation-play" onclick="playDialogue(${chapter.num},${index},this,'${escapeHtml(chapter.route||'')}')" aria-label="Dialog anhören">▶ Dialog</button>
       </div>
       <div class="conversation-lines">${item.dialogue.map((line,lineIndex)=>`
         <div class="conversation-line ${lineIndex%2?'right':'left'}" data-line="${lineIndex}">
@@ -41,8 +41,8 @@ function speakDialogueLine(text,voiceIndex,onDone){
   window.speechSynthesis.speak(utterance);
 }
 
-function playDialogue(chapterNum,index,button){
-  const chapter=[...A1_BOOK,...BOOK,...B1_BOOK].find(item=>item.num===chapterNum&&item.conversations?.[index]);
+function playDialogue(chapterNum,index,button,route=''){
+  const chapter=[...A1_BOOK,...BOOK,...B1_BOOK].find(item=>(route?item.route===route:item.num===chapterNum)&&item.conversations?.[index]);
   const item=chapter?.conversations?.[index];
   if(!item) return;
   const session=++dialoguePlayback;
