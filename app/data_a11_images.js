@@ -225,7 +225,23 @@ window.A1_VOCAB_11_IMAGES = {
  "4|die Olive, -n": "assets/a1/vocab_ai/new/k4-die-olive-n.webp",
  "4|das Müsli, -s": "assets/a1/vocab_ai/new/k4-das-muesli-s.webp",
  "4|der Keks, -e": "assets/a1/vocab_ai/new/k4-der-keks-e.webp",
- "4|die Marmelade, -n": "assets/a1/vocab_ai/new/k4-die-marmelade-n.webp"
+ "4|die Marmelade, -n": "assets/a1/vocab_ai/new/k4-die-marmelade-n.webp",
+ "4|der Emmentaler, -": "assets/a1/vocab_ai/new/k4-der-emmentaler.webp",
+ "4|der Joghurt, -s": "assets/a1/vocab_ai/new/k4-der-joghurt-s.webp",
+ "4|die Sahne": "assets/a1/vocab_ai/new/k4-die-sahne.webp",
+ "4|das Hähnchen, -": "assets/a1/vocab_ai/new/k4-das-haehnchen.webp",
+ "4|das Fischgericht, -e": "assets/a1/vocab_ai/new/k4-das-fischgericht-e.webp",
+ "4|die Wurst, ¨-e": "assets/a1/vocab_ai/new/k4-die-wurst-e.webp",
+ "4|der Schinken, -": "assets/a1/vocab_ai/new/k4-der-schinken.webp",
+ "4|der Döner, -": "assets/a1/vocab_ai/new/k4-der-doener.webp",
+ "4|das Sushi, -s": "assets/a1/vocab_ai/new/k4-das-sushi-s.webp",
+ "4|die Pizza, -s/Pizzen": "assets/a1/vocab_ai/new/k4-die-pizza-s-pizzen.webp",
+ "4|die Pommes frites (Pl.)": "assets/a1/vocab_ai/new/k4-die-pommes-frites-pl.webp",
+ "4|das Salz, -e": "assets/a1/vocab_ai/new/k4-das-salz-e.webp",
+ "4|der Pfeffer": "assets/a1/vocab_ai/new/k4-der-pfeffer.webp",
+ "4|der Zucker": "assets/a1/vocab_ai/new/k4-der-zucker.webp",
+ "4|das Öl, -e": "assets/a1/vocab_ai/new/k4-das-oel-e.webp",
+ "4|der Essig, -e": "assets/a1/vocab_ai/new/k4-der-essig-e.webp"
 };
 
 (function applyA11Images(){
