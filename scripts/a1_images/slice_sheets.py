@@ -148,7 +148,7 @@ def main():
     for sheet in manifest["sheets"]:
         if args.sheet and sheet["sheet"] != args.sheet:
             continue
-        result = slice_sheet(sheet, grid, args.debug)
+        result = slice_sheet(sheet, sheet.get("grid", grid), args.debug)
         if result is None:
             missing.append(sheet["sheet"])
             continue

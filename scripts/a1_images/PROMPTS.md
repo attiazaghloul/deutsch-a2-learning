@@ -1,6 +1,6 @@
 # A1.1 image sheets (4x4)
 
-400 pictures on 25 sheets. For each sheet: paste the prompt into Gemini or ChatGPT (new chat per sheet), save the result as `sheet-NN.png` (NN = sheet number) and put it in `scripts/a1_images/incoming/`.
+400 pictures on 25 sheets plus one 2x2 redo sheet with 4 pictures. For each sheet: paste the prompt into Gemini or ChatGPT (new chat per sheet), save the result as `sheet-NN.png` (NN = sheet number) and put it in `scripts/a1_images/incoming/`.
 
 If a sheet comes out with a wrong number of cells, misses a picture or has text in it, just ask for it again.
 
@@ -677,5 +677,20 @@ Fill the grid in reading order (left to right, top to bottom):
 14. a hungry person looking at an empty plate
 15. a thirsty person drinking water after running
 16. a glass filled to the brim with water
+```
+
+## Sheet 26 (redo, 2x2)
+
+Words: der Einkaufszettel, - · das Gästebuch, ¨-er · groß · verboten
+
+```text
+Create ONE single square image at the highest resolution you can: a perfectly regular 2x2 grid of 4 separate photographs, exactly 2 columns and 2 rows, every cell the same square size, separated only by thin plain white gutters (no frames, no shadows, no captions).
+Absolutely no text, letters, numbers, labels or watermarks anywhere in the image, also not inside the photos (signs, screens, paper and posters must show unreadable blur or abstract shapes).
+Style for all 4 photos: realistic, bright natural light, vivid colors, ONE clear main subject centered, simple uncluttered background, friendly and modern, like a stock photo on a language-learning flashcard. People are adults unless stated.
+Fill the grid in reading order (left to right, top to bottom):
+1. a handwritten shopping list stuck to a fridge door, the handwriting is only scribbled lines, no readable words, no title
+2. an open guest book with a pen on a table, pages full of scribbled handwriting, no printed title, no readable words
+3. a very tall giraffe standing in a zoo enclosure next to a small child, clearly showing how big the giraffe is
+4. a red round no-entry road sign (white horizontal bar in the red circle) mounted on a pole, no text
 ```
 
