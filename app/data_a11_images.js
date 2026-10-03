@@ -129,7 +129,23 @@ window.A1_VOCAB_11_IMAGES = {
  "2|das Foto, -s": "assets/a1/vocab_ai/new/k2-das-foto-s.webp",
  "2|die Farbe, -n": "assets/a1/vocab_ai/new/k2-die-farbe-n.webp",
  "2|blau": "assets/a1/vocab_ai/new/k2-blau.webp",
- "2|grün": "assets/a1/vocab_ai/new/k2-gruen.webp"
+ "2|grün": "assets/a1/vocab_ai/new/k2-gruen.webp",
+ "2|rot": "assets/a1/vocab_ai/new/k2-rot.webp",
+ "2|groß": "assets/a1/vocab_ai/new/k2-gross.webp",
+ "2|die Lernkarte, -n": "assets/a1/vocab_ai/new/k2-die-lernkarte-n.webp",
+ "2|das Wörterbuch, ¨-er": "assets/a1/vocab_ai/new/k2-das-woerterbuch-er.webp",
+ "2|das Übungsbuch, ¨-er": "assets/a1/vocab_ai/new/k2-das-uebungsbuch-er.webp",
+ "2|die Leute (Pl.)": "assets/a1/vocab_ai/new/k2-die-leute-pl.webp",
+ "2|männlich": "assets/a1/vocab_ai/new/k2-maennlich.webp",
+ "2|weiblich": "assets/a1/vocab_ai/new/k2-weiblich.webp",
+ "2|die Frage, -n": "assets/a1/vocab_ai/new/k2-die-frage-n.webp",
+ "2|die Notiz, -en": "assets/a1/vocab_ai/new/k2-die-notiz-en.webp",
+ "2|ankreuzen": "assets/a1/vocab_ai/new/k2-ankreuzen.webp",
+ "2|markieren": "assets/a1/vocab_ai/new/k2-markieren.webp",
+ "2|tauschen": "assets/a1/vocab_ai/new/k2-tauschen.webp",
+ "2|präsentieren": "assets/a1/vocab_ai/new/k2-praesentieren.webp",
+ "2|suchen": "assets/a1/vocab_ai/new/k2-suchen.webp",
+ "2|zusammenpassen": "assets/a1/vocab_ai/new/k2-zusammenpassen.webp"
 };
 
 (function applyA11Images(){
