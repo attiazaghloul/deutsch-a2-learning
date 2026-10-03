@@ -383,7 +383,23 @@ window.A1_VOCAB_11_IMAGES = {
  "6|die Selbstbedienung": "assets/a1/vocab_ai/new/k6-die-selbstbedienung.webp",
  "6|die Bestellung, -en": "assets/a1/vocab_ai/new/k6-die-bestellung-en.webp",
  "6|zahlen": "assets/a1/vocab_ai/new/k6-zahlen.webp",
- "6|der Franken, -": "assets/a1/vocab_ai/new/k6-der-franken.webp"
+ "6|der Franken, -": "assets/a1/vocab_ai/new/k6-der-franken.webp",
+ "6|die Tasse, -n": "assets/a1/vocab_ai/new/k6-die-tasse-n.webp",
+ "6|der Teller, -": "assets/a1/vocab_ai/new/k6-der-teller.webp",
+ "6|das Messer, -": "assets/a1/vocab_ai/new/k6-das-messer.webp",
+ "6|die Gabel, -n": "assets/a1/vocab_ai/new/k6-die-gabel-n.webp",
+ "6|der Löffel, -": "assets/a1/vocab_ai/new/k6-der-loeffel.webp",
+ "6|die Serviette, -n": "assets/a1/vocab_ai/new/k6-die-serviette-n.webp",
+ "6|das Schnitzel, -": "assets/a1/vocab_ai/new/k6-das-schnitzel.webp",
+ "6|die Pommes (Pl.)": "assets/a1/vocab_ai/new/k6-die-pommes-pl.webp",
+ "6|die Salami, -s": "assets/a1/vocab_ai/new/k6-die-salami-s.webp",
+ "6|der Sandwich, -s": "assets/a1/vocab_ai/new/k6-der-sandwich-s.webp",
+ "6|das Eis": "assets/a1/vocab_ai/new/k6-das-eis.webp",
+ "6|die Tomatensuppe, -n": "assets/a1/vocab_ai/new/k6-die-tomatensuppe-n.webp",
+ "6|die Apfelsaftschorle, -n": "assets/a1/vocab_ai/new/k6-die-apfelsaftschorle-n.webp",
+ "6|der Hunger": "assets/a1/vocab_ai/new/k6-der-hunger.webp",
+ "6|der Durst": "assets/a1/vocab_ai/new/k6-der-durst.webp",
+ "6|voll": "assets/a1/vocab_ai/new/k6-voll.webp"
 };
 
 (function applyA11Images(){
