@@ -272,7 +272,23 @@ window.A1_VOCAB_11_IMAGES = {
  "4|wechseln": "assets/a1/vocab_ai/new/k4-wechseln.webp",
  "4|nehmen": "assets/a1/vocab_ai/new/k4-nehmen.webp",
  "4|grillen": "assets/a1/vocab_ai/new/k4-grillen.webp",
- "4|die Grillparty, -s": "assets/a1/vocab_ai/new/k4-die-grillparty-s.webp"
+ "4|die Grillparty, -s": "assets/a1/vocab_ai/new/k4-die-grillparty-s.webp",
+ "4|schälen": "assets/a1/vocab_ai/new/k4-schaelen.webp",
+ "4|schneiden": "assets/a1/vocab_ai/new/k4-schneiden.webp",
+ "4|waschen": "assets/a1/vocab_ai/new/k4-waschen.webp",
+ "4|zubereiten": "assets/a1/vocab_ai/new/k4-zubereiten.webp",
+ "4|helfen": "assets/a1/vocab_ai/new/k4-helfen.webp",
+ "4|planen": "assets/a1/vocab_ai/new/k4-planen.webp",
+ "4|probieren": "assets/a1/vocab_ai/new/k4-probieren.webp",
+ "4|der Chef, -s": "assets/a1/vocab_ai/new/k4-der-chef-s.webp",
+ "4|die Chefin, -nen": "assets/a1/vocab_ai/new/k4-die-chefin-nen.webp",
+ "4|die Kantine, -n": "assets/a1/vocab_ai/new/k4-die-kantine-n.webp",
+ "4|das Team, -s": "assets/a1/vocab_ai/new/k4-das-team-s.webp",
+ "4|die Arbeitszeit, -en": "assets/a1/vocab_ai/new/k4-die-arbeitszeit-en.webp",
+ "4|allein": "assets/a1/vocab_ai/new/k4-allein.webp",
+ "4|stressig": "assets/a1/vocab_ai/new/k4-stressig.webp",
+ "4|die Altstadt, ¨-e": "assets/a1/vocab_ai/new/k4-die-altstadt-e.webp",
+ "4|die Nachricht, -en": "assets/a1/vocab_ai/new/k4-die-nachricht-en.webp"
 };
 
 (function applyA11Images(){
