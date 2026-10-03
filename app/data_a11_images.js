@@ -335,7 +335,23 @@ window.A1_VOCAB_11_IMAGES = {
  "5|der Kunde, -n": "assets/a1/vocab_ai/new/k5-der-kunde-n.webp",
  "5|die Kundin, -nen": "assets/a1/vocab_ai/new/k5-die-kundin-nen.webp",
  "5|der Techniker, -": "assets/a1/vocab_ai/new/k5-der-techniker.webp",
- "5|die Technikerin, -nen": "assets/a1/vocab_ai/new/k5-die-technikerin-nen.webp"
+ "5|die Technikerin, -nen": "assets/a1/vocab_ai/new/k5-die-technikerin-nen.webp",
+ "5|krank": "assets/a1/vocab_ai/new/k5-krank.webp",
+ "5|der Stress": "assets/a1/vocab_ai/new/k5-der-stress.webp",
+ "5|die Idee, -n": "assets/a1/vocab_ai/new/k5-die-idee-n.webp",
+ "5|die Fantasie": "assets/a1/vocab_ai/new/k5-die-fantasie.webp",
+ "5|cool": "assets/a1/vocab_ai/new/k5-cool.webp",
+ "5|überlegen": "assets/a1/vocab_ai/new/k5-ueberlegen.webp",
+ "5|falsch": "assets/a1/vocab_ai/new/k5-falsch.webp",
+ "5|die Karte, -n": "assets/a1/vocab_ai/new/k5-die-karte-n.webp",
+ "5|ziehen": "assets/a1/vocab_ai/new/k5-ziehen.webp",
+ "5|der Stapel, -": "assets/a1/vocab_ai/new/k5-der-stapel.webp",
+ "6|schicken": "assets/a1/vocab_ai/new/k6-schicken.webp",
+ "6|die Anmeldung, -en": "assets/a1/vocab_ai/new/k6-die-anmeldung-en.webp",
+ "6|die Überraschung, -en": "assets/a1/vocab_ai/new/k6-die-ueberraschung-en.webp",
+ "6|wandern": "assets/a1/vocab_ai/new/k6-wandern.webp",
+ "6|laufen": "assets/a1/vocab_ai/new/k6-laufen.webp",
+ "6|der Marathon, -s": "assets/a1/vocab_ai/new/k6-der-marathon-s.webp"
 };
 
 (function applyA11Images(){
