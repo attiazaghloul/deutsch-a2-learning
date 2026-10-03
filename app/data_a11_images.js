@@ -367,7 +367,23 @@ window.A1_VOCAB_11_IMAGES = {
  "6|die Sonne": "assets/a1/vocab_ai/new/k6-die-sonne.webp",
  "6|der Regen": "assets/a1/vocab_ai/new/k6-der-regen.webp",
  "6|das Wetter": "assets/a1/vocab_ai/new/k6-das-wetter.webp",
- "6|warm": "assets/a1/vocab_ai/new/k6-warm.webp"
+ "6|warm": "assets/a1/vocab_ai/new/k6-warm.webp",
+ "6|kalt": "assets/a1/vocab_ai/new/k6-kalt.webp",
+ "6|genießen": "assets/a1/vocab_ai/new/k6-geniessen.webp",
+ "6|die Pantomime": "assets/a1/vocab_ai/new/k6-die-pantomime.webp",
+ "6|der Besuch, -e": "assets/a1/vocab_ai/new/k6-der-besuch-e.webp",
+ "6|der Treffpunkt, -e": "assets/a1/vocab_ai/new/k6-der-treffpunkt-e.webp",
+ "6|das Programm, -e": "assets/a1/vocab_ai/new/k6-das-programm-e.webp",
+ "6|das Open-Air-Kino, -s": "assets/a1/vocab_ai/new/k6-das-open-air-kino-s.webp",
+ "6|die Museumsnacht, ¨-e": "assets/a1/vocab_ai/new/k6-die-museumsnacht-e.webp",
+ "6|die Kneipe, -n": "assets/a1/vocab_ai/new/k6-die-kneipe-n.webp",
+ "6|das Kaffeehaus, ¨-er": "assets/a1/vocab_ai/new/k6-das-kaffeehaus-er.webp",
+ "6|der Biergarten, ¨-": "assets/a1/vocab_ai/new/k6-der-biergarten.webp",
+ "6|die Strandbar, -s": "assets/a1/vocab_ai/new/k6-die-strandbar-s.webp",
+ "6|die Selbstbedienung": "assets/a1/vocab_ai/new/k6-die-selbstbedienung.webp",
+ "6|die Bestellung, -en": "assets/a1/vocab_ai/new/k6-die-bestellung-en.webp",
+ "6|zahlen": "assets/a1/vocab_ai/new/k6-zahlen.webp",
+ "6|der Franken, -": "assets/a1/vocab_ai/new/k6-der-franken.webp"
 };
 
 (function applyA11Images(){
