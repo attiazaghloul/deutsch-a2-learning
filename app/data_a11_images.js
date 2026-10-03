@@ -257,7 +257,22 @@ window.A1_VOCAB_11_IMAGES = {
  "4|gesund": "assets/a1/vocab_ai/new/k4-gesund.webp",
  "4|satt": "assets/a1/vocab_ai/new/k4-satt.webp",
  "4|der Einkauf, ¨-e": "assets/a1/vocab_ai/new/k4-der-einkauf-e.webp",
- "4|die Metzgerei, -en": "assets/a1/vocab_ai/new/k4-die-metzgerei-en.webp"
+ "4|die Metzgerei, -en": "assets/a1/vocab_ai/new/k4-die-metzgerei-en.webp",
+ "4|der Einkaufswagen, ¨-": "assets/a1/vocab_ai/new/k4-der-einkaufswagen.webp",
+ "4|der Kassenzettel, -": "assets/a1/vocab_ai/new/k4-der-kassenzettel.webp",
+ "4|klein": "assets/a1/vocab_ai/new/k4-klein.webp",
+ "4|der Cent, -s": "assets/a1/vocab_ai/new/k4-der-cent-s.webp",
+ "4|das Kilogramm": "assets/a1/vocab_ai/new/k4-das-kilogramm.webp",
+ "4|der Liter, -": "assets/a1/vocab_ai/new/k4-der-liter.webp",
+ "4|das Stück, -e": "assets/a1/vocab_ai/new/k4-das-stueck-e.webp",
+ "4|das Paar, -e": "assets/a1/vocab_ai/new/k4-das-paar-e.webp",
+ "4|die Tüte, -n": "assets/a1/vocab_ai/new/k4-die-tuete-n.webp",
+ "4|die Dose, -n": "assets/a1/vocab_ai/new/k4-die-dose-n.webp",
+ "4|die Verpackung, -en": "assets/a1/vocab_ai/new/k4-die-verpackung-en.webp",
+ "4|wechseln": "assets/a1/vocab_ai/new/k4-wechseln.webp",
+ "4|nehmen": "assets/a1/vocab_ai/new/k4-nehmen.webp",
+ "4|grillen": "assets/a1/vocab_ai/new/k4-grillen.webp",
+ "4|die Grillparty, -s": "assets/a1/vocab_ai/new/k4-die-grillparty-s.webp"
 };
 
 (function applyA11Images(){
