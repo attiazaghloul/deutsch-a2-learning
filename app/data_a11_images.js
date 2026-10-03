@@ -145,7 +145,23 @@ window.A1_VOCAB_11_IMAGES = {
  "2|tauschen": "assets/a1/vocab_ai/new/k2-tauschen.webp",
  "2|präsentieren": "assets/a1/vocab_ai/new/k2-praesentieren.webp",
  "2|suchen": "assets/a1/vocab_ai/new/k2-suchen.webp",
- "2|zusammenpassen": "assets/a1/vocab_ai/new/k2-zusammenpassen.webp"
+ "2|zusammenpassen": "assets/a1/vocab_ai/new/k2-zusammenpassen.webp",
+ "3|die Stadttour, -en": "assets/a1/vocab_ai/new/k3-die-stadttour-en.webp",
+ "3|der Ort, -e": "assets/a1/vocab_ai/new/k3-der-ort-e.webp",
+ "3|das Haus, ¨-er": "assets/a1/vocab_ai/new/k3-das-haus-er.webp",
+ "3|der Hafen, ¨-": "assets/a1/vocab_ai/new/k3-der-hafen.webp",
+ "3|das Hotel, -s": "assets/a1/vocab_ai/new/k3-das-hotel-s.webp",
+ "3|der Turm, ¨-e": "assets/a1/vocab_ai/new/k3-der-turm-e.webp",
+ "3|das Konzerthaus, ¨-er": "assets/a1/vocab_ai/new/k3-das-konzerthaus-er.webp",
+ "3|die Kunsthalle, -n": "assets/a1/vocab_ai/new/k3-die-kunsthalle-n.webp",
+ "3|die Station, -en": "assets/a1/vocab_ai/new/k3-die-station-en.webp",
+ "3|das Meer, -e": "assets/a1/vocab_ai/new/k3-das-meer-e.webp",
+ "3|der See, -n": "assets/a1/vocab_ai/new/k3-der-see-n.webp",
+ "3|der Fluss, ¨-e": "assets/a1/vocab_ai/new/k3-der-fluss-e.webp",
+ "3|die Welt, -en": "assets/a1/vocab_ai/new/k3-die-welt-en.webp",
+ "3|die Gruppe, -n": "assets/a1/vocab_ai/new/k3-die-gruppe-n.webp",
+ "3|der Besucher, -": "assets/a1/vocab_ai/new/k3-der-besucher.webp",
+ "3|die Besucherin, -nen": "assets/a1/vocab_ai/new/k3-die-besucherin-nen.webp"
 };
 
 (function applyA11Images(){
