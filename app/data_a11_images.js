@@ -177,7 +177,23 @@ window.A1_VOCAB_11_IMAGES = {
  "3|der Regisseur, -e": "assets/a1/vocab_ai/new/k3-der-regisseur-e.webp",
  "3|die Regisseurin, -nen": "assets/a1/vocab_ai/new/k3-die-regisseurin-nen.webp",
  "3|der Star, -s": "assets/a1/vocab_ai/new/k3-der-star-s.webp",
- "3|der Film, -e": "assets/a1/vocab_ai/new/k3-der-film-e.webp"
+ "3|der Film, -e": "assets/a1/vocab_ai/new/k3-der-film-e.webp",
+ "3|das Plakat, -e": "assets/a1/vocab_ai/new/k3-das-plakat-e.webp",
+ "3|das Ticket, -s": "assets/a1/vocab_ai/new/k3-das-ticket-s.webp",
+ "3|der Start, -s": "assets/a1/vocab_ai/new/k3-der-start-s.webp",
+ "3|das Ziel, -e": "assets/a1/vocab_ai/new/k3-das-ziel-e.webp",
+ "3|das Bild, -er": "assets/a1/vocab_ai/new/k3-das-bild-er.webp",
+ "3|die S-Bahn, -en": "assets/a1/vocab_ai/new/k3-die-s-bahn-en.webp",
+ "3|der Zug, ¨-e": "assets/a1/vocab_ai/new/k3-der-zug-e.webp",
+ "3|das Flugzeug, -e": "assets/a1/vocab_ai/new/k3-das-flugzeug-e.webp",
+ "3|das Schiff, -e": "assets/a1/vocab_ai/new/k3-das-schiff-e.webp",
+ "3|die Fahrkarte, -n": "assets/a1/vocab_ai/new/k3-die-fahrkarte-n.webp",
+ "3|die Taxifahrt, -en": "assets/a1/vocab_ai/new/k3-die-taxifahrt-en.webp",
+ "3|zu Fuß": "assets/a1/vocab_ai/new/k3-zu-fuss.webp",
+ "3|die Wegbeschreibung, -en": "assets/a1/vocab_ai/new/k3-die-wegbeschreibung-en.webp",
+ "3|der Plan, ¨-e": "assets/a1/vocab_ai/new/k3-der-plan-e.webp",
+ "3|hoch": "assets/a1/vocab_ai/new/k3-hoch.webp",
+ "3|der Meter, -": "assets/a1/vocab_ai/new/k3-der-meter.webp"
 };
 
 (function applyA11Images(){
