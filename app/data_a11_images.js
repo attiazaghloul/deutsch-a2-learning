@@ -49,7 +49,23 @@ window.A1_VOCAB_11_IMAGES = {
  "1|das Interview, -s": "assets/a1/vocab_ai/new/k1-das-interview-s.webp",
  "1|hören": "assets/a1/vocab_ai/new/k1-hoeren.webp",
  "1|schreiben": "assets/a1/vocab_ai/new/k1-schreiben.webp",
- "1|fragen": "assets/a1/vocab_ai/new/k1-fragen.webp"
+ "1|fragen": "assets/a1/vocab_ai/new/k1-fragen.webp",
+ "1|unterstreichen": "assets/a1/vocab_ai/new/k1-unterstreichen.webp",
+ "1|sammeln": "assets/a1/vocab_ai/new/k1-sammeln.webp",
+ "2|der Fußball": "assets/a1/vocab_ai/new/k2-der-fussball.webp",
+ "2|der Basketball": "assets/a1/vocab_ai/new/k2-der-basketball.webp",
+ "2|das Tennis": "assets/a1/vocab_ai/new/k2-das-tennis.webp",
+ "2|Karate": "assets/a1/vocab_ai/new/k2-karate.webp",
+ "2|Yoga": "assets/a1/vocab_ai/new/k2-yoga.webp",
+ "2|Zumba": "assets/a1/vocab_ai/new/k2-zumba.webp",
+ "2|reisen": "assets/a1/vocab_ai/new/k2-reisen.webp",
+ "2|die Musik": "assets/a1/vocab_ai/new/k2-die-musik.webp",
+ "2|das Theater, -": "assets/a1/vocab_ai/new/k2-das-theater.webp",
+ "2|der Club, -s": "assets/a1/vocab_ai/new/k2-der-club-s.webp",
+ "2|der Sportclub, -s": "assets/a1/vocab_ai/new/k2-der-sportclub-s.webp",
+ "2|das Stadion, Stadien": "assets/a1/vocab_ai/new/k2-das-stadion-stadien.webp",
+ "2|das Schwimmbad, ¨-er": "assets/a1/vocab_ai/new/k2-das-schwimmbad-er.webp",
+ "2|die Spaghetti (Pl.)": "assets/a1/vocab_ai/new/k2-die-spaghetti-pl.webp"
 };
 
 (function applyA11Images(){
