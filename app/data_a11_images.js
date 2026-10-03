@@ -320,7 +320,22 @@ window.A1_VOCAB_11_IMAGES = {
  "5|der Ball, ¨-e": "assets/a1/vocab_ai/new/k5-der-ball-e.webp",
  "5|die Geige, -n": "assets/a1/vocab_ai/new/k5-die-geige-n.webp",
  "5|die Trompete, -n": "assets/a1/vocab_ai/new/k5-die-trompete-n.webp",
- "5|das Saxofon, -e": "assets/a1/vocab_ai/new/k5-das-saxofon-e.webp"
+ "5|das Saxofon, -e": "assets/a1/vocab_ai/new/k5-das-saxofon-e.webp",
+ "5|das Motorrad, ¨-er": "assets/a1/vocab_ai/new/k5-das-motorrad-er.webp",
+ "5|die Bar, -s": "assets/a1/vocab_ai/new/k5-die-bar-s.webp",
+ "5|der Mathe-Test, -s": "assets/a1/vocab_ai/new/k5-der-mathe-test-s.webp",
+ "5|die Hausaufgabe, -n": "assets/a1/vocab_ai/new/k5-die-hausaufgabe-n.webp",
+ "5|die Zeitung, -en": "assets/a1/vocab_ai/new/k5-die-zeitung-en.webp",
+ "5|das Telefongespräch, -e": "assets/a1/vocab_ai/new/k5-das-telefongespraech-e.webp",
+ "5|besuchen": "assets/a1/vocab_ai/new/k5-besuchen.webp",
+ "5|der Kalender, -": "assets/a1/vocab_ai/new/k5-der-kalender.webp",
+ "5|die Homepage, -s": "assets/a1/vocab_ai/new/k5-die-homepage-s.webp",
+ "5|die Praxis, Praxen": "assets/a1/vocab_ai/new/k5-die-praxis-praxen.webp",
+ "5|die Besprechung, -en": "assets/a1/vocab_ai/new/k5-die-besprechung-en.webp",
+ "5|der Kunde, -n": "assets/a1/vocab_ai/new/k5-der-kunde-n.webp",
+ "5|die Kundin, -nen": "assets/a1/vocab_ai/new/k5-die-kundin-nen.webp",
+ "5|der Techniker, -": "assets/a1/vocab_ai/new/k5-der-techniker.webp",
+ "5|die Technikerin, -nen": "assets/a1/vocab_ai/new/k5-die-technikerin-nen.webp"
 };
 
 (function applyA11Images(){
