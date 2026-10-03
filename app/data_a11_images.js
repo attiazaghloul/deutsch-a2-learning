@@ -17,7 +17,23 @@ window.A1_VOCAB_11_IMAGES = {
  "1|Italien": "assets/a1/vocab_ai/new/k1-italien.webp",
  "1|Japan": "assets/a1/vocab_ai/new/k1-japan.webp",
  "1|Mexiko": "assets/a1/vocab_ai/new/k1-mexiko.webp",
- "1|Polen": "assets/a1/vocab_ai/new/k1-polen.webp"
+ "1|Polen": "assets/a1/vocab_ai/new/k1-polen.webp",
+ "1|Portugal": "assets/a1/vocab_ai/new/k1-portugal.webp",
+ "1|Russland": "assets/a1/vocab_ai/new/k1-russland.webp",
+ "1|Spanien": "assets/a1/vocab_ai/new/k1-spanien.webp",
+ "1|Thailand": "assets/a1/vocab_ai/new/k1-thailand.webp",
+ "1|die Türkei": "assets/a1/vocab_ai/new/k1-die-tuerkei.webp",
+ "1|die USA (Pl.)": "assets/a1/vocab_ai/new/k1-die-usa-pl.webp",
+ "1|die Ukraine": "assets/a1/vocab_ai/new/k1-die-ukraine.webp",
+ "1|China": "assets/a1/vocab_ai/new/k1-china.webp",
+ "1|Dänemark": "assets/a1/vocab_ai/new/k1-daenemark.webp",
+ "1|der Irak": "assets/a1/vocab_ai/new/k1-der-irak.webp",
+ "1|der Iran": "assets/a1/vocab_ai/new/k1-der-iran.webp",
+ "1|der Jemen": "assets/a1/vocab_ai/new/k1-der-jemen.webp",
+ "1|Kanada": "assets/a1/vocab_ai/new/k1-kanada.webp",
+ "1|der Libanon": "assets/a1/vocab_ai/new/k1-der-libanon.webp",
+ "1|Neuseeland": "assets/a1/vocab_ai/new/k1-neuseeland.webp",
+ "1|die Niederlande (Pl.)": "assets/a1/vocab_ai/new/k1-die-niederlande-pl.webp"
 };
 
 (function applyA11Images(){
