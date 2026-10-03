@@ -25,7 +25,7 @@ const CORE = [
   'icons/apple-touch-icon.png',
   'dictionary-data/manifest.js',
   // JS data files
-  'data_a1.js','data_a12.js','data_a11_vocab.js','data_a11_lessons.js','data_a11_conversations.js','data_a11_grammar_1.js','data_a11_grammar_2.js','data_a11_grammar_3.js','data_a1_grammar_full.js','data_a1_grammar_lessons.js','data_a1_verbs.js','data_a11_verbs.js',
+  'data_a1.js','data_a12.js','data_a11_vocab.js','data_a11_images.js','data_a11_lessons.js','data_a11_conversations.js','data_a11_grammar_1.js','data_a11_grammar_2.js','data_a11_grammar_3.js','data_a1_grammar_full.js','data_a1_grammar_lessons.js','data_a1_verbs.js','data_a11_verbs.js',
   'data_a21_library.js','data_a2_grammar_lessons.js','data_book0.js','data_book0_expansion.js','data_book1.js',
   'data_book2.js','data_b1_1.js','data_b1_1_lessons.js','data_b1_1_conversations.js','data_b1_1_grammar_1.js','data_b1_1_grammar_2.js','data_b1_1_grammar_3.js','data_b1_verbs.js','data_exam_b1.js','data_exam_a1.js','data_bausteine.js','data_bausteine_2.js','data_core_dictionary.js','data_lernwortschatz8.js','data_lernwortschatz9.js','data_lernwortschatz10.js','data_lernwortschatz11.js','data_lernwortschatz12.js','dictionary-worker.js','data_enrichment.js','data_vocab_topics7_12.js','data_exam.js','data_extra.js','data_gram.js','data_gram_complete.js',
   'data_gram_extra.js','data_hoeren.js','data_hoeren_a1.js','data_hoeren_a1_figures.js','data_hoeren_a1_interactive.js',
