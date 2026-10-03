@@ -113,7 +113,23 @@ window.A1_VOCAB_11_IMAGES = {
  "2|die Universität, -en": "assets/a1/vocab_ai/new/k2-die-universitaet-en.webp",
  "2|das Seminar, -e": "assets/a1/vocab_ai/new/k2-das-seminar-e.webp",
  "2|der Kurs, -e": "assets/a1/vocab_ai/new/k2-der-kurs-e.webp",
- "2|der Kursraum, ¨-e": "assets/a1/vocab_ai/new/k2-der-kursraum-e.webp"
+ "2|der Kursraum, ¨-e": "assets/a1/vocab_ai/new/k2-der-kursraum-e.webp",
+ "2|das Zimmer, -": "assets/a1/vocab_ai/new/k2-das-zimmer.webp",
+ "2|alt": "assets/a1/vocab_ai/new/k2-alt.webp",
+ "2|der Kilometer, -": "assets/a1/vocab_ai/new/k2-der-kilometer.webp",
+ "2|die Hausnummer, -n": "assets/a1/vocab_ai/new/k2-die-hausnummer-n.webp",
+ "2|die E-Mail, -s": "assets/a1/vocab_ai/new/k2-die-e-mail-s.webp",
+ "2|das Buch, ¨-er": "assets/a1/vocab_ai/new/k2-das-buch-er.webp",
+ "2|die Zeichnung, -en": "assets/a1/vocab_ai/new/k2-die-zeichnung-en.webp",
+ "2|der Stift, -e": "assets/a1/vocab_ai/new/k2-der-stift-e.webp",
+ "2|der Schlüssel, -": "assets/a1/vocab_ai/new/k2-der-schluessel.webp",
+ "2|das Glas, ¨-er": "assets/a1/vocab_ai/new/k2-das-glas-er.webp",
+ "2|das Geld, -er": "assets/a1/vocab_ai/new/k2-das-geld-er.webp",
+ "2|der Computer, -": "assets/a1/vocab_ai/new/k2-der-computer.webp",
+ "2|das Foto, -s": "assets/a1/vocab_ai/new/k2-das-foto-s.webp",
+ "2|die Farbe, -n": "assets/a1/vocab_ai/new/k2-die-farbe-n.webp",
+ "2|blau": "assets/a1/vocab_ai/new/k2-blau.webp",
+ "2|grün": "assets/a1/vocab_ai/new/k2-gruen.webp"
 };
 
 (function applyA11Images(){
