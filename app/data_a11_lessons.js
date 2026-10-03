@@ -179,7 +179,7 @@
       Q("Das ist ___ Stift.", ["der", "die", "das"], 0, "„Stift“ ist maskulin: der Stift.", "Stift مذكر: der Stift."),
       Q("Die Mehrzahl von „das Buch“ ist …", ["die Bücher", "die Buchs", "die Buchen"], 0, "das Buch → die Bücher (Umlaut + -er).", "الجمع: die Bücher."),
       Q("Ich ___ Studentin.", ["bin", "habe", "ist"], 0, "Beruf und Herkunft: sein → ich bin.", "للمهنة بنستخدم sein: ich bin."),
-      Q("Ich ___ am Samstag frei.", ["habe", "bin", "hat"], 0, "frei haben: ich habe frei.", "frei haben: ich habe frei."),
+      Q("Ich ___ am Samstag frei.", ["habe", "bin", "hat"], 0, "frei haben: ich habe frei.", "التعبير: frei haben ← ich habe frei."),
       Q("Welche Zahl ist „vierundsechzig“?", ["64", "46", "74"], 0, "Erst die Einer, dann „und“, dann die Zehner: 4 + 60 = 64.", "الأحاد الأول ثم und ثم العشرات: 4 + 60 = 64."),
       Q("Wann arbeitest du? – ___ Montag bis Freitag.", ["Von", "Am", "Um"], 0, "von … bis … nennt einen Zeitraum.", "von … bis … بتحدد فترة."),
       Q("Gehen wir am Freitag ins Kino? – Antwort: Nein, ...", ["das geht leider nicht.", "ich heiße Max.", "ich bin Lehrer."], 0, "So lehnst du höflich ab.", "كده بترفض بأدب.")
@@ -516,7 +516,7 @@
       Q("Mein Geburtstag ist ___ dritten Mai.", ["am", "um", "im"], 0, "Datum mit Tag: am dritten Mai.", "التاريخ مع اليوم: am dritten Mai."),
       Q("Ich lade dich ___. (einladen)", ["ein", "mit", "an"], 0, "einladen ist trennbar: Ich lade dich ein.", "الفعل einladen منفصل: Ich lade dich ein."),
       Q("Bring bitte Saft ___. (mitbringen)", ["mit", "ein", "auf"], 0, "mitbringen ist trennbar: Bring Saft mit.", "mitbringen منفصل: Bring Saft mit."),
-      Q("Der Kuchen ist für ___. (er, Akkusativ)", ["ihn", "er", "ihm"], 0, "für + Akkusativ: für ihn.", "für + Akkusativ: für ihn."),
+      Q("Der Kuchen ist für ___. (er, Akkusativ)", ["ihn", "er", "ihm"], 0, "für + Akkusativ: für ihn.", "بعد für بنستخدم Akkusativ: für ihn."),
       Q("Ich sehe ___ im Park. (du)", ["dich", "dir", "du"], 0, "Akkusativ von „du“ ist „dich“.", "الـ Akkusativ لـ du هو dich."),
       Q("Die Party ___ sehr schön.", ["war", "hatte", "waren"], 0, "Präteritum von sein: es war.", "الماضي لـ sein: es war."),
       Q("Wir ___ viel Spaß.", ["hatten", "waren", "hat"], 0, "Präteritum von haben: wir hatten.", "الماضي لـ haben: wir hatten."),

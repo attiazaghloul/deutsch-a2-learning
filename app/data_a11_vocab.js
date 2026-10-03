@@ -8837,7 +8837,6 @@ window.A1_VOCAB_11 = {
   if(!Array.isArray(window.A1_BOOK)) return;
   const key=word=>String(word||'').replace(/\([^)]*\)/g,'').replace(/^(der|die|das)\s+/i,'').split(',')[0].trim().toLocaleLowerCase('de-DE').replace(/^tschüss$/,'tschüs');
   const fresh=window.A1_VOCAB_11;
-  const freshKeys=new Set(Object.values(fresh).flatMap(list=>list.map(card=>key(card.w))));
   const photos=new Map();
   window.A1_BOOK.filter(chapter=>fresh[chapter.num]).forEach(chapter=>{
     (chapter.vocab||[]).forEach(card=>{
@@ -8851,14 +8850,17 @@ window.A1_VOCAB_11 = {
     const previous=(chapter.vocab||[]).map((card,index)=>({card,index,key:key(card.w)}));
     const byKey=new Map();
     previous.forEach(entry=>{if(!byKey.has(entry.key)) byKey.set(entry.key,entry);});
+    const claimed=new Set();
     const merged=list.map(card=>{
-      const old=byKey.get(key(card.w));
-      const own=old?old.card.img:'';
-      const next={...card,img:own||photos.get(key(card.w))||''};
+      const id=key(card.w);
+      const old=claimed.has(id)?null:byKey.get(id);
+      if(old) claimed.add(id);
+      const next={...card,img:(old?old.card.img:'')||photos.get(id)||''};
       if(old) next.legacy={index:old.index,w:old.card.w};
       return next;
     });
-    const extras=previous.filter(entry=>!freshKeys.has(entry.key)).map(entry=>({
+    const ownKeys=new Set(list.map(card=>key(card.w)));
+    const extras=previous.filter(entry=>!ownKeys.has(entry.key)).map(entry=>({
       ...entry.card,cat:'Weitere nützliche Wörter',catAr:'كلمات وعبارات إضافية مفيدة',legacy:{index:entry.index,w:entry.card.w}
     }));
     chapter.vocab=[...merged,...extras];
