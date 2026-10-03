@@ -241,7 +241,23 @@ window.A1_VOCAB_11_IMAGES = {
  "4|der Pfeffer": "assets/a1/vocab_ai/new/k4-der-pfeffer.webp",
  "4|der Zucker": "assets/a1/vocab_ai/new/k4-der-zucker.webp",
  "4|das Öl, -e": "assets/a1/vocab_ai/new/k4-das-oel-e.webp",
- "4|der Essig, -e": "assets/a1/vocab_ai/new/k4-der-essig-e.webp"
+ "4|der Essig, -e": "assets/a1/vocab_ai/new/k4-der-essig-e.webp",
+ "4|die Schokolade, -n": "assets/a1/vocab_ai/new/k4-die-schokolade-n.webp",
+ "4|das Dessert, -s": "assets/a1/vocab_ai/new/k4-das-dessert-s.webp",
+ "4|das Gericht, -e": "assets/a1/vocab_ai/new/k4-das-gericht-e.webp",
+ "4|asiatisch": "assets/a1/vocab_ai/new/k4-asiatisch.webp",
+ "4|das Getränk, -e": "assets/a1/vocab_ai/new/k4-das-getraenk-e.webp",
+ "4|der Apfelsaft, ¨-e": "assets/a1/vocab_ai/new/k4-der-apfelsaft-e.webp",
+ "4|der Orangensaft, ¨-e": "assets/a1/vocab_ai/new/k4-der-orangensaft-e.webp",
+ "4|die Limonade, -n": "assets/a1/vocab_ai/new/k4-die-limonade-n.webp",
+ "4|die Cola": "assets/a1/vocab_ai/new/k4-die-cola.webp",
+ "4|der Becher, -": "assets/a1/vocab_ai/new/k4-der-becher.webp",
+ "4|prost": "assets/a1/vocab_ai/new/k4-prost.webp",
+ "4|zum Wohl": "assets/a1/vocab_ai/new/k4-zum-wohl.webp",
+ "4|gesund": "assets/a1/vocab_ai/new/k4-gesund.webp",
+ "4|satt": "assets/a1/vocab_ai/new/k4-satt.webp",
+ "4|der Einkauf, ¨-e": "assets/a1/vocab_ai/new/k4-der-einkauf-e.webp",
+ "4|die Metzgerei, -en": "assets/a1/vocab_ai/new/k4-die-metzgerei-en.webp"
 };
 
 (function applyA11Images(){
