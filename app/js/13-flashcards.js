@@ -288,8 +288,20 @@ function fallbackVocabSticker(v,chapterData,label='DE'){
   </div>`;
 }
 
+function vocabChapterOf(v){
+  return [...A1_BOOK, ...BOOK, ...B1_BOOK].find(item=>item.vocab?.includes(v));
+}
+
+// A1 and B1.1 cards without a picture have nothing to show on a front side, so they
+// are drawn as one fixed card (word, meaning, example, translation) that does not flip.
+function isPictureFreeCard(v){
+  if(v.img) return false;
+  const route=vocabChapterOf(v)?.route||'';
+  return route.startsWith('a1/')||route.startsWith('b1.1/');
+}
+
 function vocabVisual(v,chapter){
-  const chapterData=[...A1_BOOK, ...BOOK, ...B1_BOOK].find(item=>item.vocab?.includes(v));
+  const chapterData=vocabChapterOf(v);
   if(chapterData?.route?.startsWith('a1/')){
     return `<div class="fc-visual ${v.img?'fc-visual--full':'fc-visual--plain'}" role="img" aria-label="${escapeHtml(v.w)}">
       ${v.img?`<img class="fc-scene" src="${v.img}" alt="" width="420" height="420" loading="eager" decoding="async">`:
@@ -356,7 +368,15 @@ function initFlash(c){
 function drawFC(){
   const a = $('#fcArea'); if(!fcState) return;
   const v = fcState.cards[fcState.i];
-  a.innerHTML = `
+  const card = isPictureFreeCard(v) ? `
+  <div class="flashcard flashcard--static" id="fcCard">
+    <div class="flashcard-inner">
+      <div class="flashcard-face flashcard-back" aria-hidden="false"><div class="fc-back-copy">
+        ${v.cat?`<div class="fc-back-label">${escapeHtml(v.cat)}</div>`:''}
+        <div class="big" style="font-size:26px">${fmtWord(v.w)}</div>
+        <div class="fdef">${v.d}</div>${v.ex?`<div class="fex">„${v.ex}“</div>`:''}${ar(v.ar)}</div></div>
+    </div>
+  </div>` : `
   <div class="flashcard ${fcState.flipped?'is-flipped':''}" id="fcCard" role="button" tabindex="0"
     aria-label="Karte umdrehen: ${escapeHtml(v.w)}" aria-pressed="${fcState.flipped}"
     onclick="flipFC()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipFC()}">
@@ -367,7 +387,8 @@ function drawFC(){
         <div class="big" style="font-size:20px">${fmtWord(v.w)}</div>
         <div class="fdef">${v.d}</div>${v.ex?`<div class="fex">„${v.ex}“</div>`:''}${ar(v.ar)}</div></div>
     </div>
-  </div>
+  </div>`;
+  a.innerHTML = `${card}
   <div class="fc-nav">
     <button class="btn btn-ghost" onclick="navFC(-1)">← zurück</button>
     <span class="cnt">${fcState.i+1} / ${fcState.cards.length}</span>
@@ -375,7 +396,7 @@ function drawFC(){
   </div>`;
 }
 function flipFC(){
-  if(!fcState)return;
+  if(!fcState||isPictureFreeCard(fcState.cards[fcState.i]))return;
   fcState.flipped=!fcState.flipped;
   const card=$('#fcCard');
   card?.classList.toggle('is-flipped',fcState.flipped);

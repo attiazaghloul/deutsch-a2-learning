@@ -650,6 +650,18 @@ test('learning interactions expose keyboard and live-region semantics', () => {
   assert.match(html, /class="podcast-ar" lang="ar" dir="rtl"/);
 });
 
+test('A1 and B1.1 cards without a picture are one fixed card that does not flip', () => {
+  const css = readFileSync(join(root, 'app', 'styles', 'ui-next.css'), 'utf8');
+  assert.match(html, /function isPictureFreeCard\(v\)\{\s*if\(v\.img\) return false;/);
+  assert.match(html, /route\.startsWith\('a1\/'\)\|\|route\.startsWith\('b1\.1\/'\)/);
+  // drawFC renders the fixed card (no onclick/role=button) and flipFC ignores it
+  assert.match(html, /isPictureFreeCard\(v\) \? `\s*<div class="flashcard flashcard--static" id="fcCard">/);
+  assert.match(html, /function flipFC\(\)\{\s*if\(!fcState\|\|isPictureFreeCard\(fcState\.cards\[fcState\.i\]\)\)return;/);
+  assert.match(css, /\.flashcard--static \.flashcard-face\{position:relative/);
+  // the picture cards keep their flip markup
+  assert.match(html, /class="flashcard \$\{fcState\.flipped\?'is-flipped':''\}" id="fcCard" role="button" tabindex="0"/);
+});
+
 test('mistakes from quizzes, practice, and exams feed the review queue', () => {
   const ui = readFileSync(join(root, 'app', 'ui-next.js'), 'utf8');
   assert.match(ui, /function addMistake\(/);
