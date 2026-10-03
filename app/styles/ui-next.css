@@ -92,6 +92,12 @@ header.topbar button:active{transform:scale(.96)}
   border-color:var(--ds-border);border-radius:var(--ds-radius-card);background:var(--ds-surface);
   box-shadow:var(--ds-shadow-1);
 }
+/* The exam and games intro cards have white text on a dark gradient; the .card rule above
+   would otherwise repaint them with the light surface colour and hide the text. */
+.card.exam-hero,.card.games-hero{
+  background:radial-gradient(circle at 92% 0%,rgba(255,255,255,.18),transparent 30%),linear-gradient(135deg,var(--ds-accent-strong),var(--ds-accent));
+  border-color:transparent;color:#fff;
+}
 .section-card,.level-card,.lesson-item,.game-tile,.podcast-card{
   transition:transform var(--motion-fast) var(--ease-standard),box-shadow var(--motion-fast) var(--ease-standard),border-color var(--motion-fast) var(--ease-standard);
 }

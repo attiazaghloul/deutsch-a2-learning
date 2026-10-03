@@ -1261,3 +1261,56 @@ test('A1.1 verbs extend the A1 verb reference with complete forms in every tense
   assert.equal(table('grüßen')['Präsens'][1], 'grüßt');
   assert.equal(table('wissen')['Präsens'][2], 'weiß');
 });
+
+test('A1 exam training is complete, original and routed like the other levels', () => {
+  const win = loadA11Data(['data_exam_a1.js']);
+  const exam = win.A1_EXAM;
+  assert.deepEqual(Object.keys(exam.modules), ['lesen', 'hoeren', 'schreiben', 'sprechen']);
+  for (const id of ['lesen', 'hoeren']) {
+    const questions = exam.modules[id].parts.flatMap(part => part.questions);
+    assert.equal(questions.length, 15, `${id} should have 15 questions`);
+    questions.forEach(question => {
+      assert.ok(Number.isInteger(question.a) && question.a >= 0 && question.a < question.o.length, question.q);
+      assert.equal(new Set(question.o).size, question.o.length, question.q);
+    });
+  }
+  exam.modules.lesen.parts.forEach(part => assert.ok(part.title && part.instruction && part.text, part.title));
+  exam.modules.hoeren.parts.forEach(part => {
+    assert.ok(part.id && part.script.length > 250 && part.plays >= 1, part.title);
+  });
+  assert.equal(new Set(exam.modules.hoeren.parts.map(part => part.id)).size, 3, 'listening parts need unique ids');
+  assert.equal(exam.modules.schreiben.tasks.length, 2);
+  exam.modules.schreiben.tasks.forEach(task => assert.ok(task.prompt && task.model && task.minWords > 0 && task.checklist.length >= 4));
+  assert.equal(exam.modules.sprechen.tasks.length, 3);
+  exam.modules.sprechen.tasks.forEach(task => assert.ok(task.prompt && task.help.length >= 3 && task.prep > 0 && task.speak > 0));
+  assert.ok(exam.modules.sprechen.checklist.length >= 5);
+  assert.deepEqual(['lesen', 'hoeren', 'schreiben', 'sprechen'].map(id => exam.modules[id].points), [25, 25, 25, 25]);
+
+  const games = loadFunctions(['gameScoresKey']);
+  assert.equal(vm.runInContext("let gameLevel='a1';gameScoresKey()", games), 'a1GameBestScores');
+  const exams = loadFunctions(['examScoresKey']);
+  assert.equal(vm.runInContext("let examLevel='a1';examScoresKey()", exams), 'a1ExamScores');
+  for (const route of ['a1/games', 'a1/exam']) assert.ok(html.includes(`h==='${route}'`), `router misses ${route}`);
+  assert.match(html, /a1\\\/games\\\/\(speed\|memory\|artikel\|sentence\)/);
+  assert.match(html, /a1\\\/exam\\\/\(lesen\|hoeren\|schreiben\|sprechen\)/);
+  const ui = readFileSync(join(root, 'app', 'ui-next.js'), 'utf8');
+  assert.match(ui, /\['exam','Prüfung','a1\/exam'\]/);
+  assert.match(ui, /\['games','Training','a1\/games'\]/);
+  assert.match(readFileSync(join(root, 'app', 'sw.js'), 'utf8'), /'data_exam_a1\.js'/);
+  assert.match(readFileSync(join(root, 'app', 'index.html'), 'utf8'), /src="data_exam_a1\.js"/);
+  assert.equal(vm.runInContext("fallbackBackTarget('a1/exam/lesen')", loadFunctions(['fallbackBackTarget'])), 'a1/exam');
+  assert.equal(vm.runInContext("fallbackBackTarget('a1/games')", loadFunctions(['fallbackBackTarget'])), 'a1');
+});
+
+test('the sentence puzzle only uses one clean sentence at a time', () => {
+  const { plainText: _unused, isPuzzleSentence } = (() => {
+    const context = vm.createContext({ plainText: value => String(value) });
+    vm.runInContext(`${functionSource('isPuzzleSentence')}\nthis.isPuzzleSentence=isPuzzleSentence;`, context);
+    return context;
+  })();
+  assert.equal(isPuzzleSentence('Ich nehme das Schnitzel mit Pommes.'), true);
+  assert.equal(isPuzzleSentence('Ich nehme das Schnitzel. / Für mich eine Suppe.'), false);
+  assert.equal(isPuzzleSentence('Wie heißt du? – Ich heiße Niklas.'), false);
+  assert.equal(isPuzzleSentence('Hallo!'), false);
+  assert.equal(isPuzzleSentence('Gehen Sie bis zur Brücke und dann rechts.'), true);
+});
