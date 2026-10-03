@@ -97,7 +97,23 @@ window.A1_VOCAB_11_IMAGES = {
  "2|die Mechanikerin, -nen": "assets/a1/vocab_ai/new/k2-die-mechanikerin-nen.webp",
  "2|der Polizist, -en": "assets/a1/vocab_ai/new/k2-der-polizist-en.webp",
  "2|die Polizistin, -nen": "assets/a1/vocab_ai/new/k2-die-polizistin-nen.webp",
- "2|der Student, -en": "assets/a1/vocab_ai/new/k2-der-student-en.webp"
+ "2|der Student, -en": "assets/a1/vocab_ai/new/k2-der-student-en.webp",
+ "2|die Studentin, -nen": "assets/a1/vocab_ai/new/k2-die-studentin-nen.webp",
+ "2|studieren": "assets/a1/vocab_ai/new/k2-studieren.webp",
+ "2|der Taxifahrer, -": "assets/a1/vocab_ai/new/k2-der-taxifahrer.webp",
+ "2|die Taxifahrerin, -nen": "assets/a1/vocab_ai/new/k2-die-taxifahrerin-nen.webp",
+ "2|der Kollege, -n": "assets/a1/vocab_ai/new/k2-der-kollege-n.webp",
+ "2|die Kollegin, -nen": "assets/a1/vocab_ai/new/k2-die-kollegin-nen.webp",
+ "2|der Patient, -en": "assets/a1/vocab_ai/new/k2-der-patient-en.webp",
+ "2|die Patientin, -nen": "assets/a1/vocab_ai/new/k2-die-patientin-nen.webp",
+ "2|das Krankenhaus, ¨-er": "assets/a1/vocab_ai/new/k2-das-krankenhaus-er.webp",
+ "2|das Medikament, -e": "assets/a1/vocab_ai/new/k2-das-medikament-e.webp",
+ "2|die Tablette, -n": "assets/a1/vocab_ai/new/k2-die-tablette-n.webp",
+ "2|die Spritze, -n": "assets/a1/vocab_ai/new/k2-die-spritze-n.webp",
+ "2|die Universität, -en": "assets/a1/vocab_ai/new/k2-die-universitaet-en.webp",
+ "2|das Seminar, -e": "assets/a1/vocab_ai/new/k2-das-seminar-e.webp",
+ "2|der Kurs, -e": "assets/a1/vocab_ai/new/k2-der-kurs-e.webp",
+ "2|der Kursraum, ¨-e": "assets/a1/vocab_ai/new/k2-der-kursraum-e.webp"
 };
 
 (function applyA11Images(){
