@@ -144,9 +144,16 @@ function grammarFeedback(id,correct,extra=''){
   if(!correct&&exercise){
     const answer=exercise.type==='choice'?exercise.o[exercise.a]:exercise.type==='truefalse'?(exercise.a?'Richtig':'Falsch')
       :exercise.type==='order'?`${exercise.prefix||''} ${exercise.a[0]}`.trim():exercise.a[0];
-    window.NextUI?.addMistake?.({prompt:exercise.q||exercise.prefix||'Grammatik',answer,context:id.replace(/^test-/,'').startsWith('a1-')?'Grammatik A1.1':'Grammatik B1.1'});
+    window.NextUI?.addMistake?.({prompt:exercise.q||exercise.prefix||'Grammatik',answer,context:grammarLevelLabel(id)});
   }
   updateGrammarScores(id);
+}
+
+function grammarLevelLabel(id){
+  const match=id.replace(/^test-/,'').match(/^(a1|a2)-k(\d+)-/);
+  if(!match) return 'Grammatik B1.1';
+  if(match[1]==='a2') return 'Grammatik A2.1';
+  return Number(match[2])>6?'Grammatik A1.2':'Grammatik A1.1';
 }
 
 function updateGrammarScores(id){
