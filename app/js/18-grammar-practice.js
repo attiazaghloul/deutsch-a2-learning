@@ -1,5 +1,5 @@
 /* ===================== grammar practice ===================== */
-/* Renders the detailed chapter grammar (window.B1_GRAMMAR) with rules,
+/* Renders the detailed chapter grammar (A1_GRAMMAR, A2_GRAMMAR, B1_GRAMMAR) with rules,
    tables, examples, typical mistakes and six exercise types:
    choice, truefalse, gap, order, transform, error. The chapter "Lerncheck"
    draws a mixed test from the same pool. Results are stored per exercise. */
@@ -19,11 +19,13 @@ function saveGrammarResult(id,correct){
 function chapterGrammar(chapter){
   if(chapter?.route?.startsWith('b1.1/')) return window.B1_GRAMMAR?.[chapter.num]||[];
   if(chapter?.route?.startsWith('a1/')) return window.A1_GRAMMAR?.[chapter.num]||[];
+  /* A2 chapters have no route; A2.1 (chapters 1-6) has detailed grammar */
+  if(chapter&&!chapter.route) return window.A2_GRAMMAR?.[chapter.num]||[];
   return [];
 }
 
 function allGrammarTopics(){
-  return [...Object.values(window.A1_GRAMMAR||{}).flat(),...Object.values(window.B1_GRAMMAR||{}).flat()];
+  return [...Object.values(window.A1_GRAMMAR||{}).flat(),...Object.values(window.A2_GRAMMAR||{}).flat(),...Object.values(window.B1_GRAMMAR||{}).flat()];
 }
 
 function chapterByRoute(route){

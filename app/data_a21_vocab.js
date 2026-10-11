@@ -1144,9 +1144,11 @@ window.A2_VOCAB_21 = {};
       }
       return next;
     });
-    /* older words that are not in the new list stay at the end, with their saved ids */
-    const ownKeys = new Set(list.map(card => key(card.w)));
-    const extras = previous.filter(entry => !claimed.has(entry.index) && !ownKeys.has(entry.key)).map(entry => ({
+    /* older words that are not in the new list stay at the end, with their saved ids;
+       only an exact repeat of a card that is already there is left out */
+    const plain = word => String(word || '').replace(/^(der|die|das)\s+/i, '').split(',')[0].trim().toLocaleLowerCase('de-DE');
+    const shown = new Set([...list.map(card => plain(card.w)), ...previous.filter(entry => claimed.has(entry.index)).map(entry => plain(entry.card.w))]);
+    const extras = previous.filter(entry => !claimed.has(entry.index) && !shown.has(plain(entry.card.w))).map(entry => ({
       ...entry.card, cat: 'Weitere nützliche Wörter', catAr: 'كلمات وعبارات إضافية مفيدة', legacy: { index: entry.index, w: entry.card.w }
     }));
     chapter.vocab = [...merged, ...extras];
