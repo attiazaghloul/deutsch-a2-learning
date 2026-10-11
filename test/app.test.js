@@ -1511,6 +1511,24 @@ test('A2.1 verbs and data files are loaded, precached and conjugate in every ten
   assert.deepEqual([...order].sort((a, b) => a - b), order, 'A2.1 files load after the base data in dependency order');
 });
 
+test('chapter quiz shows the options in a random order and still checks the right one', () => {
+  const { quizOptionOrder } = loadFunctions(['quizOptionOrder']);
+  const values = [0.9, 0.1, 0.5, 0.3];
+  let call = 0;
+  const order = Array.from(quizOptionOrder(3, () => values[call++ % values.length]));
+  assert.deepEqual([...order].sort(), [0, 1, 2], 'every option appears once');
+  const positions = new Set();
+  for (let seed = 0; seed < 40; seed += 1) {
+    let step = 0;
+    const random = () => ((seed * 0.6180339887 + (step += 1) * 0.4142135623) % 1);
+    positions.add(Array.from(quizOptionOrder(3, random)).indexOf(0));
+  }
+  assert.equal(positions.size, 3, 'the first-written option lands on every position');
+  const source = functionSource('initQuiz');
+  assert.match(source, /quizOptionOrder\(q\.o\.length\)/);
+  assert.match(source, /\+b\.dataset\.o===q\.a/, 'the right button is found by its original index');
+});
+
 test('dialogue playback finds the chapter by route, so A1 and A2 chapter 1 stay apart', () => {
   assert.match(functionSource('conversationsHtml'), /chapter\.route\|\|`k\$\{chapter\.num\}`/);
   assert.match(functionSource('playDialogue'), /item\.route\|\|`k\$\{item\.num\}`/);

@@ -1,12 +1,23 @@
 /* ===================== quiz ===================== */
+/* Many quizzes are written with the right option first, so the options are shown in a
+   new random order every time; buttons keep their original index in data-o. */
+function quizOptionOrder(length,random=Math.random){
+  const order=Array.from({length},(_,index)=>index);
+  for(let index=order.length-1;index>0;index--){
+    const swap=Math.floor(random()*(index+1));
+    [order[index],order[swap]]=[order[swap],order[index]];
+  }
+  return order;
+}
+
 function initQuiz(questions){
   const area = $('#quizArea');
   let score=0, answered=0;
   let h='';
   questions.forEach((q,qi) => {
     h += `<div class="card"><div class="quiz-q">${qi+1}. ${q.q}</div>`;
-    q.o.forEach((opt,oi) => {
-      h += `<button class="quiz-opt" data-q="${qi}" data-o="${oi}">${opt}</button>`;
+    quizOptionOrder(q.o.length).forEach(oi => {
+      h += `<button class="quiz-opt" data-q="${qi}" data-o="${oi}">${q.o[oi]}</button>`;
     });
     h += `<div class="quiz-fb" id="fb${qi}" role="status" aria-live="polite"></div></div>`;
   });
@@ -19,8 +30,8 @@ function initQuiz(questions){
       btn.parentElement.dataset.done='1';
       answered++;
       const fb = $('#fb'+qi);
-      btn.parentElement.querySelectorAll('.quiz-opt').forEach((b,i)=>{
-        if(i===q.a) b.classList.add('correct');
+      btn.parentElement.querySelectorAll('.quiz-opt').forEach(b=>{
+        if(+b.dataset.o===q.a) b.classList.add('correct');
       });
       if(oi===q.a){ score++; fb.innerHTML=`Richtig. ${q.fb||''}${ar(q.fbAr)}`; }
       else {
