@@ -3,11 +3,15 @@ const vm = require('vm');
 
 const sandbox = {window: {}, console};
 vm.createContext(sandbox);
-// data_a11_*.js extend the A1 data, so they have to load after data_a1.js, data_a12.js and data_a1_verbs.js
-const a11Last = (left, right) => Number(left.startsWith('data_a11_')) - Number(right.startsWith('data_a11_')) || (left < right ? -1 : left > right ? 1 : 0);
+// Load the data files in the same order as the page: later files extend the data of earlier ones.
+const pageOrder = fs.readFileSync('app/index.html', 'utf8').match(/src="data_[^"?]+/g).map(src => src.slice(5));
+const byPage = (left, right) => {
+  const rank = file => (pageOrder.includes(file) ? pageOrder.indexOf(file) : pageOrder.length);
+  return rank(left) - rank(right) || (left < right ? -1 : left > right ? 1 : 0);
+};
 fs.readdirSync('app')
   .filter(file => file.startsWith('data_') && file.endsWith('.js') && file !== 'data_podcast.js')
-  .sort(a11Last)
+  .sort(byPage)
   .forEach(file => {
     vm.runInContext(fs.readFileSync(`app/${file}`, 'utf8'), sandbox, {filename: file});
   });

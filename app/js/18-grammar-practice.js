@@ -1,5 +1,5 @@
 /* ===================== grammar practice ===================== */
-/* Renders the detailed chapter grammar (window.B1_GRAMMAR) with rules,
+/* Renders the detailed chapter grammar (A1_GRAMMAR, A2_GRAMMAR, B1_GRAMMAR) with rules,
    tables, examples, typical mistakes and six exercise types:
    choice, truefalse, gap, order, transform, error. The chapter "Lerncheck"
    draws a mixed test from the same pool. Results are stored per exercise. */
@@ -19,11 +19,13 @@ function saveGrammarResult(id,correct){
 function chapterGrammar(chapter){
   if(chapter?.route?.startsWith('b1.1/')) return window.B1_GRAMMAR?.[chapter.num]||[];
   if(chapter?.route?.startsWith('a1/')) return window.A1_GRAMMAR?.[chapter.num]||[];
+  /* A2 chapters have no route; A2.1 (chapters 1-6) has detailed grammar */
+  if(chapter&&!chapter.route) return window.A2_GRAMMAR?.[chapter.num]||[];
   return [];
 }
 
 function allGrammarTopics(){
-  return [...Object.values(window.A1_GRAMMAR||{}).flat(),...Object.values(window.B1_GRAMMAR||{}).flat()];
+  return [...Object.values(window.A1_GRAMMAR||{}).flat(),...Object.values(window.A2_GRAMMAR||{}).flat(),...Object.values(window.B1_GRAMMAR||{}).flat()];
 }
 
 function chapterByRoute(route){
@@ -144,9 +146,16 @@ function grammarFeedback(id,correct,extra=''){
   if(!correct&&exercise){
     const answer=exercise.type==='choice'?exercise.o[exercise.a]:exercise.type==='truefalse'?(exercise.a?'Richtig':'Falsch')
       :exercise.type==='order'?`${exercise.prefix||''} ${exercise.a[0]}`.trim():exercise.a[0];
-    window.NextUI?.addMistake?.({prompt:exercise.q||exercise.prefix||'Grammatik',answer,context:id.replace(/^test-/,'').startsWith('a1-')?'Grammatik A1.1':'Grammatik B1.1'});
+    window.NextUI?.addMistake?.({prompt:exercise.q||exercise.prefix||'Grammatik',answer,context:grammarLevelLabel(id)});
   }
   updateGrammarScores(id);
+}
+
+function grammarLevelLabel(id){
+  const match=id.replace(/^test-/,'').match(/^(a1|a2)-k(\d+)-/);
+  if(!match) return 'Grammatik B1.1';
+  if(match[1]==='a2') return 'Grammatik A2.1';
+  return Number(match[2])>6?'Grammatik A1.2':'Grammatik A1.1';
 }
 
 function updateGrammarScores(id){
