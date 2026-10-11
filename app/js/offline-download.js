@@ -99,13 +99,9 @@ function collectCurrentLessonOfflineUrls(){
     collectOfflineMedia(chapter,urls);
     TABS.forEach(([id])=>collectOfflineMedia(chapterTabImage(chapter,id),urls));
     if(!chapter.route?.startsWith('a1/')&&!chapter.route?.startsWith('b1.1/')){
-      const realPhotoLimit=A2_REAL_PHOTO_LIMIT[chapter.num]||0;
-      const extraPhotos=A2_EXTRA_REAL_PHOTOS[chapter.num]||new Set();
-      chapter.vocab?.forEach((card,index)=>{
-        const scene=index+1;
-        if(scene<=realPhotoLimit||extraPhotos.has(scene)){
-          addOfflineMediaUrl(`assets/vocab-scenes/k${chapter.num}/${String(scene).padStart(2,'0')}.webp`,urls);
-        }
+      chapter.vocab?.forEach(card=>{
+        const photo=a2ScenePhoto(card,chapter);
+        if(photo) addOfflineMediaUrl(photo,urls);
       });
     }
   }

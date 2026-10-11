@@ -635,7 +635,7 @@ test('offline lesson download includes the complete chapter and reports real pro
   assert.match(html, /function collectCurrentLessonOfflineUrls\(/);
   assert.match(html, /collectOfflineMedia\(chapter,urls\)/);
   assert.match(html, /TABS\.forEach\(\(\[id\]\)=>collectOfflineMedia\(chapterTabImage\(chapter,id\),urls\)\)/);
-  assert.match(html, /assets\/vocab-scenes\/k\$\{chapter\.num\}/);
+  assert.match(html, /const photo=a2ScenePhoto\(card,chapter\);/);
   assert.match(html, /lesson-cache-progress/);
   assert.match(worker, /type: 'lesson-cache-progress'/);
   assert.match(worker, /ok: failed === 0/);
@@ -1459,6 +1459,39 @@ test('A2.1 chapters contain complete lessons and five conversation situations', 
     assertLessonChapter(chapter);
     assert.ok(chapter.readings.every(reading => reading.visual?.src), `Kapitel ${number} keeps its reading pictures`);
   }
+});
+
+test('A2.1 cards show the older photo of the same word, never one from another place in the list', () => {
+  const win = loadA11Data([...A21_FILES, 'data_a21_images.js']);
+  const constants = ['A2_REAL_PHOTO_LIMIT', 'A2_EXTRA_REAL_PHOTOS']
+    .map(name => html.match(new RegExp(`const ${name} = \\{[\\s\\S]*?\\n\\};`))[0].replace(/^const /, 'var '));
+  const context = vm.createContext({ window: win });
+  vm.runInContext(`${constants.join('\n')}\n${functionSource('isA21Chapter')}\n${functionSource('a2ScenePhoto')}\nthis.a2ScenePhoto=a2ScenePhoto;`, context);
+  const chapter = win.BOOK0.find(item => item.num === 1);
+  const familie = chapter.vocab.find(card => card.w === 'die Familie, -n');
+  const geboren = chapter.vocab.find(card => card.w === 'geboren sein');
+  assert.equal(context.a2ScenePhoto(familie, chapter), null, 'a new word does not borrow photo 01 (die Freizeit)');
+  assert.equal(context.a2ScenePhoto(geboren, chapter), `assets/vocab-scenes/k1/${String(geboren.legacy.index + 1).padStart(2, '0')}.webp`);
+  const kapitel7 = { num: 7, vocab: [{ w: 'a' }, { w: 'b' }] };
+  assert.equal(context.a2ScenePhoto(kapitel7.vocab[1], kapitel7), 'assets/vocab-scenes/k7/02.webp', 'A2.2 keeps its numbered photos');
+  Object.values(win.A2_VOCAB_21_IMAGES).forEach(src => assert.ok(existsSync(join(root, 'app', src)), `Missing ${src}`));
+  const page = readFileSync(join(root, 'app', 'index.html'), 'utf8');
+  assert.ok(page.indexOf('src="data_a21_images.js') > page.indexOf('src="data_a21_vocab.js'), 'image map loads after the word list');
+  assert.match(readFileSync(join(root, 'app', 'sw.js'), 'utf8'), /'data_a21_images\.js'/);
+});
+
+test('A2.1 image sheet manifest only names real words, 16 per sheet', () => {
+  const win = loadA11Data(A21_FILES);
+  const manifest = JSON.parse(readFileSync(join(root, 'scripts', 'a21_images', 'manifest.json'), 'utf8'));
+  const ids = new Set();
+  manifest.sheets.forEach(sheet => {
+    assert.equal(sheet.cells.length, 16, `sheet ${sheet.sheet}`);
+    sheet.cells.forEach(cell => {
+      assert.ok(win.A2_VOCAB_21[cell.chapter].some(card => card.w === cell.word), `${cell.chapter} ${cell.word}`);
+      assert.ok(!ids.has(cell.id), `duplicate ${cell.id}`);
+      ids.add(cell.id);
+    });
+  });
 });
 
 test('A2.1 grammar has detailed topics and is served in the A2 chapters', () => {

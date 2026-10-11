@@ -296,8 +296,24 @@ function vocabChapterOf(v){
 // are drawn as one fixed card (word, meaning, example, translation) that does not flip.
 function isPictureFreeCard(v){
   if(v.img) return false;
-  const route=vocabChapterOf(v)?.route||'';
+  const chapterData=vocabChapterOf(v);
+  const route=chapterData?.route||'';
+  if(isA21Chapter(chapterData)) return !a2ScenePhoto(v,chapterData);
   return route.startsWith('a1/')||route.startsWith('b1.1/');
+}
+
+// A2.1 (Kapitel 1-6) was rebuilt from the Netzwerk neu A2.1 word list, so its older numbered
+// photos belong to the card's previous place (v.legacy.index), not to its place in the new list.
+function isA21Chapter(chapterData){
+  return Boolean(chapterData&&window.BOOK0?.includes(chapterData)&&window.A2_VOCAB_21?.[chapterData.num]);
+}
+
+function a2ScenePhoto(v,chapterData){
+  const index=isA21Chapter(chapterData)?(v.legacy?v.legacy.index:-1):chapterData.vocab.indexOf(v);
+  if(index<0) return null;
+  const scene=index+1;
+  if(scene>(A2_REAL_PHOTO_LIMIT[chapterData.num]||0)&&!A2_EXTRA_REAL_PHOTOS[chapterData.num]?.has(scene)) return null;
+  return `assets/vocab-scenes/k${chapterData.num}/${String(scene).padStart(2,'0')}.webp`;
 }
 
 function vocabVisual(v,chapter){
@@ -337,14 +353,17 @@ function vocabVisual(v,chapter){
       <span class="sticker-category">${escapeHtml(v.cat||`Kapitel ${chapterData.num}`)}</span>
     </div>`;
   }
-  const cardIndex=chapterData.vocab.indexOf(v);
-  const realPhotoLimit=A2_REAL_PHOTO_LIMIT[chapterData.num]||0;
-  const sceneIndex=cardIndex+1;
-  const hasExtraPhoto=A2_EXTRA_REAL_PHOTOS[chapterData.num]?.has(sceneIndex);
-  if(cardIndex<0 || (cardIndex>=realPhotoLimit && !hasExtraPhoto)) return fallbackVocabSticker(v, chapterData, 'A2');
-  const sceneNumber=String(sceneIndex).padStart(2,'0');
+  const photo=a2ScenePhoto(v,chapterData);
+  if(!photo){
+    // A2.1 cards without a picture get a calm level badge instead of an emoji sticker.
+    if(isA21Chapter(chapterData)) return `<div class="fc-visual fc-visual--plain" role="img" aria-label="${escapeHtml(v.w)}">
+      <div class="level-code" style="margin:auto">A2</div>
+      <span class="sticker-category">${escapeHtml(v.cat||`Kapitel ${chapterData.num}`)}</span>
+    </div>`;
+    return fallbackVocabSticker(v, chapterData, 'A2');
+  }
   return `<div class="fc-visual" role="img" aria-label="${escapeHtml(v.w)}">
-    <img class="fc-scene" src="assets/vocab-scenes/k${chapterData.num}/${sceneNumber}.webp"
+    <img class="fc-scene" src="${photo}"
       alt="" width="420" height="420" loading="eager" decoding="async">
     <span class="sticker-category">${escapeHtml(v.cat||`Kapitel ${chapterData.num}`)}</span>
   </div>`;
