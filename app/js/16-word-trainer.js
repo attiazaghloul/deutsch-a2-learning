@@ -303,8 +303,8 @@ function drawTrainerStep(feedback=''){
       ${vocabVisual(word.item)}
       <div class="trainer-word">${fmtWord(word.answer)} <button type="button" class="trainer-audio" onclick="trainerSpeak(trainerSession.words.get('${escapeHtml(word.id)}'))" aria-label="Anhören">🔊</button></div>
       <div class="trainer-meaning" lang="ar" dir="rtl">${escapeHtml(word.meaning)}</div>
-      <p class="trainer-def">${escapeHtml(plainText(word.item.d||''))}</p>
-      ${word.example?`<p class="trainer-example">„${escapeHtml(word.example)}“</p>`:''}
+      <p class="trainer-def">${escapeHtml(plainText(word.item.d||''))}</p>${ar(escapeHtml(word.item.dAr||''))}
+      ${word.example?`<p class="trainer-example">„${escapeHtml(word.example)}“</p>${ar(escapeHtml(word.item.exAr||''))}`:''}
       <div class="trainer-actions"><button type="button" class="btn btn-green" onclick="nextTrainerStep(true)">Verstanden – weiter</button></div>
     </section>`;
     view.innerHTML=head+body;

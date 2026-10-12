@@ -71,6 +71,43 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
                 "werden",
                 "informiert"
               ]
+            ],
+            "headAr": [
+              "الشخص أو الضمير",
+              "الفعل المساعد لتكوين المبني للمجهول",
+              "التصريف الثالث"
+            ],
+            "rowsAr": [
+              [
+                "أنا",
+                "صيغة werden مع أنا",
+                "مُبلَّغ"
+              ],
+              [
+                "إنت",
+                "صيغة werden مع إنت",
+                "مُبلَّغ"
+              ],
+              [
+                "هو / هي / هو لغير العاقل",
+                "صيغة werden مع هو أو هي",
+                "مُبلَّغ"
+              ],
+              [
+                "إحنا",
+                "الفعل المساعد لتكوين المبني للمجهول",
+                "مُبلَّغ"
+              ],
+              [
+                "إنتوا",
+                "صيغة werden مع إنتوا",
+                "مُبلَّغ"
+              ],
+              [
+                "هم / حضرتك أو حضراتكم",
+                "الفعل المساعد لتكوين المبني للمجهول",
+                "مُبلَّغ"
+              ]
             ]
           },
           "examples": [
@@ -110,6 +147,24 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
               [
                 "Firmen spenden der Tafel Lebensmittel.",
                 "Der Tafel werden (von Firmen) Lebensmittel gespendet."
+              ]
+            ],
+            "headAr": [
+              "المبني للمعلوم",
+              "المبني للمجهول"
+            ],
+            "rowsAr": [
+              [
+                "بنك الطعام بيوزّع الأطعمة.",
+                "الأطعمة بتتوزّع بواسطة بنك الطعام."
+              ],
+              [
+                "الإطفاء بيطفي الحريق.",
+                "الحريق بيتم إطفاؤه بواسطة الإطفاء."
+              ],
+              [
+                "شركات بتتبرّع بأطعمة لبنك الطعام.",
+                "بيتم التبرع بأطعمة لبنك الطعام بواسطة شركات."
               ]
             ]
           },
@@ -157,7 +212,13 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "wurde"
           ],
           "a": 1,
-          "why": "die Feuerwehrleute جمع، يبقى werden."
+          "why": "die Feuerwehrleute جمع، يبقى werden.",
+          "qAr": "رجال الإطفاء ___ إبلاغهم من المركز.",
+          "oAr": [
+            "فعل werden مع المفرد",
+            "الفعل werden",
+            "فعل werden في الماضي مع المفرد"
+          ]
         },
         {
           "type": "choice",
@@ -168,7 +229,13 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "wirst"
           ],
           "a": 0,
-          "why": "das Programm مفرد (er/es)، يبقى wird."
+          "why": "das Programm مفرد (er/es)، يبقى wird.",
+          "qAr": "البرنامج ___ تمويله من المدينة.",
+          "oAr": [
+            "فعل werden مع المفرد",
+            "الفعل werden",
+            "فعل werden مع إنت"
+          ]
         },
         {
           "type": "choice",
@@ -179,7 +246,13 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "von der"
           ],
           "a": 2,
-          "why": "von بتاخد Dativ: die Feuerwehr ← von der Feuerwehr."
+          "why": "von بتاخد Dativ: die Feuerwehr ← von der Feuerwehr.",
+          "qAr": "الحريق بيتم إطفاؤه ___ الإطفاء.",
+          "oAr": [
+            "بواسطة؛ von مع الأداة die",
+            "عن طريق؛ durch مع الأداة der",
+            "بواسطة؛ von مع الأداة der"
+          ]
         },
         {
           "type": "gap",
@@ -187,7 +260,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "werden"
           ],
-          "why": "viele Lebensmittel جمع، والـ Passiv: werden + Partizip II."
+          "why": "viele Lebensmittel جمع، والـ Passiv: werden + Partizip II.",
+          "qAr": "في ألمانيا ___ رمي أطعمة كتير يوميًا.",
+          "solutionAr": "الفعل werden"
         },
         {
           "type": "gap",
@@ -195,19 +270,23 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "ausgebildet"
           ],
-          "why": "ausbilden فعل منفصل: الـ Partizip II بيبقى aus-ge-bildet."
+          "why": "ausbilden فعل منفصل: الـ Partizip II بيبقى aus-ge-bildet.",
+          "qAr": "كل عضو بيتم ___ على الإسعافات الأولية. استخدم ausbilden.",
+          "solutionAr": "تم تدريبه"
         },
         {
           "type": "truefalse",
           "q": "„Die Tafel wird von viele Firmen unterstützt.“ – Dieser Satz ist richtig.",
           "a": false,
-          "why": "بعد von لازم Dativ: von vielen Firmen."
+          "why": "بعد von لازم Dativ: von vielen Firmen.",
+          "qAr": "هل الجملة الألمانية صحيحة؟ المعنى: بنك الطعام بيتم دعمه من شركات كتير."
         },
         {
           "type": "truefalse",
           "q": "„Im Lager wird alles kontrolliert und sortiert.“ – Dieser Satz ist richtig.",
           "a": true,
-          "why": "alles مفرد، فـ wird صح، والاتنين Partizip II في الآخر."
+          "why": "alles مفرد، فـ wird صح، والاتنين Partizip II في الآخر.",
+          "qAr": "«في المخزن بيتم فحص وفرز كل شيء»: الجملة الألمانية صحيحة."
         },
         {
           "type": "order",
@@ -221,7 +300,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "werden die Lebensmittel abgeholt"
           ],
-          "why": "بعد ظرف الزمان في الأول بييجي werden في المكان التاني، وبعده الفاعل، والـ Partizip II في الآخر."
+          "why": "بعد ظرف الزمان في الأول بييجي werden في المكان التاني، وبعده الفاعل، والـ Partizip II في الآخر.",
+          "qAr": "رتّب الكلمات لإكمال: قبل الظهر، ...",
+          "solutionAr": "قبل الظهر بيتم جمع الأطعمة."
         },
         {
           "type": "order",
@@ -235,7 +316,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "bedürftigen Menschen geholfen wird"
           ],
-          "why": "في الجملة الفرعية بـ dass الـ werden بيروح آخر خالص بعد الـ Partizip II."
+          "why": "في الجملة الفرعية بـ dass الـ werden بيروح آخر خالص بعد الـ Partizip II.",
+          "qAr": "رتّب الكلمات لإكمال: شايف كويس إن ...",
+          "solutionAr": "شايف كويس إن المحتاجين بيتم مساعدتهم."
         },
         {
           "type": "transform",
@@ -244,7 +327,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "Die Lebensmittel werden von den Helfern verteilt.",
             "Die Lebensmittel werden verteilt."
           ],
-          "why": "die Lebensmittel بقت فاعل، و die Helfer ← von den Helfern (Dativ جمع بيزود n)."
+          "why": "die Lebensmittel بقت فاعل، و die Helfer ← von den Helfern (Dativ جمع بيزود n).",
+          "qAr": "حوّل للمبني للمجهول: المساعدون بيوزّعوا الأطعمة.",
+          "solutionAr": "الأطعمة بيتم توزيعها بواسطة المساعدين."
         },
         {
           "type": "transform",
@@ -253,7 +338,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "Die Mülltonnen werden von der Müllabfuhr geleert.",
             "Die Mülltonnen werden geleert."
           ],
-          "why": "die Mülltonnen جمع ← werden، و die Müllabfuhr ← von der Müllabfuhr."
+          "why": "die Mülltonnen جمع ← werden، و die Müllabfuhr ← von der Müllabfuhr.",
+          "qAr": "حوّل للمبني للمجهول: خدمة جمع القمامة بتفرّغ الصناديق.",
+          "solutionAr": "صناديق القمامة بيتم تفريغها بواسطة خدمة جمع القمامة."
         },
         {
           "type": "error",
@@ -261,7 +348,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "Die Gäste werden von der Bürgermeisterin begrüßt."
           ],
-          "why": "die Gäste جمع، يبقى werden مش wird."
+          "why": "die Gäste جمع، يبقى werden مش wird.",
+          "qAr": "صحّح الجملة الألمانية. المعنى: رئيسة البلدية بترحّب بالضيوف.",
+          "solutionAr": "الضيوف بيتم الترحيب بيهم من رئيسة البلدية."
         }
       ]
     },
@@ -314,6 +403,43 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
                 "wurden",
                 "eingeladen"
               ]
+            ],
+            "headAr": [
+              "الشخص أو الضمير",
+              "تصريف werden في الماضي البسيط",
+              "التصريف الثالث"
+            ],
+            "rowsAr": [
+              [
+                "أنا",
+                "صيغة الماضي مع أنا أو هو أو هي",
+                "مدعوّ"
+              ],
+              [
+                "إنت",
+                "صيغة الماضي مع إنت",
+                "مدعوّ"
+              ],
+              [
+                "هو / هي / هو لغير العاقل",
+                "صيغة الماضي مع أنا أو هو أو هي",
+                "مدعوّ"
+              ],
+              [
+                "إحنا",
+                "صيغة الماضي مع إحنا أو هم أو حضرتك",
+                "مدعوّ"
+              ],
+              [
+                "إنتوا",
+                "صيغة الماضي مع إنتوا",
+                "مدعوّ"
+              ],
+              [
+                "هم / حضرتك أو حضراتكم",
+                "صيغة الماضي مع إحنا أو هم أو حضرتك",
+                "مدعوّ"
+              ]
             ]
           },
           "examples": [
@@ -357,6 +483,28 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
                 "Perfekt",
                 "sein + Partizip II + worden",
                 "Die Feuerwehr ist alarmiert worden."
+              ]
+            ],
+            "headAr": [
+              "الزمن",
+              "التركيب",
+              "مثال"
+            ],
+            "rowsAr": [
+              [
+                "المضارع",
+                "الفعل المساعد werden مع التصريف الثالث",
+                "بيتم إبلاغ الإطفاء."
+              ],
+              [
+                "الماضي البسيط",
+                "الفعل المساعد wurde مع التصريف الثالث",
+                "تم إبلاغ الإطفاء."
+              ],
+              [
+                "الماضي المستخدم كثيرًا في المحادثة",
+                "الفعل المساعد sein مع التصريف الثالث وworden",
+                "تم إبلاغ الإطفاء بالفعل."
               ]
             ]
           },
@@ -424,7 +572,13 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "wurden"
           ],
           "a": 1,
-          "why": "2009 ماضي، و Verein مفرد ← wurde."
+          "why": "2009 ماضي، و Verein مفرد ← wurde.",
+          "qAr": "جمعيتنا ___ تأسيسها سنة ٢٠٠٩.",
+          "oAr": [
+            "فعل werden مع المفرد",
+            "فعل werden في الماضي مع المفرد",
+            "فعل werden في الماضي مع الجمع"
+          ]
         },
         {
           "type": "choice",
@@ -435,7 +589,13 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "wurden"
           ],
           "a": 0,
-          "why": "في الـ Perfekt Passiv: sein + Partizip II + worden."
+          "why": "في الـ Perfekt Passiv: sein + Partizip II + worden.",
+          "qAr": "من وقتها مشاريع كتير اتنفذت ___ .",
+          "oAr": [
+            "صيغة worden المستخدمة في المبني للمجهول",
+            "أصبح؛ التصريف الثالث لـ werden",
+            "فعل werden في الماضي مع الجمع"
+          ]
         },
         {
           "type": "choice",
@@ -446,7 +606,13 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "wurden"
           ],
           "a": 2,
-          "why": "fünfzig Bäume جمع وماضي ← wurden."
+          "why": "fünfzig Bäume جمع وماضي ← wurden.",
+          "qAr": "سنة ٢٠١٧ ___ زرع خمسين شجرة في الحديقة.",
+          "oAr": [
+            "فعل werden في الماضي مع المفرد",
+            "فعل werden مع المفرد",
+            "فعل werden في الماضي مع الجمع"
+          ]
         },
         {
           "type": "gap",
@@ -454,7 +620,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "wurde"
           ],
-          "why": "der Brand مفرد، والماضي البسيط بتاع werden هو wurde."
+          "why": "der Brand مفرد، والماضي البسيط بتاع werden هو wurde.",
+          "qAr": "الحريق ___ إطفاؤه بعد ساعة. استخدم الماضي Präteritum.",
+          "solutionAr": "فعل werden في الماضي مع المفرد"
         },
         {
           "type": "gap",
@@ -462,7 +630,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "worden"
           ],
-          "why": "دي Passiv Perfekt: sind + Partizip II + worden، ومن غير ge-."
+          "why": "دي Passiv Perfekt: sind + Partizip II + worden، ومن غير ge-.",
+          "qAr": "السكان تم إنقاذهم بواسطة الإطفاء ___ .",
+          "solutionAr": "صيغة worden المستخدمة في المبني للمجهول"
         },
         {
           "type": "gap",
@@ -470,19 +640,23 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "gesammelt"
           ],
-          "why": "sammeln فعل ضعيف: ge + sammel + t ← gesammelt."
+          "why": "sammeln فعل ضعيف: ge + sammel + t ← gesammelt.",
+          "qAr": "في سوق عيد الميلاد تم ___ المال لحائط تسلّق. استخدم sammeln: جمع.",
+          "solutionAr": "تم جمعه"
         },
         {
           "type": "truefalse",
           "q": "„Der Computer wurde ausgeschaltet.“ – Dieser Satz ist richtig.",
           "a": true,
-          "why": "Computer مفرد، wurde + Partizip II في الآخر. صح."
+          "why": "Computer مفرد، wurde + Partizip II في الآخر. صح.",
+          "qAr": "«تم إطفاء الكمبيوتر»: الجملة الألمانية صحيحة."
         },
         {
           "type": "truefalse",
           "q": "„Die Fenster sind geschlossen geworden.“ – Dieser Satz ist richtig.",
           "a": false,
-          "why": "في الـ Passiv بنقول worden: Die Fenster sind geschlossen worden."
+          "why": "في الـ Passiv بنقول worden: Die Fenster sind geschlossen worden.",
+          "qAr": "هل الجملة الألمانية صحيحة؟ المعنى المقصود: النوافذ تم إغلاقها."
         },
         {
           "type": "order",
@@ -498,7 +672,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "wurde der Vertrag von Maastricht unterzeichnet"
           ],
-          "why": "بعد السنة في الأول، wurde في المكان التاني، والـ Partizip II في الآخر."
+          "why": "بعد السنة في الأول، wurde في المكان التاني، والـ Partizip II في الآخر.",
+          "qAr": "رتّب الكلمات لإكمال: سنة ١٩٩٢، ...",
+          "solutionAr": "سنة ١٩٩٢ تم توقيع معاهدة ماستريخت."
         },
         {
           "type": "transform",
@@ -507,7 +683,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "Die Feuerwehr wurde von der Nachbarin alarmiert.",
             "Die Feuerwehr wurde alarmiert."
           ],
-          "why": "die Feuerwehr بقت الفاعل، و die Nachbarin ← von der Nachbarin."
+          "why": "die Feuerwehr بقت الفاعل، و die Nachbarin ← von der Nachbarin.",
+          "qAr": "حوّل للمبني للمجهول في Präteritum: الجارة بلّغت الإطفاء.",
+          "solutionAr": "تم إبلاغ الإطفاء بواسطة الجارة."
         },
         {
           "type": "transform",
@@ -515,7 +693,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "Der Antrag ist genehmigt worden."
           ],
-          "why": "man بيختفي في الـ Passiv، و den Antrag ← der Antrag، والتركيبة ist + genehmigt + worden."
+          "why": "man بيختفي في الـ Passiv، و den Antrag ← der Antrag، والتركيبة ist + genehmigt + worden.",
+          "qAr": "حوّل للمبني للمجهول في Perfekt: تمّت الموافقة على الطلب.",
+          "solutionAr": "تمت الموافقة على الطلب."
         },
         {
           "type": "error",
@@ -523,7 +703,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "Die Gläser wurden abgespült."
           ],
-          "why": "die Gläser جمع ← wurden."
+          "why": "die Gläser جمع ← wurden.",
+          "qAr": "صحّح الجملة الألمانية. المعنى: تم غسل الأكواب.",
+          "solutionAr": "تم غسل الأكواب."
         }
       ]
     },
@@ -571,6 +753,38 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
                 "nicht",
                 "geparkt werden."
               ]
+            ],
+            "headAr": [
+              "الموضع الأول",
+              "فعل مساعد للكيفية",
+              "وسط الجملة",
+              "التصريف الثالث وبعده werden"
+            ],
+            "rowsAr": [
+              [
+                "المال",
+                "يمكن",
+                "في البنك",
+                "يمكن استلامه."
+              ],
+              [
+                "حاجات كتير",
+                "لازم",
+                "في مدينة",
+                "لازم إنجازها."
+              ],
+              [
+                "القمامة",
+                "المفروض",
+                "بشكل أفضل",
+                "يتم فصلها."
+              ],
+              [
+                "هنا",
+                "يُسمح",
+                "لا أو ليس",
+                "ركن السيارات."
+              ]
             ]
           },
           "examples": [
@@ -615,6 +829,33 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
                 "nicht dürfen",
                 "verboten",
                 "Der Müll darf nicht in den Park geworfen werden."
+              ]
+            ],
+            "headAr": [
+              "فعل مساعد للكيفية",
+              "المعنى",
+              "مثال"
+            ],
+            "rowsAr": [
+              [
+                "لازم",
+                "ضروري",
+                "لازم دفع الضرائب."
+              ],
+              [
+                "يمكن أو يستطيع",
+                "ممكن",
+                "ممكن تقديم الطلب أونلاين."
+              ],
+              [
+                "يُفترض أو يُراد",
+                "مخطط له أو مرغوب فيه",
+                "المفروض تُبنى مدارس جديدة."
+              ],
+              [
+                "لا يُسمح",
+                "ممنوع",
+                "ممنوع رمي القمامة في الحديقة."
               ]
             ]
           },
@@ -682,7 +923,13 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "wählen werden"
           ],
           "a": 0,
-          "why": "مع الفعل الناقص: Partizip II + werden في الآخر."
+          "why": "مع الفعل الناقص: Partizip II + werden في الآخر.",
+          "qAr": "رئيس البلدية لازم ___ بواسطة المواطنين.",
+          "oAr": [
+            "يتم انتخابه؛ بصيغ مختلفة للمبني للمجهول",
+            "يتم انتخابه؛ بصيغ مختلفة للمبني للمجهول",
+            "يتم انتخابه؛ بصيغ مختلفة للمبني للمجهول"
+          ]
         },
         {
           "type": "choice",
@@ -693,7 +940,13 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "musst"
           ],
           "a": 1,
-          "why": "die Anträge جمع ← müssen."
+          "why": "die Anträge جمع ← müssen.",
+          "qAr": "الطلبات ___ الموافقة عليها النهارده.",
+          "oAr": [
+            "يجب أو لازم",
+            "يجب أو لازم",
+            "لازم عليك؛ صيغة müssen"
+          ]
         },
         {
           "type": "choice",
@@ -704,7 +957,13 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "darf"
           ],
           "a": 2,
-          "why": "ممنوع = nicht dürfen."
+          "why": "ممنوع = nicht dürfen.",
+          "qAr": "هنا ___ التدخين. ده ممنوع.",
+          "oAr": [
+            "يجب أو لازم",
+            "يُفترض أو يُراد",
+            "يُسمح أو يجوز"
+          ]
         },
         {
           "type": "gap",
@@ -712,7 +971,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "werden"
           ],
-          "why": "بعد الـ Partizip II في الـ Passiv مع müssen بييجي werden في المصدر."
+          "why": "بعد الـ Partizip II في الـ Passiv مع müssen بييجي werden في المصدر.",
+          "qAr": "كل أسبوع القمامة لازم يتم التخلص منها ___ .",
+          "solutionAr": "الفعل werden"
         },
         {
           "type": "gap",
@@ -720,19 +981,23 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "hochgefahren"
           ],
-          "why": "hochfahren فعل منفصل: hoch-ge-fahren."
+          "why": "hochfahren فعل منفصل: hoch-ge-fahren.",
+          "qAr": "الكمبيوتر لازم يتم ___ أولًا. استخدم hochfahren: تشغيل.",
+          "solutionAr": "تم تشغيله"
         },
         {
           "type": "truefalse",
           "q": "„In der Stadtvertretung müssen viele Entscheidungen getroffen werden.“ – Dieser Satz ist richtig.",
           "a": true,
-          "why": "Entscheidungen جمع ← müssen، والآخر getroffen werden. صح."
+          "why": "Entscheidungen جمع ← müssen، والآخر getroffen werden. صح.",
+          "qAr": "«لازم اتخاذ قرارات كتير في مجلس المدينة»: الجملة الألمانية صحيحة."
         },
         {
           "type": "truefalse",
           "q": "„Die Blumen sollen gießen werden.“ – Dieser Satz ist richtig.",
           "a": false,
-          "why": "محتاجين Partizip II: Die Blumen sollen gegossen werden."
+          "why": "محتاجين Partizip II: Die Blumen sollen gegossen werden.",
+          "qAr": "هل الجملة الألمانية صحيحة؟ المعنى: المفروض الورد يتم سقيه."
         },
         {
           "type": "order",
@@ -747,7 +1012,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "müssen die Straßen kontrolliert werden"
           ],
-          "why": "الفعل الناقص في المكان التاني بعد المقدمة، وبعده الفاعل، وفي الآخر kontrolliert werden."
+          "why": "الفعل الناقص في المكان التاني بعد المقدمة، وبعده الفاعل، وفي الآخر kontrolliert werden.",
+          "qAr": "رتّب الكلمات لإكمال: من أجل الأمن، ...",
+          "solutionAr": "علشان الأمن، لازم تتم مراقبة الشوارع."
         },
         {
           "type": "order",
@@ -761,7 +1028,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "müssen Steuern gezahlt werden"
           ],
-          "why": "بعد الجملة الفرعية الفعل الناقص بييجي على طول، وبعده الفاعل، و gezahlt werden في الآخر."
+          "why": "بعد الجملة الفرعية الفعل الناقص بييجي على طول، وبعده الفاعل، و gezahlt werden في الآخر.",
+          "qAr": "رتّب الكلمات لإكمال: علشان يكون للمدينة إيرادات، ...",
+          "solutionAr": "علشان يكون للمدينة إيرادات، لازم تُدفع الضرائب."
         },
         {
           "type": "transform",
@@ -769,7 +1038,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "Das Geschirr muss abgeräumt werden."
           ],
-          "why": "man بتختفي، و das Geschirr بقى الفاعل، والآخر abgeräumt werden."
+          "why": "man بتختفي، و das Geschirr بقى الفاعل، والآخر abgeräumt werden.",
+          "qAr": "حوّل للمبني للمجهول: لازم نلمّ الأطباق.",
+          "solutionAr": "لازم الأطباق تتلمّ."
         },
         {
           "type": "transform",
@@ -777,7 +1048,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "Der Antrag kann auch online gestellt werden."
           ],
-          "why": "den Antrag ← der Antrag (Nominativ)، و kann + gestellt werden."
+          "why": "den Antrag ← der Antrag (Nominativ)، و kann + gestellt werden.",
+          "qAr": "حوّل للمبني للمجهول: ممكن نقدّم الطلب أونلاين كمان.",
+          "solutionAr": "ممكن تقديم الطلب أونلاين كمان."
         },
         {
           "type": "error",
@@ -785,7 +1058,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "Die Straßenlampe muss repariert werden."
           ],
-          "why": "Partizip II الأول وبعده werden: repariert werden."
+          "why": "Partizip II الأول وبعده werden: repariert werden.",
+          "qAr": "صحّح ترتيب الجملة الألمانية. المعنى: لازم يتصلّح مصباح الشارع.",
+          "solutionAr": "لازم يتصلّح مصباح الشارع."
         }
       ]
     },
@@ -832,6 +1107,38 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
                 "recyceln",
                 "recycelbar",
                 "Man kann es recyceln."
+              ]
+            ],
+            "headAr": [
+              "الفعل",
+              "الصفة",
+              "المعنى"
+            ],
+            "rowsAr": [
+              [
+                "يعمل",
+                "قابل للتنفيذ",
+                "ممكن نعمله."
+              ],
+              [
+                "يصل",
+                "يمكن الوصول إليه",
+                "ممكن نوصل له."
+              ],
+              [
+                "يستمر أو يبقى صالحًا",
+                "يبقى صالحًا",
+                "بيفضل صالحًا لفترة طويلة."
+              ],
+              [
+                "يأكل",
+                "صالح للأكل",
+                "ممكن ناكله."
+              ],
+              [
+                "يعيد التدوير",
+                "قابل لإعادة التدوير",
+                "ممكن نعيد تدويره."
               ]
             ]
           },
@@ -882,6 +1189,38 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
                 "das Glück",
                 "glücklos",
                 "ohne Glück"
+              ]
+            ],
+            "headAr": [
+              "الاسم",
+              "الصفة",
+              "المعنى"
+            ],
+            "rowsAr": [
+              [
+                "التكاليف",
+                "مجاني",
+                "من غير تكاليف"
+              ],
+              [
+                "المساعدة",
+                "عاجز عن مساعدة نفسه",
+                "من غير مساعدة ولا يقدر يساعد نفسه"
+              ],
+              [
+                "العمل",
+                "عاطل",
+                "من غير عمل"
+              ],
+              [
+                "المشكلة",
+                "بسهولة",
+                "من غير مشاكل"
+              ],
+              [
+                "الحظ",
+                "سيئ الحظ",
+                "من غير حظ"
               ]
             ]
           },
@@ -949,7 +1288,13 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "hilflos"
           ],
           "a": 1,
-          "why": "haltbar = بيفضل صالح مدة طويلة."
+          "why": "haltbar = بيفضل صالح مدة طويلة.",
+          "qAr": "مواد غذائية كتير ___ لمدة طويلة جدًا.",
+          "oAr": [
+            "بلا سند أو دعم",
+            "يبقى صالحًا",
+            "عاجز عن مساعدة نفسه"
+          ]
         },
         {
           "type": "choice",
@@ -960,7 +1305,13 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "machbar"
           ],
           "a": 0,
-          "why": "من غير شغل = arbeitslos."
+          "why": "من غير شغل = arbeitslos.",
+          "qAr": "ما بقاش عنده شغل من مدة طويلة؛ هو ___ .",
+          "oAr": [
+            "عاطل عن العمل",
+            "صفة مشتقة من كلمة العمل",
+            "قابل للتنفيذ"
+          ]
         },
         {
           "type": "choice",
@@ -971,7 +1322,13 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "recycelbar"
           ],
           "a": 2,
-          "why": "recycelbar = ينفع يتعاد تدويره (من الفعل recyceln)."
+          "why": "recycelbar = ينفع يتعاد تدويره (من الفعل recyceln).",
+          "qAr": "المادة دي ___ بنسبة مئة بالمئة.",
+          "oAr": [
+            "مجاني",
+            "من غير مشاكل",
+            "قابل لإعادة التدوير"
+          ]
         },
         {
           "type": "gap",
@@ -979,7 +1336,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "erreichbar"
           ],
-          "why": "من الفعل erreichen + bar ← erreichbar = ينفع توصله."
+          "why": "من الفعل erreichen + bar ← erreichbar = ينفع توصله.",
+          "qAr": "مكان شغلي ___ مشيًا كمان. اشتق صفة من erreichen: يصل.",
+          "solutionAr": "يمكن الوصول إليه"
         },
         {
           "type": "gap",
@@ -987,7 +1346,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "hilflos"
           ],
-          "why": "من غير مساعدة = hilflos."
+          "why": "من غير مساعدة = hilflos.",
+          "qAr": "ماكانش فيه مساعدة، والحيوان المسكين كان ___ تمامًا.",
+          "solutionAr": "عاجز عن مساعدة نفسه"
         },
         {
           "type": "gap",
@@ -995,19 +1356,23 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "problemlos"
           ],
-          "why": "ohne Probleme يعني من غير مشاكل ← problemlos."
+          "why": "ohne Probleme يعني من غير مشاكل ← problemlos.",
+          "qAr": "ده ينفع من غير مشاكل؛ نقدر نصلحه ___ .",
+          "solutionAr": "من غير مشاكل"
         },
         {
           "type": "truefalse",
           "q": "„Adjektive mit -los kommen meistens von einem Verb.“ – Diese Aussage ist richtig.",
           "a": false,
-          "why": "-los بتيجي من اسم (Nomen)، و -bar هي اللي بتيجي من فعل."
+          "why": "-los بتيجي من اسم (Nomen)، و -bar هي اللي بتيجي من فعل.",
+          "qAr": "«الصفات بـ-los غالبًا مشتقة من فعل»: هل العبارة صحيحة؟"
         },
         {
           "type": "truefalse",
           "q": "„Das ist kein großes Problem, das ist gut machbar.“ – Dieser Satz ist richtig.",
           "a": true,
-          "why": "machbar = ممكن يتعمل. الجملة صح."
+          "why": "machbar = ممكن يتعمل. الجملة صح.",
+          "qAr": "«دي مش مشكلة كبيرة، ده قابل للتنفيذ بسهولة»: الجملة الألمانية صحيحة."
         },
         {
           "type": "order",
@@ -1023,7 +1388,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "Die Beratung beim Verein ist kostenlos",
             "Beim Verein ist die Beratung kostenlos"
           ],
-          "why": "الصفة بعد sein بتيجي في الآخر ومن غير نهاية."
+          "why": "الصفة بعد sein بتيجي في الآخر ومن غير نهاية.",
+          "qAr": "رتّب الكلمات لتكوين جملة صحيحة.",
+          "solutionAr": "الاستشارة في الجمعية مجانية."
         },
         {
           "type": "transform",
@@ -1031,7 +1398,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "Dieser Pilz ist essbar."
           ],
-          "why": "kann man essen ← essbar، و diesen Pilz بقى فاعل ← dieser Pilz."
+          "why": "kann man essen ← essbar، و diesen Pilz بقى فاعل ← dieser Pilz.",
+          "qAr": "استخدم -bar: المشروم ده ممكن ناكله.",
+          "solutionAr": "المشروم ده صالح للأكل."
         },
         {
           "type": "transform",
@@ -1039,7 +1408,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "Die Reparatur ist kostenlos."
           ],
-          "why": "kostet nichts = من غير تكلفة ← kostenlos."
+          "why": "kostet nichts = من غير تكلفة ← kostenlos.",
+          "qAr": "استخدم -los: التصليح مش بيكلّف حاجة.",
+          "solutionAr": "التصليح مجاني."
         },
         {
           "type": "error",
@@ -1047,7 +1418,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "Wir bieten eine kostenlose Beratung an."
           ],
-          "why": "قبل الاسم الصفة لازم تاخد نهاية: eine kostenlose Beratung."
+          "why": "قبل الاسم الصفة لازم تاخد نهاية: eine kostenlose Beratung.",
+          "qAr": "صحّح نهاية الصفة في الجملة الألمانية. المعنى: بنقدّم استشارة مجانية.",
+          "solutionAr": "بنقدّم استشارة مجانية."
         }
       ]
     }
@@ -1114,6 +1487,36 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
                 "einem / keinem / meinem",
                 "einer / keiner / meiner",
                 "welchen / keinen / meinen"
+              ]
+            ],
+            "headAr": [
+              "الحالة الإعرابية",
+              "المذكر",
+              "المحايد",
+              "المؤنث",
+              "الجمع"
+            ],
+            "rowsAr": [
+              [
+                "حالة الفاعل: نوميناتيف",
+                "واحد / ولا واحد / بتاعي، للمذكر حسب الإعراب",
+                "واحد / ولا واحد / بتاعي، للمحايد",
+                "واحدة / ولا واحدة / بتاعتي، للمؤنث",
+                "بعض / ولا شيء / بتوعي، للجمع حسب الإعراب"
+              ],
+              [
+                "حالة المفعول المباشر: أكوزاتيف",
+                "واحد / ولا واحد / بتاعي، للمذكر حسب الإعراب",
+                "واحد / ولا واحد / بتاعي، للمحايد",
+                "واحدة / ولا واحدة / بتاعتي، للمؤنث",
+                "بعض / ولا شيء / بتوعي، للجمع حسب الإعراب"
+              ],
+              [
+                "حالة المفعول غير المباشر: داتيف",
+                "واحد / ولا واحد / بتاعي، للمذكر حسب الإعراب",
+                "واحد / ولا واحد / بتاعي، للمذكر حسب الإعراب",
+                "واحد / ولا واحد / بتاعي، للمذكر حسب الإعراب",
+                "بعض / ولا شيء / بتوعي، للجمع حسب الإعراب"
               ]
             ]
           },
@@ -1185,7 +1588,13 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "einer"
           ],
           "a": 0,
-          "why": "Stadtplan مذكر، و haben عايز Akkusativ، يبقى einen."
+          "why": "Stadtplan مذكر، و haben عايز Akkusativ، يبقى einen.",
+          "qAr": "محتاج خريطة مدينة؟ لا شكرًا، معايا ___ بالفعل.",
+          "oAr": [
+            "واحد أو واحدة؛ حسب الجنس النحوي والإعراب",
+            "واحد؛ حسب الجنس النحوي",
+            "واحد؛ حسب الجنس النحوي"
+          ]
         },
         {
           "type": "choice",
@@ -1196,7 +1605,13 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "meins"
           ],
           "a": 2,
-          "why": "Fahrrad محايد (das) في Nominativ، يبقى meins."
+          "why": "Fahrrad محايد (das) في Nominativ، يبقى meins.",
+          "qAr": "دي عجلتك؟ أيوه دي ___ .",
+          "oAr": [
+            "بتاعي؛ حسب الجنس النحوي",
+            "بتاعي؛ حسب الجنس النحوي",
+            "بتاعي؛ حسب الجنس النحوي"
+          ]
         },
         {
           "type": "choice",
@@ -1207,7 +1622,13 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "eine"
           ],
           "a": 1,
-          "why": "جمع وإيجابي (فيه أماكن)، يبقى welche."
+          "why": "جمع وإيجابي (فيه أماكن)، يبقى welche.",
+          "qAr": "مفيش هنا أماكن ركن. بالعكس، هناك ورا فيه ___ .",
+          "oAr": [
+            "ولا واحد أو لا شيء؛ بصيغ مختلفة للنفي",
+            "بعض؛ ضمير للجمع",
+            "واحد أو واحدة؛ حسب الجنس النحوي والإعراب"
+          ]
         },
         {
           "type": "choice",
@@ -1218,7 +1639,13 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "einer"
           ],
           "a": 1,
-          "why": "bei دايمًا عايزة Dativ، والمذكر في Dativ بيبقى einem."
+          "why": "bei دايمًا عايزة Dativ، والمذكر في Dativ بيبقى einem.",
+          "qAr": "تعرف طبيب أسنان هنا؟ أيوه، الأسبوع اللي فات رحت لـ___ في المدينة القديمة.",
+          "oAr": [
+            "واحد أو واحدة؛ حسب الجنس النحوي والإعراب",
+            "واحد أو واحدة؛ حسب الجنس النحوي والإعراب",
+            "واحد؛ حسب الجنس النحوي"
+          ]
         },
         {
           "type": "gap",
@@ -1226,7 +1653,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "keinen"
           ],
-          "why": "Garten مذكر Akkusativ ونفي، يبقى keinen."
+          "why": "Garten مذكر Akkusativ ونفي، يبقى keinen.",
+          "qAr": "عندك جنينة؟ لا، ما عنديش ___ .",
+          "solutionAr": "ولا واحد أو لا شيء؛ بصيغ مختلفة للنفي"
         },
         {
           "type": "gap",
@@ -1234,19 +1663,23 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "keinem"
           ],
-          "why": "gehören بياخد Dativ، والمذكر في Dativ: keinem."
+          "why": "gehören بياخد Dativ، والمذكر في Dativ: keinem.",
+          "qAr": "المفتاح بتاع واحد فيكم؟ لا، مش بتاع ___ مننا. استخدم kein.",
+          "solutionAr": "ولا واحد؛ في الداتيف"
         },
         {
           "type": "truefalse",
           "q": "„Ich suche ein Café. – Da drüben ist eins.“ – Der Satz ist richtig.",
           "a": true,
-          "why": "صح: Café محايد، والضمير المحايد في Nominativ هو eins."
+          "why": "صح: Café محايد، والضمير المحايد في Nominativ هو eins.",
+          "qAr": "«بدوّر على كافيه، فيه واحد هناك»: الجملة الألمانية صحيحة."
         },
         {
           "type": "truefalse",
           "q": "„Bist du ein Landmensch? – Ja, ich bin einen.“ – Der Satz ist richtig.",
           "a": false,
-          "why": "غلط: بعد sein بنستخدم Nominativ، يبقى «Ja, ich bin einer»."
+          "why": "غلط: بعد sein بنستخدم Nominativ، يبقى «Ja, ich bin einer».",
+          "qAr": "هل الجملة الألمانية صحيحة؟ المعنى: إنت من محبي الريف؟ أيوه أنا واحد منهم."
         },
         {
           "type": "order",
@@ -1261,7 +1694,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "Wir haben leider keins",
             "Leider haben wir keins"
           ],
-          "why": "Auto محايد، والنفي في Akkusativ بيبقى keins. الفعل في المكان التاني."
+          "why": "Auto محايد، والنفي في Akkusativ بيبقى keins. الفعل في المكان التاني.",
+          "qAr": "رتّب الكلمات لإكمال: عربية؟ ...",
+          "solutionAr": "عربية؟ للأسف ما عندناش واحدة."
         },
         {
           "type": "transform",
@@ -1270,7 +1705,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "Nein, ich habe keins.",
             "Nein, ich habe keins"
           ],
-          "why": "بدل ما نقول kein Fahrrad، بنقول keins بس."
+          "why": "بدل ما نقول kein Fahrrad، بنقول keins بس.",
+          "qAr": "جاوب بضمير: عندك عجلة؟ الإجابة: لا.",
+          "solutionAr": "لا، ما عنديش واحدة."
         },
         {
           "type": "error",
@@ -1278,7 +1715,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "Der Koffer da? Das ist meiner."
           ],
-          "why": "Koffer مذكر، فالضمير في Nominativ بيبقى meiner مش meins."
+          "why": "Koffer مذكر، فالضمير في Nominativ بيبقى meiner مش meins.",
+          "qAr": "صحّح الضمير في الجملة الألمانية. المعنى: الشنطة دي؟ دي بتاعتي.",
+          "solutionAr": "الشنطة اللي هناك؟ دي بتاعتي."
         },
         {
           "type": "error",
@@ -1286,7 +1725,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "Brauchst du Tomaten? Ich habe noch welche."
           ],
-          "why": "Tomaten جمع، والجمع الإيجابي بيبقى welche."
+          "why": "Tomaten جمع، والجمع الإيجابي بيبقى welche.",
+          "qAr": "صحّح الضمير في الجملة الألمانية. المعنى: محتاج طماطم؟ لسه عندي شوية.",
+          "solutionAr": "محتاج طماطم؟ لسه عندي شوية."
         }
       ]
     },
@@ -1351,6 +1792,36 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
                 "irgendeinem Café",
                 "irgendeiner Straße",
                 "irgendwelchen Läden"
+              ]
+            ],
+            "headAr": [
+              "الحالة الإعرابية",
+              "المذكر",
+              "المحايد",
+              "المؤنث",
+              "الجمع"
+            ],
+            "rowsAr": [
+              [
+                "حالة الفاعل: نوميناتيف",
+                "أي حديقة غير محددة",
+                "أي كافيه غير محدد",
+                "أي شارع غير محدد",
+                "بعض المحلات غير المحددة"
+              ],
+              [
+                "حالة المفعول المباشر: أكوزاتيف",
+                "أي حديقة غير محددة",
+                "أي كافيه غير محدد",
+                "أي شارع غير محدد",
+                "بعض المحلات غير المحددة"
+              ],
+              [
+                "حالة المفعول غير المباشر: داتيف",
+                "أي حديقة غير محددة",
+                "أي كافيه غير محدد",
+                "أي شارع غير محدد",
+                "بعض المحلات غير المحددة"
               ]
             ]
           },
@@ -1418,7 +1889,13 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "irgendwelche"
           ],
           "a": 0,
-          "why": "Restaurant محايد Akkusativ، والمحايد قبل الاسم بيبقى irgendein من غير نهاية."
+          "why": "Restaurant محايد Akkusativ، والمحايد قبل الاسم بيبقى irgendein من غير نهاية.",
+          "qAr": "ممكن ترشّح لي ___ مطعم كويس؟",
+          "oAr": [
+            "أي واحد أو بعض غير محددين؛ بصيغ مختلفة",
+            "أي واحد أو بعض غير محددين؛ بصيغ مختلفة",
+            "أي واحد أو بعض غير محددين؛ بصيغ مختلفة"
+          ]
         },
         {
           "type": "choice",
@@ -1429,7 +1906,13 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "irgendeinem"
           ],
           "a": 1,
-          "why": "fahren an + Akkusativ (لفين؟)، و See مذكر، يبقى irgendeinen."
+          "why": "fahren an + Akkusativ (لفين؟)، و See مذكر، يبقى irgendeinen.",
+          "qAr": "في الويك إند هروح ___ بحيرة في الريف.",
+          "oAr": [
+            "أي واحد أو بعض غير محددين؛ بصيغ مختلفة",
+            "أي واحد أو بعض غير محددين؛ بصيغ مختلفة",
+            "أي واحد أو بعض غير محددين؛ بصيغ مختلفة"
+          ]
         },
         {
           "type": "choice",
@@ -1440,7 +1923,13 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "irgendwelche"
           ],
           "a": 2,
-          "why": "Ideen جمع، والجمع بيبقى irgendwelche."
+          "why": "Ideen جمع، والجمع بيبقى irgendwelche.",
+          "qAr": "عندك ___ أفكار للويك إند؟",
+          "oAr": [
+            "أي واحد أو بعض غير محددين؛ بصيغ مختلفة",
+            "أي واحد أو بعض غير محددين؛ بصيغ مختلفة",
+            "أي واحد أو بعض غير محددين؛ بصيغ مختلفة"
+          ]
         },
         {
           "type": "choice",
@@ -1451,7 +1940,13 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "irgendwie"
           ],
           "a": 1,
-          "why": "السؤال عن المكان (wo)، يبقى irgendwo."
+          "why": "السؤال عن المكان (wo)، يبقى irgendwo.",
+          "qAr": "شفته ___ قبل كده، لكن مش فاكر فين.",
+          "oAr": [
+            "في وقت ما",
+            "في مكان ما",
+            "بطريقة ما"
+          ]
         },
         {
           "type": "gap",
@@ -1459,7 +1954,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "irgendeiner"
           ],
-          "why": "in + Dativ (فين؟) و Wohnung مؤنث، يبقى irgendeiner."
+          "why": "in + Dativ (فين؟) و Wohnung مؤنث، يبقى irgendeiner.",
+          "qAr": "مش عايز أعيش في ___ شقة صغيرة في المركز. صرّف irgendein.",
+          "solutionAr": "أي واحدة غير محددة؛ حسب الإعراب"
         },
         {
           "type": "gap",
@@ -1467,7 +1964,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "irgendeinen"
           ],
-          "why": "Stift مذكر في Akkusativ ومن غير اسم بعده، يبقى irgendeinen."
+          "why": "Stift مذكر في Akkusativ ومن غير اسم بعده، يبقى irgendeinen.",
+          "qAr": "محتاج قلم. معاك ___؟ صرّف irgendein.",
+          "solutionAr": "أي واحد أو بعض غير محددين؛ بصيغ مختلفة"
         },
         {
           "type": "gap",
@@ -1475,19 +1974,23 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "irgendeins"
           ],
-          "why": "Café محايد ومن غير اسم، فالضمير بيبقى irgendeins."
+          "why": "Café محايد ومن غير اسم، فالضمير بيبقى irgendeins.",
+          "qAr": "كافيه؟ أكيد هنلاقي ___ . صرّف irgendein.",
+          "solutionAr": "أي واحد غير محدد؛ للمحايد"
         },
         {
           "type": "truefalse",
           "q": "„irgendein“ bedeutet: Es ist nicht wichtig, welche Person oder Sache.",
           "a": true,
-          "why": "صح، irgendein معناها «أي واحد، مش فارقة»."
+          "why": "صح، irgendein معناها «أي واحد، مش فارقة».",
+          "qAr": "irgendein معناها إن تحديد الشخص أو الشيء مش مهم."
         },
         {
           "type": "truefalse",
           "q": "„Gibt es hier irgendeine Läden?“ – Der Satz ist richtig.",
           "a": false,
-          "why": "غلط: Läden جمع، يبقى irgendwelche Läden."
+          "why": "غلط: Läden جمع، يبقى irgendwelche Läden.",
+          "qAr": "هل الجملة الألمانية صحيحة؟ المعنى: فيه أي محلات هنا؟"
         },
         {
           "type": "order",
@@ -1501,7 +2004,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "Haben Sie noch irgendwelche Fragen"
           ],
-          "why": "سؤال بنعم أو لأ: الفعل في الأول، و Fragen جمع فبنقول irgendwelche."
+          "why": "سؤال بنعم أو لأ: الفعل في الأول، و Fragen جمع فبنقول irgendwelche.",
+          "qAr": "رتّب الكلمات لتكوين سؤال صحيح.",
+          "solutionAr": "لسه عندك أي أسئلة؟"
         },
         {
           "type": "transform",
@@ -1510,7 +2015,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "Wir gehen in irgendein Restaurant.",
             "Wir gehen in irgendein Restaurant"
           ],
-          "why": "لما مش فارقة أنهي واحد بنحط irgendein بدل ein، والنهاية زي ein."
+          "why": "لما مش فارقة أنهي واحد بنحط irgendein بدل ein، والنهاية زي ein.",
+          "qAr": "استخدم irgend-: هنروح مطعمًا. مش مهم أي مطعم.",
+          "solutionAr": "هنروح أي مطعم من غير تحديد."
         },
         {
           "type": "error",
@@ -1518,7 +2025,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "Er wohnt in irgendeinem Dorf in Bayern."
           ],
-          "why": "wohnen in + Dativ، و Dorf محايد، يبقى irgendeinem."
+          "why": "wohnen in + Dativ، و Dorf محايد، يبقى irgendeinem.",
+          "qAr": "صحّح الجملة الألمانية. المعنى: هو ساكن في قرية ما في بافاريا.",
+          "solutionAr": "هو ساكن في قرية ما في بافاريا."
         }
       ]
     },
@@ -1586,6 +2095,38 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
                 "der Bekannten",
                 "der Bekannten"
               ]
+            ],
+            "headAr": [
+              "الحالة الإعرابية",
+              "المذكر",
+              "المؤنث",
+              "الجمع"
+            ],
+            "rowsAr": [
+              [
+                "حالة الفاعل: نوميناتيف",
+                "المعروف لديّ أو أحد معارفي، حسب الإعراب",
+                "المعروفة لديّ أو إحدى معارفي، حسب الإعراب",
+                "المعارف"
+              ],
+              [
+                "حالة المفعول المباشر: أكوزاتيف",
+                "المعروف لديّ أو أحد معارفي، حسب الإعراب",
+                "المعروفة لديّ أو إحدى معارفي، حسب الإعراب",
+                "المعارف"
+              ],
+              [
+                "حالة المفعول غير المباشر: داتيف",
+                "المعروف لديّ أو أحد معارفي، حسب الإعراب",
+                "المعروفة لديّ أو إحدى معارفي، حسب الإعراب",
+                "المعروف لديّ أو أحد معارفي، حسب الإعراب"
+              ],
+              [
+                "حالة الإضافة: جينيتيف",
+                "المعروف لديّ أو أحد معارفي، حسب الإعراب",
+                "المعروفة لديّ أو إحدى معارفي، حسب الإعراب",
+                "المعروفة لديّ أو إحدى معارفي، حسب الإعراب"
+              ]
             ]
           },
           "examples": [
@@ -1629,6 +2170,32 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
                 "einem Bekannten",
                 "einer Bekannten",
                 "Bekannten"
+              ]
+            ],
+            "headAr": [
+              "الحالة الإعرابية",
+              "المذكر",
+              "المؤنث",
+              "الجمع من غير أداة"
+            ],
+            "rowsAr": [
+              [
+                "حالة الفاعل: نوميناتيف",
+                "واحد من معارفي",
+                "واحدة من معارفي",
+                "معارف"
+              ],
+              [
+                "حالة المفعول المباشر: أكوزاتيف",
+                "واحد من معارفي",
+                "واحدة من معارفي",
+                "معارف"
+              ],
+              [
+                "حالة المفعول غير المباشر: داتيف",
+                "واحد من معارفي",
+                "واحدة من معارفي",
+                "معارف"
               ]
             ]
           },
@@ -1696,7 +2263,13 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "Verletzter"
           ],
           "a": 0,
-          "why": "جمع من غير أداة، النهاية ‎-e: drei Verletzte."
+          "why": "جمع من غير أداة، النهاية ‎-e: drei Verletzte.",
+          "qAr": "في الحادث كان فيه ثلاثة ___ .",
+          "oAr": [
+            "مصاب أو مصابون؛ حسب الصيغة والإعراب",
+            "مصاب أو مصابون؛ حسب الصيغة والإعراب",
+            "مصاب أو مصابون؛ حسب الصيغة والإعراب"
+          ]
         },
         {
           "type": "choice",
@@ -1707,7 +2280,13 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "Verletzter"
           ],
           "a": 1,
-          "why": "بعد die في الجمع النهاية ‎-en."
+          "why": "بعد die في الجمع النهاية ‎-en.",
+          "qAr": "الـ___ اتنقلوا فورًا للمستشفى.",
+          "oAr": [
+            "مصاب أو مصابون؛ حسب الصيغة والإعراب",
+            "مصاب أو مصابون؛ حسب الصيغة والإعراب",
+            "مصاب أو مصابون؛ حسب الصيغة والإعراب"
+          ]
         },
         {
           "type": "choice",
@@ -1718,7 +2297,13 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "Angestellter"
           ],
           "a": 2,
-          "why": "من غير أداة ومذكر في Nominativ، يبقى Angestellter."
+          "why": "من غير أداة ومذكر في Nominativ، يبقى Angestellter.",
+          "qAr": "أخويا ___ في البلدية.",
+          "oAr": [
+            "موظف أو موظفون؛ حسب الصيغة والإعراب",
+            "موظف أو موظفون؛ حسب الصيغة والإعراب",
+            "موظف أو موظفون؛ حسب الصيغة والإعراب"
+          ]
         },
         {
           "type": "gap",
@@ -1726,7 +2311,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "Obdachlosen"
           ],
-          "why": "helfen بياخد Dativ، وبعد einem النهاية ‎-en، والكلمة كبيرة لأنها اسم."
+          "why": "helfen بياخد Dativ، وبعد einem النهاية ‎-en، والكلمة كبيرة لأنها اسم.",
+          "qAr": "الأخصائي الاجتماعي بيساعد ___ . حوّل obdachlos إلى اسم: مشرد.",
+          "solutionAr": "مشرد؛ حسب الإعراب"
         },
         {
           "type": "gap",
@@ -1734,7 +2321,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "Jugendliche"
           ],
-          "why": "جمع من غير أداة في Nominativ، النهاية ‎-e."
+          "why": "جمع من غير أداة في Nominativ، النهاية ‎-e.",
+          "qAr": "___ كتير بيتقابلوا في الحديقة بالليل. حوّل jugendlich إلى اسم: شباب.",
+          "solutionAr": "شباب أو مراهقون"
         },
         {
           "type": "gap",
@@ -1742,7 +2331,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "Einheimischen"
           ],
-          "why": "بعد die في الجمع النهاية ‎-en."
+          "why": "بعد die في الجمع النهاية ‎-en.",
+          "qAr": "الـ___ عارفين أفضل مطاعم المدينة. حوّل einheimisch إلى اسم: السكان المحليون.",
+          "solutionAr": "السكان المحليون"
         },
         {
           "type": "gap",
@@ -1750,19 +2341,23 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "Verwandten"
           ],
-          "why": "mit + Dativ، وبعد einer النهاية ‎-en."
+          "why": "mit + Dativ، وبعد einer النهاية ‎-en.",
+          "qAr": "امبارح اتكلمت بالتليفون مع ___ . حوّل verwandt إلى اسم: قريبة.",
+          "solutionAr": "قريب أو قريبة؛ بصيغ مختلفة للاسم"
         },
         {
           "type": "truefalse",
           "q": "„Gestern habe ich einen Bekannter getroffen.“ – Der Satz ist richtig.",
           "a": false,
-          "why": "غلط: بعد einen لازم ‎-en: einen Bekannten."
+          "why": "غلط: بعد einen لازم ‎-en: einen Bekannten.",
+          "qAr": "هل الجملة الألمانية صحيحة؟ المعنى: امبارح قابلت واحدًا من معارفي."
         },
         {
           "type": "truefalse",
           "q": "Adjektive als Nomen schreibt man groß, aber sie haben Adjektivendungen.",
           "a": true,
-          "why": "صح، الكلمة بقت اسم فبتتكتب كبير، لكن النهاية بتتغير زي الصفة."
+          "why": "صح، الكلمة بقت اسم فبتتكتب كبير، لكن النهاية بتتغير زي الصفة.",
+          "qAr": "الصفات المستخدمة كأسماء تُكتب بحرف كبير، لكن تظل لها نهايات الصفات."
         },
         {
           "type": "order",
@@ -1777,7 +2372,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "Ein Verwandter besucht uns morgen",
             "Morgen besucht uns ein Verwandter"
           ],
-          "why": "Verwandter مع ein في Nominativ للمذكر، والفعل في المكان التاني."
+          "why": "Verwandter مع ein في Nominativ للمذكر، والفعل في المكان التاني.",
+          "qAr": "رتّب الكلمات لتكوين جملة صحيحة.",
+          "solutionAr": "واحد من قرايبنا هيزورنا بكرة."
         },
         {
           "type": "transform",
@@ -1786,7 +2383,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "Im Zimmer liegt ein Kranker.",
             "Im Zimmer liegt ein Kranker"
           ],
-          "why": "شيل Mann وخلي الصفة اسم كبير: ein Kranker بنفس نهاية ‎-er."
+          "why": "شيل Mann وخلي الصفة اسم كبير: ein Kranker بنفس نهاية ‎-er.",
+          "qAr": "استخدم اسمًا بدل الصفة مع الاسم: في الغرفة رجل مريض مستلقٍ.",
+          "solutionAr": "في الغرفة مريض مستلقٍ."
         },
         {
           "type": "error",
@@ -1794,7 +2393,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "Für Jugendliche gibt es hier wenig Angebote."
           ],
-          "why": "جمع من غير أداة بعد für (Akkusativ)، النهاية ‎-e."
+          "why": "جمع من غير أداة بعد für (Akkusativ)، النهاية ‎-e.",
+          "qAr": "صحّح نهاية الاسم في الجملة الألمانية. المعنى: فيه أنشطة قليلة للشباب هنا.",
+          "solutionAr": "فيه أنشطة قليلة للشباب هنا."
         }
       ]
     },
@@ -1878,6 +2479,38 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
                 "wo",
                 "Ich fahre nach Graz, wo meine Tante wohnt."
               ]
+            ],
+            "headAr": [
+              "الكلمة التي يعود عليها الوصل",
+              "أداة الوصل",
+              "مثال"
+            ],
+            "rowsAr": [
+              [
+                "كل شيء، شيء ما، لا شيء، أشياء كثيرة، ذلك",
+                "الذي أو ما",
+                "كل اللي محتاجه موجود هنا."
+              ],
+              [
+                "صيغة التفضيل الأعلى: الأفضل أو الأجمل",
+                "الذي أو ما",
+                "أجمل حاجة أعرفها هي الميناء."
+              ],
+              [
+                "جملة كاملة",
+                "الذي أو ما",
+                "هو جاي معانا، وده بيفرحني."
+              ],
+              [
+                "تعبير مكان: مدينة أو كافيه أو حي",
+                "حيث أو المكان الذي",
+                "ده الكافيه اللي اتعرفنا فيه على بعض."
+              ],
+              [
+                "أسماء المدن والبلاد",
+                "حيث أو المكان الذي",
+                "هسافر لغراتس، حيث تعيش عمّتي أو خالتي."
+              ]
             ]
           },
           "examples": [
@@ -1924,7 +2557,13 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "wo"
           ],
           "a": 1,
-          "why": "بعد nichts بنستخدم was."
+          "why": "بعد nichts بنستخدم was.",
+          "qAr": "مفيش حاجة ___ مش بحبها في مدينتي.",
+          "oAr": [
+            "أداة معرفة أو وصل بحسب السياق والجنس النحوي",
+            "ما أو الذي",
+            "حيث أو أين"
+          ]
         },
         {
           "type": "choice",
@@ -1935,7 +2574,13 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "wann"
           ],
           "a": 0,
-          "why": "Café مكان، يبقى wo."
+          "why": "Café مكان، يبقى wo.",
+          "qAr": "ده الكافيه ___ اتعرفنا فيه على بعض.",
+          "oAr": [
+            "حيث أو أين",
+            "ما أو الذي",
+            "إمتى"
+          ]
         },
         {
           "type": "choice",
@@ -1946,7 +2591,13 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "was"
           ],
           "a": 2,
-          "why": "بترجع على الجملة كلها (إن الإيجارات غالية)، يبقى was."
+          "why": "بترجع على الجملة كلها (إن الإيجارات غالية)، يبقى was.",
+          "qAr": "الإيجارات عالية جدًا، ___ بيضايق أسرًا كتير.",
+          "oAr": [
+            "أداة معرفة أو وصل بحسب السياق والجنس النحوي",
+            "حيث أو أين",
+            "ما أو الذي"
+          ]
         },
         {
           "type": "gap",
@@ -1954,7 +2605,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "was"
           ],
-          "why": "بعد alles بنقول was."
+          "why": "بعد alles بنقول was.",
+          "qAr": "كل حاجة ___ تحتاجها هتلاقيها في المركز.",
+          "solutionAr": "ما أو الذي"
         },
         {
           "type": "gap",
@@ -1963,7 +2616,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "wo",
             "in der"
           ],
-          "why": "Stadt مكان، فبنقول wo أو in der."
+          "why": "Stadt مكان، فبنقول wo أو in der.",
+          "qAr": "زيورخ مدينة ___ جودة الحياة فيها عالية جدًا.",
+          "solutionAr": "حيث أو أين"
         },
         {
           "type": "gap",
@@ -1971,19 +2626,23 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "was"
           ],
-          "why": "بعد التفضيل das Beste بنستخدم was."
+          "why": "بعد التفضيل das Beste بنستخدم was.",
+          "qAr": "أحسن حاجة ___ حصلت لي في فيينا كانت الحفلة الموسيقية في الحديقة.",
+          "solutionAr": "ما أو الذي"
         },
         {
           "type": "truefalse",
           "q": "„Ich ziehe nach Graz, was mich sehr freut.“ – Der Satz ist richtig.",
           "a": true,
-          "why": "صح: was هنا بترجع على الجملة كلها (إني هنقل جراتس)."
+          "why": "صح: was هنا بترجع على الجملة كلها (إني هنقل جراتس).",
+          "qAr": "«هنتقل لغراتس، وده بيفرحني جدًا»: الجملة الألمانية صحيحة."
         },
         {
           "type": "truefalse",
           "q": "Nach alles, etwas und nichts benutzt man das Relativwort wo.",
           "a": false,
-          "why": "غلط: بعد alles و etwas و nichts بنستخدم was، و wo للأماكن بس."
+          "why": "غلط: بعد alles و etwas و nichts بنستخدم was، و wo للأماكن بس.",
+          "qAr": "بعد alles وetwas وnichts بنستخدم أداة الوصل wo. هل العبارة صحيحة؟"
         },
         {
           "type": "order",
@@ -1998,7 +2657,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "was eine Stadt attraktiv macht"
           ],
-          "why": "بعد etwas بنبدأ بـ was، والفعل macht بيروح الآخر."
+          "why": "بعد etwas بنبدأ بـ was، والفعل macht بيروح الآخر.",
+          "qAr": "رتّب الكلمات لإكمال: كثرة الثقافة شيء ...",
+          "solutionAr": "كثرة الثقافة من الأشياء اللي بتخلّي المدينة جذابة."
         },
         {
           "type": "transform",
@@ -2006,7 +2667,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "Es gibt viele Grünflächen, was ich toll finde."
           ],
-          "why": "was بترجع على الجملة الأولى كلها، والفعل finde في الآخر."
+          "why": "was بترجع على الجملة الأولى كلها، والفعل finde في الآخر.",
+          "qAr": "اربط بـ was: فيه مساحات خضراء كتير. شايف ده رائعًا.",
+          "solutionAr": "فيه مساحات خضراء كتير، وده شايفه رائعًا."
         },
         {
           "type": "transform",
@@ -2014,7 +2677,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "Ich kenne ein Restaurant, wo man gut essen kann."
           ],
-          "why": "Restaurant مكان، فبنستخدم wo، والفعل المصرّف kann بيروح الآخر."
+          "why": "Restaurant مكان، فبنستخدم wo، والفعل المصرّف kann بيروح الآخر.",
+          "qAr": "اربط بـ wo: أعرف مطعمًا. ممكن ناكل فيه كويس.",
+          "solutionAr": "أعرف مطعمًا ممكن ناكل فيه كويس."
         },
         {
           "type": "error",
@@ -2022,7 +2687,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "Das ist alles, was ich über die Stadt weiß."
           ],
-          "why": "بعد alles لازم was مش das."
+          "why": "بعد alles لازم was مش das.",
+          "qAr": "صحّح أداة الوصل في الجملة الألمانية. المعنى: ده كل اللي أعرفه عن المدينة.",
+          "solutionAr": "ده كل اللي أعرفه عن المدينة."
         }
       ]
     }
@@ -2092,6 +2759,38 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
                 "umso nervöser",
                 "werde ich."
               ]
+            ],
+            "headAr": [
+              "أداة je مع صيغة المقارنة",
+              "الفاعل ثم باقي الجملة، والفعل في النهاية",
+              "أداة desto أو umso مع صيغة المقارنة",
+              "الفعل ثم الفاعل وباقي الجملة"
+            ],
+            "rowsAr": [
+              [
+                "كلما زاد عدد المرات",
+                "اللي بنستخدم فيها الخدمات البنكية أونلاين،",
+                "بقى أسهل",
+                "بيكون الأمر أسهل."
+              ],
+              [
+                "كلما كان أكبر",
+                "حجم القرض،",
+                "بقت أقل",
+                "الفوائد بتكون أقل."
+              ],
+              [
+                "كلما زاد مقدار المال",
+                "اللي السيدة رامون بتسحبه،",
+                "بقت أعلى",
+                "الرسوم بتكون أعلى."
+              ],
+              [
+                "كلما زادت المدة",
+                "اللي بستناها،",
+                "بقيت أكثر توترًا",
+                "أنا ببقى أكثر توترًا."
+              ]
             ]
           },
           "examples": [
@@ -2153,6 +2852,53 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
                 "teurer",
                 "... umso teurer wird es."
               ]
+            ],
+            "headAr": [
+              "الصيغة الأساسية",
+              "صيغة المقارنة",
+              "مثال"
+            ],
+            "rowsAr": [
+              [
+                "كثير",
+                "أكثر",
+                "كلما وفّرت أكتر، ..."
+              ],
+              [
+                "قليل",
+                "أقل",
+                "كلما صرفنا أقل، ..."
+              ],
+              [
+                "جيد",
+                "بشكل أفضل",
+                "... كان أفضل."
+              ],
+              [
+                "بسرور أو عن رغبة",
+                "أفضل أو برغبة أكبر",
+                "كلما كان أبكر كان أفضل!"
+              ],
+              [
+                "كثيرًا من حيث التكرار",
+                "بتكرار أكثر",
+                "كلما تدرّبنا مرات أكثر، ..."
+              ],
+              [
+                "عالٍ",
+                "أعلى",
+                "كلما كانت الفوائد أعلى، ..."
+              ],
+              [
+                "كبير",
+                "أكبر",
+                "كلما كان القرض أكبر، ..."
+              ],
+              [
+                "غالٍ",
+                "أغلى",
+                "... أصبح أغلى."
+              ]
             ]
           }
         },
@@ -2205,7 +2951,13 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "als"
           ],
           "a": 1,
-          "why": "je دايمًا جوزها desto أو umso، مش dann ولا als."
+          "why": "je دايمًا جوزها desto أو umso، مش dann ولا als.",
+          "qAr": "كلما وفّرت بدري، ___ بقى معاك فلوس أكتر بعدين.",
+          "oAr": [
+            "بعد كده",
+            "الجزء الثاني من رابط كلما",
+            "عندما في الماضي أو من في المقارنة"
+          ]
         },
         {
           "type": "choice",
@@ -2216,7 +2968,13 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "höher"
           ],
           "a": 2,
-          "why": "بعد je لازم Komparativ: hoch → höher."
+          "why": "بعد je لازم Komparativ: hoch → höher.",
+          "qAr": "كلما كانت الفوائد ___، بقى القرض أغلى.",
+          "oAr": [
+            "عالٍ",
+            "الأعلى",
+            "أعلى"
+          ]
         },
         {
           "type": "choice",
@@ -2227,7 +2985,13 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "mehr man spart"
           ],
           "a": 0,
-          "why": "بعد umso + Komparativ الفعل على طول وبعدين الفاعل: mehr spart man."
+          "why": "بعد umso + Komparativ الفعل على طول وبعدين الفاعل: mehr spart man.",
+          "qAr": "كلما صرفنا أقل، ___ .",
+          "oAr": [
+            "نوفّر أكثر؛ بصيغ مختلفة للترتيب",
+            "نوفّر أكثر؛ بصيغ مختلفة للترتيب",
+            "نوفّر أكثر؛ بصيغ مختلفة للترتيب"
+          ]
         },
         {
           "type": "gap",
@@ -2236,7 +3000,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "öfter",
             "häufiger"
           ],
-          "why": "oft في المقارنة بتبقى öfter (أو häufiger)."
+          "why": "oft في المقارنة بتبقى öfter (أو häufiger).",
+          "qAr": "كلما دفعت أونلاين ___، احتجت نقدًا أقل. استخدم مقارنة oft: كثيرًا.",
+          "solutionAr": "بتكرار أكثر"
         },
         {
           "type": "gap",
@@ -2244,7 +3010,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "spart"
           ],
-          "why": "بعد desto mehr الفعل المصرّف بييجي على طول: spart sie."
+          "why": "بعد desto mehr الفعل المصرّف بييجي على طول: spart sie.",
+          "qAr": "كلما آنا كسبت فلوس أكتر، ___ أكتر. صرّف sparen: يوفّر.",
+          "solutionAr": "يوفّر"
         },
         {
           "type": "gap",
@@ -2252,7 +3020,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "größer"
           ],
-          "why": "groß → größer بالـ Umlaut."
+          "why": "groß → größer بالـ Umlaut.",
+          "qAr": "كلما كان القرض ___، كانت الفوائد أقل. استخدم مقارنة groß: كبير.",
+          "solutionAr": "أكبر"
         },
         {
           "type": "order",
@@ -2268,7 +3038,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "desto besser verstehe ich das System"
           ],
-          "why": "desto + Komparativ في الأول، بعده الفعل verstehe، وبعده الفاعل ich."
+          "why": "desto + Komparativ في الأول، بعده الفعل verstehe، وبعده الفاعل ich.",
+          "qAr": "رتّب الكلمات لإكمال: كلما عشت في ألمانيا أطول، ...",
+          "solutionAr": "كلما عشت في ألمانيا مدة أطول، فهمت النظام أفضل."
         },
         {
           "type": "order",
@@ -2286,7 +3058,13 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "Je weniger man ausgibt, desto mehr spart man.",
             "Je mehr man ausgibt, desto weniger spart man."
           ],
-          "why": "في جملة je الفعل ausgibt في الآخر، وفي جملة desto الفعل spart قبل man."
+          "why": "في جملة je الفعل ausgibt في الآخر، وفي جملة desto الفعل spart قبل man.",
+          "qAr": "رتّب الكلمات لتكوين جملة صحيحة.",
+          "solutionAr": "كلما صرفنا أقل وفّرنا أكتر.",
+          "aAr": [
+            "كلما صرفنا أقل وفّرنا أكتر.",
+            "كلما صرفنا أكتر وفّرنا أقل."
+          ]
         },
         {
           "type": "transform",
@@ -2297,7 +3075,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "Je öfter man übt, desto besser spricht man.",
             "Je öfter man übt, umso besser spricht man."
           ],
-          "why": "viel → mehr و gut → besser، والفعل übt في آخر جملة je."
+          "why": "viel → mehr و gut → besser، والفعل übt في آخر جملة je.",
+          "qAr": "اربط بـ je …, desto …: بنتدرّب كتير. بنتكلم كويس.",
+          "solutionAr": "كلما تدرّبنا أكتر اتكلمنا أفضل."
         },
         {
           "type": "transform",
@@ -2306,7 +3086,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "Je stärker die Preise steigen, umso weniger kaufen die Kunden.",
             "Je stärker die Preise steigen, desto weniger kaufen die Kunden."
           ],
-          "why": "stark → stärker و wenig → weniger، وبعد umso weniger الفعل kaufen قبل الفاعل."
+          "why": "stark → stärker و wenig → weniger، وبعد umso weniger الفعل kaufen قبل الفاعل.",
+          "qAr": "اربط بـ je …, umso …: الأسعار بترتفع بشدة. العملاء بيشتروا قليلًا.",
+          "solutionAr": "كلما ارتفعت الأسعار بشدة، اشترى العملاء أقل."
         },
         {
           "type": "error",
@@ -2315,13 +3097,16 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "Je höher das Gehalt ist, desto mehr Steuern zahlt man.",
             "Je höher das Gehalt ist, umso mehr Steuern zahlt man."
           ],
-          "why": "desto لازم بعدها على طول mehr Steuern، وبعدين الفعل zahlt وبعدين man."
+          "why": "desto لازم بعدها على طول mehr Steuern، وبعدين الفعل zahlt وبعدين man.",
+          "qAr": "صحّح ترتيب الجملة الألمانية. المعنى: كلما زاد المرتب زادت الضرائب.",
+          "solutionAr": "كلما زاد المرتب زادت الضرائب اللي بندفعها."
         },
         {
           "type": "truefalse",
           "q": "„Je mehr ich lerne, desto besser ich verstehe.“ – Dieser Satz ist richtig.",
           "a": false,
-          "why": "غلط: الصح desto besser verstehe ich، لأن الفعل بييجي قبل الفاعل بعد desto."
+          "why": "غلط: الصح desto besser verstehe ich، لأن الفعل بييجي قبل الفاعل بعد desto.",
+          "qAr": "هل الجملة الألمانية صحيحة؟ المعنى: كلما تعلّمت أكتر فهمت أفضل."
         }
       ]
     },
@@ -2362,6 +3147,32 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
               [
                 "die Karte, die verloren wurde",
                 "die verlorene Karte"
+              ]
+            ],
+            "headAr": [
+              "جملة وصل بالمبني للمجهول",
+              "التصريف الثالث مستخدمًا كصفة"
+            ],
+            "rowsAr": [
+              [
+                "المبلغ الذي تم تحويله",
+                "المبلغ المحوّل"
+              ],
+              [
+                "رقم سري تم حفظه",
+                "رقم سري محفوظ"
+              ],
+              [
+                "الاستمارة التي تم ملؤها",
+                "الاستمارة المكتملة"
+              ],
+              [
+                "البيانات التي تم نقلها",
+                "البيانات المنقولة"
+              ],
+              [
+                "البطاقة التي تم فقدانها",
+                "البطاقة المفقودة"
               ]
             ]
           },
@@ -2412,6 +3223,38 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
                 "Nominativ Plural",
                 "die eingezahlten Beträge",
                 "eingezahlte Beträge"
+              ]
+            ],
+            "headAr": [
+              "الحالة الإعرابية والجنس النحوي",
+              "مع أداة معرفة",
+              "مع أداة نكرة أو من غير أداة"
+            ],
+            "rowsAr": [
+              [
+                "مذكر في حالة الفاعل",
+                "المبلغ المحوّل",
+                "مبلغ محوّل"
+              ],
+              [
+                "مذكر في حالة المفعول المباشر",
+                "المبلغ المحوّل",
+                "مبلغ محوّل"
+              ],
+              [
+                "محايد في حالة الفاعل",
+                "الاستمارة المكتملة",
+                "استمارة مكتملة"
+              ],
+              [
+                "مؤنث في حالة الداتيف",
+                "مع الرقم السري المحفوظ",
+                "مع رقم سري محفوظ"
+              ],
+              [
+                "جمع في حالة الفاعل",
+                "المبالغ المودعة",
+                "مبالغ مودعة"
               ]
             ]
           }
@@ -2469,7 +3312,13 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "unterschrieben"
           ],
           "a": 1,
-          "why": "الاستمارة اتمضت خلاص (مبني للمجهول) → Partizip II بنهاية -e بعد das."
+          "why": "الاستمارة اتمضت خلاص (مبني للمجهول) → Partizip II بنهاية -e بعد das.",
+          "qAr": "ابعت لنا الاستمارة ___ .",
+          "oAr": [
+            "يوقّع حاليًا؛ صفة من Partizip I",
+            "موقّع؛ من Partizip II",
+            "موقّع؛ من Partizip II"
+          ]
         },
         {
           "type": "choice",
@@ -2480,7 +3329,13 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "verlorte"
           ],
           "a": 0,
-          "why": "الكارت ضاع خلاص → Partizip II الشاذ verloren + e."
+          "why": "الكارت ضاع خلاص → Partizip II الشاذ verloren + e.",
+          "qAr": "هنستبدل بطاقتك ___ خلال أسبوع.",
+          "oAr": [
+            "مفقود؛ من Partizip II",
+            "يفقد حاليًا؛ من Partizip I",
+            "صيغة مشتقة من فعل يفقد"
+          ]
         },
         {
           "type": "choice",
@@ -2491,7 +3346,13 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "eingezahlten"
           ],
           "a": 2,
-          "why": "جمع بعد die → النهاية -en، والمبالغ اتودعت خلاص فـ Partizip II."
+          "why": "جمع بعد die → النهاية -en، والمبالغ اتودعت خلاص فـ Partizip II.",
+          "qAr": "المبالغ الـ___ بتُضاف فورًا للحساب.",
+          "oAr": [
+            "مُودع؛ من Partizip II بحسب الإعراب",
+            "يودع حاليًا؛ من Partizip I",
+            "مُودع؛ من Partizip II بحسب الإعراب"
+          ]
         },
         {
           "type": "gap",
@@ -2499,7 +3360,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "gespeicherte"
           ],
-          "why": "speichern → gespeichert، وبعد eine في المؤنث النهاية -e."
+          "why": "speichern → gespeichert، وبعد eine في المؤنث النهاية -e.",
+          "qAr": "يمكن تغيير رقم PIN الـ___ في أي وقت. اشتق الصفة من speichern: يحفظ.",
+          "solutionAr": "محفوظة"
         },
         {
           "type": "gap",
@@ -2507,7 +3370,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "unterschriebene"
           ],
-          "why": "unterschreiben فعل شاذ → unterschrieben + e."
+          "why": "unterschreiben فعل شاذ → unterschrieben + e.",
+          "qAr": "احفظ بطاقتك الـ___ بأمان. اشتق الصفة من unterschreiben: يوقّع.",
+          "solutionAr": "موقّع؛ من Partizip II"
         },
         {
           "type": "gap",
@@ -2515,7 +3380,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "überwiesene"
           ],
-          "why": "überweisen → überwiesen (من غير ge لأنه بيبدأ بـ über- غير منفصلة) + e بعد der."
+          "why": "überweisen → überwiesen (من غير ge لأنه بيبدأ بـ über- غير منفصلة) + e بعد der.",
+          "qAr": "المبلغ الـ___ بيوصل للمستلم خلال يوم. اشتق الصفة من überweisen: يحوّل.",
+          "solutionAr": "محوّل"
         },
         {
           "type": "transform",
@@ -2523,7 +3390,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "die bezahlte Rechnung"
           ],
-          "why": "bezahlt + e قبل الاسم: die bezahlte Rechnung."
+          "why": "bezahlt + e قبل الاسم: die bezahlte Rechnung.",
+          "qAr": "استخدم Partizip II كصفة: الفاتورة التي تم دفعها.",
+          "solutionAr": "الفاتورة المدفوعة."
         },
         {
           "type": "transform",
@@ -2531,13 +3400,16 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "das reparierte Fahrrad"
           ],
-          "why": "الأفعال اللي بتخلص بـ -ieren مالهاش ge: repariert → das reparierte Fahrrad."
+          "why": "الأفعال اللي بتخلص بـ -ieren مالهاش ge: repariert → das reparierte Fahrrad.",
+          "qAr": "استخدم Partizip II كصفة: العجلة التي تم إصلاحها.",
+          "solutionAr": "العجلة التي تم إصلاحها."
         },
         {
           "type": "truefalse",
           "q": "„Hier ist der gedruckte Kontoauszug.“ – Das bedeutet: Der Kontoauszug wurde schon gedruckt.",
           "a": true,
-          "why": "صح: الـ Partizip II معناه إن الحاجة اتعملت خلاص."
+          "why": "صح: الـ Partizip II معناه إن الحاجة اتعملت خلاص.",
+          "qAr": "«هنا كشف الحساب المطبوع»: يعني إن كشف الحساب تم طباعته بالفعل."
         },
         {
           "type": "error",
@@ -2545,7 +3417,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "Ich habe die bestellte Kleidung und den kopierten Pass dabei."
           ],
-          "why": "بعد den في المذكر مفعول به النهاية -en: den kopierten Pass."
+          "why": "بعد den في المذكر مفعول به النهاية -en: den kopierten Pass.",
+          "qAr": "صحّح نهاية الصفة في الجملة الألمانية. المعنى: معايا الملابس المطلوبة وجواز السفر المنسوخ.",
+          "solutionAr": "معايا الملابس اللي طلبتها وصورة جواز السفر."
         },
         {
           "type": "order",
@@ -2564,7 +3438,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "ich habe die gekauften Sachen ins Auto gelegt",
             "die gekauften Sachen habe ich ins Auto gelegt"
           ],
-          "why": "die gekauften Sachen = الحاجات اللي اتشترت، و gelegt في آخر الجملة."
+          "why": "die gekauften Sachen = الحاجات اللي اتشترت، و gelegt في آخر الجملة.",
+          "qAr": "رتّب الكلمات لإكمال: اشتريت الحاجات بالفعل؟ أيوه، ...",
+          "solutionAr": "اشتريت الحاجات بالفعل؟ أيوه، حطّيت الحاجات اللي اشتريتها في العربية."
         },
         {
           "type": "transform",
@@ -2574,7 +3450,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "Hier ist der unterschriebene Vertrag.",
             "der unterschriebene Vertrag"
           ],
-          "why": "der Vertrag مذكر وفاعل → der unterschriebene Vertrag."
+          "why": "der Vertrag مذكر وفاعل → der unterschriebene Vertrag.",
+          "qAr": "جاوب بـ Partizip II كصفة: وقّعت العقد بالفعل؟ أيوه، هنا ...",
+          "solutionAr": "أيوه، هنا العقد الموقّع."
         }
       ]
     },
@@ -2632,6 +3510,48 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
                 "telefonierend",
                 "eine telefonierende Frau"
               ]
+            ],
+            "headAr": [
+              "المصدر",
+              "اسم الفاعل النحوي",
+              "مثال مع اسم"
+            ],
+            "rowsAr": [
+              [
+                "يرتفع",
+                "يرتفع حاليًا",
+                "أسعار في ارتفاع"
+              ],
+              [
+                "ينخفض",
+                "ينخفض حاليًا",
+                "الأسعار التي تنخفض"
+              ],
+              [
+                "ينمو",
+                "ينمو حاليًا",
+                "في السوق العالمية المتنامية"
+              ],
+              [
+                "يقنع",
+                "مقنع",
+                "حجة مقنعة"
+              ],
+              [
+                "يزداد",
+                "متزايد",
+                "التبادل المتزايد"
+              ],
+              [
+                "يضحك",
+                "ضاحك",
+                "ناس بيضحكوا"
+              ],
+              [
+                "يتحدث هاتفيًا",
+                "يتحدث هاتفيًا حاليًا",
+                "سيدة بتتكلم في التليفون"
+              ]
             ]
           }
         },
@@ -2657,6 +3577,24 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
               [
                 "ein schlafendes Kind (es schläft)",
                 "ein repariertes Auto (es wurde repariert)"
+              ]
+            ],
+            "headAr": [
+              "اسم الفاعل: فعل يحدث حاليًا",
+              "التصريف الثالث: مبني للمجهول أو فعل مكتمل"
+            ],
+            "rowsAr": [
+              [
+                "الماء الذي يغلي حاليًا",
+                "البيضة التي تم سلقها"
+              ],
+              [
+                "الأسعار التي ترتفع الآن",
+                "الأسعار التي ارتفعت بالفعل"
+              ],
+              [
+                "طفل نائم حاليًا",
+                "سيارة تم إصلاحها"
               ]
             ]
           },
@@ -2720,7 +3658,13 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "wachsende"
           ],
           "a": 0,
-          "why": "wegen + Genitiv، وبعد der في المؤنث جينتيف النهاية -en: der wachsenden Konkurrenz."
+          "why": "wegen + Genitiv، وبعد der في المؤنث جينتيف النهاية -en: der wachsenden Konkurrenz.",
+          "qAr": "بسبب المنافسة الـ___ شركات كتير مضطرة تقفل.",
+          "oAr": [
+            "متنامٍ؛ بصيغ مختلفة للصفة",
+            "نما؛ التصريف الثالث",
+            "متنامٍ؛ بصيغ مختلفة للصفة"
+          ]
         },
         {
           "type": "choice",
@@ -2731,7 +3675,13 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "überzeugende"
           ],
           "a": 1,
-          "why": "الحجة هي اللي «بتقنع» → Partizip I، وبعد ein في المحايد -es."
+          "why": "الحجة هي اللي «بتقنع» → Partizip I، وبعد ein في المحايد -es.",
+          "qAr": "دي فعلًا حجة ___ .",
+          "oAr": [
+            "مقتنع",
+            "مقنع؛ بصيغ مختلفة للصفة",
+            "مقنع؛ بصيغ مختلفة للصفة"
+          ]
         },
         {
           "type": "choice",
@@ -2742,7 +3692,13 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "telefonierende"
           ],
           "a": 2,
-          "why": "الست «بتتكلم في التليفون» دلوقتي → Partizip I، وبعد eine النهاية -e."
+          "why": "الست «بتتكلم في التليفون» دلوقتي → Partizip I، وبعد eine النهاية -e.",
+          "qAr": "شفت النهارده في الأتوبيس سيدة ___ .",
+          "oAr": [
+            "صيغة مشتقة من فعل يتحدث هاتفيًا",
+            "يتحدث هاتفيًا حاليًا؛ بحسب الإعراب",
+            "يتحدث هاتفيًا حاليًا؛ بحسب الإعراب"
+          ]
         },
         {
           "type": "gap",
@@ -2750,7 +3706,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "sinkenden"
           ],
-          "why": "sinken + d = sinkend، وفي الجمع بعد die النهاية -en."
+          "why": "sinken + d = sinkend، وفي الجمع بعد die النهاية -en.",
+          "qAr": "الأسعار الـ___ بتفرّح المستهلكين. اشتق الصفة من sinken: ينخفض.",
+          "solutionAr": "منخفضة حاليًا"
         },
         {
           "type": "gap",
@@ -2758,7 +3716,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "zunehmende"
           ],
-          "why": "zunehmen + d = zunehmend، وبعد der في الفاعل -e."
+          "why": "zunehmen + d = zunehmend، وبعد der في الفاعل -e.",
+          "qAr": "التبادل الـ___ بين البلاد ميزة. اشتق الصفة من zunehmen: يزداد.",
+          "solutionAr": "متزايد"
         },
         {
           "type": "gap",
@@ -2766,7 +3726,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "beiliegenden"
           ],
-          "why": "auf + Dativ، وبعد der في المؤنث داتيف -en: der beiliegenden Karte."
+          "why": "auf + Dativ، وبعد der في المؤنث داتيف -en: der beiliegenden Karte.",
+          "qAr": "هتلاقي تعليمات مهمة في بطاقة الطوارئ الـ___ . اشتق الصفة من beiliegen: يكون مرفقًا.",
+          "solutionAr": "مرفقة"
         },
         {
           "type": "transform",
@@ -2774,7 +3736,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "spielende Kinder"
           ],
-          "why": "spielen + d = spielend، ومن غير أداة في الجمع النهاية -e."
+          "why": "spielen + d = spielend، ومن غير أداة في الجمع النهاية -e.",
+          "qAr": "استخدم Partizip I كصفة: أطفال يلعبون.",
+          "solutionAr": "أطفال بيلعبوا."
         },
         {
           "type": "transform",
@@ -2782,19 +3746,23 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "die produzierenden Fabriken"
           ],
-          "why": "produzieren + d، وبعد die في الجمع النهاية -en."
+          "why": "produzieren + d، وبعد die في الجمع النهاية -en.",
+          "qAr": "استخدم Partizip I كصفة: المصانع التي تنتج.",
+          "solutionAr": "المصانع التي تنتج."
         },
         {
           "type": "truefalse",
           "q": "„steigende Preise“ bedeutet: Die Preise steigen gerade.",
           "a": true,
-          "why": "صح: الـ Partizip I معناه إن الحاجة بتحصل دلوقتي."
+          "why": "صح: الـ Partizip I معناه إن الحاجة بتحصل دلوقتي.",
+          "qAr": "steigende Preise معناها إن الأسعار بترتفع حاليًا."
         },
         {
           "type": "truefalse",
           "q": "„das gekochte Wasser“ und „das kochende Wasser“ bedeuten dasselbe.",
           "a": false,
-          "why": "غلط: kochend = بتغلي دلوقتي، gekocht = اتغلت خلاص."
+          "why": "غلط: kochend = بتغلي دلوقتي، gekocht = اتغلت خلاص.",
+          "qAr": "«الماء الذي تم غليه» و«الماء الذي يغلي» لهما نفس المعنى. هل العبارة صحيحة؟"
         },
         {
           "type": "error",
@@ -2802,7 +3770,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "Achten Sie auf die hinter Ihnen stehenden Personen."
           ],
-          "why": "في الجمع بعد die النهاية -en: stehenden."
+          "why": "في الجمع بعد die النهاية -en: stehenden.",
+          "qAr": "صحّح نهاية الصفة في الجملة الألمانية. المعنى: انتبه للأشخاص الواقفين خلفك.",
+          "solutionAr": "انتبه للأشخاص الواقفين خلفك."
         },
         {
           "type": "order",
@@ -2816,7 +3786,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "viele lachende Menschen gesehen"
           ],
-          "why": "الصفة lachende قبل الاسم Menschen، و gesehen في الآخر."
+          "why": "الصفة lachende قبل الاسم Menschen، و gesehen في الآخر.",
+          "qAr": "رتّب الكلمات لإكمال: أنا النهارده ...",
+          "solutionAr": "شفت النهارده ناس كتير بيضحكوا."
         }
       ]
     },
@@ -2848,6 +3820,23 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
                 "hin-",
                 "vom Sprecher weg",
                 "Wir fahren morgen hin."
+              ]
+            ],
+            "headAr": [
+              "البادئة",
+              "الاتجاه",
+              "مثال"
+            ],
+            "rowsAr": [
+              [
+                "باتجاه المتكلم",
+                "ناحية المتكلم",
+                "تعال هنا لو سمحت!"
+              ],
+              [
+                "بعيدًا عن المتكلم",
+                "في اتجاه بعيد عن المتكلم",
+                "هنروح هناك بكرة."
               ]
             ]
           },
@@ -2905,6 +3894,44 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
                 "hinüber",
                 "rüber"
               ]
+            ],
+            "headAr": [
+              "حرف الجر",
+              "الحركة ناحيتي",
+              "الحركة بعيدًا عني",
+              "اللغة العامية"
+            ],
+            "rowsAr": [
+              [
+                "إلى أعلى",
+                "إلى أعلى ناحية المتكلم",
+                "إلى أعلى بعيدًا عن المتكلم",
+                "فوق بالعامية"
+              ],
+              [
+                "إلى أسفل",
+                "إلى أسفل ناحية المتكلم",
+                "إلى أسفل بعيدًا عن المتكلم",
+                "تحت بالعامية"
+              ],
+              [
+                "إلى الداخل",
+                "إلى الداخل ناحية المتكلم",
+                "إلى الداخل بعيدًا عن المتكلم",
+                "جوه بالعامية"
+              ],
+              [
+                "إلى الخارج",
+                "إلى الخارج ناحية المتكلم",
+                "إلى الخارج بعيدًا عن المتكلم",
+                "برّه بالعامية"
+              ],
+              [
+                "إلى الجانب الآخر",
+                "إلى الجانب الآخر ناحية المتكلم",
+                "إلى الجانب الآخر بعيدًا عن المتكلم",
+                "للناحية التانية بالعامية"
+              ]
             ]
           }
         },
@@ -2956,7 +3983,13 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "hinein"
           ],
           "a": 0,
-          "why": "هي بره في الجنينة والشخص هيخرج ناحيتها → heraus."
+          "why": "هي بره في الجنينة والشخص هيخرج ناحيتها → heraus.",
+          "qAr": "المتحدثة في الجنينة: إنت جاي ___ كمان؟",
+          "oAr": [
+            "إلى الخارج ناحية المتكلم",
+            "إلى الخارج بعيدًا عن المتكلم",
+            "إلى الداخل بعيدًا عن المتكلم"
+          ]
         },
         {
           "type": "choice",
@@ -2967,7 +4000,13 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "hinaufkommen"
           ],
           "a": 2,
-          "why": "هو تحت وعايز يطلع لفوق بعيد عنه → hinaufkommen."
+          "why": "هو تحت وعايز يطلع لفوق بعيد عنه → hinaufkommen.",
+          "qAr": "المتحدث في الأسفل: مش قادر ___، الباب مقفول.",
+          "oAr": [
+            "يأتي إلى أعلى ناحية المتكلم",
+            "يأتي إلى أسفل ناحية المتكلم",
+            "يصعد بعيدًا عن المتكلم"
+          ]
         },
         {
           "type": "choice",
@@ -2978,7 +4017,13 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "heraus"
           ],
           "a": 1,
-          "why": "الأم بره والعيال داخلين جوه بعيد عنها → hinein."
+          "why": "الأم بره والعيال داخلين جوه بعيد عنها → hinein.",
+          "qAr": "الأم واقفة خارج البيت: الأطفال بيجروا بسرعة ___ داخل البيت.",
+          "oAr": [
+            "إلى الداخل ناحية المتكلم",
+            "إلى الداخل بعيدًا عن المتكلم",
+            "إلى الخارج ناحية المتكلم"
+          ]
         },
         {
           "type": "gap",
@@ -2987,7 +4032,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "herein",
             "rein"
           ],
-          "why": "هو جوه والشخص هييجي ناحيته → herein (أو بالعامي rein)."
+          "why": "هو جوه والشخص هييجي ناحيته → herein (أو بالعامي rein).",
+          "qAr": "المتحدث داخل المكان: لحظة لو سمحت، هدخّلك ___ حالًا.",
+          "solutionAr": "إلى الداخل ناحية المتكلم"
         },
         {
           "type": "gap",
@@ -2996,19 +4043,23 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "hinunter",
             "runter"
           ],
-          "why": "هي فوق وعايزة تنزل بعيد عن مكانها → hinunter (أو runter)."
+          "why": "هي فوق وعايزة تنزل بعيد عن مكانها → hinunter (أو runter).",
+          "qAr": "المتحدثة فوق: مش قادرة آجي ___ دلوقتي، أنا بشتغل.",
+          "solutionAr": "إلى أسفل بعيدًا عن المتكلم"
         },
         {
           "type": "truefalse",
           "q": "„her-“ bedeutet: Die Bewegung geht zum Sprecher hin.",
           "a": true,
-          "why": "صح: her- = ناحية اللي بيتكلم."
+          "why": "صح: her- = ناحية اللي بيتكلم.",
+          "qAr": "her- معناها إن الحركة في اتجاه المتكلم."
         },
         {
           "type": "truefalse",
           "q": "„Geh hinaus!“ bedeutet: Komm zu mir.",
           "a": false,
-          "why": "غلط: hinaus يعني اطلع بره بعيد عني."
+          "why": "غلط: hinaus يعني اطلع بره بعيد عني.",
+          "qAr": "Geh hinaus! معناها «تعال عندي». هل العبارة صحيحة؟"
         },
         {
           "type": "order",
@@ -3021,7 +4072,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "Kommen Sie doch herein"
           ],
-          "why": "جملة أمر: الفعل Kommen في الأول، والبادئة herein في الآخر."
+          "why": "جملة أمر: الفعل Kommen في الأول، والبادئة herein في الآخر.",
+          "qAr": "رتّب الكلمات لتكوين جملة صحيحة.",
+          "solutionAr": "اتفضّل ادخل."
         },
         {
           "type": "transform",
@@ -3029,7 +4082,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "Kommst du runter?"
           ],
-          "why": "herunter في الكلام العادي بتبقى runter."
+          "why": "herunter في الكلام العادي بتبقى runter.",
+          "qAr": "قول بالعامية الألمانية: هتنزل؟",
+          "solutionAr": "هتنزل؟"
         },
         {
           "type": "transform",
@@ -3037,7 +4092,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
           "a": [
             "Gehst du raus?"
           ],
-          "why": "hinaus في الكلام العادي بتبقى raus."
+          "why": "hinaus في الكلام العادي بتبقى raus.",
+          "qAr": "قول بالعامية الألمانية: هتخرج؟",
+          "solutionAr": "هتخرج؟"
         },
         {
           "type": "error",
@@ -3046,7 +4103,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "Komm doch herein, das Essen ist fertig!",
             "Komm doch rein, das Essen ist fertig!"
           ],
-          "why": "هي جوه المطبخ والحركة ناحيتها → herein."
+          "why": "هي جوه المطبخ والحركة ناحيتها → herein.",
+          "qAr": "صحّح اتجاه الحركة: المتحدثة في المطبخ وبتقول «تعال جوه، الأكل جاهز!»",
+          "solutionAr": "تعال جوه، الأكل جاهز!"
         },
         {
           "type": "error",
@@ -3055,7 +4114,9 @@ window.B1_GRAMMAR = Object.assign(window.B1_GRAMMAR || {}, {
             "Ich gehe kurz hinaus.",
             "Ich gehe kurz raus."
           ],
-          "why": "hinausgehen فعل بيتفصل: gehe في المكان التاني و hinaus في الآخر."
+          "why": "hinausgehen فعل بيتفصل: gehe في المكان التاني و hinaus في الآخر.",
+          "qAr": "صحّح ترتيب الجملة الألمانية. المعنى: هخرج شوية.",
+          "solutionAr": "هخرج شوية."
         }
       ]
     }
