@@ -79,7 +79,7 @@ function renderChapterMenu(c){
       <img src="${c.visual.src}" alt="${c.visual.alt}">
       <figcaption class="visual-caption">${c.visual.caption}${ar(c.visual.captionAr)}</figcaption>
     </figure>`:''}
-    <section class="hero chapter-hero"><div><span class="next-hero-eyebrow">${isA1?'A1':isB1?(c.num>6?'B1.2':'B1.1'):'A2'} · ${chapterLabel} ${c.num}</span><h2>${c.title}</h2><p>${c.subtitle}</p>${ar(c.titleAr)}</div>${window.NextUI?.lessonStart(routeBase)||''}</section>
+    <section class="hero chapter-hero"><div><span class="next-hero-eyebrow">${isA1?'A1':isB1?(c.num>6?'B1.2':'B1.1'):'A2'} · ${chapterLabel} ${c.num}</span><h2>${c.title}</h2>${ar(c.titleAr)}<p>${c.subtitle}</p>${ar(c.subtitleAr)}</div>${window.NextUI?.lessonStart(routeBase)||''}</section>
     <section class="chapter-tab-grid">${chapterTabs(c).map(([id,lbl])=>{
       const img=chapterTabImage(c,id);
       return `
@@ -123,7 +123,7 @@ function renderChapterTab(c, tab){
     h += `<div class="card">
       <h3 style="color:var(--green-d);margin-bottom:6px">Worum geht es in diesem Kapitel?</h3>
       <p style="font-size:15px">${c.intro}</p>${ar(c.introAr)}
-      <div class="badge-row">${c.badges.map(b=>`<span class="badge">${b}</span>`).join('')}</div>
+      <div class="badge-row">${c.badges.map((b,i)=>`<span class="badge">${b}${ar(c.badgesAr?.[i])}</span>`).join('')}</div>
       ${c.topicVisuals?.length?`<div class="topic-visual-grid">${c.topicVisuals.map(topic=>`
         <figure class="topic-visual-card">
           <img src="${topic.src}" alt="${escapeHtml(topic.alt||topic.title)}" loading="lazy" decoding="async">
@@ -171,8 +171,8 @@ function renderChapterTab(c, tab){
       }
       h += `<div class="vocab-row">
         <div class="w">${fmtWord(v.w)}</div>
-        <div class="def">${v.d}</div>
-        ${v.ex?`<div class="ex">${v.ex}</div>`:''}
+        <div class="def">${v.d}</div>${ar(v.dAr)}
+        ${v.ex?`<div class="ex">${v.ex}</div>${ar(v.exAr)}`:''}
         ${ar(v.ar)}
       </div>`;
     });
@@ -192,8 +192,8 @@ function renderChapterTab(c, tab){
       <article class="card reading-card ${r.visual?.src?'with-cover':''}">
         ${r.visual?.src?`<figure class="reading-cover">
           <img src="${r.visual.src}" alt="${r.visual.alt||''}" style="object-position:center">
-          <figcaption class="reading-cover-copy"><div class="reading-kind">${r.kind}</div><h3>${r.title}</h3></figcaption>
-        </figure>`:`<h3 style="color:var(--green-d);margin-bottom:8px">${r.kind}: ${r.title}</h3>`}
+          <figcaption class="reading-cover-copy"><div class="reading-kind">${r.kind}</div>${ar(r.kindAr)}<h3>${r.title}</h3>${ar(r.titleAr)}</figcaption>
+        </figure>`:`<h3 style="color:var(--green-d);margin-bottom:8px">${r.kind}: ${r.title}</h3>${ar(r.kindAr)}${ar(r.titleAr)}`}
         <div class="reading-body">
           <div class="reading-tools">
             <button type="button" class="people-read" onclick="speakReadingWithPeople(${c.num},${ri},'${c.route||`k${c.num}`}')">Mehrere Sprecher hören</button>
@@ -202,11 +202,11 @@ function renderChapterTab(c, tab){
           ${ar(r.ar)}
           <div class="reading-glossary">${r.glossary.map(([de,arText])=>`<span><b>${de}</b> · ${arText}</span>`).join('')}</div>
           <h4 style="margin:12px 0 3px">Leseverstehen</h4>
-          ${r.questions.map(([q,a],qi)=>`
+          ${r.questions.map(([q,a,qAr,aAr],qi)=>`
             <div class="reading-q">
-              <b>${qi+1}. ${q}</b>
+              <b>${qi+1}. ${q}</b>${ar(qAr)}
               <button type="button" class="answer-btn" onclick="toggleReadingAnswer(this)">Antwort zeigen</button>
-              <div class="reading-answer">${a}</div>
+              <div class="reading-answer">${a}${ar(aAr)}</div>
             </div>`).join('')}
         </div>
       </article>`).join('');

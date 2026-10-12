@@ -372,9 +372,9 @@ function drawFC(){
   <div class="flashcard flashcard--static" id="fcCard">
     <div class="flashcard-inner">
       <div class="flashcard-face flashcard-back" aria-hidden="false"><div class="fc-back-copy">
-        ${v.cat?`<div class="fc-back-label">${escapeHtml(v.cat)}</div>`:''}
+        ${v.cat?`<div class="fc-back-label">${escapeHtml(v.cat)}</div>${ar(v.catAr)}`:''}
         <div class="big" style="font-size:26px">${fmtWord(v.w)}</div>
-        <div class="fdef">${v.d}</div>${v.ex?`<div class="fex">„${v.ex}“</div>`:''}${ar(v.ar)}</div></div>
+        <div class="fdef">${v.d}</div>${ar(v.dAr)}${v.ex?`<div class="fex">„${v.ex}“</div>${ar(v.exAr)}`:''}${ar(v.ar)}</div></div>
     </div>
   </div>` : `
   <div class="flashcard ${fcState.flipped?'is-flipped':''}" id="fcCard" role="button" tabindex="0"
@@ -385,7 +385,7 @@ function drawFC(){
         <div class="hint">Karte umdrehen: Bedeutung und Beispiele</div></div>
       <div class="flashcard-face flashcard-back" aria-hidden="${!fcState.flipped}"><div class="fc-back-copy"><div class="fc-back-label">Bedeutung & Beispiele</div>
         <div class="big" style="font-size:20px">${fmtWord(v.w)}</div>
-        <div class="fdef">${v.d}</div>${v.ex?`<div class="fex">„${v.ex}“</div>`:''}${ar(v.ar)}</div></div>
+        <div class="fdef">${v.d}</div>${ar(v.dAr)}${v.ex?`<div class="fex">„${v.ex}“</div>${ar(v.exAr)}`:''}${ar(v.ar)}</div></div>
     </div>
   </div>`;
   a.innerHTML = `${card}

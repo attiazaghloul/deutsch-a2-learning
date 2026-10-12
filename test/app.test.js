@@ -1593,6 +1593,104 @@ test('the sentence puzzle only uses one clean sentence at a time', () => {
 const B11_FILES = ['data_b1_1.js', 'data_b1_1_lessons.js', 'data_b1_1_conversations.js'];
 const B12_FILES = [...B11_FILES, 'data_b1_2_vocab.js', 'data_b1_2_lessons.js', 'data_b1_2_conversations.js'];
 
+test('B1.2 Arabic covers vocabulary explanations, examples and reading questions and answers', () => {
+  const win = loadA11Data(B12_FILES);
+  let words = 0;
+  let questions = 0;
+  for (const chapter of win.B1_BOOK.filter(item => item.num >= 7)) {
+    assert.match(chapter.titleAr, ARABIC);
+    assert.match(chapter.vocabSummary.titleAr, ARABIC);
+    assert.equal(chapter.badgesAr.length, chapter.badges.length);
+    chapter.badgesAr.forEach(text => assert.match(text, ARABIC));
+    chapter.vocab.forEach(word => {
+      for (const field of ['ar', 'dAr', 'exAr', 'catAr']) assert.match(word[field], ARABIC, `${chapter.num}: ${word.w} ${field}`);
+      words++;
+    });
+    chapter.readings.forEach(reading => {
+      assert.match(reading.titleAr, ARABIC);
+      assert.match(reading.kindAr, ARABIC);
+      reading.questions.forEach(([q, answer, qAr, answerAr]) => {
+        assert.ok(q && answer);
+        assert.match(qAr, ARABIC);
+        assert.match(answerAr, ARABIC);
+        questions++;
+      });
+    });
+    chapter.quiz.forEach(question => {
+      assert.match(question.qAr, ARABIC);
+      assert.equal(question.oAr.length, question.o.length);
+      question.oAr.forEach(text => assert.match(text, ARABIC));
+    });
+  }
+  assert.equal(words, 880);
+  assert.equal(questions, 120);
+});
+
+test('B1.2 grammar tables, exercise prompts and solutions have Arabic support', () => {
+  const win = loadA11Data(['data_b1_2_grammar_1.js', 'data_b1_2_grammar_2.js']);
+  let exercises = 0;
+  for (const topics of Object.values(win.B1_GRAMMAR)) for (const topic of topics) {
+    topic.sections.filter(section => section.table).forEach(({ table }) => {
+      assert.equal(table.headAr.length, table.head.length);
+      table.headAr.forEach(text => assert.match(text, ARABIC));
+      assert.equal(table.rowsAr.length, table.rows.length);
+      table.rowsAr.forEach((row, i) => {
+        assert.equal(row.length, table.rows[i].length);
+        row.forEach(text => assert.match(text, ARABIC));
+      });
+    });
+    topic.exercises.forEach(exercise => {
+      assert.match(exercise.qAr, ARABIC, topic.id);
+      if (exercise.o) {
+        assert.equal(exercise.oAr.length, exercise.o.length);
+        exercise.oAr.forEach(text => assert.match(text, ARABIC));
+      }
+      if (['gap', 'order', 'transform', 'error'].includes(exercise.type)) assert.match(exercise.solutionAr, ARABIC);
+      exercises++;
+    });
+  }
+  assert.equal(exercises, 288);
+});
+
+test('reading answers keep their Arabic inside the hidden answer container', () => {
+  const { renderChapterTab } = loadFunctions(['renderChapterTab']);
+  const context = vm.createContext({ ar: text => text ? `<div class="ar" lang="ar" dir="rtl">${text}</div>` : '' });
+  vm.runInContext(`${functionSource('renderChapterTab')}\nthis.render=renderChapterTab;`, context);
+  const chapter = loadA11Data(B12_FILES).B1_BOOK.find(c => c.num === 7);
+  const rendered = context.render(chapter, 'lesen');
+  const [q, answer, qAr, answerAr] = chapter.readings[0].questions[0];
+  assert.ok(rendered.includes(qAr));
+  assert.ok(rendered.includes(`<div class="reading-answer">${answer}<div class="ar" lang="ar" dir="rtl">${answerAr}</div></div>`));
+  assert.doesNotMatch(rendered, /class="reading-answer show"/);
+  assert.ok(rendered.includes(chapter.readings[0].titleAr));
+});
+
+test('quiz shuffling keeps Arabic attached to the corresponding German option', () => {
+  const area = { innerHTML: '', querySelectorAll: () => [] };
+  const context = vm.createContext({ $: () => area, ar: text => text ? `<div class="ar">${text}</div>` : '', quizOptionOrder: length => Array.from({ length }, (_, i) => length - i - 1) });
+  vm.runInContext(`${functionSource('initQuiz')}\nthis.init=initQuiz;`, context);
+  const question = loadA11Data(B12_FILES).B1_BOOK.find(c => c.num === 7).quiz[6];
+  context.init([question]);
+  question.o.forEach((option, i) => assert.ok(area.innerHTML.includes(`data-o="${i}">${option}<div class="ar">${question.oAr[i]}</div></button>`)));
+  assert.ok(area.innerHTML.includes(question.qAr));
+});
+
+test('Arabic feedback follows the accepted order when two grammatical answers have opposite meanings', () => {
+  const win = loadA11Data(['data_b1_2_grammar_2.js']);
+  const exercise = win.B1_GRAMMAR[12][0].exercises[7];
+  const context = loadFunctions(['grammarNormalize', 'grammarAnswerMatches', 'grammarFeedback']);
+  const box = {};
+  context.grammarExerciseIndex = new Map([['example', exercise]]);
+  context.document = { querySelector: selector => selector.includes('.gx-feedback') ? box : { classList: { add() {} } } };
+  context.ar = text => text || '';
+  context.escapeHtml = text => text;
+  context.saveGrammarResult = () => {};
+  context.updateGrammarScores = () => {};
+  context.grammarFeedback('example', true, '', exercise.a[1]);
+  assert.ok(box.innerHTML.includes(exercise.aAr[1]));
+  assert.ok(!box.innerHTML.includes(exercise.aAr[0]));
+});
+
 test('B1.2 adds chapters 7-12 with the whole Lernwortschatz as text cards', () => {
   const win = loadA11Data(B12_FILES);
   assert.deepEqual(Array.from(win.B1_BOOK, chapter => chapter.num), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);

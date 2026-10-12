@@ -56,8 +56,8 @@ function grammarTopicScore(topic,progress=grammarProgress()){
 }
 
 function grammarTableHtml(table){
-  return `<div class="gram-table-wrap"><table class="gram-table"><thead><tr>${table.head.map(cell=>`<th>${cell}</th>`).join('')}</tr></thead>
-    <tbody>${table.rows.map(row=>`<tr>${row.map(cell=>`<td>${cell}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+  return `<div class="gram-table-wrap"><table class="gram-table"><thead><tr>${table.head.map((cell,i)=>`<th>${cell}${ar(table.headAr?.[i])}</th>`).join('')}</tr></thead>
+    <tbody>${table.rows.map((row,ri)=>`<tr>${row.map((cell,ci)=>`<td>${cell}${ar(table.rowsAr?.[ri]?.[ci])}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
 }
 
 const GRAMMAR_TYPE_LABELS={
@@ -71,7 +71,7 @@ function grammarExerciseHtml(exercise,id,number){
   let body='';
   if(exercise.type==='choice'){
     body=`<p class="gx-q">${escapeHtml(exercise.q)}</p><div class="gx-options">${exercise.o.map((option,index)=>
-      `<button type="button" class="gx-option" onclick="checkGrammarChoice('${id}',${index},this)">${escapeHtml(option)}</button>`).join('')}</div>`;
+      `<button type="button" class="gx-option" onclick="checkGrammarChoice('${id}',${index},this)">${escapeHtml(option)}${ar(escapeHtml(exercise.oAr?.[index]||''))}</button>`).join('')}</div>`;
   }else if(exercise.type==='truefalse'){
     body=`<p class="gx-q">${escapeHtml(exercise.q)}</p><div class="gx-options gx-options--row">
       <button type="button" class="gx-option" onclick="checkGrammarTrueFalse('${id}',true,this)">✓ Richtig</button>
@@ -94,7 +94,7 @@ function grammarExerciseHtml(exercise,id,number){
   }
   return `<div class="gx" data-exercise="${id}" data-type="${exercise.type}">
     <div class="gx-head"><span class="gx-num">${number}</span><span class="gx-label">${label}</span></div>
-    ${body}
+    ${body}${ar(escapeHtml(exercise.qAr||''))}
     <div class="gx-feedback" role="status" aria-live="polite"></div>
   </div>`;
 }
@@ -132,14 +132,16 @@ function renderGrammarTopics(chapter){
     ${topics.map(grammarTopicHtml).join('')}`;
 }
 
-function grammarFeedback(id,correct,extra=''){
+function grammarFeedback(id,correct,extra='',answer=''){
   const exercise=grammarExerciseIndex.get(id);
   const box=document.querySelector(`[data-exercise="${id}"] .gx-feedback`);
   const container=document.querySelector(`[data-exercise="${id}"]`);
   container?.classList.add(correct?'is-right':'is-wrong');
   if(box){
     box.className=`gx-feedback show ${correct?'good':'bad'}`;
-    box.innerHTML=`<b>${correct?'✓ Richtig!':'✗ Leider falsch.'}</b>${extra}${exercise?.why?ar(escapeHtml(exercise.why)):''}`;
+    const answerIndex=exercise?.aAr&&Array.isArray(exercise.a)?exercise.a.findIndex(value=>grammarAnswerMatches(answer,[value])):-1;
+    const solutionAr=answerIndex>=0?exercise.aAr[answerIndex]:exercise?.solutionAr;
+    box.innerHTML=`<b>${correct?'✓ Richtig!':'✗ Leider falsch.'}</b>${extra}${ar(escapeHtml(solutionAr||''))}${exercise?.why?ar(escapeHtml(exercise.why)):''}`;
   }
   saveGrammarResult(id,correct);
   if(id.startsWith('test-')) saveGrammarResult(id.slice(5),correct);
@@ -225,7 +227,7 @@ function checkGrammarOrder(id){
   container.querySelectorAll('button').forEach(button=>button.disabled=true);
   const built=order.map(index=>exercise.words[index]).join(' ');
   const correct=grammarAnswerMatches(built,exercise.a);
-  grammarFeedback(id,correct,correct?'':`<div class="gx-solution">${escapeHtml(`${exercise.prefix||''} ${exercise.a[0]}`.trim())}</div>`);
+  grammarFeedback(id,correct,correct?'':`<div class="gx-solution">${escapeHtml(`${exercise.prefix||''} ${exercise.a[0]}`.trim())}</div>`,built);
 }
 
 function checkGrammarTyped(id,reveal=false){
@@ -241,7 +243,7 @@ function checkGrammarTyped(id,reveal=false){
   const solution=exercise.a.length>1
     ?`<div class="gx-solution">${escapeHtml(exercise.a[0])}<small>Auch möglich: ${exercise.a.slice(1).map(escapeHtml).join(' · ')}</small></div>`
     :`<div class="gx-solution">${escapeHtml(exercise.a[0])}</div>`;
-  grammarFeedback(id,correct,correct&&exercise.a.length===1?'':solution);
+  grammarFeedback(id,correct,correct&&exercise.a.length===1?'':solution,input.value);
 }
 
 /* ---------- mixed chapter test (Lerncheck) ---------- */

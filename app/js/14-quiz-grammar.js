@@ -15,9 +15,9 @@ function initQuiz(questions){
   let score=0, answered=0;
   let h='';
   questions.forEach((q,qi) => {
-    h += `<div class="card"><div class="quiz-q">${qi+1}. ${q.q}</div>`;
+    h += `<div class="card"><div class="quiz-q">${qi+1}. ${q.q}</div>${ar(q.qAr)}`;
     quizOptionOrder(q.o.length).forEach(oi => {
-      h += `<button class="quiz-opt" data-q="${qi}" data-o="${oi}">${q.o[oi]}</button>`;
+      h += `<button class="quiz-opt" data-q="${qi}" data-o="${oi}">${q.o[oi]}${ar(q.oAr?.[oi])}</button>`;
     });
     h += `<div class="quiz-fb" id="fb${qi}" role="status" aria-live="polite"></div></div>`;
   });

@@ -60,25 +60,37 @@
           "questions": [
             [
               "Warum saß Jonas in Hamburg oft allein in seiner Wohnung?",
-              "Weil er gerade nach Hamburg gezogen war und dort niemanden kannte."
+              "Weil er gerade nach Hamburg gezogen war und dort niemanden kannte.",
+              "ليه يوناس كان بيقعد غالبًا لوحده في شقته في هامبورغ؟",
+              "لأنه كان لسه منتقل لهامبورغ وماكانش يعرف حد هناك."
             ],
             [
               "Was stellten Jonas und Benni fest?",
-              "Dass sie in derselben Straße wohnten."
+              "Dass sie in derselben Straße wohnten.",
+              "يوناس وبني اكتشفوا إيه؟",
+              "إنهم ساكنين في نفس الشارع."
             ],
             [
               "Warum haben sich Hoda und Sanaa ein paar Jahre aus den Augen verloren?",
-              "Sanaa war nach Kanada gezogen und beide waren beruflich stark eingespannt."
+              "Sanaa war nach Kanada gezogen und beide waren beruflich stark eingespannt.",
+              "ليه هدى وسناء انقطعت صلتهما لبضع سنين؟",
+              "سناء كانت انتقلت لكندا، والاتنين كانوا مشغولين جدًا بالشغل."
             ],
             [
               "Wie wurden Lukas und Tim Freunde?",
-              "Der Trainer wählte keinen von beiden, sie saßen zusammen auf der Bank und lachten über sich selbst."
+              "Der Trainer wählte keinen von beiden, sie saßen zusammen auf der Bank und lachten über sich selbst.",
+              "لوكاس وتيم بقوا أصحاب إزاي؟",
+              "المدرّب ما اختارش أي واحد فيهم، فقعدوا على دكة الاحتياط مع بعض وضحكوا على نفسهم."
             ],
             [
               "Was braucht eine Freundschaft laut Artikel, damit sie lange hält?",
-              "Zeit, Verständnis und manchmal ein bisschen Glück."
+              "Zeit, Verständnis und manchmal ein bisschen Glück.",
+              "حسب المقال، الصداقة محتاجة إيه علشان تستمر طويلًا؟",
+              "وقت وتفهّم وأحيانًا شوية حظ."
             ]
-          ]
+          ],
+          "titleAr": "إزاي بقينا أصحاب",
+          "kindAr": "مقال في مجلة"
         },
         {
           "kind": "Forum",
@@ -88,25 +100,37 @@
           "questions": [
             [
               "Worüber streiten sich Mona und ihr Freund?",
-              "Über den Haushalt, weil er nicht aufräumt."
+              "Über den Haushalt, weil er nicht aufräumt.",
+              "منى وصديقها بيتخانقوا على إيه؟",
+              "على شغل البيت لأنه مش بيرتّب."
             ],
             [
               "Was macht Mona heute anders als früher?",
-              "Sie bleibt ruhig und benutzt Ich-Aussagen, statt sich aufzuregen."
+              "Sie bleibt ruhig und benutzt Ich-Aussagen, statt sich aufzuregen.",
+              "منى بتعمل إيه دلوقتي بشكل مختلف عن زمان؟",
+              "بتفضل هادية وبتستخدم جمل بصيغة «أنا» بدل ما تتعصّب."
             ],
             [
               "Welche Regel gibt es in Karls WG?",
-              "Bevor sich jemand beschwert, kocht er Tee für alle."
+              "Bevor sich jemand beschwert, kocht er Tee für alle.",
+              "إيه القاعدة الموجودة في سكن كارل المشترك؟",
+              "قبل ما حد يشتكي، بيعمل شاي للجميع."
             ],
             [
               "Was passierte, nachdem Sternchen drei Wochen lang geschwiegen hatte?",
-              "Es gab einen riesigen Streit mit ihrer Mitbewohnerin."
+              "Es gab einen riesigen Streit mit ihrer Mitbewohnerin.",
+              "إيه اللي حصل بعد ما نجمة سكتت ثلاث أسابيع؟",
+              "حصلت خناقة كبيرة جدًا مع زميلتها في السكن."
             ],
             [
               "Was meint Paul mit „aber es sollte nicht immer derselbe sein“?",
-              "Es soll nicht immer dieselbe Person nachgeben."
+              "Es soll nicht immer dieselbe Person nachgeben.",
+              "باول يقصد إيه بـ«لكن مش المفروض يكون نفس الشخص دائمًا»؟",
+              "مش المفروض يكون نفس الشخص هو اللي بيتنازل كل مرة."
             ]
-          ]
+          ],
+          "titleAr": "نتخانق، لكن إزاي؟",
+          "kindAr": "منتدى"
         },
         {
           "kind": "Fabel",
@@ -116,25 +140,37 @@
           "questions": [
             [
               "Warum war der Fuchs so hungrig?",
-              "Er hatte seit Tagen nichts gefressen, weil die Mäuse vor der Hitze in ihre Löcher geflohen waren."
+              "Er hatte seit Tagen nichts gefressen, weil die Mäuse vor der Hitze in ihre Löcher geflohen waren.",
+              "ليه الثعلب كان جعان جدًا؟",
+              "ماكانش أكل من أيام لأن الفئران هربت من الحر لجحورها."
             ],
             [
               "Warum lobte der Fuchs die Giraffe?",
-              "Er hoffte, dass sie ihm dann ein paar Früchte gibt."
+              "Er hoffte, dass sie ihm dann ein paar Früchte gibt.",
+              "ليه الثعلب مدح الزرافة؟",
+              "كان متوقع إنها تدّيه شوية فاكهة بعدها."
             ],
             [
               "Warum glaubte die Giraffe dem Fuchs nicht?",
-              "Sie hatte schon viele Geschichten über seine Tricks gehört, zum Beispiel über den Raben und den Käse."
+              "Sie hatte schon viele Geschichten über seine Tricks gehört, zum Beispiel über den Raben und den Käse.",
+              "ليه الزرافة ما صدّقتش الثعلب؟",
+              "كانت سمعت قصصًا كتير عن حيله، مثل قصة الغراب والجبنة."
             ],
             [
               "Was tat die Giraffe, nachdem der Fuchs die Wahrheit gesagt hatte?",
-              "Sie schüttelte den Baum, bis viele Früchte auf den Boden fielen."
+              "Sie schüttelte den Baum, bis viele Früchte auf den Boden fielen.",
+              "الزرافة عملت إيه بعد ما الثعلب قال الحقيقة؟",
+              "هزّت الشجرة لحد ما فاكهة كتير وقعت على الأرض."
             ],
             [
               "Was ist die Moral der Fabel?",
-              "Ehrlich währt am längsten: Wer ehrlich fragt, bekommt mehr als jemand, der lügt."
+              "Ehrlich währt am längsten: Wer ehrlich fragt, bekommt mehr als jemand, der lügt.",
+              "إيه العبرة من الحكاية؟",
+              "الصدق يدوم أطول: اللي يسأل بصدق بيحصل على أكتر من اللي بيكذب."
             ]
-          ]
+          ],
+          "titleAr": "الثعلب والزرافة",
+          "kindAr": "حكاية رمزية"
         },
         {
           "kind": "Zeitungsartikel",
@@ -144,25 +180,37 @@
           "questions": [
             [
               "Warum fühlte sich Renate Kühn einsam?",
-              "Ihr Mann war gestorben und ihre Kinder wohnten weit weg."
+              "Ihr Mann war gestorben und ihre Kinder wohnten weit weg.",
+              "ليه ريناته كون كانت حاسّة بالوحدة؟",
+              "زوجها كان توفّي وأولادها ساكنين بعيد."
             ],
             [
               "Was mussten die sechs Personen tun, bevor sie zusammenziehen konnten?",
-              "Sie mussten das alte Haus umbauen, damit jeder ein eigenes Zimmer mit Bad bekommt."
+              "Sie mussten das alte Haus umbauen, damit jeder ein eigenes Zimmer mit Bad bekommt.",
+              "الستة أشخاص كان لازم يعملوا إيه قبل ما يسكنوا مع بعض؟",
+              "كان لازم يعدّلوا البيت القديم علشان كل واحد يكون له غرفة وحمام خاص."
             ],
             [
               "Wie organisieren die Bewohner das Zusammenleben?",
-              "Sie verteilen die Hausarbeit gerecht und machen einmal pro Woche eine Hausversammlung."
+              "Sie verteilen die Hausarbeit gerecht und machen einmal pro Woche eine Hausversammlung.",
+              "السكان بينظّموا الحياة مع بعض إزاي؟",
+              "بيوزّعوا شغل البيت بالعدل وبيعملوا اجتماعًا أسبوعيًا للسكان."
             ],
             [
               "Worüber haben sie sich am Anfang aufgeregt?",
-              "Über Kleinigkeiten, zum Beispiel über die Lautstärke des Fernsehers."
+              "Über Kleinigkeiten, zum Beispiel über die Lautstärke des Fernsehers.",
+              "كانوا بيتضايقوا من إيه في البداية؟",
+              "من حاجات صغيرة، مثل درجة صوت التلفزيون."
             ],
             [
               "Was hat sich für Renate geändert, seit sie in der WG wohnt?",
-              "Sie ist nie mehr einsam, weil immer jemand zum Reden da ist."
+              "Sie ist nie mehr einsam, weil immer jemand zum Reden da ist.",
+              "إيه اللي اتغيّر لريناته من وقت سكنها في السكن المشترك؟",
+              "ما بقتش وحيدة، لأن فيه دايمًا حد تتكلم معاه."
             ]
-          ]
+          ],
+          "titleAr": "سكن مشترك بدل دار المسنين",
+          "kindAr": "مقال في جريدة"
         }
       ],
       "grammar": [
@@ -418,7 +466,13 @@
           ],
           "a": 1,
           "fb": "Vorvergangenheit: Plusquamperfekt mit war (abfahren → sein).",
-          "fbAr": "القطر مشي قبل ما أوصل، يبقى Plusquamperfekt، وabfahren بياخد sein ← war abgefahren."
+          "fbAr": "القطر مشي قبل ما أوصل، يبقى Plusquamperfekt، وabfahren بياخد sein ← war abgefahren.",
+          "qAr": "لما وصلت، ___ القطر بالفعل ___ .",
+          "oAr": [
+            "غادر؛ مع الفعل المساعد ist",
+            "كان قد غادر؛ مع war",
+            "غادر؛ مع الفعل المساعد hat"
+          ]
         },
         {
           "q": "Nachdem wir gegessen ___, gingen wir spazieren.",
@@ -429,7 +483,13 @@
           ],
           "a": 0,
           "fb": "Hauptsatz im Präteritum → Nebensatz mit nachdem im Plusquamperfekt.",
-          "fbAr": "الجملة الأساسية Präteritum (gingen)، يبقى جملة nachdem تكون Plusquamperfekt: hatten gegessen."
+          "fbAr": "الجملة الأساسية Präteritum (gingen)، يبقى جملة nachdem تكون Plusquamperfekt: hatten gegessen.",
+          "qAr": "بعد ما إحنا ___ أكلنا، خرجنا نتمشى.",
+          "oAr": [
+            "كانوا؛ صيغة hatten",
+            "فعل haben مع الجمع",
+            "يكونون؛ صيغة sind"
+          ]
         },
         {
           "q": "Ich lese oft Zeitung, ___ ich frühstücke.",
@@ -440,7 +500,13 @@
           ],
           "a": 2,
           "fb": "während = gleichzeitig.",
-          "fbAr": "الحاجتين بيحصلوا في نفس الوقت، يبقى während."
+          "fbAr": "الحاجتين بيحصلوا في نفس الوقت، يبقى während.",
+          "qAr": "غالبًا بقرأ الجريدة ___ بفطر.",
+          "oAr": [
+            "قبل ما",
+            "لحد ما",
+            "أثناء أو بينما"
+          ]
         },
         {
           "q": "___ du den neuen Job hast, bist du ständig erschöpft.",
@@ -451,7 +517,13 @@
           ],
           "a": 0,
           "fb": "seitdem = Beginn in der Vergangenheit, dauert bis jetzt.",
-          "fbAr": "الحالة بدأت مع الشغل الجديد ولسه مستمرة، يبقى seitdem."
+          "fbAr": "الحالة بدأت مع الشغل الجديد ولسه مستمرة، يبقى seitdem.",
+          "qAr": "___ بقيت في الشغل الجديد، إنت مرهق باستمرار.",
+          "oAr": [
+            "من ساعة ما",
+            "قبل ما",
+            "لحد ما"
+          ]
         },
         {
           "q": "Wir warten hier, ___ du zurückkommst.",
@@ -462,7 +534,13 @@
           ],
           "a": 1,
           "fb": "bis nennt den Endpunkt.",
-          "fbAr": "bis = لحد ما ترجع، ده آخر الانتظار."
+          "fbAr": "bis = لحد ما ترجع، ده آخر الانتظار.",
+          "qAr": "هنستنى هنا ___ ترجع.",
+          "oAr": [
+            "أثناء أو بينما",
+            "لحد ما",
+            "بعد ما"
+          ]
         },
         {
           "q": "Er macht immer ___ Fehler.",
@@ -473,7 +551,13 @@
           ],
           "a": 1,
           "fb": "machen + Akkusativ, maskulin: denselben.",
-          "fbAr": "Fehler مذكّر وفي الأكوزاتيف (بعد machen)، يبقى denselben."
+          "fbAr": "Fehler مذكّر وفي الأكوزاتيف (بعد machen)، يبقى denselben.",
+          "qAr": "هو دايمًا بيعمل ___ الخطأ.",
+          "oAr": [
+            "نفسه؛ صيغة للمذكر",
+            "نفسه؛ صيغة للمذكر",
+            "نفسه؛ صيغة للمذكر"
+          ]
         },
         {
           "q": "Was bedeutet „Jetzt übertreibst du aber etwas!“?",
@@ -484,7 +568,13 @@
           ],
           "a": 0,
           "fb": "übertreiben = etwas größer oder schlimmer machen, als es ist.",
-          "fbAr": "übertreiben يعني تبالغ وتكبّر الموضوع."
+          "fbAr": "übertreiben يعني تبالغ وتكبّر الموضوع.",
+          "qAr": "«إنت كده بتبالغ شوية!» معناها إيه؟",
+          "oAr": [
+            "إنت بتكبّر المشكلة عن حجمها الحقيقي.",
+            "إنت بتوصل متأخر.",
+            "معاك حق تمامًا."
+          ]
         },
         {
           "q": "Wenn man keinen Kontakt mehr zu jemandem hat, hat man ihn …",
@@ -495,8 +585,21 @@
           ],
           "a": 2,
           "fb": "jemanden aus den Augen verlieren = keinen Kontakt mehr haben.",
-          "fbAr": "aus den Augen verlieren يعني الصلة اتقطعت بينكم."
+          "fbAr": "aus den Augen verlieren يعني الصلة اتقطعت بينكم.",
+          "qAr": "لو انقطع تواصلك مع شخص، يبقى إنت ...",
+          "oAr": [
+            "قابلته بالصدفة.",
+            "بدأت تتكلم معاه.",
+            "انقطعت صلتك بيه."
+          ]
         }
+      ],
+      "badgesAr": [
+        "الماضي التام: ماضي قبل الماضي",
+        "جمل جانبية بـ nachdem: بعد ما",
+        "قبل ما، لحد ما، من ساعة ما، أثناء",
+        "نفس الشخص أو نفس الشيء",
+        "الصداقة والخلافات"
       ]
     },
     "8": {
@@ -556,25 +659,37 @@
           "questions": [
             [
               "Wie ist der Unfall passiert?",
-              "Die Autorin ist auf dem glatten Gehweg ausgerutscht und auf die rechte Schulter gefallen."
+              "Die Autorin ist auf dem glatten Gehweg ausgerutscht und auf die rechte Schulter gefallen.",
+              "الحادث حصل إزاي؟",
+              "الكاتبة اتزحلقت على الرصيف الزلق ووقعت على كتفها اليمين."
             ],
             [
               "Was musste sie in der Notaufnahme zuerst zeigen?",
-              "Ihre Versichertenkarte."
+              "Ihre Versichertenkarte.",
+              "إيه أول حاجة كان لازم توريها في قسم الطوارئ؟",
+              "بطاقة التأمين الصحي."
             ],
             [
               "Warum hat der Pfleger sie am dritten Tag gewarnt?",
-              "Weil sie allein zum Fenster gehen wollte, sie sollte aber noch nicht aufstehen."
+              "Weil sie allein zum Fenster gehen wollte, sie sollte aber noch nicht aufstehen.",
+              "ليه الممرّض حذّرها في اليوم الثالث؟",
+              "لأنها كانت عايزة تروح الشباك لوحدها، لكن ماكانش المفروض تقوم لسه."
             ],
             [
               "Wie musste sie das Schmerzmittel einnehmen?",
-              "Sie musste es in Wasser auflösen und dreimal am Tag einnehmen."
+              "Sie musste es in Wasser auflösen und dreimal am Tag einnehmen.",
+              "كان لازم تاخد المسكّن إزاي؟",
+              "كان لازم تدوّبه في الميّه وتاخده ثلاث مرات في اليوم."
             ],
             [
               "Welche drei Tipps gibt sie?",
-              "Bequeme Kleidung einpacken, keine Wertsachen mitnehmen oder sie im Schließfach aufbewahren und Rücksicht auf die Zimmernachbarn nehmen."
+              "Bequeme Kleidung einpacken, keine Wertsachen mitnehmen oder sie im Schließfach aufbewahren und Rücksicht auf die Zimmernachbarn nehmen.",
+              "إيه النصائح الثلاث اللي بتقدّمها؟",
+              "تاخد هدوم مريحة، وما تاخدش مقتنيات ثمينة أو تحفظها في خزانة مقفولة، وتراعي جيران الغرفة."
             ]
-          ]
+          ],
+          "titleAr": "اثنا عشر يومًا مع كتف مصاب",
+          "kindAr": "مدوّنة"
         },
         {
           "kind": "Zeitungsartikel",
@@ -584,25 +699,37 @@
           "questions": [
             [
               "Was ist das wichtigste Ergebnis von Dr. Brandt?",
-              "Musik wirkt nicht nur auf die Gefühle, sondern auch auf den Körper."
+              "Musik wirkt nicht nur auf die Gefühle, sondern auch auf den Körper.",
+              "إيه أهم نتيجة توصلت لها د. برانت؟",
+              "الموسيقى بتأثر على الجسم كمان، مش المشاعر بس."
             ],
             [
               "Was passiert bei langsamen Stücken in Moll?",
-              "Der Puls sinkt, viele fühlen sich traurig, aber ruhiger."
+              "Der Puls sinkt, viele fühlen sich traurig, aber ruhiger.",
+              "إيه اللي بيحصل مع المقطوعات البطيئة في السلم الصغير؟",
+              "النبض بيقل، وناس كتير بيحسّوا بالحزن لكن بهدوء أكتر."
             ],
             [
               "Warum läuft in fast jeder Reklame Musik?",
-              "Weil sie positive Gefühle mit einem Produkt verbinden soll."
+              "Weil sie positive Gefühle mit einem Produkt verbinden soll.",
+              "ليه تقريبًا كل إعلان فيه موسيقى؟",
+              "علشان تربط مشاعر إيجابية بالمنتج."
             ],
             [
               "Wie hilft Musik in Kliniken?",
-              "Sie nimmt Patienten vor einer Operation die Angst und erreicht Menschen mit Demenz."
+              "Sie nimmt Patienten vor einer Operation die Angst und erreicht Menschen mit Demenz.",
+              "الموسيقى بتساعد في المستشفيات إزاي؟",
+              "بتخفّف خوف المرضى قبل العملية وبتصل لمرضى الخرف."
             ],
             [
               "Was rät Dr. Brandt gestressten Menschen?",
-              "Sie sollen entweder ein ruhiges Stück hören oder selbst singen."
+              "Sie sollen entweder ein ruhiges Stück hören oder selbst singen.",
+              "د. برانت بتنصح المضغوطين بإيه؟",
+              "يسمعوا مقطوعة هادية أو يغنّوا بنفسهم."
             ]
-          ]
+          ],
+          "titleAr": "ليه الموسيقى بتأثر فينا بقوة",
+          "kindAr": "مقال في جريدة"
         },
         {
           "kind": "Interview",
@@ -612,25 +739,37 @@
           "questions": [
             [
               "Warum vergessen wir viele neue Wörter?",
-              "Weil das Gehirn sich vor allem merkt, was wichtig oder interessant ist; nur gelesene Wörter gelangen nicht ins Langzeitgedächtnis."
+              "Weil das Gehirn sich vor allem merkt, was wichtig oder interessant ist; nur gelesene Wörter gelangen nicht ins Langzeitgedächtnis.",
+              "ليه بننسى كلمات جديدة كتير؟",
+              "لأن المخ بيحتفظ خصوصًا بالمهم أو المثير للاهتمام؛ الكلمات اللي نقرأها بس مش بتوصل للذاكرة طويلة المدى."
             ],
             [
               "Gibt es eine beste Tageszeit zum Lernen?",
-              "Nein, wichtiger sind kleine Mengen und regelmäßige Pausen."
+              "Nein, wichtiger sind kleine Mengen und regelmäßige Pausen.",
+              "هل فيه وقت يومي أفضل للتعلّم؟",
+              "لا، الأهم كميات صغيرة واستراحات منتظمة."
             ],
             [
               "Wie kann man beim Lernen mehrere Sinne nutzen?",
-              "Man spricht die Wörter laut aus, schreibt sie auf und bewegt sich dabei."
+              "Man spricht die Wörter laut aus, schreibt sie auf und bewegt sich dabei.",
+              "ممكن نستخدم عدة حواس أثناء التعلّم إزاي؟",
+              "ننطق الكلمات بصوت عالي ونكتبها ونتحرك أثناء كده."
             ],
             [
               "Wie lernt man Wörter im Kontext?",
-              "Man denkt sich eine fantasievolle, ungewöhnliche Geschichte mit den neuen Wörtern aus."
+              "Man denkt sich eine fantasievolle, ungewöhnliche Geschichte mit den neuen Wörtern aus.",
+              "بنتعلّم الكلمات في سياق إزاي؟",
+              "نبتكر قصة خيالية وغير مألوفة فيها الكلمات الجديدة."
             ],
             [
               "Muss man jeden Tag alle Wörter wiederholen?",
-              "Nein, man braucht nur die schwierigen Wörter zu wiederholen."
+              "Nein, man braucht nur die schwierigen Wörter zu wiederholen.",
+              "هل لازم نراجع كل الكلمات كل يوم؟",
+              "لا، يكفي نراجع الكلمات الصعبة فقط."
             ]
-          ]
+          ],
+          "titleAr": "تعلّم الكلمات بكل الحواس",
+          "kindAr": "مقابلة"
         },
         {
           "kind": "Zeitungsartikel",
@@ -640,25 +779,37 @@
           "questions": [
             [
               "Was spürt man im Barfußpark unter den Füßen?",
-              "Sand, Steine, Holz, Gras und sogar kühlen Schlamm."
+              "Sand, Steine, Holz, Gras und sogar kühlen Schlamm.",
+              "في حديقة المشي حافيًا بنحس بإيه تحت القدمين؟",
+              "رمل وحجارة وخشب وعشب، وحتى طين بارد."
             ],
             [
               "Für wen ist der Barfußpark geeignet?",
-              "Für Familien und für Kinder ab drei Jahren."
+              "Für Familien und für Kinder ab drei Jahren.",
+              "حديقة المشي حافيًا مناسبة لمين؟",
+              "للعائلات وللأطفال من سن ثلاث سنين."
             ],
             [
               "Warum schmeckt man im Restaurant „Im Dunkeln“ intensiver?",
-              "Weil man nichts sieht."
+              "Weil man nichts sieht.",
+              "ليه التذوق أقوى في مطعم «في الظلام»؟",
+              "لأنك مش بتشوف حاجة."
             ],
             [
               "Was kann man im Klangwald machen?",
-              "Man kann allein oder mit anderen auf großen Instrumenten aus Holz und Metall spielen."
+              "Man kann allein oder mit anderen auf großen Instrumenten aus Holz und Metall spielen.",
+              "ممكن نعمل إيه في غابة الأصوات؟",
+              "نعزف وحدنا أو مع الآخرين على آلات كبيرة من الخشب والمعدن."
             ],
             [
               "Kann man den Klangwald auch mit dem Rollstuhl besuchen?",
-              "Ja, der Weg ist barrierearm."
+              "Ja, der Weg ist barrierearm.",
+              "هل ممكن نزور غابة الأصوات بالكرسي المتحرك؟",
+              "نعم، الطريق قليل العوائق."
             ]
-          ]
+          ],
+          "titleAr": "ثلاث نصائح لرحلات تخاطب كل الحواس",
+          "kindAr": "مقال في جريدة"
         }
       ],
       "grammar": [
@@ -951,7 +1102,13 @@
           ],
           "a": 0,
           "fb": "nicht + brauchen + zu + Infinitiv = nicht müssen. „müssen“ und „sollen“ stehen ohne „zu“.",
-          "fbAr": "علشان فيه zu قبل الفعل لازم تستخدم brauchen. musst و sollst مش بياخدوا zu."
+          "fbAr": "علشان فيه zu قبل الفعل لازم تستخدم brauchen. musst و sollst مش بياخدوا zu.",
+          "qAr": "إنت مش ___ تساعدني، أقدر أعمل ده لوحدي.",
+          "oAr": [
+            "تحتاج؛ صيغة brauchen",
+            "لازم عليك؛ صيغة müssen",
+            "المفروض عليك؛ صيغة sollen"
+          ]
         },
         {
           "q": "Ich putze ___ jeden Abend die Zähne.",
@@ -962,7 +1119,13 @@
           ],
           "a": 1,
           "fb": "Es gibt ein Akkusativobjekt (die Zähne), deshalb steht das Reflexivpronomen im Dativ: mir.",
-          "fbAr": "فيه مفعول به أكوزاتيف (die Zähne)، يبقى ضمير الانعكاس داتيف: mir."
+          "fbAr": "فيه مفعول به أكوزاتيف (die Zähne)، يبقى ضمير الانعكاس داتيف: mir.",
+          "qAr": "كل مساء بنظّف ___ أسناني.",
+          "oAr": [
+            "نفسي في الأكوزاتيف",
+            "لنفسي في الداتيف",
+            "بتاعي أو خاصتي"
+          ]
         },
         {
           "q": "Wir hören ___ Rock als auch Jazz.",
@@ -973,7 +1136,13 @@
           ],
           "a": 2,
           "fb": "sowohl … als auch = das eine und das andere.",
-          "fbAr": "sowohl … als auch معناها «ده وده»."
+          "fbAr": "sowohl … als auch معناها «ده وده».",
+          "qAr": "إحنا بنسمع ___ روك وجاز معًا.",
+          "oAr": [
+            "لا؛ الجزء الأول من weder … noch",
+            "يا إما",
+            "كل من؛ الجزء الأول من سواء الأول والثاني"
+          ]
         },
         {
           "q": "Sie isst ___ Fleisch noch Fisch.",
@@ -984,7 +1153,13 @@
           ],
           "a": 0,
           "fb": "weder … noch = das eine nicht und das andere auch nicht.",
-          "fbAr": "weder … noch معناها «لا ده ولا ده»."
+          "fbAr": "weder … noch معناها «لا ده ولا ده».",
+          "qAr": "هي لا بتاكل ___ لحمة ولا سمك.",
+          "oAr": [
+            "لا؛ الجزء الأول من weder … noch",
+            "كل من؛ الجزء الأول من سواء الأول والثاني",
+            "صحيح إن"
+          ]
         },
         {
           "q": "Die Ärztin hat mir ein Schmerzmittel ___.",
@@ -995,7 +1170,13 @@
           ],
           "a": 1,
           "fb": "Ein Arzt verschreibt ein Medikament.",
-          "fbAr": "الدكتور بيكتب الدوا في الروشتة: verschreiben."
+          "fbAr": "الدكتور بيكتب الدوا في الروشتة: verschreiben.",
+          "qAr": "الدكتورة ___ لي مسكّنًا.",
+          "oAr": [
+            "كتب؛ التصريف الثالث",
+            "وصف دواءً؛ التصريف الثالث",
+            "وصف شيئًا؛ التصريف الثالث"
+          ]
         },
         {
           "q": "Bei einem Notfall wählen Sie bitte sofort den ___.",
@@ -1006,7 +1187,13 @@
           ],
           "a": 2,
           "fb": "Den Notruf (zum Beispiel 112) wählt man am Telefon.",
-          "fbAr": "Notruf هو رقم الطوارئ اللي بتتصل بيه (زي ١١٢)."
+          "fbAr": "Notruf هو رقم الطوارئ اللي بتتصل بيه (زي ١١٢).",
+          "qAr": "في حالة طوارئ اتصل فورًا بالـ___ .",
+          "oAr": [
+            "مخرج الطوارئ",
+            "زر الإنذار",
+            "رقم الطوارئ"
+          ]
         },
         {
           "q": "Hast du ___ heute schon die Haare gekämmt?",
@@ -1017,7 +1204,13 @@
           ],
           "a": 1,
           "fb": "Mit Akkusativobjekt (die Haare) steht der Dativ: dir.",
-          "fbAr": "علشان فيه die Haare، الضمير بيبقى داتيف: dir."
+          "fbAr": "علشان فيه die Haare، الضمير بيبقى داتيف: dir.",
+          "qAr": "سرّحت ___ شعرك النهارده بالفعل؟",
+          "oAr": [
+            "نفسك في الأكوزاتيف",
+            "لنفسك في الداتيف",
+            "نفسه أو نفسها؛ ضمير انعكاسي"
+          ]
         },
         {
           "q": "Er geht ___ gern auf Konzerte, aber oft bleibt er lieber zu Hause.",
@@ -1028,8 +1221,21 @@
           ],
           "a": 0,
           "fb": "zwar …, aber = das eine mit Einschränkung.",
-          "fbAr": "zwar … aber معناها «صحيح … بس»."
+          "fbAr": "zwar … aber معناها «صحيح … بس».",
+          "qAr": "صحيح إنه ___ بيحب الحفلات، لكن غالبًا بيفضّل يقعد في البيت.",
+          "oAr": [
+            "صحيح إن",
+            "لا؛ الجزء الأول من weder … noch",
+            "كل من؛ الجزء الأول من سواء الأول والثاني"
+          ]
         }
+      ],
+      "badgesAr": [
+        "التعبير عن عدم الاضطرار أو ما يلزم فقط",
+        "الضمير الانعكاسي في الداتيف",
+        "روابط من جزئين",
+        "أفعال ببادئات: مع، بعيدًا، رجوعًا وغيرها",
+        "الصحة والموسيقى"
       ]
     },
     "9": {
@@ -1088,25 +1294,37 @@
           "questions": [
             [
               "Was dachte die Bloggerin früher über Kunst?",
-              "Sie dachte, dass man Kunst nur in Museen und Galerien findet."
+              "Sie dachte, dass man Kunst nur in Museen und Galerien findet.",
+              "المدوّنة كانت بتعتقد إيه عن الفن زمان؟",
+              "كانت فاكرة إن الفن موجود فقط في المتاحف والمعارض."
             ],
             [
               "Was findet sie am Platz mit dem Brunnen spannend?",
-              "Den Kontrast von alt und neu: Die alte Statue spiegelt sich im modernen Kaufhaus aus Glas."
+              "Den Kontrast von alt und neu: Die alte Statue spiegelt sich im modernen Kaufhaus aus Glas.",
+              "إيه اللي شايفاه مثيرًا في الساحة اللي فيها النافورة؟",
+              "التباين بين القديم والجديد: التمثال القديم بينعكس في المتجر الزجاجي الحديث."
             ],
             [
               "Wie gefallen ihr die Graffiti unter der Brücke?",
-              "Nicht alle gefallen ihr, manche findet sie chaotisch, aber sie entdeckt jede Woche etwas Neues."
+              "Nicht alle gefallen ihr, manche findet sie chaotisch, aber sie entdeckt jede Woche etwas Neues.",
+              "إيه رأيها في الغرافيتي تحت الجسر؟",
+              "مش كله عاجبها، وبعضه شايفاه فوضويًا، لكنها بتكتشف حاجة جديدة كل أسبوع."
             ],
             [
               "Was ist das Besondere an der Installation vor dem Rathaus?",
-              "Man kann auf bunten Stühlen sitzen, ohne etwas konsumieren zu müssen."
+              "Man kann auf bunten Stühlen sitzen, ohne etwas konsumieren zu müssen.",
+              "إيه المميز في التركيب الفني أمام البلدية؟",
+              "ممكن تقعد على كراسي ملونة من غير ما تضطر تشتري حاجة."
             ],
             [
               "Was für Kunst ist das für die Bloggerin?",
-              "Keine Kunst für die Ewigkeit, sondern Kunst für den Alltag."
+              "Keine Kunst für die Ewigkeit, sondern Kunst für den Alltag.",
+              "بالنسبة للمدوّنة ده نوع فن إيه؟",
+              "فن للحياة اليومية، مش فن للأبد."
             ]
-          ]
+          ],
+          "titleAr": "الفن في طريقي إلى المكتب",
+          "kindAr": "مدوّنة"
         },
         {
           "kind": "Zeitungsartikel",
@@ -1116,25 +1334,37 @@
           "questions": [
             [
               "Was ist in der Galerie in Neustadt passiert?",
-              "Ein Mitarbeiter einer Putzfirma hat aus Versehen ein Kunstwerk in den Müll geworfen."
+              "Ein Mitarbeiter einer Putzfirma hat aus Versehen ein Kunstwerk in den Müll geworfen.",
+              "إيه اللي حصل في المعرض في نويشتات؟",
+              "عامل من شركة تنظيف رمى عملًا فنيًا في القمامة بالغلط."
             ],
             [
               "Woraus bestand die Installation?",
-              "Aus alten Zeitungen, leeren Kaffeebechern und Plastiktüten."
+              "Aus alten Zeitungen, leeren Kaffeebechern und Plastiktüten.",
+              "التركيب الفني كان بيتكوّن من إيه؟",
+              "صحف قديمة وأكواب قهوة فاضية وأكياس بلاستيك."
             ],
             [
               "Warum hat der Mann die Installation weggeworfen?",
-              "Er dachte, dass es Abfall von der Eröffnung am Abend vorher ist."
+              "Er dachte, dass es Abfall von der Eröffnung am Abend vorher ist.",
+              "ليه الراجل رمى التركيب الفني؟",
+              "افتكره مخلفات افتتاح الليلة السابقة."
             ],
             [
               "Auf wen ist die Leiterin der Galerie wütend?",
-              "Nicht auf den Mitarbeiter, sondern auf die Putzfirma, weil sie ihr Personal nicht richtig informiert hat."
+              "Nicht auf den Mitarbeiter, sondern auf die Putzfirma, weil sie ihr Personal nicht richtig informiert hat.",
+              "مديرة المعرض غضبانة من مين؟",
+              "مش من العامل، لكن من شركة التنظيف لأنها ما وضّحتش الأمر لموظفيها كويس."
             ],
             [
               "Wie reagiert die Künstlerin?",
-              "Gelassen: Sie findet es witzig und will die Installation neu bauen."
+              "Gelassen: Sie findet es witzig und will die Installation neu bauen.",
+              "الفنانة ردّ فعلها إيه؟",
+              "بهدوء: شايفة الموضوع مضحك وعايزة تعيد بناء التركيب الفني."
             ]
-          ]
+          ],
+          "titleAr": "فن ولا قمامة؟ سوء فهم مكلف",
+          "kindAr": "مقال في جريدة"
         },
         {
           "kind": "Interview",
@@ -1144,25 +1374,37 @@
           "questions": [
             [
               "Woher bekommen die Schauspieler beim Impro-Theater ihre Ideen?",
-              "Vom Publikum, das ihnen Begriffe wie einen Ort, einen Gegenstand oder einen Beruf zuruft."
+              "Vom Publikum, das ihnen Begriffe wie einen Ort, einen Gegenstand oder einen Beruf zuruft.",
+              "ممثلون المسرح الارتجالي بيجيبوا أفكارهم منين؟",
+              "من الجمهور اللي بينادي بكلمات، مثل مكان أو شيء أو مهنة."
             ],
             [
               "Wie ist Frau Keller zum Impro-Theater gekommen?",
-              "Sie hatte bei einem Referat ihre Notizen vergessen und musste improvisieren; das hat ihr Spaß gemacht."
+              "Sie hatte bei einem Referat ihre Notizen vergessen und musste improvisieren; das hat ihr Spaß gemacht.",
+              "السيدة كيلر دخلت المسرح الارتجالي إزاي؟",
+              "نسيت ملاحظاتها وقت عرض شفهي واضطرت ترتجل، واستمتعت بده."
             ],
             [
               "Was braucht man beim Impro-Theater nicht?",
-              "Keinen Text, kein großes Bühnenbild und keine Kostüme."
+              "Keinen Text, kein großes Bühnenbild und keine Kostüme.",
+              "إيه اللي مش محتاجينه في المسرح الارتجالي؟",
+              "لا نص ولا ديكور مسرحي كبير ولا أزياء."
             ],
             [
               "Was bedeutet die Regel „Ja, genau – und …“?",
-              "Man nimmt die Idee des Partners an und erzählt sie weiter, statt Nein zu sagen."
+              "Man nimmt die Idee des Partners an und erzählt sie weiter, statt Nein zu sagen.",
+              "قاعدة «أيوه بالظبط، و...» معناها إيه؟",
+              "تقبل فكرة شريكك وتكمّلها بدل ما تقول لا."
             ],
             [
               "Was lernt man in einem Impro-Kurs außer Theater?",
-              "Man lernt, im Alltag spontaner zu sein."
+              "Man lernt, im Alltag spontaner zu sein.",
+              "بنتعلّم إيه في كورس الارتجال غير المسرح؟",
+              "نتعلّم نكون تلقائيين أكتر في الحياة اليومية."
             ]
-          ]
+          ],
+          "titleAr": "على مسرحنا مفيش نص",
+          "kindAr": "مقابلة"
         },
         {
           "kind": "Forum",
@@ -1172,25 +1414,37 @@
           "questions": [
             [
               "Was machen Karims Nachbarn jeden ersten Freitag im Monat?",
-              "Sie treffen sich im Hof und musizieren zusammen."
+              "Sie treffen sich im Hof und musizieren zusammen.",
+              "جيران كريم بيعملوا إيه أول جمعة من كل شهر؟",
+              "بيتقابلوا في الفناء وبيعزفوا موسيقى مع بعض."
             ],
             [
               "Wo singt Julia heute?",
-              "Nur noch heimlich im Auto."
+              "Nur noch heimlich im Auto.",
+              "يوليا بتغنّي فين دلوقتي؟",
+              "بس في السر في العربية."
             ],
             [
               "Wie fand Mehmet die Volkslieder am Anfang und wie findet er sie heute?",
-              "Am Anfang fand er sie total uncool, heute findet er sie zeitlos."
+              "Am Anfang fand er sie total uncool, heute findet er sie zeitlos.",
+              "محمد كان شايف الأغاني الشعبية إزاي في الأول، ودلوقتي شايفها إزاي؟",
+              "في الأول كان شايفها قديمة ومش جذابة، ودلوقتي شايفها صالحة لكل زمن."
             ],
             [
               "Warum bewegt Mehmet das Lied „Die Gedanken sind frei“?",
-              "Wegen der Idee, dass niemand unsere Gedanken einsperren kann."
+              "Wegen der Idee, dass niemand unsere Gedanken einsperren kann.",
+              "ليه أغنية «الأفكار حرة» بتأثر في محمد؟",
+              "بسبب فكرة إن محدش يقدر يحبس أفكارنا."
             ],
             [
               "Was braucht man für Lenas Chor?",
-              "Keine Erfahrung, sondern nur Freude am Singen."
+              "Keine Erfahrung, sondern nur Freude am Singen.",
+              "كورال لينا محتاج إيه؟",
+              "مش خبرة، لكن الاستمتاع بالغناء فقط."
             ]
-          ]
+          ],
+          "titleAr": "لسه بتغنّوا، ولا تحت الدش بس؟",
+          "kindAr": "منتدى"
         }
       ],
       "grammar": [
@@ -1433,7 +1687,13 @@
           ],
           "a": 0,
           "fb": "nicht steht vor dem zweiten Verbteil: nicht kommen.",
-          "fbAr": "nicht بتيجي قبل الجزء التاني من الفعل (المصدر في الآخر)."
+          "fbAr": "nicht بتيجي قبل الجزء التاني من الفعل (المصدر في الآخر).",
+          "qAr": "فين المكان الصحيح لـ nicht في الجملة: «إحنا ما قدرناش امبارح ___»؟",
+          "oAr": [
+            "عدم المجيء؛ بترتيبين للكلمات",
+            "عدم المجيء؛ بترتيبين للكلمات",
+            "عدم المجيء امبارح"
+          ]
         },
         {
           "q": "Welcher Satz ist richtig?",
@@ -1444,7 +1704,13 @@
           ],
           "a": 1,
           "fb": "nicht steht vor der Präpositionalergänzung: nicht für Kunst.",
-          "fbAr": "nicht بتيجي قبل حرف الجر: nicht für Kunst."
+          "fbAr": "nicht بتيجي قبل حرف الجر: nicht für Kunst.",
+          "qAr": "أي جملة ألمانية صحيحة؟",
+          "oAr": [
+            "هي مش مهتمة بالفن؛ بصيغ مختلفة لترتيب النفي",
+            "هي مش مهتمة بالفن؛ بصيغ مختلفة لترتيب النفي",
+            "هي مش مهتمة بالفن؛ بصيغ مختلفة لترتيب النفي"
+          ]
         },
         {
           "q": "Das Bild ist nicht teuer, ___ günstig.",
@@ -1455,7 +1721,13 @@
           ],
           "a": 2,
           "fb": "Nach einer Verneinung korrigiert man mit sondern.",
-          "fbAr": "بعد النفي وعايز تقول الصح بتستخدم sondern مش aber."
+          "fbAr": "بعد النفي وعايز تقول الصح بتستخدم sondern مش aber.",
+          "qAr": "اللوحة مش غالية، ___ رخيصة.",
+          "oAr": [
+            "لكن",
+            "أو",
+            "بل"
+          ]
         },
         {
           "q": "Suche ___ Fernseher aus braunem Holz.",
@@ -1466,7 +1738,13 @@
           ],
           "a": 1,
           "fb": "Akkusativ maskulin ohne Artikel: den → alten Fernseher.",
-          "fbAr": "مفعول به مذكر من غير أداة: زي den، يعني alten."
+          "fbAr": "مفعول به مذكر من غير أداة: زي den، يعني alten.",
+          "qAr": "مطلوب تلفزيون ___ من خشب بني.",
+          "oAr": [
+            "قديم؛ بصيغ مختلفة للصفة",
+            "قديم؛ بصيغ مختلفة للصفة",
+            "قديم؛ بصيغ مختلفة للصفة"
+          ]
         },
         {
           "q": "Kleine Gruppe braucht Hilfe von ___ Person.",
@@ -1477,7 +1755,13 @@
           ],
           "a": 0,
           "fb": "von + Dativ feminin: der → netter Person.",
-          "fbAr": "von بتاخد داتيف، والمؤنث في الداتيف der، فالصفة netter."
+          "fbAr": "von بتاخد داتيف، والمؤنث في الداتيف der، فالصفة netter.",
+          "qAr": "مجموعة صغيرة محتاجة مساعدة من شخص ___ .",
+          "oAr": [
+            "لطيف؛ بصيغ مختلفة للصفة",
+            "لطيف؛ بصيغ مختلفة للصفة",
+            "لطيف؛ بصيغ مختلفة للصفة"
+          ]
         },
         {
           "q": "Wegen ___ Wetters fällt das Konzert im Park aus.",
@@ -1488,7 +1772,13 @@
           ],
           "a": 1,
           "fb": "Genitiv maskulin/neutrum ohne Artikel: -en.",
-          "fbAr": "الجينتيف المذكر والمحايد من غير أداة استثناء: -en."
+          "fbAr": "الجينتيف المذكر والمحايد من غير أداة استثناء: -en.",
+          "qAr": "بسبب الطقس الـ___، الحفلة في الحديقة اتلغت.",
+          "oAr": [
+            "سيئ؛ بصيغ مختلفة للصفة",
+            "سيئ؛ بصيغ مختلفة للصفة",
+            "سيئ؛ بصيغ مختلفة للصفة"
+          ]
         },
         {
           "q": "Welches Wort passt? „Für die Rolle muss sie sich stark ___.“",
@@ -1499,7 +1789,13 @@
           ],
           "a": 0,
           "fb": "sich schminken = Farbe ins Gesicht machen.",
-          "fbAr": "sich schminken يعني تحط مكياج."
+          "fbAr": "sich schminken يعني تحط مكياج.",
+          "qAr": "اختار الكلمة المناسبة: «علشان الدور لازم ___ جدًا».",
+          "oAr": [
+            "يحط مكياج",
+            "يعزف موسيقى",
+            "يستهلك أو يشتري للاستهلاك"
+          ]
         },
         {
           "q": "Was bedeutet „Das Bild spricht mich nicht an“?",
@@ -1510,8 +1806,20 @@
           ],
           "a": 2,
           "fb": "ansprechen = gefallen, ein Gefühl auslösen.",
-          "fbAr": "ansprechen هنا معناها «يعجبني / يشدّني»، مش «يكلمني»."
+          "fbAr": "ansprechen هنا معناها «يعجبني / يشدّني»، مش «يكلمني».",
+          "qAr": "«اللوحة دي مش بتجذبني» معناها إيه؟",
+          "oAr": [
+            "صوت اللوحة عالي زيادة.",
+            "أنا ما شفتش اللوحة.",
+            "اللوحة مش عاجباني."
+          ]
         }
+      ],
+      "badgesAr": [
+        "مكان nicht في الجملة",
+        "ليس... بل...",
+        "صفات من غير أداة",
+        "الفن والمسرح"
       ]
     },
     "10": {
@@ -1571,25 +1879,37 @@
           "questions": [
             [
               "Was wird morgens als Erstes gemacht?",
-              "Zuerst wird der Tagesablauf geplant."
+              "Zuerst wird der Tagesablauf geplant.",
+              "إيه أول حاجة بتتعمل في الصباح؟",
+              "أولًا بيتخطط برنامج اليوم."
             ],
             [
               "Woher bekommt die Tafel die Lebensmittel?",
-              "Sie werden bei Supermärkten und Bäckereien abgeholt."
+              "Sie werden bei Supermärkten und Bäckereien abgeholt.",
+              "بنك الطعام بيجيب الأطعمة منين؟",
+              "بيجمعوها من السوبرماركتات والمخابز."
             ],
             [
               "Was passiert mit Lebensmitteln, die wirklich schlecht sind?",
-              "Sie werden entsorgt."
+              "Sie werden entsorgt.",
+              "إيه اللي بيحصل للأطعمة الفاسدة فعلًا؟",
+              "بيتم التخلص منها."
             ],
             [
               "Wer kommt zur Tafel, um Lebensmittel abzuholen?",
-              "Rentnerinnen, Studenten, Familien mit Kindern und Geflüchtete, also bedürftige Menschen."
+              "Rentnerinnen, Studenten, Familien mit Kindern und Geflüchtete, also bedürftige Menschen.",
+              "مين بييجي بنك الطعام علشان ياخد أكل؟",
+              "متقاعدات وطلاب وأسر بأطفال ولاجئون، يعني ناس محتاجين."
             ],
             [
               "Warum arbeitet Karim ehrenamtlich bei der Tafel?",
-              "Weil ihm früher selbst fremde Menschen geholfen haben und er diese Hilfsbereitschaft zurückgeben möchte."
+              "Weil ihm früher selbst fremde Menschen geholfen haben und er diese Hilfsbereitschaft zurückgeben möchte.",
+              "ليه كريم بيتطوّع في بنك الطعام؟",
+              "لأن غرباء ساعدوه قبل كده، وهو عايز يردّ المساعدة دي."
             ]
-          ]
+          ],
+          "titleAr": "يوم السبت بتاعي في بنك الطعام",
+          "kindAr": "مدوّنة"
         },
         {
           "kind": "Zeitungsartikel",
@@ -1599,25 +1919,37 @@
           "questions": [
             [
               "Was müssen die Kinder zuerst machen, wenn sie mitmachen wollen?",
-              "Sie müssen sich beim Einwohnermeldeamt anmelden."
+              "Sie müssen sich beim Einwohnermeldeamt anmelden.",
+              "الأطفال لازم يعملوا إيه أولًا لو عايزين يشاركوا؟",
+              "لازم يسجّلوا في مكتب تسجيل السكان."
             ],
             [
               "Was wird mit den Steuern finanziert?",
-              "Zum Beispiel die Straßenreinigung und das Kino."
+              "Zum Beispiel die Straßenreinigung und das Kino.",
+              "إيه اللي بيتم تمويله بالضرائب؟",
+              "مثلًا تنظيف الشوارع والسينما."
             ],
             [
               "Welche Aufgaben gibt es jeden Tag im Rathaus?",
-              "Anträge müssen geprüft und Entscheidungen getroffen werden."
+              "Anträge müssen geprüft und Entscheidungen getroffen werden.",
+              "إيه المهام اليومية في مبنى البلدية؟",
+              "لازم تُفحص الطلبات وتُتخذ قرارات."
             ],
             [
               "Was ist das wichtigste Vorhaben der Bürgermeisterin Aylin?",
-              "Der Müll soll besser getrennt werden."
+              "Der Müll soll besser getrennt werden.",
+              "إيه أهم خطة لرئيسة البلدية أيلين؟",
+              "تحسين فصل القمامة."
             ],
             [
               "Wo dürfen sich die Eltern aufhalten?",
-              "Nur im Elterncafé am Eingang."
+              "Nur im Elterncafé am Eingang.",
+              "مسموح للأهالي يقعدوا فين؟",
+              "فقط في كافيه الأهالي عند المدخل."
             ]
-          ]
+          ],
+          "titleAr": "أطفال بيحكموا مدينتهم",
+          "kindAr": "مقال في جريدة"
         },
         {
           "kind": "Lesetext",
@@ -1627,25 +1959,37 @@
           "questions": [
             [
               "Was war die Idee der Politiker nach dem Zweiten Weltkrieg?",
-              "Länder, die wirtschaftlich eng zusammenarbeiten, führen keinen Krieg gegeneinander."
+              "Länder, die wirtschaftlich eng zusammenarbeiten, führen keinen Krieg gegeneinander.",
+              "إيه فكرة السياسيين بعد الحرب العالمية الثانية؟",
+              "البلاد اللي بتتعاون اقتصاديًا بشكل وثيق ما بتحاربش بعض."
             ],
             [
               "Was wurde mit dem ersten Vertrag 1951 gemeinsam kontrolliert?",
-              "Die Produktion von Kohle und Stahl."
+              "Die Produktion von Kohle und Stahl.",
+              "إيه اللي اتراقب بشكل مشترك بالاتفاق الأول سنة ١٩٥١؟",
+              "إنتاج الفحم والصلب."
             ],
             [
               "Was passierte 1992 in Maastricht?",
-              "Ein Vertrag wurde unterzeichnet, und aus der Europäischen Gemeinschaft wurde die Europäische Union."
+              "Ein Vertrag wurde unterzeichnet, und aus der Europäischen Gemeinschaft wurde die Europäische Union.",
+              "إيه اللي حصل في ماستريخت سنة ١٩٩٢؟",
+              "اتوقّعت معاهدة، وتحولت الجماعة الأوروبية للاتحاد الأوروبي."
             ],
             [
               "Welche gemeinsamen Werte hat die EU?",
-              "Die Würde des Menschen, Freiheit, Demokratie, Gleichberechtigung und die Menschenrechte."
+              "Die Würde des Menschen, Freiheit, Demokratie, Gleichberechtigung und die Menschenrechte.",
+              "إيه القيم المشتركة للاتحاد الأوروبي؟",
+              "كرامة الإنسان والحرية والديمقراطية والمساواة في الحقوق وحقوق الإنسان."
             ],
             [
               "Welche Kritik an der EU gibt es?",
-              "Manche haben Angst, dass nationale Traditionen verschwinden. Andere finden, dass es zu viele Vorschriften gibt und Entscheidungen zu langsam getroffen werden."
+              "Manche haben Angst, dass nationale Traditionen verschwinden. Andere finden, dass es zu viele Vorschriften gibt und Entscheidungen zu langsam getroffen werden.",
+              "إيه الانتقادات الموجّهة للاتحاد الأوروبي؟",
+              "البعض خايف من اختفاء التقاليد الوطنية، وغيرهم شايف القواعد كثيرة والقرارات بطيئة."
             ]
-          ]
+          ],
+          "titleAr": "إزاي الأعداء بقوا شركاء",
+          "kindAr": "نص قراءة"
         },
         {
           "kind": "E-Mail",
@@ -1655,25 +1999,37 @@
           "questions": [
             [
               "Wie hat Julia den Verein gefunden?",
-              "Sie hat ihn im Frühling im Internet gefunden."
+              "Sie hat ihn im Frühling im Internet gefunden.",
+              "يوليا لقت الجمعية إزاي؟",
+              "لقتها على الإنترنت في الربيع."
             ],
             [
               "Warum hat die Familie oft Mühe, den Alltag zu bewältigen?",
-              "Weil es so viele Formulare und Vorschriften gibt."
+              "Weil es so viele Formulare und Vorschriften gibt.",
+              "ليه الأسرة غالبًا بتواجه صعوبة في التعامل مع الحياة اليومية؟",
+              "لأن فيه استمارات وقواعد كتير جدًا."
             ],
             [
               "Was ist mit dem Antrag für den Kindergarten passiert?",
-              "Er ist schon genehmigt worden."
+              "Er ist schon genehmigt worden.",
+              "إيه اللي حصل لطلب الروضة؟",
+              "اتوافق عليه بالفعل."
             ],
             [
               "Was machen Julia und Omid jeden Mittwoch?",
-              "Sie machen zusammen Hausaufgaben."
+              "Sie machen zusammen Hausaufgaben.",
+              "يوليا وأوميد بيعملوا إيه كل أربعاء؟",
+              "بيعملوا الواجب مع بعض."
             ],
             [
               "Was braucht man laut Julia, wenn man Pate oder Patin werden will?",
-              "Etwas Zeit und viel Geduld."
+              "Etwas Zeit und viel Geduld.",
+              "حسب يوليا، محتاج إيه علشان تبقى راعيًا متطوّعًا؟",
+              "شوية وقت وصبر كتير."
             ]
-          ]
+          ],
+          "titleAr": "أنا بقيت راعية متطوّعة!",
+          "kindAr": "بريد إلكتروني"
         }
       ],
       "grammar": [
@@ -1966,7 +2322,13 @@
           ],
           "a": 1,
           "fb": "Subjekt „die Lebensmittel“ ist Plural → werden + Partizip II.",
-          "fbAr": "die Lebensmittel جمع، يبقى werden مش wird."
+          "fbAr": "die Lebensmittel جمع، يبقى werden مش wird.",
+          "qAr": "الأطعمة ___ توزيعها من بنك الطعام على المحتاجين.",
+          "oAr": [
+            "فعل werden مع المفرد",
+            "الفعل werden",
+            "فعل werden في الماضي مع المفرد"
+          ]
         },
         {
           "q": "Die erste deutsche Tafel ___ 1993 in Berlin gegründet.",
@@ -1977,7 +2339,13 @@
           ],
           "a": 0,
           "fb": "Passiv Präteritum: wurde + Partizip II (1993 = Vergangenheit).",
-          "fbAr": "1993 ماضي، فبنستخدم wurde + Partizip II."
+          "fbAr": "1993 ماضي، فبنستخدم wurde + Partizip II.",
+          "qAr": "أول بنك طعام ألماني ___ تأسيسه سنة ١٩٩٣ في برلين.",
+          "oAr": [
+            "فعل werden في الماضي مع المفرد",
+            "فعل werden مع المفرد",
+            "يكون؛ صيغة ist"
+          ]
         },
         {
           "q": "Mehr als 940 Tafeln sind bundesweit gegründet ___.",
@@ -1988,7 +2356,13 @@
           ],
           "a": 2,
           "fb": "Passiv Perfekt: sein + Partizip II + worden.",
-          "fbAr": "في الـ Perfekt بتاع الـ Passiv بنقول worden مش geworden."
+          "fbAr": "في الـ Perfekt بتاع الـ Passiv بنقول worden مش geworden.",
+          "qAr": "أكتر من ٩٤٠ بنك طعام تم تأسيسها في أنحاء البلاد ___ .",
+          "oAr": [
+            "أصبح؛ التصريف الثالث لـ werden",
+            "الفعل werden",
+            "صيغة worden المستخدمة في المبني للمجهول"
+          ]
         },
         {
           "q": "In einer Stadt muss viel ___.",
@@ -1999,7 +2373,13 @@
           ],
           "a": 0,
           "fb": "Passiv mit Modalverb: Modalverb … Partizip II + werden.",
-          "fbAr": "مع müssen بييجي في الآخر Partizip II وبعده werden."
+          "fbAr": "مع müssen بييجي في الآخر Partizip II وبعده werden.",
+          "qAr": "في المدينة حاجات كتير لازم ___ .",
+          "oAr": [
+            "يتم إنجازها؛ بصيغ مختلفة لتركيب المبني للمجهول",
+            "يتم إنجازها؛ بصيغ مختلفة لتركيب المبني للمجهول",
+            "يتم إنجازها؛ بصيغ مختلفة لتركيب المبني للمجهول"
+          ]
         },
         {
           "q": "Die Feuerwehrleute werden ___ der Zentrale alarmiert.",
@@ -2010,7 +2390,13 @@
           ],
           "a": 1,
           "fb": "Wer etwas tut, steht im Passiv mit von + Dativ.",
-          "fbAr": "الفاعل في الـ Passiv بنقوله بـ von + Dativ: von der Zentrale."
+          "fbAr": "الفاعل في الـ Passiv بنقوله بـ von + Dativ: von der Zentrale.",
+          "qAr": "رجال الإطفاء بيتم إبلاغهم ___ المركز.",
+          "oAr": [
+            "عن طريق؛ حرف الجر durch مع الأداة die",
+            "من أو بواسطة",
+            "مع أو بواسطة وسيلة"
+          ]
         },
         {
           "q": "Die Reparatur kostet nichts, sie ist ___.",
@@ -2021,7 +2407,13 @@
           ],
           "a": 0,
           "fb": "-los = ohne: kostenlos = ohne Kosten.",
-          "fbAr": "-los معناها «من غير»، و kostenlos يعني ببلاش."
+          "fbAr": "-los معناها «من غير»، و kostenlos يعني ببلاش.",
+          "qAr": "التصليح مش بيكلّف حاجة، هو ___ .",
+          "oAr": [
+            "مجاني",
+            "ثمين",
+            "عاجز عن مساعدة نفسه"
+          ]
         },
         {
           "q": "Viele Menschen arbeiten ___ bei der Tafel und bekommen kein Geld dafür.",
@@ -2032,7 +2424,13 @@
           ],
           "a": 1,
           "fb": "Ehrenamtlich = freiwillig und ohne Bezahlung.",
-          "fbAr": "ehrenamtlich يعني تطوعي من غير مرتب."
+          "fbAr": "ehrenamtlich يعني تطوعي من غير مرتب.",
+          "qAr": "ناس كتير بتشتغل ___ في بنك الطعام ومش بتاخد فلوس مقابل ده.",
+          "oAr": [
+            "محتاج",
+            "بشكل تطوعي من غير أجر",
+            "وطني"
+          ]
         },
         {
           "q": "Vor dem Umzug ins Ausland muss man sich beim Einwohnermeldeamt ___.",
@@ -2043,8 +2441,21 @@
           ],
           "a": 2,
           "fb": "Wenn man wegzieht, meldet man sich ab.",
-          "fbAr": "لما بتسيب المدينة بتعمل abmelden، يعني تلغي تسجيلك."
+          "fbAr": "لما بتسيب المدينة بتعمل abmelden، يعني تلغي تسجيلك.",
+          "qAr": "قبل الانتقال للخارج لازم ___ تسجيلك في مكتب تسجيل السكان.",
+          "oAr": [
+            "يسجّل",
+            "ينضم",
+            "يلغي التسجيل"
+          ]
         }
+      ],
+      "badgesAr": [
+        "المبني للمجهول في المضارع",
+        "المبني للمجهول في الماضي",
+        "المبني للمجهول مع فعل مساعد للكيفية",
+        "صفات بنهايتي -bar و-los",
+        "التطوع والمجتمع"
       ]
     },
     "11": {
@@ -2104,25 +2515,37 @@
           "questions": [
             [
               "Warum braucht Tarek kein Auto?",
-              "Weil er mit Bus, Bahn und Fahrrad alles erreicht."
+              "Weil er mit Bus, Bahn und Fahrrad alles erreicht.",
+              "ليه طارق مش محتاج عربية؟",
+              "لأنه بيوصل لكل حاجة بالأتوبيس والقطار والعجلة."
             ],
             [
               "Warum hat Waldfee Frankfurt verlassen?",
-              "Das Tempo und der Stress in der Stadt waren ihr zu viel."
+              "Das Tempo und der Stress in der Stadt waren ihr zu viel.",
+              "ليه «جنية الغابة» سابت فرانكفورت؟",
+              "السرعة والضغط في المدينة كانوا زيادة عليها."
             ],
             [
               "Was gefällt Waldfee am Leben im Dorf?",
-              "Die Ruhe im Garten und dass sich die Nachbarn gegenseitig helfen."
+              "Die Ruhe im Garten und dass sich die Nachbarn gegenseitig helfen.",
+              "إيه اللي عاجب «جنية الغابة» في حياة القرية؟",
+              "هدوء الجنينة ومساعدة الجيران لبعض."
             ],
             [
               "Warum findet Mo seine Wohnlage perfekt?",
-              "Er hat einen Park und Geschäfte in der Nähe, und die Innenstadt ist nur zwanzig Minuten entfernt."
+              "Er hat einen Park und Geschäfte in der Nähe, und die Innenstadt ist nur zwanzig Minuten entfernt.",
+              "ليه مو شايف موقع سكنه مثاليًا؟",
+              "عنده حديقة ومحلات قريبة، ووسط المدينة على بعد عشرين دقيقة فقط."
             ],
             [
               "Wofür entscheidet sich Lina am Ende?",
-              "Sie sucht sich erst einmal eine kleine Wohnung in der Stadt."
+              "Sie sucht sich erst einmal eine kleine Wohnung in der Stadt.",
+              "لينا بتختار إيه في النهاية؟",
+              "بتدوّر مبدئيًا على شقة صغيرة في المدينة."
             ]
-          ]
+          ],
+          "titleAr": "بتحب المدينة ولا الريف؟",
+          "kindAr": "منتدى"
         },
         {
           "kind": "Reportage",
@@ -2132,25 +2555,37 @@
           "questions": [
             [
               "Warum war die Nacht für Aylin unruhig?",
-              "Zwei Verletzte wurden eingeliefert, und eine ältere Kranke hat oft nach ihr gerufen."
+              "Zwei Verletzte wurden eingeliefert, und eine ältere Kranke hat oft nach ihr gerufen.",
+              "ليه ليلة أيلين كانت مضطربة؟",
+              "وصل مصابان، ومريضة كبيرة في السن كانت بتنادي عليها كتير."
             ],
             [
               "Was macht Aylin vor ihrem Feierabend?",
-              "Sie schreibt alles für die Übergabe an die Frühschicht auf."
+              "Sie schreibt alles für die Übergabe an die Frühschicht auf.",
+              "أيلين بتعمل إيه قبل نهاية شغلها؟",
+              "بتكتب كل المعلومات لتسليم المناوبة لوردية الصباح."
             ],
             [
               "Seit wann arbeiten die Angestellten in der Bäckerei?",
-              "Seit halb drei."
+              "Seit halb drei.",
+              "من إمتى موظفو المخبز بيشتغلوا؟",
+              "من الساعة اتنين ونصف."
             ],
             [
               "Was macht Jonas um halb fünf?",
-              "Er lädt mit der Fahrerin die Körbe mit Brot ins Auto."
+              "Er lädt mit der Fahrerin die Körbe mit Brot ins Auto.",
+              "يوناس بيعمل إيه الساعة أربعة ونصف؟",
+              "بيحمّل سلال العيش في العربية مع السائقة."
             ],
             [
               "Wer kümmert sich am Bahnhof um den Obdachlosen?",
-              "Ein Bekannter, ein Sozialarbeiter, der ihm Kaffee und ein Brötchen bringt."
+              "Ein Bekannter, ein Sozialarbeiter, der ihm Kaffee und ein Brötchen bringt.",
+              "مين بيهتم بالمشرد عند المحطة؟",
+              "واحد من معارفه، أخصائي اجتماعي بيجيب له قهوة وخبزة صغيرة."
             ]
-          ]
+          ],
+          "titleAr": "الساعة خمسة صباحًا في هامبورغ",
+          "kindAr": "تقرير صحفي"
         },
         {
           "kind": "Zeitungsartikel",
@@ -2160,25 +2595,37 @@
           "questions": [
             [
               "Wer bewertet die Städte für die Rankings?",
-              "Meistens Fachleute."
+              "Meistens Fachleute.",
+              "مين بيقيّم المدن في التصنيفات؟",
+              "غالبًا خبراء."
             ],
             [
               "Welche Fragen zur Arbeit stellen manche Studien?",
-              "Wie viele Stunden man pro Woche arbeitet, wie hoch die Arbeitslosigkeit ist und wie lange der Weg zur Arbeit dauert."
+              "Wie viele Stunden man pro Woche arbeitet, wie hoch die Arbeitslosigkeit ist und wie lange der Weg zur Arbeit dauert.",
+              "بعض الدراسات بتسأل إيه عن العمل؟",
+              "عدد ساعات العمل الأسبوعية، ونسبة البطالة، ومدة الطريق للشغل."
             ],
             [
               "Was legen Gesetze fest?",
-              "Wie viel Anspruch man auf Urlaub oder Elternzeit hat."
+              "Wie viel Anspruch man auf Urlaub oder Elternzeit hat.",
+              "القوانين بتحدد إيه؟",
+              "مقدار الحق في الإجازة أو الإجازة الوالدية."
             ],
             [
               "Welches Problem kann ein erster Platz im Ranking bringen?",
-              "Viele Menschen ziehen in die Stadt, und die Mieten steigen."
+              "Viele Menschen ziehen in die Stadt, und die Mieten steigen.",
+              "إيه المشكلة اللي ممكن يسببها المركز الأول في التصنيف؟",
+              "ناس كتير تنتقل للمدينة، والإيجارات تزيد."
             ],
             [
               "Was kann man laut Petra Lang nicht messen?",
-              "Die Atmosphäre in einem Viertel, die Freundlichkeit der Nachbarn und das Gefühl, zu Hause zu sein."
+              "Die Atmosphäre in einem Viertel, die Freundlichkeit der Nachbarn und das Gefühl, zu Hause zu sein.",
+              "حسب بيترا لانغ، إيه اللي ما ينفعش نقيسه؟",
+              "أجواء الحي ولطف الجيران والإحساس إنك في بيتك."
             ]
-          ]
+          ],
+          "titleAr": "إيه اللي يخلّي المدينة مناسبة للعيش؟",
+          "kindAr": "مقال في جريدة"
         },
         {
           "kind": "Blog",
@@ -2188,25 +2635,37 @@
           "questions": [
             [
               "Was ist der Zytglogge?",
-              "Ein alter Turm mit einer berühmten Uhr und das Wahrzeichen von Bern."
+              "Ein alter Turm mit einer berühmten Uhr und das Wahrzeichen von Bern.",
+              "إيه هو تسيتغلوغه؟",
+              "برج قديم بساعة شهيرة، وهو معلم برن المميز."
             ],
             [
               "Was sind Lauben?",
-              "Lange Arkaden, wo man auch bei Regen gemütlich shoppen kann."
+              "Lange Arkaden, wo man auch bei Regen gemütlich shoppen kann.",
+              "إيه هي Lauben؟",
+              "ممرات طويلة مسقوفة بأقواس ممكن تتسوق فيها براحة حتى وقت المطر."
             ],
             [
               "Was machen die Einheimischen im Sommer in der Aare?",
-              "Sie springen in den Fluss und lassen sich vom Wasser durch die Stadt tragen."
+              "Sie springen in den Fluss und lassen sich vom Wasser durch die Stadt tragen.",
+              "السكان المحليون بيعملوا إيه في نهر آره صيفًا؟",
+              "بينطّوا في النهر ويسيبوا الميّه تحملهم عبر المدينة."
             ],
             [
               "Wie kommt man auf den Gurten, wenn man nicht wandern will?",
-              "Man kann mit der Bahn rauffahren."
+              "Man kann mit der Bahn rauffahren.",
+              "إزاي نطلع غورتن لو مش عايزين نمشي؟",
+              "ممكن نطلع بالقطار."
             ],
             [
               "Was bedeuten „Velo“ und „Billett“?",
-              "Velo ist das Schweizer Wort für Fahrrad, Billett das Wort für Fahrkarte."
+              "Velo ist das Schweizer Wort für Fahrrad, Billett das Wort für Fahrkarte.",
+              "«Velo» و«Billett» معناهم إيه؟",
+              "Velo كلمة سويسرية بمعنى دراجة، وBillett بمعنى تذكرة سفر."
             ]
-          ]
+          ],
+          "titleAr": "ثلاث أيام في برن",
+          "kindAr": "مدوّنة"
         }
       ],
       "grammar": [
@@ -2465,7 +2924,13 @@
           ],
           "a": 0,
           "fb": "das Fahrrad, Akkusativ: keins (Pronomen, neutral).",
-          "fbAr": "Fahrrad محايد، والضمير منه في الـAkkusativ بيبقى keins مش kein."
+          "fbAr": "Fahrrad محايد، والضمير منه في الـAkkusativ بيبقى keins مش kein.",
+          "qAr": "عندك عجلة؟ لا، ما عنديش ___ .",
+          "oAr": [
+            "ولا واحد أو لا شيء؛ بصيغ مختلفة للنفي",
+            "ولا واحد أو لا شيء؛ بصيغ مختلفة للنفي",
+            "ولا واحد أو لا شيء؛ بصيغ مختلفة للنفي"
+          ]
         },
         {
           "q": "Gibt es hier Cafés? – Ja, gleich da drüben gibt es ___.",
@@ -2476,7 +2941,13 @@
           ],
           "a": 1,
           "fb": "Plural, positiv: welche.",
-          "fbAr": "Cafés جمع، والجمع الإيجابي بيبقى welche."
+          "fbAr": "Cafés جمع، والجمع الإيجابي بيبقى welche.",
+          "qAr": "فيه كافيهات هنا؟ أيوه، هناك قريب فيه ___ .",
+          "oAr": [
+            "واحد أو واحدة؛ حسب الجنس النحوي والإعراب",
+            "بعض؛ ضمير للجمع",
+            "واحد أو واحدة؛ حسب الجنس النحوي والإعراب"
+          ]
         },
         {
           "q": "Kennst du ___ gutes Restaurant in der Altstadt?",
@@ -2487,7 +2958,13 @@
           ],
           "a": 2,
           "fb": "das Restaurant, Akkusativ: irgendein (wie ein).",
-          "fbAr": "Restaurant محايد ومفرد، فبنقول irgendein زي ein بالظبط."
+          "fbAr": "Restaurant محايد ومفرد، فبنقول irgendein زي ein بالظبط.",
+          "qAr": "تعرف ___ مطعم كويس في المدينة القديمة؟",
+          "oAr": [
+            "أي واحد أو بعض غير محددين؛ بصيغ مختلفة",
+            "أي واحد أو بعض غير محددين؛ بصيغ مختلفة",
+            "أي واحد أو بعض غير محددين؛ بصيغ مختلفة"
+          ]
         },
         {
           "q": "Ein ___ von mir arbeitet bei der Stadt.",
@@ -2498,7 +2975,13 @@
           ],
           "a": 0,
           "fb": "ein + Nominativ maskulin: ein Bekannter (wie ein netter Mann).",
-          "fbAr": "بعد ein في المذكر Nominativ الصفة بتاخد -er: ein Bekannter."
+          "fbAr": "بعد ein في المذكر Nominativ الصفة بتاخد -er: ein Bekannter.",
+          "qAr": "واحد ___ منّي بيشتغل في البلدية.",
+          "oAr": [
+            "شخص من المعارف؛ بصيغ مختلفة للاسم",
+            "شخص من المعارف؛ بصيغ مختلفة للاسم",
+            "شخص من المعارف؛ بصيغ مختلفة للاسم"
+          ]
         },
         {
           "q": "Ich habe gestern mit einer ___ telefoniert.",
@@ -2509,7 +2992,13 @@
           ],
           "a": 1,
           "fb": "mit + Dativ, feminin: einer Verwandten.",
-          "fbAr": "mit بتاخد Dativ، وبعد einer الصفة بتاخد -en: einer Verwandten."
+          "fbAr": "mit بتاخد Dativ، وبعد einer الصفة بتاخد -en: einer Verwandten.",
+          "qAr": "امبارح اتكلمت بالتليفون مع ___ .",
+          "oAr": [
+            "قريب أو قريبة؛ بصيغ مختلفة للاسم",
+            "قريب أو قريبة؛ بصيغ مختلفة للاسم",
+            "قريب أو قريبة؛ بصيغ مختلفة للاسم"
+          ]
         },
         {
           "q": "Hier gibt es viele Parks, ___ ich toll finde.",
@@ -2520,7 +3009,13 @@
           ],
           "a": 2,
           "fb": "was bezieht sich auf den ganzen Satz.",
-          "fbAr": "was هنا راجعة على الجملة كلها، مش على كلمة واحدة."
+          "fbAr": "was هنا راجعة على الجملة كلها، مش على كلمة واحدة.",
+          "qAr": "هنا فيه حدائق كتير، ___ شايفها رائعة.",
+          "oAr": [
+            "أداة معرفة أو وصل بحسب السياق والجنس النحوي",
+            "أداة معرفة أو وصل بحسب السياق والجنس النحوي",
+            "ما أو الذي"
+          ]
         },
         {
           "q": "Hamburg ist eine Stadt, ___ ich gerne wohnen würde.",
@@ -2531,7 +3026,13 @@
           ],
           "a": 0,
           "fb": "wo bezieht sich auf einen Ort.",
-          "fbAr": "wo بنستخدمها مع الأماكن: المدينة اللي (فيها) أحب أسكن."
+          "fbAr": "wo بنستخدمها مع الأماكن: المدينة اللي (فيها) أحب أسكن.",
+          "qAr": "هامبورغ مدينة ___ أحب أسكن فيها.",
+          "oAr": [
+            "حيث أو أين",
+            "ما أو الذي",
+            "إلى أين"
+          ]
         },
         {
           "q": "Lassen Sie Frau Berg bitte ___! Sie war noch nicht fertig.",
@@ -2542,8 +3043,21 @@
           ],
           "a": 1,
           "fb": "jemanden ausreden lassen = zu Ende sprechen lassen.",
-          "fbAr": "ausreden lassen يعني تسيب الشخص يكمّل كلامه للآخر."
+          "fbAr": "ausreden lassen يعني تسيب الشخص يكمّل كلامه للآخر.",
+          "qAr": "سيب السيدة بيرغ ___ لو سمحت! لسه ما خلصتش.",
+          "oAr": [
+            "يقاطع",
+            "يكمل كلامه",
+            "يتناول أو يرد على"
+          ]
         }
+      ],
+      "badgesAr": [
+        "كلمات الأدوات المستخدمة كضمائر",
+        "أي واحد أو بعض غير محددين",
+        "صفات تُستخدم كأسماء",
+        "جمل الوصل بـ was وwo",
+        "المدينة والريف"
       ]
     },
     "12": {
@@ -2604,25 +3118,37 @@
           "questions": [
             [
               "Warum brauchte Karim ein deutsches Konto?",
-              "Weil der Vermieter eine Überweisung wollte, die Uni seine IBAN brauchte und der Handyvertrag nur mit Konto funktionierte."
+              "Weil der Vermieter eine Überweisung wollte, die Uni seine IBAN brauchte und der Handyvertrag nur mit Konto funktionierte.",
+              "ليه كريم كان محتاج حسابًا ألمانيًا؟",
+              "لأن صاحب البيت طلب تحويلًا، والجامعة احتاجت IBAN، وعقد المحمول محتاج حسابًا."
             ],
             [
               "Was brauchte er für die Kontoeröffnung?",
-              "Seinen Pass, die Meldebescheinigung und ein ausgefülltes Formular."
+              "Seinen Pass, die Meldebescheinigung und ein ausgefülltes Formular.",
+              "كان محتاج إيه لفتح الحساب؟",
+              "جواز سفره وشهادة تسجيل السكن واستمارة مكتملة."
             ],
             [
               "Wie bezahlt Karim seine Miete?",
-              "Per Dauerauftrag."
+              "Per Dauerauftrag.",
+              "كريم بيدفع الإيجار إزاي؟",
+              "بأمر تحويل دائم."
             ],
             [
               "Wie funktioniert die Fotoüberweisung?",
-              "Er fotografiert die Rechnung und die Daten werden automatisch eingetragen."
+              "Er fotografiert die Rechnung und die Daten werden automatisch eingetragen.",
+              "التحويل بصورة الفاتورة بيشتغل إزاي؟",
+              "بيصوّر الفاتورة وبتدخل البيانات تلقائيًا."
             ],
             [
               "Warum hatte Karim einmal Stress?",
-              "Er hatte sein Konto für die Kaution überzogen und musste hohe Zinsen bezahlen."
+              "Er hatte sein Konto für die Kaution überzogen und musste hohe Zinsen bezahlen.",
+              "ليه كريم اتوتر مرة؟",
+              "كان سحب على المكشوف لدفع التأمين، واضطر يدفع فوائد عالية."
             ]
-          ]
+          ],
+          "titleAr": "أول حساب بنكي لي في ألمانيا",
+          "kindAr": "مدوّنة"
         },
         {
           "kind": "Forum",
@@ -2632,25 +3158,37 @@
           "questions": [
             [
               "Warum ist die Globalisierung für Nadia eine Chance?",
-              "Sie hat in verschiedenen Ländern gelebt und arbeitet für eine internationale Firma."
+              "Sie hat in verschiedenen Ländern gelebt und arbeitet für eine internationale Firma.",
+              "ليه العولمة فرصة لنادية؟",
+              "عاشت في بلاد مختلفة وبتشتغل في شركة دولية."
             ],
             [
               "Welchen Vorteil sieht Nadia in der Forschung?",
-              "Wissenschaftler aus vielen Ländern arbeiten zusammen, zum Beispiel an neuen Medikamenten."
+              "Wissenschaftler aus vielen Ländern arbeiten zusammen, zum Beispiel an neuen Medikamenten.",
+              "نادية شايفة إيه ميزة في البحث العلمي؟",
+              "علماء من بلاد كتير بيتعاونوا، مثلًا لتطوير أدوية جديدة."
             ],
             [
               "Was ist mit der Firma von Felix’ Onkel passiert?",
-              "Sie musste schließen, weil die Konkurrenz auf dem Weltmarkt zu groß war."
+              "Sie musste schließen, weil die Konkurrenz auf dem Weltmarkt zu groß war.",
+              "إيه اللي حصل لشركة عم فيليكس؟",
+              "اضطرت تقفل لأن المنافسة في السوق العالمية كانت شديدة جدًا."
             ],
             [
               "Warum findet Felix die langen Transportwege schlecht?",
-              "Weil die Umwelt darunter leidet."
+              "Weil die Umwelt darunter leidet.",
+              "ليه فيليكس شايف مسافات النقل الطويلة سيئة؟",
+              "لأنها بتضر البيئة."
             ],
             [
               "Was schlägt Felix vor?",
-              "Man sollte lieber regionale Produkte kaufen, auch wenn sie etwas mehr kosten."
+              "Man sollte lieber regionale Produkte kaufen, auch wenn sie etwas mehr kosten.",
+              "فيليكس بيقترح إيه؟",
+              "الأفضل نشتري منتجات محلية، حتى لو أغلى شوية."
             ]
-          ]
+          ],
+          "titleAr": "هل كلنا بنستفيد من العولمة؟",
+          "kindAr": "منتدى"
         },
         {
           "kind": "Kolumne",
@@ -2660,25 +3198,37 @@
           "questions": [
             [
               "Was hat Mona zu Hause gemerkt?",
-              "Dass die Verkäuferin ihr 20 Euro zu viel Wechselgeld gegeben hatte."
+              "Dass die Verkäuferin ihr 20 Euro zu viel Wechselgeld gegeben hatte.",
+              "منى لاحظت إيه لما رجعت البيت؟",
+              "إن البائعة رجّعت لها عشرين يورو زيادة في الباقي."
             ],
             [
               "Warum hat sie sich zuerst gefreut?",
-              "Weil sie diesen Monat knapp bei Kasse ist."
+              "Weil sie diesen Monat knapp bei Kasse ist.",
+              "ليه فرحت في الأول؟",
+              "لأن الفلوس قليلة معاها الشهر ده."
             ],
             [
               "Wer bekommt oft Probleme, wenn in der Kasse Geld fehlt?",
-              "Die Verkäuferin, nicht die Firma."
+              "Die Verkäuferin, nicht die Firma.",
+              "مين غالبًا بيتورّط لما يكون فيه عجز في الخزنة؟",
+              "البائعة، مش الشركة."
             ],
             [
               "Welches Verhalten lehnt Frau Berger ab?",
-              "Wenn man das Geld bewusst behält."
+              "Wenn man das Geld bewusst behält.",
+              "السيدة بيرغر بترفض أي تصرف؟",
+              "الاحتفاظ بالفلوس عن قصد."
             ],
             [
               "Welchen Rat gibt Frau Berger?",
-              "Mona soll morgen in die Bäckerei gehen und das Geld zurückgeben."
+              "Mona soll morgen in die Bäckerei gehen und das Geld zurückgeben.",
+              "السيدة بيرغر بتقدّم إيه نصيحة؟",
+              "منى تروح المخبز بكرة وترجّع الفلوس."
             ]
-          ]
+          ],
+          "titleAr": "سؤال للضمير: باقي زيادة",
+          "kindAr": "عمود صحفي"
         },
         {
           "kind": "Zeitungsartikel",
@@ -2688,25 +3238,37 @@
           "questions": [
             [
               "Woher stammt die Idee des Tauschrings?",
-              "Aus Kanada."
+              "Aus Kanada.",
+              "فكرة شبكة تبادل الخدمات أصلها منين؟",
+              "من كندا."
             ],
             [
               "Wie funktioniert das Zeitkonto?",
-              "Für jede Stunde Arbeit bekommt man eine Gutschrift, und jede Stunde ist gleich viel wert."
+              "Für jede Stunde Arbeit bekommt man eine Gutschrift, und jede Stunde ist gleich viel wert.",
+              "حساب الوقت بيشتغل إزاي؟",
+              "بتاخد رصيدًا لكل ساعة عمل، وكل ساعة لها نفس القيمة."
             ],
             [
               "Warum hat Omar beim Tauschring mitgemacht?",
-              "Er war nach einem Unfall arbeitslos und hatte kaum Geld, aber viel Zeit."
+              "Er war nach einem Unfall arbeitslos und hatte kaum Geld, aber viel Zeit.",
+              "ليه عمر شارك في شبكة التبادل؟",
+              "كان عاطلًا بعد حادث ومعاه فلوس قليلة لكن وقت كتير."
             ],
             [
               "Was hat Omar für seine Hilfe bekommen?",
-              "Deutschunterricht von einem pensionierten Lehrer."
+              "Deutschunterricht von einem pensionierten Lehrer.",
+              "عمر أخد إيه مقابل مساعدته؟",
+              "دروس ألماني من مدرس متقاعد."
             ],
             [
               "Welche Kritik gibt es am Tauschring?",
-              "Manche finden, dass Computerhilfe mehr wert ist als Rasenmähen."
+              "Manche finden, dass Computerhilfe mehr wert ist als Rasenmähen.",
+              "إيه الانتقاد الموجّه لشبكة التبادل؟",
+              "البعض شايف إن المساعدة في الكمبيوتر قيمتها أعلى من قص العشب."
             ]
-          ]
+          ],
+          "titleAr": "وقت بدل الفلوس: شبكة تبادل الخدمات في بيرغهايم",
+          "kindAr": "مقال في جريدة"
         }
       ],
       "grammar": [
@@ -2991,7 +3553,13 @@
           ],
           "a": 0,
           "fb": "je ..., desto/umso ... gehören zusammen.",
-          "fbAr": "je دايمًا معاها desto أو umso."
+          "fbAr": "je دايمًا معاها desto أو umso.",
+          "qAr": "كلما كسبنا أكتر، ___ دفعنا ضرائب أكتر.",
+          "oAr": [
+            "الجزء الثاني من رابط كلما",
+            "عندما في الماضي أو من في المقارنة",
+            "بعد كده"
+          ]
         },
         {
           "q": "Je höher der Kredit ___, desto höher sind die Zinsen.",
@@ -3002,7 +3570,13 @@
           ],
           "a": 1,
           "fb": "Im je-Satz steht das Verb am Ende: ... der Kredit ist.",
-          "fbAr": "جملة je جملة جانبية، فالفعل بيروح آخرها: der Kredit ist."
+          "fbAr": "جملة je جملة جانبية، فالفعل بيروح آخرها: der Kredit ist.",
+          "qAr": "كلما ___ القرض أعلى، كانت الفوائد أعلى.",
+          "oAr": [
+            "يكونون؛ صيغة sind",
+            "يكون؛ صيغة ist",
+            "سيكون"
+          ]
         },
         {
           "q": "Je länger ich warte, desto ___.",
@@ -3013,7 +3587,13 @@
           ],
           "a": 2,
           "fb": "Nach desto + Komparativ kommt direkt das Verb.",
-          "fbAr": "بعد desto + الـ Komparativ الفعل بييجي على طول، وبعدين الفاعل."
+          "fbAr": "بعد desto + الـ Komparativ الفعل بييجي على طول، وبعدين الفاعل.",
+          "qAr": "كلما انتظرت أطول، ___ .",
+          "oAr": [
+            "أصبح أكثر توترًا؛ بصيغ مختلفة للترتيب",
+            "أصبح أكثر توترًا؛ بصيغ مختلفة للترتيب",
+            "أصبح أكثر توترًا؛ بصيغ مختلفة للترتيب"
+          ]
         },
         {
           "q": "Hier ist das ___ Formular.",
@@ -3024,7 +3604,13 @@
           ],
           "a": 0,
           "fb": "Das Formular wurde ausgefüllt → das ausgefüllte Formular (Partizip II, passiv).",
-          "fbAr": "الاستمارة اتملت خلاص، يبقى Partizip II بنهاية الصفة: das ausgefüllte."
+          "fbAr": "الاستمارة اتملت خلاص، يبقى Partizip II بنهاية الصفة: das ausgefüllte.",
+          "qAr": "هنا الاستمارة الـ___ .",
+          "oAr": [
+            "مكتمل أو تم ملؤه؛ بصيغ مختلفة",
+            "يملأ حاليًا؛ صفة من Partizip I",
+            "مكتمل أو تم ملؤه؛ بصيغ مختلفة"
+          ]
         },
         {
           "q": "Wegen der ___ Preise kaufen viele Leute weniger.",
@@ -3035,7 +3621,13 @@
           ],
           "a": 1,
           "fb": "Preise, die steigen → die steigenden Preise (Genitiv Plural: -en).",
-          "fbAr": "الأسعار «بتزيد» دلوقتي → Partizip I، وبعد der في الجمع النهاية -en."
+          "fbAr": "الأسعار «بتزيد» دلوقتي → Partizip I، وبعد der في الجمع النهاية -en.",
+          "qAr": "بسبب الأسعار الـ___، ناس كتير بتشتري أقل.",
+          "oAr": [
+            "صيغة من فعل يرتفع",
+            "مرتفع حاليًا؛ بصيغ مختلفة للصفة",
+            "مرتفع حاليًا؛ بصيغ مختلفة للصفة"
+          ]
         },
         {
           "q": "Melden Sie den ___ Ihrer Bankkarte sofort.",
@@ -3046,7 +3638,13 @@
           ],
           "a": 0,
           "fb": "der Verlust = wenn man etwas verloren hat.",
-          "fbAr": "Verlust يعني فقدان الكارت."
+          "fbAr": "Verlust يعني فقدان الكارت.",
+          "qAr": "بلّغ فورًا عن ___ بطاقتك البنكية.",
+          "oAr": [
+            "الفقدان",
+            "الإيصال",
+            "الفائدة المالية"
+          ]
         },
         {
           "q": "Wer sein Konto ___, muss hohe Zinsen bezahlen.",
@@ -3057,7 +3655,13 @@
           ],
           "a": 2,
           "fb": "ein Konto überziehen = mehr Geld abheben, als auf dem Konto ist.",
-          "fbAr": "überziehen يعني تسحب فلوس أكتر من اللي في حسابك."
+          "fbAr": "überziehen يعني تسحب فلوس أكتر من اللي في حسابك.",
+          "qAr": "اللي ___ من حسابه، لازم يدفع فوائد عالية.",
+          "oAr": [
+            "يودع مالًا",
+            "يضيف مبلغًا للحساب",
+            "يسحب على المكشوف"
+          ]
         },
         {
           "q": "Viele Länder ___ von der Globalisierung.",
@@ -3068,7 +3672,13 @@
           ],
           "a": 1,
           "fb": "profitieren von + Dativ = einen Vorteil haben.",
-          "fbAr": "profitieren von يعني يستفيد من."
+          "fbAr": "profitieren von يعني يستفيد من.",
+          "qAr": "بلاد كتير ___ من العولمة.",
+          "oAr": [
+            "يفيد",
+            "يستفيد",
+            "يؤيّد"
+          ]
         },
         {
           "q": "Komm doch ___! Ich bin oben im Büro.",
@@ -3079,8 +3689,22 @@
           ],
           "a": 0,
           "fb": "Der Sprecher ist oben und die Bewegung geht zu ihm: her- + auf = herauf.",
-          "fbAr": "اللي بيتكلم فوق والحركة ناحيته، يبقى her: herauf."
+          "fbAr": "اللي بيتكلم فوق والحركة ناحيته، يبقى her: herauf.",
+          "qAr": "تعال ___! أنا فوق في المكتب.",
+          "oAr": [
+            "إلى أعلى ناحية المتكلم",
+            "إلى أعلى بعيدًا عن المتكلم",
+            "إلى أسفل بعيدًا عن المتكلم"
+          ]
         }
+      ],
+      "badgesAr": [
+        "كلما... زاد أو قل...",
+        "اسم الفاعل المستخدم كصفة",
+        "التصريف الثالث المستخدم كصفة",
+        "أفعال الحركة بعيدًا عن المتكلم أو ناحيته",
+        "المال والبنوك",
+        "العولمة"
       ]
     }
   };

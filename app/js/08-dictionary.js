@@ -73,7 +73,7 @@ function curatedDictionaryEntries(){
     list.push({...entry,ar:arabic,key:normalizeWordForSearch(headword),bare:bareWordKey(headword),arKey:normalizeWordForSearch(arabic),arParts:arabic.split(/\s*[\/،,;]\s*/).map(normalizeWordForSearch).filter(Boolean)});
   };
   // Lesson words come first so a duplicate keeps its photo and lesson link.
-  allVocabularyEntries().forEach(entry=>add({word:entry.word,pos:'',ar:entry.item.ar,forms:'',example:plainText(entry.item.ex||''),definition:plainText(entry.item.d||''),source:`${entry.level} · Kapitel ${entry.chapter.num}`,rank:1,route:entry.route,kind:'lesson',level:entry.level,vocab:entry}));
+  allVocabularyEntries().forEach(entry=>add({word:entry.word,pos:'',ar:entry.item.ar,forms:'',example:plainText(entry.item.ex||''),exampleAr:entry.item.exAr,definition:plainText(entry.item.d||''),definitionAr:entry.item.dAr,source:`${entry.level} · Kapitel ${entry.chapter.num}`,rank:1,route:entry.route,kind:'lesson',level:entry.level,vocab:entry}));
   const perfect=verb=>verb.part?`${verb.praet||''} · ${verb.aux==='sein'?'ist':'hat'} ${verb.part}`:'';
   [['A1',A1_VERBS],['A2',VERBS],['B1.1',window.B1_VERBS||[]]].forEach(([level,verbs])=>verbs.forEach(verb=>add({word:verb.inf,pos:'v',ar:verb.ar,forms:[perfect(verb),verb.rektion||''].filter(Boolean).join(' · '),example:verb.example,source:`Verben ${level}`,rank:1,kind:'verb',level,route:level==='A1'?'a1/verbs':level==='A2'?'verbs':'b1.1/verbs'})));
   const bs=window.BAUSTEINE||{};
@@ -122,8 +122,8 @@ function curatedDictionaryCard(entry){
     <div class="offline-dict-head"><div class="offline-dict-word">${fmtWord(escapeHtml(entry.word))}</div><span class="offline-dict-pos verified">✓ ${escapeHtml(entry.source)}</span></div>
     <div class="offline-dict-ar" lang="ar">${escapeHtml(entry.ar)}</div>
     ${entry.forms?`<div class="offline-dict-details"><span class="offline-dict-chip">${escapeHtml(entry.forms)}</span></div>`:''}
-    ${entry.definition?`<div class="offline-dict-note">${escapeHtml(entry.definition)}</div>`:''}
-    ${entry.example?`<div class="dictionary-example">„${escapeHtml(entry.example)}“</div>`:''}
+    ${entry.definition?`<div class="offline-dict-note">${escapeHtml(entry.definition)}</div>${ar(escapeHtml(entry.definitionAr||''))}`:''}
+    ${entry.example?`<div class="dictionary-example">„${escapeHtml(entry.example)}“</div>${ar(escapeHtml(entry.exampleAr||''))}`:''}
     ${entry.route?`<button type="button" class="curated-dict-link" onclick="go('${escapeHtml(entry.route)}')">Zur Lektion / Liste →</button>`:''}
   </article>`;
 }
@@ -191,8 +191,8 @@ function renderDictionary(){
       <article class="dictionary-entry" data-index="${index}" data-chapter="${v.chapter}"
         data-search="${escapeHtml(`${v.w} ${v.d} ${v.ex||''} ${v.ar||''}`.toLocaleLowerCase('de-DE'))}">
         <div><div class="dictionary-word">${fmtWord(v.w)}</div>
-          <div class="dictionary-definition">${v.d}</div>
-          ${v.ex?`<div class="dictionary-example">„${v.ex}“</div>`:''}${ar(v.ar)}</div>
+          <div class="dictionary-definition">${v.d}</div>${ar(v.dAr)}
+          ${v.ex?`<div class="dictionary-example">„${v.ex}“</div>${ar(v.exAr)}`:''}${ar(v.ar)}</div>
         <span class="dictionary-meta">K${v.chapter}</span>
       </article>`).join('')}</div>`;
   const search=$('#dictionarySearch'),chapter=$('#dictionaryChapter');
