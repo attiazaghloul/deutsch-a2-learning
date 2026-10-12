@@ -756,7 +756,7 @@ test('games and exams keep separate scores per level', () => {
 });
 
 test('progress backups only accept files exported by this app', () => {
-  const ui = readFileSync(join(root, 'app', 'ui-next.js'), 'utf8');
+  const ui = readFileSync(join(root, 'app', 'ui-next.js'), 'utf8').replace(/\r\n/g, '\n');
   const start = ui.indexOf('  function parseBackup(');
   const end = ui.indexOf('\n  }\n', start) + 4;
   const context = vm.createContext({});
@@ -1599,7 +1599,10 @@ test('B1.2 Arabic covers vocabulary explanations, examples and reading questions
   let questions = 0;
   for (const chapter of win.B1_BOOK.filter(item => item.num >= 7)) {
     assert.match(chapter.titleAr, ARABIC);
+    assert.match(chapter.subtitleAr, ARABIC);
+    assert.match(chapter.visual.captionAr, ARABIC);
     assert.match(chapter.vocabSummary.titleAr, ARABIC);
+    assert.match(chapter.vocabSummary.noteAr, ARABIC);
     assert.equal(chapter.badgesAr.length, chapter.badges.length);
     chapter.badgesAr.forEach(text => assert.match(text, ARABIC));
     chapter.vocab.forEach(word => {
@@ -1609,6 +1612,7 @@ test('B1.2 Arabic covers vocabulary explanations, examples and reading questions
     chapter.readings.forEach(reading => {
       assert.match(reading.titleAr, ARABIC);
       assert.match(reading.kindAr, ARABIC);
+      assert.equal(reading.ar.split('<br><br>').length, reading.text.split('<br><br>').length, `${chapter.num}: ${reading.title} paragraph coverage`);
       reading.questions.forEach(([q, answer, qAr, answerAr]) => {
         assert.ok(q && answer);
         assert.match(qAr, ARABIC);
@@ -1624,6 +1628,45 @@ test('B1.2 Arabic covers vocabulary explanations, examples and reading questions
   }
   assert.equal(words, 880);
   assert.equal(questions, 120);
+});
+
+test('B1 titles are translated in the lesson list, chapter menu, header and all reading headings', () => {
+  const win = loadA11Data(B12_FILES);
+  const view = { innerHTML: '' };
+  const context = vm.createContext({ window: win, B1_BOOK: win.B1_BOOK, view, location: { hash: '#b1.1/lessons' } });
+  context.setTop = (title, sub, hasBack, titleAr) => { context.headerAr = titleAr; };
+  vm.runInContext(html.match(/const LESSON_UI_AR=\{[\s\S]*?\n\};/)[0], context);
+  vm.runInContext(html.match(/const B1_TABS = \[[\s\S]*?\n\];/)[0], context);
+  for (const name of ['escapeHtml', 'ar', 'arLabel', 'chapterTabs', 'cleanTabLabel', 'chapterTabTitle', 'chapterTabDescription', 'chapterTabImage', 'renderChapterMenu', 'renderChapterTab', 'renderChapter', 'renderB1Home']) {
+    vm.runInContext(`${functionSource(name)}\nthis.${name}=${name};`, context);
+  }
+  context.renderB1Home();
+  win.B1_BOOK.forEach(chapter => {
+    assert.match(chapter.titleAr, ARABIC);
+    assert.ok(view.innerHTML.includes(chapter.titleAr), `lesson list title ${chapter.num}`);
+  });
+  for (const chapter of win.B1_BOOK.filter(c => c.num >= 7)) {
+    context.renderChapterMenu(chapter);
+    assert.ok(context.headerAr.includes(chapter.titleAr), `menu header ${chapter.num}`);
+    assert.ok(view.innerHTML.includes('نصوص قراءة مع أسئلة وإجابات.'), `reading menu ${chapter.num}`);
+    context.renderChapter(chapter, 'lesen');
+    assert.ok(context.headerAr.includes(chapter.titleAr), `active header ${chapter.num}`);
+    chapter.readings.forEach(reading => {
+      assert.ok(view.innerHTML.includes(reading.titleAr), reading.title);
+      assert.ok(view.innerHTML.includes(reading.kindAr), reading.kind);
+    });
+    assert.match(view.innerHTML, /<details class="ar ar-long"[^>]* open>/, `reading translations are expanded ${chapter.num}`);
+    assert.ok(view.innerHTML.includes('فهم المقروء'));
+  }
+});
+
+test('Arabic labels use safe inline markup and reading expansion is optional', () => {
+  const context = loadFunctions(['escapeHtml', 'ar']);
+  context.location = { hash: '#b1.1/k7/lesen' };
+  assert.match(context.ar('عنوان <اختبار>', { inline: true }), /^<span class="ar ar-label"[^>]*>عنوان &lt;اختبار&gt;<\/span>$/);
+  const long = 'ترجمة كاملة '.repeat(40);
+  assert.match(context.ar(long, { expanded: true }), /dir="rtl" open>/);
+  assert.doesNotMatch(context.ar(long), / open>/);
 });
 
 test('B1.2 grammar tables, exercise prompts and solutions have Arabic support', () => {
@@ -1654,7 +1697,7 @@ test('B1.2 grammar tables, exercise prompts and solutions have Arabic support', 
 
 test('reading answers keep their Arabic inside the hidden answer container', () => {
   const { renderChapterTab } = loadFunctions(['renderChapterTab']);
-  const context = vm.createContext({ ar: text => text ? `<div class="ar" lang="ar" dir="rtl">${text}</div>` : '' });
+  const context = vm.createContext({ ar: text => text ? `<div class="ar" lang="ar" dir="rtl">${text}</div>` : '', arLabel: () => '' });
   vm.runInContext(`${functionSource('renderChapterTab')}\nthis.render=renderChapterTab;`, context);
   const chapter = loadA11Data(B12_FILES).B1_BOOK.find(c => c.num === 7);
   const rendered = context.render(chapter, 'lesen');
@@ -1667,7 +1710,7 @@ test('reading answers keep their Arabic inside the hidden answer container', () 
 
 test('quiz shuffling keeps Arabic attached to the corresponding German option', () => {
   const area = { innerHTML: '', querySelectorAll: () => [] };
-  const context = vm.createContext({ $: () => area, ar: text => text ? `<div class="ar">${text}</div>` : '', quizOptionOrder: length => Array.from({ length }, (_, i) => length - i - 1) });
+  const context = vm.createContext({ $: () => area, ar: text => text ? `<div class="ar">${text}</div>` : '', arLabel: () => '', quizOptionOrder: length => Array.from({ length }, (_, i) => length - i - 1) });
   vm.runInContext(`${functionSource('initQuiz')}\nthis.init=initQuiz;`, context);
   const question = loadA11Data(B12_FILES).B1_BOOK.find(c => c.num === 7).quiz[6];
   context.init([question]);
@@ -1683,6 +1726,7 @@ test('Arabic feedback follows the accepted order when two grammatical answers ha
   context.grammarExerciseIndex = new Map([['example', exercise]]);
   context.document = { querySelector: selector => selector.includes('.gx-feedback') ? box : { classList: { add() {} } } };
   context.ar = text => text || '';
+  context.arLabel = () => '';
   context.escapeHtml = text => text;
   context.saveGrammarResult = () => {};
   context.updateGrammarScores = () => {};

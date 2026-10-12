@@ -19,7 +19,8 @@
       "goals": [],
       "vocabSummary": {
         "title": "Wortschatz mit Erklärung",
-        "note": "كل بطاقة فيها شرح ألماني واضح، مثال كامل، والترجمة العربية.",
+        "note": "Jede Karte enthält eine deutsche Erklärung, einen vollständigen Beispielsatz und die arabische Übersetzung.",
+        "noteAr": "كل بطاقة فيها شرح ألماني واضح، مثال كامل، والترجمة العربية.",
         "titleAr": "مفردات مع شرح"
       },
       "vocab": [
@@ -1377,7 +1378,8 @@
       "goals": [],
       "vocabSummary": {
         "title": "Wortschatz mit Erklärung",
-        "note": "كل بطاقة فيها شرح ألماني واضح، مثال كامل، والترجمة العربية.",
+        "note": "Jede Karte enthält eine deutsche Erklärung, einen vollständigen Beispielsatz und die arabische Übersetzung.",
+        "noteAr": "كل بطاقة فيها شرح ألماني واضح، مثال كامل، والترجمة العربية.",
         "titleAr": "مفردات مع شرح"
       },
       "vocab": [
@@ -2815,7 +2817,8 @@
       "goals": [],
       "vocabSummary": {
         "title": "Wortschatz mit Erklärung",
-        "note": "كل بطاقة فيها شرح ألماني واضح، مثال كامل، والترجمة العربية.",
+        "note": "Jede Karte enthält eine deutsche Erklärung, einen vollständigen Beispielsatz und die arabische Übersetzung.",
+        "noteAr": "كل بطاقة فيها شرح ألماني واضح، مثال كامل، والترجمة العربية.",
         "titleAr": "مفردات مع شرح"
       },
       "vocab": [
@@ -4153,7 +4156,8 @@
       "goals": [],
       "vocabSummary": {
         "title": "Wortschatz mit Erklärung",
-        "note": "كل بطاقة فيها شرح ألماني واضح، مثال كامل، والترجمة العربية.",
+        "note": "Jede Karte enthält eine deutsche Erklärung, einen vollständigen Beispielsatz und die arabische Übersetzung.",
+        "noteAr": "كل بطاقة فيها شرح ألماني واضح، مثال كامل، والترجمة العربية.",
         "titleAr": "مفردات مع شرح"
       },
       "vocab": [
@@ -5741,7 +5745,8 @@
       "goals": [],
       "vocabSummary": {
         "title": "Wortschatz mit Erklärung",
-        "note": "كل بطاقة فيها شرح ألماني واضح، مثال كامل، والترجمة العربية.",
+        "note": "Jede Karte enthält eine deutsche Erklärung, einen vollständigen Beispielsatz und die arabische Übersetzung.",
+        "noteAr": "كل بطاقة فيها شرح ألماني واضح، مثال كامل، والترجمة العربية.",
         "titleAr": "مفردات مع شرح"
       },
       "vocab": [
@@ -7419,7 +7424,8 @@
       "goals": [],
       "vocabSummary": {
         "title": "Wortschatz mit Erklärung",
-        "note": "كل بطاقة فيها شرح ألماني واضح، مثال كامل، والترجمة العربية.",
+        "note": "Jede Karte enthält eine deutsche Erklärung, einen vollständigen Beispielsatz und die arabische Übersetzung.",
+        "noteAr": "كل بطاقة فيها شرح ألماني واضح، مثال كامل، والترجمة العربية.",
         "titleAr": "مفردات مع شرح"
       },
       "vocab": [
