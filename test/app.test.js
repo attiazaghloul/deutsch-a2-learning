@@ -1077,7 +1077,7 @@ test('word search ranks whole Arabic meanings first and honours the chosen sourc
   const search = functionSource('renderWordSearch');
   assert.match(search, /data-ws-level/);
   assert.match(search, /WORD_SEARCH_LEVELS/);
-  assert.match(html, /\['B1\.1','B1\.1'\]/, 'B1.1 can be chosen as a level');
+  assert.match(html, /\['B1\.1','B1'\]/, 'B1 (B1.1 + B1.2) can be chosen as a level');
 });
 
 /* ---------- A1.1 (Netzwerk neu A1.1, chapters 1-6) ---------- */
@@ -1480,6 +1480,8 @@ test('A2.1 grammar has detailed topics and is served in the A2 chapters', () => 
   assert.equal(labels.grammarLevelLabel('a2-k3-dass-4'), 'Grammatik A2.1');
   assert.equal(labels.grammarLevelLabel('test-a1-k9-wohin-akkusativ-2'), 'Grammatik A1.2');
   assert.equal(labels.grammarLevelLabel('b1-k2-x-1'), 'Grammatik B1.1');
+  assert.equal(labels.grammarLevelLabel('k3-passiv'), 'Grammatik B1.1');
+  assert.equal(labels.grammarLevelLabel('test-b1-k8-genitiv-2'), 'Grammatik B1.2');
 });
 
 test('A2.1 verbs and data files are loaded, precached and conjugate in every tense', () => {

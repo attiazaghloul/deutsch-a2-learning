@@ -12,7 +12,7 @@ const TRAINER_SESSION_SIZE=14;
 const TRAINER_LEVELS=[
   {id:'a1',label:'A1',entryLevel:'A1',book:()=>A1_BOOK},
   {id:'a2',label:'A2',entryLevel:'A2',book:()=>BOOK},
-  {id:'b1',label:'B1.1',entryLevel:'B1.1',book:()=>B1_BOOK}
+  {id:'b1',label:'B1',entryLevel:'B1.1',book:()=>B1_BOOK}
 ];
 let trainerSession=null;
 

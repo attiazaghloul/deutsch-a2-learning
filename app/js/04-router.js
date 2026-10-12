@@ -726,12 +726,12 @@ const A2_SECTIONS=[
 ];
 
 const B1_SECTIONS=[
-  {route:'b1.1/lessons',icon:'1',title:'Lektionen',text:'Sechs vollständige Kapitel mit Wortschatz, Lesen, Grammatik, Sprechen und Quiz.',ar:'ست وحدات كاملة مع الكلمات والقراءة والقواعد والمحادثة والاختبارات.'},
+  {route:'b1.1/lessons',icon:'1',title:'Lektionen',text:'Zwölf vollständige Kapitel (B1.1 + B1.2) mit Wortschatz, Lesen, Grammatik, Sprechen und Quiz.',ar:'اتناشر وحدة كاملة (B1.1 وB1.2) مع الكلمات والقراءة والقواعد والمحادثة والاختبارات.'},
   {route:'train',icon:'🧠',title:'Wort-Trainer',text:'Wörter mit System lernen: erkennen, hören, schreiben – mit Wiederholung zur richtigen Zeit.',ar:'حفظ الكلمات بنظام التكرار المتباعد.'},
   {route:'bausteine',icon:'▦',title:'Satzbaukasten',text:'Satzmuster, Konnektoren, W-Fragen, Präpositionen, Verben mit Kasus und Nomen nach Artikel.',ar:'القواعد الثابتة: ترتيب الجملة، أدوات الربط، حروف الجر، الأفعال المنعكسة والداتيف.'},
-  {route:'b1.1/dict',icon:'W',title:'Wörterbuch',text:'Alle B1.1-Wörter mit Suche, Beispielen und Kapitelfilter.',ar:'قاموس كل كلمات B1.1.'},
+  {route:'b1.1/dict',icon:'W',title:'Wörterbuch',text:'Alle B1-Wörter (B1.1 + B1.2) mit Suche, Beispielen und Kapitelfilter.',ar:'قاموس كل كلمات B1.1 وB1.2.'},
   {route:'b1.1/verbs',icon:'V',title:'Verben',text:'Wichtige B1-Verben mit Präteritum, Perfekt und Präpositionen.',ar:'أهم أفعال B1 مع الماضي وحروف الجر.'},
-  {route:'b1.1/phrases',icon:'R',title:'Redemittel',text:'Alle Redemittel aus den sechs Kapiteln an einem Ort.',ar:'كل التعبيرات الجاهزة من الوحدات الست.'},
-  {route:'b1.1/games',icon:'T',title:'Training',text:'Schnell-Challenge, Memory, Artikel und Satz-Puzzle mit B1-Wörtern.',ar:'ألعاب تدريب بكلمات وجمل B1.1.'},
+  {route:'b1.1/phrases',icon:'R',title:'Redemittel',text:'Alle Redemittel aus den zwölf Kapiteln an einem Ort.',ar:'كل التعبيرات الجاهزة من الوحدات الاتناشر.'},
+  {route:'b1.1/games',icon:'T',title:'Training',text:'Schnell-Challenge, Memory, Artikel und Satz-Puzzle mit B1-Wörtern.',ar:'ألعاب تدريب بكلمات وجمل B1.'},
   {route:'b1.1/exam',icon:'P',title:'Prüfung',text:'Goethe-B1 Modelltraining: Lesen, Hören, Schreiben und Sprechen.',ar:'تدريب على نموذج امتحان Goethe B1.'}
 ];
