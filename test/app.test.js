@@ -1588,3 +1588,123 @@ test('the sentence puzzle only uses one clean sentence at a time', () => {
   assert.equal(isPuzzleSentence('Hallo!'), false);
   assert.equal(isPuzzleSentence('Gehen Sie bis zur Brücke und dann rechts.'), true);
 });
+
+/* ---------- B1.2 (Netzwerk neu B1.2, chapters 7-12) ---------- */
+const B11_FILES = ['data_b1_1.js', 'data_b1_1_lessons.js', 'data_b1_1_conversations.js'];
+const B12_FILES = [...B11_FILES, 'data_b1_2_vocab.js', 'data_b1_2_lessons.js', 'data_b1_2_conversations.js'];
+
+test('B1.2 adds chapters 7-12 with the whole Lernwortschatz as text cards', () => {
+  const win = loadA11Data(B12_FILES);
+  assert.deepEqual(Array.from(win.B1_BOOK, chapter => chapter.num), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
+  const { wordEntryId } = loadFunctions(['stableFavoriteHash', 'wordEntryId']);
+  let total = 0;
+  for (const chapter of win.B1_BOOK.filter(item => item.num > 6)) {
+    const label = `B1.2 Kapitel ${chapter.num}`;
+    assert.equal(chapter.route, `b1.1/k${chapter.num}`, `${label} lives in the B1 level`);
+    assert.match(chapter.subtitle, /B1\.2/);
+    assert.ok(chapter.vocab.length >= 120, `${label} has ${chapter.vocab.length} cards`);
+    total += chapter.vocab.length;
+    const names = chapter.vocab.map(card => card.w.replace(/^(der|die|das)\s+/, '').toLowerCase());
+    assert.equal(new Set(names).size, names.length, `${label}: duplicate word`);
+    chapter.vocab.forEach(card => {
+      assert.ok(card.cat && !card.img, `${label}: ${card.w}`);
+      assert.match(card.d, /^[A-ZÄÖÜ„].*[.!?]$/, `${label}: definition of ${card.w}`);
+      assert.match(card.ex, /^[A-ZÄÖÜ„»].*[.!?]$/, `${label}: example of ${card.w}`);
+      assert.ok(card.ex.trim().split(/\s+/).length <= 20, `${label}: example too long for ${card.w}`);
+      assert.doesNotMatch(`${card.d} ${card.ex}`, /jmd\.|etw\./, `${label}: dictionary artefact in ${card.w}`);
+      assert.match(card.ar, ARABIC, `${label}: Arabic for ${card.w}`);
+    });
+    const ids = new Set(chapter.vocab.map((card, index) => wordEntryId('B1.1', chapter, index, card)));
+    assert.equal(ids.size, chapter.vocab.length, `${label}: word ids are unique`);
+    assert.doesNotMatch(chapter.vocabSummary.note, /اقلب|صورة/, 'text cards do not flip and have no photo');
+  }
+  assert.ok(total >= 800, `B1.2 has ${total} cards`);
+  assert.equal(loadA11Data(B11_FILES).B1_BOOK.length, 6, 'B1.1 data stays on its own');
+});
+
+test('B1.2 chapters contain complete lessons and five conversation situations', () => {
+  const win = loadA11Data(B12_FILES);
+  for (const chapter of win.B1_BOOK.filter(item => item.num > 6)) {
+    const label = `B1.2 Kapitel ${chapter.num}`;
+    assert.ok(chapter.intro.length > 80 && ARABIC.test(chapter.introAr), `${label} intro`);
+    assert.ok(chapter.goals.length >= 6 && chapter.goals.every(goal => goal.de && ARABIC.test(goal.ar)), `${label} goals`);
+    assert.ok(chapter.readings.length >= 3, `${label} readings`);
+    chapter.readings.forEach(reading => {
+      assert.ok(reading.text.length > 900 && ARABIC.test(reading.ar), `${reading.title} text`);
+      assert.ok(reading.questions.length >= 4 && reading.questions.every(([q, a]) => q && a), `${reading.title} questions`);
+      assert.ok(reading.glossary.length >= 5 && reading.glossary.every(([de, ar]) => de && ARABIC.test(ar)), `${reading.title} glossary`);
+    });
+    assert.ok(chapter.grammar.length >= 2 && chapter.grammar.every(item => item.body.includes('exbox')), `${label} grammar overview`);
+    assert.ok(chapter.speaking.questions.length >= 4 && chapter.speaking.model && ARABIC.test(chapter.speaking.modelAr), `${label} speaking`);
+    assert.ok(chapter.quiz.length >= 8, `${label} quiz`);
+    chapter.quiz.forEach(item => {
+      assert.ok(item.a >= 0 && item.a < item.o.length && new Set(item.o).size === item.o.length, item.q);
+      assert.ok(item.fb && ARABIC.test(item.fbAr), item.q);
+    });
+    assert.equal(chapter.conversations.length, 5, `${label} conversations`);
+    for (const item of chapter.conversations) {
+      assert.ok(item.situation && ARABIC.test(item.situationAr));
+      assert.ok(item.phrases.length >= 8 && item.dialogue.length >= 6, item.situation);
+      assert.ok(new Set(item.dialogue.map(line => line.s)).size >= 2, `${item.situation}: two speakers`);
+      [...item.phrases, ...item.dialogue].forEach(line => assert.ok(line.de && ARABIC.test(line.ar), `${item.situation}: ${line.de}`));
+      assert.ok(item.task && ARABIC.test(item.taskAr));
+      assert.ok(chapter.redemittel.some(group => group.cat === item.situation), 'phrases feed the Redemittel');
+    }
+    assert.ok(chapter.redemittel.length >= 8, `${label} Redemittel`);
+  }
+  // B1.1 chapters keep their own conversations
+  assert.ok(win.B1_BOOK.filter(item => item.num <= 6).every(chapter => chapter.conversations.length === 5));
+});
+
+test('B1.2 grammar has detailed topics, varied exercises and its own label', () => {
+  const win = loadA11Data(['data_b1_1_grammar_1.js', 'data_b1_1_grammar_2.js', 'data_b1_1_grammar_3.js', 'data_b1_2_grammar_1.js', 'data_b1_2_grammar_2.js']);
+  const topics = [];
+  for (let chapter = 7; chapter <= 12; chapter += 1) {
+    assert.ok(win.B1_GRAMMAR[chapter]?.length >= 3, `Kapitel ${chapter}`);
+    topics.push(...win.B1_GRAMMAR[chapter]);
+  }
+  const all = Object.values(win.B1_GRAMMAR).flat();
+  assert.equal(new Set(all.map(topic => topic.id)).size, all.length, 'grammar ids are unique across B1');
+  assert.ok(win.B1_GRAMMAR[1].length >= 2, 'B1.1 grammar stays');
+  assert.ok(assertGrammarTopics(topics, 'b1-k') >= 250);
+  const context = vm.createContext({ window: win });
+  vm.runInContext(`${functionSource('chapterGrammar')}\nthis.chapterGrammar=chapterGrammar;`, context);
+  assert.equal(context.chapterGrammar({ route: 'b1.1/k9', num: 9 })[0].id.slice(0, 6), 'b1-k9-');
+  assert.equal(loadFunctions(['grammarLevelLabel']).grammarLevelLabel(topics[0].id), 'Grammatik B1.2');
+});
+
+test('B1.2 verbs extend the B1 verb reference and every file is loaded and precached', () => {
+  const context = vm.createContext({ window: {}, escapeHtml: value => String(value) });
+  for (const file of ['data_b1_verbs.js', 'data_b1_2_verbs.js']) {
+    vm.runInContext(readFileSync(join(root, 'app', file), 'utf8'), context);
+  }
+  vm.runInContext(readFileSync(join(root, 'app', 'js', '15-conjugation.js'), 'utf8').replace(/^const /gm, 'var '), context);
+  const verbs = context.window.B1_VERBS;
+  assert.ok(verbs.filter(verb => verb.chapter >= 7).length >= 90, 'B1.2 verbs from chapters 7-12');
+  assert.equal(new Set(verbs.map(verb => verb.inf)).size, verbs.length, 'no duplicate verbs');
+  verbs.forEach(verb => {
+    assert.ok(['haben', 'sein'].includes(verb.aux) && verb.forms.length === 6 && ARABIC.test(verb.ar), verb.inf);
+    context.conjugateVerb(verb).forEach(([tense, forms]) => forms.forEach(form => assert.ok(form && !/undefined/.test(form), `${verb.inf} ${tense}`)));
+  });
+  const table = name => Object.fromEntries(context.conjugateVerb(verbs.find(item => item.inf === name)));
+  assert.equal(table('sich streiten')['Perfekt'][0], 'habe mich gestritten');
+  assert.equal(table('sich vornehmen')['Präsens'][4], 'nehmt euch vor');
+  const sw = readFileSync(join(root, 'app', 'sw.js'), 'utf8');
+  const page = readFileSync(join(root, 'app', 'index.html'), 'utf8');
+  const files = ['data_b1_2_vocab.js', 'data_b1_2_lessons.js', 'data_b1_2_conversations.js', 'data_b1_2_grammar_1.js', 'data_b1_2_grammar_2.js', 'data_b1_2_verbs.js'];
+  for (const file of files) {
+    assert.match(sw, new RegExp(`'${file}'`), `${file} precached`);
+    assert.match(page, new RegExp(`src="${file}[?"]`), `${file} loaded`);
+  }
+  const order = ['data_b1_1.js', 'data_b1_1_conversations.js', 'data_b1_verbs.js', ...files].map(file => page.indexOf(`src="${file}`));
+  assert.deepEqual([...order].sort((a, b) => a - b), order, 'B1.2 files load after the B1.1 data in dependency order');
+});
+
+test('the B1 level lists B1.1 and B1.2 chapters and labels the level B1', () => {
+  const home = functionSource('renderB1Home');
+  assert.match(home, /B1\.1 · Kapitel 1–6/);
+  assert.match(home, /B1\.2 · Kapitel 7–12/);
+  assert.match(functionSource('renderChapterMenu'), /c\.num>6\?'B1\.2':'B1\.1'/);
+  const ui = readFileSync(join(root, 'app', 'ui-next.js'), 'utf8');
+  assert.match(ui, /function levelCode\(level\)\{\s*return level==='b1\.1'\?'B1'/);
+});
