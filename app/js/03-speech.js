@@ -8,10 +8,20 @@ let fixedSpeechSession = 0;
 
 function cleanSpeechText(element){
   const copy=element.cloneNode(true);
-  copy.querySelectorAll('.ar,.speak-btn,.answer-btn,.exercise-actions,.qicon,.badge,.cnt,.hint,input,select,button').forEach(node=>node.remove());
+  copy.querySelectorAll('.ar,[lang="ar"],[lang^="ar-"],[dir="rtl"],.speak-btn,.answer-btn,.exercise-actions,.qicon,.badge,.cnt,.hint,input,select,button').forEach(node=>node.remove());
   return prepareSpeechText(copy.textContent,{
     vocabulary:element.matches('.w,.dictionary-word,.verb-inf,.verb-perfect,.flashcard .big')
   });
+}
+
+function isArabicSpeechElement(element){
+  return Boolean(element.closest('.ar,[lang="ar"],[lang^="ar-"],[dir="rtl"]'));
+}
+
+function germanSpeechText(element){
+  if(isArabicSpeechElement(element)) return '';
+  const text=cleanSpeechText(element);
+  return /[A-Za-zÄÖÜäöüß]/.test(text) && !/[\u0600-\u06ff]/.test(text) ? text : '';
 }
 
 function prepareSpeechText(text,{vocabulary=false}={}){
@@ -203,7 +213,7 @@ function enhanceSpeech(root){
     '.card>h3','.card>h4','.card>p','.intro-note','.flashcard .big','.flashcard .fdef','.flashcard .fex'
   ].join(',');
   root.querySelectorAll(selector).forEach(element=>{
-    if(element.dataset.speechReady) return;
+    if(element.dataset.speechReady || element.closest('button') || !germanSpeechText(element)) return;
     element.dataset.speechReady='1';
     element.classList.add('speakable');
     const button=document.createElement('button');
@@ -211,23 +221,22 @@ function enhanceSpeech(root){
     button.setAttribute('aria-label','Vorlesen');
     button.addEventListener('click',event=>{
       event.preventDefault(); event.stopPropagation();
-      speakText(cleanSpeechText(element),element.classList.contains('ar')?'ar':'de');
+      speakText(germanSpeechText(element),'de');
     });
     element.appendChild(button);
   });
-  root.querySelectorAll('.ar').forEach(element=>{
-    if(element.dataset.speechReady || !element.textContent.trim() || element.closest('button')) return;
-    element.dataset.speechReady='1';
-    element.classList.add('speakable');
-    const button=document.createElement('button');
-    button.type='button'; button.className='speak-btn'; button.textContent='▶';
-    button.setAttribute('aria-label','قراءة النص العربي');
-    button.addEventListener('click',event=>{
-      event.preventDefault(); event.stopPropagation();
-      speakText(cleanSpeechText(element),'ar');
-    });
-    element.appendChild(button);
-  });
+}
+
+function handleListenClick(event){
+  if(!document.body.classList.contains('listen-mode')
+    ||isArabicSpeechElement(event.target)
+    ||event.target.closest('.speak-btn,input,select,button,a,.answer-btn,.exercise-check,.exercise-reset,.fc-nav,.main-tabs,.chapter-tabs'))return;
+  const target=event.target.closest('.speakable,.quiz-opt,.word-token');
+  if(!target) return;
+  const text=germanSpeechText(target);
+  if(!text) return;
+  event.preventDefault(); event.stopPropagation();
+  speakText(text,'de');
 }
 
 function setListenMode(on){
@@ -250,15 +259,6 @@ listenToggle.addEventListener('click',()=>{
   showSpeechStatus(on?'اضغط على أي نص لسماعه':'تم إيقاف وضع الاستماع');
 });
 
-view.addEventListener('click',event=>{
-  if(!document.body.classList.contains('listen-mode')
-    ||event.target.closest('.speak-btn,input,select,button,a,.answer-btn,.exercise-check,.exercise-reset,.fc-nav,.main-tabs,.chapter-tabs'))return;
-  const target=event.target.closest('.speakable,.quiz-opt,.word-token');
-  if(!target) return;
-  event.preventDefault(); event.stopPropagation();
-  const text=cleanSpeechText(target);
-  if(!text||!/[A-Za-zÄÖÜäöüß\u0600-\u06ff]/.test(text))return;
-  speakText(text,target.classList.contains('ar')?'ar':'de');
-},true);
+view.addEventListener('click',handleListenClick,true);
 
 new MutationObserver(()=>enhanceSpeech(view)).observe(view,{childList:true,subtree:true});

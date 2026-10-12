@@ -52,6 +52,73 @@ test('vocabulary speech removes plural symbols and grammar annotations', () => {
   assert.equal(prepareSpeechText('Ich fahre mit dem Zug.'), 'Ich fahre mit dem Zug.');
 });
 
+function speechElement(text, { arabic = false, insideButton = false } = {}) {
+  return {
+    dataset: {},
+    buttons: [],
+    classList: { add() {} },
+    closest(selector) {
+      if (selector.includes('[lang="ar"]')) return arabic ? this : null;
+      if (selector === 'button') return insideButton ? this : null;
+      return null;
+    },
+    matches() { return false; },
+    cloneNode() { return { textContent: text, querySelectorAll() { return []; } }; },
+    appendChild(button) { this.buttons.push(button); }
+  };
+}
+
+test('speech accepts German prose and skips Arabic regions and unmarked Arabic text', () => {
+  const { germanSpeechText } = loadFunctions(['isArabicSpeechElement', 'germanSpeechText', 'cleanSpeechText', 'prepareSpeechText']);
+  assert.equal(germanSpeechText(speechElement('Ich lerne Deutsch.')), 'Ich lerne Deutsch.');
+  assert.equal(germanSpeechText(speechElement('ترجمة النص')), '');
+  assert.equal(germanSpeechText(speechElement('معنى Haus')), '');
+  assert.equal(germanSpeechText(speechElement('Haus', { arabic: true })), '');
+  assert.equal(germanSpeechText(speechElement('123 ▶')), '');
+});
+
+test('speech enhancement adds only German buttons and stays idempotent', () => {
+  const context = loadFunctions(['isArabicSpeechElement', 'germanSpeechText', 'cleanSpeechText', 'prepareSpeechText', 'enhanceSpeech']);
+  const spoken = [];
+  context.speakText = (text, lang) => spoken.push([text, lang]);
+  context.document = { createElement() { return { setAttribute() {}, addEventListener(type, callback) { this[type] = callback; } }; } };
+  const candidates = [
+    speechElement('Guten Tag.'),
+    speechElement('عنوان القراءة', { arabic: true }),
+    speechElement('Deutsch', { arabic: true }),
+    speechElement('ترجمة بدون علامة'),
+    speechElement('Deutsch', { insideButton: true })
+  ];
+  const root = { querySelectorAll() { return candidates; } };
+  context.enhanceSpeech(root);
+  context.enhanceSpeech(root);
+  assert.deepEqual(candidates.map(element => element.buttons.length), [1, 0, 0, 0, 0]);
+  candidates[0].buttons[0].click({ preventDefault() {}, stopPropagation() {} });
+  assert.deepEqual(spoken, [['Guten Tag.', 'de']]);
+});
+
+test('listen mode ignores Arabic clicks inside a German speech target', () => {
+  const context = loadFunctions(['isArabicSpeechElement', 'germanSpeechText', 'cleanSpeechText', 'prepareSpeechText', 'handleListenClick']);
+  const spoken = [];
+  context.speakText = (text, lang) => spoken.push([text, lang]);
+  context.document = { body: { classList: { contains() { return true; } } } };
+  const german = speechElement('Mein Alltag');
+  function event(arabic) {
+    return {
+      target: { closest(selector) {
+        if (selector.includes('[lang="ar"]')) return arabic ? this : null;
+        if (selector === '.speakable,.quiz-opt,.word-token') return german;
+        return null;
+      } },
+      preventDefault() {}, stopPropagation() {}
+    };
+  }
+  context.handleListenClick(event(true));
+  assert.deepEqual(spoken, []);
+  context.handleListenClick(event(false));
+  assert.deepEqual(spoken, [['Mein Alltag', 'de']]);
+});
+
 test('favorite identifiers are stable and distinguish entries', () => {
   const { stableFavoriteHash, wordEntryId } = loadFunctions(['stableFavoriteHash', 'wordEntryId']);
   assert.equal(stableFavoriteHash('lernen'), stableFavoriteHash('lernen'));
