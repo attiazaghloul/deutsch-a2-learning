@@ -64,7 +64,7 @@ function saveGameBest(id,score){
 }
 
 function renderGamesHome(){
-  setTop(`Practice Lab ${gameLevel==='b1.1'?'B1.1':gameLevel==='a1'?'A1':'A2'}`,'Gezielt trainieren · sicherer anwenden',false);
+  setTop(`Practice Lab ${gameLevel==='b1.1'?'B1':gameLevel==='a1'?'A1':'A2'}`,'Gezielt trainieren · sicherer anwenden',false);
   const best=gameBestScores();
   document.body.classList.add('has-back');
   view.innerHTML=gameTabs()+`

@@ -152,9 +152,10 @@ function grammarFeedback(id,correct,extra=''){
 }
 
 function grammarLevelLabel(id){
-  const match=id.replace(/^test-/,'').match(/^(a1|a2)-k(\d+)-/);
+  const match=id.replace(/^test-/,'').match(/^(a1|a2|b1)-k(\d+)-/);
   if(!match) return 'Grammatik B1.1';
   if(match[1]==='a2') return 'Grammatik A2.1';
+  if(match[1]==='b1') return Number(match[2])>6?'Grammatik B1.2':'Grammatik B1.1';
   return Number(match[2])>6?'Grammatik A1.2':'Grammatik A1.1';
 }
 

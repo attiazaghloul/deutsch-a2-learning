@@ -72,14 +72,14 @@ function renderChapterMenu(c){
   const isA1=c.route?.startsWith('a1/');
   const isB1=c.route?.startsWith('b1.1/');
   const routeBase=c.route||`k${c.num}`;
-  const chapterLabel=isA1?'A1 Kapitel':isB1?'B1.1 Kapitel':'Kapitel';
+  const chapterLabel=isA1?'A1 Kapitel':isB1?'B1 Kapitel':'Kapitel';
   setTop(`${chapterLabel} ${c.num}: ${c.title}`,'Wähle den Inhalt',true);
   view.innerHTML=`
     ${false && c.visual?`<figure class="card chapter-visual ${isA1?'chapter-visual--wide':''}">
       <img src="${c.visual.src}" alt="${c.visual.alt}">
       <figcaption class="visual-caption">${c.visual.caption}${ar(c.visual.captionAr)}</figcaption>
     </figure>`:''}
-    <section class="hero chapter-hero"><div><span class="next-hero-eyebrow">${isA1?'A1':isB1?'B1.1':'A2'} · ${chapterLabel} ${c.num}</span><h2>${c.title}</h2><p>${c.subtitle}</p>${ar(c.titleAr)}</div>${window.NextUI?.lessonStart(routeBase)||''}</section>
+    <section class="hero chapter-hero"><div><span class="next-hero-eyebrow">${isA1?'A1':isB1?(c.num>6?'B1.2':'B1.1'):'A2'} · ${chapterLabel} ${c.num}</span><h2>${c.title}</h2><p>${c.subtitle}</p>${ar(c.titleAr)}</div>${window.NextUI?.lessonStart(routeBase)||''}</section>
     <section class="chapter-tab-grid">${chapterTabs(c).map(([id,lbl])=>{
       const img=chapterTabImage(c,id);
       return `
@@ -94,7 +94,7 @@ function renderChapter(c, tab){
   const isA1=c.route?.startsWith('a1/');
   const isB1=c.route?.startsWith('b1.1/');
   const routeBase=c.route||`k${c.num}`;
-  const chapterLabel=isA1?'A1 Kapitel':isB1?'B1.1 Kapitel':'Kapitel';
+  const chapterLabel=isA1?'A1 Kapitel':isB1?'B1 Kapitel':'Kapitel';
   setTop(`${chapterLabel} ${c.num}: ${c.title}`, c.subtitle, true);
   const tabs=chapterTabs(c);
   let html = `${isB1?'':(window.NextUI?.lessonProgress(routeBase,tab)||'')}<div class="tabs chapter-tabs" role="tablist" aria-label="Kapitelbereiche">` + tabs.map(([id,lbl]) =>

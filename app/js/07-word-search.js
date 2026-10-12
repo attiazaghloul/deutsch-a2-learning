@@ -1,7 +1,7 @@
 /* ===================== global word search and favorites ===================== */
 const WORD_SEARCH_PREFS_KEY='wordSearchPrefsV1';
 const WORD_SEARCH_RECENT_KEY='wordSearchRecentV1';
-const WORD_SEARCH_LEVELS=[['','Alle'],['A1','A1'],['A2','A2'],['B1.1','B1.1']];
+const WORD_SEARCH_LEVELS=[['','Alle'],['A1','A1'],['A2','A2'],['B1.1','B1']];
 
 function wordSearchPrefs(){
   const defaults={level:'',lessons:true,basics:true,big:true,images:true};

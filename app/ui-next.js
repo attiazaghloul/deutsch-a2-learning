@@ -120,13 +120,18 @@
     });
   }
 
+  /* The B1 level keeps its old internal id 'b1.1' (routes, saved progress) but now holds B1.1 + B1.2. */
+  function levelCode(level){
+    return level==='b1.1'?'B1':String(level||'').toUpperCase();
+  }
+
   function featureTabs(level,active){
     const items=level==='a1'
       ?[['lessons','Lektionen','a1/lessons'],['dict','Wörterbuch','a1/dict'],['verbs','Verben','a1/verbs'],['phrases','Redemittel','a1/phrases'],['games','Training','a1/games'],['exam','Prüfung','a1/exam'],['listen','Hören','a1/listen']]
       :level==='b1.1'
         ?[['lessons','Lektionen','b1.1/lessons'],['dict','Wörterbuch','b1.1/dict'],['verbs','Verben','b1.1/verbs'],['phrases','Redemittel','b1.1/phrases'],['games','Training','b1.1/games'],['exam','Prüfung','b1.1/exam']]
         :[['lessons','Lektionen','a2/lessons'],['dict','Wörterbuch','dict'],['verbs','Verben','verbs'],['phrases','Redemittel','phrases'],['podcast','Podcast','podcast'],['games','Training','games'],['listen','Hören','listen'],['exam','Prüfung','exam']];
-    return `<nav class="feature-tabs" aria-label="${level.toUpperCase()} Bereiche">${items.map(([id,label,route])=>`<button type="button" class="feature-tab" onclick="go('${route}')" ${id===active?'aria-current="page"':''}>${label}</button>`).join('')}</nav>`;
+    return `<nav class="feature-tabs" aria-label="${levelCode(level)} Bereiche">${items.map(([id,label,route])=>`<button type="button" class="feature-tab" onclick="go('${route}')" ${id===active?'aria-current="page"':''}>${label}</button>`).join('')}</nav>`;
   }
 
   const lessonStages=[
@@ -173,10 +178,10 @@
     if(!hash) return 'Start';
     if(hash==='a1') return 'Deutsch A1';
     if(hash==='a2') return 'Deutsch A2';
-    if(hash==='b1.1') return 'Deutsch B1.1';
+    if(hash==='b1.1') return 'Deutsch B1';
     if(hash==='a1/lessons') return 'A1 Lektionen';
     if(hash==='a2/lessons') return 'A2 Lektionen';
-    if(hash==='b1.1/lessons') return 'B1.1 Lektionen';
+    if(hash==='b1.1/lessons') return 'B1 Lektionen';
     if(hash==='review') return 'Wiederholen';
     if(hash==='progress') return 'Fortschritt';
     if(hash.startsWith('bausteine')) return 'Satzbaukasten';
@@ -238,7 +243,7 @@
   function dueReviewItems(){return reviewItems().filter(item=>Number(item.dueAt||0)<=Date.now()).sort((a,b)=>Number(a.dueAt||0)-Number(b.dueAt||0));}
 
   function renderDashboard(){
-    setTop('Deutsch Learning','A1 + A2 + B1.1 · Alle Inhalte auf einen Blick',false);
+    setTop('Deutsch Learning','A1 + A2 + B1 · Alle Inhalte auf einen Blick',false);
     const level=state.profile.level;
     const continueRoute=state.lastLearningRoute||level;
     const listenRoute=level==='a1'?'a1/listen':'listen';
@@ -246,26 +251,26 @@
     view.innerHTML=`<div class="next-dashboard">
       <section class="home-hero" aria-labelledby="homeHeroTitle">
         <div class="home-hero-copy">
-          <div class="home-eyebrow"><span>Deutsch lernen</span><span>A1 + A2 + B1.1</span></div>
+          <div class="home-eyebrow"><span>Deutsch lernen</span><span>A1 + A2 + B1</span></div>
           <h2 id="homeHeroTitle">Vom ersten Satz bis B1.</h2>
           <p>Ein vollständiger, kostenloser Lernbereich mit Lektionen, Wortschatz, Grammatik, Hören, Sprechen und interaktivem Training.</p>
-          <p class="home-ar" lang="ar" dir="rtl">برنامج متكامل لتعلّم الألمانية من البداية حتى مستوى B1.1، وكل المحتوى مرتب حسب المستوى والمهارة.</p>
-          <div class="home-hero-actions"><button type="button" class="home-level-cta a1" onclick="go('a1')"><b>A1</b><span>Für Anfänger</span>${icons.arrow}</button><button type="button" class="home-level-cta a2" onclick="go('a2')"><b>A2</b><span>Weiterlernen</span>${icons.arrow}</button><button type="button" class="home-level-cta b1" onclick="go('b1.1')"><b>B1.1</b><span>Neu</span>${icons.arrow}</button></div>
+          <p class="home-ar" lang="ar" dir="rtl">برنامج متكامل لتعلّم الألمانية من البداية حتى مستوى B1، وكل المحتوى مرتب حسب المستوى والمهارة.</p>
+          <div class="home-hero-actions"><button type="button" class="home-level-cta a1" onclick="go('a1')"><b>A1</b><span>Für Anfänger</span>${icons.arrow}</button><button type="button" class="home-level-cta a2" onclick="go('a2')"><b>A2</b><span>Weiterlernen</span>${icons.arrow}</button><button type="button" class="home-level-cta b1" onclick="go('b1.1')"><b>B1</b><span>Neu</span>${icons.arrow}</button></div>
         </div>
-        <div class="home-overview" aria-label="Programmübersicht"><div><b>30</b><span>Kapitel</span></div><div><b>3</b><span>Niveaus</span></div><div><b>10+</b><span>Lernbereiche</span></div><div><b>Offline</b><span>verfügbar</span></div></div>
+        <div class="home-overview" aria-label="Programmübersicht"><div><b>36</b><span>Kapitel</span></div><div><b>3</b><span>Niveaus</span></div><div><b>10+</b><span>Lernbereiche</span></div><div><b>Offline</b><span>verfügbar</span></div></div>
       </section>
-      ${hasHistory?`<section class="home-continue"><span class="home-continue-icon">${icons.learn}</span><div><small>Zuletzt geöffnet · ${level.toUpperCase()}</small><b>${escapeHtml(routeLabel(continueRoute))}</b></div><button type="button" class="next-primary" onclick="go('${escapeHtml(continueRoute)}')">Weiterlernen ${icons.arrow}</button></section>`:''}
+      ${hasHistory?`<section class="home-continue"><span class="home-continue-icon">${icons.learn}</span><div><small>Zuletzt geöffnet · ${levelCode(level)}</small><b>${escapeHtml(routeLabel(continueRoute))}</b></div><button type="button" class="next-primary" onclick="go('${escapeHtml(continueRoute)}')">Weiterlernen ${icons.arrow}</button></section>`:''}
       ${dailyPlanMarkup()}
       <section class="home-section" aria-labelledby="levelsTitle"><div class="next-section-head home-heading"><div><span class="home-kicker">Wähle dein Niveau</span><h2 id="levelsTitle">Was möchtest du lernen?</h2><p class="home-ar" lang="ar" dir="rtl">اختر المستوى وشاهد المحتوى المتاح داخله قبل أن تبدأ.</p></div></div>
         <div class="home-level-grid">
           <article class="home-level-card a1"><img src="assets/a1/chapters/chapter-1.webp" alt="Deutsch A1 Lernbereich" loading="eager"><div class="home-level-body"><div class="home-level-top"><span class="home-level-code">A1</span><span class="home-level-state">Anfänger</span></div><h3>Grundlagen sicher aufbauen</h3><p>Netzwerk neu A1.1 + A1.2 mit zwölf vollständigen Kapiteln.</p><ul><li>Lektionen & interaktive Übungen</li><li>Wortschatz, Grammatik & Verben</li><li>Hören, Phonetik & Redemittel</li></ul><div class="home-card-actions"><button type="button" class="next-primary" onclick="go('a1')">A1 entdecken ${icons.arrow}</button><button type="button" class="next-secondary" onclick="go('a1/lessons')">12 Lektionen</button></div></div></article>
           <article class="home-level-card a2"><img src="assets/chapters/chapter-7.webp" alt="Deutsch A2 Lernbereich" loading="eager"><div class="home-level-body"><div class="home-level-top"><span class="home-level-code">A2</span><span class="home-level-state">Grundkenntnisse</span></div><h3>Selbstständig Deutsch anwenden</h3><p>Netzwerk neu A2.1 + A2.2 plus gezieltes Prüfungstraining.</p><ul><li>Zwölf Kapitel & Grammatik-Skript</li><li>Podcast, Hören & Gesprächstraining</li><li>Spiele & Goethe-A2 Modelltraining</li></ul><div class="home-card-actions"><button type="button" class="next-primary" onclick="go('a2')">A2 entdecken ${icons.arrow}</button><button type="button" class="next-secondary" onclick="go('a2/lessons')">12 Lektionen</button></div></div></article>
-          <article class="home-level-card b1"><img src="assets/chapters/chapter-1.webp" alt="Deutsch B1.1 Lernbereich" loading="lazy"><div class="home-level-body"><div class="home-level-top"><span class="home-level-code">B1.1</span><span class="home-level-state">Neu</span></div><h3>Mit vollständigen Lektionen weiterlernen</h3><p>Netzwerk neu B1.1 · sechs Kapitel mit Lesen, Grammatik und Sprechen.</p><ul><li>Wortschatz und vollständige Lesetexte</li><li>Grammatik mit arabischer Erklärung</li><li>Redemittel, Sprechen und Quiz</li></ul><div class="home-card-actions"><button type="button" class="next-primary" onclick="go('b1.1')">B1.1 entdecken ${icons.arrow}</button><button type="button" class="next-secondary" onclick="go('b1.1/lessons')">6 Kapitel</button></div></div></article>
+          <article class="home-level-card b1"><img src="assets/chapters/chapter-1.webp" alt="Deutsch B1 Lernbereich" loading="lazy"><div class="home-level-body"><div class="home-level-top"><span class="home-level-code">B1</span><span class="home-level-state">Neu</span></div><h3>Mit vollständigen Lektionen weiterlernen</h3><p>Netzwerk neu B1.1 + B1.2 · zwölf Kapitel mit Lesen, Grammatik und Sprechen.</p><ul><li>Wortschatz und vollständige Lesetexte</li><li>Grammatik mit arabischer Erklärung</li><li>Redemittel, Sprechen und Quiz</li></ul><div class="home-card-actions"><button type="button" class="next-primary" onclick="go('b1.1')">B1 entdecken ${icons.arrow}</button><button type="button" class="next-secondary" onclick="go('b1.1/lessons')">12 Kapitel</button></div></div></article>
         </div>
       </section>
       <section class="home-section" aria-labelledby="contentTitle"><div class="next-section-head home-heading"><div><span class="home-kicker">Alles im Programm</span><h2 id="contentTitle">Lerne nach Thema oder Fähigkeit</h2><p>Du musst keinen festen Plan einrichten. Öffne direkt den Bereich, den du gerade brauchst.</p><p class="home-ar" lang="ar" dir="rtl">تقدر تدخل مباشرة على الدروس أو الكلمات أو القواعد أو الاستماع من غير إعداد خطة مذاكرة.</p></div></div>
         <div class="home-content-grid">
-          <article class="home-content-card"><span class="home-content-icon">${icons.learn}</span><div><h3>Lektionen</h3><p>30 Kapitel aus Netzwerk neu A1, A2 und B1.1, jeweils mit Wortschatz, Lesen, Grammatik, Sprechen und Quiz.</p></div><div class="home-content-links"><button type="button" onclick="go('a1/lessons')">A1</button><button type="button" onclick="go('a2/lessons')">A2</button><button type="button" onclick="go('b1.1/lessons')">B1.1</button></div></article>
+          <article class="home-content-card"><span class="home-content-icon">${icons.learn}</span><div><h3>Lektionen</h3><p>36 Kapitel aus Netzwerk neu A1, A2 und B1, jeweils mit Wortschatz, Lesen, Grammatik, Sprechen und Quiz.</p></div><div class="home-content-links"><button type="button" onclick="go('a1/lessons')">A1</button><button type="button" onclick="go('a2/lessons')">A2</button><button type="button" onclick="go('b1.1/lessons')">B1</button></div></article>
           <article class="home-content-card"><span class="home-content-icon">${icons.dictionary}</span><div><h3>Wortschatz & Wörterbücher</h3><p>Kapitelwörter, Suche auf Deutsch oder Arabisch und ein großes Offline-Wörterbuch.</p></div><div class="home-content-links"><button type="button" onclick="go('a1/dict')">A1 Wörter</button><button type="button" onclick="go('full-dict')">Großes Wörterbuch</button></div></article>
           <article class="home-content-card"><span class="home-content-icon">${icons.cards}</span><div><h3>Grammatik & Verben</h3><p>Regeln, Beispiele, Konjugation und Übungen mit sofortiger Korrektur.</p></div><div class="home-content-links"><button type="button" onclick="go('a1/verbs')">A1 Verben</button><button type="button" onclick="go('verbs')">A2 Verben</button></div></article>
           <article class="home-content-card"><span class="home-content-icon">${icons.listen}</span><div><h3>Hören & Aussprache</h3><p>Hörbücher, Phonetik, Buchseiten und interaktive Aufgaben zum Mitmachen.</p></div><div class="home-content-links"><button type="button" onclick="go('a1/listen')">A1 Hören</button><button type="button" onclick="go('listen')">A2 Hören</button></div></article>
@@ -273,7 +278,7 @@
           <article class="home-content-card featured"><span class="home-content-icon">${icons.exam}</span><div><h3>Training & Prüfung</h3><p>Aktive Spiele, Podcasts und Goethe-A2 Modelltraining mit Timer.</p></div><div class="home-content-links"><button type="button" onclick="go('games')">Training</button><button type="button" onclick="go('exam')">A2 Prüfung</button></div></article>
         </div>
       </section>
-      <section class="home-tools"><div><span class="home-kicker">Direktzugriff</span><h2>Nützliche Werkzeuge</h2></div><div class="home-tool-links"><button type="button" onclick="go('word-search')">${icons.search}<span><b>Wortsuche</b><small>Im gesamten Programm</small></span></button><button type="button" onclick="go('bausteine')">${icons.learn}<span><b>Satzbaukasten</b><small>Feste Regeln für jeden Satz</small></span></button><button type="button" onclick="go('train')">${icons.cards}<span><b>Wort-Trainer</b><small>Wörter dauerhaft lernen</small></span></button><button type="button" onclick="go('review')">${icons.review}<span><b>Wiederholen</b><small>Favoriten und Fehler</small></span></button><button type="button" onclick="go('${listenRoute}')">${icons.listen}<span><b>Hörstudio</b><small>${level.toUpperCase()} ist ausgewählt</small></span></button></div></section>
+      <section class="home-tools"><div><span class="home-kicker">Direktzugriff</span><h2>Nützliche Werkzeuge</h2></div><div class="home-tool-links"><button type="button" onclick="go('word-search')">${icons.search}<span><b>Wortsuche</b><small>Im gesamten Programm</small></span></button><button type="button" onclick="go('bausteine')">${icons.learn}<span><b>Satzbaukasten</b><small>Feste Regeln für jeden Satz</small></span></button><button type="button" onclick="go('train')">${icons.cards}<span><b>Wort-Trainer</b><small>Wörter dauerhaft lernen</small></span></button><button type="button" onclick="go('review')">${icons.review}<span><b>Wiederholen</b><small>Favoriten und Fehler</small></span></button><button type="button" onclick="go('${listenRoute}')">${icons.listen}<span><b>Hörstudio</b><small>${levelCode(level)} ist ausgewählt</small></span></button></div></section>
     </div>`;
   }
 
@@ -283,8 +288,8 @@
     const isB1=level==='b1.1';
     const sections=isA1?A1_SECTIONS:isB1?B1_SECTIONS:A2_SECTIONS;
     const lessonRoute=isA1?'a1/lessons':isB1?'b1.1/lessons':'a2/lessons';
-    setTop(`Deutsch ${level.toUpperCase()}`,'Dein Lernbereich',true);
-    view.innerHTML=`${featureTabs(level,'lessons')}<section class="next-hero"><div class="next-hero-eyebrow">${level.toUpperCase()} · Netzwerk neu</div><h2>Lerne für echte Situationen</h2><p>Arbeite geführt weiter oder öffne gezielt Wörterbuch, Hören und Training. Jede Aktivität fließt in deinen Fortschritt ein.</p><div class="ar" lang="ar" dir="rtl">ابدأ من الخطوة التالية أو اختر المهارة التي تريد تدريبها.</div><div style="margin-top:18px"><button class="next-primary" onclick="go('${lessonRoute}')">Lektionen öffnen ${icons.arrow}</button></div></section>${sectionCards(sections,'next-section-cards')}`;
+    setTop(`Deutsch ${levelCode(level)}`,'Dein Lernbereich',true);
+    view.innerHTML=`${featureTabs(level,'lessons')}<section class="next-hero"><div class="next-hero-eyebrow">${levelCode(level)} · Netzwerk neu</div><h2>Lerne für echte Situationen</h2><p>Arbeite geführt weiter oder öffne gezielt Wörterbuch, Hören und Training. Jede Aktivität fließt in deinen Fortschritt ein.</p><div class="ar" lang="ar" dir="rtl">ابدأ من الخطوة التالية أو اختر المهارة التي تريد تدريبها.</div><div style="margin-top:18px"><button class="next-primary" onclick="go('${lessonRoute}')">Lektionen öffnen ${icons.arrow}</button></div></section>${sectionCards(sections,'next-section-cards')}`;
   }
 
   function renderReviewCenter(){
@@ -318,7 +323,7 @@
     const metrics=legacyMetrics();
     const recentDays=new Set(state.history.slice(-100).map(item=>item.date)).size;
     const weekly=state.profile.weeklyGoal||5;
-    view.innerHTML=`<section class="next-hero"><div class="next-hero-eyebrow">${state.profile.level.toUpperCase()} · Fortschritt</div><h2>Was du bereits kannst</h2><p>Dein Fortschritt basiert auf Aktivitäten, Wiederholungen und Ergebnissen—not auf künstlichen Punkten.</p><div class="ar" lang="ar" dir="rtl">تابع تطور مهاراتك وحدد المجال الذي يحتاج تدريبًا إضافيًا.</div></section>
+    view.innerHTML=`<section class="next-hero"><div class="next-hero-eyebrow">${levelCode(state.profile.level)} · Fortschritt</div><h2>Was du bereits kannst</h2><p>Dein Fortschritt basiert auf Aktivitäten, Wiederholungen und Ergebnissen—not auf künstlichen Punkten.</p><div class="ar" lang="ar" dir="rtl">تابع تطور مهاراتك وحدد المجال الذي يحتاج تدريبًا إضافيًا.</div></section>
       <div class="stat-grid"><div class="stat-card"><b>${recentDays}/${weekly}</b><span>Aktive Tage</span></div><div class="stat-card"><b>${metrics.favorites}</b><span>Gespeicherte Wörter</span></div><div class="stat-card"><b>${metrics.gameBest}</b><span>Practice Bestwert</span></div><div class="stat-card"><b>${metrics.examBest}</b><span>Prüfung Bestwert</span></div></div>
       <section class="card" style="padding:22px;margin-top:18px"><div class="next-section-head"><div><h2>Kompetenzen</h2><p>Eine Orientierung aus deinen bisherigen Aktivitäten</p></div></div><div class="skill-list">${skillValues().map(([label,value])=>`<div class="skill-row"><b>${label}</b><div class="skill-track"><span style="--skill-progress:${value/100}"></span></div><span class="skill-value">${value}%</span></div>`).join('')}</div></section>
       <section class="card" style="padding:22px"><div class="next-section-head"><div><h2>Nächster Meilenstein</h2><p>CEFR Can-do statt XP</p></div></div><h3 style="font-size:20px;color:var(--ds-accent-strong)">Ich kann eine Alltagssituation selbstständig bewältigen.</h3><p style="color:var(--ds-text-soft);margin-top:7px">Schließe eine Lernetappe, eine Hörübung und die fälligen Wiederholungen ab.</p><div style="margin-top:18px"><button class="next-primary" onclick="go('')">Zum Tagesplan</button></div></section>`;

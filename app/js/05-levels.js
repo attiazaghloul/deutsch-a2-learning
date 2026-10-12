@@ -3,7 +3,7 @@ function levelSwitcher(active){
   return `<div class="level-mini-nav" aria-label="Niveau wechseln">
     <button type="button" class="${active==='a1'?'active':''}" onclick="go('a1')">A1 · Netzwerk neu A1</button>
     <button type="button" class="${active==='a2'?'active':''}" onclick="go('a2')">A2 · Netzwerk neu A2</button>
-    <button type="button" class="${active==='b1.1'?'active':''}" onclick="go('b1.1')">B1.1 · Netzwerk neu B1</button>
+    <button type="button" class="${active==='b1.1'?'active':''}" onclick="go('b1.1')">B1 · Netzwerk neu B1</button>
   </div>`;
 }
 
@@ -28,10 +28,10 @@ function renderA2Hub(){
 }
 
 function renderB1Hub(){
-  setTop('Deutsch B1.1','Wähle einen Bereich',true);
+  setTop('Deutsch B1','Wähle einen Bereich',true);
   view.innerHTML=`
-    <section class="hero hub-hero"><h2>Netzwerk neu B1.1</h2>
-      <p>ست وحدات من Netzwerk neu B1.1 مع قاموس وأفعال وتعبيرات وتدريب وامتحان نموذجي.</p>
+    <section class="hero hub-hero"><h2>Netzwerk neu B1</h2>
+      <p>اتناشر وحدة من Netzwerk neu B1.1 وB1.2 مع قاموس وأفعال وتعبيرات وتدريب وامتحان نموذجي.</p>
       ${ar('ابدأ بالكلمات، اقلب البطاقة، ثم راجع كل وحدة بالترتيب واختبر نفسك في التدريب والامتحان.')}
     </section>
     ${sectionCards(B1_SECTIONS)}`;
@@ -64,11 +64,11 @@ function renderLevelSelector(){
   <div class="section-label">Weitere Niveaus</div>
   <section class="level-grid">
     <button type="button" class="level-card b1" onclick="go('b1.1')">
-      <span class="level-code">B1.1</span>
-      <h3>Netzwerk neu B1.1</h3>
-      <p>Sechs vollständige Kapitel mit Wortschatzkarten, Lesetexten, Grammatik, Redemitteln und Quiz.</p>
-      ${ar('ست وحدات B1.1 كاملة مع الكلمات والقراءة والقواعد والمحادثة والاختبارات.')}
-      <div class="level-meta"><span class="level-pill">Kapitel 1-6</span><span class="level-pill">Prüfung B1</span></div>
+      <span class="level-code">B1</span>
+      <h3>Netzwerk neu B1</h3>
+      <p>Zwölf vollständige Kapitel (B1.1 + B1.2) mit Wortschatzkarten, Lesetexten, Grammatik, Redemitteln und Quiz.</p>
+      ${ar('اتناشر وحدة كاملة من B1.1 وB1.2 مع الكلمات والقراءة والقواعد والمحادثة والاختبارات.')}
+      <div class="level-meta"><span class="level-pill">Kapitel 1-12</span><span class="level-pill">B1.1 + B1.2</span><span class="level-pill">Prüfung B1</span></div>
     </button>
     <article class="level-card soon locked">
       <span class="level-code">B2</span>
@@ -605,16 +605,10 @@ function renderA1Chapter(num, tab){
 }
 
 function renderB1Home(){
-  setTop('Deutsch B1.1','Netzwerk neu B1.1 · Kapitel 1–6',true);
-  view.innerHTML = (window.NextUI?.featureTabs('b1.1','lessons')||'') + `
-  <section class="hero">
-    <h2>Netzwerk neu B1.1</h2>
-    <p>Sechs vollständige Kapitel aus Netzwerk neu B1.1: Wortschatz, Lesetexte, Grammatik, Redemittel, Sprechen und Quiz.</p>
-    ${ar('ست وحدات كاملة من Netzwerk neu B1.1: كلمات وقراءة وقواعد وتعبيرات ومحادثة واختبارات.')}
-  </section>
-  <div class="section-label">📙 B1.1 · Kapitel 1–6</div>
+  setTop('Deutsch B1','Netzwerk neu B1.1 + B1.2 · Kapitel 1–12',true);
+  const roadmap=chapters=>`
   <section class="a1-roadmap">
-    ${B1_BOOK.map(chapter=>`
+    ${chapters.map(chapter=>`
       <button type="button" class="lesson-item" onclick="go('${chapter.route}/ueberblick')">
         <div class="num">${chapter.num}</div>
         ${chapter.visual?`<img class="lesson-thumb" src="${chapter.visual.src}" alt="">`:''}
@@ -622,6 +616,14 @@ function renderB1Home(){
         <div class="chev">›</div>
       </button>`).join('')}
   </section>`;
+  view.innerHTML = (window.NextUI?.featureTabs('b1.1','lessons')||'') + `
+  <section class="hero">
+    <h2>Netzwerk neu B1</h2>
+    <p>Zwölf vollständige Kapitel aus Netzwerk neu B1.1 und B1.2: Wortschatz, Lesetexte, Grammatik, Redemittel, Sprechen und Quiz.</p>
+    ${ar('اتناشر وحدة كاملة من Netzwerk neu B1.1 وB1.2: كلمات وقراءة وقواعد وتعبيرات ومحادثة واختبارات.')}
+  </section>
+  <div class="section-label">📙 Netzwerk neu B1.1 · Kapitel 1–6</div>${roadmap(B1_BOOK.filter(chapter=>chapter.num<=6))}
+  <div class="section-label">📗 Netzwerk neu B1.2 · Kapitel 7–12</div>${roadmap(B1_BOOK.filter(chapter=>chapter.num>6))}`;
 }
 
 function b1Tabs(active){
@@ -650,14 +652,14 @@ function b1ChapterOptions(){
 }
 
 function renderB1Dictionary(){
-  setTop('B1.1 Wörterbuch','Alle Wörter aus den Kapiteln 1–6',true);
+  setTop('B1 Wörterbuch','Alle Wörter aus den Kapiteln 1–12',true);
   const words=B1_BOOK.flatMap(chapter=>chapter.vocab.map((item,index)=>({...item,chapter:chapter.num,id:wordEntryId('B1.1',chapter,index,item)})))
     .sort((a,b)=>bareWordKey(a.w).localeCompare(bareWordKey(b.w),'de'));
   const favoriteIds=new Set(favoriteList().flatMap(item=>[item.id,item.dictionaryId]).filter(Boolean));
   view.innerHTML=b1Tabs('dict')+`
-    <div class="hero"><h2>Wörterbuch B1.1</h2>
+    <div class="hero"><h2>Wörterbuch B1</h2>
       <p>Suche auf Deutsch oder Arabisch. Mit dem Herz speicherst du ein Wort für die Wiederholung.</p>
-      ${ar('ابحث بالألماني أو العربي في كل كلمات B1.1. اضغط على القلب عشان تحفظ الكلمة للمراجعة.')}</div>
+      ${ar('ابحث بالألماني أو العربي في كل كلمات B1.1 وB1.2. اضغط على القلب عشان تحفظ الكلمة للمراجعة.')}</div>
     <div class="search-panel">
       <div class="search-row">
         <input class="library-search" id="b1DictSearch" type="search" placeholder="Deutsch oder Arabisch suchen..." aria-label="Wörter suchen">
@@ -680,13 +682,13 @@ function renderB1Dictionary(){
 }
 
 function renderB1Verbs(){
-  setTop('B1.1 Verben','Präteritum, Perfekt & Rektion',true);
+  setTop('B1 Verben','Präteritum, Perfekt & Rektion',true);
   const verbs=window.B1_VERBS||[];
   const perfectAux=aux=>aux==='sein'?'ist':'hat';
   view.innerHTML=b1Tabs('verbs')+`
-    <div class="hero"><h2>Verben B1.1</h2>
+    <div class="hero"><h2>Verben B1</h2>
       <p>Wichtige Verben aus den Kapiteln 1–6. Tippe auf ein Verb für die komplette Konjugation in sechs Zeitformen und die passende Präposition.</p>
-      ${ar('أهم أفعال B1.1. اضغط على أي فعل عشان تشوف تصريفه الكامل في ست أزمنة، والحرف والحالة اللي بييجوا معاه.')}</div>
+      ${ar('أهم أفعال B1.1 وB1.2. اضغط على أي فعل عشان تشوف تصريفه الكامل في ست أزمنة، والحرف والحالة اللي بييجوا معاه.')}</div>
     <div class="search-panel">
       <div class="search-row">
         <input class="library-search" id="b1VerbSearch" type="search" placeholder="Verb, Präposition oder Bedeutung..." aria-label="Verben suchen">
@@ -719,13 +721,13 @@ function renderB1Verbs(){
 }
 
 function renderB1Expressions(){
-  setTop('B1.1 Redemittel','Fertige Sätze aus allen Kapiteln',true);
+  setTop('B1 Redemittel','Fertige Sätze aus allen Kapiteln',true);
   const phrases=B1_BOOK.flatMap(chapter=>(chapter.redemittel||[]).flatMap(group=>
     group.items.map(item=>({de:item.de,ar:item.ar,cat:group.cat,chapter:chapter.num}))));
   view.innerHTML=b1Tabs('phrases')+`
-    <div class="hero"><h2>Redemittel B1.1</h2>
+    <div class="hero"><h2>Redemittel B1</h2>
       <p>Meinung sagen, Vorschläge machen, reklamieren, sich bewerben und mehr – alle Redemittel der Kapitel 1–6.</p>
-      ${ar('جمل جاهزة لإبداء الرأي والاقتراح والشكوى والتقديم على وظيفة وغيرها — من كل وحدات B1.1.')}</div>
+      ${ar('جمل جاهزة لإبداء الرأي والاقتراح والشكوى والتقديم على وظيفة وغيرها — من كل وحدات B1.1 وB1.2.')}</div>
     <div class="search-panel">
       <div class="search-row">
         <input class="library-search" id="b1PhraseSearch" type="search" placeholder="Ausdruck suchen..." aria-label="Ausdrücke suchen">
