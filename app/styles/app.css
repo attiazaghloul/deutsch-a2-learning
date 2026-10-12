@@ -96,6 +96,9 @@ details.ar-long[open] summary::before{content:"－"}
 body.show-ar .ar{display:block}
 span.ar{display:none;background:none;border:0;padding:0 4px;margin:0;border-radius:6px}
 body.show-ar span.ar{display:inline}
+.ar.ar-label{font-size:.85em;font-weight:500;line-height:1.6;color:inherit;padding:0;margin:3px 0 0}
+body.show-ar .ar.ar-label{display:block}
+header.topbar .ar.ar-label{font-size:12px;line-height:1.4;opacity:.95}
 body.exam-mode .ar-toggle,
 body.exam-mode .translate-trigger,
 body.exam-mode .ar{display:none!important}
@@ -181,7 +184,7 @@ header.topbar .back:focus-visible,header.topbar .home:focus-visible{outline:3px 
 .lesson-item .chev{color:#c2cad3;font-size:20px}
 /* ---------- tabs ---------- */
 .tabs{display:flex;gap:6px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;
-  -webkit-overflow-scrolling:touch;padding:4px 0 12px;scrollbar-width:none;position:sticky;top:var(--topbar-h);
+  -webkit-overflow-scrolling:touch;padding:4px 0 12px;scrollbar-width:none;position:sticky;top:var(--sticky-topbar-h,var(--topbar-h));
   z-index:70;background:var(--bg)}
 .tabs.tabs--below-main{top:124px;z-index:55}
 .tabs::-webkit-scrollbar{display:none}
@@ -296,7 +299,7 @@ table.gt b{color:var(--green-d)}
 .reading-answer{display:none;background:var(--green-l);border-radius:9px;padding:8px 11px;margin-top:7px;font-size:14px}
 .reading-answer.show{display:block}
 /* ---------- main library tabs, dictionary and expressions ---------- */
-.main-tabs{display:grid;grid-template-columns:repeat(8,1fr);gap:8px;margin:0 0 16px;position:sticky;top:var(--topbar-h);z-index:70;background:var(--bg);padding:4px 0 10px}
+.main-tabs{display:grid;grid-template-columns:repeat(8,1fr);gap:8px;margin:0 0 16px;position:sticky;top:var(--sticky-topbar-h,var(--topbar-h));z-index:70;background:var(--bg);padding:4px 0 10px}
 .main-tabs.a1-tabs{grid-template-columns:repeat(5,1fr)}
 .main-tab{border:1px solid var(--line);background:var(--card);color:var(--ink-2);border-radius:13px;
   padding:10px 6px;font:inherit;font-size:13px;font-weight:700;cursor:pointer;box-shadow:var(--shadow);

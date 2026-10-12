@@ -382,17 +382,17 @@ function drawFC(){
     onclick="flipFC()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipFC()}">
     <div class="flashcard-inner">
       <div class="flashcard-face flashcard-front" aria-hidden="${fcState.flipped}">${vocabVisual(v,fcState.chapter)}<div class="big">${fmtWord(v.w)}</div>
-        <div class="hint">Karte umdrehen: Bedeutung und Beispiele</div></div>
-      <div class="flashcard-face flashcard-back" aria-hidden="${!fcState.flipped}"><div class="fc-back-copy"><div class="fc-back-label">Bedeutung & Beispiele</div>
+        <div class="hint">Karte umdrehen: Bedeutung und Beispiele${arLabel('Karte umdrehen: Bedeutung und Beispiele')}</div></div>
+      <div class="flashcard-face flashcard-back" aria-hidden="${!fcState.flipped}"><div class="fc-back-copy"><div class="fc-back-label">Bedeutung & Beispiele${arLabel('Bedeutung & Beispiele')}</div>
         <div class="big" style="font-size:20px">${fmtWord(v.w)}</div>
         <div class="fdef">${v.d}</div>${ar(v.dAr)}${v.ex?`<div class="fex">„${v.ex}“</div>${ar(v.exAr)}`:''}${ar(v.ar)}</div></div>
     </div>
   </div>`;
   a.innerHTML = `${card}
   <div class="fc-nav">
-    <button class="btn btn-ghost" onclick="navFC(-1)">← zurück</button>
+    <button class="btn btn-ghost" onclick="navFC(-1)">← zurück${arLabel('zurück')}</button>
     <span class="cnt">${fcState.i+1} / ${fcState.cards.length}</span>
-    <button class="btn btn-green" onclick="navFC(1)">weiter →</button>
+    <button class="btn btn-green" onclick="navFC(1)">weiter →${arLabel('weiter')}</button>
   </div>`;
 }
 function flipFC(){

@@ -6,23 +6,23 @@ let dialoguePlayback=0;
 function conversationsHtml(chapter){
   const situations=chapter.conversations||[];
   if(!situations.length) return '';
-  return `<div class="section-label">💬 Gesprächssituationen</div>
+  return `<div class="section-label">💬 Gesprächssituationen${arLabel('Gesprächssituationen')}</div>
     ${ar('مواقف من الحياة اليومية: اسمع الحوار، كرر الجمل، وبعدين اعمل المهمة بنفسك.')}
     ${situations.map((item,index)=>`
     <article class="card conversation-card">
       <div class="conversation-head">
         <div><h3>${escapeHtml(item.situation)}</h3>${ar(escapeHtml(item.situationAr))}</div>
-        <button type="button" class="conversation-play" onclick="playDialogue(${chapter.num},${index},this,'${escapeHtml(chapter.route||`k${chapter.num}`)}')" aria-label="Dialog anhören">▶ Dialog</button>
+        <button type="button" class="conversation-play" onclick="playDialogue(${chapter.num},${index},this,'${escapeHtml(chapter.route||`k${chapter.num}`)}')" aria-label="Dialog anhören">▶ Dialog${arLabel('Dialog')}</button>
       </div>
       <div class="conversation-lines">${item.dialogue.map((line,lineIndex)=>`
         <div class="conversation-line ${lineIndex%2?'right':'left'}" data-line="${lineIndex}">
           <span class="conversation-speaker">${escapeHtml(line.s)}</span>
           <p>${escapeHtml(line.de)}</p>${ar(escapeHtml(line.ar))}
         </div>`).join('')}</div>
-      <details class="conversation-phrases"><summary>Nützliche Sätze (${item.phrases.length})</summary>
+      <details class="conversation-phrases"><summary>Nützliche Sätze (${item.phrases.length})${arLabel('Nützliche Sätze')}</summary>
         ${item.phrases.map(phrase=>`<div class="rm-item">${escapeHtml(phrase.de)}${ar(escapeHtml(phrase.ar))}</div>`).join('')}
       </details>
-      <div class="conversation-task"><b>Deine Aufgabe:</b> ${escapeHtml(item.task)}${ar(escapeHtml(item.taskAr))}</div>
+      <div class="conversation-task"><b>Deine Aufgabe:${arLabel('Deine Aufgabe:')}</b> ${escapeHtml(item.task)}${ar(escapeHtml(item.taskAr))}</div>
     </article>`).join('')}`;
 }
 
@@ -52,12 +52,12 @@ function playDialogue(chapterNum,index,button,route=''){
   const speakers=[...new Set(item.dialogue.map(line=>line.s))];
   const lines=card.querySelectorAll('.conversation-line');
   const playing=button.classList.toggle('playing');
-  if(!playing){ dialoguePlayback++; lines.forEach(line=>line.classList.remove('active')); button.textContent='▶ Dialog'; return; }
-  button.textContent='■ Stopp';
+  if(!playing){ dialoguePlayback++; lines.forEach(line=>line.classList.remove('active')); button.innerHTML=`▶ Dialog${arLabel('Dialog')}`; return; }
+  button.innerHTML=`■ Stopp${arLabel('Stopp')}`;
   const step=lineIndex=>{
     lines.forEach(line=>line.classList.toggle('active',Number(line.dataset.line)===lineIndex));
     if(session!==dialoguePlayback) return;
-    if(lineIndex>=item.dialogue.length){button.classList.remove('playing');button.textContent='▶ Dialog';return;}
+    if(lineIndex>=item.dialogue.length){button.classList.remove('playing');button.innerHTML=`▶ Dialog${arLabel('Dialog')}`;return;}
     const line=item.dialogue[lineIndex];
     speakDialogueLine(line.de,speakers.indexOf(line.s),()=>setTimeout(()=>step(lineIndex+1),350));
   };

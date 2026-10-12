@@ -71,29 +71,30 @@ function grammarExerciseHtml(exercise,id,number){
   let body='';
   if(exercise.type==='choice'){
     body=`<p class="gx-q">${escapeHtml(exercise.q)}</p><div class="gx-options">${exercise.o.map((option,index)=>
-      `<button type="button" class="gx-option" onclick="checkGrammarChoice('${id}',${index},this)">${escapeHtml(option)}${ar(escapeHtml(exercise.oAr?.[index]||''))}</button>`).join('')}</div>`;
+      `<button type="button" class="gx-option" onclick="checkGrammarChoice('${id}',${index},this)">${escapeHtml(option)}${ar(exercise.oAr?.[index],{inline:true})}</button>`).join('')}</div>`;
   }else if(exercise.type==='truefalse'){
     body=`<p class="gx-q">${escapeHtml(exercise.q)}</p><div class="gx-options gx-options--row">
-      <button type="button" class="gx-option" onclick="checkGrammarTrueFalse('${id}',true,this)">✓ Richtig</button>
-      <button type="button" class="gx-option" onclick="checkGrammarTrueFalse('${id}',false,this)">✗ Falsch</button></div>`;
+      <button type="button" class="gx-option" onclick="checkGrammarTrueFalse('${id}',true,this)">✓ Richtig${arLabel('Richtig')}</button>
+      <button type="button" class="gx-option" onclick="checkGrammarTrueFalse('${id}',false,this)">✗ Falsch${arLabel('Falsch')}</button></div>`;
   }else if(exercise.type==='order'){
     body=`<p class="gx-q">${escapeHtml(exercise.prefix||'')} <span class="gx-built" data-built="${id}">…</span></p>
       <div class="gx-chips" data-chips="${id}">${shuffled(exercise.words.map((word,index)=>({word,index}))).map(({word,index})=>
         `<button type="button" class="gx-chip" data-index="${index}" onclick="toggleGrammarChip('${id}',this)">${escapeHtml(word)}</button>`).join('')}</div>
-      <div class="gx-actions"><button type="button" class="btn btn-ghost" onclick="resetGrammarOrder('${id}')">Zurücksetzen</button>
-        <button type="button" class="btn btn-green" onclick="checkGrammarOrder('${id}')">Prüfen</button></div>`;
+      <div class="gx-actions"><button type="button" class="btn btn-ghost" onclick="resetGrammarOrder('${id}')">Zurücksetzen${arLabel('Zurücksetzen')}</button>
+        <button type="button" class="btn btn-green" onclick="checkGrammarOrder('${id}')">Prüfen${arLabel('Prüfen')}</button></div>`;
   }else{
     const multiline=exercise.type!=='gap';
     body=`<p class="gx-q">${escapeHtml(exercise.q)}</p>
       <form class="gx-form" onsubmit="event.preventDefault();checkGrammarTyped('${id}')">
         ${multiline?`<textarea class="gx-input" rows="2" data-input="${id}" lang="de" spellcheck="false" placeholder="${exercise.type==='error'?'Schreib den korrigierten Satz …':'Schreib den ganzen Satz …'}"></textarea>`
           :`<input class="gx-input" data-input="${id}" lang="de" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Antwort">`}
-        <div class="gx-actions"><button type="button" class="btn btn-ghost" onclick="checkGrammarTyped('${id}',true)">Lösung zeigen</button>
-          <button type="submit" class="btn btn-green">Prüfen</button></div>
+        ${arLabel(multiline?(exercise.type==='error'?'Schreib den korrigierten Satz …':'Schreib den ganzen Satz …'):'Antwort')}
+        <div class="gx-actions"><button type="button" class="btn btn-ghost" onclick="checkGrammarTyped('${id}',true)">Lösung zeigen${arLabel('Lösung zeigen')}</button>
+          <button type="submit" class="btn btn-green">Prüfen${arLabel('Prüfen')}</button></div>
       </form>`;
   }
   return `<div class="gx" data-exercise="${id}" data-type="${exercise.type}">
-    <div class="gx-head"><span class="gx-num">${number}</span><span class="gx-label">${label}</span></div>
+    <div class="gx-head"><span class="gx-num">${number}</span><span class="gx-label">${label}${arLabel(label)}</span></div>
     ${body}${ar(escapeHtml(exercise.qAr||''))}
     <div class="gx-feedback" role="status" aria-live="polite"></div>
   </div>`;
@@ -113,8 +114,8 @@ function grammarTopicHtml(topic){
     ${topic.pitfalls?.length?`<section class="gram-pitfalls"><h4>⚠️ Typische Fehler</h4>${ar('غلطات بتتكرر كتير – خد بالك منها')}
       ${topic.pitfalls.map(item=>`<div class="gram-pitfall"><div class="wrong">✗ ${escapeHtml(item.wrong)}</div><div class="right">✓ ${escapeHtml(item.right)}</div>${ar(escapeHtml(item.ar))}</div>`).join('')}</section>`:''}
     <section class="gram-practice">
-      <div class="gram-practice-head"><h4>✍️ Übungen (${topic.exercises.length})</h4>
-        <span class="gram-score" data-score="${topic.id}">${score.done?`${score.right}/${score.total} richtig`:'noch nicht geübt'}</span></div>
+      <div class="gram-practice-head"><h4>✍️ Übungen (${topic.exercises.length})${arLabel('Übungen')}</h4>
+        <span class="gram-score" data-score="${topic.id}">${score.done?`${score.right}/${score.total} richtig`:'noch nicht geübt'}${score.done?arLabel('Richtig'):arLabel('noch nicht geübt')}</span></div>
       ${ar('تمارين متنوعة: اختيار، صح وغلط، تكملة، ترتيب كلمات، إعادة صياغة، وتصحيح أخطاء.')}
       ${topic.exercises.map((exercise,index)=>grammarExerciseHtml(exercise,grammarExerciseId(topic,index),index+1)).join('')}
     </section>
@@ -127,7 +128,7 @@ function renderGrammarTopics(chapter){
   return `<nav class="gram-toc" aria-label="Grammatikthemen">${topics.map(topic=>{
       const score=grammarTopicScore(topic);
       return `<a href="#topic-${topic.id}" onclick="event.preventDefault();document.getElementById('topic-${topic.id}').scrollIntoView({behavior:'smooth'})">
-        <b>${escapeHtml(topic.t)}</b><small>${score.right}/${score.total} ✓</small></a>`;
+        <b>${escapeHtml(topic.t)}${ar(topic.tAr,{inline:true})}</b><small>${score.right}/${score.total} ✓</small></a>`;
     }).join('')}</nav>
     ${topics.map(grammarTopicHtml).join('')}`;
 }
@@ -141,7 +142,7 @@ function grammarFeedback(id,correct,extra='',answer=''){
     box.className=`gx-feedback show ${correct?'good':'bad'}`;
     const answerIndex=exercise?.aAr&&Array.isArray(exercise.a)?exercise.a.findIndex(value=>grammarAnswerMatches(answer,[value])):-1;
     const solutionAr=answerIndex>=0?exercise.aAr[answerIndex]:exercise?.solutionAr;
-    box.innerHTML=`<b>${correct?'✓ Richtig!':'✗ Leider falsch.'}</b>${extra}${ar(escapeHtml(solutionAr||''))}${exercise?.why?ar(escapeHtml(exercise.why)):''}`;
+    box.innerHTML=`<b>${correct?'✓ Richtig!':'✗ Leider falsch.'}${arLabel(correct?'Richtig':'Falsch')}</b>${extra}${ar(escapeHtml(solutionAr||''))}${exercise?.why?ar(escapeHtml(exercise.why)):''}`;
   }
   saveGrammarResult(id,correct);
   if(id.startsWith('test-')) saveGrammarResult(id.slice(5),correct);
@@ -165,7 +166,7 @@ function updateGrammarScores(id){
   const topicId=id.replace(/-\d+$/,'');
   const topic=allGrammarTopics().find(item=>item.id===topicId||`test-${item.id}`===topicId);
   const label=document.querySelector(`[data-score="${topicId}"]`);
-  if(topic&&label){const score=grammarTopicScore(topic);label.textContent=`${score.right}/${score.total} richtig`;}
+  if(topic&&label){const score=grammarTopicScore(topic);label.innerHTML=`${score.right}/${score.total} richtig${arLabel('Richtig')}`;}
   updateGrammarTestScore();
 }
 
@@ -220,7 +221,7 @@ function checkGrammarOrder(id){
   const order=JSON.parse(container.dataset.order||'[]');
   if(order.length<exercise.words.length){
     const box=container.querySelector('.gx-feedback');
-    box.className='gx-feedback show hint';box.textContent='Benutze alle Wörter.';
+    box.className='gx-feedback show hint';box.innerHTML=`Benutze alle Wörter.${arLabel('Benutze alle Wörter.')}`;
     return;
   }
   container.classList.add('answered');
@@ -241,7 +242,7 @@ function checkGrammarTyped(id,reveal=false){
   container.querySelectorAll('button').forEach(button=>button.disabled=true);
   const correct=!reveal&&grammarAnswerMatches(input.value,exercise.a);
   const solution=exercise.a.length>1
-    ?`<div class="gx-solution">${escapeHtml(exercise.a[0])}<small>Auch möglich: ${exercise.a.slice(1).map(escapeHtml).join(' · ')}</small></div>`
+    ?`<div class="gx-solution">${escapeHtml(exercise.a[0])}<small>Auch möglich:${arLabel('Auch möglich:')} ${exercise.a.slice(1).map(escapeHtml).join(' · ')}</small></div>`
     :`<div class="gx-solution">${escapeHtml(exercise.a[0])}</div>`;
   grammarFeedback(id,correct,correct&&exercise.a.length===1?'':solution,input.value);
 }
@@ -262,11 +263,11 @@ function renderGrammarTest(chapter){
   const test=shuffled(picked).slice(0,12);
   grammarTestIds=test.map(({topic,index})=>`test-${grammarExerciseId(topic,index)}`);
   return `<section class="card gram-test">
-    <div class="gram-practice-head"><h3>🎯 Lerncheck Kapitel ${chapter.num}</h3><span class="gram-score" id="grammarTestScore">0 / ${test.length}</span></div>
+    <div class="gram-practice-head"><h3>🎯 Lerncheck Kapitel ${chapter.num}${ar(`اختبار مراجعة الوحدة ${chapter.num}`,{inline:true})}</h3><span class="gram-score" id="grammarTestScore">0 / ${test.length}</span></div>
     <p>${test.length} gemischte Aufgaben aus allen Grammatikthemen des Kapitels – jedes Mal neu zusammengestellt.</p>
     ${ar('١٢ سؤال متنوع من كل قواعد الوحدة – كل مرة بيتغيروا.')}
     ${test.map(({exercise,topic,index},number)=>grammarExerciseHtml(exercise,`test-${grammarExerciseId(topic,index)}`,number+1)).join('')}
-    <div class="gx-actions"><button type="button" class="btn btn-green" onclick="renderChapter(chapterByRoute('${chapter.route||`k${chapter.num}`}'),'quiz')">Neuer Test</button></div>
+    <div class="gx-actions"><button type="button" class="btn btn-green" onclick="renderChapter(chapterByRoute('${chapter.route||`k${chapter.num}`}'),'quiz')">Neuer Test${arLabel('Neuer Test')}</button></div>
   </section>`;
 }
 

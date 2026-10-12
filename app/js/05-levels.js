@@ -605,25 +605,25 @@ function renderA1Chapter(num, tab){
 }
 
 function renderB1Home(){
-  setTop('Deutsch B1','Netzwerk neu B1.1 + B1.2 · Kapitel 1–12',true);
+  setTop('Deutsch B1','Netzwerk neu B1.1 + B1.2 · Kapitel 1–12',true,'الألماني B1 · الوحدات ١–١٢');
   const roadmap=chapters=>`
   <section class="a1-roadmap">
     ${chapters.map(chapter=>`
       <button type="button" class="lesson-item" onclick="go('${chapter.route}/ueberblick')">
         <div class="num">${chapter.num}</div>
         ${chapter.visual?`<img class="lesson-thumb" src="${chapter.visual.src}" alt="">`:''}
-        <div class="ttl"><b>${chapter.title}</b><span class="sub">${chapter.subtitle} · ${chapter.vocab.length} Wörter</span>${ar(chapter.introAr)}</div>
+        <div class="ttl"><b>${chapter.title}</b>${ar(chapter.titleAr,{inline:true})}<span class="sub">${chapter.subtitle} · ${chapter.vocab.length} Wörter</span>${ar(`${chapter.subtitleAr} · ${chapter.vocab.length} كلمة`,{inline:true})}${ar(chapter.introAr,{inline:true})}</div>
         <div class="chev">›</div>
       </button>`).join('')}
   </section>`;
   view.innerHTML = (window.NextUI?.featureTabs('b1.1','lessons')||'') + `
   <section class="hero">
-    <h2>Netzwerk neu B1</h2>
+    <h2>Netzwerk neu B1</h2>${ar('منهج الألماني B1')}
     <p>Zwölf vollständige Kapitel aus Netzwerk neu B1.1 und B1.2: Wortschatz, Lesetexte, Grammatik, Redemittel, Sprechen und Quiz.</p>
     ${ar('اتناشر وحدة كاملة من Netzwerk neu B1.1 وB1.2: كلمات وقراءة وقواعد وتعبيرات ومحادثة واختبارات.')}
   </section>
-  <div class="section-label">📙 Netzwerk neu B1.1 · Kapitel 1–6</div>${roadmap(B1_BOOK.filter(chapter=>chapter.num<=6))}
-  <div class="section-label">📗 Netzwerk neu B1.2 · Kapitel 7–12</div>${roadmap(B1_BOOK.filter(chapter=>chapter.num>6))}`;
+  <div class="section-label">📙 Netzwerk neu B1.1 · Kapitel 1–6${ar('الجزء الأول B1.1 · الوحدات ١–٦',{inline:true})}</div>${roadmap(B1_BOOK.filter(chapter=>chapter.num<=6))}
+  <div class="section-label">📗 Netzwerk neu B1.2 · Kapitel 7–12${ar('الجزء الثاني B1.2 · الوحدات ٧–١٢',{inline:true})}</div>${roadmap(B1_BOOK.filter(chapter=>chapter.num>6))}`;
 }
 
 function b1Tabs(active){

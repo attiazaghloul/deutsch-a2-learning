@@ -17,11 +17,11 @@ function initQuiz(questions){
   questions.forEach((q,qi) => {
     h += `<div class="card"><div class="quiz-q">${qi+1}. ${q.q}</div>${ar(q.qAr)}`;
     quizOptionOrder(q.o.length).forEach(oi => {
-      h += `<button class="quiz-opt" data-q="${qi}" data-o="${oi}">${q.o[oi]}${ar(q.oAr?.[oi])}</button>`;
+      h += `<button class="quiz-opt" data-q="${qi}" data-o="${oi}">${q.o[oi]}${ar(q.oAr?.[oi],{inline:true})}</button>`;
     });
     h += `<div class="quiz-fb" id="fb${qi}" role="status" aria-live="polite"></div></div>`;
   });
-  h += `<div class="card quiz-score" id="qscore" role="status" aria-live="polite">Beantworte alle Fragen.</div>`;
+  h += `<div class="card quiz-score" id="qscore" role="status" aria-live="polite">Beantworte alle Fragen.${arLabel('Beantworte alle Fragen.')}</div>`;
   area.innerHTML = h;
   area.querySelectorAll('.quiz-opt').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -33,15 +33,16 @@ function initQuiz(questions){
       btn.parentElement.querySelectorAll('.quiz-opt').forEach(b=>{
         if(+b.dataset.o===q.a) b.classList.add('correct');
       });
-      if(oi===q.a){ score++; fb.innerHTML=`Richtig. ${q.fb||''}${ar(q.fbAr)}`; }
+      if(oi===q.a){ score++; fb.innerHTML=`Richtig.${arLabel('Richtig')} ${q.fb||''}${ar(q.fbAr)}`; }
       else {
-        btn.classList.add('wrong'); fb.innerHTML=`Noch nicht. ${q.fb||''}${ar(q.fbAr)}`;
+        btn.classList.add('wrong'); fb.innerHTML=`Noch nicht.${arLabel('Noch nicht.')} ${q.fb||''}${ar(q.fbAr)}`;
         window.NextUI?.addMistake({prompt:q.q,answer:q.o[q.a],context:'Lerncheck'});
       }
       fb.classList.add('show');
       if(answered===questions.length){
         $('#qscore').innerHTML = `Dein Ergebnis: ${score} / ${questions.length}` +
-          (score===questions.length?' – Perfekt!':score>=questions.length*0.6?' – Gut gemacht!':' – Wiederhole die Lektion noch einmal!');
+          (score===questions.length?' – Perfekt!':score>=questions.length*0.6?' – Gut gemacht!':' – Wiederhole die Lektion noch einmal!')+
+          ar(`نتيجتك: ${score} من ${questions.length} · ${score===questions.length?'ممتاز!':score>=questions.length*0.6?'أحسنت!':'راجع الوحدة مرة كمان.'}`,{inline:true});
       }
     });
   });

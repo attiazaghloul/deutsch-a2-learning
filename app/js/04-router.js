@@ -236,8 +236,8 @@ function renderCurrentRoute(){
   }
 }
 
-function setTop(title, sub, hasBack){
-  $('#topTitle').innerHTML = `${title}<small>${sub}</small>`;
+function setTop(title, sub, hasBack, titleAr=''){
+  $('#topTitle').innerHTML = `${title}${ar(titleAr,{inline:true})}<small>${sub}</small>`;
   document.body.classList.toggle('has-back', !!hasBack);
 }
 

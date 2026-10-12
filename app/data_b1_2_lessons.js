@@ -3713,6 +3713,7 @@
     const lesson = content[chapter.num];
     if (!lesson) return;
     Object.assign(chapter, lesson);
+    if(chapter.visual) chapter.visual.captionAr=chapter.titleAr;
     chapter.readings.forEach(reading => {
       const text = reading.text.toLocaleLowerCase('de-DE');
       const words = chapter.vocab.filter(item => {

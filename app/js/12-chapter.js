@@ -73,7 +73,7 @@ function renderChapterMenu(c){
   const isB1=c.route?.startsWith('b1.1/');
   const routeBase=c.route||`k${c.num}`;
   const chapterLabel=isA1?'A1 Kapitel':isB1?'B1 Kapitel':'Kapitel';
-  setTop(`${chapterLabel} ${c.num}: ${c.title}`,'Wähle den Inhalt',true);
+  setTop(`${chapterLabel} ${c.num}: ${c.title}`,'Wähle den Inhalt',true,c.titleAr?`الوحدة ${c.num}: ${c.titleAr}`:'');
   view.innerHTML=`
     ${false && c.visual?`<figure class="card chapter-visual ${isA1?'chapter-visual--wide':''}">
       <img src="${c.visual.src}" alt="${c.visual.alt}">
@@ -85,7 +85,7 @@ function renderChapterMenu(c){
       return `
       <button type="button" class="section-card chapter-tab-card ${isA1?'a1-chapter-tab-card':'a2-chapter-tab-card'}" onclick="go('${routeBase}/${id}')">
         ${img?.src?`<img class="section-card-img" src="${img.src}" alt="${escapeHtml(img.alt||chapterTabTitle(id,lbl))}" loading="lazy" decoding="async">`:''}
-        <span><b>${chapterTabTitle(id,lbl)}</b><span>${chapterTabDescription(id)}</span></span>
+        <span><b>${chapterTabTitle(id,lbl)}</b>${arLabel(chapterTabTitle(id,lbl))}<span>${chapterTabDescription(id)}</span>${arLabel(chapterTabDescription(id))}</span>
       </button>`;
     }).join('')}</section>`;
 }
@@ -95,10 +95,10 @@ function renderChapter(c, tab){
   const isB1=c.route?.startsWith('b1.1/');
   const routeBase=c.route||`k${c.num}`;
   const chapterLabel=isA1?'A1 Kapitel':isB1?'B1 Kapitel':'Kapitel';
-  setTop(`${chapterLabel} ${c.num}: ${c.title}`, c.subtitle, true);
+  setTop(`${chapterLabel} ${c.num}: ${c.title}`, c.subtitle, true,c.titleAr?`الوحدة ${c.num}: ${c.titleAr}`:'');
   const tabs=chapterTabs(c);
   let html = `${isB1?'':(window.NextUI?.lessonProgress(routeBase,tab)||'')}<div class="tabs chapter-tabs" role="tablist" aria-label="Kapitelbereiche">` + tabs.map(([id,lbl]) =>
-    `<button type="button" role="tab" aria-selected="${id===tab}" class="tab ${id===tab?'active':''}" onclick="go('${routeBase}/${id}')">${lbl}</button>`).join('') + `</div>`;
+    `<button type="button" role="tab" aria-selected="${id===tab}" class="tab ${id===tab?'active':''}" onclick="go('${routeBase}/${id}')">${lbl}${arLabel(lbl)}</button>`).join('') + `</div>`;
   if(false && tab!=='ueberblick' && c.visual){
     const sceneIndex={wortschatz:1,lesen:0,redemittel:2,grammatik:3,sprechen:1,quiz:2}[tab]??0;
     const tabVisual=c.scenes?.[sceneIndex]||c.visual;
@@ -121,16 +121,16 @@ function renderChapterTab(c, tab){
       <figcaption class="visual-caption">${c.visual.caption}${ar(c.visual.captionAr)}</figcaption>
     </figure>`:'';
     h += `<div class="card">
-      <h3 style="color:var(--green-d);margin-bottom:6px">Worum geht es in diesem Kapitel?</h3>
+      <h3 style="color:var(--green-d);margin-bottom:6px">Worum geht es in diesem Kapitel?${arLabel('Worum geht es in diesem Kapitel?')}</h3>
       <p style="font-size:15px">${c.intro}</p>${ar(c.introAr)}
-      <div class="badge-row">${c.badges.map((b,i)=>`<span class="badge">${b}${ar(c.badgesAr?.[i])}</span>`).join('')}</div>
+      <div class="badge-row">${c.badges.map((b,i)=>`<span class="badge">${b}${ar(c.badgesAr?.[i],{inline:true})}</span>`).join('')}</div>
       ${c.topicVisuals?.length?`<div class="topic-visual-grid">${c.topicVisuals.map(topic=>`
         <figure class="topic-visual-card">
           <img src="${topic.src}" alt="${escapeHtml(topic.alt||topic.title)}" loading="lazy" decoding="async">
-          <figcaption>${escapeHtml(topic.title)}</figcaption>
+          <figcaption>${escapeHtml(topic.title)}${ar(topic.titleAr)}</figcaption>
         </figure>`).join('')}</div>`:''}
     </div>
-    <div class="card"><h3 style="color:var(--green-d);margin-bottom:8px">Das lernst du hier</h3>`;
+    <div class="card"><h3 style="color:var(--green-d);margin-bottom:8px">Das lernst du hier${arLabel('Das lernst du hier')}</h3>`;
     c.goals.forEach((g,index) => h += `<div class="goal-item"><span>${String(index+1).padStart(2,'0')}</span><div>${g.de}${ar(g.ar)}</div></div>`);
     h += `</div>`;
     if(c.scenes?.length){
@@ -141,16 +141,16 @@ function renderChapterTab(c, tab){
         </figure>`).join('')}</div>`;
     }
     h += `
-    <div class="intro-note">💡 <b>Tipp:</b> Lies zuerst den Wortschatz, dann die Redemittel. Sprich die Sätze laut!
+    <div class="intro-note">💡 <b>Tipp:${arLabel('Tipp:')}</b> Lies zuerst den Wortschatz, dann die Redemittel. Sprich die Sätze laut!
     Am Ende mach das Quiz.${ar('نصيحة: ابدأ بالمفردات، وبعدها جُمل الكلام واقرأها بصوت عالي، وبعدين القواعد، وفي الآخر حل الكويز.')}</div>`;
     return h;
   }
   if(tab==='wortschatz'){
     let h = `<div class="fc-bar">
-      <button class="btn btn-green" id="fcStart" style="display:none">🃏 Mit Karten üben</button>
-      <button class="btn btn-ghost" id="fcStop">📃 Liste zeigen</button>
-      <button class="btn btn-green" type="button" onclick="go('train/${{'A1':'a1','A2':'a2','B1.1':'b1'}[chapterLevel(c)]}/${c.num}')">🧠 Wörter trainieren</button>
-      <button class="btn btn-ghost" type="button" onclick="addChapterWordsToReview('${chapterLevel(c)}',${c.num})">🔁 Alle Wörter ins Review</button>
+      <button class="btn btn-green" id="fcStart" style="display:none">🃏 Mit Karten üben${arLabel('Mit Karten üben')}</button>
+      <button class="btn btn-ghost" id="fcStop">📃 Liste zeigen${arLabel('Liste zeigen')}</button>
+      <button class="btn btn-green" type="button" onclick="go('train/${{'A1':'a1','A2':'a2','B1.1':'b1'}[chapterLevel(c)]}/${c.num}')">🧠 Wörter trainieren${arLabel('Wörter trainieren')}</button>
+      <button class="btn btn-ghost" type="button" onclick="addChapterWordsToReview('${chapterLevel(c)}',${c.num})">🔁 Alle Wörter ins Review${arLabel('Alle Wörter ins Review')}</button>
     </div>
     <div id="fcArea"></div>
     ${c.vocabSummary?`<div class="card vocab-summary">
@@ -192,20 +192,20 @@ function renderChapterTab(c, tab){
       <article class="card reading-card ${r.visual?.src?'with-cover':''}">
         ${r.visual?.src?`<figure class="reading-cover">
           <img src="${r.visual.src}" alt="${r.visual.alt||''}" style="object-position:center">
-          <figcaption class="reading-cover-copy"><div class="reading-kind">${r.kind}</div>${ar(r.kindAr)}<h3>${r.title}</h3>${ar(r.titleAr)}</figcaption>
-        </figure>`:`<h3 style="color:var(--green-d);margin-bottom:8px">${r.kind}: ${r.title}</h3>${ar(r.kindAr)}${ar(r.titleAr)}`}
+          <figcaption class="reading-cover-copy"><div class="reading-kind">${r.kind}</div>${ar(r.kindAr)}<h3>${r.title}${ar(r.titleAr,{inline:true})}</h3></figcaption>
+        </figure>`:`<h3 style="color:var(--green-d);margin-bottom:8px">${r.kind}: ${r.title}${r.titleAr?ar(`${r.kindAr}: ${r.titleAr}`,{inline:true}):''}</h3>`}
         <div class="reading-body">
           <div class="reading-tools">
-            <button type="button" class="people-read" onclick="speakReadingWithPeople(${c.num},${ri},'${c.route||`k${c.num}`}')">Mehrere Sprecher hören</button>
+            <button type="button" class="people-read" onclick="speakReadingWithPeople(${c.num},${ri},'${c.route||`k${c.num}`}')">Mehrere Sprecher hören${arLabel('Mehrere Sprecher hören')}</button>
           </div>
           <p class="reading-text">${r.text}</p>
-          ${ar(r.ar)}
-          <div class="reading-glossary">${r.glossary.map(([de,arText])=>`<span><b>${de}</b> · ${arText}</span>`).join('')}</div>
-          <h4 style="margin:12px 0 3px">Leseverstehen</h4>
+          ${ar(r.ar,{expanded:c.route?.startsWith('b1.1/')&&c.num>=7})}
+          <div class="reading-glossary">${r.glossary.map(([de,arText])=>`<span><b>${de}</b>${ar(arText,{inline:true})}</span>`).join('')}</div>
+          <h4 style="margin:12px 0 3px">Leseverstehen${arLabel('Leseverstehen')}</h4>
           ${r.questions.map(([q,a,qAr,aAr],qi)=>`
             <div class="reading-q">
               <b>${qi+1}. ${q}</b>${ar(qAr)}
-              <button type="button" class="answer-btn" onclick="toggleReadingAnswer(this)">Antwort zeigen</button>
+              <button type="button" class="answer-btn" onclick="toggleReadingAnswer(this)">Antwort zeigen${arLabel('Antwort zeigen')}</button>
               <div class="reading-answer">${a}${ar(aAr)}</div>
             </div>`).join('')}
         </div>
@@ -223,20 +223,20 @@ function renderChapterTab(c, tab){
   }
   if(tab==='sprechen'){
     let h = conversationsHtml(c) + `<div class="card">
-      <h3 style="color:var(--green-d);margin-bottom:8px">Sprich über das Thema! 🗣️</h3>
+      <h3 style="color:var(--green-d);margin-bottom:8px">Sprich über das Thema! 🗣️${arLabel('Sprich über das Thema!')}</h3>
       <p style="font-size:13.5px;color:var(--ink-2)">Beantworte die Fragen laut. Benutze die Redemittel aus diesem Kapitel.</p>
       ${ar('جاوب على الأسئلة دي بصوت عالي. استخدم جُمل الكلام (Redemittel) اللي في الفصل. ده أهم تمرين عشان تقدر تتكلم عن الموضوع.')}
       <div style="margin-top:12px">`;
     c.speaking.questions.forEach(q => h += `<div class="speak-q"><span class="qicon">❓</span><div>${q.de}${ar(q.ar)}</div></div>`);
     h += `</div></div>
     <div class="card">
-      <div class="model-text"><b>🌟 Modelltext – so kannst du sprechen:</b>${c.speaking.model}</div>
+      <div class="model-text"><b>🌟 Modelltext – so kannst du sprechen:${arLabel('Modelltext – so kannst du sprechen:')}</b>${c.speaking.model}</div>
       ${ar(c.speaking.modelAr)}
     </div>`;
     return h;
   }
   if(tab==='quiz'){
-    if(chapterGrammar(c).length) return renderGrammarTest(c)+`<div class="section-label">⚡ Kurzquiz</div><div id="quizArea"></div>`;
+    if(chapterGrammar(c).length) return renderGrammarTest(c)+`<div class="section-label">⚡ Kurzquiz${arLabel('Kurzquiz')}</div><div id="quizArea"></div>`;
     return `<div id="quizArea"></div>`;
   }
   return '';
@@ -250,5 +250,6 @@ function toggleReadingAnswer(btn){
   const answer = btn.nextElementSibling;
   const show = !answer.classList.contains('show');
   answer.classList.toggle('show', show);
-  btn.textContent = show ? 'Antwort ausblenden' : 'Antwort zeigen';
+  const label=show?'Antwort ausblenden':'Antwort zeigen';
+  btn.innerHTML=`${label}${arLabel(label)}`;
 }

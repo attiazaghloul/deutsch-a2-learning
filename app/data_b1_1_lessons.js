@@ -1436,6 +1436,9 @@
     const lesson = content[chapter.num];
     if (!lesson) return;
     Object.assign(chapter, lesson);
+    chapter.titleAr=['رحلة سعيدة!','ده عملي فعلًا!','تغيّرات','عالم العمل','صديق للبيئة؟','نظرة للمستقبل'][chapter.num-1];
+    chapter.subtitleAr=`Netzwerk neu B1.1 · الوحدة ${chapter.num}`;
+    if(chapter.visual) chapter.visual.captionAr=chapter.titleAr;
     chapter.readings.forEach(reading => {
       const words = chapter.vocab.filter(item => {
         const plain = String(item.w || '').replace(/^(der|die|das)\s+/i, '').split(/[,(]/)[0].trim();

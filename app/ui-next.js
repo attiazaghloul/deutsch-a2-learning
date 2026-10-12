@@ -72,7 +72,7 @@
 
   function navRoute(item){return typeof item.route==='function'?item.route():item.route;}
   function navMarkup(item,rail=false){
-    return `<button type="button" class="app-nav-item" data-shell-route="${navRoute(item)}" data-nav-id="${item.id}" aria-label="${item.label}">${item.icon}<span>${item.label}</span></button>`;
+    return `<button type="button" class="app-nav-item" data-shell-route="${navRoute(item)}" data-nav-id="${item.id}" aria-label="${item.label}">${item.icon}<span>${item.label}${arLabel(item.label)}</span></button>`;
   }
 
   function installShell(){
@@ -131,7 +131,7 @@
       :level==='b1.1'
         ?[['lessons','Lektionen','b1.1/lessons'],['dict','Wörterbuch','b1.1/dict'],['verbs','Verben','b1.1/verbs'],['phrases','Redemittel','b1.1/phrases'],['games','Training','b1.1/games'],['exam','Prüfung','b1.1/exam']]
         :[['lessons','Lektionen','a2/lessons'],['dict','Wörterbuch','dict'],['verbs','Verben','verbs'],['phrases','Redemittel','phrases'],['podcast','Podcast','podcast'],['games','Training','games'],['listen','Hören','listen'],['exam','Prüfung','exam']];
-    return `<nav class="feature-tabs" aria-label="${levelCode(level)} Bereiche">${items.map(([id,label,route])=>`<button type="button" class="feature-tab" onclick="go('${route}')" ${id===active?'aria-current="page"':''}>${label}</button>`).join('')}</nav>`;
+    return `<nav class="feature-tabs" aria-label="${levelCode(level)} Bereiche">${items.map(([id,label,route])=>`<button type="button" class="feature-tab" onclick="go('${route}')" ${id===active?'aria-current="page"':''}>${label}${arLabel(label)}</button>`).join('')}</nav>`;
   }
 
   const lessonStages=[
@@ -155,7 +155,7 @@
     const recent=state.history.slice().reverse().find(item=>item.route?.startsWith(`${routeBase}/`));
     const destination=recent?.route||`${routeBase}/${routeBase.startsWith('b1.1/')?'wortschatz':'ueberblick'}`;
     const label=recent?'Weiterlernen':'Kapitel starten';
-    return `<div class="chapter-start"><button type="button" class="next-primary" onclick="go('${destination}')">${label} ${icons.arrow}</button><button type="button" class="next-secondary" onclick="go('review')">Fällige Wiederholungen</button></div>`;
+    return `<div class="chapter-start"><button type="button" class="next-primary" onclick="go('${destination}')">${label}${ar(recent?'كمّل التعلّم':'ابدأ الوحدة',{inline:true})} ${icons.arrow}</button><button type="button" class="next-secondary" onclick="go('review')">Fällige Wiederholungen${ar('المراجعات المستحقة',{inline:true})}</button></div>`;
   }
 
   function stableId(value){
