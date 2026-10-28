@@ -121,6 +121,7 @@ async def synthesize_batch(voice, batch_index, batch, semaphore):
         "rate": voice["rate"],
         "pitch": voice["pitch"],
         "separator": SEPARATOR,
+        "blanks": "pause",
     }
     if audio_path.exists() and timing_path.exists():
         try:
@@ -134,7 +135,9 @@ async def synthesize_batch(voice, batch_index, batch, semaphore):
         except Exception:
             pass
 
-    text = SEPARATOR.join(item[1] for item in batch)
+    # Gap-fill blanks ("___") were read aloud as "Unterstrich"/"underscore".
+    # Speak them as a pause; the timing map ignores punctuation either way.
+    text = SEPARATOR.join(re.sub(r"_{2,}", "…", item[1]) for item in batch)
     async with semaphore:
         for attempt in range(4):
             temp_path = audio_path.with_suffix(".tmp.mp3")
