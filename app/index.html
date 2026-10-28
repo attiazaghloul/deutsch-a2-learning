@@ -47,37 +47,51 @@
 <div id="offline-banner" role="status" aria-live="polite">لا يوجد اتصال بالإنترنت — المحتوى المحفوظ متاح للمذاكرة</div>
 <button type="button" class="translate-trigger" id="translateTrigger">ترجمة في السياق</button>
 <button type="button" class="translate-favorite-trigger" id="translateFavoriteTrigger" aria-label="Favorit">&#9825;</button>
+<div class="tt-sheet" id="translationSheet" role="dialog" aria-label="Übersetzung" hidden>
+  <div class="tt-head">
+    <button type="button" class="tt-icon" id="ttSpeak" aria-label="Anhören">🔊</button>
+    <b class="tt-word" id="ttWord" lang="de"></b>
+    <button type="button" class="tt-icon tt-fav" id="ttFavorite" aria-label="Favorit"><span class="heart">&#9825;</span></button>
+    <button type="button" class="tt-icon" id="ttClose" aria-label="Schließen">×</button>
+  </div>
+  <div class="tt-meaning" id="ttMeaning" dir="rtl"></div>
+  <div class="tt-sentence" id="ttSentence" lang="de"></div>
+  <div class="tt-sentence-result" id="ttSentenceResult" dir="rtl" hidden></div>
+  <div class="tt-actions">
+    <button type="button" class="tt-action" id="ttSentenceBtn">ترجم الجملة كلها</button>
+    <button type="button" class="tt-action tt-secondary" id="ttMore">تفاصيل أكتر</button>
+  </div>
+</div>
 <div class="modal-backdrop" id="settingsModal" aria-hidden="true">
-  <section class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
-    <div class="modal-head"><h2 id="settingsTitle">Einstellungen</h2><button class="modal-close" data-close-modal="settingsModal" aria-label="Schließen">×</button></div>
-    <div class="setting-row">
-      <b>Schnellaktionen</b>
-      <div class="settings-actions">
-        <button type="button" class="favorite-btn settings-action" id="listenToggle" aria-pressed="false" title="اضغط ثم اختر أي نص لسماعه">🔇 Hören aus</button>
-        <button type="button" class="favorite-btn settings-action dl-btn" id="dlBtn" title="تحميل الدرس للأوفلاين">⬇ Download</button>
-      </div>
-    </div>
-    <div class="setting-row">
-      <b>Design <small dir="rtl" style="color:var(--ink-2)">· الألوان والأشكال وحجم الخط</small></b>
+  <section class="modal-panel settings-panel" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+    <div class="modal-head"><h2 id="settingsTitle">Einstellungen <small dir="rtl">الإعدادات</small></h2><button class="modal-close" data-close-modal="settingsModal" aria-label="Schließen">×</button></div>
+    <nav class="settings-tabs" role="tablist" aria-label="Bereiche">
+      <button type="button" role="tab" data-settings-tab="design"><span aria-hidden="true">🎨</span>Design<small dir="rtl">الشكل</small></button>
+      <button type="button" role="tab" data-settings-tab="voice"><span aria-hidden="true">🔊</span>Stimme<small dir="rtl">الصوت</small></button>
+      <button type="button" role="tab" data-settings-tab="translate"><span aria-hidden="true">🌐</span>Übersetzen<small dir="rtl">الترجمة</small></button>
+      <button type="button" role="tab" data-settings-tab="general"><span aria-hidden="true">⚙️</span>Allgemein<small dir="rtl">عام</small></button>
+    </nav>
+    <div class="setting-row" data-settings-section="design">
+      <b>Thema <small dir="rtl">الثيم والأشكال وحجم الخط</small></b>
       <div id="designSettings"></div>
     </div>
-    <div class="setting-row">
-      <label for="speechRate">Sprechgeschwindigkeit <span id="speechRateValue">0.85×</span></label>
+    <div class="setting-row" data-settings-section="voice">
+      <b>Deutsche Sprecher <small dir="rtl">مين يقرا</small></b>
+      <select class="voice-select visually-hidden" id="speechVoice" aria-label="Deutsche Stimme"></select>
+      <div class="voice-gallery" id="voiceGallery"></div>
+      <div class="voice-availability" id="voiceAvailability"></div>
+    </div>
+    <div class="setting-row" data-settings-section="voice">
+      <label for="speechRate">Sprechgeschwindigkeit <small dir="rtl">سرعة الكلام</small> <span id="speechRateValue">0.85×</span></label>
       <input class="speed-range" id="speechRate" type="range" min="0.55" max="1.3" step="0.05" value="0.85">
-      <div class="speed-presets">
+      <div class="speed-presets segmented">
         <button class="speed-preset" data-rate="0.65">Langsam</button>
         <button class="speed-preset" data-rate="0.85">Normal</button>
         <button class="speed-preset" data-rate="1.1">Schnell</button>
       </div>
     </div>
-    <div class="setting-row">
-      <b>Deutsche Sprecher</b>
-      <select class="voice-select" id="speechVoice" aria-label="Deutsche Stimme"></select>
-      <div class="voice-gallery" id="voiceGallery"></div>
-      <div class="voice-availability" id="voiceAvailability"></div>
-    </div>
-    <div class="setting-row">
-      <b>Sprechweise <small style="color:var(--ink-2)">(Tempo der gewählten Person)</small></b>
+    <div class="setting-row" data-settings-section="voice">
+      <b>Sprechweise <small dir="rtl">طريقة النطق</small></b>
       <div class="voice-profiles">
         <button class="voice-profile" data-profile="clear"><b>Natürlich</b><small>Originaltempo</small></button>
         <button class="voice-profile" data-profile="calm"><b>Langsam</b><small>ruhiger zum Lernen</small></button>
@@ -85,9 +99,22 @@
         <button class="voice-profile" data-profile="bright"><b>Lebendig</b><small>etwas schneller</small></button>
       </div>
     </div>
-    <div class="setting-row">
-      <b>Kontextübersetzung</b>
-      <p style="font-size:13px;color:var(--ink-2);margin-top:5px">Markiere ein Wort. Seine Übersetzung erscheint sofort; ein Klick öffnet Wort, Satz und Satzübersetzung.</p>
+    <div class="setting-row switch-row" data-settings-section="voice">
+      <div><b>Hören-Modus <small dir="rtl">وضع الاستماع</small></b><p dir="rtl">دوس على أي نص ألماني يتقري بصوت عالي.</p></div>
+      <button type="button" class="switch" id="listenToggle" role="switch" aria-checked="false" aria-pressed="false" aria-label="Hören-Modus"></button>
+    </div>
+    <div class="setting-row switch-row" data-settings-section="translate">
+      <div><b>Antippen <small dir="rtl">ضغطة على الكلمة</small></b><p dir="rtl">ضغطة واحدة على أي كلمة ألماني تظهر معناها تحت، ومنها تترجم الجملة كلها من غير تحديد.</p></div>
+      <button type="button" class="switch" data-setting-switch="tapTranslate" role="switch" aria-checked="true" aria-label="Antippen zum Übersetzen"></button>
+    </div>
+    <div class="setting-row switch-row" data-settings-section="translate">
+      <div><b>Markieren <small dir="rtl">ترجمة التحديد</small></b><p dir="rtl">لو حددت جزء من النص، ترجمته تظهر في نفس اللوحة اللي تحت، بعيد عن قائمة المتصفح (نسخ/مشاركة).</p></div>
+      <button type="button" class="switch" data-setting-switch="selectTranslate" role="switch" aria-checked="true" aria-label="Markieren zum Übersetzen"></button>
+    </div>
+    <div class="setting-row" data-settings-section="general">
+      <b>Offline lernen <small dir="rtl">المذاكرة من غير نت</small></b>
+      <p dir="rtl">افتح أي وحدة ودوس هنا: صورها وأصوات Mia أو Tarek للمستوى بتتحفظ على الجهاز.</p>
+      <button type="button" class="settings-primary dl-btn" id="dlBtn" title="تحميل الدرس للأوفلاين">⬇ Download</button>
     </div>
   </section>
 </div>
@@ -205,6 +232,8 @@
 <script src="js/18-grammar-practice.js"></script>
 <script src="js/19-bausteine.js"></script>
 <script src="ui-next.js?v=studio-4"></script>
+<script src="js/20-tap-translate.js"></script>
+<script src="js/21-settings.js"></script>
 <script src="js/offline-download.js"></script>
 </body>
 </html>

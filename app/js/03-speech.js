@@ -254,7 +254,7 @@ function setListenMode(on){
   document.body.classList.toggle('listen-mode',on);
   listenToggle.setAttribute('aria-pressed',String(on));
   listenToggle.classList.toggle('active',on);
-  listenToggle.textContent=on?'🔊 Hören an':'🔇 Hören aus';
+  listenToggle.setAttribute('aria-checked',String(on));
   localStorage.setItem('listenModeUserChoice',on?'1':'0');
   if(!on){
     stopFixedSpeech();
