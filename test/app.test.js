@@ -884,23 +884,30 @@ test('recorded speech ships exactly two voices and no retired recordings', () =>
   assert.deepEqual(speechFiles.filter(file => /jonas|samir/.test(file)), []);
 });
 
-test('A1 recorded speech plays clean clips separated by silence', () => {
-  // The first A1 recordings spoke "Audiomarker." after every clip and read
-  // "___" aloud as "Unterstrich"; clips cut from them carried those words.
-  const context = vm.createContext({ window: {} });
-  vm.runInContext(readFileSync(join(root, 'app', 'data_speech_a1.js'), 'utf8'), context);
-  const speech = context.window.A1_FIXED_SPEECH;
-  assert.equal(speech.trimmed, true);
-  assert.ok(html.includes(`speechA1:'data_speech_a1.js?v=${speech.version}'`), 'LAZY_SCRIPTS must load the current A1 library');
-  for (const voice of speech.voices) {
-    assert.equal(voice.audio, `assets/speech/a1-${voice.id}.mp3?v=${speech.version}`);
-    assert.ok(existsSync(join(root, 'app', voice.audio.split('?')[0])), `Missing ${voice.audio}`);
-    assert.equal(voice.timings.length, speech.texts.length);
-    voice.timings.forEach(([start, end], index) => {
-      assert.ok(end - start >= 0.12, `${voice.id} clip ${index} is empty`);
-      if (index) assert.ok(start - voice.timings[index - 1][1] >= 0.3, `${voice.id} clip ${index} touches the previous clip`);
-    });
+test('A1 and A2 recorded sentences play clean clips separated by silence', () => {
+  // The first A1 and A2 sentence recordings spoke "Audiomarker." after every
+  // clip and read "___" aloud as "Unterstrich"; clips cut from them carried
+  // those words.
+  for (const [file, name, prefix] of [
+    ['data_speech_a1.js', 'A1_FIXED_SPEECH', 'a1-'],
+    ['data_speech_clean.js', 'A2_FIXED_SPEECH', '']
+  ]) {
+    const context = vm.createContext({ window: {} });
+    vm.runInContext(readFileSync(join(root, 'app', file), 'utf8'), context);
+    const speech = context.window[name];
+    assert.equal(speech.trimmed, true, file);
+    for (const voice of speech.voices) {
+      assert.equal(voice.audio, `assets/speech/${prefix}${voice.id}.mp3?v=${speech.version}`);
+      assert.ok(existsSync(join(root, 'app', voice.audio.split('?')[0])), `Missing ${voice.audio}`);
+      assert.equal(voice.timings.length, speech.texts.length);
+      voice.timings.forEach(([start, end], index) => {
+        assert.ok(end - start >= 0.12, `${file} ${voice.id} clip ${index} is empty`);
+        if (index) assert.ok(start - voice.timings[index - 1][1] >= 0.3, `${file} ${voice.id} clip ${index} touches the previous clip`);
+      });
+    }
   }
+  assert.ok(html.includes("speechA1:'data_speech_a1.js?v=a1-fixed-voices-3'"), 'LAZY_SCRIPTS must load the rebuilt A1 library');
+  assert.ok(html.includes("speechA2:'data_speech_clean.js?v=speech-clean-8'"), 'LAZY_SCRIPTS must load the rebuilt A2 library');
   // Trimmed libraries must not lose another 85 ms at the end of each clip.
   assert.match(functionSource('playFixedSpeech'), /trimmed\|\|\(library==='a2'&&kind==='aliases'\)\?0:\.085/);
   assert.match(functionSource('fallbackBrowserSpeech'), /replace\(\/_\{2,\}\/g/);
