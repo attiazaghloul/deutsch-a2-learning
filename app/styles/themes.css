@@ -1,0 +1,148 @@
+/* Design themes, corner shapes and text size (Einstellungen → Design).
+   Each theme redefines the colour tokens of app.css and ui-next.css for every
+   level and sets --shape, which scales every rounded corner. "original" is
+   the app as it was: no overrides, level colours included. */
+
+/* ---------- Sonnig · مرح للأطفال: warm and playful, very round ---------- */
+html[data-theme="sunny"]{--shape:1.55}
+html[data-theme="sunny"] body{
+  --green:#e07214;--green-d:#a84a00;--green-l:#fff0de;
+  --ink:#2d2340;--ink-2:#685c7d;--bg:#fff8ec;--card:#ffffff;--line:#f1dcc0;
+  --amber:#d99a00;--amber-l:#fff4cf;--blue:#147f9f;--blue-l:#e0f5fa;
+  --red:#cc3762;--red-l:#fde6ee;--ar:#7a5aa6;--ar-l:#f4eefc;
+  --topbar-start:#f47b20;--topbar-end:#ec4f86;--hero-start:#f47b20;--hero-end:#f5a623;
+  --shadow:0 10px 26px rgba(224,114,20,.18);
+  --ds-accent:#e07214;--ds-accent-strong:#a84a00;--ds-accent-soft:#fff0de;--ds-accent-alt:#147f9f;
+  --ds-page:#fff8ec;--ds-surface:#ffffff;--ds-surface-soft:#fff5e8;--ds-surface-raised:#ffffff;
+  --ds-text:#2d2340;--ds-text-soft:#685c7d;--ds-border:rgba(168,74,0,.18);
+  --ds-shadow-1:0 2px 4px rgba(224,114,20,.08),0 10px 26px rgba(224,114,20,.12);
+  font-family:"Nunito","Carlito","Calibri","Segoe UI",system-ui,sans-serif;
+}
+
+/* ---------- Lebendig · حيوي للشباب: bold violet and pink ---------- */
+html[data-theme="vivid"]{--shape:1.1}
+html[data-theme="vivid"] body{
+  --green:#6a46f5;--green-d:#4826cf;--green-l:#efebff;
+  --ink:#1c1733;--ink-2:#5c5778;--bg:#f5f3ff;--card:#ffffff;--line:#e0d9fb;
+  --amber:#e07800;--amber-l:#fff1e0;--blue:#0790ad;--blue-l:#ddf5fa;
+  --red:#d92a66;--red-l:#fde7ef;--ar:#8a4fb8;--ar-l:#f6edfc;
+  --topbar-start:#4826cf;--topbar-end:#d92a66;--hero-start:#4826cf;--hero-end:#a43be6;
+  --shadow:0 10px 28px rgba(106,70,245,.18);
+  --ds-accent:#6a46f5;--ds-accent-strong:#4826cf;--ds-accent-soft:#efebff;--ds-accent-alt:#d92a66;
+  --ds-page:#f5f3ff;--ds-surface:#ffffff;--ds-surface-soft:#f7f5ff;--ds-surface-raised:#ffffff;
+  --ds-text:#1c1733;--ds-text-soft:#5c5778;--ds-border:rgba(72,38,207,.16);
+  --ds-shadow-1:0 2px 4px rgba(72,38,207,.06),0 10px 28px rgba(106,70,245,.14);
+}
+
+/* ---------- Ruhig · هادئ للكبار: muted slate and sand, crisp corners ---------- */
+html[data-theme="calm"]{--shape:.55}
+html[data-theme="calm"] body{
+  --green:#47697a;--green-d:#2f4c5a;--green-l:#e7eef1;
+  --ink:#22292d;--ink-2:#596469;--bg:#f3f2ee;--card:#fdfdfb;--line:#dcdad2;
+  --amber:#9a7038;--amber-l:#f4ecdf;--blue:#4f6b8a;--blue-l:#e8edf3;
+  --red:#a34a46;--red-l:#f5e7e5;--ar:#6d6476;--ar-l:#f2eff4;
+  --topbar-start:#2f4c5a;--topbar-end:#4f7384;--hero-start:#2f4c5a;--hero-end:#5d8091;
+  --shadow:0 4px 14px rgba(34,41,45,.07);
+  --ds-accent:#47697a;--ds-accent-strong:#2f4c5a;--ds-accent-soft:#e7eef1;--ds-accent-alt:#9a7038;
+  --ds-page:#f3f2ee;--ds-surface:#fdfdfb;--ds-surface-soft:#f6f5f1;--ds-surface-raised:#ffffff;
+  --ds-text:#22292d;--ds-text-soft:#596469;--ds-border:rgba(34,41,45,.14);
+  --ds-shadow-1:0 1px 2px rgba(34,41,45,.05),0 4px 14px rgba(34,41,45,.06);
+}
+
+/* ---------- Klar · وضوح عالي لكبار السن: black on white, strong lines ---------- */
+html[data-theme="clear"]{--shape:.4}
+html[data-theme="clear"] body{
+  --green:#00539c;--green-d:#003a70;--green-l:#e3eefa;
+  --ink:#000000;--ink-2:#2b2b2b;--bg:#ffffff;--card:#ffffff;--line:#6b6b6b;
+  --amber:#7d4a00;--amber-l:#fff1d6;--blue:#00539c;--blue-l:#e3eefa;
+  --red:#a1001f;--red-l:#fde3e7;--ar:#3d2f55;--ar-l:#f1edf7;
+  --topbar-start:#002d57;--topbar-end:#00539c;--hero-start:#002d57;--hero-end:#00539c;
+  --shadow:0 0 0 2px rgba(0,0,0,.2);
+  --ds-accent:#00539c;--ds-accent-strong:#003a70;--ds-accent-soft:#e3eefa;--ds-accent-alt:#7d4a00;
+  --ds-page:#ffffff;--ds-surface:#ffffff;--ds-surface-soft:#f4f4f4;--ds-surface-raised:#ffffff;
+  --ds-text:#000000;--ds-text-soft:#2b2b2b;--ds-border:rgba(0,0,0,.5);
+  --ds-shadow-1:0 0 0 1.5px rgba(0,0,0,.35);
+  font-family:"Atkinson Hyperlegible","Carlito","Calibri","Segoe UI",system-ui,sans-serif;
+}
+html[data-theme="clear"] body a{text-decoration:underline;text-underline-offset:3px}
+html[data-theme="clear"] body :focus-visible{outline:3px solid #000;outline-offset:2px}
+
+/* ---------- Natur · طبيعة لكل العيلة: leaf green and wood ---------- */
+html[data-theme="nature"]{--shape:1.25}
+html[data-theme="nature"] body{
+  --green:#3f8a4f;--green-d:#28602f;--green-l:#e7f4e6;
+  --ink:#233024;--ink-2:#58665a;--bg:#f4f8ef;--card:#fffffb;--line:#d9e6cf;
+  --amber:#b87420;--amber-l:#f8ecd9;--blue:#357686;--blue-l:#e2f0f3;
+  --red:#ad4a3a;--red-l:#f7e6e1;--ar:#6b5f45;--ar-l:#f3f0e6;
+  --topbar-start:#28602f;--topbar-end:#5b9e4d;--hero-start:#28602f;--hero-end:#7aac56;
+  --shadow:0 8px 22px rgba(40,96,47,.12);
+  --ds-accent:#3f8a4f;--ds-accent-strong:#28602f;--ds-accent-soft:#e7f4e6;--ds-accent-alt:#b87420;
+  --ds-page:#f4f8ef;--ds-surface:#fffffb;--ds-surface-soft:#f6f9f1;--ds-surface-raised:#ffffff;
+  --ds-text:#233024;--ds-text-soft:#58665a;--ds-border:rgba(40,96,47,.16);
+  --ds-shadow-1:0 1px 2px rgba(40,96,47,.05),0 8px 22px rgba(40,96,47,.09);
+}
+
+/* ---------- Nacht · ليلي: dark surfaces, light text ----------
+   The tokens are here; theme-night.css (generated by
+   scripts/build_night_theme.js) turns the colours written out in app.css and
+   ui-next.css dark. --nbg-* are the background twins of tokens that are light
+   text at night, --ntx-* the text twins of tokens that are dark surfaces. */
+html[data-theme="night"]{--shape:1;color-scheme:dark}
+html[data-theme="night"] body{
+  --green:#4fb8a8;--green-d:#86d6ca;--green-l:#1d3532;
+  --ink:#e4eaec;--ink-2:#a7b4b9;--bg:#121719;--card:#1b2225;--line:#33403f;
+  --amber:#e3a95c;--amber-l:#3a2e1d;--blue:#8fb6dc;--blue-l:#1c2a37;
+  --red:#f08d87;--red-l:#3c2322;--ar:#c6b7da;--ar-l:#29233a;
+  --topbar-start:#0f2a2c;--topbar-end:#1d4f4d;--hero-start:#123234;--hero-end:#22605b;
+  --shadow:0 8px 24px rgba(0,0,0,.45);
+  --nbg-green-d:#1f6b63;--nbg-green:#24786e;--nbg-blue:#2d5577;--nbg-red:#8a3431;--nbg-amber:#7a5524;
+  --nbg-ar:#4d3f61;--nbg-ink:#2f3b40;--nbg-ink-2:#3a484e;
+  --nbg-ds-accent:#24786e;--nbg-ds-accent-strong:#1a5a54;--nbg-ds-accent-alt:#7a5524;
+  --nbg-ds-text:#2f3b40;--nbg-ds-text-soft:#3a484e;--nbg-ds-success:#1f6b4f;--nbg-ds-warning:#7a5524;--nbg-ds-danger:#8a3431;
+  --ntx-card:#f2f6f7;--ntx-bg:#f2f6f7;--ntx-green-l:#e5f3f0;--ntx-blue-l:#e9f0f6;--ntx-red-l:#f9e8e5;
+  --ntx-amber-l:#fbefd9;--ntx-ar-l:#f7f3f7;--ntx-line:#e6ded1;--ntx-ds-surface:#f2f6f7;--ntx-ds-surface-soft:#f2f6f7;
+  --ntx-ds-surface-raised:#ffffff;--ntx-ds-page:#f2f6f7;--ntx-ds-accent-soft:#e5f3ed;
+  --ds-accent:#4fb8a8;--ds-accent-strong:#86d6ca;--ds-accent-soft:#1d3532;--ds-accent-alt:#e3a95c;
+  --ds-page:#121719;--ds-surface:#1b2225;--ds-surface-soft:#20292c;--ds-surface-raised:#222b2f;
+  --ds-text:#e4eaec;--ds-text-soft:#a7b4b9;--ds-border:rgba(255,255,255,.12);
+  --ds-success:#62c79e;--ds-warning:#e3a95c;--ds-danger:#f08d87;
+  --ds-shadow-1:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);--ds-shadow-2:0 18px 50px rgba(0,0,0,.6);
+}
+/* pictures and maps keep their colours but do not glare */
+html[data-theme="night"] body img{filter:brightness(.9)}
+
+/* ---------- corner shapes: override the theme's own shape ---------- */
+html[data-shape="round"]{--shape:1.6}
+html[data-shape="soft"]{--shape:1}
+html[data-shape="square"]{--shape:.3}
+
+/* ---------- text size: everything grows, so buttons get easier to hit too ---------- */
+html[data-text="large"] body{zoom:1.12}
+html[data-text="xlarge"] body{zoom:1.25}
+
+/* ---------- Einstellungen → Design ---------- */
+.theme-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:8px;margin-top:8px}
+.theme-card{
+  display:flex;flex-direction:column;gap:6px;align-items:stretch;text-align:start;cursor:pointer;
+  border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit;
+  border-radius:calc(14px*var(--shape,1));padding:8px;
+}
+.theme-card[aria-pressed="true"]{border-color:var(--green-d);box-shadow:0 0 0 2px var(--green-l)}
+.theme-card b{font-size:14px}
+.theme-card small{font-size:12px;color:var(--ink-2);font-family:"Cairo","Tahoma",sans-serif;line-height:1.4}
+.theme-swatch{
+  height:38px;border-radius:calc(var(--swatch-radius)*1px);position:relative;overflow:hidden;
+  background:linear-gradient(135deg,var(--swatch-a),var(--swatch-b));
+}
+.theme-swatch::after{
+  content:"";position:absolute;inset:auto 8px 8px 8px;height:14px;background:var(--swatch-c);
+  border-radius:calc(var(--swatch-radius)*.6px);opacity:.95;
+}
+.theme-options{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.theme-option{
+  border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:13px;
+  padding:6px 12px;border-radius:999px;cursor:pointer;display:flex;align-items:center;gap:7px;
+}
+.theme-option[aria-pressed="true"]{border-color:var(--green-d);background:var(--green-l);font-weight:700}
+.shape-preview{width:16px;height:16px;border:2px solid currentColor;display:inline-block}
+.design-hint{font-size:12px;color:var(--ink-2);margin-top:6px}
