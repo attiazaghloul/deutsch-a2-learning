@@ -15,7 +15,7 @@ BUILD = ROOT / "build"
 SEGMENTS = BUILD / "podcast-segments"
 OUTPUT = ROOT / "app" / "assets" / "podcasts"
 FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
-PODCAST_VERSION = "word-sync-3"
+PODCAST_VERSION = "word-sync-5"
 
 
 def voice_settings(person):
@@ -40,7 +40,8 @@ async def synthesize(index, item, people, chapter_dir, semaphore):
         "text": item["de"],
         "voice": person["voice"],
         "rate": rate,
-        "pitch": pitch
+        "pitch": pitch,
+        "blanks": "pause"
     }
     if target.exists() and timing_target.exists() and target.stat().st_size > 1000:
         try:
@@ -59,8 +60,9 @@ async def synthesize(index, item, people, chapter_dir, semaphore):
             temp_target = target.with_suffix(".tmp.mp3")
             temp_target.unlink(missing_ok=True)
             try:
+                # Quiz blanks ("___") were read aloud as "Unterstrich".
                 communicate = edge_tts.Communicate(
-                    item["de"], person["voice"], rate=rate, pitch=pitch, volume="+0%",
+                    re.sub(r"_{2,}", "…", item["de"]), person["voice"], rate=rate, pitch=pitch, volume="+0%",
                     boundary="WordBoundary"
                 )
                 boundaries = []
