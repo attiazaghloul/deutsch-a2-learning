@@ -47,7 +47,7 @@ LEVELS = {
         "comment": "Generated fixed cross-device A1 speech library.",
         "audio": "a1-{voice}.mp3",
         "source": "4590536",  # "Keep two recorded voices (Mia and Tarek)"
-        "version": "a1-fixed-voices-2",
+        "version": "a1-fixed-voices-3",
     },
     "a2": {
         "data": "app/data_speech_clean.js",

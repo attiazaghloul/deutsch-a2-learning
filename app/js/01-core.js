@@ -68,7 +68,7 @@ const EXAM = window.A2_EXAM;
 const LAZY_SCRIPTS={
   podcast:'data_podcast.js?v=word-sync-3',
   speechA2:'data_speech_clean.js?v=speech-clean-7',
-  speechA1:'data_speech_a1.js?v=a1-fixed-voices-2',
+  speechA1:'data_speech_a1.js?v=a1-fixed-voices-3',
   speechB1:'data_speech_b1.js?v=b1-fixed-voices-1'
 };
 const lazyScriptLoads=new Map();

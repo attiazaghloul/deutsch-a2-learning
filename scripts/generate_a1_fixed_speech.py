@@ -17,7 +17,7 @@ from generate_fixed_speech import (
 ROOT = Path(__file__).resolve().parents[1]
 TEXTS_PATH = ROOT / "build" / "a1-speech-library-texts.json"
 DATA_PATH = ROOT / "app" / "data_speech_a1.js"
-VERSION = "a1-fixed-voices-3"
+VERSION = "a1-fixed-voices-4"
 BATCH_OFFSET = 1200
 
 
