@@ -107,16 +107,17 @@ def clip_bounds(rms, timings, index):
     return start, end
 
 
-def blank_cuts(model, pcm16, rms, text, spans, first_pass, pattern=JUNK):
+def blank_cuts(model, pcm16, rms, text, spans, first_pass, pattern=JUNK, pause=BLANK):
     """Source-time spans of read-out blanks (and the exercise number before
-    them), or of other `pattern` words, in the audio the kept `spans` play."""
-    gap = np.zeros(int(BLANK * ASR_SR), np.float32)
+    them), or of other `pattern` words, in the audio the kept `spans` play
+    (with `pause` seconds between them)."""
+    gap = np.zeros(int(pause * ASR_SR), np.float32)
     pieces, layout, offset = [], [], 0.0
     for t0, t1 in spans:
         piece = pcm16[int(t0 * ASR_SR):int(t1 * ASR_SR)]
         layout.append((offset, t0, t1))
         pieces += [piece, gap]
-        offset += len(piece) / ASR_SR + BLANK
+        offset += len(piece) / ASR_SR + pause
     segments, _ = model.transcribe(np.concatenate(pieces), language="de", word_timestamps=True, beam_size=5,
                                    condition_on_previous_text=False)
     words = [word for part in segments for word in part.words]
@@ -129,7 +130,7 @@ def blank_cuts(model, pcm16, rms, text, spans, first_pass, pattern=JUNK):
 
     # a word of the text itself ("untersucht", "Unterricht") is never junk
     text_words = {normalized(token) for token in re.findall(r"\w+", text)}
-    cuts, previous_junk = [], False
+    cuts, previous_junk, heard_text = [], False, False
     for position, word in enumerate(words):
         match = pattern.search(word.word)
         if match and normalized(word.word) in text_words:
@@ -138,6 +139,7 @@ def blank_cuts(model, pcm16, rms, text, spans, first_pass, pattern=JUNK):
             match = re.match(r"", word.word)
         if not match:
             previous_junk = False
+            heard_text = True
             continue
         cut_start, cut_end, t0, t1 = source(word)
         # "Hahnemann-Audiomarke" comes back as one word: cut from the marker on.
@@ -145,6 +147,9 @@ def blank_cuts(model, pcm16, rms, text, spans, first_pass, pattern=JUNK):
             cut_start += (cut_end - cut_start) * match.start() / len(word.word)
         cut_start = t0 if cut_start - t0 < 0.08 else quietest(rms, cut_start - 0.07, cut_start + 0.07)
         cut_end = t1 if t1 - cut_end < 0.08 else quietest(rms, cut_end - 0.07, cut_end + 0.07)
+        # "___? · Ja, ...": nothing of the text comes before the first blank
+        if not cuts and not heard_text and re.match(r"^[\d.\s]*\W*_", text):
+            cut_start = layout[0][1]
         # "Unter Strich, Unter Strich" is one blank: one cut, no slivers between
         if previous_junk and cuts:
             cuts[-1][1] = max(cuts[-1][1], cut_end)
@@ -199,7 +204,11 @@ def blank_spans(model, pcm16, rms, texts, timings, cache_name):
     if cache.exists():
         cached = json.loads(cache.read_text(encoding="utf-8"))
         if cached["texts"] == texts:
-            return [[tuple(span) for span in spans] for spans in cached["spans"]]
+            result = [[tuple(span) for span in spans] for spans in cached["spans"]]
+            if not cached.get("rechecked"):
+                result = recheck_blanks(model, pcm16, rms, texts, result, cache_name)
+                cache.write_text(json.dumps({"texts": texts, "spans": result, "rechecked": True}), encoding="utf-8")
+            return result
     result = []
     for index, text in enumerate(texts):
         start, end = clip_bounds(rms, timings, index)
@@ -214,9 +223,29 @@ def blank_spans(model, pcm16, rms, texts, timings, cache_name):
         result.append(spans)
         if index % 500 == 0:
             print(f"  {cache_name}: blanks {index}/{len(texts)}", flush=True)
+    result = recheck_blanks(model, pcm16, rms, texts, result, cache_name)
     BUILD.mkdir(parents=True, exist_ok=True)
-    cache.write_text(json.dumps({"texts": texts, "spans": result}), encoding="utf-8")
+    cache.write_text(json.dumps({"texts": texts, "spans": result, "rechecked": True}), encoding="utf-8")
     return result
+
+
+def recheck_blanks(model, pcm16, rms, texts, all_spans, cache_name):
+    """Listen to every clip with a blank once more as one piece of audio.
+
+    The search above hears the kept pieces with pauses between them; heard
+    without them, a blank it missed ("___? · Ja, die Wohnung ...") can come
+    out as "Undescore" and is cut too.
+    """
+    for index, text in enumerate(texts):
+        if "_" not in text:
+            continue
+        for _ in range(2):
+            cuts = blank_cuts(model, pcm16, rms, text, all_spans[index], first_pass=False, pause=0)
+            if not cuts or not without(all_spans[index], cuts):
+                break
+            print(f"  {cache_name}: blank still heard in clip {index}: {text[:50]!r}", flush=True)
+            all_spans[index] = without(all_spans[index], cuts)
+    return all_spans
 
 
 def clips_with_marker(model, pcm16, texts, all_spans, indexes):
@@ -259,7 +288,13 @@ def rebuild_voice(model, level, texts, voice):
     rms = librosa.feature.rms(y=pcm, frame_length=2 * HOP, hop_length=HOP, center=True)[0]
     all_spans = blank_spans(model, pcm16, rms, texts, voice["timings"], Path(name).stem)
 
-    suspects = clips_with_marker(model, pcm16, texts, all_spans, range(len(texts)))
+    # which clips still say "Audiomarker" (cached: the check takes an hour)
+    markers = BUILD / f"{Path(name).stem}-markers.json"
+    if markers.exists() and json.loads(markers.read_text(encoding="utf-8"))["texts"] == texts:
+        suspects = json.loads(markers.read_text(encoding="utf-8"))["suspects"]
+    else:
+        suspects = clips_with_marker(model, pcm16, texts, all_spans, range(len(texts)))
+        markers.write_text(json.dumps({"texts": texts, "suspects": suspects}), encoding="utf-8")
     print(f"  {voice['id']}: marker heard in {len(suspects)} clips {suspects}", flush=True)
     for index in suspects:
         # cut, then listen to this clip alone until the marker is gone
