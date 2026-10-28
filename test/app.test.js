@@ -1975,3 +1975,18 @@ test('design settings apply a saved theme, corner shape and text size', () => {
   const html = readFileSync(join(root, 'app', 'index.html'), 'utf8');
   assert.ok(html.indexOf('js/00-theme.js') < html.indexOf('</head>'), 'the theme applies before the first paint');
 });
+
+test('the night theme stylesheet is generated from the current stylesheets', () => {
+  // theme-night.css re-emits every colour rule of app.css and ui-next.css;
+  // editing those without running the generator would leave light patches.
+  const { build, OUTPUT } = require(join(root, 'scripts', 'build_night_theme.js'));
+  assert.equal(readFileSync(join(root, OUTPUT), 'utf8'), build(), 'run: node scripts/build_night_theme.js');
+  const night = readFileSync(join(root, OUTPUT), 'utf8');
+  const palette = readFileSync(join(root, 'app', 'styles', 'themes.css'), 'utf8');
+  for (const token of new Set(night.match(/--n(?:bg|tx)-[\w-]+/g))) {
+    assert.match(palette, new RegExp(`${token}:`), `${token} is used at night but has no colour`);
+  }
+  const theme = readFileSync(join(root, 'app', 'js', '00-theme.js'), 'utf8');
+  assert.match(theme, /stylesheet:'styles\/theme-night\.css\?v=/);
+  assert.match(readFileSync(join(root, 'app', 'sw.js'), 'utf8'), /'styles\/theme-night\.css'/);
+});

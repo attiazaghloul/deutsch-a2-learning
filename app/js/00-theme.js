@@ -6,7 +6,8 @@ const DESIGN_THEMES=[
   {id:'vivid',name:'Lebendig',ar:'حيوي · للشباب',colors:['#4826cf','#d92a66','#f5f3ff'],radius:16},
   {id:'calm',name:'Ruhig',ar:'هادئ · للكبار',colors:['#2f4c5a','#5d8091','#f3f2ee'],radius:7},
   {id:'clear',name:'Klar',ar:'وضوح عالي · لكبار السن',colors:['#002d57','#00539c','#ffffff'],radius:5,font:'Atkinson+Hyperlegible:wght@400;700'},
-  {id:'nature',name:'Natur',ar:'طبيعة · لكل العيلة',colors:['#28602f','#7aac56','#f4f8ef'],radius:18}
+  {id:'nature',name:'Natur',ar:'طبيعة · لكل العيلة',colors:['#28602f','#7aac56','#f4f8ef'],radius:18},
+  {id:'night',name:'Nacht',ar:'ليلي · مريح للعين بالليل',colors:['#0f2a2c','#22605b','#1b2225'],radius:14,stylesheet:'styles/theme-night.css?v=night-1'}
 ];
 const DESIGN_SHAPES=[
   {id:'auto',name:'Wie Thema',ar:'حسب الثيم',radius:null},
@@ -35,7 +36,15 @@ function applyDesign(){
   root.dataset.theme=theme;
   if(shape==='auto') delete root.dataset.shape; else root.dataset.shape=shape;
   if(text==='normal') delete root.dataset.text; else root.dataset.text=text;
-  // Only the themes that use their own font load it, and only once.
+  // Only the themes that use their own font or stylesheet load it, and only once.
+  const stylesheet=DESIGN_THEMES.find(item=>item.id===theme)?.stylesheet;
+  if(stylesheet&&!document.querySelector(`link[data-theme-sheet="${theme}"]`)){
+    const link=document.createElement('link');
+    link.rel='stylesheet';
+    link.dataset.themeSheet=theme;
+    link.href=stylesheet;
+    document.head.appendChild(link);
+  }
   const font=DESIGN_THEMES.find(item=>item.id===theme)?.font;
   if(font&&!document.querySelector(`link[data-theme-font="${theme}"]`)){
     const link=document.createElement('link');
