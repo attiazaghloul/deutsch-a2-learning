@@ -679,7 +679,7 @@ test('next-generation shell and design system are wired into the offline app', (
   assert.match(ui, /lessonProgress/);
   assert.match(css, /\.app-bottom-nav/);
   assert.match(css, /\.flashcard-face\[aria-hidden="true"\]\{visibility:hidden/);
-  assert.match(html, /legacyMarkerPadding=library==='a2'&&kind==='aliases'\?0:\.085/);
+  assert.match(html, /legacyMarkerPadding=trimmed\|\|\(library==='a2'&&kind==='aliases'\)\?0:\.085/);
   assert.match(css, /@media\(min-width:900px\)/);
   assert.match(worker, /ui-next\.js/);
   assert.match(worker, /styles\/ui-next\.css/);
@@ -882,6 +882,28 @@ test('recorded speech ships exactly two voices and no retired recordings', () =>
   }
   const speechFiles = readdirSync(join(root, 'app', 'assets', 'speech'));
   assert.deepEqual(speechFiles.filter(file => /jonas|samir/.test(file)), []);
+});
+
+test('A1 recorded speech plays clean clips separated by silence', () => {
+  // The first A1 recordings spoke "Audiomarker." after every clip and read
+  // "___" aloud as "Unterstrich"; clips cut from them carried those words.
+  const context = vm.createContext({ window: {} });
+  vm.runInContext(readFileSync(join(root, 'app', 'data_speech_a1.js'), 'utf8'), context);
+  const speech = context.window.A1_FIXED_SPEECH;
+  assert.equal(speech.trimmed, true);
+  assert.ok(html.includes(`speechA1:'data_speech_a1.js?v=${speech.version}'`), 'LAZY_SCRIPTS must load the current A1 library');
+  for (const voice of speech.voices) {
+    assert.equal(voice.audio, `assets/speech/a1-${voice.id}.mp3?v=${speech.version}`);
+    assert.ok(existsSync(join(root, 'app', voice.audio.split('?')[0])), `Missing ${voice.audio}`);
+    assert.equal(voice.timings.length, speech.texts.length);
+    voice.timings.forEach(([start, end], index) => {
+      assert.ok(end - start >= 0.12, `${voice.id} clip ${index} is empty`);
+      if (index) assert.ok(start - voice.timings[index - 1][1] >= 0.3, `${voice.id} clip ${index} touches the previous clip`);
+    });
+  }
+  // Trimmed libraries must not lose another 85 ms at the end of each clip.
+  assert.match(functionSource('playFixedSpeech'), /trimmed\|\|\(library==='a2'&&kind==='aliases'\)\?0:\.085/);
+  assert.match(functionSource('fallbackBrowserSpeech'), /replace\(\/_\{2,\}\/g/);
 });
 
 test('app code is network-first and open pages reload when a new version goes live', () => {

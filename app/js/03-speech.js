@@ -76,11 +76,11 @@ function findFixedSpeechClip(value,voiceId){
     const aliasIndex=library.data.aliases?.texts?.indexOf(value)??-1;
     const aliasVoice=library.data.aliases?.voices?.find(item=>item.id===voice?.id);
     if(aliasIndex>=0&&aliasVoice?.timings?.[aliasIndex]&&aliasVoice.audio){
-      return {library:library.id, voice, timing:aliasVoice.timings[aliasIndex], audioSource:aliasVoice.audio, kind:'aliases'};
+      return {library:library.id, voice, timing:aliasVoice.timings[aliasIndex], audioSource:aliasVoice.audio, kind:'aliases', trimmed:Boolean(library.data.trimmed)};
     }
     const textIndex=library.index.get(value);
     if(textIndex!==undefined&&voice?.timings?.[textIndex]&&voice.audio){
-      return {library:library.id, voice, timing:voice.timings[textIndex], audioSource:voice.audio, kind:'main'};
+      return {library:library.id, voice, timing:voice.timings[textIndex], audioSource:voice.audio, kind:'main', trimmed:Boolean(library.data.trimmed)};
     }
   }
   return null;
@@ -89,7 +89,7 @@ function findFixedSpeechClip(value,voiceId){
 function playFixedSpeech(value,voiceId=speechVoiceURI,onDone=null){
   const clip=findFixedSpeechClip(value,voiceId);
   if(!clip)return false;
-  const {library, voice, timing, audioSource, kind}=clip;
+  const {library, voice, timing, audioSource, kind, trimmed}=clip;
   stopFixedSpeech();
   speech?.cancel();
   const session=++fixedSpeechSession;
@@ -102,8 +102,9 @@ function playFixedSpeech(value,voiceId=speechVoiceURI,onDone=null){
   }
   const start=Number(timing[0]);
   // Older libraries end 60 ms after the final word boundary. The rebuilt A2
-  // vocabulary aliases are already trimmed during generation.
-  const legacyMarkerPadding=library==='a2'&&kind==='aliases'?0:.085;
+  // vocabulary aliases and libraries marked `trimmed` (the rebuilt A1 sprite,
+  // with silence between clips) already end where the speech ends.
+  const legacyMarkerPadding=trimmed||(library==='a2'&&kind==='aliases')?0:.085;
   const end=Math.max(start+.12,Number(timing[1])-legacyMarkerPadding);
   fixedSpeechAudio.playbackRate=Math.max(.6,Math.min(1.5,(speechRate/.85)*fixedSpeechProfileRate()));
   fixedSpeechAudio.preservesPitch=true;
@@ -145,7 +146,8 @@ function fallbackBrowserSpeech(value,lang,voiceURIOverride='',attempt=0){
     setTimeout(()=>fallbackBrowserSpeech(value,lang,voiceURIOverride,attempt+1),250);
     return;
   }
-  const utterance=new SpeechSynthesisUtterance(value);
+  // A gap-fill blank is a pause, not the word "Unterstrich".
+  const utterance=new SpeechSynthesisUtterance(value.replace(/_{2,}/g,' … '));
   utterance.lang=isArabic?'ar-EG':'de-DE';
   utterance.rate=Math.max(.5,Math.min(1.5,speechRate));
   const preferred=voiceURIOverride
