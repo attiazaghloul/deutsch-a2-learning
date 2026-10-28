@@ -1939,3 +1939,39 @@ test('the B1 level lists B1.1 and B1.2 chapters and labels the level B1', () => 
   const ui = readFileSync(join(root, 'app', 'ui-next.js'), 'utf8');
   assert.match(ui, /function levelCode\(level\)\{\s*return level==='b1\.1'\?'B1'/);
 });
+
+test('design settings apply a saved theme, corner shape and text size', () => {
+  const context = loadFunctions(['readDesignSetting', 'applyDesign']);
+  const source = readFileSync(join(root, 'app', 'js', '00-theme.js'), 'utf8');
+  vm.runInContext(source.slice(source.indexOf('const DESIGN_THEMES'), source.indexOf('function readDesignSetting')).replace(/const /g, 'var '), context);
+  const saved = { designTheme: 'clear', designShape: 'square', designText: 'xlarge' };
+  const links = [];
+  context.localStorage = { getItem: key => saved[key] ?? null };
+  context.document = {
+    documentElement: { dataset: {} },
+    head: { appendChild: link => links.push(link) },
+    querySelector: () => null,
+    createElement: () => ({ dataset: {} })
+  };
+  context.applyDesign();
+  assert.deepEqual({ ...context.document.documentElement.dataset }, { theme: 'clear', shape: 'square', text: 'xlarge' });
+  assert.match(links[0].href, /Atkinson\+Hyperlegible/);
+  // unknown or missing values fall back to the original look
+  saved.designTheme = 'neon'; saved.designShape = null; saved.designText = 'huge';
+  context.applyDesign();
+  assert.deepEqual({ ...context.document.documentElement.dataset }, { theme: 'original' });
+
+  const css = readFileSync(join(root, 'app', 'styles', 'themes.css'), 'utf8');
+  for (const theme of context.DESIGN_THEMES.filter(item => item.id !== 'original')) {
+    assert.match(css, new RegExp(`html\\[data-theme="${theme.id}"\\] body\\{`), `${theme.id} needs its colours`);
+    assert.match(css, new RegExp(`html\\[data-theme="${theme.id}"\\]\\{--shape:`), `${theme.id} needs its shape`);
+  }
+  // corners follow the --shape token everywhere, pills and circles excepted
+  for (const file of ['app.css', 'ui-next.css']) {
+    const sheet = readFileSync(join(root, 'app', 'styles', file), 'utf8');
+    const fixed = (sheet.match(/radius[a-z-]*:[^;}]*/g) || []).filter(rule => /(?<![\w.(*])[1-9]\d?(?:\.\d+)?px/.test(rule.replace(/calc\([^)]*\)/g, '')));
+    assert.deepEqual(fixed, [], `${file} has corners that ignore the theme shape`);
+  }
+  const html = readFileSync(join(root, 'app', 'index.html'), 'utf8');
+  assert.ok(html.indexOf('js/00-theme.js') < html.indexOf('</head>'), 'the theme applies before the first paint');
+});
