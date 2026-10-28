@@ -109,6 +109,8 @@ async def main():
 
     payload = {
         "version": VERSION,
+        # Timings already end at the last word (no spoken marker to skip).
+        "trimmed": True,
         "texts": texts,
         "voices": [
             {

@@ -172,10 +172,16 @@ self.addEventListener('message', event => {
       for (const rawUrl of urls) {
         try {
           const url = new URL(rawUrl, self.location.href).href;
-          const cached = await cache.match(url, { ignoreSearch: true });
+          const speech = new URL(url).pathname.includes('/assets/speech/');
+          const cached = await cache.match(url, { ignoreSearch: !speech });
           if (!cached) {
             const response = await fetch(url, { cache: 'reload' });
             if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            // a voice sprite of an older version is 50-90 MB nobody plays again
+            if (speech) {
+              const older = await cache.keys(url, { ignoreSearch: true });
+              await Promise.all(older.map(request => cache.delete(request)));
+            }
             await cache.put(url, response.clone());
           }
         } catch (_) {
@@ -239,14 +245,17 @@ self.addEventListener('fetch', event => {
   }
 
   const dictionaryAsset = url.pathname.includes('/dictionary-data/');
+  // A voice sprite only fits the timings of its own version (?v=...): never
+  // answer with a copy saved for another one.
+  const ignoreSearch = !url.pathname.includes('/assets/speech/');
   // Dictionary files and downloaded lesson media live in durable caches so a
   // normal app update cannot erase them. Other app assets use the versioned shell.
   event.respondWith(
     Promise.all([caches.open(CACHE), caches.open(DICTIONARY_CACHE), caches.open(MEDIA_CACHE)]).then(([shell, dictionary, media]) =>
       Promise.all([
-        shell.match(req, { ignoreSearch: true }),
-        dictionary.match(req, { ignoreSearch: true }),
-        media.match(req, { ignoreSearch: true })
+        shell.match(req, { ignoreSearch }),
+        dictionary.match(req, { ignoreSearch }),
+        media.match(req, { ignoreSearch })
       ]).then(([shellHit, dictionaryHit, mediaHit]) => {
         const cached = shellHit || dictionaryHit || mediaHit;
         const network = fetch(req).then(res => {
@@ -255,8 +264,32 @@ self.addEventListener('fetch', event => {
           }
           return res;
         }).catch(() => cached);
-        return cached || network;
+        return cached ? partial(req, cached) : network;
       })
     )
   );
 });
+
+// Audio seeks with Range requests: a voice sprite plays one clip from the
+// middle of the file. Answer them from a saved copy with the requested bytes
+// (Safari plays nothing from a plain 200 here).
+async function partial(req, cached) {
+  const range = /^bytes=(\d*)-(\d*)$/.exec(req.headers.get('range') || '');
+  if (!range || cached.status !== 200) return cached;
+  const blob = await cached.blob();
+  const start = range[1] ? Number(range[1]) : Math.max(0, blob.size - Number(range[2]));
+  const end = range[1] && range[2] ? Math.min(Number(range[2]), blob.size - 1) : blob.size - 1;
+  if (start >= blob.size || end < start) {
+    return new Response(null, { status: 416, headers: { 'Content-Range': `bytes */${blob.size}` } });
+  }
+  return new Response(blob.slice(start, end + 1), {
+    status: 206,
+    statusText: 'Partial Content',
+    headers: {
+      'Content-Type': cached.headers.get('Content-Type') || 'application/octet-stream',
+      'Content-Range': `bytes ${start}-${end}/${blob.size}`,
+      'Content-Length': String(end - start + 1),
+      'Accept-Ranges': 'bytes'
+    }
+  });
+}

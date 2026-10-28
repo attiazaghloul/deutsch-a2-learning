@@ -65,12 +65,21 @@ function fixedSpeechProfileRate(){
   return {clear:1,calm:.86,deep:.92,bright:1.08}[speechProfile]||1;
 }
 
+function currentSpeechLevel(){
+  const hash=location.hash.replace('#','');
+  return hash.startsWith('a1')?'a1':hash.startsWith('b1')?'b1':'a2';
+}
+
 function findFixedSpeechClip(value,voiceId){
   const libraries=[
     {id:'a2', data:FIXED_SPEECH, index:FIXED_SPEECH_INDEX},
     {id:'a1', data:A1_FIXED_SPEECH, index:A1_FIXED_SPEECH_INDEX},
     {id:'b1', data:B1_FIXED_SPEECH, index:B1_FIXED_SPEECH_INDEX}
   ];
+  // The current level's recording first: a lesson downloaded for offline use
+  // has that level's sprite, and A1 texts that A2 also has then still play.
+  const level=currentSpeechLevel();
+  libraries.sort((left,right)=>(right.id===level)-(left.id===level));
   for(const library of libraries){
     const voice=library.data.voices?.find(item=>item.id===voiceId)||library.data.voices?.[0];
     const aliasIndex=library.data.aliases?.texts?.indexOf(value)??-1;

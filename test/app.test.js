@@ -684,8 +684,8 @@ test('next-generation shell and design system are wired into the offline app', (
   assert.match(worker, /ui-next\.js/);
   assert.match(worker, /styles\/ui-next\.css/);
   assert.match(worker, /shell\.match\(req, \{ ignoreSearch: true \}\)/, 'Versioned shell assets must resolve from cache while offline');
-  assert.match(worker, /dictionary\.match\(req, \{ ignoreSearch: true \}\)/, 'Dictionary assets must resolve from their durable cache');
-  assert.match(worker, /media\.match\(req, \{ ignoreSearch: true \}\)/, 'Downloaded lesson media must resolve from its durable cache');
+  assert.match(worker, /dictionary\.match\(req, \{ ignoreSearch \}\)/, 'Dictionary assets must resolve from their durable cache');
+  assert.match(worker, /media\.match\(req, \{ ignoreSearch \}\)/, 'Downloaded lesson media must resolve from its durable cache');
   assert.match(worker, /data_lernwortschatz8\.js/);
   assert.match(worker, /data_lernwortschatz9\.js/);
   assert.match(worker, /data_lernwortschatz10\.js/);
@@ -859,6 +859,64 @@ test('large podcast and speech bundles are loaded on demand, not at startup', ()
   assert.match(sw, /'data_podcast\.js'/, 'lazy bundles stay precached for offline use');
 });
 
+test('downloading a lesson also saves its level voice sprite for offline speech', () => {
+  // The sprites are referenced by no lesson, so "Download" used to leave them
+  // out and recorded speech was silent offline.
+  const context = loadFunctions(['speechOfflineUrls']);
+  context.speechVoiceURI = 'tarek';
+  context.location = { hash: '#a1/k3' };
+  const voices = id => [{ id: 'mia', audio: `${id}-mia.mp3` }, { id: 'tarek', audio: `${id}-tarek.mp3` }];
+  context.A1_FIXED_SPEECH = { voices: voices('a1') };
+  context.B1_FIXED_SPEECH = { voices: [] };
+  context.FIXED_SPEECH = { voices: voices('a2'), aliases: { voices: voices('words') } };
+  assert.deepEqual([...context.speechOfflineUrls({ route: 'a1/k3' })], ['a1-tarek.mp3', 'words-tarek.mp3']);
+  assert.deepEqual([...context.speechOfflineUrls({ num: 7 })], ['a2-tarek.mp3', 'words-tarek.mp3']);
+  assert.deepEqual([...context.speechOfflineUrls({ route: 'b1.1/k2' })], ['words-tarek.mp3']);
+  assert.match(functionSource('collectCurrentLessonOfflineUrls'), /speechOfflineUrls\(chapter\)/);
+  const page = readFileSync(join(root, 'app', 'js', 'offline-download.js'), 'utf8');
+  assert.match(page, /await ensureSpeechLibraries\(\)/);
+});
+
+test('recorded speech plays from the current level library first', () => {
+  const context = loadFunctions(['currentSpeechLevel', 'findFixedSpeechClip']);
+  const library = (audio, texts) => ({ voices: [{ id: 'mia', audio, timings: texts.map(() => [1, 2]) }], texts });
+  Object.assign(context, {
+    FIXED_SPEECH: library('a2.mp3', ['Guten Tag']),
+    A1_FIXED_SPEECH: library('a1.mp3', ['Guten Tag']),
+    B1_FIXED_SPEECH: { voices: [], texts: [] },
+    FIXED_SPEECH_INDEX: new Map([['Guten Tag', 0]]),
+    A1_FIXED_SPEECH_INDEX: new Map([['Guten Tag', 0]]),
+    B1_FIXED_SPEECH_INDEX: new Map()
+  });
+  context.location = { hash: '#a1/k1' };
+  assert.equal(context.findFixedSpeechClip('Guten Tag', 'mia').audioSource, 'a1.mp3');
+  context.location = { hash: '#k7' };
+  assert.equal(context.findFixedSpeechClip('Guten Tag', 'mia').audioSource, 'a2.mp3');
+});
+
+test('the service worker answers audio range requests from saved copies', async () => {
+  // A sprite clip is a seek into the middle of the file; Safari plays nothing
+  // when a saved copy comes back as a plain 200.
+  const sw = readFileSync(join(root, 'app', 'sw.js'), 'utf8');
+  const start = sw.indexOf('async function partial(');
+  const source = sw.slice(start, sw.indexOf('\n}\n', start) + 2);
+  const context = vm.createContext({ Response, Blob, Number, Math, String });
+  vm.runInContext(`${source}\nthis.partial=partial;`, context);
+  const saved = new Response(new Blob([new Uint8Array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])]), { headers: { 'Content-Type': 'audio/mpeg' } });
+  const request = range => ({ headers: new Headers(range ? { range } : {}) });
+  const middle = await context.partial(request('bytes=2-5'), saved.clone());
+  assert.equal(middle.status, 206);
+  assert.equal(middle.headers.get('Content-Range'), 'bytes 2-5/10');
+  assert.deepEqual([...new Uint8Array(await middle.arrayBuffer())], [2, 3, 4, 5]);
+  const rest = await context.partial(request('bytes=7-'), saved.clone());
+  assert.deepEqual([...new Uint8Array(await rest.arrayBuffer())], [7, 8, 9]);
+  assert.equal((await context.partial(request('bytes=20-'), saved.clone())).status, 416);
+  assert.equal((await context.partial(request(''), saved.clone())).status, 200);
+  // a sprite saved for another version never answers for this one
+  assert.match(sw, /const ignoreSearch = !url\.pathname\.includes\('\/assets\/speech\/'\)/);
+  assert.match(sw, /cache\.match\(url, \{ ignoreSearch: !speech \}\)/);
+});
+
 test('B1.1 recorded speech plugs into the same lazy speech lookup', () => {
   assert.ok(html.includes("speechB1:'data_speech_b1.js?v="));
   assert.match(functionSource('findFixedSpeechClip'), /id:'b1', data:B1_FIXED_SPEECH/);
@@ -884,23 +942,30 @@ test('recorded speech ships exactly two voices and no retired recordings', () =>
   assert.deepEqual(speechFiles.filter(file => /jonas|samir/.test(file)), []);
 });
 
-test('A1 recorded speech plays clean clips separated by silence', () => {
-  // The first A1 recordings spoke "Audiomarker." after every clip and read
-  // "___" aloud as "Unterstrich"; clips cut from them carried those words.
-  const context = vm.createContext({ window: {} });
-  vm.runInContext(readFileSync(join(root, 'app', 'data_speech_a1.js'), 'utf8'), context);
-  const speech = context.window.A1_FIXED_SPEECH;
-  assert.equal(speech.trimmed, true);
-  assert.ok(html.includes(`speechA1:'data_speech_a1.js?v=${speech.version}'`), 'LAZY_SCRIPTS must load the current A1 library');
-  for (const voice of speech.voices) {
-    assert.equal(voice.audio, `assets/speech/a1-${voice.id}.mp3?v=${speech.version}`);
-    assert.ok(existsSync(join(root, 'app', voice.audio.split('?')[0])), `Missing ${voice.audio}`);
-    assert.equal(voice.timings.length, speech.texts.length);
-    voice.timings.forEach(([start, end], index) => {
-      assert.ok(end - start >= 0.12, `${voice.id} clip ${index} is empty`);
-      if (index) assert.ok(start - voice.timings[index - 1][1] >= 0.3, `${voice.id} clip ${index} touches the previous clip`);
-    });
+test('A1 and A2 recorded sentences play clean clips separated by silence', () => {
+  // The first A1 and A2 sentence recordings spoke "Audiomarker." after every
+  // clip and read "___" aloud as "Unterstrich"; clips cut from them carried
+  // those words.
+  for (const [file, name, prefix] of [
+    ['data_speech_a1.js', 'A1_FIXED_SPEECH', 'a1-'],
+    ['data_speech_clean.js', 'A2_FIXED_SPEECH', '']
+  ]) {
+    const context = vm.createContext({ window: {} });
+    vm.runInContext(readFileSync(join(root, 'app', file), 'utf8'), context);
+    const speech = context.window[name];
+    assert.equal(speech.trimmed, true, file);
+    for (const voice of speech.voices) {
+      assert.equal(voice.audio, `assets/speech/${prefix}${voice.id}.mp3?v=${speech.version}`);
+      assert.ok(existsSync(join(root, 'app', voice.audio.split('?')[0])), `Missing ${voice.audio}`);
+      assert.equal(voice.timings.length, speech.texts.length);
+      voice.timings.forEach(([start, end], index) => {
+        assert.ok(end - start >= 0.12, `${file} ${voice.id} clip ${index} is empty`);
+        if (index) assert.ok(start - voice.timings[index - 1][1] >= 0.3, `${file} ${voice.id} clip ${index} touches the previous clip`);
+      });
+    }
   }
+  assert.ok(html.includes("speechA1:'data_speech_a1.js?v=a1-fixed-voices-3'"), 'LAZY_SCRIPTS must load the rebuilt A1 library');
+  assert.ok(html.includes("speechA2:'data_speech_clean.js?v=speech-clean-8'"), 'LAZY_SCRIPTS must load the rebuilt A2 library');
   // Trimmed libraries must not lose another 85 ms at the end of each clip.
   assert.match(functionSource('playFixedSpeech'), /trimmed\|\|\(library==='a2'&&kind==='aliases'\)\?0:\.085/);
   assert.match(functionSource('fallbackBrowserSpeech'), /replace\(\/_\{2,\}\/g/);

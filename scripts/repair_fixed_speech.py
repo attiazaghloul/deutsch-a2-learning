@@ -1,6 +1,7 @@
-"""Rebuild the A1 speech sprites from the first recordings (a1-fixed-voices-1).
+"""Rebuild the A1 and A2 sentence sprites from their first recordings.
 
-Those recordings were synthesized with " Audiomarker. " between the texts and
+The A1 sprites (a1-fixed-voices-1) and the A2 sentence sprites
+(fixed-voices-1; the A2 word sprites are fine) were synthesized with " Audiomarker. " between the texts and
 with gap-fill blanks sent to the voice as they are, so the audio says
 "Audiomarker" after every clip and "Unterstrich"/"underscore" for every "___".
 Students heard both. edge-tts may not be reachable, so this cuts the existing
@@ -17,12 +18,13 @@ audio instead of synthesizing it again:
   late stop on a slow device plays silence, never the neighbouring clip.
 
     pip install faster-whisper librosa soundfile numpy
-    python scripts/repair_a1_fixed_speech.py --model <faster-whisper model dir>
+    python scripts/repair_fixed_speech.py --level a1 --model <faster-whisper model dir>
+    python scripts/repair_fixed_speech.py --level a2 --model <faster-whisper model dir>
 
 The model can be any multilingual faster-whisper model ("small" was used).
 It reads the old sprites and timings from git (they are replaced in the
-working tree) and rewrites app/assets/speech/a1-<voice>.mp3 and
-app/data_speech_a1.js. Needs ffmpeg on PATH.
+working tree) and rewrites the level's sprites and data file (for A2 only the
+sentence voices; the word aliases are kept). Needs ffmpeg on PATH.
 """
 
 import argparse
@@ -37,28 +39,43 @@ import soundfile
 from faster_whisper import WhisperModel
 
 ROOT = Path(__file__).resolve().parents[1]
-DATA_PATH = ROOT / "app" / "data_speech_a1.js"
 OUTPUT = ROOT / "app" / "assets" / "speech"
-SOURCE_COMMIT = "4590536"  # "Keep two recorded voices (Mia and Tarek)"
-VERSION = "a1-fixed-voices-2"
+LEVELS = {
+    "a1": {
+        "data": "app/data_speech_a1.js",
+        "global": "A1_FIXED_SPEECH",
+        "comment": "Generated fixed cross-device A1 speech library.",
+        "audio": "a1-{voice}.mp3",
+        "source": "4590536",  # "Keep two recorded voices (Mia and Tarek)"
+        "version": "a1-fixed-voices-3",
+    },
+    "a2": {
+        "data": "app/data_speech_clean.js",
+        "global": "A2_FIXED_SPEECH",
+        "comment": "Generated fixed cross-device speech library.",
+        "audio": "{voice}.mp3",
+        "source": "46317ca",  # the last commit with the marker recordings
+        "version": "fixed-voices-7",
+    },
+}
 
 SR = 24000                 # rate of the sprites
 ASR_SR = 16000
 HOP = 240                  # 10 ms
 SILENT = 0.01              # -40 dBFS
 GAP, BLANK, FADE = 0.45, 0.3, int(0.008 * SR)
-BUILD = ROOT / "build" / "repair-a1"
+BUILD = ROOT / "build" / "repair-speech"
 JUNK = re.compile(r"unter|strich|underscore|under|score|audi|marker|maker", re.I)
 MARKER = re.compile(r"audi|marke|maker", re.I)
 ORDINAL = re.compile(r"\d|erst|zweit|dritt|viert|fünft|sechst|sieb|acht|neun|zehn|elf|zwölf|gritt|ritter", re.I)
 
 
-def load_library(source):
-    return json.loads(source.split("window.A1_FIXED_SPEECH=", 1)[1].rsplit(";", 1)[0])
+def load_library(source, name):
+    return json.loads(source.split(f"window.{name}=", 1)[1].rsplit(";", 1)[0])
 
 
-def git_show(path):
-    return subprocess.run(["git", "-C", str(ROOT), "show", f"{SOURCE_COMMIT}:{path}"],
+def git_show(commit, path):
+    return subprocess.run(["git", "-C", str(ROOT), "show", f"{commit}:{path}"],
                           capture_output=True, check=True).stdout
 
 
@@ -90,16 +107,17 @@ def clip_bounds(rms, timings, index):
     return start, end
 
 
-def blank_cuts(model, pcm16, rms, text, spans, first_pass, pattern=JUNK):
+def blank_cuts(model, pcm16, rms, text, spans, first_pass, pattern=JUNK, pause=BLANK):
     """Source-time spans of read-out blanks (and the exercise number before
-    them), or of other `pattern` words, in the audio the kept `spans` play."""
-    gap = np.zeros(int(BLANK * ASR_SR), np.float32)
+    them), or of other `pattern` words, in the audio the kept `spans` play
+    (with `pause` seconds between them)."""
+    gap = np.zeros(int(pause * ASR_SR), np.float32)
     pieces, layout, offset = [], [], 0.0
     for t0, t1 in spans:
         piece = pcm16[int(t0 * ASR_SR):int(t1 * ASR_SR)]
         layout.append((offset, t0, t1))
         pieces += [piece, gap]
-        offset += len(piece) / ASR_SR + BLANK
+        offset += len(piece) / ASR_SR + pause
     segments, _ = model.transcribe(np.concatenate(pieces), language="de", word_timestamps=True, beam_size=5,
                                    condition_on_previous_text=False)
     words = [word for part in segments for word in part.words]
@@ -110,12 +128,18 @@ def blank_cuts(model, pcm16, rms, text, spans, first_pass, pattern=JUNK):
         return (min(t1, max(t0, t0 + word.start - clip_offset)),
                 min(t1, max(t0, t0 + word.end - clip_offset)), t0, t1)
 
-    cuts = []
+    # a word of the text itself ("untersucht", "Unterricht") is never junk
+    text_words = {normalized(token) for token in re.findall(r"\w+", text)}
+    cuts, previous_junk, heard_text = [], False, False
     for position, word in enumerate(words):
         match = pattern.search(word.word)
+        if match and normalized(word.word) in text_words:
+            match = None
         if first_pass and position == 0 and re.match(r"^\d{1,2}\.\s", text) and ORDINAL.search(word.word):
             match = re.match(r"", word.word)
         if not match:
+            previous_junk = False
+            heard_text = True
             continue
         cut_start, cut_end, t0, t1 = source(word)
         # "Hahnemann-Audiomarke" comes back as one word: cut from the marker on.
@@ -123,9 +147,20 @@ def blank_cuts(model, pcm16, rms, text, spans, first_pass, pattern=JUNK):
             cut_start += (cut_end - cut_start) * match.start() / len(word.word)
         cut_start = t0 if cut_start - t0 < 0.08 else quietest(rms, cut_start - 0.07, cut_start + 0.07)
         cut_end = t1 if t1 - cut_end < 0.08 else quietest(rms, cut_end - 0.07, cut_end + 0.07)
-        if cut_end > cut_start:
+        # "___? · Ja, ...": nothing of the text comes before the first blank
+        if not cuts and not heard_text and re.match(r"^[\d.\s]*\W*_", text):
+            cut_start = layout[0][1]
+        # "Unter Strich, Unter Strich" is one blank: one cut, no slivers between
+        if previous_junk and cuts:
+            cuts[-1][1] = max(cuts[-1][1], cut_end)
+        elif cut_end > cut_start:
             cuts.append([cut_start, cut_end])
+        previous_junk = True
     return cuts
+
+
+def normalized(value):
+    return re.sub(r"\W", "", value).lower()
 
 
 def pause_before(rms, t):
@@ -163,13 +198,17 @@ def faded(pcm, t0, t1):
     return piece
 
 
-def blank_spans(model, pcm16, rms, texts, timings, voice_id):
+def blank_spans(model, pcm16, rms, texts, timings, cache_name):
     """Kept source spans of every clip; cached, the blank search is slow."""
-    cache = BUILD / f"{voice_id}-spans.json"
+    cache = BUILD / f"{cache_name}-spans.json"
     if cache.exists():
         cached = json.loads(cache.read_text(encoding="utf-8"))
         if cached["texts"] == texts:
-            return [[tuple(span) for span in spans] for spans in cached["spans"]]
+            result = [[tuple(span) for span in spans] for spans in cached["spans"]]
+            if not cached.get("rechecked"):
+                result = recheck_blanks(model, pcm16, rms, texts, result, cache_name)
+                cache.write_text(json.dumps({"texts": texts, "spans": result, "rechecked": True}), encoding="utf-8")
+            return result
     result = []
     for index, text in enumerate(texts):
         start, end = clip_bounds(rms, timings, index)
@@ -183,10 +222,30 @@ def blank_spans(model, pcm16, rms, texts, timings, voice_id):
             spans = without(spans, cuts)
         result.append(spans)
         if index % 500 == 0:
-            print(f"  {voice_id}: blanks {index}/{len(texts)}", flush=True)
+            print(f"  {cache_name}: blanks {index}/{len(texts)}", flush=True)
+    result = recheck_blanks(model, pcm16, rms, texts, result, cache_name)
     BUILD.mkdir(parents=True, exist_ok=True)
-    cache.write_text(json.dumps({"texts": texts, "spans": result}), encoding="utf-8")
+    cache.write_text(json.dumps({"texts": texts, "spans": result, "rechecked": True}), encoding="utf-8")
     return result
+
+
+def recheck_blanks(model, pcm16, rms, texts, all_spans, cache_name):
+    """Listen to every clip with a blank once more as one piece of audio.
+
+    The search above hears the kept pieces with pauses between them; heard
+    without them, a blank it missed ("___? · Ja, die Wohnung ...") can come
+    out as "Undescore" and is cut too.
+    """
+    for index, text in enumerate(texts):
+        if "_" not in text:
+            continue
+        for _ in range(2):
+            cuts = blank_cuts(model, pcm16, rms, text, all_spans[index], first_pass=False, pause=0)
+            if not cuts or not without(all_spans[index], cuts):
+                break
+            print(f"  {cache_name}: blank still heard in clip {index}: {text[:50]!r}", flush=True)
+            all_spans[index] = without(all_spans[index], cuts)
+    return all_spans
 
 
 def clips_with_marker(model, pcm16, texts, all_spans, indexes):
@@ -222,13 +281,20 @@ def clips_with_marker(model, pcm16, texts, all_spans, indexes):
     return [index for index, said in heard.items() if MARKER.search(said) and not MARKER.search(texts[index])]
 
 
-def rebuild_voice(model, texts, voice):
-    audio = git_show(f"app/assets/speech/a1-{voice['id']}.mp3")
+def rebuild_voice(model, level, texts, voice):
+    name = level["audio"].format(voice=voice["id"])
+    audio = git_show(level["source"], f"app/assets/speech/{name}")
     pcm, pcm16 = decode(audio, SR), decode(audio, ASR_SR)
     rms = librosa.feature.rms(y=pcm, frame_length=2 * HOP, hop_length=HOP, center=True)[0]
-    all_spans = blank_spans(model, pcm16, rms, texts, voice["timings"], voice["id"])
+    all_spans = blank_spans(model, pcm16, rms, texts, voice["timings"], Path(name).stem)
 
-    suspects = clips_with_marker(model, pcm16, texts, all_spans, range(len(texts)))
+    # which clips still say "Audiomarker" (cached: the check takes an hour)
+    markers = BUILD / f"{Path(name).stem}-markers.json"
+    if markers.exists() and json.loads(markers.read_text(encoding="utf-8"))["texts"] == texts:
+        suspects = json.loads(markers.read_text(encoding="utf-8"))["suspects"]
+    else:
+        suspects = clips_with_marker(model, pcm16, texts, all_spans, range(len(texts)))
+        markers.write_text(json.dumps({"texts": texts, "suspects": suspects}), encoding="utf-8")
     print(f"  {voice['id']}: marker heard in {len(suspects)} clips {suspects}", flush=True)
     for index in suspects:
         # cut, then listen to this clip alone until the marker is gone
@@ -261,29 +327,33 @@ def rebuild_voice(model, texts, voice):
         out += [clip, np.zeros(int(GAP * SR), np.float32)]
         cursor += len(clip) / SR + GAP
 
-    wav = OUTPUT / f"a1-{voice['id']}.wav"
+    wav = OUTPUT / f"{Path(name).stem}.wav"
     soundfile.write(wav, np.concatenate(out), SR, subtype="PCM_16")
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(wav), "-codec:a", "libmp3lame", "-b:a", "48k",
-                    "-ar", str(SR), "-ac", "1", str(OUTPUT / f"a1-{voice['id']}.mp3")], check=True)
+                    "-ar", str(SR), "-ac", "1", str(OUTPUT / name)], check=True)
     wav.unlink()
-    print(f"{voice['name']} A1: {cursor / 60:.1f} min")
-    return {**voice, "audio": f"assets/speech/a1-{voice['id']}.mp3?v={VERSION}", "timings": new_timings}
+    print(f"{name}: {cursor / 60:.1f} min")
+    return {**voice, "audio": f"assets/speech/{name}?v={level['version']}", "timings": new_timings}
 
 
 def main():
     parser = argparse.ArgumentParser()
+    parser.add_argument("--level", required=True, choices=sorted(LEVELS))
     parser.add_argument("--model", required=True, help="faster-whisper model directory or name")
     args = parser.parse_args()
-    library = load_library(git_show("app/data_speech_a1.js").decode("utf-8"))
-    current = load_library(DATA_PATH.read_text(encoding="utf-8"))
+    level = LEVELS[args.level]
+    library = load_library(git_show(level["source"], level["data"]).decode("utf-8"), level["global"])
+    data_path = ROOT / level["data"]
+    current = load_library(data_path.read_text(encoding="utf-8"), level["global"])
     if current["texts"] != library["texts"]:
-        raise SystemExit("The A1 texts changed since the first recordings; generate the library again instead.")
+        raise SystemExit("The texts changed since the first recordings; generate the library again instead.")
     model = WhisperModel(args.model, device="cpu", compute_type="int8")
-    voices = [rebuild_voice(model, library["texts"], voice) for voice in library["voices"]]
-    payload = {"version": VERSION, "trimmed": True, "texts": library["texts"], "voices": voices}
-    DATA_PATH.write_text(
-        "/* Generated fixed cross-device A1 speech library. */\n"
-        f"window.A1_FIXED_SPEECH={json.dumps(payload, ensure_ascii=False, separators=(',', ':'))};\n",
+    voices = [rebuild_voice(model, level, library["texts"], voice) for voice in library["voices"]]
+    # keeps the A2 word aliases as they are
+    payload = {**current, "version": level["version"], "trimmed": True, "voices": voices}
+    data_path.write_text(
+        f"/* {level['comment']} */\n"
+        f"window.{level['global']}={json.dumps(payload, ensure_ascii=False, separators=(',', ':'))};\n",
         encoding="utf-8",
     )
 
