@@ -2027,7 +2027,7 @@ test('design settings apply a saved theme, corner shape and text size', () => {
   assert.deepEqual({ ...context.document.documentElement.dataset }, { theme: 'original' });
 
   const css = readFileSync(join(root, 'app', 'styles', 'themes.css'), 'utf8');
-  for (const theme of context.DESIGN_THEMES.filter(item => item.id !== 'original')) {
+  for (const theme of context.DESIGN_THEMES.filter(item => !['original', 'auto'].includes(item.id))) {
     assert.match(css, new RegExp(`html\\[data-theme="${theme.id}"\\] body\\{`), `${theme.id} needs its colours`);
     assert.match(css, new RegExp(`html\\[data-theme="${theme.id}"\\]\\{--shape:`), `${theme.id} needs its shape`);
   }
@@ -2052,6 +2052,67 @@ test('the night theme stylesheet is generated from the current stylesheets', () 
     assert.match(palette, new RegExp(`${token}:`), `${token} is used at night but has no colour`);
   }
   const theme = readFileSync(join(root, 'app', 'js', '00-theme.js'), 'utf8');
-  assert.match(theme, /stylesheet:'styles\/theme-night\.css\?v=/);
+  assert.match(theme, /DARK_STYLESHEET='styles\/theme-night\.css\?v=/);
   assert.match(readFileSync(join(root, 'app', 'sw.js'), 'utf8'), /'styles\/theme-night\.css'/);
+});
+
+test('a known meaning comes only from an exact dictionary entry', () => {
+  const context = loadFunctions(['normalizeWordForSearch', 'bareWordKey']);
+  const translation = readFileSync(join(jsDir, '02-translation.js'), 'utf8');
+  vm.runInContext(translation.slice(translation.indexOf('function knownWordTranslation('), translation.indexOf('async function requestTranslation(')), context);
+  context.window = { CORE_DICTIONARY: [] };
+  context.A1_VERBS = []; context.VERBS = [];
+  // the loose vocabulary search finds "so" inside "sofort"
+  context.findWordEntry = () => ({ key: 'so', bareKey: 'so', item: { ar: 'كده' } });
+  assert.equal(context.knownWordTranslation('sofort'), null);
+  assert.equal(context.knownWordTranslation('Ab sofort'), null);
+  assert.equal(context.knownWordTranslation('So'), 'كده');
+});
+
+test('one tap finds the whole word under the finger', () => {
+  const source = readFileSync(join(jsDir, '20-tap-translate.js'), 'utf8');
+  const context = loadFunctions(['wordRangeAt']);
+  vm.runInContext(source.match(/const TAP_WORD=.*;/)[0].replace('const ', 'var '), context);
+  const node = { nodeType: 3, textContent: 'Wollen Sie flexibel sein? E-Scooter!' };
+  let box = { left: 0, right: 100, top: 0, bottom: 20 };
+  context.document = {
+    createRange: () => ({
+      setStart(n, offset) { this.start = offset; }, setEnd(n, offset) { this.end = offset; },
+      toString() { return node.textContent.slice(this.start, this.end); },
+      getBoundingClientRect: () => box
+    })
+  };
+  const tapAt = offset => { context.caretAt = () => ({ startContainer: node, startOffset: offset }); return context.wordRangeAt(50, 10); };
+  assert.equal(tapAt(13).toString(), 'flexibel');
+  assert.equal(tapAt(30).toString(), 'E-Scooter');
+  assert.equal(tapAt(25), null, 'a tap on space or punctuation is not a word');
+  box = { left: 120, right: 200, top: 0, bottom: 20 };
+  assert.equal(tapAt(13), null, 'the caret snapped to a word away from the finger');
+
+  assert.match(source, /const TAP_SKIP=\[\s*'button','a','input'/, 'controls keep their own tap');
+  assert.match(source, /\[tabindex\]:not\(\[tabindex="-1"\]\)/);
+  const app = readFileSync(join(root, 'app', 'index.html'), 'utf8');
+  for (const id of ['translationSheet', 'ttWord', 'ttMeaning', 'ttSentence', 'ttSentenceResult', 'ttSentenceBtn', 'ttMore', 'ttFavorite', 'ttClose', 'ttSpeak']) {
+    assert.match(app, new RegExp(`id="${id}"`), `${id} is missing`);
+  }
+  // a selection opens the same sheet, away from the browser's copy/share menu
+  assert.match(functionSource('captureSelection'), /showTranslationSheet\(data\)/);
+  const sw = readFileSync(join(root, 'app', 'sw.js'), 'utf8');
+  assert.match(sw, /'js\/20-tap-translate\.js','js\/21-settings\.js'/);
+});
+
+test('every settings row belongs to one of the settings sections', () => {
+  const app = readFileSync(join(root, 'app', 'index.html'), 'utf8');
+  const panel = app.slice(app.indexOf('id="settingsModal"'), app.indexOf('id="translationModal"'));
+  const tabs = [...panel.matchAll(/data-settings-tab="([\w-]+)"/g)].map(match => match[1]);
+  assert.deepEqual(tabs, ['design', 'voice', 'translate', 'general']);
+  const rows = panel.match(/class="setting-row[^"]*"[^>]*>/g);
+  assert.ok(rows.length >= 6);
+  for (const row of rows) {
+    const section = row.match(/data-settings-section="([\w-]+)"/)?.[1];
+    assert.ok(tabs.includes(section), `${row} has no settings section`);
+  }
+  const ui = readFileSync(join(root, 'app', 'ui-next.js'), 'utf8');
+  for (const row of ui.match(/class="setting-row[^"]*"[^>]*>/g) || []) assert.match(row, /data-settings-section="(design|general)"/);
+  for (const key of ['tapTranslate', 'selectTranslate']) assert.match(panel, new RegExp(`data-setting-switch="${key}"`));
 });

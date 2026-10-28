@@ -573,8 +573,9 @@ function knownWordTranslation(value){
   const normalized=bareWordKey(value);
   const core=(window.CORE_DICTIONARY||[]).find(item=>bareWordKey(item[0])===normalized);
   if(core) return core[2];
+  // only an exact entry: the loose search finds "so" inside "sofort"
   const entry=findWordEntry(value);
-  if(entry?.item?.ar) return entry.item.ar;
+  if(entry?.item?.ar&&(entry.key===normalizeWordForSearch(value)||entry.bareKey===normalized)) return entry.item.ar;
   const verb=[...A1_VERBS,...VERBS,...(window.B1_VERBS||[])].find(item=>bareWordKey(item.inf)===normalized);
   return verb?.ar||null;
 }
