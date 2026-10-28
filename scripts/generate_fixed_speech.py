@@ -243,6 +243,8 @@ async def generate_voice(voice, texts, concurrency):
 def write_data(texts, selected_voices, voice_timings):
     payload = {
         "version": VERSION,
+        # Timings already end at the last word (no spoken marker to skip).
+        "trimmed": True,
         "texts": texts,
         "voices": [
             {

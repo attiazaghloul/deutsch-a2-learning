@@ -1,6 +1,7 @@
-"""Rebuild the A1 speech sprites from the first recordings (a1-fixed-voices-1).
+"""Rebuild the A1 and A2 sentence sprites from their first recordings.
 
-Those recordings were synthesized with " Audiomarker. " between the texts and
+The A1 sprites (a1-fixed-voices-1) and the A2 sentence sprites
+(fixed-voices-1; the A2 word sprites are fine) were synthesized with " Audiomarker. " between the texts and
 with gap-fill blanks sent to the voice as they are, so the audio says
 "Audiomarker" after every clip and "Unterstrich"/"underscore" for every "___".
 Students heard both. edge-tts may not be reachable, so this cuts the existing
@@ -17,12 +18,13 @@ audio instead of synthesizing it again:
   late stop on a slow device plays silence, never the neighbouring clip.
 
     pip install faster-whisper librosa soundfile numpy
-    python scripts/repair_a1_fixed_speech.py --model <faster-whisper model dir>
+    python scripts/repair_fixed_speech.py --level a1 --model <faster-whisper model dir>
+    python scripts/repair_fixed_speech.py --level a2 --model <faster-whisper model dir>
 
 The model can be any multilingual faster-whisper model ("small" was used).
 It reads the old sprites and timings from git (they are replaced in the
-working tree) and rewrites app/assets/speech/a1-<voice>.mp3 and
-app/data_speech_a1.js. Needs ffmpeg on PATH.
+working tree) and rewrites the level's sprites and data file (for A2 only the
+sentence voices; the word aliases are kept). Needs ffmpeg on PATH.
 """
 
 import argparse
@@ -37,28 +39,43 @@ import soundfile
 from faster_whisper import WhisperModel
 
 ROOT = Path(__file__).resolve().parents[1]
-DATA_PATH = ROOT / "app" / "data_speech_a1.js"
 OUTPUT = ROOT / "app" / "assets" / "speech"
-SOURCE_COMMIT = "4590536"  # "Keep two recorded voices (Mia and Tarek)"
-VERSION = "a1-fixed-voices-2"
+LEVELS = {
+    "a1": {
+        "data": "app/data_speech_a1.js",
+        "global": "A1_FIXED_SPEECH",
+        "comment": "Generated fixed cross-device A1 speech library.",
+        "audio": "a1-{voice}.mp3",
+        "source": "4590536",  # "Keep two recorded voices (Mia and Tarek)"
+        "version": "a1-fixed-voices-2",
+    },
+    "a2": {
+        "data": "app/data_speech_clean.js",
+        "global": "A2_FIXED_SPEECH",
+        "comment": "Generated fixed cross-device speech library.",
+        "audio": "{voice}.mp3",
+        "source": "46317ca",  # the last commit with the marker recordings
+        "version": "fixed-voices-7",
+    },
+}
 
 SR = 24000                 # rate of the sprites
 ASR_SR = 16000
 HOP = 240                  # 10 ms
 SILENT = 0.01              # -40 dBFS
 GAP, BLANK, FADE = 0.45, 0.3, int(0.008 * SR)
-BUILD = ROOT / "build" / "repair-a1"
+BUILD = ROOT / "build" / "repair-speech"
 JUNK = re.compile(r"unter|strich|underscore|under|score|audi|marker|maker", re.I)
 MARKER = re.compile(r"audi|marke|maker", re.I)
 ORDINAL = re.compile(r"\d|erst|zweit|dritt|viert|fünft|sechst|sieb|acht|neun|zehn|elf|zwölf|gritt|ritter", re.I)
 
 
-def load_library(source):
-    return json.loads(source.split("window.A1_FIXED_SPEECH=", 1)[1].rsplit(";", 1)[0])
+def load_library(source, name):
+    return json.loads(source.split(f"window.{name}=", 1)[1].rsplit(";", 1)[0])
 
 
-def git_show(path):
-    return subprocess.run(["git", "-C", str(ROOT), "show", f"{SOURCE_COMMIT}:{path}"],
+def git_show(commit, path):
+    return subprocess.run(["git", "-C", str(ROOT), "show", f"{commit}:{path}"],
                           capture_output=True, check=True).stdout
 
 
@@ -163,9 +180,9 @@ def faded(pcm, t0, t1):
     return piece
 
 
-def blank_spans(model, pcm16, rms, texts, timings, voice_id):
+def blank_spans(model, pcm16, rms, texts, timings, cache_name):
     """Kept source spans of every clip; cached, the blank search is slow."""
-    cache = BUILD / f"{voice_id}-spans.json"
+    cache = BUILD / f"{cache_name}-spans.json"
     if cache.exists():
         cached = json.loads(cache.read_text(encoding="utf-8"))
         if cached["texts"] == texts:
@@ -183,7 +200,7 @@ def blank_spans(model, pcm16, rms, texts, timings, voice_id):
             spans = without(spans, cuts)
         result.append(spans)
         if index % 500 == 0:
-            print(f"  {voice_id}: blanks {index}/{len(texts)}", flush=True)
+            print(f"  {cache_name}: blanks {index}/{len(texts)}", flush=True)
     BUILD.mkdir(parents=True, exist_ok=True)
     cache.write_text(json.dumps({"texts": texts, "spans": result}), encoding="utf-8")
     return result
@@ -222,11 +239,12 @@ def clips_with_marker(model, pcm16, texts, all_spans, indexes):
     return [index for index, said in heard.items() if MARKER.search(said) and not MARKER.search(texts[index])]
 
 
-def rebuild_voice(model, texts, voice):
-    audio = git_show(f"app/assets/speech/a1-{voice['id']}.mp3")
+def rebuild_voice(model, level, texts, voice):
+    name = level["audio"].format(voice=voice["id"])
+    audio = git_show(level["source"], f"app/assets/speech/{name}")
     pcm, pcm16 = decode(audio, SR), decode(audio, ASR_SR)
     rms = librosa.feature.rms(y=pcm, frame_length=2 * HOP, hop_length=HOP, center=True)[0]
-    all_spans = blank_spans(model, pcm16, rms, texts, voice["timings"], voice["id"])
+    all_spans = blank_spans(model, pcm16, rms, texts, voice["timings"], Path(name).stem)
 
     suspects = clips_with_marker(model, pcm16, texts, all_spans, range(len(texts)))
     print(f"  {voice['id']}: marker heard in {len(suspects)} clips {suspects}", flush=True)
@@ -261,29 +279,33 @@ def rebuild_voice(model, texts, voice):
         out += [clip, np.zeros(int(GAP * SR), np.float32)]
         cursor += len(clip) / SR + GAP
 
-    wav = OUTPUT / f"a1-{voice['id']}.wav"
+    wav = OUTPUT / f"{Path(name).stem}.wav"
     soundfile.write(wav, np.concatenate(out), SR, subtype="PCM_16")
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(wav), "-codec:a", "libmp3lame", "-b:a", "48k",
-                    "-ar", str(SR), "-ac", "1", str(OUTPUT / f"a1-{voice['id']}.mp3")], check=True)
+                    "-ar", str(SR), "-ac", "1", str(OUTPUT / name)], check=True)
     wav.unlink()
-    print(f"{voice['name']} A1: {cursor / 60:.1f} min")
-    return {**voice, "audio": f"assets/speech/a1-{voice['id']}.mp3?v={VERSION}", "timings": new_timings}
+    print(f"{name}: {cursor / 60:.1f} min")
+    return {**voice, "audio": f"assets/speech/{name}?v={level['version']}", "timings": new_timings}
 
 
 def main():
     parser = argparse.ArgumentParser()
+    parser.add_argument("--level", required=True, choices=sorted(LEVELS))
     parser.add_argument("--model", required=True, help="faster-whisper model directory or name")
     args = parser.parse_args()
-    library = load_library(git_show("app/data_speech_a1.js").decode("utf-8"))
-    current = load_library(DATA_PATH.read_text(encoding="utf-8"))
+    level = LEVELS[args.level]
+    library = load_library(git_show(level["source"], level["data"]).decode("utf-8"), level["global"])
+    data_path = ROOT / level["data"]
+    current = load_library(data_path.read_text(encoding="utf-8"), level["global"])
     if current["texts"] != library["texts"]:
-        raise SystemExit("The A1 texts changed since the first recordings; generate the library again instead.")
+        raise SystemExit("The texts changed since the first recordings; generate the library again instead.")
     model = WhisperModel(args.model, device="cpu", compute_type="int8")
-    voices = [rebuild_voice(model, library["texts"], voice) for voice in library["voices"]]
-    payload = {"version": VERSION, "trimmed": True, "texts": library["texts"], "voices": voices}
-    DATA_PATH.write_text(
-        "/* Generated fixed cross-device A1 speech library. */\n"
-        f"window.A1_FIXED_SPEECH={json.dumps(payload, ensure_ascii=False, separators=(',', ':'))};\n",
+    voices = [rebuild_voice(model, level, library["texts"], voice) for voice in library["voices"]]
+    # keeps the A2 word aliases as they are
+    payload = {**current, "version": level["version"], "trimmed": True, "voices": voices}
+    data_path.write_text(
+        f"/* {level['comment']} */\n"
+        f"window.{level['global']}={json.dumps(payload, ensure_ascii=False, separators=(',', ':'))};\n",
         encoding="utf-8",
     )
 
