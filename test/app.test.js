@@ -684,8 +684,8 @@ test('next-generation shell and design system are wired into the offline app', (
   assert.match(worker, /ui-next\.js/);
   assert.match(worker, /styles\/ui-next\.css/);
   assert.match(worker, /shell\.match\(req, \{ ignoreSearch: true \}\)/, 'Versioned shell assets must resolve from cache while offline');
-  assert.match(worker, /dictionary\.match\(req, \{ ignoreSearch: true \}\)/, 'Dictionary assets must resolve from their durable cache');
-  assert.match(worker, /media\.match\(req, \{ ignoreSearch: true \}\)/, 'Downloaded lesson media must resolve from its durable cache');
+  assert.match(worker, /dictionary\.match\(req, \{ ignoreSearch \}\)/, 'Dictionary assets must resolve from their durable cache');
+  assert.match(worker, /media\.match\(req, \{ ignoreSearch \}\)/, 'Downloaded lesson media must resolve from its durable cache');
   assert.match(worker, /data_lernwortschatz8\.js/);
   assert.match(worker, /data_lernwortschatz9\.js/);
   assert.match(worker, /data_lernwortschatz10\.js/);
@@ -857,6 +857,64 @@ test('large podcast and speech bundles are loaded on demand, not at startup', ()
   assert.match(functionSource('renderPodcastEpisode'), /renderLazyDataLoading/);
   const sw = readFileSync(join(root, 'app', 'sw.js'), 'utf8');
   assert.match(sw, /'data_podcast\.js'/, 'lazy bundles stay precached for offline use');
+});
+
+test('downloading a lesson also saves its level voice sprite for offline speech', () => {
+  // The sprites are referenced by no lesson, so "Download" used to leave them
+  // out and recorded speech was silent offline.
+  const context = loadFunctions(['speechOfflineUrls']);
+  context.speechVoiceURI = 'tarek';
+  context.location = { hash: '#a1/k3' };
+  const voices = id => [{ id: 'mia', audio: `${id}-mia.mp3` }, { id: 'tarek', audio: `${id}-tarek.mp3` }];
+  context.A1_FIXED_SPEECH = { voices: voices('a1') };
+  context.B1_FIXED_SPEECH = { voices: [] };
+  context.FIXED_SPEECH = { voices: voices('a2'), aliases: { voices: voices('words') } };
+  assert.deepEqual([...context.speechOfflineUrls({ route: 'a1/k3' })], ['a1-tarek.mp3', 'words-tarek.mp3']);
+  assert.deepEqual([...context.speechOfflineUrls({ num: 7 })], ['a2-tarek.mp3', 'words-tarek.mp3']);
+  assert.deepEqual([...context.speechOfflineUrls({ route: 'b1.1/k2' })], ['words-tarek.mp3']);
+  assert.match(functionSource('collectCurrentLessonOfflineUrls'), /speechOfflineUrls\(chapter\)/);
+  const page = readFileSync(join(root, 'app', 'js', 'offline-download.js'), 'utf8');
+  assert.match(page, /await ensureSpeechLibraries\(\)/);
+});
+
+test('recorded speech plays from the current level library first', () => {
+  const context = loadFunctions(['currentSpeechLevel', 'findFixedSpeechClip']);
+  const library = (audio, texts) => ({ voices: [{ id: 'mia', audio, timings: texts.map(() => [1, 2]) }], texts });
+  Object.assign(context, {
+    FIXED_SPEECH: library('a2.mp3', ['Guten Tag']),
+    A1_FIXED_SPEECH: library('a1.mp3', ['Guten Tag']),
+    B1_FIXED_SPEECH: { voices: [], texts: [] },
+    FIXED_SPEECH_INDEX: new Map([['Guten Tag', 0]]),
+    A1_FIXED_SPEECH_INDEX: new Map([['Guten Tag', 0]]),
+    B1_FIXED_SPEECH_INDEX: new Map()
+  });
+  context.location = { hash: '#a1/k1' };
+  assert.equal(context.findFixedSpeechClip('Guten Tag', 'mia').audioSource, 'a1.mp3');
+  context.location = { hash: '#k7' };
+  assert.equal(context.findFixedSpeechClip('Guten Tag', 'mia').audioSource, 'a2.mp3');
+});
+
+test('the service worker answers audio range requests from saved copies', async () => {
+  // A sprite clip is a seek into the middle of the file; Safari plays nothing
+  // when a saved copy comes back as a plain 200.
+  const sw = readFileSync(join(root, 'app', 'sw.js'), 'utf8');
+  const start = sw.indexOf('async function partial(');
+  const source = sw.slice(start, sw.indexOf('\n}\n', start) + 2);
+  const context = vm.createContext({ Response, Blob, Number, Math, String });
+  vm.runInContext(`${source}\nthis.partial=partial;`, context);
+  const saved = new Response(new Blob([new Uint8Array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])]), { headers: { 'Content-Type': 'audio/mpeg' } });
+  const request = range => ({ headers: new Headers(range ? { range } : {}) });
+  const middle = await context.partial(request('bytes=2-5'), saved.clone());
+  assert.equal(middle.status, 206);
+  assert.equal(middle.headers.get('Content-Range'), 'bytes 2-5/10');
+  assert.deepEqual([...new Uint8Array(await middle.arrayBuffer())], [2, 3, 4, 5]);
+  const rest = await context.partial(request('bytes=7-'), saved.clone());
+  assert.deepEqual([...new Uint8Array(await rest.arrayBuffer())], [7, 8, 9]);
+  assert.equal((await context.partial(request('bytes=20-'), saved.clone())).status, 416);
+  assert.equal((await context.partial(request(''), saved.clone())).status, 200);
+  // a sprite saved for another version never answers for this one
+  assert.match(sw, /const ignoreSearch = !url\.pathname\.includes\('\/assets\/speech\/'\)/);
+  assert.match(sw, /cache\.match\(url, \{ ignoreSearch: !speech \}\)/);
 });
 
 test('B1.1 recorded speech plugs into the same lazy speech lookup', () => {

@@ -90,6 +90,17 @@ function currentOfflineChapter(){
   return null;
 }
 
+// The recorded voices are one sprite per level, referenced by no lesson, so
+// they are added here: the level's sentences and the A2 word recordings, in
+// the voice the learner chose.
+function speechOfflineUrls(chapter){
+  // A2 chapters have no route; outside a chapter the page address tells the level.
+  const route=chapter?(chapter.route||'k'):location.hash.replace('#','');
+  const library=route.startsWith('a1')?A1_FIXED_SPEECH:route.startsWith('b1')?B1_FIXED_SPEECH:FIXED_SPEECH;
+  const voiceAudio=data=>(data?.voices?.find(voice=>voice.id===speechVoiceURI)||data?.voices?.[0])?.audio;
+  return [voiceAudio(library),voiceAudio(FIXED_SPEECH.aliases)].filter(Boolean);
+}
+
 function collectCurrentLessonOfflineUrls(){
   const urls=new Set();
   const chapter=currentOfflineChapter();
@@ -115,6 +126,7 @@ function collectCurrentLessonOfflineUrls(){
   currentView?.querySelectorAll('img[src],audio[src],audio source[src],video[src],video source[src]').forEach(element=>{
     addOfflineMediaUrl(element.currentSrc||element.src,urls);
   });
+  speechOfflineUrls(chapter).forEach(url=>addOfflineMediaUrl(url,urls));
   return {chapter,urls:[...urls]};
 }
 
@@ -125,9 +137,11 @@ function collectCurrentLessonOfflineUrls(){
 
   let _handler = null;
 
-  dlBtn.addEventListener('click', function(){
+  dlBtn.addEventListener('click', async function(){
     if (!navigator.onLine) { showSpeechStatus('أنت أوفلاين — لا يمكن التحميل الآن'); return; }
 
+    // The voice sprites are listed in the lazily loaded speech libraries.
+    await ensureSpeechLibraries().catch(()=>{});
     const lesson=collectCurrentLessonOfflineUrls();
     const urls=lesson.urls;
 
