@@ -20,7 +20,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Carlito:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles/app.css">
-<link rel="stylesheet" href="styles/ui-next.css?v=studio-5">
+<link rel="stylesheet" href="styles/ui-next.css?v=studio-6">
+<link rel="stylesheet" href="styles/themes.css?v=themes-1">
+<script src="js/00-theme.js?v=themes-1"></script>
 </head>
 <body>
 <div id="app">
@@ -54,6 +56,10 @@
         <button type="button" class="favorite-btn settings-action" id="listenToggle" aria-pressed="false" title="اضغط ثم اختر أي نص لسماعه">🔇 Hören aus</button>
         <button type="button" class="favorite-btn settings-action dl-btn" id="dlBtn" title="تحميل الدرس للأوفلاين">⬇ Download</button>
       </div>
+    </div>
+    <div class="setting-row">
+      <b>Design <small dir="rtl" style="color:var(--ink-2)">· الألوان والأشكال وحجم الخط</small></b>
+      <div id="designSettings"></div>
     </div>
     <div class="setting-row">
       <label for="speechRate">Sprechgeschwindigkeit <span id="speechRateValue">0.85×</span></label>
