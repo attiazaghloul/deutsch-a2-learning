@@ -3,7 +3,7 @@
    About 400 colours in the stylesheets are written out (#fff backgrounds,
    dark text), so a dark theme cannot come from the colour tokens alone.
    This re-emits every colour, background, border and shadow declaration
-   under html[data-theme="night"], in the original order, so the cascade
+   under html[data-dark] (Nacht, Mitternacht), in the original order, so the cascade
    between rules stays the same (a highlighted answer still beats the plain
    one), with written-out colours turned dark-for-light:
 
@@ -24,7 +24,7 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..');
 const SOURCES = ['app/styles/app.css', 'app/styles/ui-next.css'];
 const OUTPUT = 'app/styles/theme-night.css';
-const SCOPE = 'html[data-theme="night"]';
+const SCOPE = 'html[data-dark]';
 
 // Tokens that are light text colours at night; as backgrounds they use --nbg-*.
 const TEXT_TOKENS = ['green-d', 'green', 'blue', 'red', 'amber', 'ar', 'ink', 'ink-2',

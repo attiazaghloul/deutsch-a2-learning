@@ -343,6 +343,7 @@ function updateTranslationFavoriteButtons(){
   const active=payload?isFavoriteId(payload.id)||isFavoriteId(payload.dictionaryId):false;
   setFavoriteButtonState(translateFavoriteTrigger,active);
   setFavoriteButtonState($('#translationFavoriteBtn'),active);
+  setFavoriteButtonState($('#ttFavorite'),active);
 }
 
 function togglePendingFavorite(){
@@ -505,6 +506,10 @@ document.addEventListener('keydown',event=>{
 updateSpeedUI();
 populateVoiceOptions();
 
+function selectTranslateEnabled(){
+  try{ return localStorage.getItem('selectTranslate')!=='off'; }catch{ return true; }
+}
+
 function normalizeSelectionText(value){
   return value.replace(/\s+/g,' ').trim()
     .replace(/^[„“"'.،,!?;:()\[\]{}<>]+|[„“"'.،,!?;:()\[\]{}<>]+$/g,'');
@@ -546,7 +551,11 @@ function highlightedContextHtml(context, selected){
 function selectionContext(selection){
   const selected=normalizeSelectionText(selection.toString());
   if(selected.length<2 || selected.length>120 || !selection.rangeCount) return null;
-  const range=selection.getRangeAt(0);
+  return contextFromRange(selection.getRangeAt(0),selected);
+}
+
+// The sentence around a selected or tapped word, from the paragraph it is in.
+function contextFromRange(range,selected){
   const container=range.commonAncestorContainer.nodeType===1?range.commonAncestorContainer:range.commonAncestorContainer.parentElement;
   if(!container || !view.contains(container) || container.closest('input,textarea,button,.ar')) return null;
   const block=container.closest('.reading-text p,.reading-text li,.rm-item,.model-text,.exercise-prompt,.quiz-q,.dictionary-entry,.expression-card,.verb-card,p,li,td')
@@ -557,15 +566,16 @@ function selectionContext(selection){
   const context=sentenceContainingSelection(clone.textContent, selected);
   if(!context) return null;
   const rect=range.getBoundingClientRect();
-  return {selected,context,contextHtml:highlightedContextHtml(context,selected),rect};
+  return {selected,context,contextHtml:highlightedContextHtml(context,selected),rect,range:range.cloneRange()};
 }
 
 function knownWordTranslation(value){
   const normalized=bareWordKey(value);
   const core=(window.CORE_DICTIONARY||[]).find(item=>bareWordKey(item[0])===normalized);
   if(core) return core[2];
+  // only an exact entry: the loose search finds "so" inside "sofort"
   const entry=findWordEntry(value);
-  if(entry?.item?.ar) return entry.item.ar;
+  if(entry?.item?.ar&&(entry.key===normalizeWordForSearch(value)||entry.bareKey===normalized)) return entry.item.ar;
   const verb=[...A1_VERBS,...VERBS,...(window.B1_VERBS||[])].find(item=>bareWordKey(item.inf)===normalized);
   return verb?.ar||null;
 }
@@ -583,8 +593,12 @@ async function captureSelection(){
     return;
   }
   const selection=window.getSelection();
+  if(!selectTranslateEnabled()) return;
   const data=selectionContext(selection);
   if(!data){ translateTrigger.classList.remove('show'); translateFavoriteTrigger.classList.remove('show'); return; }
+  // The browser's own copy/share menu sits next to a selection, so the
+  // translation opens in the sheet at the bottom of the screen instead.
+  if(window.showTranslationSheet){ showTranslationSheet(data); return; }
   const requestId=++translationRequest;
   const hasArabic=/[\u0600-\u06ff]/.test(data.selected);
   const sourceLanguage=hasArabic?'ar':'de';

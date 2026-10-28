@@ -3,35 +3,66 @@
    level and sets --shape, which scales every rounded corner. "original" is
    the app as it was: no overrides, level colours included. */
 
-/* ---------- Sonnig · مرح للأطفال: warm and playful, very round ---------- */
+/* ---------- Sonnig · مرح للأطفال: orange sun, sky blue and pink, very round ---------- */
 html[data-theme="sunny"]{--shape:1.55}
 html[data-theme="sunny"] body{
-  --green:#e07214;--green-d:#a84a00;--green-l:#fff0de;
-  --ink:#2d2340;--ink-2:#685c7d;--bg:#fff8ec;--card:#ffffff;--line:#f1dcc0;
-  --amber:#d99a00;--amber-l:#fff4cf;--blue:#147f9f;--blue-l:#e0f5fa;
-  --red:#cc3762;--red-l:#fde6ee;--ar:#7a5aa6;--ar-l:#f4eefc;
-  --topbar-start:#f47b20;--topbar-end:#ec4f86;--hero-start:#f47b20;--hero-end:#f5a623;
-  --shadow:0 10px 26px rgba(224,114,20,.18);
-  --ds-accent:#e07214;--ds-accent-strong:#a84a00;--ds-accent-soft:#fff0de;--ds-accent-alt:#147f9f;
+  --green:#e8650f;--green-d:#b04800;--green-l:#fff0de;
+  --ink:#2d2340;--ink-2:#685c7d;--bg:#fff8ec;--card:#ffffff;--line:#f3dcc0;
+  --amber:#d99a00;--amber-l:#fff4cf;--blue:#0f86c4;--blue-l:#e1f3fc;
+  --red:#d33a5f;--red-l:#fde6ee;--ar:#7a4fc4;--ar-l:#f3edfd;
+  --topbar-start:#1387c4;--topbar-end:#7a4fc4;--hero-start:#f26b1d;--hero-end:#e2457f;
+  --shadow:0 10px 26px rgba(232,101,15,.18);
+  --ds-accent:#e8650f;--ds-accent-strong:#b04800;--ds-accent-soft:#fff0de;--ds-accent-alt:#0f86c4;
   --ds-page:#fff8ec;--ds-surface:#ffffff;--ds-surface-soft:#fff5e8;--ds-surface-raised:#ffffff;
-  --ds-text:#2d2340;--ds-text-soft:#685c7d;--ds-border:rgba(168,74,0,.18);
-  --ds-shadow-1:0 2px 4px rgba(224,114,20,.08),0 10px 26px rgba(224,114,20,.12);
+  --ds-text:#2d2340;--ds-text-soft:#685c7d;--ds-border:rgba(176,72,0,.18);
+  --ds-shadow-1:0 2px 4px rgba(232,101,15,.08),0 10px 26px rgba(232,101,15,.12);
   font-family:"Nunito","Carlito","Calibri","Segoe UI",system-ui,sans-serif;
 }
 
-/* ---------- Lebendig · حيوي للشباب: bold violet and pink ---------- */
+/* ---------- Bonbon · ألوان حلويات للأطفال: berry pink, lilac and mint ---------- */
+html[data-theme="candy"]{--shape:1.75}
+html[data-theme="candy"] body{
+  --green:#d6337a;--green-d:#a1195a;--green-l:#ffe5f0;
+  --ink:#33203a;--ink-2:#6e5874;--bg:#fff5f9;--card:#ffffff;--line:#f6d5e4;
+  --amber:#d98200;--amber-l:#fff2db;--blue:#178f80;--blue-l:#dcf6f1;
+  --red:#cf2f3f;--red-l:#fde5e7;--ar:#7b52d1;--ar-l:#f1ebfd;
+  --topbar-start:#d23e83;--topbar-end:#7b52d1;--hero-start:#c42d72;--hero-end:#6f48c9;
+  --shadow:0 10px 26px rgba(214,51,122,.16);
+  --ds-accent:#d6337a;--ds-accent-strong:#a1195a;--ds-accent-soft:#ffe5f0;--ds-accent-alt:#7b52d1;
+  --ds-page:#fff5f9;--ds-surface:#ffffff;--ds-surface-soft:#fff0f6;--ds-surface-raised:#ffffff;
+  --ds-text:#33203a;--ds-text-soft:#6e5874;--ds-border:rgba(161,25,90,.16);
+  --ds-shadow-1:0 2px 4px rgba(214,51,122,.07),0 10px 26px rgba(123,82,209,.12);
+  font-family:"Nunito","Carlito","Calibri","Segoe UI",system-ui,sans-serif;
+}
+
+/* ---------- Lebendig · حيوي للشباب: electric indigo, cyan and hot pink ---------- */
 html[data-theme="vivid"]{--shape:1.1}
 html[data-theme="vivid"] body{
-  --green:#6a46f5;--green-d:#4826cf;--green-l:#efebff;
-  --ink:#1c1733;--ink-2:#5c5778;--bg:#f5f3ff;--card:#ffffff;--line:#e0d9fb;
-  --amber:#e07800;--amber-l:#fff1e0;--blue:#0790ad;--blue-l:#ddf5fa;
-  --red:#d92a66;--red-l:#fde7ef;--ar:#8a4fb8;--ar-l:#f6edfc;
-  --topbar-start:#4826cf;--topbar-end:#d92a66;--hero-start:#4826cf;--hero-end:#a43be6;
-  --shadow:0 10px 28px rgba(106,70,245,.18);
-  --ds-accent:#6a46f5;--ds-accent-strong:#4826cf;--ds-accent-soft:#efebff;--ds-accent-alt:#d92a66;
-  --ds-page:#f5f3ff;--ds-surface:#ffffff;--ds-surface-soft:#f7f5ff;--ds-surface-raised:#ffffff;
-  --ds-text:#1c1733;--ds-text-soft:#5c5778;--ds-border:rgba(72,38,207,.16);
-  --ds-shadow-1:0 2px 4px rgba(72,38,207,.06),0 10px 28px rgba(106,70,245,.14);
+  --green:#5b3df5;--green-d:#3d22c9;--green-l:#eeeaff;
+  --ink:#17142e;--ink-2:#5a5676;--bg:#f6f5ff;--card:#ffffff;--line:#dfd9fb;
+  --amber:#e07800;--amber-l:#fff1e0;--blue:#0790b0;--blue-l:#dbf5fb;
+  --red:#e0245e;--red-l:#fde6ee;--ar:#b0329e;--ar-l:#fbeaf8;
+  --topbar-start:#3d22c9;--topbar-end:#0a7fa6;--hero-start:#3d22c9;--hero-end:#c8235f;
+  --shadow:0 10px 28px rgba(91,61,245,.18);
+  --ds-accent:#5b3df5;--ds-accent-strong:#3d22c9;--ds-accent-soft:#eeeaff;--ds-accent-alt:#e0245e;
+  --ds-page:#f6f5ff;--ds-surface:#ffffff;--ds-surface-soft:#f7f5ff;--ds-surface-raised:#ffffff;
+  --ds-text:#17142e;--ds-text-soft:#5a5676;--ds-border:rgba(61,34,201,.16);
+  --ds-shadow-1:0 2px 4px rgba(61,34,201,.06),0 10px 28px rgba(91,61,245,.14);
+}
+
+/* ---------- Ozean · بحر لكل الأعمار: royal blue, aqua and coral ---------- */
+html[data-theme="ocean"]{--shape:1.2}
+html[data-theme="ocean"] body{
+  --green:#1565c0;--green-d:#0d4a8f;--green-l:#e3effc;
+  --ink:#10243a;--ink-2:#4f6478;--bg:#f1f7fc;--card:#ffffff;--line:#d3e3f1;
+  --amber:#d9772b;--amber-l:#fdeedc;--blue:#0a8793;--blue-l:#ddf4f5;
+  --red:#d03c48;--red-l:#fde7e7;--ar:#5a55b8;--ar-l:#eeedfb;
+  --topbar-start:#0d4a8f;--topbar-end:#0a7787;--hero-start:#0d4a8f;--hero-end:#0b7a88;
+  --shadow:0 10px 26px rgba(21,101,192,.15);
+  --ds-accent:#1565c0;--ds-accent-strong:#0d4a8f;--ds-accent-soft:#e3effc;--ds-accent-alt:#d9772b;
+  --ds-page:#f1f7fc;--ds-surface:#ffffff;--ds-surface-soft:#f3f8fd;--ds-surface-raised:#ffffff;
+  --ds-text:#10243a;--ds-text-soft:#4f6478;--ds-border:rgba(13,74,143,.16);
+  --ds-shadow-1:0 2px 4px rgba(13,74,143,.06),0 10px 26px rgba(21,101,192,.11);
 }
 
 /* ---------- Ruhig · هادئ للكبار: muted slate and sand, crisp corners ---------- */
@@ -82,34 +113,70 @@ html[data-theme="nature"] body{
   --ds-shadow-1:0 1px 2px rgba(40,96,47,.05),0 8px 22px rgba(40,96,47,.09);
 }
 
-/* ---------- Nacht · ليلي: dark surfaces, light text ----------
+/* ---------- Wüste · دافي للكبار: terracotta, sand and turquoise ---------- */
+html[data-theme="desert"]{--shape:.85}
+html[data-theme="desert"] body{
+  --green:#b4532a;--green-d:#8a3a17;--green-l:#fbeadf;
+  --ink:#2f241d;--ink-2:#6b5a4e;--bg:#faf4ea;--card:#fffdf9;--line:#ead9c3;
+  --amber:#b8801a;--amber-l:#fbf0d6;--blue:#117f80;--blue-l:#dcf3f1;
+  --red:#b7322c;--red-l:#fbe4e1;--ar:#7d5a8c;--ar-l:#f3ecf5;
+  --topbar-start:#8a3a17;--topbar-end:#b8602a;--hero-start:#a8461f;--hero-end:#117477;
+  --shadow:0 8px 22px rgba(138,58,23,.13);
+  --ds-accent:#b4532a;--ds-accent-strong:#8a3a17;--ds-accent-soft:#fbeadf;--ds-accent-alt:#117f80;
+  --ds-page:#faf4ea;--ds-surface:#fffdf9;--ds-surface-soft:#fbf6ee;--ds-surface-raised:#ffffff;
+  --ds-text:#2f241d;--ds-text-soft:#6b5a4e;--ds-border:rgba(138,58,23,.16);
+  --ds-shadow-1:0 1px 2px rgba(138,58,23,.05),0 8px 22px rgba(138,58,23,.09);
+}
+
+/* ---------- dark themes (Nacht, Mitternacht): dark surfaces, light text ----------
    The tokens are here; theme-night.css (generated by
    scripts/build_night_theme.js) turns the colours written out in app.css and
-   ui-next.css dark. --nbg-* are the background twins of tokens that are light
+   ui-next.css dark for every theme marked html[data-dark]. --nbg-* are the background twins of tokens that are light
    text at night, --ntx-* the text twins of tokens that are dark surfaces. */
-html[data-theme="night"]{--shape:1;color-scheme:dark}
+html[data-dark]{color-scheme:dark}
+html[data-dark] body{
+  --ntx-card:#f2f6f7;--ntx-bg:#f2f6f7;--ntx-green-l:#e5f3f0;--ntx-blue-l:#e9f0f6;--ntx-red-l:#f9e8e5;
+  --ntx-amber-l:#fbefd9;--ntx-ar-l:#f7f3f7;--ntx-line:#e6ded1;--ntx-ds-surface:#f2f6f7;--ntx-ds-surface-soft:#f2f6f7;
+  --ntx-ds-surface-raised:#ffffff;--ntx-ds-page:#f2f6f7;--ntx-ds-accent-soft:#e5f3ed;
+  --nbg-ds-success:#1f6b4f;--ds-success:#62c79e;
+  --ds-shadow-1:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);--ds-shadow-2:0 18px 50px rgba(0,0,0,.6);
+  --ds-border:rgba(255,255,255,.12);--shadow:0 8px 24px rgba(0,0,0,.45);
+}
+/* pictures and maps keep their colours but do not glare */
+html[data-dark] body img{filter:brightness(.9)}
+
+html[data-theme="night"]{--shape:1}
 html[data-theme="night"] body{
   --green:#4fb8a8;--green-d:#86d6ca;--green-l:#1d3532;
   --ink:#e4eaec;--ink-2:#a7b4b9;--bg:#121719;--card:#1b2225;--line:#33403f;
   --amber:#e3a95c;--amber-l:#3a2e1d;--blue:#8fb6dc;--blue-l:#1c2a37;
   --red:#f08d87;--red-l:#3c2322;--ar:#c6b7da;--ar-l:#29233a;
   --topbar-start:#0f2a2c;--topbar-end:#1d4f4d;--hero-start:#123234;--hero-end:#22605b;
-  --shadow:0 8px 24px rgba(0,0,0,.45);
   --nbg-green-d:#1f6b63;--nbg-green:#24786e;--nbg-blue:#2d5577;--nbg-red:#8a3431;--nbg-amber:#7a5524;
   --nbg-ar:#4d3f61;--nbg-ink:#2f3b40;--nbg-ink-2:#3a484e;
   --nbg-ds-accent:#24786e;--nbg-ds-accent-strong:#1a5a54;--nbg-ds-accent-alt:#7a5524;
-  --nbg-ds-text:#2f3b40;--nbg-ds-text-soft:#3a484e;--nbg-ds-success:#1f6b4f;--nbg-ds-warning:#7a5524;--nbg-ds-danger:#8a3431;
-  --ntx-card:#f2f6f7;--ntx-bg:#f2f6f7;--ntx-green-l:#e5f3f0;--ntx-blue-l:#e9f0f6;--ntx-red-l:#f9e8e5;
-  --ntx-amber-l:#fbefd9;--ntx-ar-l:#f7f3f7;--ntx-line:#e6ded1;--ntx-ds-surface:#f2f6f7;--ntx-ds-surface-soft:#f2f6f7;
-  --ntx-ds-surface-raised:#ffffff;--ntx-ds-page:#f2f6f7;--ntx-ds-accent-soft:#e5f3ed;
+  --nbg-ds-text:#2f3b40;--nbg-ds-text-soft:#3a484e;--nbg-ds-warning:#7a5524;--nbg-ds-danger:#8a3431;
   --ds-accent:#4fb8a8;--ds-accent-strong:#86d6ca;--ds-accent-soft:#1d3532;--ds-accent-alt:#e3a95c;
   --ds-page:#121719;--ds-surface:#1b2225;--ds-surface-soft:#20292c;--ds-surface-raised:#222b2f;
-  --ds-text:#e4eaec;--ds-text-soft:#a7b4b9;--ds-border:rgba(255,255,255,.12);
-  --ds-success:#62c79e;--ds-warning:#e3a95c;--ds-danger:#f08d87;
-  --ds-shadow-1:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);--ds-shadow-2:0 18px 50px rgba(0,0,0,.6);
+  --ds-text:#e4eaec;--ds-text-soft:#a7b4b9;--ds-warning:#e3a95c;--ds-danger:#f08d87;
 }
-/* pictures and maps keep their colours but do not glare */
-html[data-theme="night"] body img{filter:brightness(.9)}
+
+/* ---------- Mitternacht · ليلي بنفسجي: deep indigo with gold ---------- */
+html[data-theme="midnight"]{--shape:1.2}
+html[data-theme="midnight"] body{
+  --green:#8f80f7;--green-d:#bdb3ff;--green-l:#272350;
+  --ink:#e9e7f6;--ink-2:#aca8c8;--bg:#100f1e;--card:#1b1a30;--line:#363356;
+  --amber:#f0b84e;--amber-l:#3a2f17;--blue:#86b8f2;--blue-l:#1a2742;
+  --red:#f38a9a;--red-l:#3d1f2a;--ar:#e2a9ea;--ar-l:#33203d;
+  --topbar-start:#1d1844;--topbar-end:#3b2b7c;--hero-start:#251e58;--hero-end:#4c3598;
+  --nbg-green-d:#5a48c9;--nbg-green:#5f4fd1;--nbg-blue:#2f5592;--nbg-red:#8a3443;--nbg-amber:#7a5a1f;
+  --nbg-ar:#6a3f78;--nbg-ink:#3a3858;--nbg-ink-2:#45436a;
+  --nbg-ds-accent:#5f4fd1;--nbg-ds-accent-strong:#4637a8;--nbg-ds-accent-alt:#7a5a1f;
+  --nbg-ds-text:#3a3858;--nbg-ds-text-soft:#45436a;--nbg-ds-warning:#7a5a1f;--nbg-ds-danger:#8a3443;
+  --ds-accent:#8f80f7;--ds-accent-strong:#bdb3ff;--ds-accent-soft:#272350;--ds-accent-alt:#f0b84e;
+  --ds-page:#100f1e;--ds-surface:#1b1a30;--ds-surface-soft:#201f38;--ds-surface-raised:#24223d;
+  --ds-text:#e9e7f6;--ds-text-soft:#aca8c8;--ds-warning:#f0b84e;--ds-danger:#f38a9a;
+}
 
 /* ---------- corner shapes: override the theme's own shape ---------- */
 html[data-shape="round"]{--shape:1.6}
@@ -131,13 +198,18 @@ html[data-text="xlarge"] body{zoom:1.25}
 .theme-card b{font-size:14px}
 .theme-card small{font-size:12px;color:var(--ink-2);font-family:"Cairo","Tahoma",sans-serif;line-height:1.4}
 .theme-swatch{
-  height:38px;border-radius:calc(var(--swatch-radius)*1px);position:relative;overflow:hidden;
-  background:linear-gradient(135deg,var(--swatch-a),var(--swatch-b));
+  height:44px;border-radius:calc(var(--swatch-radius)*1px);position:relative;overflow:hidden;
+  background:var(--swatch-page);box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);
+  display:flex;align-items:flex-end;gap:4px;padding:0 7px 6px;
 }
-.theme-swatch::after{
-  content:"";position:absolute;inset:auto 8px 8px 8px;height:14px;background:var(--swatch-c);
-  border-radius:calc(var(--swatch-radius)*.6px);opacity:.95;
+.theme-swatch::before{
+  content:"";position:absolute;inset:0 0 45% 0;background:linear-gradient(120deg,var(--swatch-a),var(--swatch-b));
 }
+.theme-swatch.is-auto::before{inset:0;background:linear-gradient(120deg,var(--swatch-a) 0 50%,var(--swatch-b) 50% 100%)}
+.theme-swatch i{position:relative;width:13px;height:13px;border-radius:50%;border:2px solid var(--swatch-page)}
+.theme-swatch i:nth-child(1){background:var(--swatch-a)}
+.theme-swatch i:nth-child(2){background:var(--swatch-b)}
+.theme-swatch i:nth-child(3){background:var(--swatch-c)}
 .theme-options{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
 .theme-option{
   border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:13px;
