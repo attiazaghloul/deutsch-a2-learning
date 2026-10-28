@@ -127,12 +127,17 @@ def blank_cuts(model, pcm16, rms, text, spans, first_pass, pattern=JUNK):
         return (min(t1, max(t0, t0 + word.start - clip_offset)),
                 min(t1, max(t0, t0 + word.end - clip_offset)), t0, t1)
 
-    cuts = []
+    # a word of the text itself ("untersucht", "Unterricht") is never junk
+    text_words = {normalized(token) for token in re.findall(r"\w+", text)}
+    cuts, previous_junk = [], False
     for position, word in enumerate(words):
         match = pattern.search(word.word)
+        if match and normalized(word.word) in text_words:
+            match = None
         if first_pass and position == 0 and re.match(r"^\d{1,2}\.\s", text) and ORDINAL.search(word.word):
             match = re.match(r"", word.word)
         if not match:
+            previous_junk = False
             continue
         cut_start, cut_end, t0, t1 = source(word)
         # "Hahnemann-Audiomarke" comes back as one word: cut from the marker on.
@@ -140,9 +145,17 @@ def blank_cuts(model, pcm16, rms, text, spans, first_pass, pattern=JUNK):
             cut_start += (cut_end - cut_start) * match.start() / len(word.word)
         cut_start = t0 if cut_start - t0 < 0.08 else quietest(rms, cut_start - 0.07, cut_start + 0.07)
         cut_end = t1 if t1 - cut_end < 0.08 else quietest(rms, cut_end - 0.07, cut_end + 0.07)
-        if cut_end > cut_start:
+        # "Unter Strich, Unter Strich" is one blank: one cut, no slivers between
+        if previous_junk and cuts:
+            cuts[-1][1] = max(cuts[-1][1], cut_end)
+        elif cut_end > cut_start:
             cuts.append([cut_start, cut_end])
+        previous_junk = True
     return cuts
+
+
+def normalized(value):
+    return re.sub(r"\W", "", value).lower()
 
 
 def pause_before(rms, t):
