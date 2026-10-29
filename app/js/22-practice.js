@@ -133,7 +133,7 @@ function speakingScore(expected,heard){
 
 /* ---------- playing a sentence and waiting for its end ---------- */
 
-function practicePlay(text,{slow=false}={}){
+function practicePlay(text,{slow=false,voice=speechVoiceURI}={}){
   stopPracticeAudio();
   return new Promise(resolve=>{
     const started=performance.now();
@@ -147,7 +147,7 @@ function practicePlay(text,{slow=false}={}){
     const words=practiceWords(text).length;
     const factor=slow?.72:1;
     const safety=setTimeout(finish,(words*.65/factor+4)*1000);
-    if(playFixedSpeech(text,speechVoiceURI,finish,factor)) return;
+    if(playFixedSpeech(text,voice,finish,factor)) return;
     if(!speech){ finish(); return; }
     const utterance=new SpeechSynthesisUtterance(text);
     utterance.lang='de-DE';
@@ -189,6 +189,7 @@ function renderPracticeHub(){
   setTop('Üben','Alle Fertigkeiten an einem Ort',true,'تدريب كل المهارات');
   const skills=[
     {route:`practice/shadow/${level}`,icon:'🗣️',title:'Sprechen · Shadowing',text:'Hören, sofort nachsprechen, dich aufnehmen und die Aussprache prüfen.',ar:'اسمع الجملة وكرّرها وراها على طول، سجّل صوتك وقارنه بالأصل.',tag:'Neu'},
+    {route:`practice/dialog/${level}`,icon:'🎭',title:'Sprechen · Rollenspiel',text:'Spiele die Dialoge der Kapitel: die App spricht die andere Rolle, du deine.',ar:'مثّل الحوار: التطبيق بيقول جمل الشخص التاني وإنت تقول جملك.',tag:'Neu'},
     {route:'videos',icon:'🎬',title:'Sehen · Videos',text:'Filme und Serien für Deutschlerner mit Tempo, Wiederholung und Notizen.',ar:'اتفرج على فيديوهات للمتعلمين وكرّر أي جزء وبطّأ السرعة.',tag:'Neu'},
     {route:`practice/diktat/${level}`,icon:'✍️',title:'Schreiben · Diktat',text:'Sätze hören und richtig schreiben, mit Korrektur Wort für Wort.',ar:'اسمع واكتب الجملة، وهتشوف غلطاتك كلمة كلمة.',tag:'Neu'},
     {route:listen,icon:'🎧',title:'Hören',text:'Hörtexte aus dem Buch mit Aufgaben und Buchseiten.',ar:'تمارين الاستماع من الكتاب.'},
@@ -591,6 +592,7 @@ window.addEventListener('hashchange',()=>{
 function routePractice(hash){
   if(hash==='practice'){ renderPracticeHub(); return true; }
   if(hash==='my-words'){ renderMyWords(); return true; }
+  if(/^practice\/dialog(\/|$)/.test(hash)) return routeRolePlay(hash);
   const match=hash.match(/^practice\/(shadow|diktat)(?:\/(a1|a2|b1)(?:\/(\d+))?)?$/);
   if(!match) return false;
   const level=match[2]||practiceLevelOf(window.NextUI?.state().profile.level||'a2');

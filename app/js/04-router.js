@@ -56,6 +56,7 @@ function fallbackBackTarget(hash){
   if(/^#b1\.1\/(games|exam)\//.test(h)) return path.split('/').slice(0,2).join('/');
   if(/^#b1\.1\/(dict|verbs|phrases|games|exam)$/.test(h)) return 'b1.1';
   if(h==='#b1.1') return '';
+  if(/^#practice\/dialog\/(a1|a2|b1)\/\d+\/\d+$/.test(h)) return path.split('/').slice(0,4).join('/');
   if(/^#practice\/\w+\/(a1|a2|b1)\/\d+$/.test(h)) return path.split('/').slice(0,3).join('/');
   if(/^#practice\/\w+/.test(h)||h==='#my-words'||h==='#videos') return 'practice';
   if(/^#videos\//.test(h)) return 'videos';
