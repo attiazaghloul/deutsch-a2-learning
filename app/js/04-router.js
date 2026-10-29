@@ -140,6 +140,17 @@ function renderCurrentRoute(){
     window.getSelection()?.removeAllRanges();
   }
   if(!window.NextUI) window.scrollTo(0,0);
+  const needed=routeLevelData(h);
+  if(needed&&!levelDataReady(needed)){
+    view.innerHTML='<div class="level-loading" role="status"><span class="level-loading-dot"></span>Inhalte werden geladen …<small lang="ar" dir="rtl">بنحمّل محتوى المستوى…</small></div>';
+    ensureLevelData(needed).then(()=>{
+      if(location.hash.replace('#','')===h) renderCurrentRoute();
+    }).catch(()=>{
+      if(location.hash.replace('#','')!==h) return;
+      view.innerHTML='<div class="review-empty"><h2>Inhalte nicht geladen</h2><p lang="ar" dir="rtl">المحتوى ما اتحمّلش. اتأكد من النت أو نزّل المستوى للأوفلاين، وجرّب تاني.</p><div style="margin-top:14px"><button class="next-primary" onclick="location.reload()">Neu laden</button></div></div>';
+    });
+    return;
+  }
   if(!h){ if(window.NextUI) window.NextUI.renderDashboard(); else renderLevelSelector(); return; }
   if(h==='review'){ if(window.NextUI) window.NextUI.renderReviewCenter(); else renderFavorites(); return; }
   if(h==='progress'){ if(window.NextUI) window.NextUI.renderProgressDashboard(); else renderLevelSelector(); return; }
@@ -689,7 +700,8 @@ function a1BeginnerGrammarData(topic){
     coverage:['Regel verstehen','Beispiele sprechen','eigene Sätze bilden']
   };
 }
-const A1_GRAM=A1_GRAMMAR_SCRIPT.map(lesson=>({
+// Rebuilt by refreshLevelData() once the A1 data has loaded.
+function buildA1Gram(){ return A1_GRAMMAR_SCRIPT.map(lesson=>({
   num:lesson.num,
   titleAr:'',
   topics:lesson.topics.map((topic,index)=>{
@@ -716,7 +728,8 @@ const A1_GRAM=A1_GRAMMAR_SCRIPT.map(lesson=>({
       practice:[topicMeta.practice]
     };
   })
-}));
+})); }
+let A1_GRAM=buildA1Gram();
 
 const A2_SECTIONS=[
   {route:'a2/lessons',icon:'2',title:'Lektionen',text:'Netzwerk neu A2.1 + A2.2 und Grammatik-Skript.',ar:'دروس A2 ومذكرة القواعد.'},

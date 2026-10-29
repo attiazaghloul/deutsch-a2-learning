@@ -2213,3 +2213,31 @@ test('photo bindings preserve original A2 positions and never substitute emoji f
   assert.match(markup, /A2/);
 });
 const A2_PHOTO_LIMITS = {1:40,2:40,3:34,4:36,5:34,6:40};
+
+test('A1 and B1 lesson data load when a page needs them, not at startup', () => {
+  const app = readFileSync(join(root, 'app', 'index.html'), 'utf8');
+  const lazy = [...app.matchAll(/<script src="(data_[^"?]+)[^"]*" type="text\/plain" data-level="(a1|b1)"><\/script>/g)];
+  const byLevel = level => lazy.filter(match => match[2] === level).map(match => match[1]);
+  assert.ok(byLevel('a1').includes('data_a1.js') && byLevel('a1').includes('data_exam_a1.js') && byLevel('a1').includes('data_phonetik_a1_interactive.js'));
+  assert.ok(byLevel('b1').includes('data_b1_1.js') && byLevel('b1').includes('data_exam_b1.js'));
+  // every other data script is A2 or shared and still runs at startup
+  for (const match of app.matchAll(/<script src="(data_[^"?]+)[^"]*"( type="text\/plain")?/g)) {
+    const level = /^data_(a1|a11|a12|hoeren_a1|phonetik_a1|exam_a1)[._]|^data_a1\.js$|^data_a12\.js$/.test(match[1]) ? 'a1'
+      : /^data_(b1_|exam_b1)/.test(match[1]) ? 'b1' : null;
+    assert.equal(Boolean(match[2]), Boolean(level), `${match[1]} ${level ? 'should wait for its level' : 'is needed at startup'}`);
+  }
+  const sw = readFileSync(join(root, 'app', 'sw.js'), 'utf8');
+  for (const [, file] of lazy) assert.ok(sw.includes(`'${file}'`), `${file} is not precached for offline use`);
+
+  const { routeLevelData } = loadFunctions(['routeLevelData']);
+  assert.equal(routeLevelData('a1/k3/wortschatz'), 'a1');
+  assert.equal(routeLevelData('b1.1/exam'), 'b1');
+  assert.equal(routeLevelData('word-search'), 'all');
+  assert.equal(routeLevelData('train/b1/4'), 'all');
+  assert.equal(routeLevelData('k7/lesen'), null);
+  assert.equal(routeLevelData(''), null);
+  assert.match(functionSource('renderCurrentRoute'), /levelDataReady\(needed\)/);
+  assert.match(functionSource('refreshLevelData'), /A1_GRAM=buildA1Gram\(\)/);
+  assert.match(readFileSync(join(root, 'app', 'data_vocab_images.js'), 'utf8'), /window\.applyVocabImages=function/);
+  assert.match(readFileSync(join(root, 'scripts', 'vocab_images', 'build.cjs'), 'utf8'), /window\.applyVocabImages=function/);
+});

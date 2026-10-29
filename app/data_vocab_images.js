@@ -1209,10 +1209,12 @@ window.VOCAB_IMAGES = {
  "B1|12|ausziehen": "assets/a1/vocab_ai/k11/03.webp",
  "B1|12|die Tätigkeit": "assets/vocab-scenes/k1/04.webp"
 };
-(function(){
- const books={A1:window.A1_BOOK,A2:[...window.BOOK0,...window.BOOK1,...window.BOOK2],B1:window.B1_BOOK};
+// A1 and B1 load on demand (js/01-core.js ensureLevelData), which calls this again.
+window.applyVocabImages=function(){
+ const books={A1:window.A1_BOOK||[],A2:[...window.BOOK0,...window.BOOK1,...window.BOOK2],B1:window.B1_BOOK||[]};
  for(const [level,book] of Object.entries(books))for(const chapter of book)for(const card of chapter.vocab||[]){
   const src=window.VOCAB_IMAGES[level+'|'+chapter.num+'|'+card.w];
   if(src&&!card.img)card.img=src;
  }
-})();
+};
+window.applyVocabImages();
