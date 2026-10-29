@@ -8,7 +8,6 @@ on:
     branches: [video-transcripts]
     paths:
       - scripts/fetch_video_transcripts.py
-      - app/js/23-videos.js
       - .github/workflows/video-transcripts.yml
 
 permissions:

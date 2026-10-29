@@ -2180,6 +2180,23 @@ test('video links in any YouTube form become a video or a playlist', () => {
   for (const level of ['a1', 'a2', 'b1']) assert.ok(library.some(match => match[2] === level), `${level} has videos`);
 });
 
+test('the video text lights the line being said and keeps words in their own spans', () => {
+  const { transcriptCueAt, transcriptCueHtml } = loadFunctions(['transcriptCueAt', 'transcriptCueHtml', 'escapeHtml', 'formatVideoTime']);
+  const cues = [{ s: 1, e: 3, de: 'Hallo!' }, { s: 3.2, e: 6, de: 'Wie geht es dir?' }, { s: 20, e: 22, de: 'Tschüss.' }];
+  assert.equal(transcriptCueAt(cues, 0.5), -1, 'nothing is said yet');
+  assert.equal(transcriptCueAt(cues, 1), 0);
+  assert.equal(transcriptCueAt(cues, 3.1), 0, 'a short pause keeps the line');
+  assert.equal(transcriptCueAt(cues, 5), 1);
+  assert.equal(transcriptCueAt(cues, 12), -1, 'a long pause lights nothing');
+  assert.equal(transcriptCueAt(cues, 21), 2);
+  const html = transcriptCueHtml({ s: 65, e: 67, de: 'Ich <b>bin</b> da', ar: 'أنا هنا', w: [[65, 'Ich'], [65.4, '<b>bin</b>'], [65.9, 'da']] }, 4);
+  assert.match(html, /data-cue="4"/);
+  assert.match(html, />1:05</);
+  assert.equal((html.match(/data-w="/g) || []).length, 3);
+  assert.ok(!html.includes('<b>'), 'text is escaped');
+  assert.match(html, /lang="ar" dir="rtl">أنا هنا</);
+});
+
 test('the Üben routes are wired into the router, the menu and the back button', () => {
   const { fallbackBackTarget } = loadFunctions(['fallbackBackTarget']);
   assert.equal(fallbackBackTarget('practice/shadow/a2/7'), 'practice/shadow/a2');
