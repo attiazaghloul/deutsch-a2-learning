@@ -99,7 +99,8 @@ function speechOfflineUrls(chapter){
   const library=route.startsWith('a1')?A1_FIXED_SPEECH:route.startsWith('b1')?B1_FIXED_SPEECH:FIXED_SPEECH;
   const voiceOf=data=>data?.voices?.find(voice=>voice.id===speechVoiceURI)||data?.voices?.[0];
   const voice=voiceOf(library);
-  const urls=[voice?.parts?speechPartsFor(chapter,library,voice):voice?.audio,voiceOf(FIXED_SPEECH.aliases)?.audio];
+  const words=voiceOf(FIXED_SPEECH.aliases);
+  const urls=[voice?.parts?speechPartsFor(chapter,library,voice):voice?.audio,words?.parts||words?.audio];
   return urls.flat().filter(Boolean);
 }
 

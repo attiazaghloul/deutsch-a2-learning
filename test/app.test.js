@@ -2258,18 +2258,26 @@ test('Rollenspiel plays the chapter dialogues with the learner in one role', () 
 });
 
 test('voice libraries in parts play each clip from its own file', () => {
-  const { build, AUDIO_BASE } = require(join(root, 'scripts', 'import_voice_library.js'));
+  const { readRecording, withVoice, buildB1, AUDIO_BASE } = require(join(root, 'scripts', 'import_voice_library.js'));
   const { mkdtempSync, writeFileSync } = require('node:fs');
   const dir = mkdtempSync(join(require('node:os').tmpdir(), 'voices-'));
-  const timings = join(dir, 'timings.json');
-  writeFileSync(timings, JSON.stringify({ version: 'b1-voices-test', texts: ['Guten Tag.', 'Ich lerne.', 'Wir fahren.'],
-    voices: [{ id: 'mia', name: 'Mia', description: 'x', parts: ['b1/mia-1.mp3', 'b1/mia-2.mp3'], timings: [[0.1, 0.9, 0], [1.2, 2, 0], [0.2, 1, 1]] }] }));
-  const context = { window: {} };
-  vm.runInNewContext(build(timings), context);
-  const library = context.window.B1_FIXED_SPEECH;
-  assert.equal(library.voices[0].parts[1], `${AUDIO_BASE}b1/mia-2.mp3?v=b1-voices-test`);
+  const texts = ['Guten Tag.', 'Ich lerne.', 'Wir fahren.'];
+  const file = join(dir, 'b1-mia-timings.json');
+  writeFileSync(file, JSON.stringify({ version: 'b1-voices-test', texts,
+    voice: { id: 'mia', name: 'Mia', description: 'x', parts: ['b1/mia-1.mp3', 'b1/mia-2.mp3'], timings: [[0.1, 0.9, 0], [1.2, 2, 0], [0.2, 1, 1]] } }));
+  const mia = readRecording(file);
+  assert.equal(mia.voice.parts[1], `${AUDIO_BASE}b1/mia-2.mp3?v=b1-voices-test`);
   assert.equal(AUDIO_BASE, 'assets/speech/', 'the service worker saves and seeks assets/speech/ files');
+  // a recording replaces only its own voice, and only for the same texts
+  const old = { texts, voices: [{ id: 'mia', audio: 'old.mp3', timings: [] }, { id: 'tarek', audio: 't.mp3', timings: [[0, 1], [1, 2], [2, 3]] }] };
+  const merged = withVoice(old, mia, 'test');
+  assert.deepEqual(merged.voices.map(voice => voice.id), ['mia', 'tarek']);
+  assert.equal(merged.voices[1].audio, 't.mp3');
+  assert.throws(() => withVoice({ ...old, texts: ['Hallo.'] }, mia, 'test'), /texts differ/);
 
+  const context = { window: {} };
+  vm.runInNewContext(buildB1([mia], texts), context);
+  const library = context.window.B1_FIXED_SPEECH;
   const player = loadFunctions(['currentSpeechLevel', 'findFixedSpeechClip']);
   player.location = { hash: '#b1.1/k1' };
   player.FIXED_SPEECH = { voices: [] }; player.FIXED_SPEECH_INDEX = new Map();
@@ -2278,7 +2286,14 @@ test('voice libraries in parts play each clip from its own file', () => {
   const clip = player.findFixedSpeechClip('Wir fahren.', 'mia');
   assert.equal(clip.audioSource, library.voices[0].parts[1]);
   assert.equal(clip.kind, 'part1');
+  assert.equal(clip.trimmed, true, 'recordings in parts end at the last word');
   assert.equal(player.findFixedSpeechClip('Guten Tag.', 'tarek').audioSource, library.voices[0].parts[0], 'a missing voice falls back to the first');
+  // A2: Mia in parts next to Tarek's old sprite, which keeps its end padding
+  player.location = { hash: '#k1' };
+  player.FIXED_SPEECH = merged; player.FIXED_SPEECH_INDEX = new Map(texts.map((text, index) => [text, index]));
+  player.B1_FIXED_SPEECH = { voices: [] }; player.B1_FIXED_SPEECH_INDEX = new Map();
+  assert.equal(player.findFixedSpeechClip('Ich lerne.', 'tarek').trimmed, false);
+  assert.equal(player.findFixedSpeechClip('Ich lerne.', 'mia').trimmed, true);
 
   const offline = loadFunctions(['normalizeSpeechValue', 'prepareSpeechText', 'speechPartsFor']);
   const chapter = { vocab: [{ ex: 'Wir fahren.' }], readings: [{ text: '<b>Ich lerne.</b> Wir fahren.' }] };
