@@ -95,7 +95,7 @@ function findFixedSpeechClip(value,voiceId){
   return null;
 }
 
-function playFixedSpeech(value,voiceId=speechVoiceURI,onDone=null){
+function playFixedSpeech(value,voiceId=speechVoiceURI,onDone=null,rateFactor=1){
   const clip=findFixedSpeechClip(value,voiceId);
   if(!clip)return false;
   const {library, voice, timing, audioSource, kind, trimmed}=clip;
@@ -115,7 +115,7 @@ function playFixedSpeech(value,voiceId=speechVoiceURI,onDone=null){
   // with silence between clips) already end where the speech ends.
   const legacyMarkerPadding=trimmed||(library==='a2'&&kind==='aliases')?0:.085;
   const end=Math.max(start+.12,Number(timing[1])-legacyMarkerPadding);
-  fixedSpeechAudio.playbackRate=Math.max(.6,Math.min(1.5,(speechRate/.85)*fixedSpeechProfileRate()));
+  fixedSpeechAudio.playbackRate=Math.max(.5,Math.min(1.5,(speechRate/.85)*fixedSpeechProfileRate()*rateFactor));
   fixedSpeechAudio.preservesPitch=true;
   const begin=()=>{
     if(session!==fixedSpeechSession)return;

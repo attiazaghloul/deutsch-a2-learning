@@ -90,10 +90,13 @@ function showTranslationSheet(data){
   document.body.classList.add('tt-open');
   markTappedWord(data.range);
   updateTranslationFavoriteButtons();
+  // Einstellungen → Übersetzen: the word can be spoken as the sheet opens
+  if(sourceLanguage==='de'&&localStorage.getItem('tapSpeak')==='on') speakText(data.selected,'de');
   wordPromise.then(translated=>{
     if(tapSheetState?.requestId!==requestId) return;
     pendingTranslation.wordTranslation=translated;
     $('#ttMeaning').textContent=translated;
+    if(sourceLanguage==='de') rememberTappedWord(data.selected,translated,data.context);
   }).catch(()=>{
     if(tapSheetState?.requestId===requestId) $('#ttMeaning').textContent='الترجمة مش متاحة دلوقتي — جرّب تاني لما النت يرجع';
   });

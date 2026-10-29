@@ -1174,7 +1174,8 @@ test('Satzbaukasten is routed, linked from every level and precached', () => {
   assert.equal(fallbackBackTarget('bausteine'), '');
   ['renderBausteineHome', 'renderBaustein'].forEach(name => functionSource(name));
   assert.match(html, /h==='bausteine'/);
-  assert.equal((html.match(/\{route:'bausteine'/g) || []).length, 3, 'A1, A2 and B1 hubs link the Satzbaukasten');
+  // the A1, A2 and B1 hubs and the Üben page
+  assert.equal((html.match(/\{route:'bausteine'/g) || []).length, 4, 'A1, A2, B1 and Üben link the Satzbaukasten');
   const sw = readFileSync(join(root, 'app', 'sw.js'), 'utf8');
   for (const file of ['data_bausteine.js', 'data_bausteine_2.js', 'data_core_dictionary.js', 'js/19-bausteine.js']) {
     assert.ok(sw.includes(`'${file}'`), `${file} is not precached`);
@@ -2115,4 +2116,73 @@ test('every settings row belongs to one of the settings sections', () => {
   const ui = readFileSync(join(root, 'app', 'ui-next.js'), 'utf8');
   for (const row of ui.match(/class="setting-row[^"]*"[^>]*>/g) || []) assert.match(row, /data-settings-section="(design|general)"/);
   for (const key of ['tapTranslate', 'selectTranslate']) assert.match(panel, new RegExp(`data-setting-switch="${key}"`));
+});
+
+test('Shadowing and Diktat sentences are generated from the current chapters', () => {
+  const { build, OUTPUT, usable } = require(join(root, 'scripts', 'build_practice_sentences.js'));
+  assert.equal(readFileSync(join(root, OUTPUT), 'utf8'), build(), 'run: node scripts/build_practice_sentences.js');
+  const context = { window: {} };
+  vm.runInNewContext(readFileSync(join(root, OUTPUT), 'utf8'), context);
+  const practice = context.window.PRACTICE_SENTENCES;
+  for (const level of ['a1', 'a2', 'b1']) {
+    assert.equal(practice[level].length, 12, `${level} has every chapter`);
+    for (const chapter of practice[level]) {
+      assert.ok(chapter.sentences.length >= 20, `${level} Kapitel ${chapter.num} has enough sentences`);
+      assert.ok(chapter.sentences.every(item => usable(item.de)));
+    }
+  }
+  assert.ok(practice.a2.flatMap(chapter => chapter.sentences).filter(item => item.rec).length > 200, 'A2 sentences use the recordings');
+  assert.equal(usable('Ich komme aus … / Ich lebe in …'), false);
+  assert.equal(usable('Wo ist ___?'), false);
+  assert.equal(usable('Ich lerne Deutsch.'), true);
+  const sw = readFileSync(join(root, 'app', 'sw.js'), 'utf8');
+  for (const file of ['data_practice.js', 'js/22-practice.js', 'js/23-videos.js', 'styles/practice.css']) assert.ok(sw.includes(`'${file}'`), `${file} is not precached`);
+});
+
+test('Diktat marks every word and the pronunciation check counts the heard words', () => {
+  const { diktatCompare, speakingScore } = loadFunctions(['practiceWords', 'editDistance', 'diktatCompare', 'speakingScore']);
+  const perfect = diktatCompare('Ich fahre mit dem Bus.', 'Ich fahre mit dem Bus');
+  assert.equal(perfect.score, 100, 'punctuation does not count');
+  const mixed = diktatCompare('Ich fahre mit dem Bus zur Arbeit.', 'ich fahre mit Bus zur arbiet extra');
+  assert.deepEqual([...mixed.words.map(word => word.status)], ['case', 'ok', 'ok', 'missing', 'ok', 'ok', 'typo', 'extra']);
+  assert.ok(mixed.score > 50 && mixed.score < 90);
+  assert.equal(diktatCompare('Die Straße ist lang.', 'Die Strasse ist lang').words[1].status, 'typo');
+  assert.equal(diktatCompare('Hallo', 'Tschüss').words[0].status, 'wrong');
+
+  const heard = speakingScore('Kannst du mir sagen, wo die Haltestelle ist?', 'kannst du mir sagen wo die Haltestelle')
+  assert.equal(heard.score, 88);
+  assert.deepEqual([...heard.words.filter(word => !word.ok).map(word => word.word)], ['ist']);
+  assert.equal(speakingScore('Ich heiße Amira.', 'ich heiße amira').score, 100);
+});
+
+test('video links in any YouTube form become a video or a playlist', () => {
+  const { parseYouTubeLink } = loadFunctions(['parseYouTubeLink']);
+  const id = '4-eDoThe6qo';
+  for (const link of [`https://www.youtube.com/watch?v=${id}&t=30s`, `https://youtu.be/${id}`, `https://m.youtube.com/watch?v=${id}`,
+    `https://www.youtube.com/shorts/${id}`, `https://www.youtube.com/embed/${id}`, id]) {
+    assert.deepEqual({ ...parseYouTubeLink(link) }, { yt: id }, link);
+  }
+  assert.deepEqual({ ...parseYouTubeLink('https://www.youtube.com/playlist?list=PLs7zUO7VPyJ5DV1iBRgSw2uDl832n0bLg') }, { list: 'PLs7zUO7VPyJ5DV1iBRgSw2uDl832n0bLg' });
+  assert.equal(parseYouTubeLink('https://example.com/video'), null);
+  const source = readFileSync(join(jsDir, '23-videos.js'), 'utf8');
+  const library = [...source.matchAll(/\{key:'([\w-]+)',level:'(a1|a2|b1|all)',(?:yt:'([\w-]{11})'|list:'([\w-]{10,})')/g)];
+  assert.ok(library.length >= 10, 'every level has videos');
+  assert.equal(new Set(library.map(match => match[1])).size, library.length, 'keys are unique');
+  for (const level of ['a1', 'a2', 'b1']) assert.ok(library.some(match => match[2] === level), `${level} has videos`);
+});
+
+test('the Üben routes are wired into the router, the menu and the back button', () => {
+  const { fallbackBackTarget } = loadFunctions(['fallbackBackTarget']);
+  assert.equal(fallbackBackTarget('practice/shadow/a2/7'), 'practice/shadow/a2');
+  assert.equal(fallbackBackTarget('practice/diktat/b1'), 'practice');
+  assert.equal(fallbackBackTarget('videos/play/nico-a1'), 'videos');
+  assert.equal(fallbackBackTarget('videos'), 'practice');
+  assert.equal(fallbackBackTarget('my-words'), 'practice');
+  assert.equal(fallbackBackTarget('practice'), '');
+  assert.match(functionSource('renderCurrentRoute'), /routePractice\(h\)\|\|routeVideos\(h\)/);
+  const ui = readFileSync(join(root, 'app', 'ui-next.js'), 'utf8');
+  assert.match(ui, /\{id:'practice',label:'Üben',route:'practice'/);
+  const app = readFileSync(join(root, 'app', 'index.html'), 'utf8');
+  assert.ok(app.indexOf('js/22-practice.js') > app.indexOf('js/20-tap-translate.js'), 'Meine Wörter is filled from the translation sheet');
+  assert.match(app, /data-setting-switch="tapSpeak" data-setting-default="off"/);
 });
