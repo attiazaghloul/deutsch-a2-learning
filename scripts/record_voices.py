@@ -230,8 +230,10 @@ def sound_bounds(samples, timings):
     for position, timing in enumerate(timings):
         start, end = timing["start"], timing["end"]
         body = loudness(samples, start, end) or 1.0
-        later = timings[position + 1]["start"] if position + 1 < len(timings) else end + 0.6
-        earlier = bounds[-1][1] if bounds else max(0.0, start - 0.4)
+        # never closer than 0.12 s to the next clip's word, whose first sound
+        # (an s, a breath) can come before its boundary
+        later = (timings[position + 1]["start"] - 0.07) if position + 1 < len(timings) else end + 0.6
+        earlier = timings[position - 1]["end"] if position else max(0.0, start - 0.4)
         # a stop (d, t, b) is silent for a moment before it sounds: the clip
         # ends only after 150 ms of quiet, and starts only after 100 ms
         def sounds(t0, t1):
