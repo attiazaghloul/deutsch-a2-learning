@@ -151,10 +151,12 @@ def spoken_item(text, voice):
       ("Erster es ist ..."): it is left out, dates ("8. März") stay.
     - A word or phrase without final punctuation was run into the next item
       (Tarek) or read like a question (Mia: "Wild?"): every item ends with
-      a full stop and is read like a list."""
+      a full stop and is read like a list (not after a number: "Bericht 1."
+      would be read "Bericht erster")."""
     value = re.sub(r"_{2,}", "…", text)
     value = re.sub(rf"^\(?(?:[1-9]|1\d|20)[.)]\s+(?!(?:{MONTHS}|Stock|Geburtstag|Klasse|Platz|Jahrhundert)\b)(?=\S)", "", value)
-    if not re.search(r"[.!?…:;]\W*$", value):
+    # a full stop after a number makes it an ordinal ("Bericht 1." = "erster")
+    if not re.search(r"[.!?…:;]\W*$", value) and not re.search(r"\d\W*$", value):
         value += "."
     return value
 
@@ -173,6 +175,8 @@ async def synthesize_batch(level, voice, batch_index, batch, semaphore):
         "blanks": "pause",
     }
     signature["items"] = "list-2"     # spoken_item: full stops, no exercise numbers
+    if any(re.search(r"\d\W*$", text) and not re.search(r"[.!?…:;]\W*$", text) for _, text in batch):
+        signature["numbers"] = "no full stop"   # only these batches are recorded again
     if audio_path.exists() and timing_path.exists():
         try:
             metadata = json.loads(timing_path.read_text(encoding="utf-8"))
