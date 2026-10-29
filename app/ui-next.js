@@ -191,6 +191,7 @@
     if(hash==='practice') return 'Üben';
     if(hash.startsWith('practice/shadow')) return 'Shadowing';
     if(hash.startsWith('practice/diktat')) return 'Diktat';
+    if(hash.startsWith('practice/dialog')) return 'Rollenspiel';
     if(hash==='my-words') return 'Meine Wörter';
     if(hash.startsWith('videos')) return 'Videos';
     if(hash.includes('listen')||hash.startsWith('podcast')) return 'Hören und Sprechen';
@@ -287,7 +288,7 @@
         </div>
       </section>
       <section class="home-section home-skills" aria-labelledby="skillsTitle"><div class="next-section-head home-heading"><div><span class="home-kicker">Neu · Alle Fertigkeiten</span><h2 id="skillsTitle">Sprechen, Schreiben und Sehen</h2><p class="home-ar" lang="ar" dir="rtl">اتكلم وراء المتحدث (شادوينج)، اكتب اللي بتسمعه (إملاء)، واتفرج على فيديوهات للمتعلمين.</p></div></div>
-        <div class="home-skill-row"><button type="button" onclick="go('practice/shadow')"><span aria-hidden="true">🗣️</span><b>Shadowing</b><small>Nachsprechen & Aussprache prüfen</small></button><button type="button" onclick="go('practice/diktat')"><span aria-hidden="true">✍️</span><b>Diktat</b><small>Hören & schreiben</small></button><button type="button" onclick="go('videos')"><span aria-hidden="true">🎬</span><b>Videos</b><small>Filme & Serien zum Lernen</small></button><button type="button" onclick="go('my-words')"><span aria-hidden="true">⭐</span><b>Meine Wörter</b><small>Angetippte Wörter</small></button></div>
+        <div class="home-skill-row"><button type="button" onclick="go('practice/shadow')"><span aria-hidden="true">🗣️</span><b>Shadowing</b><small>Nachsprechen & Aussprache prüfen</small></button><button type="button" onclick="go('practice/dialog')"><span aria-hidden="true">🎭</span><b>Rollenspiel</b><small>Dialoge selbst sprechen</small></button><button type="button" onclick="go('practice/diktat')"><span aria-hidden="true">✍️</span><b>Diktat</b><small>Hören & schreiben</small></button><button type="button" onclick="go('videos')"><span aria-hidden="true">🎬</span><b>Videos</b><small>Filme & Serien zum Lernen</small></button><button type="button" onclick="go('my-words')"><span aria-hidden="true">⭐</span><b>Meine Wörter</b><small>Angetippte Wörter</small></button></div>
       </section>
       <section class="home-tools"><div><span class="home-kicker">Direktzugriff</span><h2>Nützliche Werkzeuge</h2></div><div class="home-tool-links"><button type="button" onclick="go('word-search')">${icons.search}<span><b>Wortsuche</b><small>Im gesamten Programm</small></span></button><button type="button" onclick="go('bausteine')">${icons.learn}<span><b>Satzbaukasten</b><small>Feste Regeln für jeden Satz</small></span></button><button type="button" onclick="go('train')">${icons.cards}<span><b>Wort-Trainer</b><small>Wörter dauerhaft lernen</small></span></button><button type="button" onclick="go('review')">${icons.review}<span><b>Wiederholen</b><small>Favoriten und Fehler</small></span></button><button type="button" onclick="go('${listenRoute}')">${icons.listen}<span><b>Hörstudio</b><small>${levelCode(level)} ist ausgewählt</small></span></button></div></section>
     </div>`;
@@ -324,7 +325,7 @@
     return [
       ['Wortschatz',max(metrics.favorites,80)],['Grammatik',max(metrics.grammar,70)],['Hören',max(metrics.listening,60)],
       ['Lesen',max(state.history.filter(item=>/lesen|\/k\d+/.test(item.route)).length,40)],
-      ['Sprechen',max(state.history.filter(item=>/sprechen|phonetik|practice\/shadow/.test(item.route)).length,30)],
+      ['Sprechen',max(state.history.filter(item=>/sprechen|phonetik|practice\/(shadow|dialog)/.test(item.route)).length,30)],
       ['Schreiben',max(state.history.filter(item=>/schreiben|practice\/diktat/.test(item.route)).length,20)],
       ['Sehen',max(state.history.filter(item=>/^videos\//.test(item.route)).length,15)]
     ];
@@ -489,7 +490,7 @@
       {done:doneLesson||today.some(item=>/^train\/(a1|a2|b1)\//.test(item.route||'')),route:'train',title:`${newWords} neue Wörter im Wort-Trainer`,ar:'اتعلم كلمات جديدة من الوحدة اللي بتذاكرها.'},
       {done:doneLesson,route:state.lastLearningRoute&&state.lastLearningRoute!==level?state.lastLearningRoute:lessonRoute,title:'Eine Lernetappe im Kapitel',ar:'كمّل الدرس من المكان اللي وقفت عنده.'},
       {done:doneSkill,route:listenRoute,title:level==='b1.1'?'Eine Trainingsrunde':'Eine Hör- oder Trainingseinheit',ar:'تمرين استماع أو لعبة قصيرة.'},
-      {done:today.some(item=>/^practice\/(shadow|diktat)\/\w+\/\d+/.test(item.route||'')),route:'practice/shadow',title:'5 Sätze Shadowing oder Diktat',ar:'اتكلم أو اكتب ٥ جمل من الوحدة.'}
+      {done:today.some(item=>/^practice\/(shadow|diktat|dialog)\/\w+\/\d+/.test(item.route||'')),route:'practice/shadow',title:'5 Sätze Shadowing oder Diktat',ar:'اتكلم أو اكتب ٥ جمل من الوحدة.'}
     ];
   }
 

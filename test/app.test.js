@@ -2241,3 +2241,17 @@ test('A1 and B1 lesson data load when a page needs them, not at startup', () => 
   assert.match(readFileSync(join(root, 'app', 'data_vocab_images.js'), 'utf8'), /window\.applyVocabImages=function/);
   assert.match(readFileSync(join(root, 'scripts', 'vocab_images', 'build.cjs'), 'utf8'), /window\.applyVocabImages=function/);
 });
+
+test('Rollenspiel plays the chapter dialogues with the learner in one role', () => {
+  const { rolePlaySpeakers, rolePlayVoice, rolePlayDialogues, fallbackBackTarget } = loadFunctions(['rolePlaySpeakers', 'rolePlayVoice', 'rolePlayDialogues', 'fallbackBackTarget']);
+  const dialogue = [{ s: 'Lena', de: 'Hallo!' }, { s: 'Karim', de: 'Hi!' }, { s: 'Lena', de: 'Wie geht’s?' }, { s: 'Gast', de: 'Gut.' }];
+  assert.deepEqual([...rolePlaySpeakers(dialogue)], ['Lena', 'Karim', 'Gast']);
+  assert.equal(rolePlayVoice(dialogue, 'Lena'), 'mia');
+  assert.equal(rolePlayVoice(dialogue, 'Karim'), 'tarek');
+  const chapter = { conversations: [{ situation: 'A', dialogue }, { situation: 'B', phrases: [] }, { situation: 'C', dialogue: [{ s: 'X', de: 'Ja.' }] }] };
+  assert.deepEqual([...rolePlayDialogues(chapter).map(item => item.index)], [0]);
+  assert.equal(fallbackBackTarget('practice/dialog/b1/3/2'), 'practice/dialog/b1/3');
+  assert.equal(fallbackBackTarget('practice/dialog/b1/3'), 'practice/dialog/b1');
+  assert.match(functionSource('routePractice'), /routeRolePlay\(hash\)/);
+  assert.ok(readFileSync(join(root, 'app', 'sw.js'), 'utf8').includes("'js/24-roleplay.js'"));
+});
