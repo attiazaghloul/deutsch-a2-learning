@@ -1,0 +1,236 @@
+[
+  {
+    "sheet": 1,
+    "cells": [
+      {
+        "word": "ciao",
+        "definition": "Kurzer, freundlicher Abschied."
+      },
+      {
+        "word": "die Entschuldigung, -en",
+        "definition": "Das sagt man bei einem Fehler oder vor einer Frage."
+      },
+      {
+        "word": "informell",
+        "definition": "Freundlich, nicht offiziell."
+      },
+      {
+        "word": "sehr",
+        "definition": "Ein starkes Wort für „viel“."
+      },
+      {
+        "word": "auch",
+        "definition": "Ebenso, noch dazu."
+      },
+      {
+        "word": "dir",
+        "definition": "„Du“ im Dativ."
+      },
+      {
+        "word": "Ihnen",
+        "definition": "„Sie“ im Dativ (formell)."
+      },
+      {
+        "word": "das Befinden",
+        "definition": "Wie es einer Person gesundheitlich geht."
+      },
+      {
+        "word": "vorstellen",
+        "definition": "Eine Person einer anderen Person zeigen und nennen."
+      },
+      {
+        "word": "die Person, -en",
+        "definition": "Ein Mensch."
+      },
+      {
+        "word": "der Partner, -",
+        "definition": "Mit ihm lernt oder arbeitet man zusammen."
+      },
+      {
+        "word": "die Partnerin, -nen",
+        "definition": "Die weibliche Form von „Partner“."
+      },
+      {
+        "word": "kennen",
+        "definition": "Eine Person oder Sache schon wissen."
+      },
+      {
+        "word": "bekannt",
+        "definition": "Viele Menschen kennen es oder ihn."
+      },
+      {
+        "word": "andere",
+        "definition": "Nicht dieselben."
+      },
+      {
+        "word": "wohnen",
+        "definition": "An einem Ort leben."
+      }
+    ]
+  },
+  {
+    "sheet": 2,
+    "cells": [
+      {
+        "id": "A1|7|der Kundenbesuch, -e",
+        "level": "A1",
+        "chapter": 7,
+        "word": "der Kundenbesuch, -e",
+        "definition": "Man fährt zu einem Kunden und spricht mit ihm.",
+        "example": "Morgen haben wir einen Kundenbesuch.",
+        "ar": "زيارة عميل",
+        "src": ""
+      },
+      {
+        "id": "A1|7|der Bericht, -e",
+        "level": "A1",
+        "chapter": 7,
+        "word": "der Bericht, -e",
+        "definition": "Ein Text über eine Arbeit oder ein Ereignis.",
+        "example": "Julia muss einen Bericht schreiben.",
+        "ar": "التقرير",
+        "src": ""
+      },
+      {
+        "id": "A1|7|die Mittagspause, -n",
+        "level": "A1",
+        "chapter": 7,
+        "word": "die Mittagspause, -n",
+        "definition": "Die Pause am Mittag; oft isst man dann.",
+        "example": "In der Mittagspause esse ich ein Sandwich.",
+        "ar": "استراحة الغداء",
+        "src": ""
+      },
+      {
+        "id": "A1|7|Pause machen",
+        "level": "A1",
+        "chapter": 7,
+        "word": "Pause machen",
+        "definition": "Kurz aufhören und sich ausruhen.",
+        "example": "Manchmal mache ich allein Pause.",
+        "ar": "يعمل استراحة",
+        "src": ""
+      },
+      {
+        "id": "A1|7|einen Tag frei haben",
+        "level": "A1",
+        "chapter": 7,
+        "word": "einen Tag frei haben",
+        "definition": "Einen Tag nicht arbeiten müssen.",
+        "example": "Laura möchte am Freitag einen Tag frei haben.",
+        "ar": "ياخد يوم إجازة",
+        "src": ""
+      },
+      {
+        "id": "A1|7|Es ist viel los.",
+        "level": "A1",
+        "chapter": 7,
+        "word": "Es ist viel los.",
+        "definition": "Es passiert viel; man hat viel zu tun.",
+        "example": "In der Firma ist immer viel los.",
+        "ar": "فيه شغل كتير / الدنيا زحمة",
+        "src": ""
+      },
+      {
+        "id": "A1|7|korrigieren",
+        "level": "A1",
+        "chapter": 7,
+        "word": "korrigieren",
+        "definition": "Fehler finden und richtig machen.",
+        "example": "Die Chefin korrigiert meinen Bericht.",
+        "ar": "يصحّح",
+        "src": ""
+      },
+      {
+        "id": "A1|7|bedeuten",
+        "level": "A1",
+        "chapter": 7,
+        "word": "bedeuten",
+        "definition": "Einen Sinn haben.",
+        "example": "Was bedeutet das?",
+        "ar": "يعني",
+        "src": ""
+      },
+      {
+        "id": "A1|7|diskutieren",
+        "level": "A1",
+        "chapter": 7,
+        "word": "diskutieren",
+        "definition": "Über ein Thema sprechen und Meinungen sagen.",
+        "example": "Wir diskutieren über aktuelle Themen.",
+        "ar": "يناقش",
+        "src": ""
+      },
+      {
+        "id": "A1|7|interessieren",
+        "level": "A1",
+        "chapter": 7,
+        "word": "interessieren",
+        "definition": "Für jemanden interessant sein.",
+        "example": "Vielleicht interessiert das auch die anderen.",
+        "ar": "يهمّ / يثير الاهتمام",
+        "src": ""
+      },
+      {
+        "id": "A1|7|das Paket, -e",
+        "level": "A1",
+        "chapter": 7,
+        "word": "das Paket, -e",
+        "definition": "Eine große Sendung mit der Post.",
+        "example": "Adnan nimmt ein Paket an.",
+        "ar": "الطرد",
+        "src": ""
+      },
+      {
+        "id": "A1|7|annehmen, er nimmt an",
+        "level": "A1",
+        "chapter": 7,
+        "word": "annehmen, er nimmt an",
+        "definition": "Etwas bekommen und nehmen, z. B. ein Paket.",
+        "example": "Kannst du bitte das Paket annehmen?",
+        "ar": "يستلم / يقبل",
+        "src": ""
+      },
+      {
+        "id": "A1|7|mitnehmen, er nimmt mit",
+        "level": "A1",
+        "chapter": 7,
+        "word": "mitnehmen, er nimmt mit",
+        "definition": "Etwas oder jemanden mit sich nehmen.",
+        "example": "Meine Chefin nimmt mich zu Kunden mit.",
+        "ar": "ياخد معاه",
+        "src": ""
+      },
+      {
+        "id": "A1|7|einen Kaffee zum Mitnehmen",
+        "level": "A1",
+        "chapter": 7,
+        "word": "einen Kaffee zum Mitnehmen",
+        "definition": "Kaffee in einem Becher, man trinkt ihn unterwegs.",
+        "example": "Einen Kaffee zum Mitnehmen, bitte.",
+        "ar": "قهوة تيك أواي",
+        "src": ""
+      },
+      {
+        "id": "A1|7|abholen",
+        "level": "A1",
+        "chapter": 7,
+        "word": "abholen",
+        "definition": "Zu einem Ort gehen und jemanden oder etwas mitnehmen.",
+        "example": "Ich hole dich um drei ab.",
+        "ar": "يجيب / يعدّي ياخد",
+        "src": ""
+      },
+      {
+        "id": "A1|7|später",
+        "level": "A1",
+        "chapter": 7,
+        "word": "später",
+        "definition": "Nach einer Zeit.",
+        "example": "Sehen wir uns später?",
+        "ar": "بعدين",
+        "src": ""
+      }
+    ]
+  }
+]

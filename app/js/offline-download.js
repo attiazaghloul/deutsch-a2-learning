@@ -113,8 +113,8 @@ function collectCurrentLessonOfflineUrls(){
       const realPhotoLimit=A2_REAL_PHOTO_LIMIT[chapter.num]||0;
       const extraPhotos=A2_EXTRA_REAL_PHOTOS[chapter.num]||new Set();
       chapter.vocab?.forEach((card,index)=>{
-        const scene=index+1;
-        if(scene<=realPhotoLimit||extraPhotos.has(scene)){
+        const scene=(card.legacy?.index??(chapter.num<=6?-1:index))+1;
+        if(!card.img&&scene>0&&(scene<=realPhotoLimit||extraPhotos.has(scene))){
           addOfflineMediaUrl(`assets/vocab-scenes/k${chapter.num}/${String(scene).padStart(2,'0')}.webp`,urls);
         }
       });
