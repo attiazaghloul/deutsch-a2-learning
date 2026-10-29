@@ -64,15 +64,19 @@ def manual_cues(events):
 
 
 def auto_cues(events):
-    """Automatic captions: every word has a time. Lines end at a pause of
-    0.8 s or after 14 words."""
-    words = [(t, w) for event in events for t, w in event["words"] if w and w != "\n"]
+    """Automatic captions: every word has a time. Lines end at a sentence end,
+    at a pause of 0.8 s once they have 3 words (of 2 s before), or after 14
+    words."""
+    words = [(t, w) for event in events for t, w in event["words"]
+             if w and w != "\n" and not re.fullmatch(r"\[.*\]", w)]
     words.sort()
     cues, line = [], []
     for index, (time, word) in enumerate(words):
         line.append((time, word))
         following = words[index + 1][0] if index + 1 < len(words) else time + 2
-        if following - time > 0.8 or len(line) >= 14 or index + 1 == len(words):
+        pause = following - time
+        if (pause > 2 or (pause > 0.8 and len(line) >= 3) or (word[-1] in ".?!" and len(line) >= 3)
+                or len(line) >= 14 or index + 1 == len(words)):
             cues.append({"s": round(line[0][0], 2), "e": round(min(following, time + 1.2), 2),
                          "de": " ".join(w for _, w in line),
                          "w": [[round(t, 2), w] for t, w in line]})
@@ -110,7 +114,10 @@ def main():
         else:
             print(f"{video}: no German subtitles", flush=True)
             continue
-        arabic_source = manual_ar[0] if manual_ar else auto_ar[0] if auto_ar else None
+        # translated Arabic is cut like YouTube's lines, not like the lines
+        # cut here from automatic German, so it would land on the wrong line;
+        # the app translates those lines itself
+        arabic_source = manual_ar[0] if manual_ar else auto_ar[0] if auto_ar and kind == "manual" else None
         if arabic_source:
             attach_arabic(cues, load(arabic_source))
         payload = {"id": video, "de": kind, "ar": ("manual" if manual_ar else "translated") if arabic_source else None, "cues": cues}
