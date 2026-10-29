@@ -219,9 +219,9 @@ def sound_bounds(samples, timings):
         body = loudness(samples, start, end) or 1.0
         later = timings[position + 1]["start"] if position + 1 < len(timings) else end + 0.6
         earlier = bounds[-1][1] if bounds else max(0.0, start - 0.4)
-        while end < min(start + 30, later - 0.05) and end < timing["end"] + 0.4 and loudness(samples, end, end + STEP) > QUIET * body:
+        while end < min(start + 30, later - 0.05) and end < timing["end"] + 1.5 and loudness(samples, end, end + STEP) > QUIET * body:
             end += STEP
-        while start > earlier + 0.05 and start > timing["start"] - 0.25 and loudness(samples, start - STEP, start) > QUIET * body:
+        while start > earlier + 0.05 and start > timing["start"] - 0.6 and loudness(samples, start - STEP, start) > QUIET * body:
             start -= STEP
         bounds.append((round(max(0.0, start - 0.02), 3), round(end + 0.03, 3)))
     return bounds
