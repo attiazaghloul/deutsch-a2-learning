@@ -27,6 +27,7 @@ import wave
 from pathlib import Path
 
 import edge_tts
+import numpy as np
 import imageio_ffmpeg
 from mutagen.mp3 import MP3
 
@@ -38,8 +39,10 @@ FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
 SEPARATOR = " ... "
 SAMPLE_RATE = 24000
 PART_SECONDS = 2.5 * 3600
-MARGIN = 0.12      # kept before and after every clip
+MARGIN = 0.1       # kept before and after every clip
 GAP = 0.3          # silence between two clips
+STEP = 0.01        # 10 ms windows to find where a clip's sound begins and ends
+QUIET = 0.05       # a window is quiet below 5 % of the clip's loudness
 BITRATE = "32k"
 # Mia is Katja, a native German voice: the multilingual voice she had before
 # (de-DE-SeraphinaMultilingualNeural) read some single words with an English
@@ -200,6 +203,30 @@ async def synthesize_batch(level, voice, batch_index, batch, semaphore):
                 await asyncio.sleep(3 * (attempt + 1))
 
 
+def loudness(samples, t0, t1):
+    window = samples[max(0, int(t0 * SAMPLE_RATE)):max(0, int(t1 * SAMPLE_RATE))]
+    return float(np.sqrt(np.mean(window ** 2))) if len(window) else 0.0
+
+
+def sound_bounds(samples, timings):
+    """Where each clip really sounds. The service's word boundaries end
+    before the last sound of a word (a final -n or -t fades for 60-100 ms),
+    and some words start with a breath or plosive just before theirs: grow
+    every clip until the audio is quiet, never into the next or previous clip."""
+    bounds = []
+    for position, timing in enumerate(timings):
+        start, end = timing["start"], timing["end"]
+        body = loudness(samples, start, end) or 1.0
+        later = timings[position + 1]["start"] if position + 1 < len(timings) else end + 0.6
+        earlier = bounds[-1][1] if bounds else max(0.0, start - 0.4)
+        while end < min(start + 30, later - 0.05) and end < timing["end"] + 0.4 and loudness(samples, end, end + STEP) > QUIET * body:
+            end += STEP
+        while start > earlier + 0.05 and start > timing["start"] - 0.25 and loudness(samples, start - STEP, start) > QUIET * body:
+            start -= STEP
+        bounds.append((round(max(0.0, start - 0.02), 3), round(end + 0.03, 3)))
+    return bounds
+
+
 def encode_part(wav_path, output_path):
     subprocess.run(
         [FFMPEG, "-v", "error", "-y", "-i", str(wav_path),
@@ -247,10 +274,13 @@ async def record_voice(level, voice, texts, concurrency, out_dir):
         wav_path, _ = to_wav(audio_path)
         with wave.open(str(wav_path)) as handle:
             frames = handle.readframes(handle.getnframes())
-        total = len(frames) // 2
-        for text_id, timing in sorted(batch_timings.items(), key=lambda item: item[1]["start"]):
-            first = max(0, int((timing["start"] - MARGIN) * SAMPLE_RATE))
-            last = min(total, int((timing["end"] + MARGIN) * SAMPLE_RATE))
+        samples = np.frombuffer(frames, dtype=np.int16).astype(np.float32)
+        total = len(samples)
+        ordered = sorted(batch_timings.items(), key=lambda item: item[1]["start"])
+        bounds = sound_bounds(samples, [timing for _, timing in ordered])
+        for (text_id, timing), (clip_start, clip_end) in zip(ordered, bounds):
+            first = max(0, int((clip_start - MARGIN) * SAMPLE_RATE))
+            last = min(total, int((clip_end + MARGIN) * SAMPLE_RATE))
             if writer and written / SAMPLE_RATE > PART_SECONDS:
                 close_part()
             if not writer:
@@ -266,8 +296,8 @@ async def record_voice(level, voice, texts, concurrency, out_dir):
             writer.writeframes(frames[first * 2:last * 2])
             written += last - first
             timings[int(text_id)] = [
-                round(begin + (timing["start"] - first / SAMPLE_RATE), 3),
-                round(begin + (timing["end"] - first / SAMPLE_RATE), 3),
+                round(begin + (clip_start - first / SAMPLE_RATE), 3),
+                round(begin + (clip_end - first / SAMPLE_RATE), 3),
                 len(files),
             ]
             writer.writeframes(silence)
