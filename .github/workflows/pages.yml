@@ -46,7 +46,11 @@ jobs:
           # Phonetik figure sheets: PHONETIK_A1_FIGURES is empty, the pages show the book scans
           rm -rf app/assets/listening/a1-phonetik/figures
           rm -f app/data_dictionary_de_ar.js
-          du -sh app
+          size=$(du -sm app | cut -f1)
+          echo "Site: ${size} MB of GitHub Pages' 1 GB"
+          # a larger site fails to publish; stop here and keep the live one
+          if [ "$size" -ge 1000 ]; then echo "::error::The site is ${size} MB, over the 1 GB Pages limit"; exit 1; fi
+          if [ "$size" -ge 950 ]; then echo "::warning::The site is ${size} MB, close to the 1 GB Pages limit"; fi
 
       - name: Upload static site
         uses: actions/upload-pages-artifact@v5
