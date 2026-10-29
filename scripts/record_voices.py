@@ -65,7 +65,6 @@ VOICES = [
         "description": "Mann, ruhig und erwachsen",
         "voice": "de-DE-ConradNeural",
         "rate": "+9%",
-        "close_items": True,
         "pitch": "+0Hz",
     },
 ]
@@ -142,13 +141,20 @@ def to_wav(mp3_path):
         return wav_path, handle.getnframes() / handle.getframerate()
 
 
+MONTHS = "Januar|Februar|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember"
+
+
 def spoken_item(text, voice):
-    """What the service reads for one text. Gap blanks ("___") would be read
-    as "Unterstrich": they are a pause. Tarek's voice runs a word or phrase
-    without final punctuation into the next one ("blitzen ... löschst" with
-    no pause), so his items end with a full stop and are read like a list."""
+    """What the service reads for one text.
+    - Gap blanks ("___") would be read as "Unterstrich": they are a pause.
+    - An exercise number ("1. Es ist ___ Uhr.") was read as an ordinal
+      ("Erster es ist ..."): it is left out, dates ("8. März") stay.
+    - A word or phrase without final punctuation was run into the next item
+      (Tarek) or read like a question (Mia: "Wild?"): every item ends with
+      a full stop and is read like a list."""
     value = re.sub(r"_{2,}", "…", text)
-    if voice.get("close_items") and not re.search(r"[.!?…:;]\W*$", value):
+    value = re.sub(rf"^\(?(?:[1-9]|1\d|20)[.)]\s+(?!(?:{MONTHS}|Stock|Geburtstag|Klasse|Platz|Jahrhundert)\b)(?=\S)", "", value)
+    if not re.search(r"[.!?…:;]\W*$", value):
         value += "."
     return value
 
@@ -166,8 +172,7 @@ async def synthesize_batch(level, voice, batch_index, batch, semaphore):
         "separator": SEPARATOR,
         "blanks": "pause",
     }
-    if voice.get("close_items"):
-        signature["ends"] = "period"
+    signature["items"] = "list-2"     # spoken_item: full stops, no exercise numbers
     if audio_path.exists() and timing_path.exists():
         try:
             metadata = json.loads(timing_path.read_text(encoding="utf-8"))
