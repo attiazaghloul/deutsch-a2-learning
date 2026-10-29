@@ -212,16 +212,20 @@ def sound_bounds(samples, timings):
     """Where each clip really sounds. The service's word boundaries end
     before the last sound of a word (a final -n or -t fades for 60-100 ms),
     and some words start with a breath or plosive just before theirs: grow
-    every clip until the audio is quiet, never into the next or previous clip."""
+    every clip until the audio stays quiet, never into the next or previous clip."""
     bounds = []
     for position, timing in enumerate(timings):
         start, end = timing["start"], timing["end"]
         body = loudness(samples, start, end) or 1.0
         later = timings[position + 1]["start"] if position + 1 < len(timings) else end + 0.6
         earlier = bounds[-1][1] if bounds else max(0.0, start - 0.4)
-        while end < min(start + 30, later - 0.05) and end < timing["end"] + 1.5 and loudness(samples, end, end + STEP) > QUIET * body:
+        # a stop (d, t, b) is silent for a moment before it sounds: the clip
+        # ends only after 150 ms of quiet, and starts only after 100 ms
+        def sounds(t0, t1):
+            return any(loudness(samples, t, t + STEP) > QUIET * body for t in np.arange(t0, t1, STEP))
+        while end < min(start + 30, later - 0.05) and end < timing["end"] + 1.5 and sounds(end, min(end + 0.15, later - 0.05)):
             end += STEP
-        while start > earlier + 0.05 and start > timing["start"] - 0.6 and loudness(samples, start - STEP, start) > QUIET * body:
+        while start > earlier + 0.05 and start > timing["start"] - 0.6 and sounds(max(start - 0.1, earlier + 0.05), start):
             start -= STEP
         bounds.append((round(max(0.0, start - 0.02), 3), round(end + 0.03, 3)))
     return bounds
