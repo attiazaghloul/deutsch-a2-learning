@@ -6,7 +6,7 @@
    ergänzt (scripts/stamp_service_worker.js). */
 importScripts('dictionary-data/manifest.js');
 
-const CACHE_VERSION = 'v69-a56e8a6062';
+const CACHE_VERSION = 'v70';
 const CACHE = 'deutsch-' + CACHE_VERSION;
 const MEDIA_CACHE = 'deutsch-media-v1';
 const DICTIONARY_CACHE = `deutsch-dictionary-v${self.OFFLINE_DICTIONARY_MANIFEST.version}`;
