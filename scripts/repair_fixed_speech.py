@@ -47,7 +47,7 @@ LEVELS = {
         "comment": "Generated fixed cross-device A1 speech library.",
         "audio": "a1-{voice}.mp3",
         "source": "4590536",  # "Keep two recorded voices (Mia and Tarek)"
-        "version": "a1-fixed-voices-3",
+        "version": "a1-fixed-voices-4",
     },
     "a2": {
         "data": "app/data_speech_clean.js",
@@ -55,7 +55,7 @@ LEVELS = {
         "comment": "Generated fixed cross-device speech library.",
         "audio": "{voice}.mp3",
         "source": "46317ca",  # the last commit with the marker recordings
-        "version": "fixed-voices-7",
+        "version": "fixed-voices-8",
     },
 }
 
@@ -329,7 +329,7 @@ def rebuild_voice(model, level, texts, voice):
 
     wav = OUTPUT / f"{Path(name).stem}.wav"
     soundfile.write(wav, np.concatenate(out), SR, subtype="PCM_16")
-    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(wav), "-codec:a", "libmp3lame", "-b:a", "48k",
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(wav), "-codec:a", "libmp3lame", "-b:a", "32k",
                     "-ar", str(SR), "-ac", "1", str(OUTPUT / name)], check=True)
     wav.unlink()
     print(f"{name}: {cursor / 60:.1f} min")

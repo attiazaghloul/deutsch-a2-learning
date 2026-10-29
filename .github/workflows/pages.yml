@@ -38,6 +38,14 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@v6
 
+      # Source files the app never loads stay in the repository but out of
+      # the site, which GitHub Pages limits to 1 GB.
+      - name: Leave build sources out of the site
+        run: |
+          rm -rf app/assets/vocab-scenes/*-sheets app/assets/listening/a1/figures/sheets
+          rm -f app/data_dictionary_de_ar.js
+          du -sh app
+
       - name: Upload static site
         uses: actions/upload-pages-artifact@v5
         with:

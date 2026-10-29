@@ -965,8 +965,8 @@ test('A1 and A2 recorded sentences play clean clips separated by silence', () =>
       });
     }
   }
-  assert.ok(html.includes("speechA1:'data_speech_a1.js?v=a1-fixed-voices-3'"), 'LAZY_SCRIPTS must load the rebuilt A1 library');
-  assert.ok(html.includes("speechA2:'data_speech_clean.js?v=speech-clean-8'"), 'LAZY_SCRIPTS must load the rebuilt A2 library');
+  assert.ok(html.includes("speechA1:'data_speech_a1.js?v=a1-fixed-voices-4'"), 'LAZY_SCRIPTS must load the rebuilt A1 library');
+  assert.ok(html.includes("speechA2:'data_speech_clean.js?v=speech-clean-9'"), 'LAZY_SCRIPTS must load the rebuilt A2 library');
   // Trimmed libraries must not lose another 85 ms at the end of each clip.
   assert.match(functionSource('playFixedSpeech'), /trimmed\|\|\(library==='a2'&&kind==='aliases'\)\?0:\.085/);
   assert.match(functionSource('fallbackBrowserSpeech'), /replace\(\/_\{2,\}\/g/);
