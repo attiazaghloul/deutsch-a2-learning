@@ -202,7 +202,8 @@ async def synthesize_batch(level, voice, batch_index, batch, semaphore):
                                 "start": chunk["offset"] / 10_000_000,
                                 "end": (chunk["offset"] + chunk["duration"]) / 10_000_000,
                             })
-                timings = map_batch_boundaries(batch, boundaries)
+                # match what was spoken: exercise numbers are not read
+                timings = map_batch_boundaries([(text_id, spoken_item(value, voice)) for text_id, value in batch], boundaries)
                 if len(timings) != len(batch):
                     missing = [f"{text_id}:{value}" for text_id, value in batch if text_id not in timings]
                     raise RuntimeError(f"{voice['id']} batch {batch_index}: mapped {len(timings)} of {len(batch)}; missing {missing[:3]}")
