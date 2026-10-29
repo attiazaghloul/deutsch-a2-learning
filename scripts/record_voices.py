@@ -2,7 +2,7 @@
 
 The Edge TTS service is not reachable from every machine, so
 .github/workflows/record-voices.yml runs this on GitHub:
-    pip install edge-tts==7.2.8 mutagen==1.47.0 imageio-ffmpeg==0.6.0
+    pip install edge-tts==7.3.1 mutagen==1.47.0 imageio-ffmpeg==0.6.0
     python scripts/record_voices.py --level b1
 
 Reads scripts/voices/<level>-texts.json (a copy of the texts that
