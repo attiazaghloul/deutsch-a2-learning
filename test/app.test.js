@@ -2116,3 +2116,30 @@ test('every settings row belongs to one of the settings sections', () => {
   for (const row of ui.match(/class="setting-row[^"]*"[^>]*>/g) || []) assert.match(row, /data-settings-section="(design|general)"/);
   for (const key of ['tapTranslate', 'selectTranslate']) assert.match(panel, new RegExp(`data-setting-switch="${key}"`));
 });
+
+test('photo bindings preserve original A2 positions and never substitute emoji for missing photos', () => {
+  const context = {console};
+  context.window = context;
+  vm.createContext(context);
+  const page = readFileSync(join(root, 'app/index.html'), 'utf8');
+  for (const match of page.matchAll(/<script src="(data_[^"?]+\.js)/g)) {
+    vm.runInContext(readFileSync(join(root, 'app', match[1]), 'utf8'), context);
+  }
+  const bindings = context.VOCAB_IMAGES;
+  assert.ok(Object.keys(bindings).length > 500);
+  const original = vm.createContext({});
+  original.window = original;
+  for (const file of ['data_book0.js','data_book0_expansion.js']) vm.runInContext(readFileSync(join(root, 'app', file), 'utf8'), original);
+  for (const chapter of context.BOOK0) for (const card of chapter.vocab) {
+    if (!card.legacy || card.legacy.index >= A2_PHOTO_LIMITS[chapter.num]) continue;
+    const oldCard = original.BOOK0.find(c => c.num === chapter.num).vocab[card.legacy.index];
+    assert.equal(card.legacy.w, oldCard.w);
+    assert.equal(card.img, `assets/vocab-scenes/k${chapter.num}/${String(card.legacy.index + 1).padStart(2, '0')}.webp`);
+  }
+  for (const src of Object.values(bindings)) assert.ok(existsSync(join(root, 'app', src)), src);
+  const {fallbackVocabSticker, escapeHtml} = loadFunctions(['fallbackVocabSticker', 'escapeHtml']);
+  const markup = fallbackVocabSticker({w:'Beispiel'}, {num:1}, 'A2');
+  assert.doesNotMatch(markup, /\p{Extended_Pictographic}|fc-emoji/u);
+  assert.match(markup, /A2/);
+});
+const A2_PHOTO_LIMITS = {1:40,2:40,3:34,4:36,5:34,6:40};
