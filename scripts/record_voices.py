@@ -41,15 +41,19 @@ PART_SECONDS = 2.5 * 3600
 MARGIN = 0.12      # kept before and after every clip
 GAP = 0.3          # silence between two clips
 BITRATE = "32k"
-VERSIONS = {"b1": "b1-voices-1"}
+# Mia is Katja, a native German voice: the multilingual voice she had before
+# (de-DE-SeraphinaMultilingualNeural) read some single words with an English
+# accent ("Körperteile" came out as "Corporatile"). A1 and A2 get her new
+# recordings too, so she sounds the same on every level.
+VERSIONS = {"b1": "b1-voices-1", "a1": "a1-mia-katja-1", "a2": "a2-mia-katja-1", "a2words": "a2-words-katja-1"}
 
 VOICES = [
     {
         "id": "mia",
         "name": "Mia",
         "description": "Frau, klar und freundlich",
-        "voice": "de-DE-SeraphinaMultilingualNeural",
-        "rate": "+11%",
+        "voice": "de-DE-KatjaNeural",
+        "rate": "+6%",
         "pitch": "+0Hz",
     },
     {
@@ -208,10 +212,17 @@ async def record_voice(level, voice, texts, concurrency, out_dir):
     batches = make_batches(texts)
     semaphore = asyncio.Semaphore(concurrency)
     print(f"{voice['name']} {level}: {len(batches)} batches", flush=True)
-    results = await asyncio.gather(*[
-        synthesize_batch(level, voice, index, batch, semaphore)
-        for index, batch in enumerate(batches)
-    ])
+    done = 0
+
+    async def counted(index, batch):
+        nonlocal done
+        result = await synthesize_batch(level, voice, index, batch, semaphore)
+        done += 1
+        if done % 10 == 0 or done == len(batches):
+            print(f"{voice['name']} {level}: {done}/{len(batches)} batches", flush=True)
+        return result
+
+    results = await asyncio.gather(*[counted(index, batch) for index, batch in enumerate(batches)])
     timings = [None] * len(texts)
     files = []
     silence = b"\x00\x00" * int(GAP * SAMPLE_RATE)
@@ -289,10 +300,12 @@ async def main():
             "parts": [f"{args.level}/{name}" for name in files],
             "timings": timings,
         })
-    payload = {"version": version, "trimmed": True, "texts": texts, "voices": voices}
-    timings_path = TEXTS / f"{args.level}-timings.json"
-    timings_path.write_text(json.dumps(payload, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
-    print(f"{timings_path}: {len(texts)} texts, {len(voices)} voices")
+    # one file per level and voice, so the voices can be recorded in parallel jobs
+    for voice in voices:
+        payload = {"version": version, "trimmed": True, "texts": texts, "voice": voice}
+        timings_path = TEXTS / f"{args.level}-{voice['id']}-timings.json"
+        timings_path.write_text(json.dumps(payload, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+        print(f"{timings_path}: {len(texts)} texts")
 
 
 if __name__ == "__main__":
