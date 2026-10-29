@@ -22,6 +22,7 @@
 <link rel="stylesheet" href="styles/app.css">
 <link rel="stylesheet" href="styles/ui-next.css?v=studio-7">
 <link rel="stylesheet" href="styles/themes.css?v=themes-2">
+<link rel="stylesheet" href="styles/practice.css?v=practice-1">
 <script src="js/00-theme.js?v=themes-2"></script>
 </head>
 <body>
@@ -110,6 +111,15 @@
     <div class="setting-row switch-row" data-settings-section="translate">
       <div><b>Markieren <small dir="rtl">ترجمة التحديد</small></b><p dir="rtl">لو حددت جزء من النص، ترجمته تظهر في نفس اللوحة اللي تحت، بعيد عن قائمة المتصفح (نسخ/مشاركة).</p></div>
       <button type="button" class="switch" data-setting-switch="selectTranslate" role="switch" aria-checked="true" aria-label="Markieren zum Übersetzen"></button>
+    </div>
+    <div class="setting-row switch-row" data-settings-section="translate">
+      <div><b>Wort vorlesen <small dir="rtl">انطق الكلمة مع الترجمة</small></b><p dir="rtl">الكلمة اللي بتضغط عليها تتنطق لوحدها أول ما الترجمة تظهر، فتاخد المعنى والنطق بضغطة واحدة.</p></div>
+      <button type="button" class="switch" data-setting-switch="tapSpeak" data-setting-default="off" role="switch" aria-checked="false" aria-label="Wort beim Antippen vorlesen"></button>
+    </div>
+    <div class="setting-row" data-settings-section="translate">
+      <b>Meine Wörter <small dir="rtl">كلماتي</small></b>
+      <p dir="rtl">كل كلمة بتترجمها بالضغط بتتحفظ في «كلماتي» عشان تراجعها وتضيفها للمراجعة اليومية.</p>
+      <button type="button" class="settings-primary" data-shell-route="my-words">⭐ Meine Wörter öffnen</button>
     </div>
     <div class="setting-row" data-settings-section="general">
       <b>Offline lernen <small dir="rtl">المذاكرة من غير نت</small></b>
@@ -232,9 +242,11 @@
 <script src="js/17-conversations.js"></script>
 <script src="js/18-grammar-practice.js"></script>
 <script src="js/19-bausteine.js"></script>
-<script src="ui-next.js?v=studio-5"></script>
+<script src="ui-next.js?v=studio-6"></script>
 <script src="js/20-tap-translate.js"></script>
 <script src="js/21-settings.js"></script>
+<script src="js/22-practice.js"></script>
+<script src="js/23-videos.js"></script>
 <script src="js/offline-download.js"></script>
 </body>
 </html>

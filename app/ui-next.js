@@ -59,6 +59,8 @@
     settings:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-2.83 2.83-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 .6 1.7 1.7 0 0 0-.4 1V21h-4v-.09A1.7 1.7 0 0 0 8.6 19.4a1.7 1.7 0 0 0-1.88.34l-.06.06-2.83-2.83.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-.6-1 1.7 1.7 0 0 0-1-.4H3v-4h.09A1.7 1.7 0 0 0 4.6 8.6a1.7 1.7 0 0 0-.34-1.88l-.06-.06 2.83-2.83.06.06A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-.6 1.7 1.7 0 0 0 .4-1V3h4v.09a1.7 1.7 0 0 0 1 1.51 1.7 1.7 0 0 0 1.88-.34l.06-.06 2.83 2.83-.06.06A1.7 1.7 0 0 0 19.4 9c.13.4.35.75.6 1 .28.26.63.4 1 .4h.09v4H21a1.7 1.7 0 0 0-1.6.6Z"/></svg>',
     arrow:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m9 18 6-6-6-6"/></svg>',
     clock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+    practice:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3Z"/><path d="M19 11a7 7 0 0 1-14 0M12 18v3M8 21h8"/></svg>',
+    video:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m10 9 5 3-5 3z"/></svg>',
     cards:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="5" y="4" width="14" height="16" rx="2"/><path d="M9 8h6M9 12h4"/></svg>'
   };
 
@@ -66,7 +68,7 @@
     {id:'home',label:'Start',route:'',icon:icons.home},
     {id:'learn',label:'Inhalte',route:()=>state.profile.level==='a1'?'a1':'a2',icon:icons.learn},
     {id:'review',label:'Wörter',route:'word-search',icon:icons.search},
-    {id:'listen',label:'Hören',route:()=>state.profile.level==='a1'?'a1/listen':'listen',icon:icons.listen},
+    {id:'practice',label:'Üben',route:'practice',icon:icons.practice},
     {id:'progress',label:'Fortschritt',route:'progress',icon:icons.progress}
   ];
 
@@ -105,7 +107,8 @@
     if(!hash) return 'home';
     if(hash==='review'||hash==='favorites'||hash==='word-search'||hash==='train'||hash.startsWith('train/')) return 'review';
     if(hash==='progress') return 'progress';
-    if(hash==='listen'||hash.startsWith('listen/')||hash==='podcast'||hash.startsWith('podcast/')||hash.includes('/listen')) return 'listen';
+    if(hash==='practice'||hash.startsWith('practice/')||hash==='my-words'||hash==='videos'||hash.startsWith('videos/')
+      ||hash==='listen'||hash.startsWith('listen/')||hash==='podcast'||hash.startsWith('podcast/')||hash.includes('/listen')) return 'practice';
     return 'learn';
   }
 
@@ -127,10 +130,10 @@
 
   function featureTabs(level,active){
     const items=level==='a1'
-      ?[['lessons','Lektionen','a1/lessons'],['dict','Wörterbuch','a1/dict'],['verbs','Verben','a1/verbs'],['phrases','Redemittel','a1/phrases'],['games','Training','a1/games'],['exam','Prüfung','a1/exam'],['listen','Hören','a1/listen']]
+      ?[['lessons','Lektionen','a1/lessons'],['dict','Wörterbuch','a1/dict'],['verbs','Verben','a1/verbs'],['phrases','Redemittel','a1/phrases'],['games','Training','a1/games'],['exam','Prüfung','a1/exam'],['listen','Hören','a1/listen'],['practice','Üben','practice']]
       :level==='b1.1'
-        ?[['lessons','Lektionen','b1.1/lessons'],['dict','Wörterbuch','b1.1/dict'],['verbs','Verben','b1.1/verbs'],['phrases','Redemittel','b1.1/phrases'],['games','Training','b1.1/games'],['exam','Prüfung','b1.1/exam']]
-        :[['lessons','Lektionen','a2/lessons'],['dict','Wörterbuch','dict'],['verbs','Verben','verbs'],['phrases','Redemittel','phrases'],['podcast','Podcast','podcast'],['games','Training','games'],['listen','Hören','listen'],['exam','Prüfung','exam']];
+        ?[['lessons','Lektionen','b1.1/lessons'],['dict','Wörterbuch','b1.1/dict'],['verbs','Verben','b1.1/verbs'],['phrases','Redemittel','b1.1/phrases'],['games','Training','b1.1/games'],['exam','Prüfung','b1.1/exam'],['practice','Üben','practice']]
+        :[['lessons','Lektionen','a2/lessons'],['dict','Wörterbuch','dict'],['verbs','Verben','verbs'],['phrases','Redemittel','phrases'],['podcast','Podcast','podcast'],['games','Training','games'],['listen','Hören','listen'],['exam','Prüfung','exam'],['practice','Üben','practice']];
     return `<nav class="feature-tabs" aria-label="${levelCode(level)} Bereiche">${items.map(([id,label,route])=>`<button type="button" class="feature-tab" onclick="go('${route}')" ${id===active?'aria-current="page"':''}>${label}${arLabel(label)}</button>`).join('')}</nav>`;
   }
 
@@ -185,6 +188,11 @@
     if(hash==='review') return 'Wiederholen';
     if(hash==='progress') return 'Fortschritt';
     if(hash.startsWith('bausteine')) return 'Satzbaukasten';
+    if(hash==='practice') return 'Üben';
+    if(hash.startsWith('practice/shadow')) return 'Shadowing';
+    if(hash.startsWith('practice/diktat')) return 'Diktat';
+    if(hash==='my-words') return 'Meine Wörter';
+    if(hash.startsWith('videos')) return 'Videos';
     if(hash.includes('listen')||hash.startsWith('podcast')) return 'Hören und Sprechen';
     if(hash.includes('dict')) return 'Wörterbuch';
     if(hash.includes('verbs')) return 'Verben';
@@ -278,6 +286,9 @@
           <article class="home-content-card featured"><span class="home-content-icon">${icons.exam}</span><div><h3>Training & Prüfung</h3><p>Aktive Spiele, Podcasts und Goethe-A2 Modelltraining mit Timer.</p></div><div class="home-content-links"><button type="button" onclick="go('games')">Training</button><button type="button" onclick="go('exam')">A2 Prüfung</button></div></article>
         </div>
       </section>
+      <section class="home-section home-skills" aria-labelledby="skillsTitle"><div class="next-section-head home-heading"><div><span class="home-kicker">Neu · Alle Fertigkeiten</span><h2 id="skillsTitle">Sprechen, Schreiben und Sehen</h2><p class="home-ar" lang="ar" dir="rtl">اتكلم وراء المتحدث (شادوينج)، اكتب اللي بتسمعه (إملاء)، واتفرج على فيديوهات للمتعلمين.</p></div></div>
+        <div class="home-skill-row"><button type="button" onclick="go('practice/shadow')"><span aria-hidden="true">🗣️</span><b>Shadowing</b><small>Nachsprechen & Aussprache prüfen</small></button><button type="button" onclick="go('practice/diktat')"><span aria-hidden="true">✍️</span><b>Diktat</b><small>Hören & schreiben</small></button><button type="button" onclick="go('videos')"><span aria-hidden="true">🎬</span><b>Videos</b><small>Filme & Serien zum Lernen</small></button><button type="button" onclick="go('my-words')"><span aria-hidden="true">⭐</span><b>Meine Wörter</b><small>Angetippte Wörter</small></button></div>
+      </section>
       <section class="home-tools"><div><span class="home-kicker">Direktzugriff</span><h2>Nützliche Werkzeuge</h2></div><div class="home-tool-links"><button type="button" onclick="go('word-search')">${icons.search}<span><b>Wortsuche</b><small>Im gesamten Programm</small></span></button><button type="button" onclick="go('bausteine')">${icons.learn}<span><b>Satzbaukasten</b><small>Feste Regeln für jeden Satz</small></span></button><button type="button" onclick="go('train')">${icons.cards}<span><b>Wort-Trainer</b><small>Wörter dauerhaft lernen</small></span></button><button type="button" onclick="go('review')">${icons.review}<span><b>Wiederholen</b><small>Favoriten und Fehler</small></span></button><button type="button" onclick="go('${listenRoute}')">${icons.listen}<span><b>Hörstudio</b><small>${levelCode(level)} ist ausgewählt</small></span></button></div></section>
     </div>`;
   }
@@ -313,8 +324,9 @@
     return [
       ['Wortschatz',max(metrics.favorites,80)],['Grammatik',max(metrics.grammar,70)],['Hören',max(metrics.listening,60)],
       ['Lesen',max(state.history.filter(item=>/lesen|\/k\d+/.test(item.route)).length,40)],
-      ['Sprechen',max(state.history.filter(item=>/sprechen|phonetik/.test(item.route)).length,30)],
-      ['Schreiben',max(state.history.filter(item=>/schreiben/.test(item.route)).length,20)]
+      ['Sprechen',max(state.history.filter(item=>/sprechen|phonetik|practice\/shadow/.test(item.route)).length,30)],
+      ['Schreiben',max(state.history.filter(item=>/schreiben|practice\/diktat/.test(item.route)).length,20)],
+      ['Sehen',max(state.history.filter(item=>/^videos\//.test(item.route)).length,15)]
     ];
   }
 
@@ -359,6 +371,8 @@
     if(hash.startsWith('a1')) state.profile.level='a1';
     else if(hash.startsWith('b1.1')) state.profile.level='b1.1';
     else if(hash==='a2'||/^(k|g|dict|full-dict|verbs|phrases|listen|podcast|games|exam)/.test(hash)) state.profile.level='a2';
+    const practiceLevel=hash.match(/^practice\/\w+\/(a1|a2|b1)\b/)?.[1];
+    if(practiceLevel) state.profile.level=practiceLevel==='b1'?'b1.1':practiceLevel;
     const date=new Date().toISOString().slice(0,10);
     const last=state.history.at(-1);
     if(!last||last.route!==hash||Date.now()-last.at>60*1000){state.history.push({route:hash,date,at:Date.now()});state.history=state.history.slice(-500);}
@@ -474,7 +488,8 @@
       {done:(doneReview||!due)&&!trainerDue,route:trainerDue?'train/due':'review',title:trainerDue?`${trainerDue} Wörter im Trainer wiederholen`:due?`${due} fällige Karten wiederholen`:'Keine Wiederholung fällig',ar:'راجع الكلمات المستحقة النهارده في المدرب.'},
       {done:doneLesson||today.some(item=>/^train\/(a1|a2|b1)\//.test(item.route||'')),route:'train',title:`${newWords} neue Wörter im Wort-Trainer`,ar:'اتعلم كلمات جديدة من الوحدة اللي بتذاكرها.'},
       {done:doneLesson,route:state.lastLearningRoute&&state.lastLearningRoute!==level?state.lastLearningRoute:lessonRoute,title:'Eine Lernetappe im Kapitel',ar:'كمّل الدرس من المكان اللي وقفت عنده.'},
-      {done:doneSkill,route:listenRoute,title:level==='b1.1'?'Eine Trainingsrunde':'Eine Hör- oder Trainingseinheit',ar:'تمرين استماع أو لعبة قصيرة.'}
+      {done:doneSkill,route:listenRoute,title:level==='b1.1'?'Eine Trainingsrunde':'Eine Hör- oder Trainingseinheit',ar:'تمرين استماع أو لعبة قصيرة.'},
+      {done:today.some(item=>/^practice\/(shadow|diktat)\/\w+\/\d+/.test(item.route||'')),route:'practice/shadow',title:'5 Sätze Shadowing oder Diktat',ar:'اتكلم أو اكتب ٥ جمل من الوحدة.'}
     ];
   }
 

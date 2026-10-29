@@ -17,13 +17,19 @@ function showSettingsSection(section){
 
 function syncSettingSwitches(){
   $$('[data-setting-switch]').forEach(button=>{
-    let on=true;
-    try{ on=localStorage.getItem(button.dataset.settingSwitch)!=='off'; }catch{}
+    // switches are on unless data-setting-default="off" says otherwise
+    let on=button.dataset.settingDefault!=='off';
+    try{
+      const saved=localStorage.getItem(button.dataset.settingSwitch);
+      if(saved) on=saved!=='off';
+    }catch{}
     button.setAttribute('aria-checked',String(on));
   });
 }
 
 document.addEventListener('click',event=>{
+  // a link inside the settings opens its page behind the dialog: close it
+  if(event.target.closest('#settingsModal [data-shell-route]')) closeModal('settingsModal');
   const tab=event.target.closest('[data-settings-tab]');
   if(tab){ showSettingsSection(tab.dataset.settingsTab); return; }
   const toggle=event.target.closest('[data-setting-switch]');

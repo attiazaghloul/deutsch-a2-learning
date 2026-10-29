@@ -56,6 +56,10 @@ function fallbackBackTarget(hash){
   if(/^#b1\.1\/(games|exam)\//.test(h)) return path.split('/').slice(0,2).join('/');
   if(/^#b1\.1\/(dict|verbs|phrases|games|exam)$/.test(h)) return 'b1.1';
   if(h==='#b1.1') return '';
+  if(/^#practice\/\w+\/(a1|a2|b1)\/\d+$/.test(h)) return path.split('/').slice(0,3).join('/');
+  if(/^#practice\/\w+/.test(h)||h==='#my-words'||h==='#videos') return 'practice';
+  if(/^#videos\//.test(h)) return 'videos';
+  if(h==='#practice') return '';
   if(/^#bausteine\//.test(h)) return 'bausteine';
   if(h==='#bausteine') return '';
   if(/^#train\//.test(h)) return 'train';
@@ -95,9 +99,11 @@ $('#topSearchBtn').addEventListener('click',()=>go('word-search'));
 $('#topFavoritesBtn').addEventListener('click',()=>go('favorites'));
 
 function applyLevelTheme(hash){
-  const isA1=hash==='a1'||hash.startsWith('a1/');
-  const isB1=hash==='b1.1'||hash.startsWith('b1.1/');
-  const isA2=hash==='a2'||hash.startsWith('a2/')||['dict','full-dict','verbs','phrases','listen','exam','podcast','games','word-search','favorites','review','progress'].includes(hash)
+  // practice/shadow/a1/3 and videos/a1 take the colours of their level
+  const practiceLevel=hash.match(/^(?:practice\/\w+|videos)\/(a1|a2|b1)\b/)?.[1];
+  const isA1=hash==='a1'||hash.startsWith('a1/')||practiceLevel==='a1';
+  const isB1=hash==='b1.1'||hash.startsWith('b1.1/')||practiceLevel==='b1';
+  const isA2=hash==='a2'||hash.startsWith('a2/')||['dict','full-dict','verbs','phrases','listen','exam','podcast','games','word-search','favorites','review','progress','practice','my-words','videos'].includes(hash)||practiceLevel==='a2'
     ||/^(k|g)\d+/.test(hash);
   document.body.classList.toggle('level-a1',isA1);
   document.body.classList.toggle('level-b1',isB1);
@@ -138,6 +144,7 @@ function renderCurrentRoute(){
   if(h==='review'){ if(window.NextUI) window.NextUI.renderReviewCenter(); else renderFavorites(); return; }
   if(h==='progress'){ if(window.NextUI) window.NextUI.renderProgressDashboard(); else renderLevelSelector(); return; }
   if(h==='word-search'){ renderWordSearch(); return; }
+  if(routePractice(h)||routeVideos(h)) return;
   if(h==='bausteine'){ renderBausteineHome(); return; }
   const bausteinMatch=h.match(/^bausteine\/([a-z]+)$/);
   if(bausteinMatch){ renderBaustein(bausteinMatch[1]); return; }

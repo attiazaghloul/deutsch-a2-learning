@@ -9,7 +9,7 @@ const LESSON_UI_AR={
   'Richtig':'صح','Falsch':'غلط','Zurücksetzen':'ابدأ الترتيب من جديد','Prüfen':'تحقّق من الإجابة','Lösung zeigen':'إظهار الحل','Auch möglich:':'إجابة أخرى ممكنة:','Typische Fehler':'أخطاء شائعة','Übungen':'تمارين','noch nicht geübt':'لسه ما اتدرّبتش','Benutze alle Wörter.':'استخدم كل الكلمات.','Neuer Test':'اختبار جديد','Beantworte alle Fragen.':'جاوب على كل الأسئلة.','Noch nicht.':'الإجابة لسه مش صحيحة.','Dein Ergebnis:':'نتيجتك:',
   'Antwort':'الإجابة','Schreib den korrigierten Satz …':'اكتب الجملة بعد تصحيحها…','Schreib den ganzen Satz …':'اكتب الجملة كاملة…',
   'zurück':'السابق','weiter':'التالي','Karte umdrehen: Bedeutung und Beispiele':'اقلب البطاقة: المعنى والأمثلة','Bedeutung & Beispiele':'المعنى والأمثلة',
-  'Lektionen':'الوحدات','Wörterbuch':'القاموس','Verben':'الأفعال','Training':'التدريب','Prüfung':'الامتحان','Hören':'الاستماع','Podcast':'البودكاست','Start':'الرئيسية','Inhalte':'المحتوى','Wörter':'الكلمات','Fortschritt':'التقدم','Einstellungen':'الإعدادات'
+  'Lektionen':'الوحدات','Wörterbuch':'القاموس','Verben':'الأفعال','Training':'التدريب','Prüfung':'الامتحان','Hören':'الاستماع','Podcast':'البودكاست','Start':'الرئيسية','Inhalte':'المحتوى','Wörter':'الكلمات','Fortschritt':'التقدم','Einstellungen':'الإعدادات','Üben':'تدريب'
 };
 
 // Sticky tabs must start below the header, including its Arabic title.
