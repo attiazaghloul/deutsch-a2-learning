@@ -913,7 +913,8 @@ test('the service worker answers audio range requests from saved copies', async 
   assert.equal((await context.partial(request('bytes=20-'), saved.clone())).status, 416);
   assert.equal((await context.partial(request(''), saved.clone())).status, 200);
   // a sprite saved for another version never answers for this one
-  assert.match(sw, /const ignoreSearch = !url\.pathname\.includes\('\/assets\/speech\/'\)/);
+  assert.match(sw, /const ignoreSearch = !isVoiceSprite\(url\)/);
+  assert.match(sw, /url\.pathname\.includes\('\/assets\/speech\/'\)/);
   assert.match(sw, /cache\.match\(url, \{ ignoreSearch: !speech \}\)/);
 });
 
@@ -2254,4 +2255,34 @@ test('Rollenspiel plays the chapter dialogues with the learner in one role', () 
   assert.equal(fallbackBackTarget('practice/dialog/b1/3'), 'practice/dialog/b1');
   assert.match(functionSource('routePractice'), /routeRolePlay\(hash\)/);
   assert.ok(readFileSync(join(root, 'app', 'sw.js'), 'utf8').includes("'js/24-roleplay.js'"));
+});
+
+test('voice libraries in parts play each clip from its own file', () => {
+  const { build, AUDIO_SITE } = require(join(root, 'scripts', 'import_voice_library.js'));
+  const { mkdtempSync, writeFileSync } = require('node:fs');
+  const dir = mkdtempSync(join(require('node:os').tmpdir(), 'voices-'));
+  const timings = join(dir, 'timings.json');
+  writeFileSync(timings, JSON.stringify({ version: 'b1-voices-test', texts: ['Guten Tag.', 'Ich lerne.', 'Wir fahren.'],
+    voices: [{ id: 'mia', name: 'Mia', description: 'x', parts: ['b1/mia-1.mp3', 'b1/mia-2.mp3'], timings: [[0.1, 0.9, 0], [1.2, 2, 0], [0.2, 1, 1]] }] }));
+  const context = { window: {} };
+  vm.runInNewContext(build(timings), context);
+  const library = context.window.B1_FIXED_SPEECH;
+  assert.equal(library.voices[0].parts[1], `${AUDIO_SITE}b1/mia-2.mp3?v=b1-voices-test`);
+  assert.ok(AUDIO_SITE.startsWith('https://attiazaghloul.github.io/'), 'same origin as the app, so the service worker can save it offline');
+
+  const player = loadFunctions(['currentSpeechLevel', 'findFixedSpeechClip']);
+  player.location = { hash: '#b1.1/k1' };
+  player.FIXED_SPEECH = { voices: [] }; player.FIXED_SPEECH_INDEX = new Map();
+  player.A1_FIXED_SPEECH = { voices: [] }; player.A1_FIXED_SPEECH_INDEX = new Map();
+  player.B1_FIXED_SPEECH = library; player.B1_FIXED_SPEECH_INDEX = new Map(library.texts.map((text, index) => [text, index]));
+  const clip = player.findFixedSpeechClip('Wir fahren.', 'mia');
+  assert.equal(clip.audioSource, library.voices[0].parts[1]);
+  assert.equal(clip.kind, 'part1');
+  assert.equal(player.findFixedSpeechClip('Guten Tag.', 'tarek').audioSource, library.voices[0].parts[0], 'a missing voice falls back to the first');
+
+  const offline = loadFunctions(['normalizeSpeechValue', 'prepareSpeechText', 'speechPartsFor']);
+  const chapter = { vocab: [{ ex: 'Wir fahren.' }], readings: [{ text: '<b>Ich lerne.</b> Wir fahren.' }] };
+  assert.deepEqual([...offline.speechPartsFor(chapter, library, library.voices[0])], [library.voices[0].parts[0], library.voices[0].parts[1]]);
+  assert.deepEqual([...offline.speechPartsFor({ vocab: [{ ex: 'Wir fahren.' }] }, library, library.voices[0])], [library.voices[0].parts[1]]);
+  assert.match(readFileSync(join(root, 'app', 'sw.js'), 'utf8'), /url\.pathname\.includes\('\/deutsch-audio\/'\)/);
 });
