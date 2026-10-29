@@ -40,9 +40,9 @@
 
 /* session */
 .pr-dots{display:flex;flex-wrap:wrap;gap:5px;margin:0 0 12px}
-.pr-dots button{width:12px;height:12px;border-radius:50%;border:0;padding:0;background:var(--line);cursor:pointer}
-.pr-dots button.done{background:var(--green)}
-.pr-dots button.current{outline:2px solid var(--green-d);outline-offset:2px}
+.pr-session .pr-dots button{flex:none;width:12px;height:12px;min-width:0;min-height:0;border-radius:50%;border:0;padding:0;background:var(--line);cursor:pointer;box-shadow:none}
+.pr-session .pr-dots button.done{background:var(--green)}
+.pr-session .pr-dots button.current{outline:2px solid var(--green-d);outline-offset:2px}
 .pr-stage{position:relative;background:var(--card);border:1px solid var(--line);border-radius:calc(20px*var(--shape,1));padding:20px 18px 18px;box-shadow:var(--shadow);overflow:hidden}
 .pr-voice{font-size:12px;font-weight:700;color:var(--ink-2);margin-bottom:10px}
 .pr-sentence{font-size:clamp(21px,5.4vw,30px);line-height:1.35;font-weight:700;color:var(--ink);transition:filter .2s}
