@@ -1,0 +1,55 @@
+name: Record voices
+
+# The Edge TTS service is reachable from GitHub's runners (not from every
+# machine), so the recordings are made here and committed to the branch that
+# asked for them. Nothing is published until that branch is merged.
+on:
+  workflow_dispatch:
+  push:
+    branches: [voices-b1]
+    paths:
+      - scripts/record_voices.py
+      - scripts/voices/*-texts.json
+      - .github/workflows/record-voices.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: record-voices-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install the recorder
+        run: pip install edge-tts==7.2.8 mutagen==1.47.0 imageio-ffmpeg==0.6.0
+
+      # Batches already recorded by an earlier run are reused.
+      - uses: actions/cache@v4
+        with:
+          path: build/voices
+          key: voices-${{ hashFiles('scripts/voices/*-texts.json', 'scripts/record_voices.py') }}-${{ github.run_id }}
+          restore-keys: |
+            voices-${{ hashFiles('scripts/voices/*-texts.json', 'scripts/record_voices.py') }}-
+            voices-
+
+      - name: Record B1 (Mia, Tarek)
+        run: python scripts/record_voices.py --level b1
+
+      - name: Commit the recordings
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add app/assets/speech/b1 scripts/voices/b1-timings.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Record the B1 voices (Mia, Tarek)"
+          git push

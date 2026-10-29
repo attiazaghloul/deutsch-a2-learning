@@ -2258,7 +2258,7 @@ test('Rollenspiel plays the chapter dialogues with the learner in one role', () 
 });
 
 test('voice libraries in parts play each clip from its own file', () => {
-  const { build, AUDIO_SITE } = require(join(root, 'scripts', 'import_voice_library.js'));
+  const { build, AUDIO_BASE } = require(join(root, 'scripts', 'import_voice_library.js'));
   const { mkdtempSync, writeFileSync } = require('node:fs');
   const dir = mkdtempSync(join(require('node:os').tmpdir(), 'voices-'));
   const timings = join(dir, 'timings.json');
@@ -2267,8 +2267,8 @@ test('voice libraries in parts play each clip from its own file', () => {
   const context = { window: {} };
   vm.runInNewContext(build(timings), context);
   const library = context.window.B1_FIXED_SPEECH;
-  assert.equal(library.voices[0].parts[1], `${AUDIO_SITE}b1/mia-2.mp3?v=b1-voices-test`);
-  assert.ok(AUDIO_SITE.startsWith('https://attiazaghloul.github.io/'), 'same origin as the app, so the service worker can save it offline');
+  assert.equal(library.voices[0].parts[1], `${AUDIO_BASE}b1/mia-2.mp3?v=b1-voices-test`);
+  assert.equal(AUDIO_BASE, 'assets/speech/', 'the service worker saves and seeks assets/speech/ files');
 
   const player = loadFunctions(['currentSpeechLevel', 'findFixedSpeechClip']);
   player.location = { hash: '#b1.1/k1' };
@@ -2284,5 +2284,4 @@ test('voice libraries in parts play each clip from its own file', () => {
   const chapter = { vocab: [{ ex: 'Wir fahren.' }], readings: [{ text: '<b>Ich lerne.</b> Wir fahren.' }] };
   assert.deepEqual([...offline.speechPartsFor(chapter, library, library.voices[0])], [library.voices[0].parts[0], library.voices[0].parts[1]]);
   assert.deepEqual([...offline.speechPartsFor({ vocab: [{ ex: 'Wir fahren.' }] }, library, library.voices[0])], [library.voices[0].parts[1]]);
-  assert.match(readFileSync(join(root, 'app', 'sw.js'), 'utf8'), /url\.pathname\.includes\('\/deutsch-audio\/'\)/);
 });

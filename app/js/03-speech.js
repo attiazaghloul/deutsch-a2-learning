@@ -89,8 +89,8 @@ function findFixedSpeechClip(value,voiceId){
     }
     const textIndex=library.index.get(value);
     const timing=textIndex!==undefined?voice?.timings?.[textIndex]:null;
-    // Long libraries come in parts (B1, served from the deutsch-audio site):
-    // the third number of a timing says which file holds the clip.
+    // Long libraries come in parts (B1): the third number of a timing says
+    // which file holds the clip.
     const audioSource=voice?.parts?voice.parts[timing?.[2]||0]:voice?.audio;
     if(timing&&audioSource){
       return {library:library.id, voice, timing, audioSource, kind:voice.parts?`part${timing[2]||0}`:'main', trimmed:Boolean(library.data.trimmed)};

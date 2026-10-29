@@ -199,10 +199,9 @@ self.addEventListener('message', event => {
   }
 });
 
-// Voice sprites: assets/speech/ here, and the B1 voices on the deutsch-audio
-// site (same github.io origin, so this worker answers for them too).
+// Voice sprites (one file per level and voice, or parts of one).
 function isVoiceSprite(url) {
-  return url.pathname.includes('/assets/speech/') || url.pathname.includes('/deutsch-audio/');
+  return url.pathname.includes('/assets/speech/');
 }
 
 function isAppCode(url) {
