@@ -97,8 +97,30 @@ function speechOfflineUrls(chapter){
   // A2 chapters have no route; outside a chapter the page address tells the level.
   const route=chapter?(chapter.route||'k'):location.hash.replace('#','');
   const library=route.startsWith('a1')?A1_FIXED_SPEECH:route.startsWith('b1')?B1_FIXED_SPEECH:FIXED_SPEECH;
-  const voiceAudio=data=>(data?.voices?.find(voice=>voice.id===speechVoiceURI)||data?.voices?.[0])?.audio;
-  return [voiceAudio(library),voiceAudio(FIXED_SPEECH.aliases)].filter(Boolean);
+  const voiceOf=data=>data?.voices?.find(voice=>voice.id===speechVoiceURI)||data?.voices?.[0];
+  const voice=voiceOf(library);
+  const words=voiceOf(FIXED_SPEECH.aliases);
+  const urls=[voice?.parts?speechPartsFor(chapter,library,voice):voice?.audio,words?.parts||words?.audio];
+  return urls.flat().filter(Boolean);
+}
+
+// A library in parts: only the files that hold this chapter's texts.
+function speechPartsFor(chapter,library,voice){
+  if(!chapter) return voice.parts;
+  const index=new Map(library.texts.map((text,position)=>[text,position]));
+  const parts=new Set();
+  const visit=value=>{
+    if(typeof value==='string'){
+      const text=normalizeSpeechValue(value.replace(/<[^>]+>/g,' '));
+      [text,...(text.match(/[^.!?]+[.!?]+|[^.!?]+$/g)||[]).map(part=>part.trim())].forEach(item=>{
+        const position=index.get(item);
+        if(position!==undefined) parts.add(voice.timings[position]?.[2]||0);
+      });
+    }else if(Array.isArray(value)) value.forEach(visit);
+    else if(value&&typeof value==='object') Object.values(value).forEach(visit);
+  };
+  visit(chapter);
+  return [...parts].sort().map(part=>voice.parts[part]);
 }
 
 function collectCurrentLessonOfflineUrls(){

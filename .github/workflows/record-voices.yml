@@ -1,0 +1,90 @@
+name: Record voices
+
+# The Edge TTS service is reachable from GitHub's runners (not from every
+# machine), so the recordings are made here and committed to the branch that
+# asked for them. Nothing is published until that branch is merged.
+on:
+  workflow_dispatch:
+  push:
+    branches: [voices-b1]
+    paths:
+      - scripts/record_voices.py
+      - scripts/voices/*-texts.json
+      - .github/workflows/record-voices.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: record-voices-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { level: b1, voice: mia }
+          - { level: b1, voice: tarek }
+          - { level: a1, voice: mia }
+          - { level: a2, voice: mia }
+          - { level: a2words, voice: mia }
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: scripts
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install the recorder
+        run: pip install edge-tts==7.3.1 mutagen==1.47.0 imageio-ffmpeg==0.6.0 numpy==2.3.4
+
+      - name: German voices on the service
+        run: edge-tts --list-voices | grep -E '^de-DE' || true
+
+      # Batches already recorded by an earlier run are reused.
+      - uses: actions/cache@v4
+        with:
+          path: build/voices/${{ matrix.level }}/${{ matrix.voice }}
+          key: voices-${{ matrix.level }}-${{ matrix.voice }}-${{ hashFiles(format('scripts/voices/{0}-texts.json', matrix.level), 'scripts/record_voices.py') }}-${{ github.run_id }}
+          restore-keys: |
+            voices-${{ matrix.level }}-${{ matrix.voice }}-${{ hashFiles(format('scripts/voices/{0}-texts.json', matrix.level), 'scripts/record_voices.py') }}-
+            voices-${{ matrix.level }}-${{ matrix.voice }}-
+
+      - name: Record ${{ matrix.level }} (${{ matrix.voice }})
+        run: python scripts/record_voices.py --level ${{ matrix.level }} --voices ${{ matrix.voice }}
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: voices-${{ matrix.level }}-${{ matrix.voice }}
+          path: |
+            app/assets/speech/${{ matrix.level }}/${{ matrix.voice }}-*.mp3
+            scripts/voices/${{ matrix.level }}-${{ matrix.voice }}-timings.json
+          retention-days: 7
+
+  commit:
+    needs: record
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: voices-*
+          merge-multiple: true
+
+      - name: Commit the recordings
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          ls -la app/assets/speech/*/ scripts/voices/ || true
+          git add app/assets/speech scripts/voices
+          git diff --cached --quiet && exit 0
+          git commit -m "Record the voices (B1 Mia and Tarek; A1 and A2 Mia with Katja)"
+          git push

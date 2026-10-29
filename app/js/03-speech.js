@@ -84,12 +84,19 @@ function findFixedSpeechClip(value,voiceId){
     const voice=library.data.voices?.find(item=>item.id===voiceId)||library.data.voices?.[0];
     const aliasIndex=library.data.aliases?.texts?.indexOf(value)??-1;
     const aliasVoice=library.data.aliases?.voices?.find(item=>item.id===voice?.id);
-    if(aliasIndex>=0&&aliasVoice?.timings?.[aliasIndex]&&aliasVoice.audio){
-      return {library:library.id, voice, timing:aliasVoice.timings[aliasIndex], audioSource:aliasVoice.audio, kind:'aliases', trimmed:Boolean(library.data.trimmed)};
+    const aliasTiming=aliasIndex>=0?aliasVoice?.timings?.[aliasIndex]:null;
+    // Recordings in parts (B1, and Mia since she is Katja): the third number
+    // of a timing says which file holds the clip, and they end exactly at the
+    // last word.
+    const aliasSource=aliasVoice?.parts?aliasVoice.parts[aliasTiming?.[2]||0]:aliasVoice?.audio;
+    if(aliasTiming&&aliasSource){
+      return {library:library.id, voice, timing:aliasTiming, audioSource:aliasSource, kind:aliasVoice.parts?`aliases${aliasTiming[2]||0}`:'aliases', trimmed:Boolean(library.data.trimmed||aliasVoice.parts)};
     }
     const textIndex=library.index.get(value);
-    if(textIndex!==undefined&&voice?.timings?.[textIndex]&&voice.audio){
-      return {library:library.id, voice, timing:voice.timings[textIndex], audioSource:voice.audio, kind:'main', trimmed:Boolean(library.data.trimmed)};
+    const timing=textIndex!==undefined?voice?.timings?.[textIndex]:null;
+    const audioSource=voice?.parts?voice.parts[timing?.[2]||0]:voice?.audio;
+    if(timing&&audioSource){
+      return {library:library.id, voice, timing, audioSource, kind:voice.parts?`part${timing[2]||0}`:'main', trimmed:Boolean(library.data.trimmed||voice.parts)};
     }
   }
   return null;

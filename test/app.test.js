@@ -478,8 +478,11 @@ test('fixed vocabulary speech covers every word in chapters 7 through 12', () =>
   assert.equal(speech.aliases.voices.map(voice => voice.id).join(','), 'mia,tarek');
   for (const voice of speech.aliases.voices) {
     assert.equal(voice.timings.length, speech.aliases.texts.length);
-    assert.match(voice.audio, /-words\.mp3\?v=fixed-voices-6$/);
-    assert.ok(existsSync(join(root, 'app', voice.audio.split('?')[0])), `Missing ${voice.audio}`);
+    // Mia's words were recorded again with a native German voice, in parts
+    for (const file of voice.parts || [voice.audio]) {
+      assert.match(file, voice.parts ? /^assets\/speech\/a2words\/mia-\d+\.mp3\?v=a2-words-katja-\d+$/ : /-words\.mp3\?v=fixed-voices-6$/);
+      assert.ok(existsSync(join(root, 'app', file.split('?')[0])), `Missing ${file}`);
+    }
   }
   for (const chapterNumber of [7, 8, 9, 10, 11, 12]) {
     const book = chapterNumber >= 10 ? context.window.BOOK2 : context.window.BOOK1;
@@ -488,7 +491,7 @@ test('fixed vocabulary speech covers every word in chapters 7 through 12', () =>
       const spoken = spokenWord(word.w);
       const index = aliasIndex.get(spoken);
       assert.notEqual(index, undefined, `Missing fixed speech for K${chapterNumber}: ${spoken}`);
-      assert.ok(speech.aliases.voices.every(voice => voice.timings[index]?.length === 2));
+      assert.ok(speech.aliases.voices.every(voice => voice.timings[index]?.length >= 2));
     }
   }
 });
@@ -913,7 +916,8 @@ test('the service worker answers audio range requests from saved copies', async 
   assert.equal((await context.partial(request('bytes=20-'), saved.clone())).status, 416);
   assert.equal((await context.partial(request(''), saved.clone())).status, 200);
   // a sprite saved for another version never answers for this one
-  assert.match(sw, /const ignoreSearch = !url\.pathname\.includes\('\/assets\/speech\/'\)/);
+  assert.match(sw, /const ignoreSearch = !isVoiceSprite\(url\)/);
+  assert.match(sw, /url\.pathname\.includes\('\/assets\/speech\/'\)/);
   assert.match(sw, /cache\.match\(url, \{ ignoreSearch: !speech \}\)/);
 });
 
@@ -924,11 +928,13 @@ test('B1.1 recorded speech plugs into the same lazy speech lookup', () => {
   vm.runInContext(readFileSync(join(root, 'app', 'data_speech_b1.js'), 'utf8'), context);
   const speech = context.window.B1_FIXED_SPEECH;
   assert.ok(Array.isArray(speech.texts) && Array.isArray(speech.voices));
+  assert.deepEqual([...speech.voices.map(voice => voice.id)], ['mia', 'tarek']);
   for (const voice of speech.voices) {
     assert.equal(voice.timings.length, speech.texts.length);
-    assert.ok(existsSync(join(root, 'app', voice.audio.split('?')[0])), `Missing ${voice.audio}`);
+    for (const file of voice.parts) assert.ok(existsSync(join(root, 'app', file.split('?')[0])), `Missing ${file}`);
+    assert.ok(voice.timings.every(([start, end, part]) => end - start >= 0.12 && voice.parts[part]), `${voice.id}: a clip without sound or file`);
   }
-  assert.ok(existsSync(join(root, 'scripts', 'generate_b1_fixed_speech.py')));
+  assert.ok(existsSync(join(root, 'scripts', 'record_voices.py')));
   assert.ok(existsSync(join(root, 'scripts', 'extract_b1_speech_library.js')));
 });
 
@@ -955,17 +961,20 @@ test('A1 and A2 recorded sentences play clean clips separated by silence', () =>
     const speech = context.window[name];
     assert.equal(speech.trimmed, true, file);
     for (const voice of speech.voices) {
-      assert.equal(voice.audio, `assets/speech/${prefix}${voice.id}.mp3?v=${speech.version}`);
-      assert.ok(existsSync(join(root, 'app', voice.audio.split('?')[0])), `Missing ${voice.audio}`);
+      // Mia: new recordings in parts (Katja); Tarek: the repaired sprite
+      if (voice.parts) assert.ok(voice.parts.every(part => part.startsWith(`assets/speech/${prefix ? 'a1' : 'a2'}/mia-`)), file);
+      else assert.equal(voice.audio, `assets/speech/${prefix}${voice.id}.mp3?v=${speech.version}`);
+      for (const audio of voice.parts || [voice.audio]) assert.ok(existsSync(join(root, 'app', audio.split('?')[0])), `Missing ${audio}`);
       assert.equal(voice.timings.length, speech.texts.length);
-      voice.timings.forEach(([start, end], index) => {
+      voice.timings.forEach(([start, end, part = 0], index) => {
         assert.ok(end - start >= 0.12, `${file} ${voice.id} clip ${index} is empty`);
-        if (index) assert.ok(start - voice.timings[index - 1][1] >= 0.3, `${file} ${voice.id} clip ${index} touches the previous clip`);
+        const previous = voice.timings[index - 1];
+        if (index && (previous[2] || 0) === part) assert.ok(start - previous[1] >= 0.3, `${file} ${voice.id} clip ${index} touches the previous clip`);
       });
     }
   }
-  assert.ok(html.includes("speechA1:'data_speech_a1.js?v=a1-fixed-voices-3'"), 'LAZY_SCRIPTS must load the rebuilt A1 library');
-  assert.ok(html.includes("speechA2:'data_speech_clean.js?v=speech-clean-8'"), 'LAZY_SCRIPTS must load the rebuilt A2 library');
+  assert.ok(html.includes("speechA1:'data_speech_a1.js?v=a1-fixed-voices-5'"), 'LAZY_SCRIPTS must load the rebuilt A1 library');
+  assert.ok(html.includes("speechA2:'data_speech_clean.js?v=speech-clean-10'"), 'LAZY_SCRIPTS must load the rebuilt A2 library');
   // Trimmed libraries must not lose another 85 ms at the end of each clip.
   assert.match(functionSource('playFixedSpeech'), /trimmed\|\|\(library==='a2'&&kind==='aliases'\)\?0:\.085/);
   assert.match(functionSource('fallbackBrowserSpeech'), /replace\(\/_\{2,\}\/g/);
@@ -2254,6 +2263,50 @@ test('Rollenspiel plays the chapter dialogues with the learner in one role', () 
   assert.equal(fallbackBackTarget('practice/dialog/b1/3'), 'practice/dialog/b1');
   assert.match(functionSource('routePractice'), /routeRolePlay\(hash\)/);
   assert.ok(readFileSync(join(root, 'app', 'sw.js'), 'utf8').includes("'js/24-roleplay.js'"));
+});
+
+test('voice libraries in parts play each clip from its own file', () => {
+  const { readRecording, withVoice, buildB1, AUDIO_BASE } = require(join(root, 'scripts', 'import_voice_library.js'));
+  const { mkdtempSync, writeFileSync } = require('node:fs');
+  const dir = mkdtempSync(join(require('node:os').tmpdir(), 'voices-'));
+  const texts = ['Guten Tag.', 'Ich lerne.', 'Wir fahren.'];
+  const file = join(dir, 'b1-mia-timings.json');
+  writeFileSync(file, JSON.stringify({ version: 'b1-voices-test', texts,
+    voice: { id: 'mia', name: 'Mia', description: 'x', parts: ['b1/mia-1.mp3', 'b1/mia-2.mp3'], timings: [[0.1, 0.9, 0], [1.2, 2, 0], [0.2, 1, 1]] } }));
+  const mia = readRecording(file);
+  assert.equal(mia.voice.parts[1], `${AUDIO_BASE}b1/mia-2.mp3?v=b1-voices-test`);
+  assert.equal(AUDIO_BASE, 'assets/speech/', 'the service worker saves and seeks assets/speech/ files');
+  // a recording replaces only its own voice, and only for the same texts
+  const old = { texts, voices: [{ id: 'mia', audio: 'old.mp3', timings: [] }, { id: 'tarek', audio: 't.mp3', timings: [[0, 1], [1, 2], [2, 3]] }] };
+  const merged = withVoice(old, mia, 'test');
+  assert.deepEqual(merged.voices.map(voice => voice.id), ['mia', 'tarek']);
+  assert.equal(merged.voices[1].audio, 't.mp3');
+  assert.throws(() => withVoice({ ...old, texts: ['Hallo.'] }, mia, 'test'), /texts differ/);
+
+  const context = { window: {} };
+  vm.runInNewContext(buildB1([mia], texts), context);
+  const library = context.window.B1_FIXED_SPEECH;
+  const player = loadFunctions(['currentSpeechLevel', 'findFixedSpeechClip']);
+  player.location = { hash: '#b1.1/k1' };
+  player.FIXED_SPEECH = { voices: [] }; player.FIXED_SPEECH_INDEX = new Map();
+  player.A1_FIXED_SPEECH = { voices: [] }; player.A1_FIXED_SPEECH_INDEX = new Map();
+  player.B1_FIXED_SPEECH = library; player.B1_FIXED_SPEECH_INDEX = new Map(library.texts.map((text, index) => [text, index]));
+  const clip = player.findFixedSpeechClip('Wir fahren.', 'mia');
+  assert.equal(clip.audioSource, library.voices[0].parts[1]);
+  assert.equal(clip.kind, 'part1');
+  assert.equal(clip.trimmed, true, 'recordings in parts end at the last word');
+  assert.equal(player.findFixedSpeechClip('Guten Tag.', 'tarek').audioSource, library.voices[0].parts[0], 'a missing voice falls back to the first');
+  // A2: Mia in parts next to Tarek's old sprite, which keeps its end padding
+  player.location = { hash: '#k1' };
+  player.FIXED_SPEECH = merged; player.FIXED_SPEECH_INDEX = new Map(texts.map((text, index) => [text, index]));
+  player.B1_FIXED_SPEECH = { voices: [] }; player.B1_FIXED_SPEECH_INDEX = new Map();
+  assert.equal(player.findFixedSpeechClip('Ich lerne.', 'tarek').trimmed, false);
+  assert.equal(player.findFixedSpeechClip('Ich lerne.', 'mia').trimmed, true);
+
+  const offline = loadFunctions(['normalizeSpeechValue', 'prepareSpeechText', 'speechPartsFor']);
+  const chapter = { vocab: [{ ex: 'Wir fahren.' }], readings: [{ text: '<b>Ich lerne.</b> Wir fahren.' }] };
+  assert.deepEqual([...offline.speechPartsFor(chapter, library, library.voices[0])], [library.voices[0].parts[0], library.voices[0].parts[1]]);
+  assert.deepEqual([...offline.speechPartsFor({ vocab: [{ ex: 'Wir fahren.' }] }, library, library.voices[0])], [library.voices[0].parts[1]]);
 });
 
 test('photo review keeps grammar and abstract proxies text-only and tracks only eligible work', () => {

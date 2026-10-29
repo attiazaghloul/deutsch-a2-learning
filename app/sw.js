@@ -172,7 +172,7 @@ self.addEventListener('message', event => {
       for (const rawUrl of urls) {
         try {
           const url = new URL(rawUrl, self.location.href).href;
-          const speech = new URL(url).pathname.includes('/assets/speech/');
+          const speech = isVoiceSprite(new URL(url));
           const cached = await cache.match(url, { ignoreSearch: !speech });
           if (!cached) {
             const response = await fetch(url, { cache: 'reload' });
@@ -198,6 +198,11 @@ self.addEventListener('message', event => {
     return;
   }
 });
+
+// Voice sprites (one file per level and voice, or parts of one).
+function isVoiceSprite(url) {
+  return url.pathname.includes('/assets/speech/');
+}
 
 function isAppCode(url) {
   return /\.(?:js|css|json|html)$/.test(url.pathname)
@@ -247,7 +252,7 @@ self.addEventListener('fetch', event => {
   const dictionaryAsset = url.pathname.includes('/dictionary-data/');
   // A voice sprite only fits the timings of its own version (?v=...): never
   // answer with a copy saved for another one.
-  const ignoreSearch = !url.pathname.includes('/assets/speech/');
+  const ignoreSearch = !isVoiceSprite(url);
   // Dictionary files and downloaded lesson media live in durable caches so a
   // normal app update cannot erase them. Other app assets use the versioned shell.
   event.respondWith(

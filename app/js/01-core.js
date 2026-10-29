@@ -124,9 +124,9 @@ function routeLevelData(hash){
 /* Large data bundles load on demand so the first screen does not wait for them. */
 const LAZY_SCRIPTS={
   podcast:'data_podcast.js?v=word-sync-4',
-  speechA2:'data_speech_clean.js?v=speech-clean-8',
-  speechA1:'data_speech_a1.js?v=a1-fixed-voices-3',
-  speechB1:'data_speech_b1.js?v=b1-fixed-voices-1'
+  speechA2:'data_speech_clean.js?v=speech-clean-10',
+  speechA1:'data_speech_a1.js?v=a1-fixed-voices-5',
+  speechB1:'data_speech_b1.js?v=b1-voices-1'
 };
 const lazyScriptLoads=new Map();
 function loadScriptOnce(src){
