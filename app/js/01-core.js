@@ -23,19 +23,20 @@ if(translatedTopbar&&typeof ResizeObserver!=='undefined'){
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
 const view = $('#view');
-const A1_BOOK = window.A1_BOOK || [];
+// A1 and B1 data load on demand (ensureLevelData), so these are reassigned then.
+let A1_BOOK = window.A1_BOOK || [];
 const BOOK = [...window.BOOK0, ...window.BOOK1, ...window.BOOK2];
-const B1_BOOK = window.B1_BOOK || [];
+let B1_BOOK = window.B1_BOOK || [];
 const GRAM = window.GRAM;
 const OFFLINE_DICTIONARY_META={entries:138755};
 const VERBS = window.A2_VERBS || [];
-const A1_VERBS = window.A1_VERBS || [];
-const HOEREN_A1 = window.HOEREN_A1_BOOK;
-const PHONETIK_A1 = window.PHONETIK_A1_BOOK;
+let A1_VERBS = window.A1_VERBS || [];
+let HOEREN_A1 = window.HOEREN_A1_BOOK;
+let PHONETIK_A1 = window.PHONETIK_A1_BOOK;
 const HOEREN = window.HOEREN_BOOK;
 const A1_LISTEN_BOOKS = {
   hoeren: {
-    meta: HOEREN_A1,
+    get meta(){ return HOEREN_A1; },
     figures: () => window.HOEREN_A1_FIGURES || {},
     interactive: () => window.HOEREN_A1_INTERACTIVE || {},
     progressKey: 'a1HoerenProgress',
@@ -48,7 +49,7 @@ const A1_LISTEN_BOOKS = {
     chapterPattern: /^[A-H]$/
   },
   phonetik: {
-    meta: PHONETIK_A1,
+    get meta(){ return PHONETIK_A1; },
     figures: () => window.PHONETIK_A1_FIGURES || {},
     interactive: () => window.PHONETIK_A1_INTERACTIVE || {},
     progressKey: 'a1PhonetikProgress',
@@ -64,6 +65,62 @@ const A1_LISTEN_BOOKS = {
   }
 };
 const EXAM = window.A2_EXAM;
+
+/* The A1 and B1 data (about two thirds of all lesson data) is listed in
+   index.html as <script type="text/plain" data-level="…">: the browser skips
+   it at startup. A level's scripts run, in that order, the first time a page
+   needs them, and in the background once the app is idle. */
+const levelDataLoads={};
+function levelDataReady(level){
+  if(level==='a1') return Boolean(window.A1_BOOK&&window.A1_EXAM&&window.PHONETIK_A1_INTERACTIVE);
+  if(level==='b1') return Boolean(window.B1_BOOK&&window.B1_EXAM);
+  if(level==='all') return levelDataReady('a1')&&levelDataReady('b1');
+  return true;
+}
+
+function refreshLevelData(){
+  A1_BOOK=window.A1_BOOK||[];
+  B1_BOOK=window.B1_BOOK||[];
+  A1_VERBS=window.A1_VERBS||[];
+  HOEREN_A1=window.HOEREN_A1_BOOK;
+  PHONETIK_A1=window.PHONETIK_A1_BOOK;
+  window.applyVocabImages?.();
+  if(typeof buildA1Gram==='function') A1_GRAM=buildA1Gram();
+  if(typeof curatedDictionaryCache!=='undefined') curatedDictionaryCache=null;
+}
+
+function ensureLevelData(level){
+  if(level==='all') return Promise.all([ensureLevelData('a1'),ensureLevelData('b1')]);
+  if(levelDataReady(level)) return Promise.resolve();
+  if(!levelDataLoads[level]){
+    const sources=$$(`script[data-level="${level}"]`).map(script=>script.getAttribute('src'));
+    levelDataLoads[level]=new Promise((resolve,reject)=>{
+      let left=sources.length;
+      if(!left){ resolve(); return; }
+      sources.forEach(src=>{
+        const script=document.createElement('script');
+        script.src=src;
+        script.async=false;               // run in the listed order
+        script.onload=()=>{ if(--left===0) resolve(); };
+        script.onerror=()=>reject(new Error(`Could not load ${src}`));
+        document.head.appendChild(script);
+      });
+    }).then(refreshLevelData).catch(error=>{
+      delete levelDataLoads[level];
+      throw error;
+    });
+  }
+  return levelDataLoads[level];
+}
+
+// Which data a page needs before it can render: its level, or every level
+// for the pages that search or train across A1, A2 and B1.
+function routeLevelData(hash){
+  if(hash==='a1'||hash.startsWith('a1/')) return 'a1';
+  if(hash==='b1.1'||hash.startsWith('b1.1/')) return 'b1';
+  if(/^(word-search|favorites|train|bausteine|full-dict)(\/|$)/.test(hash)) return 'all';
+  return null;
+}
 /* Large data bundles load on demand so the first screen does not wait for them. */
 const LAZY_SCRIPTS={
   podcast:'data_podcast.js?v=word-sync-4',
@@ -121,6 +178,9 @@ applySpeechLibraries();
 window.addEventListener('load',()=>{
   const idle=window.requestIdleCallback||(callback=>setTimeout(callback,600));
   idle(()=>ensureSpeechLibraries().catch(()=>{}),{timeout:2500});
+  // the other levels follow once the first screen is up, so search and
+  // translation know every word soon after start
+  setTimeout(()=>idle(()=>ensureLevelData('all').catch(()=>{}),{timeout:4000}),2500);
 });
 function escapeHtml(value){
   return String(value).replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]));
