@@ -65,6 +65,7 @@ VOICES = [
         "description": "Mann, ruhig und erwachsen",
         "voice": "de-DE-ConradNeural",
         "rate": "+9%",
+        "close_items": True,
         "pitch": "+0Hz",
     },
 ]
@@ -141,6 +142,17 @@ def to_wav(mp3_path):
         return wav_path, handle.getnframes() / handle.getframerate()
 
 
+def spoken_item(text, voice):
+    """What the service reads for one text. Gap blanks ("___") would be read
+    as "Unterstrich": they are a pause. Tarek's voice runs a word or phrase
+    without final punctuation into the next one ("blitzen ... löschst" with
+    no pause), so his items end with a full stop and are read like a list."""
+    value = re.sub(r"_{2,}", "…", text)
+    if voice.get("close_items") and not re.search(r"[.!?…:;]\W*$", value):
+        value += "."
+    return value
+
+
 async def synthesize_batch(level, voice, batch_index, batch, semaphore):
     voice_dir = BUILD / level / voice["id"]
     voice_dir.mkdir(parents=True, exist_ok=True)
@@ -154,6 +166,8 @@ async def synthesize_batch(level, voice, batch_index, batch, semaphore):
         "separator": SEPARATOR,
         "blanks": "pause",
     }
+    if voice.get("close_items"):
+        signature["ends"] = "period"
     if audio_path.exists() and timing_path.exists():
         try:
             metadata = json.loads(timing_path.read_text(encoding="utf-8"))
@@ -162,8 +176,7 @@ async def synthesize_batch(level, voice, batch_index, batch, semaphore):
         except Exception:
             pass
 
-    # Gap-fill blanks ("___") would be read as "Unterstrich": speak a pause.
-    text = SEPARATOR.join(re.sub(r"_{2,}", "…", item[1]) for item in batch)
+    text = SEPARATOR.join(spoken_item(item[1], voice) for item in batch)
     async with semaphore:
         for attempt in range(6):
             temp_path = audio_path.with_suffix(".tmp.mp3")
