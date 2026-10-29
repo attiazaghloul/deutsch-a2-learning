@@ -57,6 +57,8 @@ header.topbar button:active{transform:scale(.96)}
 .app-rail{display:none}
 .app-bottom-nav{
   position:fixed;z-index:95;left:0;right:0;bottom:0;height:calc(var(--bottom-nav-h) + env(safe-area-inset-bottom));
+  /* Keep the fixed dock on its own composited layer during iOS scrolling. */
+  transform:translate3d(0,0,0);-webkit-backface-visibility:hidden;backface-visibility:hidden;
   padding:7px max(8px,env(safe-area-inset-left)) env(safe-area-inset-bottom);
   display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:3px;
   background:color-mix(in srgb,var(--ds-surface) 92%,transparent);border-top:1px solid var(--ds-border);

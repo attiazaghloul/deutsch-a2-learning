@@ -1,0 +1,162 @@
+{
+ "das Würstel": {
+  "source": "assets/a1/vocab_ai/new/k1-das-wuerstchen.webp",
+  "reason": "Reviewed same object/action, or the same headword with inflection/number annotation."
+ },
+ "der Mensch": {
+  "source": "assets/vocab-generated/s001-10.webp",
+  "reason": "Reviewed same object/action, or the same headword with inflection/number annotation."
+ },
+ "die Uni": {
+  "source": "assets/a1/vocab_ai/new/k2-die-universitaet-en.webp",
+  "reason": "Reviewed same object/action, or the same headword with inflection/number annotation."
+ },
+ "das Lokal": {
+  "source": "assets/a1/vocab_ai/k6/22.webp",
+  "reason": "Reviewed same object/action, or the same headword with inflection/number annotation."
+ },
+ "Geld holen": {
+  "source": "assets/a1/vocab_ai/k7/33.webp",
+  "reason": "Reviewed same object/action, or the same headword with inflection/number annotation."
+ },
+ "der Zucker (Sg.)": {
+  "source": "assets/a1/vocab_ai/new/k4-der-zucker.webp",
+  "reason": "Reviewed same object/action, or the same headword with inflection/number annotation."
+ },
+ "der Doktor": {
+  "source": "assets/a1/vocab_ai/new/k2-der-arzt-e.webp",
+  "reason": "Reviewed same object/action, or the same headword with inflection/number annotation."
+ },
+ "die Doktorin": {
+  "source": "assets/a1/vocab_ai/new/k2-die-aerztin-nen.webp",
+  "reason": "Reviewed same object/action, or the same headword with inflection/number annotation."
+ },
+ "aufmachen": {
+  "word": "öffnen",
+  "reason": "Reviewed equivalent word for the same visible object/action."
+ },
+ "aufschreiben": {
+  "word": "notieren",
+  "reason": "Reviewed equivalent word for the same visible object/action."
+ },
+ "der Raum": {
+  "source": "assets/a1/vocab_ai/new/k2-das-zimmer.webp",
+  "reason": "Reviewed same object/action, or the same headword with inflection/number annotation."
+ },
+ "schließen": {
+  "word": "zumachen",
+  "reason": "Reviewed equivalent word for the same visible object/action."
+ },
+ "die Klamotten (Pl.)": {
+  "source": "assets/a1/vocab_ai/k11/01.webp",
+  "reason": "Reviewed same object/action, or the same headword with inflection/number annotation."
+ },
+ "die Städtereise": {
+  "word": "der Stadturlaub",
+  "reason": "Reviewed equivalent word for the same visible object/action."
+ },
+ "die Natur (Sg.)": {
+  "source": "assets/a1/vocab_ai/new/k6-die-natur.webp",
+  "reason": "Reviewed same object/action, or the same headword with inflection/number annotation."
+ },
+ "einpacken": {
+  "word": "Koffer packen",
+  "reason": "Reviewed equivalent word for the same visible object/action."
+ },
+ "das Frühstück (Sg.)": {
+  "source": "assets/a1/vocab_ai/k4/05.webp",
+  "reason": "Reviewed same object/action, or the same headword with inflection/number annotation."
+ },
+ "spazieren gehen": {
+  "word": "der Spaziergang",
+  "reason": "Reviewed equivalent word for the same visible object/action."
+ },
+ "die Tram": {
+  "source": "assets/a1/vocab_ai/k3/21.webp",
+  "reason": "Reviewed same object/action, or the same headword with inflection/number annotation."
+ },
+ "das WC": {
+  "word": "die Toilette",
+  "reason": "Reviewed equivalent word for the same visible object/action."
+ },
+ "das Besteck (Sg.)": {
+  "source": "assets/vocab-scenes/b1-1/k4/059.webp",
+  "reason": "Reviewed same object/action, or the same headword with inflection/number annotation."
+ },
+ "die Schuluniform": {
+  "word": "die Schulkleidung (Sg.)",
+  "reason": "Reviewed equivalent word for the same visible object/action."
+ },
+ "das Smartphone": {
+  "source": "assets/a1/vocab_ai/k7/38.webp",
+  "reason": "Reviewed same object/action, or the same headword with inflection/number annotation."
+ },
+ "der Verkehr (Sg.)": {
+  "source": "assets/vocab-scenes/k7/01.webp",
+  "reason": "Reviewed same object/action, or the same headword with inflection/number annotation."
+ },
+ "der Lkw": {
+  "word": "der Lastwagen",
+  "reason": "Reviewed equivalent word for the same visible object/action."
+ },
+ "der Streit": {
+  "word": "sich streiten",
+  "reason": "Reviewed equivalent word for the same visible object/action."
+ },
+ "die Couch": {
+  "source": "assets/a1/vocab_ai/k9/16.webp",
+  "reason": "Reviewed same object/action, or the same headword with inflection/number annotation."
+ },
+ "der Kuli": {
+  "word": "der Kugelschreiber",
+  "reason": "Reviewed equivalent word for the same visible object/action."
+ },
+ "die Apfelsine": {
+  "source": "assets/a1/vocab_ai/k4/26.webp",
+  "reason": "Reviewed same object/action, or the same headword with inflection/number annotation."
+ },
+ "die Semmel": {
+  "source": "assets/a1/vocab_ai/k4/11.webp",
+  "reason": "Reviewed same object/action, or the same headword with inflection/number annotation."
+ },
+ "das Croissant": {
+  "word": "das Hörnchen",
+  "reason": "Reviewed equivalent word for the same visible object/action."
+ },
+ "die Feuerwehr": {
+  "word": "die Feuerwehr (Sg.)",
+  "reason": "Reviewed equivalent word for the same visible object/action."
+ },
+ "die Müllabfuhr": {
+  "word": "die Müllabfuhr (Sg.)",
+  "reason": "Reviewed equivalent word for the same visible object/action."
+ },
+ "die Renovierung": {
+  "word": "renovieren",
+  "reason": "Reviewed equivalent word for the same visible object/action."
+ },
+ "das Velo": {
+  "source": "assets/a1/vocab_ai/k3/22.webp",
+  "reason": "Reviewed same object/action, or the same headword with inflection/number annotation."
+ },
+ "der Stadtrundgang": {
+  "word": "der Stadtbummel",
+  "reason": "Reviewed equivalent word for the same visible object/action."
+ },
+ "parkieren": {
+  "source": "assets/vocab-scenes/k7/67.webp",
+  "reason": "Reviewed same object/action, or the same headword with inflection/number annotation."
+ },
+ "die Beiz": {
+  "word": "das Beisl",
+  "reason": "Reviewed regional variants of a simple, informal pub; use a rustic pub rather than an upscale restaurant."
+ },
+ "die Kita": {
+  "source": "assets/a1/vocab_ai/new/k1-der-kindergarten.webp",
+  "reason": "Reviewed childcare room with young children; Kita and Kindergarten share the depicted setting."
+ },
+ "die Hochschule": {
+  "source": "assets/a1/vocab_ai/new/k2-die-universitaet-en.webp",
+  "reason": "Reviewed higher-education campus with university students."
+ }
+}

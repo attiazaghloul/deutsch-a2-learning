@@ -84,7 +84,8 @@
     view.setAttribute('aria-live','off');
     const app=document.querySelector('#app');
     app.insertAdjacentHTML('afterbegin',`<aside class="app-rail" aria-label="Hauptnavigation"><div class="app-rail-brand" aria-label="Deutsch Studio">DS</div>${primaryNav.map(item=>navMarkup(item,true)).join('')}<div class="app-rail-spacer"></div><button type="button" class="app-nav-item app-rail-settings" data-open-settings aria-label="Einstellungen">${icons.settings}<span>Einstellungen</span></button></aside>`);
-    app.insertAdjacentHTML('beforeend',`<nav class="app-bottom-nav" aria-label="Hauptnavigation">${primaryNav.map(item=>navMarkup(item)).join('')}</nav>`);
+    // Keep the mobile dock outside the page container so Safari anchors it to the viewport.
+    document.body.insertAdjacentHTML('beforeend',`<nav class="app-bottom-nav" aria-label="Hauptnavigation">${primaryNav.map(item=>navMarkup(item)).join('')}</nav>`);
     document.body.insertAdjacentHTML('beforeend','<div class="route-announcer" id="routeAnnouncer" role="status" aria-live="polite"></div><div class="next-toast-stack" id="nextToastStack" aria-live="polite"></div>');
     const settingsPanel=document.querySelector('#settingsModal .modal-panel');
     if(settingsPanel&&!settingsPanel.querySelector('[data-motion-setting]')){
