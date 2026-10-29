@@ -1,0 +1,39 @@
+name: Video transcripts
+
+# YouTube is reachable from GitHub's runners (not from every machine): the
+# subtitles of the app's videos are fetched here and committed to the branch.
+on:
+  workflow_dispatch:
+  push:
+    branches: [video-transcripts]
+    paths:
+      - scripts/fetch_video_transcripts.py
+      - .github/workflows/video-transcripts.yml
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install yt-dlp
+        run: pip install yt-dlp==2026.10.26
+
+      - name: Fetch the subtitles
+        run: python scripts/fetch_video_transcripts.py
+
+      - name: Commit the transcripts
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add app/data_videos
+          git diff --cached --quiet && exit 0
+          git commit -m "Fetch the video transcripts"
+          git push

@@ -166,6 +166,43 @@
 .vd-notes textarea{width:100%;font:inherit;padding:10px 12px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:calc(10px*var(--shape,1));resize:vertical}
 .vd-youtube{color:var(--green-d);font-weight:700}
 
+/* the text under the video (js/23-videos.js): large, the line being said lit */
+.vd-stage{display:grid;gap:10px}
+.vd-transcript{display:flex;flex-direction:column;min-height:0;background:var(--card);border:1px solid var(--line);border-radius:calc(16px*var(--shape,1));overflow:hidden}
+.vd-tr-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;padding:8px 10px;border-bottom:1px solid var(--line)}
+.vd-tr-bar small{font-family:"Cairo","Tahoma",sans-serif;color:var(--ink-2);font-weight:400}
+.vd-tr-toggles{display:flex;gap:6px;flex-wrap:wrap}
+.vd-tr-toggles button{min-height:36px;padding:5px 12px;font:inherit;font-size:13.5px;font-weight:700;cursor:pointer;color:var(--ink-2);background:var(--bg);border:1px solid var(--line);border-radius:999px}
+.vd-tr-toggles button[lang="ar"]{font-family:"Cairo","Tahoma",sans-serif}
+.vd-tr-toggles button[aria-pressed="true"]{background:var(--nbg-green-d,var(--green-d));color:#fff;border-color:transparent}
+.vd-tr-list{position:relative;max-height:min(56vh,520px);overflow-y:auto;overscroll-behavior:contain;padding:6px}
+.vd-tr-note{padding:18px 12px;text-align:center;color:var(--ink-2);line-height:1.7}
+.vd-tr-note span,.vd-tr-note[lang="ar"]{font-family:"Cairo","Tahoma",sans-serif}
+.vd-cue{display:flex;gap:10px;align-items:flex-start;padding:10px 10px 12px;border-radius:calc(12px*var(--shape,1));border:1px solid transparent;transition:background-color .2s,border-color .2s}
+.vd-cue.is-active{background:var(--bg);border-color:var(--nbg-green-d,var(--green-d));box-shadow:inset 4px 0 0 var(--nbg-green-d,var(--green-d))}
+.vd-cue-time{flex:none;margin-top:3px;min-width:46px;padding:3px 6px;font:inherit;font-size:12px;font-weight:700;font-variant-numeric:tabular-nums;cursor:pointer;color:var(--ink-2);background:none;border:1px solid var(--line);border-radius:999px}
+.vd-cue.is-active .vd-cue-time{color:#fff;background:var(--nbg-green-d,var(--green-d));border-color:transparent}
+.vd-cue-text{flex:1;min-width:0}
+.vd-cue-de{font-size:20px;line-height:1.45;font-weight:800;color:var(--ink-2);overflow-wrap:anywhere}
+.vd-cue.is-active .vd-cue-de{color:var(--ink)}
+.vd-cue-de [data-w]{border-radius:4px;transition:background-color .12s,color .12s}
+.vd-cue.is-active .vd-cue-de [data-w]{color:var(--ink-2)}
+.vd-cue.is-active .vd-cue-de .is-said{color:var(--ink)}
+.vd-cue.is-active .vd-cue-de .is-word{color:var(--ink);background:color-mix(in srgb,var(--green) 28%,transparent)}
+.vd-cue-ar{margin-top:4px;font-family:"Cairo","Tahoma",sans-serif;font-size:16.5px;line-height:1.7;color:var(--ink-2)}
+.vd-cue-ar:empty{display:none}
+.vd-cue-ar.is-machine{opacity:.85}
+.vd-transcript[data-hide-ar] .vd-cue-ar{display:none}
+/* hidden German stays in place, blurred: a tap shows that line */
+.vd-transcript[data-hide-de] .vd-cue:not(.is-shown) .vd-cue-de{filter:blur(7px);user-select:none;cursor:pointer}
+.vd-transcript[data-hide-de][data-hide-ar] .vd-cue:not(.is-shown):not(.is-active){display:none}
+@media (min-width:1000px){
+  .vd-stage{grid-template-columns:minmax(0,3fr) minmax(320px,2fr);align-items:stretch}
+  /* the text adds nothing to the row's height: the video sets it */
+  .vd-stage .vd-transcript{contain:size}
+  .vd-stage .vd-tr-list{max-height:none;flex:1}
+}
+
 @media (max-width:600px){
   .pr-actions{grid-template-columns:repeat(2,1fr)}
   .pr-actions.compact{grid-template-columns:repeat(3,1fr)}
@@ -174,6 +211,7 @@
 }
 @media (prefers-reduced-motion:reduce){
   .pr-recording{animation:none}
+  .vd-cue,.vd-cue-de [data-w]{transition:none}
 }
 
 /* a level's lessons are loading (js/01-core.js ensureLevelData) */

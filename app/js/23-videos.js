@@ -2,7 +2,11 @@
 /* A small curated list (DW "Nicos Weg", Easy German) plus any YouTube link the
    learner adds. The player adds what learning needs: slower speed, jump back,
    A–B repeat, a pause after every few seconds for shadowing, notes and words.
-   Videos need the internet; everything else here is stored on the device. */
+   Videos need the internet; everything else here is stored on the device.
+   A video with a transcript (data_videos/<id>.json, made by
+   scripts/fetch_video_transcripts.py) shows it under the player in large type:
+   the line being said is lit and followed, word by word when the words have
+   times; German and Arabic can each be hidden. */
 
 const VIDEO_LIBRARY=[
   {key:'nico-a1',level:'a1',yt:'4-eDoThe6qo',title:'Nicos Weg A1 – der ganze Film',channel:'DW Deutsch lernen',kind:'Film',
@@ -37,6 +41,10 @@ let videoTicker=null;
 let videoLoop=null;        // {a,b} seconds
 let videoPauseEvery=0;     // seconds between automatic pauses
 let videoNextPause=0;
+let videoPausedCue=-1;     // the line "pause after every line" last stopped at
+const VIDEO_TRANSCRIPT_VIEW_KEY='videoTranscriptView';
+let videoTranscript=null;  // {id, cues, active, word} of the video playing
+let videoTranscriptTouched=0; // the learner scrolled the text: do not pull it back for a while
 
 function readVideoState(){
   try{
@@ -125,6 +133,8 @@ function stopVideoPlayer(){
   videoTicker=null;
   videoLoop=null;
   videoPauseEvery=0;
+  videoPausedCue=-1;
+  videoTranscript=null;
   try{ videoPlayer?.destroy(); }catch{}
   videoPlayer=null;
 }
@@ -137,7 +147,10 @@ function renderVideoPlayer(key){
   const youtubeUrl=item.yt?`https://www.youtube.com/watch?v=${item.yt}`:`https://www.youtube.com/playlist?list=${item.list}`;
   setTop('Video',escapeHtml(item.title),true,'فيديو');
   view.innerHTML=`<div class="vd-player-page" data-video-key="${escapeHtml(key)}">
-    <div class="vd-frame"><div id="videoFrame"></div><div class="vd-offline" id="videoOffline" hidden><p lang="ar" dir="rtl">الفيديو مش بيحمّل — اتأكد من النت.</p><a class="next-secondary" href="${youtubeUrl}" target="_blank" rel="noopener">Auf YouTube öffnen</a></div></div>
+    <div class="vd-stage">
+      <div class="vd-frame"><div id="videoFrame"></div><div class="vd-offline" id="videoOffline" hidden><p lang="ar" dir="rtl">الفيديو مش بيحمّل — اتأكد من النت.</p><a class="next-secondary" href="${youtubeUrl}" target="_blank" rel="noopener">Auf YouTube öffnen</a></div></div>
+      ${transcriptPanelHtml()}
+    </div>
     <div class="vd-title"><div><small>${escapeHtml(item.channel||'YouTube')} · ${escapeHtml(item.kind||'Video')}</small><h2>${escapeHtml(item.title)}</h2></div>
       <button type="button" class="next-secondary" data-video-watched aria-pressed="${Boolean(saved.watched)}">${saved.watched?'✓ Gesehen':'Als gesehen markieren'}</button></div>
     <div class="vd-controls" role="group" aria-label="Lernsteuerung">
@@ -153,7 +166,7 @@ function renderVideoPlayer(key){
       <button type="button" data-video-cmd="loopClear" hidden>A–B aus</button>
       <span class="vd-loop" id="videoLoopLabel">A–B: Abschnitt wiederholen</span>
       <span class="vd-sep"></span>
-      <label class="vd-pause">Pause alle <select data-video-pause><option value="0">aus</option>${[4,6,8,12].map(n=>`<option value="${n}">${n} s</option>`).join('')}</select></label>
+      <label class="vd-pause">Pause <select data-video-pause><option value="0">aus</option><option value="cue">nach jedem Satz</option>${[4,6,8,12].map(n=>`<option value="${n}">alle ${n} s</option>`).join('')}</select></label>
       <button type="button" data-video-cmd="captions">Untertitel DE</button>
     </div>
     <details class="pr-help" open><summary>So lernst du mit Videos <span lang="ar" dir="rtl">طريقة المذاكرة بالفيديو</span></summary>
@@ -178,8 +191,10 @@ function renderVideoPlayer(key){
       playerVars,
       events:{onError:()=>{ $('#videoOffline').hidden=false; }}
     });
-    videoTicker=setInterval(()=>videoTick(key),250);
+    videoTicker=setInterval(()=>videoTick(key),150);
   }).catch(()=>{ const offline=$('#videoOffline'); if(offline) offline.hidden=false; });
+  if(item.yt) loadVideoTranscript(item.yt);
+  else showTranscriptNote('Wähle ein Video der Playlist – sein Text erscheint hier, wenn es einen gibt.','اختار فيديو من القائمة — النص بتاعه هيظهر هنا لو موجود.');
 }
 
 function videoTick(key){
@@ -188,12 +203,145 @@ function videoTick(key){
   const time=player.getCurrentTime();
   const playing=player.getPlayerState?.()===1;
   if(videoLoop?.b!==undefined&&time>=videoLoop.b){ player.seekTo(videoLoop.a,true); return; }
-  if(videoPauseEvery&&playing){
+  // in a playlist the text follows the video that is playing
+  const playingId=player.getVideoData?.()?.video_id;
+  if(playingId&&playingId!==videoTranscript?.id) loadVideoTranscript(playingId);
+  const cue=syncTranscript(time);
+  if(videoPauseEvery==='cue'){
+    const line=videoTranscript?.cues?.[cue];
+    if(playing&&line&&cue!==videoPausedCue&&time>=line.e-.12){ player.pauseVideo(); videoPausedCue=cue; }
+  }else if(videoPauseEvery&&playing){
     if(!videoNextPause||time<videoNextPause-videoPauseEvery-1) videoNextPause=time+videoPauseEvery;
     if(time>=videoNextPause){ player.pauseVideo(); videoNextPause=time+videoPauseEvery; }
   }
   // remember where the learner is, about every five seconds
   if(playing&&Math.floor(time)%5===0) saveVideoState(key,entry=>{ entry.time=time; });
+}
+
+function transcriptView(){
+  const view={de:true,ar:true,follow:true};
+  try{ return {...view,...JSON.parse(localStorage.getItem(VIDEO_TRANSCRIPT_VIEW_KEY)||'{}')}; }catch{ return view; }
+}
+
+function transcriptPanelHtml(){
+  const view=transcriptView();
+  const toggle=(name,label,lang='')=>`<button type="button" data-transcript-toggle="${name}" aria-pressed="${view[name]}"${lang}>${label}</button>`;
+  return `<section class="vd-transcript" id="videoTranscript"${view.de?'':' data-hide-de'}${view.ar?'':' data-hide-ar'} aria-label="Text zum Video">
+    <div class="vd-tr-bar">
+      <b>Text <small lang="ar" dir="rtl">النص</small></b>
+      <span class="vd-tr-toggles">${toggle('de','Deutsch')}${toggle('ar','عربي',' lang="ar"')}${toggle('follow','Mitlaufen')}</span>
+    </div>
+    <div class="vd-tr-list" id="videoTranscriptList"><p class="vd-tr-note">…</p></div>
+  </section>`;
+}
+
+function showTranscriptNote(german,arabic){
+  const list=$('#videoTranscriptList');
+  if(list) list.innerHTML=`<p class="vd-tr-note">${escapeHtml(german)}<br><span lang="ar" dir="rtl">${escapeHtml(arabic)}</span></p>`;
+}
+
+function transcriptCueHtml(cue,index){
+  // with word times every word is its own span, so the one being said can be lit
+  const german=cue.w?cue.w.map(([,word],n)=>`<span data-w="${n}">${escapeHtml(word)}</span>`).join(' '):escapeHtml(cue.de);
+  return `<div class="vd-cue" data-cue="${index}">
+    <button type="button" class="vd-cue-time" data-cue-seek="${index}" aria-label="Ab ${formatVideoTime(cue.s)} abspielen">${formatVideoTime(cue.s)}</button>
+    <div class="vd-cue-text"><p class="vd-cue-de" lang="de">${german}</p><p class="vd-cue-ar" lang="ar" dir="rtl">${escapeHtml(cue.ar||'')}</p></div>
+  </div>`;
+}
+
+async function loadVideoTranscript(id){
+  if(videoTranscript?.id===id) return;
+  const current={id,cues:null,active:-1,word:-1};
+  videoTranscript=current;
+  videoPausedCue=-1;
+  showTranscriptNote('Text wird geladen …','بنحمّل النص…');
+  let data=null;
+  try{
+    const response=await fetch(`data_videos/${id}.json`);
+    if(response.ok) data=await response.json();
+  }catch{}
+  if(videoTranscript!==current||!$('#videoTranscriptList')) return;
+  if(!data?.cues?.length){
+    showTranscriptNote('Für dieses Video gibt es noch keinen Text. Die Untertitel von YouTube helfen: «Untertitel DE».','لسه مفيش نص للفيديو ده — استخدم ترجمة يوتيوب من زرار «Untertitel DE».');
+    return;
+  }
+  current.cues=data.cues;
+  const list=$('#videoTranscriptList');
+  list.innerHTML=data.cues.map(transcriptCueHtml).join('')
+    +(data.ar==='translated'?'<p class="vd-tr-note" lang="ar" dir="rtl">الترجمة العربي آلية من يوتيوب — ممكن تبقى مش دقيقة.</p>':'');
+  if(videoPlayer?.getCurrentTime) syncTranscript(videoPlayer.getCurrentTime());
+}
+
+// The line said at `time`: the last line that has started, while it lasts
+// (and a moment longer, so short pauses do not blink).
+function transcriptCueAt(cues,time){
+  let low=0,high=cues.length-1,found=-1;
+  while(low<=high){
+    const middle=(low+high)>>1;
+    if(cues[middle].s<=time+.05){ found=middle; low=middle+1; } else high=middle-1;
+  }
+  return found>=0&&time<=Math.max(cues[found].e,cues[found].s+.5)+1.2?found:-1;
+}
+
+function syncTranscript(time){
+  const transcript=videoTranscript;
+  const list=$('#videoTranscriptList');
+  if(!transcript?.cues||!list) return -1;
+  const active=transcriptCueAt(transcript.cues,time);
+  if(active!==transcript.active){
+    list.querySelector('.vd-cue.is-active')?.classList.remove('is-active');
+    transcript.active=active;
+    transcript.word=-2;
+    const line=active>=0?list.querySelector(`[data-cue="${active}"]`):null;
+    if(line){
+      line.classList.add('is-active');
+      if(transcriptView().follow&&Date.now()-videoTranscriptTouched>5000){
+        list.scrollTo({top:Math.max(0,line.offsetTop-list.clientHeight*.28),behavior:'smooth'});
+      }
+      fillMissingArabic(active);
+    }
+  }
+  const cue=transcript.cues[active];
+  if(cue?.w){
+    let word=-1;
+    while(word+1<cue.w.length&&cue.w[word+1][0]<=time+.08) word+=1;
+    if(word!==transcript.word){
+      transcript.word=word;
+      list.querySelectorAll(`[data-cue="${active}"] [data-w]`).forEach(span=>{
+        const index=Number(span.dataset.w);
+        span.classList.toggle('is-said',index<word);
+        span.classList.toggle('is-word',index===word);
+      });
+    }
+  }
+  return active;
+}
+
+// A line without Arabic is translated when it is reached (and the next two),
+// if the learner reads the Arabic.
+function fillMissingArabic(index){
+  const transcript=videoTranscript;
+  if(!transcriptView().ar||!transcript?.cues) return;
+  transcript.cues.slice(index,index+3).forEach((cue,offset)=>{
+    if(cue.ar||cue.translating) return;
+    cue.translating=true;
+    requestTranslation(cue.de,'de','ar').then(text=>{
+      cue.ar=text;
+      const target=$(`#videoTranscriptList [data-cue="${index+offset}"] .vd-cue-ar`);
+      if(target&&videoTranscript===transcript){ target.textContent=text; target.classList.add('is-machine'); }
+    }).catch(()=>{ cue.translating=false; });
+  });
+}
+
+function setTranscriptView(name,on){
+  const view={...transcriptView(),[name]:on};
+  try{ localStorage.setItem(VIDEO_TRANSCRIPT_VIEW_KEY,JSON.stringify(view)); }catch{}
+  const panel=$('#videoTranscript');
+  if(!panel) return;
+  panel.querySelector(`[data-transcript-toggle="${name}"]`)?.setAttribute('aria-pressed',String(on));
+  if(name==='de') panel.toggleAttribute('data-hide-de',!on);
+  if(name==='ar'){ panel.toggleAttribute('data-hide-ar',!on); if(on&&videoTranscript?.active>=0) fillMissingArabic(videoTranscript.active); }
+  if(name==='follow'&&on){ videoTranscriptTouched=0; if(videoTranscript) videoTranscript.active=-2; }
 }
 
 function updateLoopLabel(){
@@ -212,16 +360,30 @@ document.addEventListener('click',event=>{
   if(command&&player?.getCurrentTime){
     const time=player.getCurrentTime();
     if(command==='back5') player.seekTo(Math.max(0,time-5),true);
-    if(command==='repeat'){ player.seekTo(Math.max(0,time-4),true); player.playVideo(); }
+    if(command==='repeat'){
+      // the line being said from its start, or the last four seconds
+      const line=videoTranscript?.cues?.[videoTranscript.active];
+      player.seekTo(line?Math.max(0,line.s-.05):Math.max(0,time-4),true);
+      videoPausedCue=-1;
+      player.playVideo();
+    }
     if(command==='toggle') player.getPlayerState()===1?player.pauseVideo():player.playVideo();
     if(command==='loopA'){ videoLoop={a:time}; updateLoopLabel(); }
     if(command==='loopB'&&videoLoop&&time>videoLoop.a+.5){ videoLoop.b=time; player.seekTo(videoLoop.a,true); player.playVideo(); updateLoopLabel(); }
     if(command==='loopClear'){ videoLoop=null; updateLoopLabel(); }
     if(command==='captions'){
-      try{ player.loadModule('captions'); player.setOption('captions','track',{languageCode:'de'}); }catch{}
+      try{ player.loadModule('captions'); player.setOption('captions','track',{languageCode:'de'}); player.setOption('captions','fontSize',2); }catch{}
     }
     return;
   }
+  const seek=event.target.closest('[data-cue-seek]');
+  if(seek){
+    const line=videoTranscript?.cues?.[Number(seek.dataset.cueSeek)];
+    if(line&&player?.seekTo){ player.seekTo(Math.max(0,line.s-.05),true); videoPausedCue=-1; player.playVideo(); }
+    return;
+  }
+  const toggle=event.target.closest('[data-transcript-toggle]');
+  if(toggle){ setTranscriptView(toggle.dataset.transcriptToggle,toggle.getAttribute('aria-pressed')!=='true'); return; }
   const rate=event.target.closest('[data-video-rate]');
   if(rate&&player?.setPlaybackRate){
     player.setPlaybackRate(Number(rate.dataset.videoRate));
@@ -242,8 +404,24 @@ document.addEventListener('click',event=>{
   }
 });
 
+document.addEventListener('click',event=>{
+  const german=event.target.closest?.('.vd-transcript[data-hide-de] .vd-cue:not(.is-shown) .vd-cue-de');
+  if(!german) return;
+  event.preventDefault();
+  german.closest('.vd-cue').classList.add('is-shown');
+},true);
+
+['wheel','touchstart','pointerdown'].forEach(type=>document.addEventListener(type,event=>{
+  if(event.target.closest?.('#videoTranscriptList')) videoTranscriptTouched=Date.now();
+},{passive:true,capture:true}));
+
 document.addEventListener('change',event=>{
-  if(event.target.matches('[data-video-pause]')){ videoPauseEvery=Number(event.target.value); videoNextPause=0; }
+  if(event.target.matches('[data-video-pause]')){
+    const value=event.target.value;
+    videoPauseEvery=value==='cue'?'cue':Number(value);
+    videoNextPause=0;
+    videoPausedCue=-1;
+  }
 });
 
 document.addEventListener('input',event=>{
