@@ -43,6 +43,8 @@ jobs:
       - name: Leave build sources out of the site
         run: |
           rm -rf app/assets/vocab-scenes/*-sheets app/assets/listening/a1/figures/sheets
+          # Phonetik figure sheets: PHONETIK_A1_FIGURES is empty, the pages show the book scans
+          rm -rf app/assets/listening/a1-phonetik/figures
           rm -f app/data_dictionary_de_ar.js
           du -sh app
 

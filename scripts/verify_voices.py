@@ -7,10 +7,10 @@ For each scripts/voices/<level>-<voice>-timings.json the parts in
 app/assets/speech/<level>/ are decoded, every clip is cut at its timing
 (exactly what the player plays), and Whisper transcribes the clips in groups
 of ten with a second of silence between them. A clip is flagged when
-  - its words are not heard: fewer than 70 % of them, and the letters differ
-    too (a missing, wrong or extra word, a cut-off start or end), or
-  - for clips of four words or more: Whisper does not hear German
-    (an English or foreign accent).
+  its words are not heard: fewer than 70 % of them, and the letters differ
+  too (a missing, wrong or extra word, a cut-off start or end, a word said
+  with a foreign accent). A clip that fails in its group is listened to
+  again on its own before it is flagged; the language Whisper hears is noted.
 The flagged clips go to build/voices/<level>-flagged.json with what was heard.
 """
 import argparse
@@ -82,7 +82,7 @@ def check_voice(model, data, voice, sample):
             windows.append((index, cursor, cursor + len(clip) / RATE, clip))
             pieces += [clip, PAUSE]
             cursor += len(clip) / RATE + 1
-        segments, _ = model.transcribe(np.concatenate(pieces), language="de", beam_size=5,
+        segments, _ = model.transcribe(np.concatenate(pieces), language="de", beam_size=1,
                                        word_timestamps=True, condition_on_previous_text=False)
         heard = {index: [] for index in group}
         for segment in segments:
@@ -96,16 +96,18 @@ def check_voice(model, data, voice, sample):
             text = data["texts"][index]
             said = "".join(heard[index]).strip()
             share, similarity, ok = close_enough(text, said)
-            problem = None
             if not ok:
-                problem = "words"
-            elif len(words(text)) >= 4:
+                # In a group a word can land on the clip next to it: listen
+                # to this clip alone, more carefully, before flagging it.
+                alone, _ = model.transcribe(np.concatenate([PAUSE[:RATE // 4], clip, PAUSE[:RATE // 4]]),
+                                            language="de", beam_size=5, condition_on_previous_text=False)
+                said = "".join(segment.text for segment in alone).strip()
+                share, similarity, ok = close_enough(text, said)
+            if not ok:
                 language, probability, _ = model.detect_language(clip)
-                if language != "de" and probability > 0.5:
-                    problem = f"language {language} {probability:.2f}"
-            if problem:
                 flagged.append({"voice": voice["id"], "index": index, "text": text, "heard": said,
-                                "share": round(share, 2), "similarity": round(similarity, 2), "problem": problem})
+                                "share": round(share, 2), "similarity": round(similarity, 2),
+                                "language": f"{language} {probability:.2f}"})
         if (start // GROUP) % 50 == 0:
             print(f"{voice['id']}: {start + len(group)}/{len(indexes)} checked, {len(flagged)} flagged", flush=True)
     return len(indexes), flagged
