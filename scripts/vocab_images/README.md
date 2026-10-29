@@ -1,31 +1,56 @@
-# Vocabulary photograph completion
+# Vocabulary photographs: literal, useful meanings only
 
-`audit.json` records actual coverage, broken paths and the remaining work by chapter.
-`pending.json` contains only words still waiting for pictures, in batches of 16.
-This is a work queue, **not a claim that those pictures have been generated**.
+`review.json` records the decision for every word in the original 2,169-word
+backlog. A photo must show a recognizable object, setting, observable action,
+or clear expression. Grammar, pronouns, logical links, word forms, invisible
+relationships, and meanings that require captions or a speculative proxy remain
+text-only. A missing photo is never replaced with an emoji or an icon.
 
-Delivered: two reviewed 4×4 sheets, 32 photographs, in `sheets.json`. The originals
-are retained locally in `incoming/` and ignored by Git. Individual 420×420 WebP
-crops are shipped in `app/assets/vocab-generated/`.
+The final review selected **524 distinct words** for pictures and left **1,658**
+words intentionally text-only (including 13 earlier generated proxies that were
+withdrawn). Original files are retained; withdrawn pictures are no longer bound
+to those cards.
 
-Existing pictures are reused only for matching headwords (preserving capitalization).
-Original per-card pictures remain authoritative. Review homonyms when adding reuse
-rules; do not map images by category or use icons/emoji as photographs.
-A2.1's expanded vocabulary retains the original photo index in `legacy.index`;
-using the new array position assigns pictures to the wrong words.
+Completed: **484 new reviewed photographs**, generated on 31 new 4×4 sheets
+(sheets 3–33, including a repair sheet), plus **40 reviewed picture reuses** for
+identical objects/actions and grammatical-number variants. Padding and rejected
+or superseded cells are not bound to words. Every selected word is now covered.
+The audit covers all 6,129 cards: 4,263 with a picture and 1,866 intentionally
+text-only cards, with no eligible photographs pending and no broken image paths.
 
-1. `node scripts/vocab_images/build.cjs` refreshes the inventory and JS bindings.
-2. Choose 16 entries from `pending.json`, append a stable numbered entry to
-   `sheets.json`, and write concrete scene descriptions for their exact meanings.
-3. Generate one square 4×4 photo sheet: thin white gutters, consistent natural
-   lighting, clear subjects, no text, numbers, logos, icons or emoji.
+`aliases.json` records each reviewed equivalence. For example, `das Velo` can
+use a photograph of `das Fahrrad`; a government job title cannot be represented
+by a generic person in a suit. A bakery's actual bread-making room cannot be
+replaced with a photograph of its shopfront.
+
+- `audit.json`: actual coverage, missing file paths, text-only words, and the
+  number of **eligible** photographs still pending. Text-only words are not work
+  waiting for a future image.
+- `pending.json` (generated locally): only eligible words still waiting for a photo.
+- `sheets.json`: stable sheet/cell order and delivery status, with each word's
+  exact definition and example so that a homonym is not mistaken for another meaning.
+- `delivered.json`: the reviewed word-to-photo bindings. Earlier unused files stay
+  available in Git but do not appear on cards.
+
+## Generate and slice
+
+1. `node scripts/vocab_images/build.cjs` refreshes the inventory and bindings.
+2. Read the word's exact definition and example before writing a scene. Reuse
+   an existing picture only for the same object/action and sense. Do not turn a
+   vague office worker into a picture for an abstract idea or an invisible rank.
+3. Generate one square 4×4 sheet: four equal columns and rows, thin white gutters
+   on quarter boundaries, consistent natural light, clear centered subjects and
+   safe crop margins. Use realistic photos, no captions, logos, emoji, icons,
+   diagrams or symbols. Incidental real-world print should be small and indistinct.
 4. Inspect all 16 subjects and their order before slicing.
 5. `python scripts/vocab_images/slice.py --sheet N --input /path/to/sheet.png`
-   crops using detected gutters, saves WebP files, and updates `delivered.json`,
-   the audit, queue and `app/data_vocab_images.js`.
-6. `npm test` verifies bindings, file existence, A2 original positions and the
-   emoji-free fallback. The page shell precaches the binding file; lesson downloads
-   discover the image paths in chapter data.
+   detects gutters and writes individual 420×420 WebP crops. It skips padding
+   cells and updates delivery status, bindings, audit and the remaining queue.
+6. `npm test` verifies the bindings, file existence, original A2 photo positions,
+   text-only exclusions, sheet coverage, and the emoji-free fallback.
 
-Requirements for slicing: Pillow and NumPy. Run from the repository root after a
-checkout that includes `app/assets/a1/` and `app/assets/vocab-scenes/`.
+Run from the repository root with Pillow and NumPy installed and the A1 and
+vocab-scenes assets checked out. Sheet originals are retained locally in the
+Git-ignored `incoming/` folder. The page shell precaches the JS binding file;
+lesson downloads discover picture paths through chapter data. Leave the source
+service-worker version unhashed: the Pages workflow stamps it **after** tests.

@@ -1,236 +1,5682 @@
 [
-  {
-    "sheet": 1,
-    "cells": [
-      {
-        "word": "ciao",
-        "definition": "Kurzer, freundlicher Abschied."
-      },
-      {
-        "word": "die Entschuldigung, -en",
-        "definition": "Das sagt man bei einem Fehler oder vor einer Frage."
-      },
-      {
-        "word": "informell",
-        "definition": "Freundlich, nicht offiziell."
-      },
-      {
-        "word": "sehr",
-        "definition": "Ein starkes Wort für „viel“."
-      },
-      {
-        "word": "auch",
-        "definition": "Ebenso, noch dazu."
-      },
-      {
-        "word": "dir",
-        "definition": "„Du“ im Dativ."
-      },
-      {
-        "word": "Ihnen",
-        "definition": "„Sie“ im Dativ (formell)."
-      },
-      {
-        "word": "das Befinden",
-        "definition": "Wie es einer Person gesundheitlich geht."
-      },
-      {
-        "word": "vorstellen",
-        "definition": "Eine Person einer anderen Person zeigen und nennen."
-      },
-      {
-        "word": "die Person, -en",
-        "definition": "Ein Mensch."
-      },
-      {
-        "word": "der Partner, -",
-        "definition": "Mit ihm lernt oder arbeitet man zusammen."
-      },
-      {
-        "word": "die Partnerin, -nen",
-        "definition": "Die weibliche Form von „Partner“."
-      },
-      {
-        "word": "kennen",
-        "definition": "Eine Person oder Sache schon wissen."
-      },
-      {
-        "word": "bekannt",
-        "definition": "Viele Menschen kennen es oder ihn."
-      },
-      {
-        "word": "andere",
-        "definition": "Nicht dieselben."
-      },
-      {
-        "word": "wohnen",
-        "definition": "An einem Ort leben."
-      }
-    ]
-  },
-  {
-    "sheet": 2,
-    "cells": [
-      {
-        "id": "A1|7|der Kundenbesuch, -e",
-        "level": "A1",
-        "chapter": 7,
-        "word": "der Kundenbesuch, -e",
-        "definition": "Man fährt zu einem Kunden und spricht mit ihm.",
-        "example": "Morgen haben wir einen Kundenbesuch.",
-        "ar": "زيارة عميل",
-        "src": ""
-      },
-      {
-        "id": "A1|7|der Bericht, -e",
-        "level": "A1",
-        "chapter": 7,
-        "word": "der Bericht, -e",
-        "definition": "Ein Text über eine Arbeit oder ein Ereignis.",
-        "example": "Julia muss einen Bericht schreiben.",
-        "ar": "التقرير",
-        "src": ""
-      },
-      {
-        "id": "A1|7|die Mittagspause, -n",
-        "level": "A1",
-        "chapter": 7,
-        "word": "die Mittagspause, -n",
-        "definition": "Die Pause am Mittag; oft isst man dann.",
-        "example": "In der Mittagspause esse ich ein Sandwich.",
-        "ar": "استراحة الغداء",
-        "src": ""
-      },
-      {
-        "id": "A1|7|Pause machen",
-        "level": "A1",
-        "chapter": 7,
-        "word": "Pause machen",
-        "definition": "Kurz aufhören und sich ausruhen.",
-        "example": "Manchmal mache ich allein Pause.",
-        "ar": "يعمل استراحة",
-        "src": ""
-      },
-      {
-        "id": "A1|7|einen Tag frei haben",
-        "level": "A1",
-        "chapter": 7,
-        "word": "einen Tag frei haben",
-        "definition": "Einen Tag nicht arbeiten müssen.",
-        "example": "Laura möchte am Freitag einen Tag frei haben.",
-        "ar": "ياخد يوم إجازة",
-        "src": ""
-      },
-      {
-        "id": "A1|7|Es ist viel los.",
-        "level": "A1",
-        "chapter": 7,
-        "word": "Es ist viel los.",
-        "definition": "Es passiert viel; man hat viel zu tun.",
-        "example": "In der Firma ist immer viel los.",
-        "ar": "فيه شغل كتير / الدنيا زحمة",
-        "src": ""
-      },
-      {
-        "id": "A1|7|korrigieren",
-        "level": "A1",
-        "chapter": 7,
-        "word": "korrigieren",
-        "definition": "Fehler finden und richtig machen.",
-        "example": "Die Chefin korrigiert meinen Bericht.",
-        "ar": "يصحّح",
-        "src": ""
-      },
-      {
-        "id": "A1|7|bedeuten",
-        "level": "A1",
-        "chapter": 7,
-        "word": "bedeuten",
-        "definition": "Einen Sinn haben.",
-        "example": "Was bedeutet das?",
-        "ar": "يعني",
-        "src": ""
-      },
-      {
-        "id": "A1|7|diskutieren",
-        "level": "A1",
-        "chapter": 7,
-        "word": "diskutieren",
-        "definition": "Über ein Thema sprechen und Meinungen sagen.",
-        "example": "Wir diskutieren über aktuelle Themen.",
-        "ar": "يناقش",
-        "src": ""
-      },
-      {
-        "id": "A1|7|interessieren",
-        "level": "A1",
-        "chapter": 7,
-        "word": "interessieren",
-        "definition": "Für jemanden interessant sein.",
-        "example": "Vielleicht interessiert das auch die anderen.",
-        "ar": "يهمّ / يثير الاهتمام",
-        "src": ""
-      },
-      {
-        "id": "A1|7|das Paket, -e",
-        "level": "A1",
-        "chapter": 7,
-        "word": "das Paket, -e",
-        "definition": "Eine große Sendung mit der Post.",
-        "example": "Adnan nimmt ein Paket an.",
-        "ar": "الطرد",
-        "src": ""
-      },
-      {
-        "id": "A1|7|annehmen, er nimmt an",
-        "level": "A1",
-        "chapter": 7,
-        "word": "annehmen, er nimmt an",
-        "definition": "Etwas bekommen und nehmen, z. B. ein Paket.",
-        "example": "Kannst du bitte das Paket annehmen?",
-        "ar": "يستلم / يقبل",
-        "src": ""
-      },
-      {
-        "id": "A1|7|mitnehmen, er nimmt mit",
-        "level": "A1",
-        "chapter": 7,
-        "word": "mitnehmen, er nimmt mit",
-        "definition": "Etwas oder jemanden mit sich nehmen.",
-        "example": "Meine Chefin nimmt mich zu Kunden mit.",
-        "ar": "ياخد معاه",
-        "src": ""
-      },
-      {
-        "id": "A1|7|einen Kaffee zum Mitnehmen",
-        "level": "A1",
-        "chapter": 7,
-        "word": "einen Kaffee zum Mitnehmen",
-        "definition": "Kaffee in einem Becher, man trinkt ihn unterwegs.",
-        "example": "Einen Kaffee zum Mitnehmen, bitte.",
-        "ar": "قهوة تيك أواي",
-        "src": ""
-      },
-      {
-        "id": "A1|7|abholen",
-        "level": "A1",
-        "chapter": 7,
-        "word": "abholen",
-        "definition": "Zu einem Ort gehen und jemanden oder etwas mitnehmen.",
-        "example": "Ich hole dich um drei ab.",
-        "ar": "يجيب / يعدّي ياخد",
-        "src": ""
-      },
-      {
-        "id": "A1|7|später",
-        "level": "A1",
-        "chapter": 7,
-        "word": "später",
-        "definition": "Nach einer Zeit.",
-        "example": "Sehen wir uns später?",
-        "ar": "بعدين",
-        "src": ""
-      }
-    ]
-  }
+ {
+  "sheet": 1,
+  "cells": [
+   {
+    "word": "ciao",
+    "definition": "Kurzer, freundlicher Abschied."
+   },
+   {
+    "word": "die Entschuldigung, -en",
+    "definition": "Das sagt man bei einem Fehler oder vor einer Frage."
+   },
+   {
+    "word": "informell",
+    "definition": "Freundlich, nicht offiziell."
+   },
+   {
+    "word": "sehr",
+    "definition": "Ein starkes Wort für „viel“."
+   },
+   {
+    "word": "auch",
+    "definition": "Ebenso, noch dazu."
+   },
+   {
+    "word": "dir",
+    "definition": "„Du“ im Dativ."
+   },
+   {
+    "word": "Ihnen",
+    "definition": "„Sie“ im Dativ (formell)."
+   },
+   {
+    "word": "das Befinden",
+    "definition": "Wie es einer Person gesundheitlich geht."
+   },
+   {
+    "word": "vorstellen",
+    "definition": "Eine Person einer anderen Person zeigen und nennen."
+   },
+   {
+    "word": "die Person, -en",
+    "definition": "Ein Mensch."
+   },
+   {
+    "word": "der Partner, -",
+    "definition": "Mit ihm lernt oder arbeitet man zusammen."
+   },
+   {
+    "word": "die Partnerin, -nen",
+    "definition": "Die weibliche Form von „Partner“."
+   },
+   {
+    "word": "kennen",
+    "definition": "Eine Person oder Sache schon wissen."
+   },
+   {
+    "word": "bekannt",
+    "definition": "Viele Menschen kennen es oder ihn."
+   },
+   {
+    "word": "andere",
+    "definition": "Nicht dieselben."
+   },
+   {
+    "word": "wohnen",
+    "definition": "An einem Ort leben."
+   }
+  ],
+  "status": "delivered"
+ },
+ {
+  "sheet": 2,
+  "cells": [
+   {
+    "id": "A1|7|der Kundenbesuch, -e",
+    "level": "A1",
+    "chapter": 7,
+    "word": "der Kundenbesuch, -e",
+    "definition": "Man fährt zu einem Kunden und spricht mit ihm.",
+    "example": "Morgen haben wir einen Kundenbesuch.",
+    "ar": "زيارة عميل",
+    "src": ""
+   },
+   {
+    "id": "A1|7|der Bericht, -e",
+    "level": "A1",
+    "chapter": 7,
+    "word": "der Bericht, -e",
+    "definition": "Ein Text über eine Arbeit oder ein Ereignis.",
+    "example": "Julia muss einen Bericht schreiben.",
+    "ar": "التقرير",
+    "src": ""
+   },
+   {
+    "id": "A1|7|die Mittagspause, -n",
+    "level": "A1",
+    "chapter": 7,
+    "word": "die Mittagspause, -n",
+    "definition": "Die Pause am Mittag; oft isst man dann.",
+    "example": "In der Mittagspause esse ich ein Sandwich.",
+    "ar": "استراحة الغداء",
+    "src": ""
+   },
+   {
+    "id": "A1|7|Pause machen",
+    "level": "A1",
+    "chapter": 7,
+    "word": "Pause machen",
+    "definition": "Kurz aufhören und sich ausruhen.",
+    "example": "Manchmal mache ich allein Pause.",
+    "ar": "يعمل استراحة",
+    "src": ""
+   },
+   {
+    "id": "A1|7|einen Tag frei haben",
+    "level": "A1",
+    "chapter": 7,
+    "word": "einen Tag frei haben",
+    "definition": "Einen Tag nicht arbeiten müssen.",
+    "example": "Laura möchte am Freitag einen Tag frei haben.",
+    "ar": "ياخد يوم إجازة",
+    "src": ""
+   },
+   {
+    "id": "A1|7|Es ist viel los.",
+    "level": "A1",
+    "chapter": 7,
+    "word": "Es ist viel los.",
+    "definition": "Es passiert viel; man hat viel zu tun.",
+    "example": "In der Firma ist immer viel los.",
+    "ar": "فيه شغل كتير / الدنيا زحمة",
+    "src": ""
+   },
+   {
+    "id": "A1|7|korrigieren",
+    "level": "A1",
+    "chapter": 7,
+    "word": "korrigieren",
+    "definition": "Fehler finden und richtig machen.",
+    "example": "Die Chefin korrigiert meinen Bericht.",
+    "ar": "يصحّح",
+    "src": ""
+   },
+   {
+    "id": "A1|7|bedeuten",
+    "level": "A1",
+    "chapter": 7,
+    "word": "bedeuten",
+    "definition": "Einen Sinn haben.",
+    "example": "Was bedeutet das?",
+    "ar": "يعني",
+    "src": ""
+   },
+   {
+    "id": "A1|7|diskutieren",
+    "level": "A1",
+    "chapter": 7,
+    "word": "diskutieren",
+    "definition": "Über ein Thema sprechen und Meinungen sagen.",
+    "example": "Wir diskutieren über aktuelle Themen.",
+    "ar": "يناقش",
+    "src": ""
+   },
+   {
+    "id": "A1|7|interessieren",
+    "level": "A1",
+    "chapter": 7,
+    "word": "interessieren",
+    "definition": "Für jemanden interessant sein.",
+    "example": "Vielleicht interessiert das auch die anderen.",
+    "ar": "يهمّ / يثير الاهتمام",
+    "src": ""
+   },
+   {
+    "id": "A1|7|das Paket, -e",
+    "level": "A1",
+    "chapter": 7,
+    "word": "das Paket, -e",
+    "definition": "Eine große Sendung mit der Post.",
+    "example": "Adnan nimmt ein Paket an.",
+    "ar": "الطرد",
+    "src": ""
+   },
+   {
+    "id": "A1|7|annehmen, er nimmt an",
+    "level": "A1",
+    "chapter": 7,
+    "word": "annehmen, er nimmt an",
+    "definition": "Etwas bekommen und nehmen, z. B. ein Paket.",
+    "example": "Kannst du bitte das Paket annehmen?",
+    "ar": "يستلم / يقبل",
+    "src": ""
+   },
+   {
+    "id": "A1|7|mitnehmen, er nimmt mit",
+    "level": "A1",
+    "chapter": 7,
+    "word": "mitnehmen, er nimmt mit",
+    "definition": "Etwas oder jemanden mit sich nehmen.",
+    "example": "Meine Chefin nimmt mich zu Kunden mit.",
+    "ar": "ياخد معاه",
+    "src": ""
+   },
+   {
+    "id": "A1|7|einen Kaffee zum Mitnehmen",
+    "level": "A1",
+    "chapter": 7,
+    "word": "einen Kaffee zum Mitnehmen",
+    "definition": "Kaffee in einem Becher, man trinkt ihn unterwegs.",
+    "example": "Einen Kaffee zum Mitnehmen, bitte.",
+    "ar": "قهوة تيك أواي",
+    "src": ""
+   },
+   {
+    "id": "A1|7|abholen",
+    "level": "A1",
+    "chapter": 7,
+    "word": "abholen",
+    "definition": "Zu einem Ort gehen und jemanden oder etwas mitnehmen.",
+    "example": "Ich hole dich um drei ab.",
+    "ar": "يجيب / يعدّي ياخد",
+    "src": ""
+   },
+   {
+    "id": "A1|7|später",
+    "level": "A1",
+    "chapter": 7,
+    "word": "später",
+    "definition": "Nach einer Zeit.",
+    "example": "Sehen wir uns später?",
+    "ar": "بعدين",
+    "src": ""
+   }
+  ],
+  "status": "delivered"
+ },
+ {
+  "sheet": 3,
+  "cells": [
+   {
+    "candidate": 84,
+    "id": "A1|1|notieren",
+    "level": "A1",
+    "chapter": 1,
+    "word": "notieren",
+    "definition": "Etwas kurz aufschreiben.",
+    "example": "Notieren Sie die Telefonnummer.",
+    "ar": "يسجّل / يدوّن",
+    "src": ""
+   },
+   {
+    "candidate": 98,
+    "id": "A1|2|geben",
+    "level": "A1",
+    "chapter": 2,
+    "word": "geben",
+    "definition": "Hier: es gibt = etwas ist da.",
+    "example": "Es gibt mehrere Möglichkeiten.",
+    "ar": "يدّي / (es gibt = في / موجود)",
+    "src": "",
+    "omit": "The source sense includes existential es gibt; an apple still life does not depict this grammar."
+   },
+   {
+    "candidate": 181,
+    "id": "A1|3|der Euro, -s",
+    "level": "A1",
+    "chapter": 3,
+    "word": "der Euro, -s",
+    "definition": "Das Geld in Deutschland und Österreich.",
+    "example": "Das Ticket kostet fünf Euro.",
+    "ar": "يورو",
+    "src": ""
+   },
+   {
+    "candidate": 228,
+    "id": "A1|4|das Fett, -e",
+    "level": "A1",
+    "chapter": 4,
+    "word": "das Fett, -e",
+    "definition": "Es ist in Butter, Öl oder Fleisch.",
+    "example": "Das Essen hat viel Fett.",
+    "ar": "دهون",
+    "src": ""
+   },
+   {
+    "candidate": 285,
+    "id": "A1|5|der Sprachkurs, -e",
+    "level": "A1",
+    "chapter": 5,
+    "word": "der Sprachkurs, -e",
+    "definition": "Ein Kurs, in dem man eine Sprache lernt.",
+    "example": "Der Sprachkurs beginnt im Januar.",
+    "ar": "كورس لغة",
+    "src": ""
+   },
+   {
+    "candidate": 286,
+    "id": "A1|5|der Geigenunterricht",
+    "level": "A1",
+    "chapter": 5,
+    "word": "der Geigenunterricht",
+    "definition": "Stunden, in denen man Geige lernt.",
+    "example": "Der Geigenunterricht ist am Dienstag.",
+    "ar": "درس كمان",
+    "src": ""
+   },
+   {
+    "candidate": 287,
+    "id": "A1|5|der Trompetenunterricht",
+    "level": "A1",
+    "chapter": 5,
+    "word": "der Trompetenunterricht",
+    "definition": "Stunden, in denen man Trompete lernt.",
+    "example": "Der Trompetenunterricht ist am Samstag.",
+    "ar": "درس ترومبيت",
+    "src": ""
+   },
+   {
+    "candidate": 338,
+    "id": "A1|6|bringen",
+    "level": "A1",
+    "chapter": 6,
+    "word": "bringen",
+    "definition": "Etwas zu jemandem tragen.",
+    "example": "Ich bringe es gleich.",
+    "ar": "يجيب",
+    "src": ""
+   },
+   {
+    "candidate": 339,
+    "id": "A1|6|mitkommen",
+    "level": "A1",
+    "chapter": 6,
+    "word": "mitkommen",
+    "definition": "Mit einer Person gehen.",
+    "example": "Kommst du mit?",
+    "ar": "يجي معاك",
+    "src": ""
+   },
+   {
+    "candidate": 352,
+    "id": "A1|6|aufstellen",
+    "level": "A1",
+    "chapter": 6,
+    "word": "aufstellen",
+    "definition": "Etwas hinstellen.",
+    "example": "Wir stellen den Tisch auf.",
+    "ar": "ينصب / يحط",
+    "src": ""
+   },
+   {
+    "candidate": 353,
+    "id": "A1|6|einsammeln",
+    "level": "A1",
+    "chapter": 6,
+    "word": "einsammeln",
+    "definition": "Viele Dinge nehmen und zusammenbringen.",
+    "example": "Sammeln Sie die Zettel ein.",
+    "ar": "يلمّ",
+    "src": ""
+   },
+   {
+    "candidate": 384,
+    "id": "A1|7|der Hausmeister, -",
+    "level": "A1",
+    "chapter": 7,
+    "word": "der Hausmeister, -",
+    "definition": "Ein Mann, der im Haus repariert und hilft.",
+    "example": "Der Hausmeister repariert die Lampe.",
+    "ar": "البوّاب / عامل الصيانة",
+    "src": ""
+   },
+   {
+    "candidate": 385,
+    "id": "A1|7|die Hausmeisterin, -nen",
+    "level": "A1",
+    "chapter": 7,
+    "word": "die Hausmeisterin, -nen",
+    "definition": "Eine Frau, die im Haus repariert und hilft.",
+    "example": "Die Hausmeisterin hat den Schlüssel.",
+    "ar": "عاملة الصيانة",
+    "src": ""
+   },
+   {
+    "candidate": 386,
+    "id": "A1|7|der Bäcker, -",
+    "level": "A1",
+    "chapter": 7,
+    "word": "der Bäcker, -",
+    "definition": "Ein Mann, der Brot und Brötchen macht.",
+    "example": "Ich gehe zum Bäcker und kaufe Brot.",
+    "ar": "الخبّاز",
+    "src": ""
+   },
+   {
+    "candidate": 387,
+    "id": "A1|7|die Bäckerin, -nen",
+    "level": "A1",
+    "chapter": 7,
+    "word": "die Bäckerin, -nen",
+    "definition": "Eine Frau, die Brot und Brötchen macht.",
+    "example": "Die Bäckerin steht um vier Uhr auf.",
+    "ar": "الخبّازة",
+    "src": ""
+   },
+   {
+    "candidate": 388,
+    "id": "A1|7|der Zahnarzt, -ärzte",
+    "level": "A1",
+    "chapter": 7,
+    "word": "der Zahnarzt, -ärzte",
+    "definition": "Ein Arzt für die Zähne.",
+    "example": "Heute Vormittag bin ich beim Zahnarzt.",
+    "ar": "دكتور الأسنان",
+    "src": ""
+   }
+  ],
+  "status": "delivered",
+  "sourceSize": [
+   1254,
+   1254
+  ]
+ },
+ {
+  "sheet": 4,
+  "cells": [
+   {
+    "candidate": 389,
+    "id": "A1|7|die Zahnärztin, -nen",
+    "level": "A1",
+    "chapter": 7,
+    "word": "die Zahnärztin, -nen",
+    "definition": "Eine Ärztin für die Zähne.",
+    "example": "Die Zahnärztin ist sehr freundlich.",
+    "ar": "دكتورة الأسنان",
+    "src": ""
+   },
+   {
+    "candidate": 402,
+    "id": "A1|7|die Post (Sg.)",
+    "level": "A1",
+    "chapter": 7,
+    "word": "die Post (Sg.)",
+    "definition": "Dort schickt man Briefe und Pakete.",
+    "example": "Julia muss zur Post gehen.",
+    "ar": "البوستة / البريد",
+    "src": ""
+   },
+   {
+    "candidate": 403,
+    "id": "A1|7|der Stadtpark, -s",
+    "level": "A1",
+    "chapter": 7,
+    "word": "der Stadtpark, -s",
+    "definition": "Ein großer Park in der Stadt.",
+    "example": "Das Jahrestreffen ist im Stadtpark.",
+    "ar": "حديقة المدينة",
+    "src": ""
+   },
+   {
+    "candidate": 409,
+    "id": "A1|7|der Automat, -en",
+    "level": "A1",
+    "chapter": 7,
+    "word": "der Automat, -en",
+    "definition": "Eine Maschine; dort bekommt man z. B. Geld oder Tickets.",
+    "example": "Der Automat ist kaputt.",
+    "ar": "ماكينة / الصرّاف الآلي",
+    "src": ""
+   },
+   {
+    "candidate": 411,
+    "id": "A1|7|die Kreditkarte, -n",
+    "level": "A1",
+    "chapter": 7,
+    "word": "die Kreditkarte, -n",
+    "definition": "Eine Karte zum Bezahlen.",
+    "example": "Kann ich mit Kreditkarte bezahlen?",
+    "ar": "كارت الائتمان",
+    "src": ""
+   },
+   {
+    "candidate": 412,
+    "id": "A1|7|der Schalter, -",
+    "level": "A1",
+    "chapter": 7,
+    "word": "der Schalter, -",
+    "definition": "Ein Platz in Bank oder Post; dort hilft eine Person.",
+    "example": "Gehen Sie bitte zum Schalter drei.",
+    "ar": "الشبّاك",
+    "src": ""
+   },
+   {
+    "candidate": 416,
+    "id": "A1|7|anmachen",
+    "level": "A1",
+    "chapter": 7,
+    "word": "anmachen",
+    "definition": "Ein Gerät starten; einschalten.",
+    "example": "Er macht den Drucker an.",
+    "ar": "يشغّل",
+    "src": ""
+   },
+   {
+    "candidate": 417,
+    "id": "A1|7|ausmachen",
+    "level": "A1",
+    "chapter": 7,
+    "word": "ausmachen",
+    "definition": "Ein Gerät stoppen; ausschalten.",
+    "example": "Mach bitte das Licht aus.",
+    "ar": "يطفّي",
+    "src": ""
+   },
+   {
+    "candidate": 418,
+    "id": "A1|7|öffnen",
+    "level": "A1",
+    "chapter": 7,
+    "word": "öffnen",
+    "definition": "Aufmachen, z. B. eine Datei.",
+    "example": "Dann öffnet er die Datei.",
+    "ar": "يفتح",
+    "src": "",
+    "omit": "Superseded by a reviewed literal repair on sheet 33.",
+    "supersededBySheet": 33
+   },
+   {
+    "candidate": 419,
+    "id": "A1|7|ausdrucken",
+    "level": "A1",
+    "chapter": 7,
+    "word": "ausdrucken",
+    "definition": "Eine Datei auf Papier drucken.",
+    "example": "Ich drucke zwei Kinotickets aus.",
+    "ar": "يطبع (ورقة)",
+    "src": ""
+   },
+   {
+    "candidate": 420,
+    "id": "A1|7|eingeben, er gibt ein",
+    "level": "A1",
+    "chapter": 7,
+    "word": "eingeben, er gibt ein",
+    "definition": "Etwas in den Computer schreiben.",
+    "example": "Gib bitte das Passwort ein.",
+    "ar": "يُدخل / يكتب",
+    "src": ""
+   },
+   {
+    "candidate": 424,
+    "id": "A1|7|der Akku, -s",
+    "level": "A1",
+    "chapter": 7,
+    "word": "der Akku, -s",
+    "definition": "Die Batterie im Handy oder Laptop.",
+    "example": "Mist, mein Akku ist leer.",
+    "ar": "البطارية",
+    "src": "",
+    "omit": "Superseded by a reviewed literal repair on sheet 33.",
+    "supersededBySheet": 33
+   },
+   {
+    "candidate": 435,
+    "id": "A1|7|die Unterschrift, -en",
+    "level": "A1",
+    "chapter": 7,
+    "word": "die Unterschrift, -en",
+    "definition": "Der Name, mit der Hand geschrieben.",
+    "example": "Die Unterschrift steht unten.",
+    "ar": "التوقيع",
+    "src": ""
+   },
+   {
+    "candidate": 446,
+    "id": "A1|7|die Musikgruppe, -n",
+    "level": "A1",
+    "chapter": 7,
+    "word": "die Musikgruppe, -n",
+    "definition": "Eine Band.",
+    "example": "Ab 21 Uhr spielt eine Musikgruppe.",
+    "ar": "الفرقة الموسيقية",
+    "src": ""
+   },
+   {
+    "candidate": 448,
+    "id": "A1|7|das Sommerfest, -e",
+    "level": "A1",
+    "chapter": 7,
+    "word": "das Sommerfest, -e",
+    "definition": "Ein Fest im Sommer.",
+    "example": "Laura möchte mit den Mitarbeitern ein Sommerfest feiern.",
+    "ar": "حفلة الصيف",
+    "src": ""
+   },
+   {
+    "candidate": 479,
+    "id": "A1|7|die Apfelschorle, -n",
+    "level": "A1",
+    "chapter": 7,
+    "word": "die Apfelschorle, -n",
+    "definition": "Apfelsaft mit Mineralwasser.",
+    "example": "Sie trinkt eine Apfelschorle.",
+    "ar": "عصير تفاح بالصودا",
+    "src": ""
+   }
+  ],
+  "status": "delivered",
+  "sourceSize": [
+   1254,
+   1254
+  ]
+ },
+ {
+  "sheet": 5,
+  "cells": [
+   {
+    "candidate": 480,
+    "id": "A1|7|das Sandwich, -es",
+    "level": "A1",
+    "chapter": 7,
+    "word": "das Sandwich, -es",
+    "definition": "Zwei Brotscheiben mit Käse oder Wurst.",
+    "example": "Mittags isst sie ein Sandwich.",
+    "ar": "الساندويتش",
+    "src": ""
+   },
+   {
+    "candidate": 490,
+    "id": "A1|8|der Sportler, -",
+    "level": "A1",
+    "chapter": 8,
+    "word": "der Sportler, -",
+    "definition": "Ein Mann, der viel Sport macht.",
+    "example": "Der Sportler trainiert jeden Tag.",
+    "ar": "الرياضي",
+    "src": ""
+   },
+   {
+    "candidate": 491,
+    "id": "A1|8|die Sportlerin, -nen",
+    "level": "A1",
+    "chapter": 8,
+    "word": "die Sportlerin, -nen",
+    "definition": "Eine Frau, die viel Sport macht.",
+    "example": "Ich war Sportlerin.",
+    "ar": "الرياضية",
+    "src": ""
+   },
+   {
+    "candidate": 494,
+    "id": "A1|8|die Sportschuhe (Pl.)",
+    "level": "A1",
+    "chapter": 8,
+    "word": "die Sportschuhe (Pl.)",
+    "definition": "Schuhe für den Sport.",
+    "example": "Zieh die Sportschuhe an!",
+    "ar": "الكوتشي / الحذاء الرياضي",
+    "src": ""
+   },
+   {
+    "candidate": 495,
+    "id": "A1|8|rausgehen, er geht raus",
+    "level": "A1",
+    "chapter": 8,
+    "word": "rausgehen, er geht raus",
+    "definition": "Nach draußen gehen.",
+    "example": "Geh raus und lauf!",
+    "ar": "يطلع برة",
+    "src": ""
+   },
+   {
+    "candidate": 499,
+    "id": "A1|8|faul",
+    "level": "A1",
+    "chapter": 8,
+    "word": "faul",
+    "definition": "Man will nichts tun.",
+    "example": "In der Freizeit bin ich gern faul.",
+    "ar": "كسلان",
+    "src": ""
+   },
+   {
+    "candidate": 500,
+    "id": "A1|8|müde",
+    "level": "A1",
+    "chapter": 8,
+    "word": "müde",
+    "definition": "Man möchte schlafen.",
+    "example": "Abends bin ich müde.",
+    "ar": "تعبان / عايز ينام",
+    "src": ""
+   },
+   {
+    "candidate": 501,
+    "id": "A1|8|hungrig",
+    "level": "A1",
+    "chapter": 8,
+    "word": "hungrig",
+    "definition": "Man hat Hunger.",
+    "example": "Morgens bin ich richtig hungrig.",
+    "ar": "جعان",
+    "src": ""
+   },
+   {
+    "candidate": 502,
+    "id": "A1|8|die Süßigkeit, -en",
+    "level": "A1",
+    "chapter": 8,
+    "word": "die Süßigkeit, -en",
+    "definition": "Etwas Süßes, z. B. Schokolade oder Bonbons.",
+    "example": "Alle Süßigkeiten gebe ich jetzt Nadine.",
+    "ar": "الحلويات",
+    "src": ""
+   },
+   {
+    "candidate": 513,
+    "id": "A1|8|wiegen",
+    "level": "A1",
+    "chapter": 8,
+    "word": "wiegen",
+    "definition": "Ein bestimmtes Gewicht haben.",
+    "example": "Wie viel wiegst du? – 73 Kilo.",
+    "ar": "يوزن",
+    "src": ""
+   },
+   {
+    "candidate": 516,
+    "id": "A1|8|riechen",
+    "level": "A1",
+    "chapter": 8,
+    "word": "riechen",
+    "definition": "Mit der Nase etwas merken.",
+    "example": "Ich kann nichts riechen.",
+    "ar": "يشم",
+    "src": ""
+   },
+   {
+    "candidate": 517,
+    "id": "A1|8|das Blut (Sg.)",
+    "level": "A1",
+    "chapter": 8,
+    "word": "das Blut (Sg.)",
+    "definition": "Rote Flüssigkeit im Körper.",
+    "example": "Im Labor untersuchen wir das Blut.",
+    "ar": "الدم",
+    "src": ""
+   },
+   {
+    "candidate": 519,
+    "id": "A1|8|die Kopfschmerzen (Pl.)",
+    "level": "A1",
+    "chapter": 8,
+    "word": "die Kopfschmerzen (Pl.)",
+    "definition": "Der Kopf tut weh.",
+    "example": "Frau Fischer hat Kopfschmerzen.",
+    "ar": "صداع",
+    "src": ""
+   },
+   {
+    "candidate": 520,
+    "id": "A1|8|die Halsschmerzen (Pl.)",
+    "level": "A1",
+    "chapter": 8,
+    "word": "die Halsschmerzen (Pl.)",
+    "definition": "Der Hals tut weh.",
+    "example": "Jonas hat Halsschmerzen.",
+    "ar": "وجع الزور",
+    "src": ""
+   },
+   {
+    "candidate": 521,
+    "id": "A1|8|die Bauchschmerzen (Pl.)",
+    "level": "A1",
+    "chapter": 8,
+    "word": "die Bauchschmerzen (Pl.)",
+    "definition": "Der Bauch tut weh.",
+    "example": "Ich habe seit drei Tagen Bauchschmerzen.",
+    "ar": "وجع البطن / مغص",
+    "src": ""
+   },
+   {
+    "candidate": 522,
+    "id": "A1|8|die Rückenschmerzen (Pl.)",
+    "level": "A1",
+    "chapter": 8,
+    "word": "die Rückenschmerzen (Pl.)",
+    "definition": "Der Rücken tut weh.",
+    "example": "Herr Schöpf hat Rückenschmerzen.",
+    "ar": "وجع الضهر",
+    "src": ""
+   }
+  ],
+  "status": "delivered",
+  "sourceSize": [
+   1254,
+   1254
+  ]
+ },
+ {
+  "sheet": 6,
+  "cells": [
+   {
+    "candidate": 523,
+    "id": "A1|8|die Zahnschmerzen (Pl.)",
+    "level": "A1",
+    "chapter": 8,
+    "word": "die Zahnschmerzen (Pl.)",
+    "definition": "Ein Zahn tut weh.",
+    "example": "Ich bin im Urlaub und habe Zahnschmerzen.",
+    "ar": "وجع السنان",
+    "src": ""
+   },
+   {
+    "candidate": 525,
+    "id": "A1|8|Mir ist schlecht.",
+    "level": "A1",
+    "chapter": 8,
+    "word": "Mir ist schlecht.",
+    "definition": "Mein Magen fühlt sich nicht gut an.",
+    "example": "Mir ist so schlecht.",
+    "ar": "حاسس إني تعبان / عايز أرجّع",
+    "src": ""
+   },
+   {
+    "candidate": 526,
+    "id": "A1|8|erkältet sein",
+    "level": "A1",
+    "chapter": 8,
+    "word": "erkältet sein",
+    "definition": "Eine Erkältung haben.",
+    "example": "Ich bin total erkältet.",
+    "ar": "عنده برد",
+    "src": ""
+   },
+   {
+    "candidate": 528,
+    "id": "A1|8|einschlafen, er schläft ein",
+    "level": "A1",
+    "chapter": 8,
+    "word": "einschlafen, er schläft ein",
+    "definition": "Mit dem Schlafen beginnen.",
+    "example": "Ich kann oft nicht einschlafen.",
+    "ar": "ينام / يغلبه النوم",
+    "src": ""
+   },
+   {
+    "candidate": 530,
+    "id": "A1|8|der Unfall, Unfälle",
+    "level": "A1",
+    "chapter": 8,
+    "word": "der Unfall, Unfälle",
+    "definition": "Etwas Schlimmes passiert plötzlich, z. B. im Verkehr.",
+    "example": "Ich hatte einen Unfall mit dem Fahrrad.",
+    "ar": "الحادثة",
+    "src": ""
+   },
+   {
+    "candidate": 531,
+    "id": "A1|8|der/die Verletzte, -n",
+    "level": "A1",
+    "chapter": 8,
+    "word": "der/die Verletzte, -n",
+    "definition": "Eine Person, die verletzt ist.",
+    "example": "Der Notarzt hilft den Verletzten.",
+    "ar": "المصاب",
+    "src": ""
+   },
+   {
+    "candidate": 532,
+    "id": "A1|8|die Wunde, -n",
+    "level": "A1",
+    "chapter": 8,
+    "word": "die Wunde, -n",
+    "definition": "Eine verletzte Stelle an der Haut.",
+    "example": "Ich muss die Wunde sauber machen.",
+    "ar": "الجرح",
+    "src": ""
+   },
+   {
+    "candidate": 534,
+    "id": "A1|8|der Verband, Verbände",
+    "level": "A1",
+    "chapter": 8,
+    "word": "der Verband, Verbände",
+    "definition": "Ein Stoff um eine Wunde.",
+    "example": "Frau Doktor Klimke macht einen Verband.",
+    "ar": "الرباط / الضمادة",
+    "src": ""
+   },
+   {
+    "candidate": 537,
+    "id": "A1|8|der Arztbesuch, -e",
+    "level": "A1",
+    "chapter": 8,
+    "word": "der Arztbesuch, -e",
+    "definition": "Man geht zum Arzt.",
+    "example": "Nach dem Arztbesuch berichtet Frau Pohn.",
+    "ar": "زيارة الدكتور",
+    "src": ""
+   },
+   {
+    "candidate": 538,
+    "id": "A1|8|sich hinlegen",
+    "level": "A1",
+    "chapter": 8,
+    "word": "sich hinlegen",
+    "definition": "Sich auf ein Bett oder Sofa legen.",
+    "example": "Legen Sie sich da hin, bitte.",
+    "ar": "يستلقي / ينام على ضهره",
+    "src": ""
+   },
+   {
+    "candidate": 541,
+    "id": "A1|8|im Bett bleiben",
+    "level": "A1",
+    "chapter": 8,
+    "word": "im Bett bleiben",
+    "definition": "Nicht aufstehen, weil man krank ist.",
+    "example": "Sie müssen im Bett bleiben.",
+    "ar": "يفضل في السرير",
+    "src": ""
+   },
+   {
+    "candidate": 544,
+    "id": "A1|8|ein Medikament nehmen",
+    "level": "A1",
+    "chapter": 8,
+    "word": "ein Medikament nehmen",
+    "definition": "Ein Medikament schlucken oder benutzen.",
+    "example": "Sie müssen das Medikament abends nehmen.",
+    "ar": "ياخد دوا",
+    "src": ""
+   },
+   {
+    "candidate": 545,
+    "id": "A1|8|die Tropfen (Pl.)",
+    "level": "A1",
+    "chapter": 8,
+    "word": "die Tropfen (Pl.)",
+    "definition": "Ein flüssiges Medikament in kleinen Mengen.",
+    "example": "Nehmen Sie zehn Tropfen.",
+    "ar": "النقط",
+    "src": ""
+   },
+   {
+    "candidate": 552,
+    "id": "A1|8|die Hühnersuppe, -n",
+    "level": "A1",
+    "chapter": 8,
+    "word": "die Hühnersuppe, -n",
+    "definition": "Eine Suppe mit Hühnerfleisch.",
+    "example": "Meine Oma sagt: Hühnersuppe hilft.",
+    "ar": "شوربة الفراخ",
+    "src": ""
+   },
+   {
+    "candidate": 553,
+    "id": "A1|8|die Nelke, -n",
+    "level": "A1",
+    "chapter": 8,
+    "word": "die Nelke, -n",
+    "definition": "Ein kleines Gewürz.",
+    "example": "Versuch mal Nelken gegen Zahnschmerzen.",
+    "ar": "القرنفل",
+    "src": ""
+   },
+   {
+    "candidate": 554,
+    "id": "A1|8|der Honig (Sg.)",
+    "level": "A1",
+    "chapter": 8,
+    "word": "der Honig (Sg.)",
+    "definition": "Süß, von Bienen gemacht.",
+    "example": "Trink heiße Milch mit Honig.",
+    "ar": "العسل",
+    "src": ""
+   }
+  ],
+  "status": "delivered",
+  "sourceSize": [
+   1254,
+   1254
+  ]
+ },
+ {
+  "sheet": 7,
+  "cells": [
+   {
+    "candidate": 555,
+    "id": "A1|8|inhalieren",
+    "level": "A1",
+    "chapter": 8,
+    "word": "inhalieren",
+    "definition": "Warme Luft mit Wasser durch die Nase atmen.",
+    "example": "Tee trinken oder inhalieren – nichts hilft.",
+    "ar": "يستنشق بخار",
+    "src": ""
+   },
+   {
+    "candidate": 556,
+    "id": "A1|8|baden",
+    "level": "A1",
+    "chapter": 8,
+    "word": "baden",
+    "definition": "In der Badewanne sitzen und sich waschen.",
+    "example": "Mit Fieber dürfen Sie nicht baden.",
+    "ar": "ياخد حمّام في البانيو",
+    "src": ""
+   },
+   {
+    "candidate": 561,
+    "id": "A1|8|der Notarzt, -ärzte",
+    "level": "A1",
+    "chapter": 8,
+    "word": "der Notarzt, -ärzte",
+    "definition": "Ein Arzt, der bei Unfällen sofort hilft.",
+    "example": "Ein Notarzt muss immer ruhig bleiben.",
+    "ar": "دكتور الطوارئ",
+    "src": ""
+   },
+   {
+    "candidate": 562,
+    "id": "A1|8|die Notärztin, -nen",
+    "level": "A1",
+    "chapter": 8,
+    "word": "die Notärztin, -nen",
+    "definition": "Eine Ärztin, die bei Unfällen sofort hilft.",
+    "example": "Die Notärztin kommt mit dem Krankenwagen.",
+    "ar": "دكتورة الطوارئ",
+    "src": ""
+   },
+   {
+    "candidate": 563,
+    "id": "A1|8|der Physiotherapeut, -en",
+    "level": "A1",
+    "chapter": 8,
+    "word": "der Physiotherapeut, -en",
+    "definition": "Ein Mann, der mit Übungen bei Schmerzen hilft.",
+    "example": "Der Physiotherapeut zeigt mir Übungen.",
+    "ar": "أخصائي العلاج الطبيعي",
+    "src": ""
+   },
+   {
+    "candidate": 564,
+    "id": "A1|8|die Physiotherapeutin, -nen",
+    "level": "A1",
+    "chapter": 8,
+    "word": "die Physiotherapeutin, -nen",
+    "definition": "Eine Frau, die mit Übungen bei Schmerzen hilft.",
+    "example": "Jetzt bin ich selbst Physiotherapeutin.",
+    "ar": "أخصائية العلاج الطبيعي",
+    "src": ""
+   },
+   {
+    "candidate": 565,
+    "id": "A1|8|die Physiotherapie (Sg.)",
+    "level": "A1",
+    "chapter": 8,
+    "word": "die Physiotherapie (Sg.)",
+    "definition": "Behandlung mit Übungen und Bewegung.",
+    "example": "Physiotherapie war für mich immer wichtig.",
+    "ar": "العلاج الطبيعي",
+    "src": ""
+   },
+   {
+    "candidate": 566,
+    "id": "A1|8|der Laborant, -en",
+    "level": "A1",
+    "chapter": 8,
+    "word": "der Laborant, -en",
+    "definition": "Ein Mann, der im Labor Tests macht.",
+    "example": "Der Laborant untersucht das Blut.",
+    "ar": "فنّي المعمل",
+    "src": ""
+   },
+   {
+    "candidate": 567,
+    "id": "A1|8|die Laborantin, -nen",
+    "level": "A1",
+    "chapter": 8,
+    "word": "die Laborantin, -nen",
+    "definition": "Eine Frau, die im Labor Tests macht.",
+    "example": "Ich bin Laborantin.",
+    "ar": "فنّية المعمل",
+    "src": ""
+   },
+   {
+    "candidate": 568,
+    "id": "A1|8|das Labor, -e",
+    "level": "A1",
+    "chapter": 8,
+    "word": "das Labor, -e",
+    "definition": "Ein Raum für Tests und Untersuchungen.",
+    "example": "Im Labor untersuchen wir das Blut.",
+    "ar": "المعمل",
+    "src": ""
+   },
+   {
+    "candidate": 576,
+    "id": "A1|8|zumachen",
+    "level": "A1",
+    "chapter": 8,
+    "word": "zumachen",
+    "definition": "Schließen.",
+    "example": "Mach bitte die Tür zu.",
+    "ar": "يقفل",
+    "src": ""
+   },
+   {
+    "candidate": 577,
+    "id": "A1|8|die Tafel, -n",
+    "level": "A1",
+    "chapter": 8,
+    "word": "die Tafel, -n",
+    "definition": "Daran schreibt der Lehrer im Kursraum.",
+    "example": "Komm bitte an die Tafel.",
+    "ar": "السبّورة",
+    "src": ""
+   },
+   {
+    "candidate": 579,
+    "id": "A1|8|vorlesen, er liest vor",
+    "level": "A1",
+    "chapter": 8,
+    "word": "vorlesen, er liest vor",
+    "definition": "Einen Text laut für andere lesen.",
+    "example": "Lies bitte den Text vor.",
+    "ar": "يقرا بصوت عالي",
+    "src": ""
+   },
+   {
+    "candidate": 581,
+    "id": "A1|8|rauchen",
+    "level": "A1",
+    "chapter": 8,
+    "word": "rauchen",
+    "definition": "Zigaretten benutzen.",
+    "example": "Rauchen Sie nicht!",
+    "ar": "يدخّن",
+    "src": ""
+   },
+   {
+    "candidate": 586,
+    "id": "A1|8|die Chips (Pl.)",
+    "level": "A1",
+    "chapter": 8,
+    "word": "die Chips (Pl.)",
+    "definition": "Dünne, salzige Kartoffelscheiben.",
+    "example": "Annika räumt Schokolade und Chips weg.",
+    "ar": "الشيبسي",
+    "src": ""
+   },
+   {
+    "candidate": 587,
+    "id": "A1|8|wegräumen",
+    "level": "A1",
+    "chapter": 8,
+    "word": "wegräumen",
+    "definition": "Etwas an einen anderen Platz bringen.",
+    "example": "Sie räumt die Süßigkeiten weg.",
+    "ar": "يشيل / يرتّب",
+    "src": ""
+   }
+  ],
+  "status": "delivered",
+  "sourceSize": [
+   1254,
+   1254
+  ]
+ },
+ {
+  "sheet": 8,
+  "cells": [
+   {
+    "candidate": 597,
+    "id": "A1|9|das Kinderzimmer, -",
+    "level": "A1",
+    "chapter": 9,
+    "word": "das Kinderzimmer, -",
+    "definition": "Das Zimmer für die Kinder.",
+    "example": "Im Kinderzimmer liegen viele Spielsachen.",
+    "ar": "أوضة الأطفال",
+    "src": ""
+   },
+   {
+    "candidate": 598,
+    "id": "A1|9|das Arbeitszimmer, -",
+    "level": "A1",
+    "chapter": 9,
+    "word": "das Arbeitszimmer, -",
+    "definition": "Ein Zimmer zum Arbeiten mit Schreibtisch.",
+    "example": "Mein Lieblingsort ist das Arbeitszimmer.",
+    "ar": "أوضة المكتب",
+    "src": ""
+   },
+   {
+    "candidate": 599,
+    "id": "A1|9|das Esszimmer, -",
+    "level": "A1",
+    "chapter": 9,
+    "word": "das Esszimmer, -",
+    "definition": "Ein Zimmer zum Essen.",
+    "example": "Im Esszimmer steht ein großer Tisch.",
+    "ar": "أوضة السفرة",
+    "src": ""
+   },
+   {
+    "candidate": 600,
+    "id": "A1|9|die Dusche, -n",
+    "level": "A1",
+    "chapter": 9,
+    "word": "die Dusche, -n",
+    "definition": "Dort wäscht man sich unter Wasser.",
+    "example": "Im Bad gibt es eine Dusche.",
+    "ar": "الدش",
+    "src": ""
+   },
+   {
+    "candidate": 601,
+    "id": "A1|9|die Toilette, -n",
+    "level": "A1",
+    "chapter": 9,
+    "word": "die Toilette, -n",
+    "definition": "Das WC.",
+    "example": "Die Toilette ist neben dem Bad.",
+    "ar": "التواليت",
+    "src": ""
+   },
+   {
+    "candidate": 602,
+    "id": "A1|9|die Terrasse, -n",
+    "level": "A1",
+    "chapter": 9,
+    "word": "die Terrasse, -n",
+    "definition": "Ein Platz draußen am Haus, meistens unten.",
+    "example": "Gerne mit Balkon oder Terrasse!",
+    "ar": "التراس",
+    "src": ""
+   },
+   {
+    "candidate": 603,
+    "id": "A1|9|die Treppe, -n",
+    "level": "A1",
+    "chapter": 9,
+    "word": "die Treppe, -n",
+    "definition": "Damit geht man nach oben und unten.",
+    "example": "Die Treppen sind aus Holz.",
+    "ar": "السلّم",
+    "src": ""
+   },
+   {
+    "candidate": 604,
+    "id": "A1|9|die Decke, -n",
+    "level": "A1",
+    "chapter": 9,
+    "word": "die Decke, -n",
+    "definition": "Oben im Zimmer.",
+    "example": "Die Altbauwohnung hat hohe Decken.",
+    "ar": "السقف",
+    "src": ""
+   },
+   {
+    "candidate": 605,
+    "id": "A1|9|das Erdgeschoss, -e",
+    "level": "A1",
+    "chapter": 9,
+    "word": "das Erdgeschoss, -e",
+    "definition": "Die Etage unten auf der Straße.",
+    "example": "Das Zimmer ist im Erdgeschoss.",
+    "ar": "الدور الأرضي",
+    "src": "",
+    "omit": "A generic house doorway cannot distinguish the ground floor without a label or diagram."
+   },
+   {
+    "candidate": 609,
+    "id": "A1|9|das Licht, -er",
+    "level": "A1",
+    "chapter": 9,
+    "word": "das Licht, -er",
+    "definition": "Hell durch Sonne oder Lampe.",
+    "example": "Mach bitte das Licht an.",
+    "ar": "النور",
+    "src": ""
+   },
+   {
+    "candidate": 610,
+    "id": "A1|9|der Spiegel, -",
+    "level": "A1",
+    "chapter": 9,
+    "word": "der Spiegel, -",
+    "definition": "Darin sieht man sich selbst.",
+    "example": "Der Spiegel hängt im Bad.",
+    "ar": "المراية",
+    "src": ""
+   },
+   {
+    "candidate": 611,
+    "id": "A1|9|der Vorhang, Vorhänge",
+    "level": "A1",
+    "chapter": 9,
+    "word": "der Vorhang, Vorhänge",
+    "definition": "Stoff vor dem Fenster.",
+    "example": "Der Vorhang ist blau.",
+    "ar": "الستارة",
+    "src": ""
+   },
+   {
+    "candidate": 612,
+    "id": "A1|9|der Backofen, -öfen",
+    "level": "A1",
+    "chapter": 9,
+    "word": "der Backofen, -öfen",
+    "definition": "Darin backt man Kuchen oder Pizza.",
+    "example": "Der Kuchen ist im Backofen.",
+    "ar": "الفرن",
+    "src": ""
+   },
+   {
+    "candidate": 613,
+    "id": "A1|9|die Spülmaschine, -n",
+    "level": "A1",
+    "chapter": 9,
+    "word": "die Spülmaschine, -n",
+    "definition": "Sie wäscht das Geschirr.",
+    "example": "Die Spülmaschine ist kaputt.",
+    "ar": "غسالة الأطباق",
+    "src": ""
+   },
+   {
+    "candidate": 614,
+    "id": "A1|9|die Kaffeemaschine, -n",
+    "level": "A1",
+    "chapter": 9,
+    "word": "die Kaffeemaschine, -n",
+    "definition": "Sie macht Kaffee.",
+    "example": "Die Kaffeemaschine ist neu.",
+    "ar": "ماكينة القهوة",
+    "src": ""
+   },
+   {
+    "candidate": 615,
+    "id": "A1|9|die Mikrowelle, -n",
+    "level": "A1",
+    "chapter": 9,
+    "word": "die Mikrowelle, -n",
+    "definition": "Ein Gerät, das Essen schnell warm macht.",
+    "example": "Ich mache die Suppe in der Mikrowelle warm.",
+    "ar": "الميكروويف",
+    "src": ""
+   }
+  ],
+  "status": "delivered",
+  "sourceSize": [
+   1254,
+   1254
+  ]
+ },
+ {
+  "sheet": 9,
+  "cells": [
+   {
+    "candidate": 621,
+    "id": "A1|9|aufhängen",
+    "level": "A1",
+    "chapter": 9,
+    "word": "aufhängen",
+    "definition": "Etwas an eine Wand hängen.",
+    "example": "Wir hängen einen Zettel auf.",
+    "ar": "يعلّق",
+    "src": ""
+   },
+   {
+    "candidate": 626,
+    "id": "A1|9|ziehen (in)",
+    "level": "A1",
+    "chapter": 9,
+    "word": "ziehen (in)",
+    "definition": "Hier: in eine Wohnung oder Stadt gehen und dort wohnen.",
+    "example": "Sie ziehen in die Wohnung oben.",
+    "ar": "ينتقل إلى",
+    "src": ""
+   },
+   {
+    "candidate": 627,
+    "id": "A1|9|zusammen wohnen",
+    "level": "A1",
+    "chapter": 9,
+    "word": "zusammen wohnen",
+    "definition": "In einer Wohnung zusammen leben.",
+    "example": "Wir möchten endlich zusammen wohnen.",
+    "ar": "يسكنوا مع بعض",
+    "src": ""
+   },
+   {
+    "candidate": 641,
+    "id": "A1|9|das Hochhaus, -häuser",
+    "level": "A1",
+    "chapter": 9,
+    "word": "das Hochhaus, -häuser",
+    "definition": "Ein sehr hohes Haus mit vielen Etagen.",
+    "example": "Im Hochhaus sehe ich die ganze Stadt.",
+    "ar": "البرج / عمارة عالية",
+    "src": ""
+   },
+   {
+    "candidate": 642,
+    "id": "A1|9|das Reihenhaus, -häuser",
+    "level": "A1",
+    "chapter": 9,
+    "word": "das Reihenhaus, -häuser",
+    "definition": "Viele gleiche Häuser in einer Reihe.",
+    "example": "Wir wohnen in einem Reihenhaus mit Garten.",
+    "ar": "بيت ضمن صف بيوت",
+    "src": ""
+   },
+   {
+    "candidate": 643,
+    "id": "A1|9|das Einfamilienhaus, -häuser",
+    "level": "A1",
+    "chapter": 9,
+    "word": "das Einfamilienhaus, -häuser",
+    "definition": "Ein Haus für eine Familie.",
+    "example": "Wir träumen von einem Einfamilienhaus.",
+    "ar": "فيلا / بيت لعيلة واحدة",
+    "src": ""
+   },
+   {
+    "candidate": 644,
+    "id": "A1|9|die Altbauwohnung, -en",
+    "level": "A1",
+    "chapter": 9,
+    "word": "die Altbauwohnung, -en",
+    "definition": "Eine Wohnung in einem alten Haus.",
+    "example": "Die Altbauwohnung hat hohe Decken.",
+    "ar": "شقة في عمارة قديمة",
+    "src": ""
+   },
+   {
+    "candidate": 645,
+    "id": "A1|9|das Fachwerkhaus, -häuser",
+    "level": "A1",
+    "chapter": 9,
+    "word": "das Fachwerkhaus, -häuser",
+    "definition": "Ein altes Haus mit Holzbalken in der Wand.",
+    "example": "Das Fachwerkhaus ist klein, aber gemütlich.",
+    "ar": "بيت خشبي قديم",
+    "src": ""
+   },
+   {
+    "candidate": 646,
+    "id": "A1|9|das Loft, -s",
+    "level": "A1",
+    "chapter": 9,
+    "word": "das Loft, -s",
+    "definition": "Eine große Wohnung mit einem großen Raum.",
+    "example": "Im Loft ist alles in einem Raum.",
+    "ar": "لوفت / شقة مفتوحة",
+    "src": ""
+   },
+   {
+    "candidate": 647,
+    "id": "A1|9|das Apartment, -s",
+    "level": "A1",
+    "chapter": 9,
+    "word": "das Apartment, -s",
+    "definition": "Eine kleine Wohnung.",
+    "example": "Der Student wohnt in einem Apartment.",
+    "ar": "شقة صغيرة / ستوديو",
+    "src": ""
+   },
+   {
+    "candidate": 648,
+    "id": "A1|9|die WG, -s (Wohngemeinschaft)",
+    "level": "A1",
+    "chapter": 9,
+    "word": "die WG, -s (Wohngemeinschaft)",
+    "definition": "Mehrere Personen teilen eine Wohnung.",
+    "example": "Zurzeit habe ich ein Zimmer in einer WG.",
+    "ar": "سكن مشترك",
+    "src": ""
+   },
+   {
+    "candidate": 650,
+    "id": "A1|9|das Holz (Sg.)",
+    "level": "A1",
+    "chapter": 9,
+    "word": "das Holz (Sg.)",
+    "definition": "Material von Bäumen.",
+    "example": "Die Treppen sind aus Holz.",
+    "ar": "الخشب",
+    "src": ""
+   },
+   {
+    "candidate": 651,
+    "id": "A1|9|der Baum, Bäume",
+    "level": "A1",
+    "chapter": 9,
+    "word": "der Baum, Bäume",
+    "definition": "Eine große Pflanze mit Stamm und Blättern.",
+    "example": "Ich habe Blick auf die Bäume vor dem Haus.",
+    "ar": "الشجرة",
+    "src": ""
+   },
+   {
+    "candidate": 653,
+    "id": "A1|9|orange",
+    "level": "A1",
+    "chapter": 9,
+    "word": "orange",
+    "definition": "Die Farbe von Orangen.",
+    "example": "Die Lampe ist orange.",
+    "ar": "برتقالي",
+    "src": ""
+   },
+   {
+    "candidate": 654,
+    "id": "A1|9|lila",
+    "level": "A1",
+    "chapter": 9,
+    "word": "lila",
+    "definition": "Mischung aus Rot und Blau.",
+    "example": "Das Kissen ist lila.",
+    "ar": "بنفسجي / موف",
+    "src": ""
+   },
+   {
+    "candidate": 655,
+    "id": "A1|9|rosa",
+    "level": "A1",
+    "chapter": 9,
+    "word": "rosa",
+    "definition": "Helles Rot.",
+    "example": "Das Kinderzimmer ist rosa.",
+    "ar": "بمبي",
+    "src": ""
+   }
+  ],
+  "status": "delivered",
+  "sourceSize": [
+   1254,
+   1254
+  ]
+ },
+ {
+  "sheet": 10,
+  "cells": [
+   {
+    "candidate": 656,
+    "id": "A1|9|bunt",
+    "level": "A1",
+    "chapter": 9,
+    "word": "bunt",
+    "definition": "Mit vielen Farben.",
+    "example": "Der Teppich ist bunt.",
+    "ar": "ملوّن",
+    "src": ""
+   },
+   {
+    "candidate": 657,
+    "id": "A1|9|die Einweihungsfeier, -n",
+    "level": "A1",
+    "chapter": 9,
+    "word": "die Einweihungsfeier, -n",
+    "definition": "Ein Fest in der neuen Wohnung.",
+    "example": "Am Samstag ist unsere Einweihungsfeier.",
+    "ar": "حفلة الشقة الجديدة",
+    "src": ""
+   },
+   {
+    "candidate": 670,
+    "id": "A1|9|das Heft, -e",
+    "level": "A1",
+    "chapter": 9,
+    "word": "das Heft, -e",
+    "definition": "Ein kleines Buch zum Schreiben.",
+    "example": "Sammeln Sie die Sätze in einem Heft.",
+    "ar": "الكشكول",
+    "src": ""
+   },
+   {
+    "candidate": 675,
+    "id": "A1|10|die Künstlerin, -nen",
+    "level": "A1",
+    "chapter": 10,
+    "word": "die Künstlerin, -nen",
+    "definition": "Eine Frau, die Kunst macht.",
+    "example": "Die Künstlerin hat ein Atelier.",
+    "ar": "الفنانة",
+    "src": ""
+   },
+   {
+    "candidate": 676,
+    "id": "A1|10|der Segellehrer, -",
+    "level": "A1",
+    "chapter": 10,
+    "word": "der Segellehrer, -",
+    "definition": "Ein Mann, der Segeln unterrichtet.",
+    "example": "Der Segellehrer ist immer draußen.",
+    "ar": "مدرّب الإبحار الشراعي",
+    "src": ""
+   },
+   {
+    "candidate": 677,
+    "id": "A1|10|die Segellehrerin, -nen",
+    "level": "A1",
+    "chapter": 10,
+    "word": "die Segellehrerin, -nen",
+    "definition": "Eine Frau, die Segeln unterrichtet.",
+    "example": "Julia Wimmer ist Segellehrerin.",
+    "ar": "مدرّبة الإبحار الشراعي",
+    "src": ""
+   },
+   {
+    "candidate": 690,
+    "id": "A1|10|segeln",
+    "level": "A1",
+    "chapter": 10,
+    "word": "segeln",
+    "definition": "Mit einem Boot mit Wind fahren.",
+    "example": "Im Sommer segeln wir auf dem See.",
+    "ar": "يبحر بمركب شراعي",
+    "src": ""
+   },
+   {
+    "candidate": 691,
+    "id": "A1|10|Unterricht geben",
+    "level": "A1",
+    "chapter": 10,
+    "word": "Unterricht geben",
+    "definition": "Lehren.",
+    "example": "Der Lehrer gibt Deutschunterricht.",
+    "ar": "يدّي درس",
+    "src": ""
+   },
+   {
+    "candidate": 692,
+    "id": "A1|10|verkaufen",
+    "level": "A1",
+    "chapter": 10,
+    "word": "verkaufen",
+    "definition": "Etwas gegen Geld geben.",
+    "example": "Die Händler verkaufen ihre Waren.",
+    "ar": "يبيع",
+    "src": ""
+   },
+   {
+    "candidate": 693,
+    "id": "A1|10|die Ware, -n",
+    "level": "A1",
+    "chapter": 10,
+    "word": "die Ware, -n",
+    "definition": "Ein Produkt, das man verkauft.",
+    "example": "Auf dem Markt gibt es viele Waren.",
+    "ar": "البضاعة",
+    "src": ""
+   },
+   {
+    "candidate": 698,
+    "id": "A1|10|im Team arbeiten",
+    "level": "A1",
+    "chapter": 10,
+    "word": "im Team arbeiten",
+    "definition": "Zusammen mit anderen arbeiten.",
+    "example": "Ich arbeite gern im Team.",
+    "ar": "يشتغل في فريق",
+    "src": ""
+   },
+   {
+    "candidate": 703,
+    "id": "A1|10|die Werkstatt, -stätten",
+    "level": "A1",
+    "chapter": 10,
+    "word": "die Werkstatt, -stätten",
+    "definition": "Dort repariert man Autos oder macht Dinge.",
+    "example": "Das Auto ist in der Werkstatt.",
+    "ar": "الورشة",
+    "src": ""
+   },
+   {
+    "candidate": 704,
+    "id": "A1|10|das Atelier, -s",
+    "level": "A1",
+    "chapter": 10,
+    "word": "das Atelier, -s",
+    "definition": "Der Arbeitsraum von einem Künstler.",
+    "example": "Die Künstlerin arbeitet in ihrem Atelier.",
+    "ar": "المرسم / الأتيليه",
+    "src": ""
+   },
+   {
+    "candidate": 713,
+    "id": "A1|10|das Bewerbungsgespräch, -e",
+    "level": "A1",
+    "chapter": 10,
+    "word": "das Bewerbungsgespräch, -e",
+    "definition": "Ein Gespräch mit der Firma über die Stelle.",
+    "example": "Max wartet vor dem Bewerbungsgespräch.",
+    "ar": "مقابلة العمل",
+    "src": ""
+   },
+   {
+    "candidate": 732,
+    "id": "A1|10|das Oktoberfest (Sg.)",
+    "level": "A1",
+    "chapter": 10,
+    "word": "das Oktoberfest (Sg.)",
+    "definition": "Ein großes Volksfest in München.",
+    "example": "Das Oktoberfest gibt es seit 1810.",
+    "ar": "مهرجان أكتوبر",
+    "src": ""
+   },
+   {
+    "candidate": 733,
+    "id": "A1|10|der Weihnachtsmarkt, -märkte",
+    "level": "A1",
+    "chapter": 10,
+    "word": "der Weihnachtsmarkt, -märkte",
+    "definition": "Ein Markt in der Zeit vor Weihnachten.",
+    "example": "Der Dresdner Weihnachtsmarkt ist sehr alt.",
+    "ar": "سوق الكريسماس",
+    "src": ""
+   }
+  ],
+  "status": "delivered",
+  "sourceSize": [
+   1254,
+   1254
+  ]
+ },
+ {
+  "sheet": 11,
+  "cells": [
+   {
+    "candidate": 734,
+    "id": "A1|10|das Karussell, -s",
+    "level": "A1",
+    "chapter": 10,
+    "word": "das Karussell, -s",
+    "definition": "Man sitzt darauf und es dreht sich.",
+    "example": "Auf dem Oktoberfest fährt man Karussell.",
+    "ar": "المراجيح الدوّارة",
+    "src": ""
+   },
+   {
+    "candidate": 737,
+    "id": "A1|10|die Oper, -n",
+    "level": "A1",
+    "chapter": 10,
+    "word": "die Oper, -n",
+    "definition": "Ein Theaterstück mit Musik und Gesang.",
+    "example": "Die Zuschauer sehen berühmte Opern.",
+    "ar": "الأوبرا",
+    "src": ""
+   },
+   {
+    "candidate": 740,
+    "id": "A1|10|der Stollen, -",
+    "level": "A1",
+    "chapter": 10,
+    "word": "der Stollen, -",
+    "definition": "Ein typischer Kuchen zu Weihnachten.",
+    "example": "Eine Spezialität ist der Dresdner Stollen.",
+    "ar": "كيكة الكريسماس الألمانية",
+    "src": ""
+   },
+   {
+    "candidate": 741,
+    "id": "A1|10|das Kostüm, -e",
+    "level": "A1",
+    "chapter": 10,
+    "word": "das Kostüm, -e",
+    "definition": "Besondere Kleidung für eine Rolle.",
+    "example": "Mit dem Kostüm bin ich nicht glücklich.",
+    "ar": "الزي التنكري",
+    "src": ""
+   },
+   {
+    "candidate": 748,
+    "id": "A1|10|der Spaziergang, -gänge",
+    "level": "A1",
+    "chapter": 10,
+    "word": "der Spaziergang, -gänge",
+    "definition": "Ein langsamer Weg zu Fuß zum Spaß.",
+    "example": "Ich habe einen Spaziergang gemacht.",
+    "ar": "التمشية",
+    "src": ""
+   },
+   {
+    "candidate": 749,
+    "id": "A1|10|der Tennisplatz, -plätze",
+    "level": "A1",
+    "chapter": 10,
+    "word": "der Tennisplatz, -plätze",
+    "definition": "Dort spielt man Tennis.",
+    "example": "Florian ist zum Tennisplatz gefahren.",
+    "ar": "ملعب التنس",
+    "src": ""
+   },
+   {
+    "candidate": 761,
+    "id": "A1|11|das Kleidungsstück, -e",
+    "level": "A1",
+    "chapter": 11,
+    "word": "das Kleidungsstück, -e",
+    "definition": "Ein Teil der Kleidung, z. B. eine Hose.",
+    "example": "Welche Kleidungsstücke nimmt Max?",
+    "ar": "قطعة لبس",
+    "src": ""
+   },
+   {
+    "candidate": 762,
+    "id": "A1|11|das Sweatshirt, -s",
+    "level": "A1",
+    "chapter": 11,
+    "word": "das Sweatshirt, -s",
+    "definition": "Ein bequemer Pullover aus Baumwolle.",
+    "example": "Das Sweatshirt ist sehr bequem.",
+    "ar": "السويت شيرت",
+    "src": ""
+   },
+   {
+    "candidate": 763,
+    "id": "A1|11|die Krawatte, -n",
+    "level": "A1",
+    "chapter": 11,
+    "word": "die Krawatte, -n",
+    "definition": "Ein langes Tuch um den Hals zum Hemd.",
+    "example": "Ich trage einen Anzug, aber keine Krawatte.",
+    "ar": "الكرافتة",
+    "src": ""
+   },
+   {
+    "candidate": 764,
+    "id": "A1|11|der Hut, Hüte",
+    "level": "A1",
+    "chapter": 11,
+    "word": "der Hut, Hüte",
+    "definition": "Man trägt ihn auf dem Kopf.",
+    "example": "Wie findest du diesen Hut?",
+    "ar": "البرنيطة",
+    "src": ""
+   },
+   {
+    "candidate": 765,
+    "id": "A1|11|das Tuch, Tücher",
+    "level": "A1",
+    "chapter": 11,
+    "word": "das Tuch, Tücher",
+    "definition": "Ein Stück Stoff, z. B. für den Hals.",
+    "example": "Das Tuch ist bunt.",
+    "ar": "المنديل / الإيشارب",
+    "src": ""
+   },
+   {
+    "candidate": 766,
+    "id": "A1|11|der Schmuck (Sg.)",
+    "level": "A1",
+    "chapter": 11,
+    "word": "der Schmuck (Sg.)",
+    "definition": "Ringe, Ketten, Ohrringe.",
+    "example": "Sie trägt keinen Schmuck.",
+    "ar": "الإكسسوار / المجوهرات",
+    "src": ""
+   },
+   {
+    "candidate": 770,
+    "id": "A1|11|kaputt",
+    "level": "A1",
+    "chapter": 11,
+    "word": "kaputt",
+    "definition": "Nicht mehr in Ordnung.",
+    "example": "Meine Schuhe sind kaputt.",
+    "ar": "بايظ / مقطوع",
+    "src": ""
+   },
+   {
+    "candidate": 781,
+    "id": "A1|11|shoppen",
+    "level": "A1",
+    "chapter": 11,
+    "word": "shoppen",
+    "definition": "Zum Spaß einkaufen.",
+    "example": "Am Samstag gehe ich shoppen.",
+    "ar": "يعمل شوبنج",
+    "src": ""
+   },
+   {
+    "candidate": 782,
+    "id": "A1|11|im Internet bestellen",
+    "level": "A1",
+    "chapter": 11,
+    "word": "im Internet bestellen",
+    "definition": "Online etwas kaufen.",
+    "example": "Die Sachen habe ich im Internet bestellt.",
+    "ar": "يطلب من النت",
+    "src": ""
+   },
+   {
+    "candidate": 783,
+    "id": "A1|11|zurückschicken",
+    "level": "A1",
+    "chapter": 11,
+    "word": "zurückschicken",
+    "definition": "Etwas wieder zum Verkäufer schicken.",
+    "example": "Ich habe alles zurückgeschickt.",
+    "ar": "يرجّع (بالبريد)",
+    "src": "",
+    "omit": "Packing a box cannot distinguish returning something from sending it for the first time."
+   }
+  ],
+  "status": "delivered",
+  "sourceSize": [
+   1254,
+   1254
+  ]
+ },
+ {
+  "sheet": 12,
+  "cells": [
+   {
+    "candidate": 788,
+    "id": "A1|11|das Kleidergeschäft, -e",
+    "level": "A1",
+    "chapter": 11,
+    "word": "das Kleidergeschäft, -e",
+    "definition": "Ein Geschäft für Kleidung.",
+    "example": "Ich kaufe Kleidung im Kleidergeschäft.",
+    "ar": "محل الهدوم",
+    "src": ""
+   },
+   {
+    "candidate": 789,
+    "id": "A1|11|der Secondhand-Laden, -Läden",
+    "level": "A1",
+    "chapter": 11,
+    "word": "der Secondhand-Laden, -Läden",
+    "definition": "Dort kauft man gebrauchte Kleidung.",
+    "example": "Im Secondhand-Laden ist alles billig.",
+    "ar": "محل الهدوم المستعملة",
+    "src": ""
+   },
+   {
+    "candidate": 790,
+    "id": "A1|11|der Buchladen, -läden",
+    "level": "A1",
+    "chapter": 11,
+    "word": "der Buchladen, -läden",
+    "definition": "Ein Geschäft für Bücher.",
+    "example": "Bücher kaufe ich im Buchladen.",
+    "ar": "المكتبة (محل كتب)",
+    "src": ""
+   },
+   {
+    "candidate": 791,
+    "id": "A1|11|der Schuhladen, -läden",
+    "level": "A1",
+    "chapter": 11,
+    "word": "der Schuhladen, -läden",
+    "definition": "Ein Geschäft für Schuhe.",
+    "example": "Im Schuhladen gibt es Schuhe in allen Farben.",
+    "ar": "محل الجزم",
+    "src": ""
+   },
+   {
+    "candidate": 797,
+    "id": "A1|11|das Untergeschoss, -e",
+    "level": "A1",
+    "chapter": 11,
+    "word": "das Untergeschoss, -e",
+    "definition": "Die Etage unter der Erde.",
+    "example": "Lebensmittel gibt es im Untergeschoss.",
+    "ar": "البدروم",
+    "src": ""
+   },
+   {
+    "candidate": 799,
+    "id": "A1|11|der Kugelschreiber, -",
+    "level": "A1",
+    "chapter": 11,
+    "word": "der Kugelschreiber, -",
+    "definition": "Ein Stift mit Tinte.",
+    "example": "Ich brauche einen Kugelschreiber.",
+    "ar": "القلم الجاف",
+    "src": ""
+   },
+   {
+    "candidate": 800,
+    "id": "A1|11|der Bleistift, -e",
+    "level": "A1",
+    "chapter": 11,
+    "word": "der Bleistift, -e",
+    "definition": "Ein Stift aus Holz zum Schreiben.",
+    "example": "Sie brauchen einen Bleistift und Papier.",
+    "ar": "القلم الرصاص",
+    "src": ""
+   },
+   {
+    "candidate": 801,
+    "id": "A1|11|das Papier, -e",
+    "level": "A1",
+    "chapter": 11,
+    "word": "das Papier, -e",
+    "definition": "Darauf schreibt man.",
+    "example": "Haben Sie Papier?",
+    "ar": "الورق",
+    "src": ""
+   },
+   {
+    "candidate": 802,
+    "id": "A1|11|die Zeitschrift, -en",
+    "level": "A1",
+    "chapter": 11,
+    "word": "die Zeitschrift, -en",
+    "definition": "Ein Magazin, z. B. jede Woche.",
+    "example": "Ich lese eine Zeitschrift über Mode.",
+    "ar": "المجلة",
+    "src": ""
+   },
+   {
+    "candidate": 803,
+    "id": "A1|11|die Kosmetik (Sg.)",
+    "level": "A1",
+    "chapter": 11,
+    "word": "die Kosmetik (Sg.)",
+    "definition": "Produkte für Haut und Haare.",
+    "example": "Kosmetik gibt es im Erdgeschoss.",
+    "ar": "مستحضرات التجميل",
+    "src": ""
+   },
+   {
+    "candidate": 804,
+    "id": "A1|11|das Parfüm, -s",
+    "level": "A1",
+    "chapter": 11,
+    "word": "das Parfüm, -s",
+    "definition": "Etwas mit gutem Geruch für die Haut.",
+    "example": "Frau Wagner kauft ein Parfüm.",
+    "ar": "البرفان",
+    "src": ""
+   },
+   {
+    "candidate": 805,
+    "id": "A1|11|das Duschgel, -s",
+    "level": "A1",
+    "chapter": 11,
+    "word": "das Duschgel, -s",
+    "definition": "Seife für die Dusche.",
+    "example": "Ich brauche noch Duschgel.",
+    "ar": "شاور جل",
+    "src": ""
+   },
+   {
+    "candidate": 806,
+    "id": "A1|11|die Kamera, -s",
+    "level": "A1",
+    "chapter": 11,
+    "word": "die Kamera, -s",
+    "definition": "Ein Gerät zum Fotografieren.",
+    "example": "Seine Kamera ist kaputt.",
+    "ar": "الكاميرا",
+    "src": ""
+   },
+   {
+    "candidate": 807,
+    "id": "A1|11|das Fotozubehör (Sg.)",
+    "level": "A1",
+    "chapter": 11,
+    "word": "das Fotozubehör (Sg.)",
+    "definition": "Dinge für Kameras und Fotos.",
+    "example": "Fotozubehör finden Sie im vierten Stock.",
+    "ar": "إكسسوارات التصوير",
+    "src": ""
+   },
+   {
+    "candidate": 808,
+    "id": "A1|11|der USB-Stick, -s",
+    "level": "A1",
+    "chapter": 11,
+    "word": "der USB-Stick, -s",
+    "definition": "Ein kleiner Datenspeicher.",
+    "example": "Der USB-Stick ist im Angebot.",
+    "ar": "الفلاشة",
+    "src": ""
+   },
+   {
+    "candidate": 812,
+    "id": "A1|11|die Damenmode (Sg.)",
+    "level": "A1",
+    "chapter": 11,
+    "word": "die Damenmode (Sg.)",
+    "definition": "Kleidung für Frauen.",
+    "example": "Damenmode ist im ersten Stock.",
+    "ar": "ملابس حريمي",
+    "src": ""
+   }
+  ],
+  "status": "delivered",
+  "sourceSize": [
+   1254,
+   1254
+  ]
+ },
+ {
+  "sheet": 13,
+  "cells": [
+   {
+    "candidate": 813,
+    "id": "A1|11|die Herrenmode (Sg.)",
+    "level": "A1",
+    "chapter": 11,
+    "word": "die Herrenmode (Sg.)",
+    "definition": "Kleidung für Männer.",
+    "example": "Herrenmode finden Sie im zweiten Stock.",
+    "ar": "ملابس رجالي",
+    "src": ""
+   },
+   {
+    "candidate": 814,
+    "id": "A1|11|die Kinderabteilung, -en",
+    "level": "A1",
+    "chapter": 11,
+    "word": "die Kinderabteilung, -en",
+    "definition": "Der Bereich für Kinder.",
+    "example": "Spielsachen gibt es in der Kinderabteilung.",
+    "ar": "قسم الأطفال",
+    "src": ""
+   },
+   {
+    "candidate": 818,
+    "id": "A1|11|geschlossen",
+    "level": "A1",
+    "chapter": 11,
+    "word": "geschlossen",
+    "definition": "Nicht offen.",
+    "example": "Sonntags ist der Laden geschlossen.",
+    "ar": "مقفول",
+    "src": "",
+    "omit": "Superseded by a reviewed literal repair on sheet 33.",
+    "supersededBySheet": 33
+   },
+   {
+    "candidate": 830,
+    "id": "A1|11|der Fotograf, -en",
+    "level": "A1",
+    "chapter": 11,
+    "word": "der Fotograf, -en",
+    "definition": "Ein Mann, der beruflich fotografiert.",
+    "example": "In Berlin gibt es 400 Fotografen.",
+    "ar": "المصوّر",
+    "src": ""
+   },
+   {
+    "candidate": 831,
+    "id": "A1|11|die Fotografin, -nen",
+    "level": "A1",
+    "chapter": 11,
+    "word": "die Fotografin, -nen",
+    "definition": "Eine Frau, die beruflich fotografiert.",
+    "example": "Die Fotografin macht Bilder für Zeitschriften.",
+    "ar": "المصوّرة",
+    "src": ""
+   },
+   {
+    "candidate": 838,
+    "id": "A1|11|der Hof, Höfe",
+    "level": "A1",
+    "chapter": 11,
+    "word": "der Hof, Höfe",
+    "definition": "Ein Platz zwischen Häusern.",
+    "example": "Die acht Höfe sind aus dem Jahr 1907.",
+    "ar": "الحوش / الفناء",
+    "src": ""
+   },
+   {
+    "candidate": 842,
+    "id": "A1|11|die Hochzeit, -en",
+    "level": "A1",
+    "chapter": 11,
+    "word": "die Hochzeit, -en",
+    "definition": "Das Fest, wenn zwei Menschen heiraten.",
+    "example": "Max will zu einer Hochzeit gehen.",
+    "ar": "الفرح / الزفاف",
+    "src": ""
+   },
+   {
+    "candidate": 851,
+    "id": "A1|12|Urlaub machen",
+    "level": "A1",
+    "chapter": 12,
+    "word": "Urlaub machen",
+    "definition": "Eine Zeit frei haben und oft verreisen.",
+    "example": "Wo hat Laura Urlaub gemacht?",
+    "ar": "يعمل إجازة",
+    "src": ""
+   },
+   {
+    "candidate": 852,
+    "id": "A1|12|in Urlaub fahren",
+    "level": "A1",
+    "chapter": 12,
+    "word": "in Urlaub fahren",
+    "definition": "Für den Urlaub verreisen.",
+    "example": "Ich fahre in Urlaub und packe eine Hose ein.",
+    "ar": "يسافر إجازة",
+    "src": ""
+   },
+   {
+    "candidate": 854,
+    "id": "A1|12|der Badeurlaub, -e",
+    "level": "A1",
+    "chapter": 12,
+    "word": "der Badeurlaub, -e",
+    "definition": "Urlaub am Meer zum Schwimmen.",
+    "example": "Wir machen Badeurlaub an der Nordsee.",
+    "ar": "إجازة بحر",
+    "src": ""
+   },
+   {
+    "candidate": 855,
+    "id": "A1|12|der Campingurlaub, -e",
+    "level": "A1",
+    "chapter": 12,
+    "word": "der Campingurlaub, -e",
+    "definition": "Urlaub mit Zelt.",
+    "example": "Campingurlaub am Chiemsee ist toll.",
+    "ar": "إجازة تخييم",
+    "src": ""
+   },
+   {
+    "candidate": 856,
+    "id": "A1|12|der Stadturlaub, -e",
+    "level": "A1",
+    "chapter": 12,
+    "word": "der Stadturlaub, -e",
+    "definition": "Urlaub in einer Stadt.",
+    "example": "Stadturlaub in Basel – das ist schön!",
+    "ar": "إجازة في مدينة",
+    "src": ""
+   },
+   {
+    "candidate": 857,
+    "id": "A1|12|der Skiurlaub, -e",
+    "level": "A1",
+    "chapter": 12,
+    "word": "der Skiurlaub, -e",
+    "definition": "Urlaub im Schnee zum Skifahren.",
+    "example": "Im Winter machen wir Skiurlaub in den Alpen.",
+    "ar": "إجازة تزلّج",
+    "src": ""
+   },
+   {
+    "candidate": 859,
+    "id": "A1|12|die Touristin, -nen",
+    "level": "A1",
+    "chapter": 12,
+    "word": "die Touristin, -nen",
+    "definition": "Eine Frau, die eine Reise macht.",
+    "example": "Die Touristin fotografiert den Dom.",
+    "ar": "السائحة",
+    "src": ""
+   },
+   {
+    "candidate": 860,
+    "id": "A1|12|die Nordsee (Sg.)",
+    "level": "A1",
+    "chapter": 12,
+    "word": "die Nordsee (Sg.)",
+    "definition": "Das Meer im Norden von Deutschland.",
+    "example": "Wir fahren an die Nordsee.",
+    "ar": "بحر الشمال",
+    "src": ""
+   },
+   {
+    "candidate": 861,
+    "id": "A1|12|die Ostsee (Sg.)",
+    "level": "A1",
+    "chapter": 12,
+    "word": "die Ostsee (Sg.)",
+    "definition": "Das Meer im Nordosten von Deutschland.",
+    "example": "Wir waren eine Woche an der Ostsee.",
+    "ar": "بحر البلطيق",
+    "src": ""
+   }
+  ],
+  "status": "delivered",
+  "sourceSize": [
+   1254,
+   1254
+  ]
+ },
+ {
+  "sheet": 14,
+  "cells": [
+   {
+    "candidate": 862,
+    "id": "A1|12|die Alpen (Pl.)",
+    "level": "A1",
+    "chapter": 12,
+    "word": "die Alpen (Pl.)",
+    "definition": "Die großen Berge im Süden.",
+    "example": "Wir fahren zum Skifahren in die Alpen.",
+    "ar": "جبال الألب",
+    "src": ""
+   },
+   {
+    "candidate": 863,
+    "id": "A1|12|die Bergtour, -en",
+    "level": "A1",
+    "chapter": 12,
+    "word": "die Bergtour, -en",
+    "definition": "Eine Wanderung in den Bergen.",
+    "example": "Morgen machen wir eine Bergtour.",
+    "ar": "رحلة جبلية",
+    "src": ""
+   },
+   {
+    "candidate": 864,
+    "id": "A1|12|die Landschaft, -en",
+    "level": "A1",
+    "chapter": 12,
+    "word": "die Landschaft, -en",
+    "definition": "Die Natur, die man sieht: Berge, Felder, Wälder.",
+    "example": "Die Landschaft ist wunderschön.",
+    "ar": "المنظر الطبيعي",
+    "src": ""
+   },
+   {
+    "candidate": 866,
+    "id": "A1|12|Ski fahren",
+    "level": "A1",
+    "chapter": 12,
+    "word": "Ski fahren",
+    "definition": "Auf Skiern im Schnee fahren.",
+    "example": "Ich bin viel Ski gefahren.",
+    "ar": "يتزلّج",
+    "src": ""
+   },
+   {
+    "candidate": 869,
+    "id": "A1|12|Koffer packen",
+    "level": "A1",
+    "chapter": 12,
+    "word": "Koffer packen",
+    "definition": "Sachen in den Koffer tun.",
+    "example": "Beim Kofferpacken brauche ich Hilfe.",
+    "ar": "يحضّر الشنطة",
+    "src": ""
+   },
+   {
+    "candidate": 871,
+    "id": "A1|12|das Gepäck (Sg.)",
+    "level": "A1",
+    "chapter": 12,
+    "word": "das Gepäck (Sg.)",
+    "definition": "Alle Koffer und Taschen auf einer Reise.",
+    "example": "Was kommt in welches Gepäck?",
+    "ar": "الشنط / العفش",
+    "src": ""
+   },
+   {
+    "candidate": 872,
+    "id": "A1|12|die Reisetasche, -n",
+    "level": "A1",
+    "chapter": 12,
+    "word": "die Reisetasche, -n",
+    "definition": "Eine Tasche für die Reise.",
+    "example": "Die Reisetasche geht nicht zu.",
+    "ar": "شنطة السفر",
+    "src": ""
+   },
+   {
+    "candidate": 873,
+    "id": "A1|12|die Handtasche, -n",
+    "level": "A1",
+    "chapter": 12,
+    "word": "die Handtasche, -n",
+    "definition": "Eine kleine Tasche, oft für Frauen.",
+    "example": "Das Handy ist in der Handtasche.",
+    "ar": "شنطة اليد",
+    "src": ""
+   },
+   {
+    "candidate": 874,
+    "id": "A1|12|der Badeanzug, -anzüge",
+    "level": "A1",
+    "chapter": 12,
+    "word": "der Badeanzug, -anzüge",
+    "definition": "Kleidung zum Schwimmen für Frauen.",
+    "example": "Ich packe einen Badeanzug ein.",
+    "ar": "المايوه (حريمي)",
+    "src": ""
+   },
+   {
+    "candidate": 875,
+    "id": "A1|12|die Badehose, -n",
+    "level": "A1",
+    "chapter": 12,
+    "word": "die Badehose, -n",
+    "definition": "Kleidung zum Schwimmen für Männer.",
+    "example": "Im Koffer waren nur T-Shirts und Badehosen.",
+    "ar": "المايوه (رجالي)",
+    "src": ""
+   },
+   {
+    "candidate": 876,
+    "id": "A1|12|der Bikini, -s",
+    "level": "A1",
+    "chapter": 12,
+    "word": "der Bikini, -s",
+    "definition": "Ein zweiteiliger Badeanzug.",
+    "example": "Sie nimmt einen Bikini mit.",
+    "ar": "البكيني",
+    "src": ""
+   },
+   {
+    "candidate": 877,
+    "id": "A1|12|die Winterjacke, -n",
+    "level": "A1",
+    "chapter": 12,
+    "word": "die Winterjacke, -n",
+    "definition": "Eine warme Jacke für den Winter.",
+    "example": "Für die Alpen brauche ich eine Winterjacke.",
+    "ar": "جاكيت الشتا",
+    "src": ""
+   },
+   {
+    "candidate": 878,
+    "id": "A1|12|die Regenjacke, -n",
+    "level": "A1",
+    "chapter": 12,
+    "word": "die Regenjacke, -n",
+    "definition": "Eine Jacke gegen Regen.",
+    "example": "An der Nordsee brauche ich eine Regenjacke.",
+    "ar": "جاكيت المطر",
+    "src": ""
+   },
+   {
+    "candidate": 879,
+    "id": "A1|12|die Handschuhe (Pl.)",
+    "level": "A1",
+    "chapter": 12,
+    "word": "die Handschuhe (Pl.)",
+    "definition": "Kleidung für die Hände bei Kälte.",
+    "example": "Vergiss die Handschuhe nicht!",
+    "ar": "الجوانتي",
+    "src": ""
+   },
+   {
+    "candidate": 880,
+    "id": "A1|12|der Regenschirm, -e",
+    "level": "A1",
+    "chapter": 12,
+    "word": "der Regenschirm, -e",
+    "definition": "Er schützt vor Regen.",
+    "example": "Nimm einen Regenschirm mit!",
+    "ar": "الشمسية (للمطر)",
+    "src": ""
+   },
+   {
+    "candidate": 881,
+    "id": "A1|12|die Sonnenbrille, -n",
+    "level": "A1",
+    "chapter": 12,
+    "word": "die Sonnenbrille, -n",
+    "definition": "Eine Brille gegen die Sonne.",
+    "example": "Ohne Sonnenbrille fahre ich nicht in Urlaub.",
+    "ar": "النضارة الشمس",
+    "src": ""
+   }
+  ],
+  "status": "delivered",
+  "sourceSize": [
+   1254,
+   1254
+  ]
+ },
+ {
+  "sheet": 15,
+  "cells": [
+   {
+    "candidate": 882,
+    "id": "A1|12|die Sonnencreme, -s",
+    "level": "A1",
+    "chapter": 12,
+    "word": "die Sonnencreme, -s",
+    "definition": "Creme gegen Sonnenbrand.",
+    "example": "Person 2 nimmt immer Sonnencreme mit.",
+    "ar": "كريم الشمس",
+    "src": ""
+   },
+   {
+    "candidate": 883,
+    "id": "A1|12|die Seife, -n",
+    "level": "A1",
+    "chapter": 12,
+    "word": "die Seife, -n",
+    "definition": "Damit wäscht man sich die Hände.",
+    "example": "Im Hotel gibt es Seife.",
+    "ar": "الصابون",
+    "src": ""
+   },
+   {
+    "candidate": 884,
+    "id": "A1|12|das Geschirr (Sg.)",
+    "level": "A1",
+    "chapter": 12,
+    "word": "das Geschirr (Sg.)",
+    "definition": "Teller, Tassen und Gläser.",
+    "example": "Für den Campingurlaub nehmen wir Geschirr mit.",
+    "ar": "المواعين",
+    "src": ""
+   },
+   {
+    "candidate": 885,
+    "id": "A1|12|der Schlafsack, -säcke",
+    "level": "A1",
+    "chapter": 12,
+    "word": "der Schlafsack, -säcke",
+    "definition": "Darin schläft man beim Camping.",
+    "example": "Der Schlafsack ist warm.",
+    "ar": "كيس النوم",
+    "src": ""
+   },
+   {
+    "candidate": 886,
+    "id": "A1|12|das Zelt, -e",
+    "level": "A1",
+    "chapter": 12,
+    "word": "das Zelt, -e",
+    "definition": "Ein kleines Haus aus Stoff zum Camping.",
+    "example": "Unser Zelt steht unter Bäumen.",
+    "ar": "الخيمة",
+    "src": ""
+   },
+   {
+    "candidate": 888,
+    "id": "A1|12|die Pension, -en",
+    "level": "A1",
+    "chapter": 12,
+    "word": "die Pension, -en",
+    "definition": "Ein kleines, einfaches Hotel.",
+    "example": "Wir haben in Pensionen übernachtet.",
+    "ar": "البنسيون",
+    "src": ""
+   },
+   {
+    "candidate": 889,
+    "id": "A1|12|die Jugendherberge, -n",
+    "level": "A1",
+    "chapter": 12,
+    "word": "die Jugendherberge, -n",
+    "definition": "Ein günstiges Haus für junge Reisende.",
+    "example": "Wir hatten ein Zimmer in einer Jugendherberge.",
+    "ar": "بيت الشباب",
+    "src": ""
+   },
+   {
+    "candidate": 890,
+    "id": "A1|12|übernachten",
+    "level": "A1",
+    "chapter": 12,
+    "word": "übernachten",
+    "definition": "Eine Nacht irgendwo schlafen.",
+    "example": "Wir haben in Pensionen übernachtet.",
+    "ar": "يبات",
+    "src": ""
+   },
+   {
+    "candidate": 891,
+    "id": "A1|12|das Einzelzimmer, -",
+    "level": "A1",
+    "chapter": 12,
+    "word": "das Einzelzimmer, -",
+    "definition": "Ein Hotelzimmer für eine Person.",
+    "example": "Ich brauche ein Einzelzimmer.",
+    "ar": "أوضة سينجل",
+    "src": ""
+   },
+   {
+    "candidate": 892,
+    "id": "A1|12|das Doppelzimmer, -",
+    "level": "A1",
+    "chapter": 12,
+    "word": "das Doppelzimmer, -",
+    "definition": "Ein Hotelzimmer für zwei Personen.",
+    "example": "Haben Sie ein Doppelzimmer frei?",
+    "ar": "أوضة دبل",
+    "src": ""
+   },
+   {
+    "candidate": 893,
+    "id": "A1|12|die Rezeption, -en",
+    "level": "A1",
+    "chapter": 12,
+    "word": "die Rezeption, -en",
+    "definition": "Dort meldet man sich im Hotel an.",
+    "example": "Fragen Sie an der Rezeption.",
+    "ar": "الاستقبال",
+    "src": ""
+   },
+   {
+    "candidate": 895,
+    "id": "A1|12|der Pass, Pässe",
+    "level": "A1",
+    "chapter": 12,
+    "word": "der Pass, Pässe",
+    "definition": "Ein Ausweis für Reisen ins Ausland.",
+    "example": "Haben Sie Ihren Pass dabei?",
+    "ar": "الباسبور",
+    "src": ""
+   },
+   {
+    "candidate": 898,
+    "id": "A1|12|sauber",
+    "level": "A1",
+    "chapter": 12,
+    "word": "sauber",
+    "definition": "Nicht schmutzig.",
+    "example": "Das Zimmer war sauber und günstig.",
+    "ar": "نضيف",
+    "src": ""
+   },
+   {
+    "candidate": 899,
+    "id": "A1|12|die Stadtführung, -en",
+    "level": "A1",
+    "chapter": 12,
+    "word": "die Stadtführung, -en",
+    "definition": "Eine Tour durch die Stadt mit Erklärungen.",
+    "example": "Ich möchte eine Stadtführung machen.",
+    "ar": "جولة في المدينة بمرشد",
+    "src": ""
+   },
+   {
+    "candidate": 900,
+    "id": "A1|12|der Zoo, -s",
+    "level": "A1",
+    "chapter": 12,
+    "word": "der Zoo, -s",
+    "definition": "Dort leben viele Tiere.",
+    "example": "Morgen machen wir einen Spaziergang im Zoo.",
+    "ar": "جنينة الحيوانات",
+    "src": ""
+   },
+   {
+    "candidate": 901,
+    "id": "A1|12|die Burg, -en",
+    "level": "A1",
+    "chapter": 12,
+    "word": "die Burg, -en",
+    "definition": "Ein altes, starkes Haus auf einem Berg.",
+    "example": "Heute sind wir zur Burg gegangen.",
+    "ar": "القلعة",
+    "src": ""
+   }
+  ],
+  "status": "delivered",
+  "sourceSize": [
+   1254,
+   1254
+  ]
+ },
+ {
+  "sheet": 16,
+  "cells": [
+   {
+    "candidate": 902,
+    "id": "A1|12|das Musical, -s",
+    "level": "A1",
+    "chapter": 12,
+    "word": "das Musical, -s",
+    "definition": "Ein Theaterstück mit Musik und Tanz.",
+    "example": "Am Abend gehen wir ins Musical.",
+    "ar": "المسرحية الغنائية",
+    "src": ""
+   },
+   {
+    "candidate": 914,
+    "id": "A1|12|losfahren, er fährt los",
+    "level": "A1",
+    "chapter": 12,
+    "word": "losfahren, er fährt los",
+    "definition": "Mit dem Fahren beginnen.",
+    "example": "Wir sind nach dem Frühstück losgefahren.",
+    "ar": "يتحرّك / ينطلق",
+    "src": ""
+   },
+   {
+    "candidate": 915,
+    "id": "A1|12|der Schaffner, -",
+    "level": "A1",
+    "chapter": 12,
+    "word": "der Schaffner, -",
+    "definition": "Der Mann im Zug, der Tickets kontrolliert.",
+    "example": "Der Schaffner hat uns geweckt.",
+    "ar": "الكمسري",
+    "src": ""
+   },
+   {
+    "candidate": 924,
+    "id": "A1|12|die Hitze (Sg.)",
+    "level": "A1",
+    "chapter": 12,
+    "word": "die Hitze (Sg.)",
+    "definition": "Sehr hohe Temperatur.",
+    "example": "So eine Hitze!",
+    "ar": "الحر الشديد",
+    "src": ""
+   },
+   {
+    "candidate": 925,
+    "id": "A1|12|Es schüttet!",
+    "level": "A1",
+    "chapter": 12,
+    "word": "Es schüttet!",
+    "definition": "Es regnet sehr stark (umgangssprachlich).",
+    "example": "Bleib drinnen, es schüttet!",
+    "ar": "الدنيا بتشتّي جامد!",
+    "src": ""
+   },
+   {
+    "candidate": 926,
+    "id": "A1|12|windig",
+    "level": "A1",
+    "chapter": 12,
+    "word": "windig",
+    "definition": "Mit viel Wind.",
+    "example": "An der Nordsee ist es oft windig.",
+    "ar": "فيه هوا جامد",
+    "src": ""
+   },
+   {
+    "candidate": 933,
+    "id": "A1|12|die Landkarte, -n",
+    "level": "A1",
+    "chapter": 12,
+    "word": "die Landkarte, -n",
+    "definition": "Eine Karte mit Ländern, Städten und Straßen.",
+    "example": "Suchen Sie die Städte auf der Landkarte.",
+    "ar": "الخريطة",
+    "src": ""
+   },
+   {
+    "candidate": 937,
+    "id": "A1|12|k.o. sein",
+    "level": "A1",
+    "chapter": 12,
+    "word": "k.o. sein",
+    "definition": "Sehr müde sein (umgangssprachlich).",
+    "example": "Am Abend waren wir echt k.o.",
+    "ar": "مهدود",
+    "src": ""
+   },
+   {
+    "candidate": 940,
+    "id": "A1|12|wecken",
+    "level": "A1",
+    "chapter": 12,
+    "word": "wecken",
+    "definition": "Jemanden aus dem Schlaf holen.",
+    "example": "Der Schaffner hat uns geweckt.",
+    "ar": "يصحّي",
+    "src": ""
+   },
+   {
+    "candidate": 941,
+    "id": "A1|12|chillen",
+    "level": "A1",
+    "chapter": 12,
+    "word": "chillen",
+    "definition": "Sich ausruhen, nichts tun (umgangssprachlich).",
+    "example": "Ich habe im Zimmer gechillt.",
+    "ar": "يريّح / يفصل",
+    "src": ""
+   },
+   {
+    "candidate": 955,
+    "id": "A2|1|heiraten",
+    "level": "A2",
+    "chapter": 1,
+    "word": "heiraten",
+    "definition": "Mann und Frau werden; die Ehe beginnt.",
+    "example": "Im August hat meine Schwester geheiratet.",
+    "ar": "يتجوّز"
+   },
+   {
+    "candidate": 960,
+    "id": "A2|1|auf dem Land leben",
+    "level": "A2",
+    "chapter": 1,
+    "word": "auf dem Land leben",
+    "definition": "Nicht in der Stadt, sondern in einem Dorf wohnen.",
+    "example": "Meine Eltern leben auf dem Land.",
+    "ar": "يعيش في الريف"
+   },
+   {
+    "candidate": 961,
+    "id": "A2|1|das Stadtzentrum, -zentren",
+    "level": "A2",
+    "chapter": 1,
+    "word": "das Stadtzentrum, -zentren",
+    "definition": "Die Mitte von einer Stadt.",
+    "example": "Wir haben ein Apartment im Stadtzentrum.",
+    "ar": "وسط المدينة"
+   },
+   {
+    "candidate": 963,
+    "id": "A2|1|renovieren",
+    "level": "A2",
+    "chapter": 1,
+    "word": "renovieren",
+    "definition": "Eine Wohnung oder ein Haus neu machen.",
+    "example": "Wir haben das alte Haus renoviert.",
+    "ar": "يجدّد / يشطّب"
+   },
+   {
+    "candidate": 974,
+    "id": "A2|1|der Augenoptiker, -",
+    "level": "A2",
+    "chapter": 1,
+    "word": "der Augenoptiker, -",
+    "definition": "Ein Mann, der Brillen macht und verkauft.",
+    "example": "Der Augenoptiker misst meine Augen.",
+    "ar": "أخصائي البصريات"
+   },
+   {
+    "candidate": 975,
+    "id": "A2|1|die Augenoptikerin, -nen",
+    "level": "A2",
+    "chapter": 1,
+    "word": "die Augenoptikerin, -nen",
+    "definition": "Eine Frau, die Brillen macht und verkauft.",
+    "example": "Julia ist jetzt Augenoptikerin.",
+    "ar": "أخصائية البصريات"
+   }
+  ],
+  "status": "delivered",
+  "sourceSize": [
+   1254,
+   1254
+  ]
+ },
+ {
+  "sheet": 17,
+  "cells": [
+   {
+    "candidate": 982,
+    "id": "A2|1|das Pferd, -e",
+    "level": "A2",
+    "chapter": 1,
+    "word": "das Pferd, -e",
+    "definition": "Ein großes Tier; man kann darauf reiten.",
+    "example": "Meine Eltern haben ein Pferd.",
+    "ar": "الحصان"
+   },
+   {
+    "candidate": 983,
+    "id": "A2|1|Basketball spielen",
+    "level": "A2",
+    "chapter": 1,
+    "word": "Basketball spielen",
+    "definition": "Ein Ballspiel mit Korb.",
+    "example": "Ich spiele Basketball im Verein.",
+    "ar": "يلعب باسكت"
+   },
+   {
+    "candidate": 984,
+    "id": "A2|1|Tennis spielen",
+    "level": "A2",
+    "chapter": 1,
+    "word": "Tennis spielen",
+    "definition": "Ein Ballspiel mit Schläger.",
+    "example": "Ich habe einen Tenniskurs gemacht.",
+    "ar": "يلعب تنس"
+   },
+   {
+    "candidate": 985,
+    "id": "A2|1|auf dem Sofa liegen",
+    "level": "A2",
+    "chapter": 1,
+    "word": "auf dem Sofa liegen",
+    "definition": "Sich auf dem Sofa ausruhen.",
+    "example": "Am Wochenende liege ich gern auf dem Sofa.",
+    "ar": "يتمدّد على الكنبة"
+   },
+   {
+    "candidate": 986,
+    "id": "A2|1|der Flohmarkt, -märkte",
+    "level": "A2",
+    "chapter": 1,
+    "word": "der Flohmarkt, -märkte",
+    "definition": "Ein Markt für alte und gebrauchte Sachen.",
+    "example": "Am Sonntag gehen wir auf den Flohmarkt.",
+    "ar": "سوق الحاجات القديمة"
+   },
+   {
+    "candidate": 1006,
+    "id": "A2|1|die Zigarette, -n",
+    "level": "A2",
+    "chapter": 1,
+    "word": "die Zigarette, -n",
+    "definition": "Damit raucht man.",
+    "example": "Zigaretten rauchen ist verboten.",
+    "ar": "السيجارة"
+   },
+   {
+    "candidate": 1012,
+    "id": "A2|1|zuhören",
+    "level": "A2",
+    "chapter": 1,
+    "word": "zuhören",
+    "definition": "Gut hören, aufmerksam sein.",
+    "example": "Hör gut zu!",
+    "ar": "يسمع بانتباه"
+   },
+   {
+    "candidate": 1017,
+    "id": "A2|1|braten, er brät",
+    "level": "A2",
+    "chapter": 1,
+    "word": "braten, er brät",
+    "definition": "In der Pfanne mit Fett heiß machen.",
+    "example": "Man brät den Knipp in der Pfanne.",
+    "ar": "يحمّر / يقلي"
+   },
+   {
+    "candidate": 1018,
+    "id": "A2|1|die Pfanne, -n",
+    "level": "A2",
+    "chapter": 1,
+    "word": "die Pfanne, -n",
+    "definition": "Ein flacher Topf zum Braten.",
+    "example": "Die Pfanne ist heiß.",
+    "ar": "الطاسة"
+   },
+   {
+    "candidate": 1026,
+    "id": "A2|2|der Schüler, -",
+    "level": "A2",
+    "chapter": 2,
+    "word": "der Schüler, -",
+    "definition": "Ein Junge, der zur Schule geht.",
+    "example": "Die Schüler schreiben einen Test.",
+    "ar": "التلميذ"
+   },
+   {
+    "candidate": 1027,
+    "id": "A2|2|die Schülerin, -nen",
+    "level": "A2",
+    "chapter": 2,
+    "word": "die Schülerin, -nen",
+    "definition": "Ein Mädchen, das zur Schule geht.",
+    "example": "Die Schülerin hat eine gute Note.",
+    "ar": "التلميذة"
+   },
+   {
+    "candidate": 1028,
+    "id": "A2|2|das Klassenzimmer, -",
+    "level": "A2",
+    "chapter": 2,
+    "word": "das Klassenzimmer, -",
+    "definition": "Der Raum, in dem die Klasse lernt.",
+    "example": "Unser Klassenzimmer war sehr hell.",
+    "ar": "حجرة الدراسة"
+   },
+   {
+    "candidate": 1034,
+    "id": "A2|2|die Schulkleidung (Sg.)",
+    "level": "A2",
+    "chapter": 2,
+    "word": "die Schulkleidung (Sg.)",
+    "definition": "Kleidung für die Schule.",
+    "example": "An meiner Schule gab es keine Schulkleidung.",
+    "ar": "الزي المدرسي"
+   },
+   {
+    "candidate": 1036,
+    "id": "A2|2|der Schulweg, -e",
+    "level": "A2",
+    "chapter": 2,
+    "word": "der Schulweg, -e",
+    "definition": "Der Weg von zu Hause zur Schule.",
+    "example": "Mein Schulweg war sehr lang.",
+    "ar": "الطريق للمدرسة"
+   },
+   {
+    "candidate": 1037,
+    "id": "A2|2|die Klassenfahrt, -en",
+    "level": "A2",
+    "chapter": 2,
+    "word": "die Klassenfahrt, -en",
+    "definition": "Eine Reise mit der ganzen Klasse.",
+    "example": "Die Klassenfahrt nach Berlin war toll.",
+    "ar": "رحلة المدرسة"
+   },
+   {
+    "candidate": 1039,
+    "id": "A2|2|die Cafeteria, Cafeterien",
+    "level": "A2",
+    "chapter": 2,
+    "word": "die Cafeteria, Cafeterien",
+    "definition": "Ein Raum zum Essen in der Schule.",
+    "example": "Das Essen in der Cafeteria war furchtbar.",
+    "ar": "الكافيتيريا"
+   }
+  ],
+  "status": "delivered",
+  "sourceSize": [
+   1254,
+   1254
+  ]
+ },
+ {
+  "sheet": 18,
+  "cells": [
+   {
+    "candidate": 1051,
+    "id": "A2|2|Kunst / Kunsterziehung",
+    "level": "A2",
+    "chapter": 2,
+    "word": "Kunst / Kunsterziehung",
+    "definition": "Das Fach, in dem man malt und zeichnet.",
+    "example": "In Kunst malen wir Bilder.",
+    "ar": "التربية الفنية"
+   },
+   {
+    "candidate": 1053,
+    "id": "A2|2|Sport",
+    "level": "A2",
+    "chapter": 2,
+    "word": "Sport",
+    "definition": "Das Fach mit Bewegung.",
+    "example": "Sport hatte ich zweimal pro Woche.",
+    "ar": "التربية البدنية"
+   },
+   {
+    "candidate": 1072,
+    "id": "A2|2|eine Vorlesung besuchen",
+    "level": "A2",
+    "chapter": 2,
+    "word": "eine Vorlesung besuchen",
+    "definition": "In eine Vorlesung gehen.",
+    "example": "Am Vormittag besuche ich eine Vorlesung.",
+    "ar": "يحضر محاضرة"
+   },
+   {
+    "candidate": 1079,
+    "id": "A2|2|der Rollstuhl, -stühle",
+    "level": "A2",
+    "chapter": 2,
+    "word": "der Rollstuhl, -stühle",
+    "definition": "Ein Stuhl mit Rädern für Menschen, die nicht gehen können.",
+    "example": "Der Junge sitzt im Rollstuhl.",
+    "ar": "الكرسي المتحرّك"
+   },
+   {
+    "candidate": 1090,
+    "id": "A2|2|der Altenpfleger, -",
+    "level": "A2",
+    "chapter": 2,
+    "word": "der Altenpfleger, -",
+    "definition": "Ein Mann, der alte Menschen pflegt.",
+    "example": "Er arbeitet als Altenpfleger.",
+    "ar": "ممرّض المسنّين"
+   },
+   {
+    "candidate": 1091,
+    "id": "A2|2|die Altenpflegerin, -nen",
+    "level": "A2",
+    "chapter": 2,
+    "word": "die Altenpflegerin, -nen",
+    "definition": "Eine Frau, die alte Menschen pflegt.",
+    "example": "Sie macht eine Ausbildung zur Altenpflegerin.",
+    "ar": "ممرّضة المسنّين"
+   },
+   {
+    "candidate": 1092,
+    "id": "A2|2|die Arzthelferin, -nen",
+    "level": "A2",
+    "chapter": 2,
+    "word": "die Arzthelferin, -nen",
+    "definition": "Eine Frau, die in einer Arztpraxis hilft.",
+    "example": "Ich kann als Arzthelferin bleiben.",
+    "ar": "مساعدة الطبيب"
+   },
+   {
+    "candidate": 1093,
+    "id": "A2|2|die Arztpraxis, -praxen",
+    "level": "A2",
+    "chapter": 2,
+    "word": "die Arztpraxis, -praxen",
+    "definition": "Die Räume von einem Arzt.",
+    "example": "Ich bin Azubi in einer Arztpraxis.",
+    "ar": "العيادة"
+   },
+   {
+    "candidate": 1094,
+    "id": "A2|2|die Gärtnerin, -nen",
+    "level": "A2",
+    "chapter": 2,
+    "word": "die Gärtnerin, -nen",
+    "definition": "Eine Frau, die mit Pflanzen arbeitet.",
+    "example": "Maike macht eine Ausbildung zur Gärtnerin.",
+    "ar": "البستانية"
+   },
+   {
+    "candidate": 1100,
+    "id": "A2|2|das Reisebüro, -s",
+    "level": "A2",
+    "chapter": 2,
+    "word": "das Reisebüro, -s",
+    "definition": "Dort bucht man Reisen.",
+    "example": "Jetzt arbeite ich in einem Reisebüro.",
+    "ar": "مكتب السياحة"
+   },
+   {
+    "candidate": 1111,
+    "id": "A2|2|überrascht sein",
+    "level": "A2",
+    "chapter": 2,
+    "word": "überrascht sein",
+    "definition": "Etwas nicht erwartet haben.",
+    "example": "Ich bin überrascht.",
+    "ar": "متفاجئ"
+   },
+   {
+    "candidate": 1128,
+    "id": "A2|3|das Tablet, -s",
+    "level": "A2",
+    "chapter": 3,
+    "word": "das Tablet, -s",
+    "definition": "Ein flacher Computer mit Touchscreen.",
+    "example": "Kauf doch ein Tablet. Das ist leichter.",
+    "ar": "التابلت"
+   },
+   {
+    "candidate": 1129,
+    "id": "A2|3|der Laptop, -s",
+    "level": "A2",
+    "chapter": 3,
+    "word": "der Laptop, -s",
+    "definition": "Ein tragbarer Computer.",
+    "example": "Auf dem Laptop kann man besser schreiben.",
+    "ar": "اللابتوب"
+   },
+   {
+    "candidate": 1130,
+    "id": "A2|3|der E-Book-Reader, -",
+    "level": "A2",
+    "chapter": 3,
+    "word": "der E-Book-Reader, -",
+    "definition": "Ein Gerät zum Lesen von E-Books.",
+    "example": "Ein E-Book-Reader ist nicht so teuer wie ein Tablet.",
+    "ar": "قارئ الكتب الإلكترونية"
+   },
+   {
+    "candidate": 1132,
+    "id": "A2|3|die Smartwatch, -es",
+    "level": "A2",
+    "chapter": 3,
+    "word": "die Smartwatch, -es",
+    "definition": "Eine Uhr mit Computerfunktionen.",
+    "example": "Die Smartwatch zeigt meine Schritte.",
+    "ar": "الساعة الذكية"
+   },
+   {
+    "candidate": 1133,
+    "id": "A2|3|die Spielekonsole, -n",
+    "level": "A2",
+    "chapter": 3,
+    "word": "die Spielekonsole, -n",
+    "definition": "Ein Gerät für Videospiele.",
+    "example": "Mein Bruder spielt mit der Spielekonsole.",
+    "ar": "جهاز ألعاب الفيديو"
+   }
+  ],
+  "status": "delivered",
+  "sourceSize": [
+   1254,
+   1254
+  ]
+ },
+ {
+  "sheet": 19,
+  "cells": [
+   {
+    "candidate": 1134,
+    "id": "A2|3|das Radio, -s",
+    "level": "A2",
+    "chapter": 3,
+    "word": "das Radio, -s",
+    "definition": "Ein Gerät zum Hören von Musik und Nachrichten.",
+    "example": "Morgens höre ich Radio.",
+    "ar": "الراديو"
+   },
+   {
+    "candidate": 1135,
+    "id": "A2|3|die Tastatur, -en",
+    "level": "A2",
+    "chapter": 3,
+    "word": "die Tastatur, -en",
+    "definition": "Die Tasten zum Schreiben am Computer.",
+    "example": "Die Tastatur ist kaputt.",
+    "ar": "الكيبورد"
+   },
+   {
+    "candidate": 1136,
+    "id": "A2|3|das Kabel, -",
+    "level": "A2",
+    "chapter": 3,
+    "word": "das Kabel, -",
+    "definition": "Eine Leitung für Strom oder Daten.",
+    "example": "Wo ist das Kabel für mein Handy?",
+    "ar": "السلك / الكابل"
+   },
+   {
+    "candidate": 1137,
+    "id": "A2|3|der Lautsprecher, -",
+    "level": "A2",
+    "chapter": 3,
+    "word": "der Lautsprecher, -",
+    "definition": "Ein Gerät, aus dem Ton kommt.",
+    "example": "Die Lautsprecher sind sehr laut.",
+    "ar": "السمّاعة"
+   },
+   {
+    "candidate": 1141,
+    "id": "A2|3|tippen",
+    "level": "A2",
+    "chapter": 3,
+    "word": "tippen",
+    "definition": "Auf der Tastatur schreiben.",
+    "example": "Wer tippt am schnellsten Nachrichten?",
+    "ar": "يكتب على الكيبورد"
+   },
+   {
+    "candidate": 1165,
+    "id": "A2|3|das Studio, -s",
+    "level": "A2",
+    "chapter": 3,
+    "word": "das Studio, -s",
+    "definition": "Ein Arbeitsraum, z. B. für Fotos.",
+    "example": "Ich habe ein Studio in der Stadt.",
+    "ar": "الاستوديو"
+   },
+   {
+    "candidate": 1166,
+    "id": "A2|3|das Shooting, -s",
+    "level": "A2",
+    "chapter": 3,
+    "word": "das Shooting, -s",
+    "definition": "Ein Termin für Fotos.",
+    "example": "Nach dem Shooting arbeite ich am Computer.",
+    "ar": "جلسة التصوير"
+   },
+   {
+    "candidate": 1198,
+    "id": "A2|3|lachen",
+    "level": "A2",
+    "chapter": 3,
+    "word": "lachen",
+    "definition": "Laut froh sein.",
+    "example": "Bei welchem Film haben Sie viel gelacht?",
+    "ar": "يضحك"
+   },
+   {
+    "candidate": 1199,
+    "id": "A2|3|weinen",
+    "level": "A2",
+    "chapter": 3,
+    "word": "weinen",
+    "definition": "Tränen haben, traurig sein.",
+    "example": "Am Ende habe ich geweint.",
+    "ar": "يعيّط"
+   },
+   {
+    "candidate": 1207,
+    "id": "A2|3|fröhlich",
+    "level": "A2",
+    "chapter": 3,
+    "word": "fröhlich",
+    "definition": "Froh und lustig.",
+    "example": "Er möchte sie fröhlich machen.",
+    "ar": "مبسوط / مرح"
+   },
+   {
+    "candidate": 1213,
+    "id": "A2|3|flüstern",
+    "level": "A2",
+    "chapter": 3,
+    "word": "flüstern",
+    "definition": "Ganz leise sprechen.",
+    "example": "Flüstern Sie das Wort ins Ohr.",
+    "ar": "يوشوش / يهمس"
+   },
+   {
+    "candidate": 1222,
+    "id": "A2|4|die Geburt, -en",
+    "level": "A2",
+    "chapter": 4,
+    "word": "die Geburt, -en",
+    "definition": "Wenn ein Baby auf die Welt kommt.",
+    "example": "Die Geburt von einem Kind ist ein großes Ereignis.",
+    "ar": "الولادة"
+   },
+   {
+    "candidate": 1223,
+    "id": "A2|4|die Babykleidung (Sg.)",
+    "level": "A2",
+    "chapter": 4,
+    "word": "die Babykleidung (Sg.)",
+    "definition": "Kleidung für Babys.",
+    "example": "Wir schenken Babykleidung.",
+    "ar": "لبس البيبي"
+   },
+   {
+    "candidate": 1224,
+    "id": "A2|4|der Storch, Störche",
+    "level": "A2",
+    "chapter": 4,
+    "word": "der Storch, Störche",
+    "definition": "Ein großer weißer Vogel; Symbol für Geburt.",
+    "example": "Vor dem Haus steht ein Storch aus Holz.",
+    "ar": "اللقلق"
+   },
+   {
+    "candidate": 1225,
+    "id": "A2|4|das Brautpaar, -e",
+    "level": "A2",
+    "chapter": 4,
+    "word": "das Brautpaar, -e",
+    "definition": "Die Frau und der Mann bei der Hochzeit.",
+    "example": "Liebes Brautpaar, herzlichen Glückwunsch!",
+    "ar": "العريس والعروسة"
+   },
+   {
+    "candidate": 1226,
+    "id": "A2|4|das Brautkleid, -er",
+    "level": "A2",
+    "chapter": 4,
+    "word": "das Brautkleid, -er",
+    "definition": "Das Kleid der Braut.",
+    "example": "Das Brautkleid ist weiß.",
+    "ar": "فستان الفرح"
+   }
+  ],
+  "status": "delivered",
+  "sourceSize": [
+   1254,
+   1254
+  ]
+ },
+ {
+  "sheet": 20,
+  "cells": [
+   {
+    "candidate": 1227,
+    "id": "A2|4|der Ring, -e",
+    "level": "A2",
+    "chapter": 4,
+    "word": "der Ring, -e",
+    "definition": "Schmuck für den Finger.",
+    "example": "Sie tauschen die Ringe.",
+    "ar": "الخاتم / الدبلة"
+   },
+   {
+    "candidate": 1230,
+    "id": "A2|4|die Schultüte, -n",
+    "level": "A2",
+    "chapter": 4,
+    "word": "die Schultüte, -n",
+    "definition": "Eine große Tüte mit Süßigkeiten zum ersten Schultag.",
+    "example": "Die Schultüte ist voll mit Süßigkeiten.",
+    "ar": "كيس هدايا أول يوم مدرسة"
+   },
+   {
+    "candidate": 1231,
+    "id": "A2|4|der Schulranzen, -",
+    "level": "A2",
+    "chapter": 4,
+    "word": "der Schulranzen, -",
+    "definition": "Eine Schultasche für den Rücken.",
+    "example": "Der Schulranzen ist neu.",
+    "ar": "شنطة المدرسة"
+   },
+   {
+    "candidate": 1233,
+    "id": "A2|4|die Siegerin, -nen",
+    "level": "A2",
+    "chapter": 4,
+    "word": "die Siegerin, -nen",
+    "definition": "Die Frau, die gewinnt.",
+    "example": "Die Siegerin bekommt eine Medaille.",
+    "ar": "الفائزة"
+   },
+   {
+    "candidate": 1234,
+    "id": "A2|4|die Medaille, -n",
+    "level": "A2",
+    "chapter": 4,
+    "word": "die Medaille, -n",
+    "definition": "Eine Münze als Preis für Sportler.",
+    "example": "Sie hat eine goldene Medaille gewonnen.",
+    "ar": "الميدالية"
+   },
+   {
+    "candidate": 1236,
+    "id": "A2|4|schmücken",
+    "level": "A2",
+    "chapter": 4,
+    "word": "schmücken",
+    "definition": "Schön machen, z. B. mit Blumen.",
+    "example": "Wir schmücken den Raum mit Blumen.",
+    "ar": "يزيّن"
+   },
+   {
+    "candidate": 1237,
+    "id": "A2|4|die Geburtstagsparty, -s",
+    "level": "A2",
+    "chapter": 4,
+    "word": "die Geburtstagsparty, -s",
+    "definition": "Eine Party zum Geburtstag.",
+    "example": "Machst du eine Geburtstagsparty?",
+    "ar": "حفلة عيد الميلاد"
+   },
+   {
+    "candidate": 1238,
+    "id": "A2|4|das Feuerwerk, -e",
+    "level": "A2",
+    "chapter": 4,
+    "word": "das Feuerwerk, -e",
+    "definition": "Bunte Lichter am Himmel.",
+    "example": "Die Kieler Woche endet mit einem Feuerwerk.",
+    "ar": "الألعاب النارية"
+   },
+   {
+    "candidate": 1248,
+    "id": "A2|4|unglücklich",
+    "level": "A2",
+    "chapter": 4,
+    "word": "unglücklich",
+    "definition": "Nicht glücklich.",
+    "example": "Er ist unglücklich, weil er allein ist.",
+    "ar": "تعيس"
+   },
+   {
+    "candidate": 1249,
+    "id": "A2|4|traurig",
+    "level": "A2",
+    "chapter": 4,
+    "word": "traurig",
+    "definition": "Nicht froh.",
+    "example": "Wenn meine Freundin wegfährt, bin ich traurig.",
+    "ar": "حزين"
+   },
+   {
+    "candidate": 1250,
+    "id": "A2|4|Angst haben",
+    "level": "A2",
+    "chapter": 4,
+    "word": "Angst haben",
+    "definition": "Sich fürchten.",
+    "example": "Wenn ich einen Horrorfilm sehe, habe ich Angst.",
+    "ar": "خايف"
+   },
+   {
+    "candidate": 1253,
+    "id": "A2|4|gestresst",
+    "level": "A2",
+    "chapter": 4,
+    "word": "gestresst",
+    "definition": "Mit viel Stress.",
+    "example": "Sie klingt gestresst.",
+    "ar": "مضغوط"
+   },
+   {
+    "candidate": 1254,
+    "id": "A2|4|ärgerlich",
+    "level": "A2",
+    "chapter": 4,
+    "word": "ärgerlich",
+    "definition": "Verärgert, böse.",
+    "example": "Er klingt ärgerlich.",
+    "ar": "متعصّب / زعلان"
+   },
+   {
+    "candidate": 1268,
+    "id": "A2|4|beruhigen",
+    "level": "A2",
+    "chapter": 4,
+    "word": "beruhigen",
+    "definition": "Jemanden ruhig machen.",
+    "example": "Sie beruhigt ihren Freund.",
+    "ar": "يهدّي"
+   },
+   {
+    "candidate": 1278,
+    "id": "A2|4|sich treffen, er trifft sich",
+    "level": "A2",
+    "chapter": 4,
+    "word": "sich treffen, er trifft sich",
+    "definition": "Zusammenkommen.",
+    "example": "Treffen wir uns heute Abend?",
+    "ar": "يتقابلوا"
+   },
+   {
+    "candidate": 1279,
+    "id": "A2|4|sich streiten, er streitet sich",
+    "level": "A2",
+    "chapter": 4,
+    "word": "sich streiten, er streitet sich",
+    "definition": "Laut verschiedene Meinungen haben.",
+    "example": "Mit wem streitest du dich manchmal?",
+    "ar": "يتخانق"
+   }
+  ],
+  "status": "delivered",
+  "sourceSize": [
+   1254,
+   1254
+  ]
+ },
+ {
+  "sheet": 21,
+  "cells": [
+   {
+    "candidate": 1285,
+    "id": "A2|4|die Segelregatta, -regatten",
+    "level": "A2",
+    "chapter": 4,
+    "word": "die Segelregatta, -regatten",
+    "definition": "Ein Wettbewerb für Segelboote.",
+    "example": "Die Kieler Woche ist eine Segelregatta.",
+    "ar": "سباق المراكب الشراعية"
+   },
+   {
+    "candidate": 1286,
+    "id": "A2|4|der Segler, -",
+    "level": "A2",
+    "chapter": 4,
+    "word": "der Segler, -",
+    "definition": "Ein Mann, der segelt.",
+    "example": "4.000 Segler nehmen teil.",
+    "ar": "البحّار الشراعي"
+   },
+   {
+    "candidate": 1291,
+    "id": "A2|4|unterrichten",
+    "level": "A2",
+    "chapter": 4,
+    "word": "unterrichten",
+    "definition": "Lehren.",
+    "example": "Ich unterrichte Deutsch.",
+    "ar": "يدرّس"
+   },
+   {
+    "candidate": 1295,
+    "id": "A2|4|ordentlich",
+    "level": "A2",
+    "chapter": 4,
+    "word": "ordentlich",
+    "definition": "Alles ist in Ordnung, nicht chaotisch.",
+    "example": "Man sagt, die Deutschen sind ordentlich.",
+    "ar": "منظّم"
+   },
+   {
+    "candidate": 1297,
+    "id": "A2|4|anbieten, er bietet an",
+    "level": "A2",
+    "chapter": 4,
+    "word": "anbieten, er bietet an",
+    "definition": "Jemandem etwas geben wollen.",
+    "example": "Ich möchte meinen Gästen etwas anbieten.",
+    "ar": "يقدّم / يعزم بـ"
+   },
+   {
+    "candidate": 1300,
+    "id": "A2|4|das Frühjahr (Sg.)",
+    "level": "A2",
+    "chapter": 4,
+    "word": "das Frühjahr (Sg.)",
+    "definition": "Der Frühling.",
+    "example": "Ich bin seit dem Frühjahr in Kiel.",
+    "ar": "الربيع"
+   },
+   {
+    "candidate": 1302,
+    "id": "A2|4|wegfahren, er fährt weg",
+    "level": "A2",
+    "chapter": 4,
+    "word": "wegfahren, er fährt weg",
+    "definition": "An einen anderen Ort fahren.",
+    "example": "Wenn meine Freundin wegfährt, bin ich traurig.",
+    "ar": "يسافر / يمشي"
+   },
+   {
+    "candidate": 1304,
+    "id": "A2|4|fallen, er fällt",
+    "level": "A2",
+    "chapter": 4,
+    "word": "fallen, er fällt",
+    "definition": "Nach unten kommen.",
+    "example": "Das Glas ist auf den Teppich gefallen.",
+    "ar": "يقع"
+   },
+   {
+    "candidate": 1314,
+    "id": "A2|5|die öffentlichen Verkehrsmittel (Pl.)",
+    "level": "A2",
+    "chapter": 5,
+    "word": "die öffentlichen Verkehrsmittel (Pl.)",
+    "definition": "Bus, Straßenbahn, U-Bahn, Zug für alle.",
+    "example": "Die öffentlichen Verkehrsmittel sind pünktlich.",
+    "ar": "المواصلات العامة"
+   },
+   {
+    "candidate": 1315,
+    "id": "A2|5|der Fahrer, -",
+    "level": "A2",
+    "chapter": 5,
+    "word": "der Fahrer, -",
+    "definition": "Ein Mann, der ein Fahrzeug fährt.",
+    "example": "Der Fahrer der Straßenbahn ist freundlich.",
+    "ar": "السوّاق"
+   },
+   {
+    "candidate": 1316,
+    "id": "A2|5|die Fahrerin, -nen",
+    "level": "A2",
+    "chapter": 5,
+    "word": "die Fahrerin, -nen",
+    "definition": "Eine Frau, die ein Fahrzeug fährt.",
+    "example": "Die Fahrerin fährt den Bus.",
+    "ar": "السوّاقة"
+   },
+   {
+    "candidate": 1317,
+    "id": "A2|5|transportieren",
+    "level": "A2",
+    "chapter": 5,
+    "word": "transportieren",
+    "definition": "Von einem Ort zu einem anderen bringen.",
+    "example": "Die Straßenbahn transportiert viele Menschen.",
+    "ar": "ينقل"
+   },
+   {
+    "candidate": 1318,
+    "id": "A2|5|die Polizei (Sg.)",
+    "level": "A2",
+    "chapter": 5,
+    "word": "die Polizei (Sg.)",
+    "definition": "Sie sorgt für Sicherheit und Ordnung.",
+    "example": "Ruf die Polizei!",
+    "ar": "الشرطة"
+   },
+   {
+    "candidate": 1322,
+    "id": "A2|5|die Feuerwehr (Sg.)",
+    "level": "A2",
+    "chapter": 5,
+    "word": "die Feuerwehr (Sg.)",
+    "definition": "Sie hilft bei Feuer und Unfällen.",
+    "example": "Eine Stadt braucht eine Feuerwehr.",
+    "ar": "المطافي"
+   },
+   {
+    "candidate": 1323,
+    "id": "A2|5|die Operation, -en",
+    "level": "A2",
+    "chapter": 5,
+    "word": "die Operation, -en",
+    "definition": "Ein Arzt öffnet den Körper, um zu heilen.",
+    "example": "Die Operation war erfolgreich.",
+    "ar": "العملية"
+   },
+   {
+    "candidate": 1325,
+    "id": "A2|5|pflegen",
+    "level": "A2",
+    "chapter": 5,
+    "word": "pflegen",
+    "definition": "Kranken oder alten Menschen helfen.",
+    "example": "Sie pflegt ihre kranke Mutter.",
+    "ar": "يرعى / يمرّض"
+   }
+  ],
+  "status": "delivered",
+  "sourceSize": [
+   1254,
+   1254
+  ]
+ },
+ {
+  "sheet": 22,
+  "cells": [
+   {
+    "candidate": 1327,
+    "id": "A2|5|die Müllabfuhr (Sg.)",
+    "level": "A2",
+    "chapter": 5,
+    "word": "die Müllabfuhr (Sg.)",
+    "definition": "Die Leute, die den Müll abholen.",
+    "example": "Die Müllabfuhr kommt am Montag.",
+    "ar": "عربية الزبالة / جمع القمامة"
+   },
+   {
+    "candidate": 1328,
+    "id": "A2|5|die Mülltonne, -n",
+    "level": "A2",
+    "chapter": 5,
+    "word": "die Mülltonne, -n",
+    "definition": "Ein großer Behälter für Müll.",
+    "example": "Die Männer leeren die Mülltonnen.",
+    "ar": "صندوق الزبالة"
+   },
+   {
+    "candidate": 1329,
+    "id": "A2|5|leeren",
+    "level": "A2",
+    "chapter": 5,
+    "word": "leeren",
+    "definition": "Leer machen.",
+    "example": "Sie leeren die Mülltonnen.",
+    "ar": "يفضّي"
+   },
+   {
+    "candidate": 1330,
+    "id": "A2|5|die Straßenreinigung (Sg.)",
+    "level": "A2",
+    "chapter": 5,
+    "word": "die Straßenreinigung (Sg.)",
+    "definition": "Das Saubermachen der Straßen.",
+    "example": "Die Straßenreinigung macht die Straße sauber.",
+    "ar": "نظافة الشوارع"
+   },
+   {
+    "candidate": 1332,
+    "id": "A2|5|servieren",
+    "level": "A2",
+    "chapter": 5,
+    "word": "servieren",
+    "definition": "Essen und Getränke an den Tisch bringen.",
+    "example": "Die Kellnerin serviert die Getränke.",
+    "ar": "يقدّم (الأكل)"
+   },
+   {
+    "candidate": 1333,
+    "id": "A2|5|die Zutat, -en",
+    "level": "A2",
+    "chapter": 5,
+    "word": "die Zutat, -en",
+    "definition": "Was man zum Kochen braucht.",
+    "example": "Er macht aus frischen Zutaten Delikatessen.",
+    "ar": "المكوّن"
+   },
+   {
+    "candidate": 1334,
+    "id": "A2|5|die Delikatesse, -n",
+    "level": "A2",
+    "chapter": 5,
+    "word": "die Delikatesse, -n",
+    "definition": "Ein besonders leckeres Essen.",
+    "example": "Der Koch macht Delikatessen.",
+    "ar": "الأكلة الفاخرة"
+   },
+   {
+    "candidate": 1345,
+    "id": "A2|5|der Daumen, -",
+    "level": "A2",
+    "chapter": 5,
+    "word": "der Daumen, -",
+    "definition": "Der dicke Finger an der Hand.",
+    "example": "Ich drücke dir die Daumen!",
+    "ar": "صباع الإبهام"
+   },
+   {
+    "candidate": 1352,
+    "id": "A2|5|die Bankkarte, -n",
+    "level": "A2",
+    "chapter": 5,
+    "word": "die Bankkarte, -n",
+    "definition": "Eine Karte für das Bankkonto.",
+    "example": "Kann ich morgen meine Bankkarte abholen?",
+    "ar": "كارت البنك"
+   },
+   {
+    "candidate": 1355,
+    "id": "A2|5|die Geldbörse, -n",
+    "level": "A2",
+    "chapter": 5,
+    "word": "die Geldbörse, -n",
+    "definition": "Darin hat man Geld.",
+    "example": "Ich habe meine Geldbörse verloren.",
+    "ar": "المحفظة"
+   },
+   {
+    "candidate": 1363,
+    "id": "A2|5|abgeben, er gibt ab",
+    "level": "A2",
+    "chapter": 5,
+    "word": "abgeben, er gibt ab",
+    "definition": "Jemandem etwas geben.",
+    "example": "Ich gebe die Dokumente für die Einbürgerung ab.",
+    "ar": "يسلّم"
+   },
+   {
+    "candidate": 1369,
+    "id": "A2|5|die Grenze, -n",
+    "level": "A2",
+    "chapter": 5,
+    "word": "die Grenze, -n",
+    "definition": "Die Linie zwischen zwei Ländern.",
+    "example": "Mit einem Pass dürfen Sie über die Grenze fahren.",
+    "ar": "الحدود"
+   },
+   {
+    "candidate": 1370,
+    "id": "A2|5|der Diebstahl, -stähle",
+    "level": "A2",
+    "chapter": 5,
+    "word": "der Diebstahl, -stähle",
+    "definition": "Jemand nimmt etwas, das ihm nicht gehört.",
+    "example": "Ich möchte einen Diebstahl melden.",
+    "ar": "السرقة"
+   },
+   {
+    "candidate": 1372,
+    "id": "A2|5|stehlen, er stiehlt",
+    "level": "A2",
+    "chapter": 5,
+    "word": "stehlen, er stiehlt",
+    "definition": "Etwas nehmen, das einem nicht gehört.",
+    "example": "Jemand hat meine Geldbörse gestohlen.",
+    "ar": "يسرق"
+   },
+   {
+    "candidate": 1383,
+    "id": "A2|5|das Gebäude, -",
+    "level": "A2",
+    "chapter": 5,
+    "word": "das Gebäude, -",
+    "definition": "Ein Haus, ein Bau.",
+    "example": "Das Gebäude ist 160 Jahre alt.",
+    "ar": "المبنى"
+   },
+   {
+    "candidate": 1384,
+    "id": "A2|5|das Parlament, -e",
+    "level": "A2",
+    "chapter": 5,
+    "word": "das Parlament, -e",
+    "definition": "Dort machen Politiker Gesetze.",
+    "example": "Das Rathaus steht neben dem Parlament.",
+    "ar": "البرلمان"
+   }
+  ],
+  "status": "delivered",
+  "sourceSize": [
+   1254,
+   1254
+  ]
+ },
+ {
+  "sheet": 23,
+  "cells": [
+   {
+    "candidate": 1391,
+    "id": "A2|5|die Disco, -s",
+    "level": "A2",
+    "chapter": 5,
+    "word": "die Disco, -s",
+    "definition": "Ein Club zum Tanzen.",
+    "example": "Sie feiern nachts in der Disco.",
+    "ar": "الديسكو"
+   },
+   {
+    "candidate": 1405,
+    "id": "A2|6|sich beeilen",
+    "level": "A2",
+    "chapter": 6,
+    "word": "sich beeilen",
+    "definition": "Schnell machen.",
+    "example": "Beeil dich, wir warten!",
+    "ar": "يستعجل"
+   },
+   {
+    "candidate": 1418,
+    "id": "A2|6|das Plastik (Sg.)",
+    "level": "A2",
+    "chapter": 6,
+    "word": "das Plastik (Sg.)",
+    "definition": "Ein künstliches Material.",
+    "example": "Sie verkauft Lebensmittel ohne Plastik.",
+    "ar": "البلاستيك"
+   },
+   {
+    "candidate": 1425,
+    "id": "A2|6|der Chirurg, -en",
+    "level": "A2",
+    "chapter": 6,
+    "word": "der Chirurg, -en",
+    "definition": "Ein Arzt, der operiert.",
+    "example": "Er war Herzchirurg.",
+    "ar": "الجرّاح"
+   },
+   {
+    "candidate": 1429,
+    "id": "A2|6|der Fernfahrer, -",
+    "level": "A2",
+    "chapter": 6,
+    "word": "der Fernfahrer, -",
+    "definition": "Ein Mann, der weite Strecken mit dem Lkw fährt.",
+    "example": "Er ist Fernfahrer geworden.",
+    "ar": "سوّاق نقل ثقيل"
+   },
+   {
+    "candidate": 1430,
+    "id": "A2|6|der Lastwagen, -",
+    "level": "A2",
+    "chapter": 6,
+    "word": "der Lastwagen, -",
+    "definition": "Ein großes Auto für Waren.",
+    "example": "Er kommt mit seinem Lastwagen an viele Orte.",
+    "ar": "اللوري / الشاحنة"
+   },
+   {
+    "candidate": 1432,
+    "id": "A2|6|der Busfahrer, -",
+    "level": "A2",
+    "chapter": 6,
+    "word": "der Busfahrer, -",
+    "definition": "Ein Mann, der einen Bus fährt.",
+    "example": "Später will er Busfahrer werden.",
+    "ar": "سوّاق الأتوبيس"
+   },
+   {
+    "candidate": 1433,
+    "id": "A2|6|schwanger",
+    "level": "A2",
+    "chapter": 6,
+    "word": "schwanger",
+    "definition": "Eine Frau bekommt ein Baby.",
+    "example": "Tims Schwester ist schwanger.",
+    "ar": "حامل"
+   },
+   {
+    "candidate": 1437,
+    "id": "A2|6|der Fahrgast, -gäste",
+    "level": "A2",
+    "chapter": 6,
+    "word": "der Fahrgast, -gäste",
+    "definition": "Eine Person, die mit Bus oder Bahn fährt.",
+    "example": "Der Fahrgast fragt nach dem Zug.",
+    "ar": "الراكب"
+   },
+   {
+    "candidate": 1440,
+    "id": "A2|6|der Wagen, -",
+    "level": "A2",
+    "chapter": 6,
+    "word": "der Wagen, -",
+    "definition": "Ein Teil vom Zug.",
+    "example": "Unser Platz ist in Wagen 7.",
+    "ar": "العربية (في القطر)"
+   },
+   {
+    "candidate": 1446,
+    "id": "A2|6|der Gang, Gänge",
+    "level": "A2",
+    "chapter": 6,
+    "word": "der Gang, Gänge",
+    "definition": "Der Weg zwischen den Sitzen.",
+    "example": "Am Gang oder am Fenster?",
+    "ar": "الممر"
+   },
+   {
+    "candidate": 1449,
+    "id": "A2|6|die Musikerin, -nen",
+    "level": "A2",
+    "chapter": 6,
+    "word": "die Musikerin, -nen",
+    "definition": "Eine Frau, die Musik macht.",
+    "example": "Die Musikerin kommt mit einer tollen Band.",
+    "ar": "الموسيقية"
+   },
+   {
+    "candidate": 1450,
+    "id": "A2|6|die Sängerin, -nen",
+    "level": "A2",
+    "chapter": 6,
+    "word": "die Sängerin, -nen",
+    "definition": "Eine Frau, die singt.",
+    "example": "Erleben Sie eine große Sängerin.",
+    "ar": "المغنية"
+   },
+   {
+    "candidate": 1451,
+    "id": "A2|6|der Trainer, -",
+    "level": "A2",
+    "chapter": 6,
+    "word": "der Trainer, -",
+    "definition": "Ein Mann, der beim Sport hilft.",
+    "example": "Professionelle Trainer erwarten Sie!",
+    "ar": "المدرّب"
+   },
+   {
+    "candidate": 1458,
+    "id": "A2|6|das Bier, -e",
+    "level": "A2",
+    "chapter": 6,
+    "word": "das Bier, -e",
+    "definition": "Ein Getränk aus Getreide.",
+    "example": "Dein Bier wird warm!",
+    "ar": "البيرة"
+   },
+   {
+    "candidate": 1465,
+    "id": "A2|6|lächeln",
+    "level": "A2",
+    "chapter": 6,
+    "word": "lächeln",
+    "definition": "Freundlich mit dem Mund zeigen, dass man froh ist.",
+    "example": "Lächeln Sie! Man kann es hören.",
+    "ar": "يبتسم"
+   }
+  ],
+  "status": "delivered",
+  "sourceSize": [
+   1254,
+   1254
+  ]
+ },
+ {
+  "sheet": 24,
+  "cells": [
+   {
+    "candidate": 1473,
+    "id": "A2|6|die Fabrik, -en",
+    "level": "A2",
+    "chapter": 6,
+    "word": "die Fabrik, -en",
+    "definition": "Ein großes Gebäude, in dem man Produkte macht.",
+    "example": "Roboter arbeiten in Fabriken.",
+    "ar": "المصنع"
+   },
+   {
+    "candidate": 1474,
+    "id": "A2|6|die Maschine, -n",
+    "level": "A2",
+    "chapter": 6,
+    "word": "die Maschine, -n",
+    "definition": "Ein Gerät, das Arbeit macht.",
+    "example": "Das Arbeitsleben mit Maschinen.",
+    "ar": "الماكينة"
+   },
+   {
+    "candidate": 1475,
+    "id": "A2|6|der Roboter, -",
+    "level": "A2",
+    "chapter": 6,
+    "word": "der Roboter, -",
+    "definition": "Eine Maschine, die wie ein Mensch arbeitet.",
+    "example": "Roboter helfen den Menschen.",
+    "ar": "الروبوت"
+   },
+   {
+    "candidate": 1486,
+    "id": "A2|6|die Videokonferenz, -en",
+    "level": "A2",
+    "chapter": 6,
+    "word": "die Videokonferenz, -en",
+    "definition": "Ein Treffen mit Video im Internet.",
+    "example": "Wir haben eine Videokonferenz.",
+    "ar": "اجتماع فيديو"
+   },
+   {
+    "candidate": 1491,
+    "id": "A2|6|die Hausarbeit, -en",
+    "level": "A2",
+    "chapter": 6,
+    "word": "die Hausarbeit, -en",
+    "definition": "Arbeit im Haushalt.",
+    "example": "Roboter machen leichte Hausarbeit.",
+    "ar": "شغل البيت"
+   },
+   {
+    "candidate": 1561,
+    "id": "B1|7|zusammenstoßen",
+    "level": "B1",
+    "chapter": 7,
+    "word": "zusammenstoßen",
+    "definition": "Zwei Personen oder Fahrzeuge treffen mit Kraft aufeinander, weil sie nicht aufgepasst haben.",
+    "example": "Auf der Straße stießen die beiden Frauen zusammen.",
+    "ar": "يصطدم / يتخبَّط في",
+    "omit": "Superseded by a reviewed literal repair on sheet 33.",
+    "supersededBySheet": 33
+   },
+   {
+    "candidate": 1570,
+    "id": "B1|7|erschöpft",
+    "level": "B1",
+    "chapter": 7,
+    "word": "erschöpft",
+    "definition": "Wer erschöpft ist, ist sehr müde und hat keine Kraft mehr.",
+    "example": "Seit du den Job gewechselt hast, bist du ständig erschöpft.",
+    "ar": "مُنهَك / تعبان جدًا"
+   },
+   {
+    "candidate": 1577,
+    "id": "B1|7|zornig",
+    "level": "B1",
+    "chapter": 7,
+    "word": "zornig",
+    "definition": "Wer zornig ist, ist sehr wütend.",
+    "example": "Der Löwe brüllte zornig zurück.",
+    "ar": "غاضب جدًا"
+   },
+   {
+    "candidate": 1579,
+    "id": "B1|7|beißen",
+    "level": "B1",
+    "chapter": 7,
+    "word": "beißen",
+    "definition": "Man drückt die Zähne fest in eine Person, ein Tier oder eine Sache.",
+    "example": "Der Löwe biss den Bären mit seinen scharfen Zähnen.",
+    "ar": "يعَضّ"
+   },
+   {
+    "candidate": 1580,
+    "id": "B1|7|fressen",
+    "level": "B1",
+    "chapter": 7,
+    "word": "fressen",
+    "definition": "Bei Tieren sagt man fressen, wenn sie Nahrung zu sich nehmen.",
+    "example": "Der Fuchs fraß den Käse und lachte über den Raben.",
+    "ar": "يأكل (للحيوان)"
+   },
+   {
+    "candidate": 1583,
+    "id": "B1|7|die Ente",
+    "level": "B1",
+    "chapter": 7,
+    "word": "die Ente",
+    "definition": "Eine Ente ist ein Vogel, der gut schwimmen kann und oft auf Seen lebt.",
+    "example": "Im Park füttern die Kinder die Enten.",
+    "ar": "بطة"
+   },
+   {
+    "candidate": 1584,
+    "id": "B1|7|die Fliege",
+    "level": "B1",
+    "chapter": 7,
+    "word": "die Fliege",
+    "definition": "Eine Fliege ist ein kleines Insekt mit Flügeln, das oft im Haus herumfliegt.",
+    "example": "Im Sommer sind viele Fliegen in der Küche.",
+    "ar": "ذبابة"
+   },
+   {
+    "candidate": 1585,
+    "id": "B1|7|der Fuchs",
+    "level": "B1",
+    "chapter": 7,
+    "word": "der Fuchs",
+    "definition": "Ein Fuchs ist ein rotbraunes Tier mit einem langen Schwanz, das als sehr klug gilt.",
+    "example": "In vielen Fabeln ist der Fuchs besonders klug.",
+    "ar": "ثعلب"
+   },
+   {
+    "candidate": 1586,
+    "id": "B1|7|die Giraffe",
+    "level": "B1",
+    "chapter": 7,
+    "word": "die Giraffe",
+    "definition": "Eine Giraffe ist ein afrikanisches Tier mit einem sehr langen Hals.",
+    "example": "Die Giraffe frisst Blätter von hohen Bäumen.",
+    "ar": "زرافة"
+   },
+   {
+    "candidate": 1587,
+    "id": "B1|7|der Hirsch",
+    "level": "B1",
+    "chapter": 7,
+    "word": "der Hirsch",
+    "definition": "Ein Hirsch ist ein großes Tier im Wald, das oft ein Geweih auf dem Kopf hat.",
+    "example": "Der Bär hatte einen jungen Hirsch gefangen.",
+    "ar": "أيِّل"
+   },
+   {
+    "candidate": 1588,
+    "id": "B1|7|das Krokodil",
+    "level": "B1",
+    "chapter": 7,
+    "word": "das Krokodil",
+    "definition": "Ein Krokodil ist ein großes Tier mit vielen Zähnen, das im Wasser und an Land lebt.",
+    "example": "Früher lebten im Nil viele Krokodile.",
+    "ar": "تمساح"
+   }
+  ],
+  "status": "delivered",
+  "sourceSize": [
+   1254,
+   1254
+  ]
+ },
+ {
+  "sheet": 25,
+  "cells": [
+   {
+    "candidate": 1589,
+    "id": "B1|7|die Mücke",
+    "level": "B1",
+    "chapter": 7,
+    "word": "die Mücke",
+    "definition": "Eine Mücke ist ein kleines Insekt, das sticht und Blut trinkt.",
+    "example": "In der Nacht hat mich eine Mücke gestochen.",
+    "ar": "ناموسة / بعوضة"
+   },
+   {
+    "candidate": 1590,
+    "id": "B1|7|der Pinguin",
+    "level": "B1",
+    "chapter": 7,
+    "word": "der Pinguin",
+    "definition": "Ein Pinguin ist ein schwarz-weißer Vogel, der nicht fliegen, aber sehr gut schwimmen kann.",
+    "example": "Pinguine leben vor allem in der Antarktis.",
+    "ar": "بطريق"
+   },
+   {
+    "candidate": 1591,
+    "id": "B1|7|der Rabe",
+    "level": "B1",
+    "chapter": 7,
+    "word": "der Rabe",
+    "definition": "Ein Rabe ist ein großer schwarzer Vogel.",
+    "example": "Der Rabe saß mit dem Käse auf einem Baum.",
+    "ar": "غراب"
+   },
+   {
+    "candidate": 1592,
+    "id": "B1|7|die Schildkröte",
+    "level": "B1",
+    "chapter": 7,
+    "word": "die Schildkröte",
+    "definition": "Eine Schildkröte ist ein langsames Tier mit einem harten Panzer auf dem Rücken.",
+    "example": "Unsere Schildkröte ist schon über vierzig Jahre alt.",
+    "ar": "سلحفاة"
+   },
+   {
+    "candidate": 1593,
+    "id": "B1|7|der Frosch",
+    "level": "B1",
+    "chapter": 7,
+    "word": "der Frosch",
+    "definition": "Ein Frosch ist ein kleines grünes Tier, das am Wasser lebt und gut springen kann.",
+    "example": "Als der Hase kam, sprangen alle Frösche ins Wasser.",
+    "ar": "ضفدع"
+   },
+   {
+    "candidate": 1601,
+    "id": "B1|7|streiken",
+    "level": "B1",
+    "chapter": 7,
+    "word": "streiken",
+    "definition": "Arbeitnehmer streiken, wenn sie nicht arbeiten, um bessere Bedingungen zu bekommen.",
+    "example": "Die Busfahrer streiken heute für mehr Lohn.",
+    "ar": "يُضرِب عن العمل"
+   },
+   {
+    "candidate": 1617,
+    "id": "B1|7|der Grill",
+    "level": "B1",
+    "chapter": 7,
+    "word": "der Grill",
+    "definition": "Ein Grill ist ein Gerät, auf dem man draußen Fleisch oder Gemüse über Feuer zubereitet.",
+    "example": "Beim Sommerfest stehen alle Nachbarn am Grill.",
+    "ar": "شوّاية"
+   },
+   {
+    "candidate": 1631,
+    "id": "B1|8|die Gymnastik",
+    "level": "B1",
+    "chapter": 8,
+    "word": "die Gymnastik",
+    "definition": "Leichte Übungen für den Körper, die man oft ohne Geräte macht.",
+    "example": "Meine Oma macht jeden Morgen zehn Minuten Gymnastik.",
+    "ar": "الجمباز / تمارين رياضية خفيفة"
+   },
+   {
+    "candidate": 1636,
+    "id": "B1|8|kühlen",
+    "level": "B1",
+    "chapter": 8,
+    "word": "kühlen",
+    "definition": "Etwas kalt oder kälter machen.",
+    "example": "Bei Fieber kann ein feuchtes Tuch die Stirn kühlen.",
+    "ar": "يبرّد"
+   },
+   {
+    "candidate": 1637,
+    "id": "B1|8|sich eincremen",
+    "level": "B1",
+    "chapter": 8,
+    "word": "sich eincremen",
+    "definition": "Creme auf die Haut geben und gut verteilen.",
+    "example": "Bevor ich in die Sonne gehe, creme ich mich gut ein.",
+    "ar": "يدهن جسمه بالكريم"
+   },
+   {
+    "candidate": 1638,
+    "id": "B1|8|der Schatten",
+    "level": "B1",
+    "chapter": 8,
+    "word": "der Schatten",
+    "definition": "Ein dunklerer, kühler Ort, an den die Sonne nicht direkt scheint.",
+    "example": "Mittags bleibe ich lieber im Schatten.",
+    "ar": "الظل"
+   },
+   {
+    "candidate": 1639,
+    "id": "B1|8|die Flüssigkeit",
+    "level": "B1",
+    "chapter": 8,
+    "word": "die Flüssigkeit",
+    "definition": "Etwas, das fließt und das man trinken kann, zum Beispiel Wasser oder Saft.",
+    "example": "Bei Hitze braucht der Körper besonders viel Flüssigkeit.",
+    "ar": "سائل / السوائل"
+   },
+   {
+    "candidate": 1641,
+    "id": "B1|8|der Knödel",
+    "level": "B1",
+    "chapter": 8,
+    "word": "der Knödel",
+    "definition": "Eine runde Beilage aus Kartoffeln oder Brot, die man vor allem in Süddeutschland und Österreich isst.",
+    "example": "Zum Braten gibt es in Bayern oft Knödel.",
+    "ar": "كرة من عجين البطاطس أو الخبز (كنودل)"
+   },
+   {
+    "candidate": 1642,
+    "id": "B1|8|der Pfannkuchen",
+    "level": "B1",
+    "chapter": 8,
+    "word": "der Pfannkuchen",
+    "definition": "Ein flacher, dünner Kuchen aus Mehl, Eiern und Milch, den man in der Pfanne backt.",
+    "example": "Die Kinder essen am liebsten Pfannkuchen mit Apfelmus.",
+    "ar": "فطيرة رقيقة / بان كيك"
+   },
+   {
+    "candidate": 1643,
+    "id": "B1|8|der Schweinebraten",
+    "level": "B1",
+    "chapter": 8,
+    "word": "der Schweinebraten",
+    "definition": "Ein großes Stück Schweinefleisch, das im Ofen gebraten wird.",
+    "example": "Im Gasthaus gibt es sonntags Schweinebraten mit Knödeln.",
+    "ar": "لحم خنزير مشوي في الفرن"
+   },
+   {
+    "candidate": 1644,
+    "id": "B1|8|das Steak",
+    "level": "B1",
+    "chapter": 8,
+    "word": "das Steak",
+    "definition": "Eine dicke Scheibe Fleisch, die man kurz in der Pfanne oder auf dem Grill brät.",
+    "example": "Ich möchte mein Steak bitte gut durchgebraten.",
+    "ar": "ستيك / شريحة لحم"
+   }
+  ],
+  "status": "delivered",
+  "sourceSize": [
+   1254,
+   1254
+  ]
+ },
+ {
+  "sheet": 26,
+  "cells": [
+   {
+    "candidate": 1645,
+    "id": "B1|8|roh",
+    "level": "B1",
+    "chapter": 8,
+    "word": "roh",
+    "definition": "Nicht gekocht und nicht gebraten.",
+    "example": "Rohes Fleisch sollte man lieber nicht essen.",
+    "ar": "نيء"
+   },
+   {
+    "candidate": 1648,
+    "id": "B1|8|eiskalt",
+    "level": "B1",
+    "chapter": 8,
+    "word": "eiskalt",
+    "definition": "Sehr, sehr kalt.",
+    "example": "Im Sommer trinke ich gern eiskaltes Wasser mit Zitrone.",
+    "ar": "مثلج / بارد جدًا"
+   },
+   {
+    "candidate": 1651,
+    "id": "B1|8|schwindelig",
+    "level": "B1",
+    "chapter": 8,
+    "word": "schwindelig",
+    "definition": "So, dass man das Gefühl hat, dass sich alles um einen herum dreht.",
+    "example": "Nach dem Aufstehen ist mir oft schwindelig.",
+    "ar": "دائخ / مصاب بالدوار"
+   },
+   {
+    "candidate": 1652,
+    "id": "B1|8|die Brust",
+    "level": "B1",
+    "chapter": 8,
+    "word": "die Brust",
+    "definition": "Der vordere Teil des Körpers zwischen Hals und Bauch.",
+    "example": "Er hat starke Schmerzen in der Brust.",
+    "ar": "الصدر"
+   },
+   {
+    "candidate": 1657,
+    "id": "B1|8|einnehmen",
+    "level": "B1",
+    "chapter": 8,
+    "word": "einnehmen",
+    "definition": "Ein Medikament schlucken oder trinken.",
+    "example": "Nehmen Sie die Tabletten morgens vor dem Frühstück ein.",
+    "ar": "يتناول (دواء)"
+   },
+   {
+    "candidate": 1658,
+    "id": "B1|8|auflösen",
+    "level": "B1",
+    "chapter": 8,
+    "word": "auflösen",
+    "definition": "Etwas in eine Flüssigkeit geben, bis man es nicht mehr sieht.",
+    "example": "Lösen Sie das Pulver in einem Glas Wasser auf.",
+    "ar": "يذيب"
+   },
+   {
+    "candidate": 1661,
+    "id": "B1|8|der Krankenwagen",
+    "level": "B1",
+    "chapter": 8,
+    "word": "der Krankenwagen",
+    "definition": "Ein Auto, das kranke oder verletzte Menschen ins Krankenhaus bringt.",
+    "example": "Nach dem Unfall kam sofort ein Krankenwagen.",
+    "ar": "سيارة الإسعاف"
+   },
+   {
+    "candidate": 1662,
+    "id": "B1|8|die Notaufnahme",
+    "level": "B1",
+    "chapter": 8,
+    "word": "die Notaufnahme",
+    "definition": "Die Abteilung im Krankenhaus, in die man bei einem Notfall sofort gebracht wird.",
+    "example": "In der Notaufnahme musste ich zwei Stunden warten.",
+    "ar": "قسم الطوارئ"
+   },
+   {
+    "candidate": 1664,
+    "id": "B1|8|der Klinikaufenthalt",
+    "level": "B1",
+    "chapter": 8,
+    "word": "der Klinikaufenthalt",
+    "definition": "Die Zeit, in der man als Patient in einer Klinik bleibt.",
+    "example": "Für den Klinikaufenthalt sollten Sie bequeme Kleidung mitnehmen.",
+    "ar": "فترة الإقامة في المستشفى"
+   },
+   {
+    "candidate": 1670,
+    "id": "B1|8|der Pfleger",
+    "level": "B1",
+    "chapter": 8,
+    "word": "der Pfleger",
+    "definition": "Ein Mann, der beruflich kranke oder alte Menschen versorgt.",
+    "example": "Der Pfleger bringt dem Patienten das Mittagessen ans Bett.",
+    "ar": "الممرض"
+   },
+   {
+    "candidate": 1675,
+    "id": "B1|8|der Bademantel",
+    "level": "B1",
+    "chapter": 8,
+    "word": "der Bademantel",
+    "definition": "Ein langer, warmer Mantel aus weichem Stoff, den man nach dem Baden oder zu Hause trägt.",
+    "example": "Im Krankenhaus läuft er meistens im Bademantel herum.",
+    "ar": "روب الحمام / البُرنس"
+   },
+   {
+    "candidate": 1676,
+    "id": "B1|8|der Hausschuh",
+    "level": "B1",
+    "chapter": 8,
+    "word": "der Hausschuh",
+    "definition": "Ein bequemer Schuh, den man nur in der Wohnung trägt.",
+    "example": "Vergiss deine Hausschuhe nicht, wenn du ins Krankenhaus gehst!",
+    "ar": "شبشب / خف البيت"
+   },
+   {
+    "candidate": 1677,
+    "id": "B1|8|der Schlafanzug",
+    "level": "B1",
+    "chapter": 8,
+    "word": "der Schlafanzug",
+    "definition": "Bequeme Kleidung aus Hose und Oberteil, die man zum Schlafen anzieht.",
+    "example": "Ich habe zwei Schlafanzüge in die Tasche gepackt.",
+    "ar": "بيجامة"
+   },
+   {
+    "candidate": 1678,
+    "id": "B1|8|die Zahnbürste",
+    "level": "B1",
+    "chapter": 8,
+    "word": "die Zahnbürste",
+    "definition": "Eine kleine Bürste, mit der man sich die Zähne putzt.",
+    "example": "Eine neue Zahnbürste bekommst du in der Drogerie.",
+    "ar": "فرشاة الأسنان"
+   },
+   {
+    "candidate": 1679,
+    "id": "B1|8|die Zahnpasta",
+    "level": "B1",
+    "chapter": 8,
+    "word": "die Zahnpasta",
+    "definition": "Die Creme, die man zum Zähneputzen auf die Zahnbürste gibt.",
+    "example": "Die Zahnpasta ist leer, wir müssen neue kaufen.",
+    "ar": "معجون الأسنان"
+   },
+   {
+    "candidate": 1680,
+    "id": "B1|8|kämmen",
+    "level": "B1",
+    "chapter": 8,
+    "word": "kämmen",
+    "definition": "Die Haare mit einem Kamm in Ordnung bringen.",
+    "example": "Die Mutter kämmt ihrer Tochter jeden Morgen die Haare.",
+    "ar": "يمشّط"
+   }
+  ],
+  "status": "delivered",
+  "sourceSize": [
+   1254,
+   1254
+  ]
+ },
+ {
+  "sheet": 27,
+  "cells": [
+   {
+    "candidate": 1681,
+    "id": "B1|8|die Drogerie",
+    "level": "B1",
+    "chapter": 8,
+    "word": "die Drogerie",
+    "definition": "Ein Geschäft, in dem man zum Beispiel Seife, Shampoo und Zahnpasta kaufen kann.",
+    "example": "In der Drogerie neben dem Haupteingang gibt es auch Zeitschriften.",
+    "ar": "محل مستحضرات التجميل والنظافة"
+   },
+   {
+    "candidate": 1686,
+    "id": "B1|8|die Fernbedienung",
+    "level": "B1",
+    "chapter": 8,
+    "word": "die Fernbedienung",
+    "definition": "Ein kleines Gerät, mit dem man zum Beispiel den Fernseher aus der Entfernung bedient.",
+    "example": "Wo ist denn schon wieder die Fernbedienung?",
+    "ar": "الريموت كنترول / جهاز التحكم"
+   },
+   {
+    "candidate": 1696,
+    "id": "B1|8|die Forscherin",
+    "level": "B1",
+    "chapter": 8,
+    "word": "die Forscherin",
+    "definition": "Eine Frau, die wissenschaftlich arbeitet und Neues herausfinden will.",
+    "example": "Die Forscherin untersucht, wie Musik auf das Gehirn wirkt.",
+    "ar": "باحثة"
+   },
+   {
+    "candidate": 1707,
+    "id": "B1|8|die Beerdigung",
+    "level": "B1",
+    "chapter": 8,
+    "word": "die Beerdigung",
+    "definition": "Die Feier, bei der man einen toten Menschen ins Grab legt.",
+    "example": "Auf einer Beerdigung spielt man keine fröhliche Musik.",
+    "ar": "جنازة / دفن"
+   },
+   {
+    "candidate": 1717,
+    "id": "B1|8|kleben",
+    "level": "B1",
+    "chapter": 8,
+    "word": "kleben",
+    "definition": "Etwas mit Klebstoff oder einem Pflaster an etwas festmachen.",
+    "example": "Die Ärztin klebt mir ein Pflaster auf die Wunde.",
+    "ar": "يلصق"
+   },
+   {
+    "candidate": 1743,
+    "id": "B1|8|die Wertsachen",
+    "level": "B1",
+    "chapter": 8,
+    "word": "die Wertsachen",
+    "definition": "Teure oder wichtige Dinge, zum Beispiel Schmuck, Geld oder das Handy.",
+    "example": "Lassen Sie Ihre Wertsachen nicht offen im Zimmer liegen.",
+    "ar": "الأشياء الثمينة"
+   },
+   {
+    "candidate": 1744,
+    "id": "B1|8|das Schließfach",
+    "level": "B1",
+    "chapter": 8,
+    "word": "das Schließfach",
+    "definition": "Ein kleiner Schrank oder ein Fach, das man abschließen kann.",
+    "example": "Mein Portemonnaie liegt sicher im Schließfach.",
+    "ar": "خزانة صغيرة بقفل"
+   },
+   {
+    "candidate": 1753,
+    "id": "B1|9|die Statue",
+    "level": "B1",
+    "chapter": 9,
+    "word": "die Statue",
+    "definition": "Eine Figur aus Stein, Holz oder Metall, die meistens einen Menschen oder ein Tier zeigt.",
+    "example": "Vor dem Rathaus steht eine Statue des Stadtgründers.",
+    "ar": "تمثال"
+   },
+   {
+    "candidate": 1754,
+    "id": "B1|9|der Brunnen",
+    "level": "B1",
+    "chapter": 9,
+    "word": "der Brunnen",
+    "definition": "Eine Anlage mit Wasser, oft mit Figuren, die zum Beispiel auf einem Platz in der Stadt steht.",
+    "example": "Im Sommer sitzen viele Leute am Brunnen und essen ein Eis.",
+    "ar": "نافورة / بئر"
+   },
+   {
+    "candidate": 1758,
+    "id": "B1|9|die Galerie",
+    "level": "B1",
+    "chapter": 9,
+    "word": "die Galerie",
+    "definition": "Ein Raum oder Geschäft, in dem man Kunstwerke ausstellt und verkauft.",
+    "example": "Die kleine Galerie zeigt Bilder von jungen Künstlerinnen.",
+    "ar": "معرض فني / جاليري"
+   },
+   {
+    "candidate": 1761,
+    "id": "B1|9|die Ölfarbe",
+    "level": "B1",
+    "chapter": 9,
+    "word": "die Ölfarbe",
+    "definition": "Eine Farbe mit Öl, mit der Maler zum Beispiel auf Leinwand malen.",
+    "example": "Die Malerin arbeitet am liebsten mit Ölfarben.",
+    "ar": "لون زيتي"
+   },
+   {
+    "candidate": 1768,
+    "id": "B1|9|die Putzfirma",
+    "level": "B1",
+    "chapter": 9,
+    "word": "die Putzfirma",
+    "definition": "Eine Firma, die Wohnungen, Büros oder Museen sauber macht.",
+    "example": "Die Putzfirma kommt jeden Abend ins Museum.",
+    "ar": "شركة تنظيف"
+   },
+   {
+    "candidate": 1769,
+    "id": "B1|9|musizieren",
+    "level": "B1",
+    "chapter": 9,
+    "word": "musizieren",
+    "definition": "Allein oder mit anderen zusammen Musik machen.",
+    "example": "Am Wochenende musizieren wir gemeinsam im Hof.",
+    "ar": "يعزف / يمارس الموسيقى"
+   },
+   {
+    "candidate": 1770,
+    "id": "B1|9|der Schulchor",
+    "level": "B1",
+    "chapter": 9,
+    "word": "der Schulchor",
+    "definition": "Eine Gruppe von Schülerinnen und Schülern, die zusammen singen.",
+    "example": "Früher habe ich im Schulchor gesungen.",
+    "ar": "كورال المدرسة"
+   },
+   {
+    "candidate": 1774,
+    "id": "B1|9|das Theaterstück",
+    "level": "B1",
+    "chapter": 9,
+    "word": "das Theaterstück",
+    "definition": "Eine Geschichte, die Schauspieler auf einer Bühne spielen.",
+    "example": "Die Theatergruppe probt ein neues Theaterstück.",
+    "ar": "مسرحية"
+   },
+   {
+    "candidate": 1779,
+    "id": "B1|9|herumspringen",
+    "level": "B1",
+    "chapter": 9,
+    "word": "herumspringen",
+    "definition": "Ohne bestimmtes Ziel hin und her springen.",
+    "example": "Die Kinder springen fröhlich auf der Bühne herum.",
+    "ar": "يقفز هنا وهناك"
+   }
+  ],
+  "status": "delivered",
+  "sourceSize": [
+   1254,
+   1254
+  ]
+ },
+ {
+  "sheet": 28,
+  "cells": [
+   {
+    "candidate": 1780,
+    "id": "B1|9|rennen",
+    "level": "B1",
+    "chapter": 9,
+    "word": "rennen",
+    "definition": "Sehr schnell laufen.",
+    "example": "Der Dieb rannte mit der Tasche davon.",
+    "ar": "يركض / يجري بسرعة"
+   },
+   {
+    "candidate": 1781,
+    "id": "B1|9|schreien",
+    "level": "B1",
+    "chapter": 9,
+    "word": "schreien",
+    "definition": "Sehr laut rufen oder sprechen.",
+    "example": "Auf der Bühne darf man auch mal laut schreien.",
+    "ar": "يصرخ"
+   },
+   {
+    "candidate": 1782,
+    "id": "B1|9|die Uniform",
+    "level": "B1",
+    "chapter": 9,
+    "word": "die Uniform",
+    "definition": "Gleiche Kleidung, die zum Beispiel Polizisten oder Piloten bei der Arbeit tragen.",
+    "example": "Der Schauspieler spielt einen Polizisten und trägt eine Uniform.",
+    "ar": "زيّ رسمي موحّد"
+   },
+   {
+    "candidate": 1783,
+    "id": "B1|9|der Dieb",
+    "level": "B1",
+    "chapter": 9,
+    "word": "der Dieb",
+    "definition": "Ein Mann, der etwas stiehlt.",
+    "example": "Der Detektiv sucht den Dieb im Treppenhaus.",
+    "ar": "لص / سارق"
+   },
+   {
+    "candidate": 1784,
+    "id": "B1|9|die Diebin",
+    "level": "B1",
+    "chapter": 9,
+    "word": "die Diebin",
+    "definition": "Eine Frau, die etwas stiehlt.",
+    "example": "Die Diebin hat eine wertvolle Briefmarke gestohlen.",
+    "ar": "لصة / سارقة"
+   },
+   {
+    "candidate": 1785,
+    "id": "B1|9|aufführen",
+    "level": "B1",
+    "chapter": 9,
+    "word": "aufführen",
+    "definition": "Ein Theaterstück oder ein Musikstück vor Publikum zeigen.",
+    "example": "Am Ende des Kurses führen wir ein lustiges Stück auf.",
+    "ar": "يعرض / يقدّم (عرضًا)"
+   },
+   {
+    "candidate": 1788,
+    "id": "B1|9|sich schminken",
+    "level": "B1",
+    "chapter": 9,
+    "word": "sich schminken",
+    "definition": "Farbe ins Gesicht machen, um schöner oder anders auszusehen.",
+    "example": "Für ihre Rolle schminkt sie sich besonders.",
+    "ar": "يضع مكياجًا / يتزيّن"
+   },
+   {
+    "candidate": 1789,
+    "id": "B1|9|die Frisur",
+    "level": "B1",
+    "chapter": 9,
+    "word": "die Frisur",
+    "definition": "Die Form, in der die Haare geschnitten oder gemacht sind.",
+    "example": "Mit der neuen Frisur sieht er ganz anders aus.",
+    "ar": "تسريحة شعر"
+   },
+   {
+    "candidate": 1793,
+    "id": "B1|9|das Büfett",
+    "level": "B1",
+    "chapter": 9,
+    "word": "das Büfett",
+    "definition": "Ein Tisch mit vielen Speisen und Getränken, von dem sich die Gäste selbst nehmen.",
+    "example": "Nach der Eröffnung gibt es ein Büfett mit Snacks und Getränken.",
+    "ar": "بوفيه"
+   },
+   {
+    "candidate": 1794,
+    "id": "B1|9|der Snack",
+    "level": "B1",
+    "chapter": 9,
+    "word": "der Snack",
+    "definition": "Eine kleine Mahlzeit für zwischendurch.",
+    "example": "In der Pause gibt es Getränke und kleine Snacks.",
+    "ar": "وجبة خفيفة / سناك"
+   },
+   {
+    "candidate": 1796,
+    "id": "B1|9|die Rose",
+    "level": "B1",
+    "chapter": 9,
+    "word": "die Rose",
+    "definition": "Eine Blume mit Dornen, die oft rot ist und als Zeichen für Liebe gilt.",
+    "example": "Nach der Vorstellung schenkt er ihr eine rote Rose.",
+    "ar": "وردة"
+   },
+   {
+    "candidate": 1797,
+    "id": "B1|9|der Topf",
+    "level": "B1",
+    "chapter": 9,
+    "word": "der Topf",
+    "definition": "Ein rundes Gefäß, in dem man zum Beispiel Suppe oder Nudeln kocht.",
+    "example": "Auf dem Herd steht ein großer Topf mit Suppe.",
+    "ar": "قِدر / حلّة"
+   },
+   {
+    "candidate": 1798,
+    "id": "B1|9|die Vase",
+    "level": "B1",
+    "chapter": 9,
+    "word": "die Vase",
+    "definition": "Ein Gefäß, in das man Blumen mit Wasser stellt.",
+    "example": "Aus alten Flaschen kann man bunte Vasen machen.",
+    "ar": "مزهرية / فازة"
+   },
+   {
+    "candidate": 1803,
+    "id": "B1|9|chaotisch",
+    "level": "B1",
+    "chapter": 9,
+    "word": "chaotisch",
+    "definition": "Ohne Ordnung und sehr durcheinander.",
+    "example": "Unsere Proben sind manchmal ziemlich chaotisch.",
+    "ar": "فوضوي"
+   },
+   {
+    "candidate": 1804,
+    "id": "B1|9|durcheinander",
+    "level": "B1",
+    "chapter": 9,
+    "word": "durcheinander",
+    "definition": "Nicht ordentlich und ohne Ordnung.",
+    "example": "Nach der Party war in der Wohnung alles durcheinander.",
+    "ar": "مبعثر / غير مرتّب"
+   },
+   {
+    "candidate": 1807,
+    "id": "B1|9|steil",
+    "level": "B1",
+    "chapter": 9,
+    "word": "steil",
+    "definition": "So, dass es sehr schnell nach oben oder nach unten geht.",
+    "example": "Der Weg auf den Berg ist sehr steil.",
+    "ar": "شديد الانحدار"
+   }
+  ],
+  "status": "delivered",
+  "sourceSize": [
+   1254,
+   1254
+  ]
+ },
+ {
+  "sheet": 29,
+  "cells": [
+   {
+    "candidate": 1815,
+    "id": "B1|9|die Biene",
+    "level": "B1",
+    "chapter": 9,
+    "word": "die Biene",
+    "definition": "Ein kleines Insekt, das Honig macht.",
+    "example": "Im Garten fliegen viele Bienen um die Blumen.",
+    "ar": "نحلة"
+   },
+   {
+    "candidate": 1823,
+    "id": "B1|9|die Mauer",
+    "level": "B1",
+    "chapter": 9,
+    "word": "die Mauer",
+    "definition": "Eine Wand aus Steinen, die zum Beispiel einen Garten oder eine Stadt umgibt.",
+    "example": "An der alten Mauer kann man bunte Graffiti sehen.",
+    "ar": "سور / جدار"
+   },
+   {
+    "candidate": 1833,
+    "id": "B1|9|die Stufe",
+    "level": "B1",
+    "chapter": 9,
+    "word": "die Stufe",
+    "definition": "Ein einzelner Teil einer Treppe.",
+    "example": "Vorsicht, die erste Stufe ist sehr hoch!",
+    "ar": "درجة (سلم)"
+   },
+   {
+    "candidate": 1837,
+    "id": "B1|9|das Bühnenbild",
+    "level": "B1",
+    "chapter": 9,
+    "word": "das Bühnenbild",
+    "definition": "Die Dekoration und die Gegenstände auf der Bühne für ein Theaterstück.",
+    "example": "Das Bühnenbild passt sehr gut zum Inhalt des Stücks.",
+    "ar": "ديكور المسرح"
+   },
+   {
+    "candidate": 1839,
+    "id": "B1|9|die Aufführung",
+    "level": "B1",
+    "chapter": 9,
+    "word": "die Aufführung",
+    "definition": "Das Zeigen eines Theaterstücks, Konzerts oder Tanzes vor Publikum.",
+    "example": "Nach der Aufführung gab es langen Applaus.",
+    "ar": "عرض / أداء"
+   },
+   {
+    "candidate": 1840,
+    "id": "B1|9|der Applaus",
+    "level": "B1",
+    "chapter": 9,
+    "word": "der Applaus",
+    "definition": "Das Klatschen mit den Händen, wenn dem Publikum etwas gefallen hat.",
+    "example": "Die Schauspieler bekommen viel Applaus.",
+    "ar": "تصفيق"
+   },
+   {
+    "candidate": 1841,
+    "id": "B1|9|sich verbeugen",
+    "level": "B1",
+    "chapter": 9,
+    "word": "sich verbeugen",
+    "definition": "Den Oberkörper nach vorne bewegen, um sich zu bedanken oder jemanden zu grüßen.",
+    "example": "Am Ende verbeugen sich alle Schauspieler vor dem Publikum.",
+    "ar": "ينحني (للتحية)"
+   },
+   {
+    "candidate": 1842,
+    "id": "B1|9|das Aquarell",
+    "level": "B1",
+    "chapter": 9,
+    "word": "das Aquarell",
+    "definition": "Ein Bild, das man mit Wasserfarben malt.",
+    "example": "Im Malkurs lernen Sie die Technik des Aquarells.",
+    "ar": "لوحة بالألوان المائية"
+   },
+   {
+    "candidate": 1843,
+    "id": "B1|9|das Graffiti",
+    "level": "B1",
+    "chapter": 9,
+    "word": "das Graffiti",
+    "definition": "Ein Bild oder Text, den jemand mit Spray an eine Wand malt.",
+    "example": "An der Brücke ist ein neues Graffiti aufgetaucht.",
+    "ar": "جرافيتي / رسم على الجدران"
+   },
+   {
+    "candidate": 1847,
+    "id": "B1|9|das Upcycling",
+    "level": "B1",
+    "chapter": 9,
+    "word": "das Upcycling",
+    "definition": "Eine Methode, bei der man aus alten oder kaputten Dingen etwas Neues und Schönes macht.",
+    "example": "Beim Upcycling werden aus alten Paletten praktische Möbel.",
+    "ar": "إعادة تدوير إبداعية"
+   },
+   {
+    "candidate": 1877,
+    "id": "B1|10|die Erste Hilfe",
+    "level": "B1",
+    "chapter": 10,
+    "word": "die Erste Hilfe",
+    "definition": "Die schnelle Hilfe, die man einem verletzten Menschen gibt, bevor der Arzt kommt.",
+    "example": "Jeder Autofahrer sollte einen Kurs in Erster Hilfe machen.",
+    "ar": "الإسعافات الأولية"
+   },
+   {
+    "candidate": 1878,
+    "id": "B1|10|spenden",
+    "level": "B1",
+    "chapter": 10,
+    "word": "spenden",
+    "definition": "Geld oder Sachen kostenlos geben, um anderen zu helfen.",
+    "example": "Viele Supermärkte spenden übrige Lebensmittel an die Tafel.",
+    "ar": "يتبرّع"
+   },
+   {
+    "candidate": 1891,
+    "id": "B1|10|abstimmen (über + A)",
+    "level": "B1",
+    "chapter": 10,
+    "word": "abstimmen (über + A)",
+    "definition": "Durch eine Wahl gemeinsam über etwas entscheiden.",
+    "example": "Morgen stimmen die Bürger über den neuen Park ab.",
+    "ar": "يصوّت (على)"
+   },
+   {
+    "candidate": 1892,
+    "id": "B1|10|der Bundestag",
+    "level": "B1",
+    "chapter": 10,
+    "word": "der Bundestag",
+    "definition": "Das deutsche Parlament in Berlin.",
+    "example": "Die Abgeordneten im Bundestag beschließen neue Gesetze.",
+    "ar": "البرلمان الألماني (البوندستاغ)"
+   },
+   {
+    "candidate": 1909,
+    "id": "B1|10|unterzeichnen",
+    "level": "B1",
+    "chapter": 10,
+    "word": "unterzeichnen",
+    "definition": "Ein offizielles Dokument mit dem eigenen Namen unterschreiben.",
+    "example": "Im Jahr 1957 unterzeichneten die Politiker in Rom zwei wichtige Verträge.",
+    "ar": "يوقّع (رسميًا)"
+   },
+   {
+    "candidate": 1918,
+    "id": "B1|10|die Aprikose",
+    "level": "B1",
+    "chapter": 10,
+    "word": "die Aprikose",
+    "definition": "Eine kleine, gelb-orange Frucht mit einem großen Kern.",
+    "example": "Aus Aprikosen kann man leckere Marmelade kochen.",
+    "ar": "مشمش"
+   }
+  ],
+  "status": "delivered",
+  "sourceSize": [
+   1254,
+   1254
+  ]
+ },
+ {
+  "sheet": 30,
+  "cells": [
+   {
+    "candidate": 1919,
+    "id": "B1|10|die Pflaume",
+    "level": "B1",
+    "chapter": 10,
+    "word": "die Pflaume",
+    "definition": "Eine kleine, blaue oder rote Frucht mit einem Kern.",
+    "example": "Im Garten meiner Oma wachsen süße Pflaumen.",
+    "ar": "برقوق"
+   },
+   {
+    "candidate": 1920,
+    "id": "B1|10|die Zwetschge",
+    "level": "B1",
+    "chapter": 10,
+    "word": "die Zwetschge",
+    "definition": "Eine dunkelblaue, längliche Pflaume, die man oft für Kuchen benutzt.",
+    "example": "Im September backt meine Mutter Kuchen mit Zwetschgen.",
+    "ar": "برقوق (نوع أزرق مستطيل)"
+   },
+   {
+    "candidate": 1921,
+    "id": "B1|10|die Konfitüre",
+    "level": "B1",
+    "chapter": 10,
+    "word": "die Konfitüre",
+    "definition": "Eine süße Masse aus gekochten Früchten und Zucker, ähnlich wie Marmelade.",
+    "example": "Ich esse mein Brötchen am liebsten mit Butter und Konfitüre.",
+    "ar": "مربّى"
+   },
+   {
+    "candidate": 1923,
+    "id": "B1|10|das Hörnchen",
+    "level": "B1",
+    "chapter": 10,
+    "word": "das Hörnchen",
+    "definition": "Ein Gebäck in der Form eines Halbmonds.",
+    "example": "Zum Kaffee gibt es heute ein Hörnchen mit Schokolade.",
+    "ar": "كرواسون / هلالية"
+   },
+   {
+    "candidate": 1925,
+    "id": "B1|10|die Margarine",
+    "level": "B1",
+    "chapter": 10,
+    "word": "die Margarine",
+    "definition": "Ein Fett aus Pflanzen, das man wie Butter benutzt.",
+    "example": "Statt Butter nimmt sie zum Backen Margarine.",
+    "ar": "سمن نباتي / مارجرين"
+   },
+   {
+    "candidate": 1926,
+    "id": "B1|10|das Milchprodukt",
+    "level": "B1",
+    "chapter": 10,
+    "word": "das Milchprodukt",
+    "definition": "Ein Lebensmittel, das aus Milch gemacht wird, zum Beispiel Käse oder Joghurt.",
+    "example": "Milchprodukte findet man im Supermarkt im Kühlregal.",
+    "ar": "منتج ألبان"
+   },
+   {
+    "candidate": 1927,
+    "id": "B1|10|die Vollmilch",
+    "level": "B1",
+    "chapter": 10,
+    "word": "die Vollmilch",
+    "definition": "Milch mit dem natürlichen Fett von etwa 3,5 Prozent.",
+    "example": "Für den Pudding brauchst du einen halben Liter Vollmilch.",
+    "ar": "حليب كامل الدسم"
+   },
+   {
+    "candidate": 1928,
+    "id": "B1|10|der Quark",
+    "level": "B1",
+    "chapter": 10,
+    "word": "der Quark",
+    "definition": "Ein weiches, weißes Milchprodukt, ähnlich wie frischer Käse.",
+    "example": "Zum Frühstück esse ich Quark mit Obst und Honig.",
+    "ar": "جبن طري (كوارك)",
+    "omit": "Superseded by a smooth Quark photo on repair sheet 33; coarse cottage-cheese curds are not Quark.",
+    "supersededBySheet": 33
+   },
+   {
+    "candidate": 1929,
+    "id": "B1|10|die Schlagsahne",
+    "level": "B1",
+    "chapter": 10,
+    "word": "die Schlagsahne",
+    "definition": "Sahne, die man so lange schlägt, bis sie fest wird.",
+    "example": "Möchtest du den Apfelkuchen mit Schlagsahne?",
+    "ar": "كريمة مخفوقة (شانتيه)"
+   },
+   {
+    "candidate": 1930,
+    "id": "B1|10|der Pudding",
+    "level": "B1",
+    "chapter": 10,
+    "word": "der Pudding",
+    "definition": "Eine süße, weiche Nachspeise aus Milch und Zucker.",
+    "example": "Die Kinder essen am liebsten Pudding mit Vanille.",
+    "ar": "بودينغ / مهلبية"
+   },
+   {
+    "candidate": 1931,
+    "id": "B1|10|das Hackfleisch",
+    "level": "B1",
+    "chapter": 10,
+    "word": "das Hackfleisch",
+    "definition": "Fleisch, das in sehr kleine Stücke gemahlen wurde.",
+    "example": "Für die Spaghetti Bolognese kaufe ich 500 Gramm Hackfleisch.",
+    "ar": "لحم مفروم"
+   },
+   {
+    "candidate": 1932,
+    "id": "B1|10|das Hühnchen",
+    "level": "B1",
+    "chapter": 10,
+    "word": "das Hühnchen",
+    "definition": "Ein junges Huhn, das man als Fleisch isst.",
+    "example": "Heute gibt es Hühnchen mit Reis und Gemüse.",
+    "ar": "دجاج / فرخة"
+   },
+   {
+    "candidate": 1933,
+    "id": "B1|10|der/das Ketchup",
+    "level": "B1",
+    "chapter": 10,
+    "word": "der/das Ketchup",
+    "definition": "Eine dicke, rote Soße aus Tomaten, die man gern zu Pommes isst.",
+    "example": "Möchtest du Ketchup oder Mayonnaise zu den Pommes?",
+    "ar": "كاتشب"
+   },
+   {
+    "candidate": 1934,
+    "id": "B1|10|die Soße",
+    "level": "B1",
+    "chapter": 10,
+    "word": "die Soße",
+    "definition": "Eine Flüssigkeit, die man zu Fleisch, Nudeln oder Gemüse isst.",
+    "example": "Die Soße zu den Nudeln ist ein bisschen zu scharf.",
+    "ar": "صلصة"
+   },
+   {
+    "candidate": 1935,
+    "id": "B1|10|das Gewürz",
+    "level": "B1",
+    "chapter": 10,
+    "word": "das Gewürz",
+    "definition": "Ein Pulver oder getrocknete Pflanzenteile, die dem Essen mehr Geschmack geben.",
+    "example": "Kreuzkümmel ist ein typisches Gewürz in der ägyptischen Küche.",
+    "ar": "تابل / بهار"
+   },
+   {
+    "candidate": 1936,
+    "id": "B1|10|würzen",
+    "level": "B1",
+    "chapter": 10,
+    "word": "würzen",
+    "definition": "Salz, Pfeffer oder Gewürze ins Essen geben, damit es besser schmeckt.",
+    "example": "Würz die Suppe bitte noch mit etwas Salz und Pfeffer!",
+    "ar": "يتبّل"
+   }
+  ],
+  "status": "delivered",
+  "sourceSize": [
+   1254,
+   1254
+  ]
+ },
+ {
+  "sheet": 31,
+  "cells": [
+   {
+    "candidate": 1949,
+    "id": "B1|10|entsorgen",
+    "level": "B1",
+    "chapter": 10,
+    "word": "entsorgen",
+    "definition": "Müll oder alte Dinge so wegbringen, dass sie keinen Schaden machen.",
+    "example": "Alte Batterien muss man richtig entsorgen.",
+    "ar": "يتخلّص من (النفايات)"
+   },
+   {
+    "candidate": 1967,
+    "id": "B1|11|der Stadtbummel",
+    "level": "B1",
+    "chapter": 11,
+    "word": "der Stadtbummel",
+    "definition": "Ein gemütlicher Spaziergang durch die Stadt, bei dem man sich Geschäfte und Plätze ansieht.",
+    "example": "Am Samstag machen wir einen Stadtbummel durch die Altstadt.",
+    "ar": "تمشية / فسحة في المدينة"
+   },
+   {
+    "candidate": 1968,
+    "id": "B1|11|das Schaufenster",
+    "level": "B1",
+    "chapter": 11,
+    "word": "das Schaufenster",
+    "definition": "Ein großes Fenster eines Geschäfts, in dem man die Waren zeigt.",
+    "example": "Am Sonntag sind die Läden zu, aber man kann sich die Schaufenster ansehen.",
+    "ar": "فاترينة / واجهة المحل"
+   },
+   {
+    "candidate": 1970,
+    "id": "B1|11|das Bürogebäude",
+    "level": "B1",
+    "chapter": 11,
+    "word": "das Bürogebäude",
+    "definition": "Ein großes Haus, in dem viele Firmen oder Ämter ihre Büros haben.",
+    "example": "Im neuen Bürogebäude am Bahnhof arbeiten über tausend Menschen.",
+    "ar": "مبنى مكاتب"
+   },
+   {
+    "candidate": 1971,
+    "id": "B1|11|das Reinigungsfahrzeug",
+    "level": "B1",
+    "chapter": 11,
+    "word": "das Reinigungsfahrzeug",
+    "definition": "Ein Fahrzeug, das Straßen und Plätze sauber macht.",
+    "example": "Jeden Morgen um fünf fährt ein Reinigungsfahrzeug durch unsere Straße.",
+    "ar": "عربية تنظيف الشوارع"
+   },
+   {
+    "candidate": 1973,
+    "id": "B1|11|der Schmutz",
+    "level": "B1",
+    "chapter": 11,
+    "word": "der Schmutz",
+    "definition": "Etwas, das Dinge oder Orte unsauber macht, zum Beispiel Erde oder Staub.",
+    "example": "Nach dem Fest lag viel Schmutz auf dem Marktplatz.",
+    "ar": "الوساخة / القذارة"
+   },
+   {
+    "candidate": 1974,
+    "id": "B1|11|der Dreck",
+    "level": "B1",
+    "chapter": 11,
+    "word": "der Dreck",
+    "definition": "Ein umgangssprachliches Wort für Schmutz.",
+    "example": "Wer macht eigentlich den Dreck auf der Straße weg?",
+    "ar": "الوساخة / الزبالة (عامية)"
+   },
+   {
+    "candidate": 1977,
+    "id": "B1|11|der/die Obdachlose",
+    "level": "B1",
+    "chapter": 11,
+    "word": "der/die Obdachlose",
+    "definition": "Eine Person, die keine Wohnung hat und oft auf der Straße lebt.",
+    "example": "Im Winter können Obdachlose in einer Notunterkunft übernachten.",
+    "ar": "مشرد / شخص بلا مأوى"
+   },
+   {
+    "candidate": 1981,
+    "id": "B1|11|das Garagentor",
+    "level": "B1",
+    "chapter": 11,
+    "word": "das Garagentor",
+    "definition": "Die große Tür einer Garage.",
+    "example": "Das Garagentor öffnet sich automatisch, wenn das Auto kommt.",
+    "ar": "باب الجراج"
+   },
+   {
+    "candidate": 1990,
+    "id": "B1|11|der Korb",
+    "level": "B1",
+    "chapter": 11,
+    "word": "der Korb",
+    "definition": "Ein Behälter mit Griff, in dem man Dinge trägt, zum Beispiel Brot.",
+    "example": "Die Fahrerin trägt einen Korb mit frischem Brot zum Auto.",
+    "ar": "سلة / سَبَت"
+   },
+   {
+    "candidate": 2028,
+    "id": "B1|11|die Rundfahrt",
+    "level": "B1",
+    "chapter": 11,
+    "word": "die Rundfahrt",
+    "definition": "Eine Fahrt durch eine Stadt oder Gegend, bei der man die Sehenswürdigkeiten sieht.",
+    "example": "Wir haben an einer Rundfahrt mit dem Boot teilgenommen.",
+    "ar": "جولة (بعربية أو مركب)"
+   },
+   {
+    "candidate": 2031,
+    "id": "B1|11|das Denkmal",
+    "level": "B1",
+    "chapter": 11,
+    "word": "das Denkmal",
+    "definition": "Eine Statue oder ein Bauwerk, das an eine Person oder ein Ereignis erinnert.",
+    "example": "Vor dem Rathaus steht ein Denkmal für einen berühmten Dichter.",
+    "ar": "نصب تذكاري / أثر"
+   },
+   {
+    "candidate": 2032,
+    "id": "B1|11|die Fassade",
+    "level": "B1",
+    "chapter": 11,
+    "word": "die Fassade",
+    "definition": "Die vordere Außenseite eines Gebäudes.",
+    "example": "Die Häuser in der Altstadt haben bunte Fassaden.",
+    "ar": "واجهة المبنى"
+   },
+   {
+    "candidate": 2033,
+    "id": "B1|11|die Gasse",
+    "level": "B1",
+    "chapter": 11,
+    "word": "die Gasse",
+    "definition": "Eine kleine, schmale Straße, oft in einer Altstadt.",
+    "example": "Wir haben uns in den engen Gassen der Altstadt verlaufen.",
+    "ar": "حارة / زقاق"
+   },
+   {
+    "candidate": 2034,
+    "id": "B1|11|schmal",
+    "level": "B1",
+    "chapter": 11,
+    "word": "schmal",
+    "definition": "Nicht breit.",
+    "example": "Die Straße ist so schmal, dass kein Auto durchpasst.",
+    "ar": "ضيق"
+   },
+   {
+    "candidate": 2038,
+    "id": "B1|11|springen",
+    "level": "B1",
+    "chapter": 11,
+    "word": "springen",
+    "definition": "Sich mit den Beinen kräftig vom Boden abstoßen und durch die Luft bewegen.",
+    "example": "Im Sommer springen viele junge Leute von der Brücke in den Fluss.",
+    "ar": "ينط / يقفز"
+   }
+  ],
+  "status": "delivered",
+  "sourceSize": [
+   1254,
+   1254
+  ]
+ },
+ {
+  "sheet": 32,
+  "cells": [
+   {
+    "candidate": 2039,
+    "id": "B1|11|steigen",
+    "level": "B1",
+    "chapter": 11,
+    "word": "steigen",
+    "definition": "Nach oben gehen, zum Beispiel auf einen Turm oder einen Berg.",
+    "example": "Wir sind auf den Turm gestiegen und hatten einen tollen Ausblick.",
+    "ar": "يطلع / يصعد"
+   },
+   {
+    "candidate": 2040,
+    "id": "B1|11|rauffahren",
+    "level": "B1",
+    "chapter": 11,
+    "word": "rauffahren",
+    "definition": "Umgangssprachlich: nach oben fahren.",
+    "example": "Wer nicht wandern will, kann mit der Bahn auf den Berg rauffahren.",
+    "ar": "يطلع لفوق (بعربية أو قطر)"
+   },
+   {
+    "candidate": 2041,
+    "id": "B1|11|rollen",
+    "level": "B1",
+    "chapter": 11,
+    "word": "rollen",
+    "definition": "Sich auf Rädern vorwärts bewegen.",
+    "example": "Mit dem Fahrrad rollen wir gemütlich durch die Stadt.",
+    "ar": "يمشي على عجل / يتدحرج"
+   },
+   {
+    "candidate": 2047,
+    "id": "B1|11|hineingehen",
+    "level": "B1",
+    "chapter": 11,
+    "word": "hineingehen",
+    "definition": "In einen Raum oder ein Gebäude gehen.",
+    "example": "Die Tür war offen, also bin ich einfach hineingegangen.",
+    "ar": "يدخل (لجوه)"
+   },
+   {
+    "candidate": 2054,
+    "id": "B1|11|fließen",
+    "level": "B1",
+    "chapter": 11,
+    "word": "fließen",
+    "definition": "Sich als Wasser gleichmäßig in eine Richtung bewegen.",
+    "example": "Der Neckar fließt mitten durch Tübingen.",
+    "ar": "يجري (المية) / يسيل"
+   },
+   {
+    "candidate": 2071,
+    "id": "B1|12|das Bargeld",
+    "level": "B1",
+    "chapter": 12,
+    "word": "das Bargeld",
+    "definition": "Geld in Form von Scheinen und Münzen, also nicht auf dem Konto.",
+    "example": "Auf dem Wochenmarkt kann man oft nur mit Bargeld bezahlen.",
+    "ar": "نقود سائلة / كاش"
+   },
+   {
+    "candidate": 2072,
+    "id": "B1|12|der Schein",
+    "level": "B1",
+    "chapter": 12,
+    "word": "der Schein",
+    "definition": "Ein Stück Geld aus Papier, zum Beispiel 10 oder 50 Euro.",
+    "example": "Der Fahrkartenautomat nimmt leider keine Scheine, nur Münzen.",
+    "ar": "ورقة نقدية"
+   },
+   {
+    "candidate": 2073,
+    "id": "B1|12|die Münze",
+    "level": "B1",
+    "chapter": 12,
+    "word": "die Münze",
+    "definition": "Ein kleines, rundes Stück Geld aus Metall.",
+    "example": "Für den Einkaufswagen brauchst du eine Münze.",
+    "ar": "عملة معدنية"
+   },
+   {
+    "candidate": 2074,
+    "id": "B1|12|das Kleingeld",
+    "level": "B1",
+    "chapter": 12,
+    "word": "das Kleingeld",
+    "definition": "Münzen, mit denen man kleine Beträge bezahlt.",
+    "example": "Hast du Kleingeld für die Parkuhr?",
+    "ar": "فكّة"
+   },
+   {
+    "candidate": 2160,
+    "id": "B1|12|der Kasten",
+    "level": "B1",
+    "chapter": 12,
+    "word": "der Kasten",
+    "definition": "Ein Behälter aus Holz, Metall oder Plastik.",
+    "example": "Das Geld für die Zeitung wirft man einfach in den Kasten.",
+    "ar": "صندوق"
+   },
+   {
+    "candidate": 2161,
+    "id": "B1|12|der Staub",
+    "level": "B1",
+    "chapter": 12,
+    "word": "der Staub",
+    "definition": "Sehr kleine, trockene Teilchen, die sich zum Beispiel auf Möbeln sammeln.",
+    "example": "Die alte Vase steht im Keller und ist voller Staub.",
+    "ar": "غبار / تراب"
+   },
+   {
+    "candidate": 2164,
+    "id": "B1|12|beten",
+    "level": "B1",
+    "chapter": 12,
+    "word": "beten",
+    "definition": "Zu Gott sprechen.",
+    "example": "Meine Großmutter betet jeden Tag fünfmal.",
+    "ar": "يصلّي / يدعو"
+   },
+   {
+    "candidate": 2166,
+    "id": "B1|12|die Siedlung",
+    "level": "B1",
+    "chapter": 12,
+    "word": "die Siedlung",
+    "definition": "Eine Gruppe von Häusern, die zusammen geplant und gebaut wurden.",
+    "example": "In der Siedlung wohnen vor allem Familien mit wenig Geld.",
+    "ar": "مجمّع سكني"
+   },
+   {
+    "candidate": 84,
+    "id": "A1|1|notieren",
+    "level": "A1",
+    "chapter": 1,
+    "word": "notieren",
+    "definition": "Etwas kurz aufschreiben.",
+    "example": "Notieren Sie die Telefonnummer.",
+    "ar": "يسجّل / يدوّن",
+    "src": "",
+    "padding": true
+   },
+   {
+    "candidate": 98,
+    "id": "A1|2|geben",
+    "level": "A1",
+    "chapter": 2,
+    "word": "geben",
+    "definition": "Hier: es gibt = etwas ist da.",
+    "example": "Es gibt mehrere Möglichkeiten.",
+    "ar": "يدّي / (es gibt = في / موجود)",
+    "src": "",
+    "padding": true
+   },
+   {
+    "candidate": 181,
+    "id": "A1|3|der Euro, -s",
+    "level": "A1",
+    "chapter": 3,
+    "word": "der Euro, -s",
+    "definition": "Das Geld in Deutschland und Österreich.",
+    "example": "Das Ticket kostet fünf Euro.",
+    "ar": "يورو",
+    "src": "",
+    "padding": true
+   }
+  ],
+  "status": "delivered",
+  "sourceSize": [
+   1254,
+   1254
+  ]
+ },
+ {
+  "sheet": 33,
+  "status": "delivered",
+  "repair": true,
+  "cells": [
+   {
+    "word": "der Akku, -s",
+    "definition": "A physical rechargeable battery pack for a laptop, removed from the laptop; show the battery itself with visible contact terminals. Absolutely no battery icons, phone screen, diagrams or symbols.",
+    "example": "The actual rectangular rechargeable battery next to the open battery compartment of a laptop.",
+    "ar": "البطارية القابلة للشحن"
+   },
+   {
+    "word": "öffnen",
+    "definition": "A person physically opening a hinged window by pulling its handle; the window sash is visibly moving inward. No computer or screens.",
+    "example": "Mach bitte das Fenster auf.",
+    "ar": "يفتح"
+   },
+   {
+    "word": "sauber machen",
+    "definition": "A nurse gently cleaning dirt from a small superficial scrape on a patient forearm using a sterile gauze pad and saline. Non-graphic, no blood. Close up on the cleaning action.",
+    "example": "Die Ärztin macht die Wunde sauber.",
+    "ar": "ينظف الجرح"
+   },
+   {
+    "word": "die Backstube",
+    "definition": "The actual production workshop behind a bakery: baker kneading dough at a flour-covered workbench beside racks of proofing dough and a large professional bread oven, no storefront or shop counter.",
+    "example": "In der Backstube wird Brot gebacken.",
+    "ar": "ورشة إعداد الخبز داخل المخبز"
+   },
+   {
+    "word": "das Beisl, -/-n",
+    "definition": "A rustic, simple traditional Austrian pub interior, worn wooden tables and benches, modest wood-paneled room, beer glasses and a plate of simple food, welcoming informal atmosphere. Not a fancy restaurant.",
+    "ar": "حانة / مطعم نمساوي بسيط",
+    "example": "Wir essen im Beisl."
+   },
+   {
+    "word": "der Müll (Sg.)",
+    "definition": "Actual rubbish and waste: a small heap of discarded crumpled paper, food packaging and empty plastic containers spilling out of an open rubbish bag, outside beside a rubbish bin. Focus on discarded rubbish itself, not a row of clean bins.",
+    "ar": "القمامة / الزبالة",
+    "example": "Der Müll kommt in die Mülltonne."
+   },
+   {
+    "word": "das Tier, -e",
+    "definition": "A natural photograph of three living domestic animals together on a simple farm lawn: a friendly dog, a cat and a small goat. All three actual animals clearly visible, no people, no cartoons. This teaches the general category animal, not just one species.",
+    "example": "Die Kinder sehen viele Tiere auf dem Bauernhof.",
+    "ar": "الحيوان"
+   },
+   {
+    "word": "das Elektrogerät, -e",
+    "definition": "Actual household electrical appliances on a clean countertop: an electric toaster, a kettle and a hairdryer, all unplugged with their power cords and plugs clearly visible. Photograph the objects themselves, no symbols.",
+    "example": "Ein Toaster ist ein Elektrogerät.",
+    "ar": "جهاز كهربائي"
+   },
+   {
+    "word": "der Zettel, -",
+    "definition": "One small loose square piece of cream note paper lying on a desk next to a pen, just a few indistinct handwritten squiggles, close-up emphasizing the small separate scrap of paper rather than a whole notebook.",
+    "example": "Schreib es auf einen Zettel.",
+    "ar": "ورقة صغيرة / قصاصة"
+   },
+   {
+    "word": "der Beleg",
+    "definition": "A narrow physical thermal-paper cash-register receipt held between fingers beside a cash register, very small indistinct printed lines, photograph of the actual receipt, no overlay text or labels.",
+    "example": "Bitte bewahren Sie den Beleg auf.",
+    "ar": "الإيصال"
+   },
+   {
+    "word": "der Personalausweis, -e",
+    "definition": "A realistic anonymous European identity card held in a hand, portrait photograph on the left, security hologram and unreadable fine-print fields, no real persons details. Clearly a physical photo ID, not a bank card.",
+    "example": "Ich zeige meinen Personalausweis.",
+    "ar": "بطاقة الهوية"
+   },
+   {
+    "word": "das Gehirn",
+    "definition": "Realistic studio photograph of a physical pink anatomical teaching model of a human brain, detailed cerebral folds, intact model resting on a plain light tabletop, no labels, no diagram, no cross-section, no gore or blood.",
+    "example": "Das Gehirn verarbeitet Informationen.",
+    "ar": "المخ / الدماغ"
+   },
+   {
+    "word": "geschlossen",
+    "definition": "Photograph of a shop entrance whose solid metal roller shutter is fully down and locked with a large visible physical padlock; absolutely no sign, shopping-cart icon, pictogram, notices, text or symbols. The shop is physically closed.",
+    "example": "Das Geschäft ist geschlossen.",
+    "ar": "مغلق"
+   },
+   {
+    "word": "zusammenstoßen",
+    "definition": "Two adult office workers accidentally bump shoulders while rounding a blind corridor corner, folders and loose papers slipping from their hands, both surprised and apologetic. A mild accidental collision. No fighting, no grabbing, no aggression or injury.",
+    "example": "Die beiden sind an der Ecke versehentlich zusammengestoßen.",
+    "ar": "يصطدم / يتخبط في شخص"
+   },
+   {
+    "word": "der Quark",
+    "definition": "A plain bowl of smooth thick white German Quark, creamy homogeneous texture, a spoon lifting a smooth dollop; no separated cottage-cheese curds, no berries, no garnish. Realistic food photograph, no labels.",
+    "example": "Zum Frühstück esse ich Quark.",
+    "ar": "جبن الكوارك الطري"
+   },
+   {
+    "word": "a ripe red apple on a plain table",
+    "definition": "An actual physical red apple, photographic still life.",
+    "example": "Photo only, no writing.",
+    "padding": true
+   }
+  ],
+  "sourceSize": [
+   1254,
+   1254
+  ]
+ }
 ]

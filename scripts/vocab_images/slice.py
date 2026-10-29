@@ -43,6 +43,8 @@ def main():
     delivered_path = DIR / 'delivered.json'
     delivered = json.loads(delivered_path.read_text()) if delivered_path.exists() else {}
     for index, cell in enumerate(sheet['cells']):
+        if cell.get('padding') or cell.get('omit'):
+            continue
         row, col = divmod(index, 4)
         x0, x1 = cols[col]
         y0, y1 = rows[row]
@@ -53,6 +55,9 @@ def main():
         filename = f's{args.sheet:03}-{index+1:02}.webp'
         image.crop((left, top, left+side, top+side)).resize((420,420),Image.Resampling.LANCZOS).save(output/filename,quality=85,method=6)
         delivered[cell['word'].split(',')[0].strip()] = f'assets/vocab-generated/{filename}'
+    sheet['status'] = 'delivered'
+    sheet['sourceSize'] = list(image.size)
+    (DIR / 'sheets.json').write_text(json.dumps(sheets,ensure_ascii=False,indent=1)+'\n')
     delivered_path.write_text(json.dumps(delivered,ensure_ascii=False,indent=2)+'\n')
     print(f'Sheet {args.sheet}: 16 images sliced. Grid: {cols}, {rows}; notes: {xnotes+ynotes}')
     subprocess.run(['node',str(DIR/'build.cjs')],cwd=ROOT,check=True)

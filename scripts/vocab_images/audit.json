@@ -1,17 +1,21 @@
 {
   "cards": 6129,
-  "covered": 3717,
-  "missingCards": 2412,
-  "reused": 614,
+  "covered": 4263,
+  "missingCards": 1866,
+  "reused": 1160,
   "broken": [],
-  "remainingUnique": 2169,
-  "sheets": 136,
+  "remainingUnique": 1658,
+  "textOnlyUnique": 1658,
+  "textOnlyCards": 1866,
+  "remainingPhotoUnique": 0,
+  "remainingPhotoCards": 0,
+  "sheets": 0,
   "chapters": [
     {
       "level": "A1",
       "chapter": 1,
       "total": 220,
-      "covered": 129
+      "covered": 122
     },
     {
       "level": "A1",
@@ -23,97 +27,97 @@
       "level": "A1",
       "chapter": 3,
       "total": 177,
-      "covered": 128
+      "covered": 130
     },
     {
       "level": "A1",
       "chapter": 4,
       "total": 204,
-      "covered": 158
+      "covered": 159
     },
     {
       "level": "A1",
       "chapter": 5,
       "total": 173,
-      "covered": 119
+      "covered": 123
     },
     {
       "level": "A1",
       "chapter": 6,
       "total": 178,
-      "covered": 109
+      "covered": 116
     },
     {
       "level": "A1",
       "chapter": 7,
       "total": 245,
-      "covered": 125
+      "covered": 145
     },
     {
       "level": "A1",
       "chapter": 8,
       "total": 206,
-      "covered": 90
+      "covered": 142
     },
     {
       "level": "A1",
       "chapter": 9,
       "total": 188,
-      "covered": 93
+      "covered": 131
     },
     {
       "level": "A1",
       "chapter": 10,
       "total": 187,
-      "covered": 93
+      "covered": 111
     },
     {
       "level": "A1",
       "chapter": 11,
       "total": 175,
-      "covered": 70
+      "covered": 106
     },
     {
       "level": "A1",
       "chapter": 12,
       "total": 200,
-      "covered": 90
+      "covered": 147
     },
     {
       "level": "A2",
       "chapter": 1,
       "total": 152,
-      "covered": 69
+      "covered": 88
     },
     {
       "level": "A2",
       "chapter": 2,
       "total": 161,
-      "covered": 53
+      "covered": 72
     },
     {
       "level": "A2",
       "chapter": 3,
       "total": 169,
-      "covered": 56
+      "covered": 76
     },
     {
       "level": "A2",
       "chapter": 4,
       "total": 169,
-      "covered": 64
+      "covered": 95
     },
     {
       "level": "A2",
       "chapter": 5,
       "total": 155,
-      "covered": 52
+      "covered": 86
     },
     {
       "level": "A2",
       "chapter": 6,
       "total": 176,
-      "covered": 64
+      "covered": 86
     },
     {
       "level": "A2",
@@ -191,37 +195,37 @@
       "level": "B1",
       "chapter": 7,
       "total": 133,
-      "covered": 15
+      "covered": 35
     },
     {
       "level": "B1",
       "chapter": 8,
       "total": 141,
-      "covered": 14
+      "covered": 50
     },
     {
       "level": "B1",
       "chapter": 9,
       "total": 131,
-      "covered": 22
+      "covered": 64
     },
     {
       "level": "B1",
       "chapter": 10,
       "total": 156,
-      "covered": 22
+      "covered": 50
     },
     {
       "level": "B1",
       "chapter": 11,
       "total": 165,
-      "covered": 41
+      "covered": 73
     },
     {
       "level": "B1",
       "chapter": 12,
       "total": 154,
-      "covered": 30
+      "covered": 45
     }
   ]
 }

@@ -2255,3 +2255,56 @@ test('Rollenspiel plays the chapter dialogues with the learner in one role', () 
   assert.match(functionSource('routePractice'), /routeRolePlay\(hash\)/);
   assert.ok(readFileSync(join(root, 'app', 'sw.js'), 'utf8').includes("'js/24-roleplay.js'"));
 });
+
+test('photo review keeps grammar and abstract proxies text-only and tracks only eligible work', () => {
+  const dir=join(root,'scripts/vocab_images');
+  const review=JSON.parse(readFileSync(join(dir,'review.json'),'utf8'));
+  const delivered=JSON.parse(readFileSync(join(dir,'delivered.json'),'utf8'));
+  for(const word of ['dir','Ihnen','auch','sehr','später','der, die, das'.split(',')[0],'das Reflexivpronomen']) {
+    assert.equal(review[word]?.decision,'text',word);
+    assert.equal(delivered[word],undefined,`${word} must not carry a generated proxy`);
+  }
+  for(const word of ['das Pferd','die Giraffe','der Kühlschrank']) {
+    if(review[word]) assert.equal(review[word].decision,'photo',word);
+  }
+  const sheets=JSON.parse(readFileSync(join(dir,'sheets.json'),'utf8'));
+  const generated=new Set();
+  for(const sheet of sheets.filter(s=>s.sheet>=3)) {
+    assert.equal(sheet.cells.length,16);
+    assert.equal(sheet.status,'delivered',`Sheet ${sheet.sheet} was not delivered`);
+    sheet.cells.forEach((cell,index)=>{
+      if(cell.padding||cell.omit)return;
+      const word=cell.word.split(',')[0].trim();
+      assert.equal(review[word].decision,'photo',word);
+      assert.equal(delivered[word],`assets/vocab-generated/s${String(sheet.sheet).padStart(3,'0')}-${String(index+1).padStart(2,'0')}.webp`,word);
+      assert.ok(!generated.has(word),`duplicate generated headword: ${word}`);
+      generated.add(word);
+    });
+  }
+  const audit=JSON.parse(readFileSync(join(dir,'audit.json'),'utf8'));
+  assert.equal(audit.remainingPhotoUnique,0);
+  assert.equal(audit.remainingPhotoCards,0);
+  assert.equal(audit.broken.length,0);
+  assert.ok(audit.textOnlyUnique>1500);
+});
+
+test('reviewed vocabulary photos also bind when A1 and B1 arrive after the shared image map', () => {
+  const context={BOOK0:[],BOOK1:[],BOOK2:[]};
+  context.window=context;
+  vm.createContext(context);
+  vm.runInContext(readFileSync(join(root,'app/data_vocab_images.js'),'utf8'),context);
+  assert.equal(typeof context.applyVocabImages,'function');
+  for(const [level,word,bookName] of [['A1','der Backofen','A1_BOOK'],['B1','die Giraffe','B1_BOOK']]) {
+    const id=Object.keys(context.VOCAB_IMAGES).find(id=>id.startsWith(level+'|')&&id.split('|')[2].split(',')[0]===word);
+    assert.ok(id,`${level} ${word} has a reviewed photograph`);
+    const [,num,w]=id.split('|');
+    const card={w};
+    context[bookName]=[{num:Number(num),vocab:[card]}];
+    context.applyVocabImages();
+    assert.equal(card.img,context.VOCAB_IMAGES[id]);
+  }
+  const grammar={w:'dir'};
+  context.A1_BOOK=[{num:1,vocab:[grammar]}];
+  context.applyVocabImages();
+  assert.equal(grammar.img,undefined,'a grammar card must remain text-only after late binding');
+});
