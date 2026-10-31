@@ -10,6 +10,7 @@ let fixedSpeechResume = null;
 // The reading text that is playing or paused: {key, parts, index, ...}.
 let readingPlayer = null;
 let fixedSpeechPaused = false;
+let currentUtterance = null;
 
 function cleanSpeechText(element){
   const copy=element.cloneNode(true);
@@ -156,8 +157,8 @@ function playFixedSpeech(value,voiceId=speechVoiceURI,onDone=null,rateFactor=1){
     fixedSpeechFrame=requestAnimationFrame(monitor);
   };
   const fallback=error=>{
-    // A pause while play() was starting is not a failure.
-    if(error?.name==='AbortError'||fixedSpeechPaused)return;
+    // A pause, or a newer clip, while play() was starting is not a failure.
+    if(fixedSpeechPaused||session!==fixedSpeechSession)return;
     // Aufnahme nicht ladbar -> auf Geräte-/Browser-TTS zurückfallen statt stumm zu bleiben.
     if(session===fixedSpeechSession)fallbackBrowserSpeech(value,'de',voiceId,0,onDone);
   };
@@ -180,7 +181,7 @@ function playFixedSpeech(value,voiceId=speechVoiceURI,onDone=null,rateFactor=1){
   return true;
 }
 
-function fallbackBrowserSpeech(value,lang,voiceURIOverride='',attempt=0,onDone=null){
+function fallbackBrowserSpeech(value,lang,voiceURIOverride='',attempt=0,onDone=null,onBoundary=null){
   if(!speech){ showSpeechStatus('المتصفح لا يدعم القراءة الصوتية'); return; }
   speech.cancel();
   const isArabic=lang==='ar' || /[\u0600-\u06ff]/.test(value.slice(0,40));
@@ -188,7 +189,7 @@ function fallbackBrowserSpeech(value,lang,voiceURIOverride='',attempt=0,onDone=n
   if(!voices.length){
     if(attempt>=8){ showSpeechStatus('لا توجد أصوات قراءة متاحة في المتصفح'); return; }
     showSpeechStatus('جارى تحميل أصوات المتصفح...');
-    setTimeout(()=>fallbackBrowserSpeech(value,lang,voiceURIOverride,attempt+1,onDone),250);
+    setTimeout(()=>fallbackBrowserSpeech(value,lang,voiceURIOverride,attempt+1,onDone,onBoundary),250);
     return;
   }
   // A gap-fill blank is a pause, not the word "Unterstrich".
@@ -203,6 +204,9 @@ function fallbackBrowserSpeech(value,lang,voiceURIOverride='',attempt=0,onDone=n
     || voices.find(v=>v.lang.toLowerCase().includes(isArabic?'ar':'de'))
     || null;
   utterance.onend=()=>{ $('#speechStatus').classList.remove('show'); onDone?.(); };
+  if(onBoundary)utterance.onboundary=event=>onBoundary(event.charIndex||0);
+  // Chrome drops events of utterances nothing refers to any more.
+  currentUtterance=utterance;
   utterance.onerror=event=>{
     if(event?.error==='interrupted'||event?.error==='canceled')return;
     showSpeechStatus(isArabic?'الصوت العربي غير متاح في المتصفح':'الصوت الألماني غير متاح في المتصفح');
@@ -286,18 +290,42 @@ function playReadingPart(player){
   if(player.index>=player.parts.length){ endReadingPlayback(); return; }
   const token=++player.token;
   const part=player.parts[player.index];
-  const next=()=>{
+  const voices=FIXED_SPEECH?.voices||[];
+  const voiceId=player.people&&voices.length?voices[player.index%voices.length]?.id:speechVoiceURI;
+  // Recorded sentence: play it, then the next sentence.
+  player.fixed=playFixedSpeech(part,voiceId,()=>{
     if(readingPlayer!==player||player.token!==token||player.paused)return;
     player.index++;
     playReadingPart(player);
-  };
-  const voices=FIXED_SPEECH?.voices||[];
-  const voiceId=player.people&&voices.length?voices[player.index%voices.length]?.id:speechVoiceURI;
-  player.fixed=playFixedSpeech(part,voiceId,next);
+  });
   if(player.fixed)return;
+  // No recording: the browser voice reads the rest of the text in one go,
+  // exactly as before; word boundaries tell where to resume after a pause.
+  const from=player.index;
+  const rest=player.parts.slice(from).join(' ');
+  player.browser={from,startedAt:Date.now(),spoken:0};
   if(!window.A2_FIXED_SPEECH)ensureSpeechLibraries().catch(()=>{});
   stopFixedSpeech();
-  fallbackBrowserSpeech(part,'de','',0,next);
+  fallbackBrowserSpeech(normalizeSpeechValue(rest),'de','',0,()=>{
+    if(readingPlayer!==player||player.token!==token||player.paused)return;
+    endReadingPlayback();
+  },charIndex=>{
+    if(readingPlayer===player&&player.token===token)player.browser.spoken=charIndex;
+  });
+}
+
+// Sentence the browser voice had reached: from word boundaries, or from the
+// time spoken when the browser reports none.
+function browserReadingIndex(player){
+  const {from,startedAt,spoken}=player.browser||{from:player.index,startedAt:Date.now(),spoken:0};
+  const reached=spoken||Math.round((Date.now()-startedAt)/1000*12*Math.max(.5,Math.min(1.5,speechRate)));
+  let offset=0,index=from;
+  for(let i=from;i<player.parts.length;i++){
+    if(offset>reached)break;
+    index=i;
+    offset+=player.parts[i].length+1;
+  }
+  return index;
 }
 
 function pauseReadingPlayback(){
@@ -307,7 +335,8 @@ function pauseReadingPlayback(){
   if(player.fixed&&fixedSpeechResume&&!speech?.speaking)pauseFixedSpeech();
   else{
     // Browser voices cannot pause reliably on every phone: stop now and
-    // repeat the current sentence on resume.
+    // go on from the current sentence on resume.
+    if(!player.fixed)player.index=browserReadingIndex(player);
     player.fixed=false;
     player.token++;
     speech?.cancel();
@@ -333,12 +362,10 @@ function toggleReadingPlayback(key,text,{people=false}={}){
   if(state==='paused'){ resumeReadingPlayback(); return; }
   const parts=readingSentences(text);
   if(!parts.length)return;
-  stopReadingPlayback();
-  stopFixedSpeech();
-  speech?.cancel();
-  readingPlayer={key,parts,index:0,people,paused:false,fixed:false,token:0};
-  renderReadingPlayer();
+  if(readingPlayer){ readingPlayer.token++; readingPlayer=null; }
+  readingPlayer={key,parts,index:0,people,paused:false,fixed:false,token:0,browser:null};
   playReadingPart(readingPlayer);
+  renderReadingPlayer();
 }
 
 // Keyed by the text, so a re-rendered lesson still shows the right state.
