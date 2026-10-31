@@ -111,6 +111,7 @@ html[data-dark] .reading-cover-copy h3{color:#fff;text-shadow:0 2px 8px rgba(0,0
 html[data-dark] .reading-cover-copy .reading-kind{color:rgba(255,255,255,.82)}
 html[data-dark] .people-read{background:var(--nbg-green-d);color:#fff}
 html[data-dark] .people-read:hover,html[data-dark] .people-read:focus-visible{background:var(--nbg-green)}
+html[data-dark] .people-read[data-state="playing"],html[data-dark] .people-read[data-state="paused"]{background:var(--nbg-green)}
 html[data-dark] .reading-kind{color:var(--ink-2)}
 html[data-dark] .reading-glossary span{background:var(--blue-l);color:#a9c7fb}
 html[data-dark] .reading-q{border-top:1px solid #3a3c3f}

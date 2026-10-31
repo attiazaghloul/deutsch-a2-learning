@@ -5,6 +5,11 @@ let speechStatusTimer = null;
 let fixedSpeechAudio = null;
 let fixedSpeechFrame = null;
 let fixedSpeechSession = 0;
+// Resumes the clip that is paused right now (set by playFixedSpeech).
+let fixedSpeechResume = null;
+// The reading text that is playing or paused: {key, parts, index, ...}.
+let readingPlayer = null;
+let fixedSpeechPaused = false;
 
 function cleanSpeechText(element){
   const copy=element.cloneNode(true);
@@ -57,8 +62,22 @@ function normalizeSpeechValue(text){
 
 function stopFixedSpeech(){
   fixedSpeechSession++;
+  fixedSpeechResume=null;
+  fixedSpeechPaused=false;
   if(fixedSpeechFrame){ cancelAnimationFrame(fixedSpeechFrame); fixedSpeechFrame=null; }
   if(fixedSpeechAudio){ fixedSpeechAudio.pause(); }
+}
+
+// Pauses the running clip where it is; resumeFixedSpeech plays on from there.
+function pauseFixedSpeech(){
+  fixedSpeechPaused=true;
+  if(fixedSpeechFrame){ cancelAnimationFrame(fixedSpeechFrame); fixedSpeechFrame=null; }
+  fixedSpeechAudio?.pause();
+}
+
+function resumeFixedSpeech(){
+  fixedSpeechPaused=false;
+  return fixedSpeechResume?fixedSpeechResume():false;
 }
 
 function fixedSpeechProfileRate(){
@@ -124,26 +143,36 @@ function playFixedSpeech(value,voiceId=speechVoiceURI,onDone=null,rateFactor=1){
   const end=Math.max(start+.12,Number(timing[1])-legacyMarkerPadding);
   fixedSpeechAudio.playbackRate=Math.max(.5,Math.min(1.5,(speechRate/.85)*fixedSpeechProfileRate()*rateFactor));
   fixedSpeechAudio.preservesPitch=true;
+  const monitor=()=>{
+    if(session!==fixedSpeechSession||fixedSpeechAudio.paused)return;
+    if(fixedSpeechAudio.currentTime>=end){
+      fixedSpeechAudio.pause();
+      fixedSpeechFrame=null;
+      fixedSpeechResume=null;
+      $('#speechStatus').classList.remove('show');
+      onDone?.();
+      return;
+    }
+    fixedSpeechFrame=requestAnimationFrame(monitor);
+  };
+  const fallback=error=>{
+    // A pause while play() was starting is not a failure.
+    if(error?.name==='AbortError'||fixedSpeechPaused)return;
+    // Aufnahme nicht ladbar -> auf Geräte-/Browser-TTS zurückfallen statt stumm zu bleiben.
+    if(session===fixedSpeechSession)fallbackBrowserSpeech(value,'de',voiceId,0,onDone);
+  };
+  // Pause keeps currentTime, so resuming plays on from the same word.
+  fixedSpeechResume=()=>{
+    if(session!==fixedSpeechSession)return false;
+    if(fixedSpeechAudio.currentTime<start||fixedSpeechAudio.currentTime>=end)fixedSpeechAudio.currentTime=start;
+    fixedSpeechAudio.play().then(monitor).catch(fallback);
+    return true;
+  };
   const begin=()=>{
     if(session!==fixedSpeechSession)return;
     fixedSpeechAudio.currentTime=start;
-    fixedSpeechAudio.play().then(()=>{
-      const monitor=()=>{
-        if(session!==fixedSpeechSession||fixedSpeechAudio.paused)return;
-        if(fixedSpeechAudio.currentTime>=end){
-          fixedSpeechAudio.pause();
-          fixedSpeechFrame=null;
-          $('#speechStatus').classList.remove('show');
-          onDone?.();
-          return;
-        }
-        fixedSpeechFrame=requestAnimationFrame(monitor);
-      };
-      monitor();
-    }).catch(()=>{
-      // Aufnahme nicht ladbar -> auf Geräte-/Browser-TTS zurückfallen statt stumm zu bleiben.
-      fallbackBrowserSpeech(value,'de',voiceId);
-    });
+    if(fixedSpeechPaused)return;
+    fixedSpeechAudio.play().then(monitor).catch(fallback);
   };
   if(fixedSpeechAudio.readyState>=1)begin();
   else fixedSpeechAudio.addEventListener('loadedmetadata',begin,{once:true});
@@ -151,7 +180,7 @@ function playFixedSpeech(value,voiceId=speechVoiceURI,onDone=null,rateFactor=1){
   return true;
 }
 
-function fallbackBrowserSpeech(value,lang,voiceURIOverride='',attempt=0){
+function fallbackBrowserSpeech(value,lang,voiceURIOverride='',attempt=0,onDone=null){
   if(!speech){ showSpeechStatus('المتصفح لا يدعم القراءة الصوتية'); return; }
   speech.cancel();
   const isArabic=lang==='ar' || /[\u0600-\u06ff]/.test(value.slice(0,40));
@@ -159,7 +188,7 @@ function fallbackBrowserSpeech(value,lang,voiceURIOverride='',attempt=0){
   if(!voices.length){
     if(attempt>=8){ showSpeechStatus('لا توجد أصوات قراءة متاحة في المتصفح'); return; }
     showSpeechStatus('جارى تحميل أصوات المتصفح...');
-    setTimeout(()=>fallbackBrowserSpeech(value,lang,voiceURIOverride,attempt+1),250);
+    setTimeout(()=>fallbackBrowserSpeech(value,lang,voiceURIOverride,attempt+1,onDone),250);
     return;
   }
   // A gap-fill blank is a pause, not the word "Unterstrich".
@@ -173,8 +202,11 @@ function fallbackBrowserSpeech(value,lang,voiceURIOverride='',attempt=0){
     || voices.find(v=>v.lang.toLowerCase().startsWith(isArabic?'ar':'de'))
     || voices.find(v=>v.lang.toLowerCase().includes(isArabic?'ar':'de'))
     || null;
-  utterance.onend=()=>$('#speechStatus').classList.remove('show');
-  utterance.onerror=()=>showSpeechStatus(isArabic?'الصوت العربي غير متاح في المتصفح':'الصوت الألماني غير متاح في المتصفح');
+  utterance.onend=()=>{ $('#speechStatus').classList.remove('show'); onDone?.(); };
+  utterance.onerror=event=>{
+    if(event?.error==='interrupted'||event?.error==='canceled')return;
+    showSpeechStatus(isArabic?'الصوت العربي غير متاح في المتصفح':'الصوت الألماني غير متاح في المتصفح');
+  };
   speech.speak(utterance);
   showSpeechStatus(value.slice(0,72));
 }
@@ -182,6 +214,8 @@ function fallbackBrowserSpeech(value,lang,voiceURIOverride='',attempt=0){
 function speakText(text, lang, voiceURIOverride=''){
   const value=normalizeSpeechValue(text);
   if(!value||!/[A-Za-zÄÖÜäöüß\u0600-\u06ff]/.test(value))return;
+  // Any other speech ends a reading text that is playing or paused.
+  endReadingPlayback();
   const isArabic=lang==='ar' || /[\u0600-\u06ff]/.test(value.slice(0,40));
   // Priorität: aufgenommene Stimme. Wenn keine vorhanden ist, das Geräte-/Browser-TTS nutzen (nicht stumm bleiben).
   if(!isArabic&&playFixedSpeech(value,voiceURIOverride||speechVoiceURI))return;
@@ -202,22 +236,123 @@ function germanVoices(){
   });
 }
 
+function readingSentences(text){
+  const value=(text||'').replace(/\s+/g,' ').trim();
+  return value.match(/[^.!?]+[.!?]+["'“”„»«)]*|[^.!?]+$/g)?.map(part=>part.trim()).filter(Boolean)||(value?[value]:[]);
+}
+
+function readingPlaybackState(key){
+  if(!readingPlayer||readingPlayer.key!==key)return 'idle';
+  return readingPlayer.paused?'paused':'playing';
+}
+
+function renderReadingPlayer(){
+  document.querySelectorAll('[data-reading-key]').forEach(button=>{
+    const state=readingPlaybackState(button.dataset.readingKey);
+    // Only touch buttons whose state changed: the view observer re-runs this.
+    if(button.dataset.state===state)return;
+    button.dataset.state=state;
+    const label=state==='playing'?'Pause':state==='paused'?'Weiter hören':(button.dataset.idleLabel||'Mehrere Sprecher hören');
+    const icon=state==='playing'?'⏸':'▶';
+    if(button.classList.contains('speak-btn')){
+      button.textContent=icon;
+      button.setAttribute('aria-label',label);
+      return;
+    }
+    button.innerHTML=`${icon} ${label}${arLabel(label)}`;
+    const stop=button.parentElement?.querySelector('.reading-stop');
+    if(stop)stop.hidden=state==='idle';
+  });
+}
+
+function endReadingPlayback(){
+  if(!readingPlayer)return;
+  readingPlayer=null;
+  renderReadingPlayer();
+}
+
+function stopReadingPlayback(){
+  if(!readingPlayer)return;
+  readingPlayer.token++;
+  readingPlayer=null;
+  stopFixedSpeech();
+  speech?.cancel();
+  $('#speechStatus').classList.remove('show');
+  renderReadingPlayer();
+}
+
+function playReadingPart(player){
+  if(readingPlayer!==player||player.paused)return;
+  if(player.index>=player.parts.length){ endReadingPlayback(); return; }
+  const token=++player.token;
+  const part=player.parts[player.index];
+  const next=()=>{
+    if(readingPlayer!==player||player.token!==token||player.paused)return;
+    player.index++;
+    playReadingPart(player);
+  };
+  const voices=FIXED_SPEECH?.voices||[];
+  const voiceId=player.people&&voices.length?voices[player.index%voices.length]?.id:speechVoiceURI;
+  player.fixed=playFixedSpeech(part,voiceId,next);
+  if(player.fixed)return;
+  if(!window.A2_FIXED_SPEECH)ensureSpeechLibraries().catch(()=>{});
+  stopFixedSpeech();
+  fallbackBrowserSpeech(part,'de','',0,next);
+}
+
+function pauseReadingPlayback(){
+  const player=readingPlayer;
+  if(!player||player.paused)return;
+  player.paused=true;
+  if(player.fixed&&fixedSpeechResume&&!speech?.speaking)pauseFixedSpeech();
+  else{
+    // Browser voices cannot pause reliably on every phone: stop now and
+    // repeat the current sentence on resume.
+    player.fixed=false;
+    player.token++;
+    speech?.cancel();
+  }
+  showSpeechStatus('تم الإيقاف المؤقت — اضغط «Weiter hören» للإكمال');
+  renderReadingPlayer();
+}
+
+function resumeReadingPlayback(){
+  const player=readingPlayer;
+  if(!player||!player.paused)return;
+  player.paused=false;
+  renderReadingPlayer();
+  if(player.fixed&&resumeFixedSpeech())return;
+  playReadingPart(player);
+}
+
+// One button plays, pauses and resumes a reading text; it never starts over
+// unless the reading was stopped or finished.
+function toggleReadingPlayback(key,text,{people=false}={}){
+  const state=readingPlaybackState(key);
+  if(state==='playing'){ pauseReadingPlayback(); return; }
+  if(state==='paused'){ resumeReadingPlayback(); return; }
+  const parts=readingSentences(text);
+  if(!parts.length)return;
+  stopReadingPlayback();
+  stopFixedSpeech();
+  speech?.cancel();
+  readingPlayer={key,parts,index:0,people,paused:false,fixed:false,token:0};
+  renderReadingPlayer();
+  playReadingPart(readingPlayer);
+}
+
+// Keyed by the text, so a re-rendered lesson still shows the right state.
+function readingKeyFor(text){
+  return `text:${text}`;
+}
+
 function speakReadingWithPeople(chapterNumber, readingIndex, route=''){
   const chapter=[...BOOK,...A1_BOOK,...B1_BOOK].find(item=>route?(item.route||`k${item.num}`)===route:item.num===chapterNumber);
   const reading=chapter?.readings?.[readingIndex];
   if(!reading) return;
   const holder=document.createElement('div');
   holder.innerHTML=reading.text;
-  const text=holder.textContent.replace(/\s+/g,' ').trim();
-  const parts=text.match(/[^.!?]+[.!?]+|[^.!?]+$/g)?.map(part=>part.trim()).filter(Boolean)||[text];
-  stopFixedSpeech();
-  const voices=FIXED_SPEECH.voices;
-  const playPart=index=>{
-    if(index>=parts.length)return;
-    const voice=voices[index%voices.length];
-    if(!playFixedSpeech(parts[index],voice?.id,()=>playPart(index+1)))speakText(text,'de');
-  };
-  playPart(0);
+  toggleReadingPlayback(`people:${route||chapterNumber}:${readingIndex}`,holder.textContent,{people:true});
 }
 
 function enhanceSpeech(root){
@@ -237,7 +372,15 @@ function enhanceSpeech(root){
     const button=document.createElement('button');
     button.type='button'; button.className='speak-btn'; button.textContent='▶';
     button.setAttribute('aria-label','Vorlesen');
-    button.addEventListener('click',event=>{
+    if(element.matches('.reading-text')){
+      // Long reading texts: the same button pauses and resumes.
+      button.dataset.readingKey=readingKeyFor(germanSpeechText(element));
+      button.dataset.idleLabel='Vorlesen';
+      button.addEventListener('click',event=>{
+        event.preventDefault(); event.stopPropagation();
+        toggleReadingPlayback(button.dataset.readingKey,germanSpeechText(element));
+      });
+    }else button.addEventListener('click',event=>{
       event.preventDefault(); event.stopPropagation();
       speakText(germanSpeechText(element),'de');
     });
@@ -254,6 +397,7 @@ function handleListenClick(event){
   const text=germanSpeechText(target);
   if(!text) return;
   event.preventDefault(); event.stopPropagation();
+  if(target.matches?.('.reading-text')){ toggleReadingPlayback(readingKeyFor(text),text); return; }
   speakText(text,'de');
 }
 
@@ -264,6 +408,7 @@ function setListenMode(on){
   listenToggle.setAttribute('aria-checked',String(on));
   localStorage.setItem('listenModeUserChoice',on?'1':'0');
   if(!on){
+    stopReadingPlayback();
     stopFixedSpeech();
     speech?.cancel();
   }
@@ -279,4 +424,4 @@ listenToggle.addEventListener('click',()=>{
 
 view.addEventListener('click',handleListenClick,true);
 
-new MutationObserver(()=>enhanceSpeech(view)).observe(view,{childList:true,subtree:true});
+new MutationObserver(()=>{ enhanceSpeech(view); renderReadingPlayer(); }).observe(view,{childList:true,subtree:true});
