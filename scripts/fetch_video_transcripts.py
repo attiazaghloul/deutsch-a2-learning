@@ -1,7 +1,8 @@
 """Fetch the German (and Arabic) subtitles of the app's videos as timed text.
 
-YouTube is not reachable from every machine, so
-.github/workflows/video-transcripts.yml runs this on GitHub:
+YouTube is not reachable from every machine, and since 20 November 2026 that
+includes GitHub's runners, so run this on a personal machine
+(.github/workflows/video-transcripts.yml says more):
     pip install yt-dlp
     python scripts/fetch_video_transcripts.py
 

@@ -1,14 +1,20 @@
 name: Video transcripts
 
-# YouTube is reachable from GitHub's runners (not from every machine): the
-# subtitles of the app's videos are fetched here and committed to the branch.
+# This no longer works, and is kept only to try the runners again: on 20
+# November 2026 every video answered "Sign in to confirm you're not a bot"
+# here, so the run fetched nothing at all, German included. YouTube blocks
+# GitHub's runners the same way it blocks our server, so the subtitles have to
+# be fetched from a personal machine, where they still arrive:
+#     pip install yt-dlp
+#     python scripts/fetch_video_transcripts.py
+#     git add app/data_videos && git commit && git push
+# Automatic Arabic is refused there as well (HTTP 429), so new files carry
+# German only; the app translates those lines itself. The push trigger is gone
+# because a branch push must not turn red over a block that is not ours. Start
+# a run by hand (Actions > Video transcripts > Run workflow) to find out
+# whether the runners answer again.
 on:
   workflow_dispatch:
-  push:
-    branches: [video-transcripts]
-    paths:
-      - scripts/fetch_video_transcripts.py
-      - .github/workflows/video-transcripts.yml
 
 permissions:
   contents: write
