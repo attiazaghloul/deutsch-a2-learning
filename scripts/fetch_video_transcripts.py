@@ -92,7 +92,7 @@ def auto_cues(events):
 # a line often carries half a sentence, or the end of one and the start of the
 # next. Half a sentence is hard to read along and impossible to translate, so
 # the lines are joined and cut again at the sentence ends.
-SENTENCE_MARKS = ".!?…"
+SENTENCE_MARKS = ".!?"
 AFTER_SENTENCE = " 	\"'“”)]"
 ABBREVIATIONS = ("z. B.", "u. a.", "d. h.", "bzw.", "ca.", "usw.", "etc.", "Nr.", "Dr.", "Prof.",
                  "vgl.", "inkl.", "mind.", "max.", "Abb.", "S.")
@@ -104,6 +104,8 @@ def ends_sentence(text, position):
     following = text[position + 1:position + 2]
     if following and following not in AFTER_SENTENCE:
         return False
+    if text[position] == "." and text[position - 1:position] in (".", "…"):
+        return False          # the last dot of an ellipsis: the sentence runs on
     head = text[:position + 1]
     if text[position] != "." :
         return True
@@ -120,7 +122,10 @@ def timed_pieces(cues):
     pieces = []
     for cue in cues:
         words = cue.get("w") or []
-        if words:
+        # only the words that spell the line out: a line whose words are
+        # incomplete keeps its own text, so nothing is lost
+        spelled = "".join("".join(word.split()) for _, word in words) == "".join(cue["de"].split())
+        if words and spelled:
             for index, (start, word) in enumerate(words):
                 end = words[index + 1][0] if index + 1 < len(words) else cue["e"]
                 pieces.append({"s": start, "e": max(end, start + 0.1), "text": word, "timed": True})
@@ -179,7 +184,7 @@ def sentence_cues(cues):
             begin = max(begin, out[-1]["s"])
         line = {"s": round(begin, 2), "e": round(max(finish, begin + 0.4), 2), "de": sentence}
         words = [[round(piece["s"], 2), piece["text"]] for piece, (low, high) in zip(pieces, spans)
-                 if piece["timed"] and first <= low and high <= last + 1]
+                 if piece["timed"] and first <= low <= last]
         if words:
             line["w"] = words
         out.append(line)
