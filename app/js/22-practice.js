@@ -191,6 +191,7 @@ function renderPracticeHub(){
     {route:`practice/shadow/${level}`,icon:'🗣️',title:'Sprechen · Shadowing',text:'Hören, sofort nachsprechen, dich aufnehmen und die Aussprache prüfen.',ar:'اسمع الجملة وكرّرها وراها على طول، سجّل صوتك وقارنه بالأصل.',tag:'Neu'},
     {route:`practice/dialog/${level}`,icon:'🎭',title:'Sprechen · Rollenspiel',text:'Spiele die Dialoge der Kapitel: die App spricht die andere Rolle, du deine.',ar:'مثّل الحوار: التطبيق بيقول جمل الشخص التاني وإنت تقول جملك.',tag:'Neu'},
     {route:'videos',icon:'🎬',title:'Sehen · Videos',text:'Filme und Serien für Deutschlerner mit Tempo, Wiederholung und Notizen.',ar:'اتفرج على فيديوهات للمتعلمين وكرّر أي جزء وبطّأ السرعة.',tag:'Neu'},
+    {route:'book',icon:'📘',title:'Lesen · Impuls B1 Wiederholung',text:'Das Kursbuch Lektion für Lektion: Wortschatz, Lesetexte, Grammatik, Redemittel und Übungen.',ar:'مراجعة كتاب Impuls B1 درس بدرس: مفردات ونصوص وقواعد وتعبيرات وتمارين.',tag:'Neu'},
     {route:`practice/diktat/${level}`,icon:'✍️',title:'Schreiben · Diktat',text:'Sätze hören und richtig schreiben, mit Korrektur Wort für Wort.',ar:'اسمع واكتب الجملة، وهتشوف غلطاتك كلمة كلمة.',tag:'Neu'},
     {route:listen,icon:'🎧',title:'Hören',text:'Hörtexte aus dem Buch mit Aufgaben und Buchseiten.',ar:'تمارين الاستماع من الكتاب.'},
     {route:'podcast',icon:'🎙️',title:'Podcast',text:'Gespräche mit Mitlesen Wort für Wort.',ar:'حلقات بودكاست مع النص.'},

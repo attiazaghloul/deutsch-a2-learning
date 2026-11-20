@@ -403,3 +403,37 @@ html:has(.vd-stage[data-expanded]),body:has(.vd-stage[data-expanded]){overflow:h
 .rp-status{font-size:13px;color:var(--ink-2);min-height:1em}
 .rp-summary{align-self:stretch;display:grid;gap:8px;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:calc(16px*var(--shape,1));padding:14px}
 .rp-line.mine .pr-words .ok{background:var(--card)}
+
+/* Impuls B1 · Wiederholung: the booklet. Its section tabs stay in reach while
+   the part being read scrolls, and a word stands as its own small card. */
+.rv-tabs{position:sticky;top:0;z-index:3;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;
+  margin:0 0 12px;padding:8px 2px;background:var(--bg)}
+.rv-tabs::-webkit-scrollbar{display:none}
+.rv-tab{flex:none;display:flex;flex-direction:column;align-items:center;gap:1px;padding:7px 12px;cursor:pointer;
+  font:inherit;font-weight:700;font-size:13.5px;color:var(--ink-2);background:var(--card);
+  border:1px solid var(--line);border-radius:999px}
+.rv-tab small{font-family:"Cairo","Tahoma",sans-serif;font-weight:400;font-size:11px}
+.rv-tab.is-on{color:#fff;background:#2c5a86;border-color:#2c5a86}
+.rv-tab.is-done:not(.is-on){border-color:var(--nbg-green-d,var(--green-d))}
+.rv-tab.is-done::after{content:"✓";font-size:10px;line-height:1}
+.rv-tab[disabled]{opacity:.45;cursor:default}
+.rv-body{display:grid;gap:10px}
+.rv-head{margin:10px 0 2px;font-size:15.5px;line-height:1.35}
+.rv-head .ar-label{margin-inline-start:8px;font-weight:400;color:var(--ink-2)}
+.rv-block{padding:10px 12px;background:var(--card);border:1px solid var(--line);border-radius:calc(12px*var(--shape,1))}
+.rv-block p{margin:0;line-height:1.55}
+.rv-group{margin:6px 0 2px}
+.rv-group .rv-head{padding:8px 12px;border-radius:calc(10px*var(--shape,1));
+  background:color-mix(in srgb,#2c5a86 14%,transparent)}
+.rv-words{display:grid;gap:8px;margin-top:8px}
+.rv-word{padding:10px 12px;background:var(--card);border:1px solid var(--line);border-radius:calc(12px*var(--shape,1))}
+.rv-word p{margin:0}
+.rv-word-de b{font-size:16px}
+.rv-word-de small{font-weight:700;font-size:12px;color:var(--ink-2)}
+.rv-word-d{margin-top:4px;font-size:14px;color:var(--ink-2);line-height:1.5}
+.rv-word-ex{margin-top:4px;font-size:14.5px;line-height:1.5}
+.rv-done{width:100%;margin:14px 0 2px}
+.rv-done span{margin-inline-start:8px;font-family:"Cairo","Tahoma",sans-serif;font-weight:400}
+@media (min-width:720px){
+  .rv-words{grid-template-columns:1fr 1fr}
+}

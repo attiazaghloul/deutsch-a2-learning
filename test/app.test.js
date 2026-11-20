@@ -2211,6 +2211,45 @@ test('the Impuls B1 videos: 15 lessons, each with short and longer videos that p
   assert.ok(readFileSync(join(root, 'app', 'sw.js'), 'utf8').includes("'js/23-video-books.js'"), 'precached');
 });
 
+test('the Impuls B1 booklet: 30 lessons with their parts, fetched when it is opened', () => {
+  const appDir = join(root, 'app');
+  const context = vm.createContext({});
+  vm.runInContext(readFileSync(join(appDir, 'data_impuls_review.js'), 'utf8')
+    + ';this.IMPULS_REVIEW=IMPULS_REVIEW;', context);
+  const book = context.IMPULS_REVIEW;
+  assert.deepEqual([...book.lessons.map(lesson => lesson.n)], Array.from({ length: 30 }, (_, i) => i + 1));
+  assert.deepEqual([...book.meta.sections.map(section => section.id)],
+    ['wortschatz', 'lesetext', 'grammatik', 'redemittel', 'rollenspiele', 'pruefung', 'uebungen']);
+  const parts = [...book.meta.sections.map(section => section.id)].filter(id => id !== 'wortschatz');
+  for (const lesson of book.lessons) {
+    assert.ok(lesson.de.length > 3 && !/^\d+$/.test(lesson.de), `Lektion ${lesson.n} has a German title`);
+    assert.match(lesson.ar, /[؀-ۿ]/, `Lektion ${lesson.n} has an Arabic title`);
+    assert.ok(lesson.words.length >= 10, `Lektion ${lesson.n} has its words`);
+    assert.deepEqual(Object.keys(lesson.parts).sort(), [...parts].sort(), `Lektion ${lesson.n} has every part`);
+    assert.ok(parts.some(id => lesson.parts[id].length), `Lektion ${lesson.n} has some text`);
+    for (const word of lesson.words) {
+      assert.ok(word.w.length > 1, `Lektion ${lesson.n}: every word is a word`);
+      assert.match(word.ar, /[؀-ۿ]/, `Lektion ${lesson.n}: ${word.w} has Arabic`);
+    }
+  }
+  // the Arabic came out of the PDF in reading order, not in the order it is painted
+  assert.ok(book.lessons[0].ar.startsWith('النقل لبرلين'), 'an Arabic title reads from its first word');
+  assert.deepEqual([...book.extras.map(extra => extra.id)], ['grammatik-blick', 'fehler', 'loesungen']);
+
+  // 846 KB of text: it is fetched when the booklet is opened, not at startup
+  assert.doesNotMatch(html, /<script[^>]+data_impuls_review\.js/, 'the text must not block startup');
+  assert.ok(readFileSync(join(appDir, 'index.html'), 'utf8').includes('js/25-review-book.js'), 'the view ships with the app');
+  assert.match(readFileSync(join(jsDir, '01-core.js'), 'utf8'), /review:'data_impuls_review\.js\?v=/);
+  const worker = readFileSync(join(appDir, 'sw.js'), 'utf8');
+  for (const file of ['data_impuls_review.js', 'js/25-review-book.js']) {
+    assert.ok(worker.includes(`'${file}'`), `${file} is precached for offline`);
+  }
+  assert.match(readFileSync(join(jsDir, '25-review-book.js'), 'utf8'), /renderLazyDataLoading/,
+    'the booklet waits for its text with the app loader');
+  assert.match(readFileSync(join(jsDir, '04-router.js'), 'utf8'), /routeReviewBook\(h\)/, 'the router knows the booklet');
+  assert.match(readFileSync(join(jsDir, '22-practice.js'), 'utf8'), /route:'book'/, 'Üben links to the booklet');
+});
+
 test('the video text lights the line being said and keeps words in their own spans', () => {
   const { transcriptCueAt, transcriptCueHtml } = loadFunctions(['transcriptCueAt', 'transcriptCueHtml', 'escapeHtml', 'formatVideoTime']);
   const cues = [{ s: 1, e: 3, de: 'Hallo!' }, { s: 3.2, e: 6, de: 'Wie geht es dir?' }, { s: 20, e: 22, de: 'Tschüss.' }];

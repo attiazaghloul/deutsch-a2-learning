@@ -64,6 +64,9 @@ function fallbackBackTarget(hash){
   if(bookVideo) return `videos/book/${bookVideo[1]}/${bookVideo[2]}`;
   if(/^#videos\/book\/[\w-]+\/\d+$/.test(h)) return path.split('/').slice(0,3).join('/');
   if(/^#videos\//.test(h)) return 'videos';
+  // the booklet: a lesson belongs to the booklet, the booklet to Üben
+  if(h==='#book') return 'practice';
+  if(h.startsWith('#book/')) return 'book';
   if(h==='#practice') return '';
   if(/^#bausteine\//.test(h)) return 'bausteine';
   if(h==='#bausteine') return '';
@@ -108,7 +111,7 @@ function applyLevelTheme(hash){
   const practiceLevel=hash.match(/^(?:practice\/\w+|videos)\/(a1|a2|b1)\b/)?.[1];
   const isA1=hash==='a1'||hash.startsWith('a1/')||practiceLevel==='a1';
   const isB1=hash==='b1.1'||hash.startsWith('b1.1/')||practiceLevel==='b1';
-  const isA2=hash==='a2'||hash.startsWith('a2/')||['dict','full-dict','verbs','phrases','listen','exam','podcast','games','word-search','favorites','review','progress','practice','my-words','videos'].includes(hash)||practiceLevel==='a2'
+  const isA2=hash==='a2'||hash.startsWith('a2/')||['dict','full-dict','verbs','phrases','listen','exam','podcast','games','word-search','favorites','review','progress','practice','my-words','videos','book'].includes(hash)||practiceLevel==='a2'
     ||/^(k|g)\d+/.test(hash);
   document.body.classList.toggle('level-a1',isA1);
   document.body.classList.toggle('level-b1',isB1);
@@ -160,7 +163,7 @@ function renderCurrentRoute(){
   if(h==='review'){ if(window.NextUI) window.NextUI.renderReviewCenter(); else renderFavorites(); return; }
   if(h==='progress'){ if(window.NextUI) window.NextUI.renderProgressDashboard(); else renderLevelSelector(); return; }
   if(h==='word-search'){ renderWordSearch(); return; }
-  if(routePractice(h)||routeVideos(h)) return;
+  if(routePractice(h)||routeVideos(h)||routeReviewBook(h)) return;
   if(h==='bausteine'){ renderBausteineHome(); return; }
   const bausteinMatch=h.match(/^bausteine\/([a-z]+)$/);
   if(bausteinMatch){ renderBaustein(bausteinMatch[1]); return; }
