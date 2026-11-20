@@ -3,6 +3,7 @@
 // Redemittel, Rollenspiele, Prüfungstraining, Übungen - so the page stays short
 // and the section tabs stay in reach. The section last read is remembered, and
 // a section can be ticked off, so coming back lands where the learner left.
+const REVIEW_ROUTE = 'b1.1/book';          // the booklet is B1's own Wiederholung
 const REVIEW_STATE_KEY = 'impulsReviewDone';
 const REVIEW_LAST_KEY = 'impulsReviewLast';
 
@@ -54,7 +55,7 @@ function lastReviewSection(number){
 function renderReviewHome(){
   if(renderLazyDataLoading('Impuls B1 · Wiederholung', REVIEW_LOADER, () => renderReviewHome())) return;
   const book = reviewBook();
-  if(!book){ go('practice'); return; }
+  if(!book){ go('b1.1'); return; }
   const state = readReviewState();
   const words = book.lessons.reduce((sum, lesson) => sum + lesson.words.length, 0);
   setTop('Impuls B1 · Wiederholung', `${book.lessons.length} Lektionen`, true, 'المراجعة');
@@ -71,14 +72,14 @@ function renderReviewHome(){
       </ol></details>
     <ol class="vd-lessons">${book.lessons.map(lesson => {
       const progress = reviewLessonProgress(lesson.n, state);
-      return `<li><button type="button" class="vd-lesson-row" onclick="go('book/${lesson.n}')">
+      return `<li><button type="button" class="vd-lesson-row" onclick="go('${REVIEW_ROUTE}/${lesson.n}')">
         <span class="vd-lesson-num">${lesson.n}</span>
         <span class="vd-lesson-text"><b>${escapeHtml(lesson.de)}</b><span lang="ar" dir="rtl">${escapeHtml(lesson.ar)}</span></span>
         <span class="vd-lesson-count${progress.done === progress.total ? ' is-done' : ''}">${progress.done ? `${progress.done}/` : ''}${progress.total} <small>Teile</small></span>
       </button></li>`;
     }).join('')}</ol>
     <section class="vd-group"><h3>Anhang <small lang="ar" dir="rtl">الملاحق</small></h3>
-      <div class="vd-list">${book.extras.map(extra => `<button type="button" class="vd-card vd-card-row" onclick="go('book/x/${extra.id}')">
+      <div class="vd-list">${book.extras.map(extra => `<button type="button" class="vd-card vd-card-row" onclick="go('${REVIEW_ROUTE}/x/${extra.id}')">
         <span class="vd-body"><small>Seite ${extra.pages[0]}–${extra.pages[1]}</small><b>${escapeHtml(extra.de)}</b>
           <span lang="ar" dir="rtl">${escapeHtml(extra.ar)}</span></span></button>`).join('')}</div></section>`;
 }
@@ -114,7 +115,7 @@ function reviewWordsHtml(lesson){
 function renderReviewLesson(number, section){
   if(renderLazyDataLoading(`Lektion ${number}`, REVIEW_LOADER, () => renderReviewLesson(number, section))) return;
   const lesson = reviewLesson(number);
-  if(!lesson){ go('book'); return; }
+  if(!lesson){ go(REVIEW_ROUTE); return; }
   const sections = reviewSections();
   const open = sections.some(item => item.id === section) ? section : lastReviewSection(number);
   rememberReviewSection(number, open);
@@ -132,37 +133,41 @@ function renderReviewLesson(number, section){
     <nav class="rv-tabs" aria-label="Teile der Lektion">${sections.map(item => {
       const count = item.id === 'wortschatz' ? lesson.words.length : (lesson.parts[item.id] || []).length;
       return `<button type="button" class="rv-tab${item.id === open ? ' is-on' : ''}${state[reviewDoneKey(number, item.id)] ? ' is-done' : ''}"
-        ${count ? '' : 'disabled'} onclick="go('book/${number}/${item.id}')">${escapeHtml(item.de)}
+        ${count ? '' : 'disabled'} onclick="go('${REVIEW_ROUTE}/${number}/${item.id}')">${escapeHtml(item.de)}
         <small lang="ar" dir="rtl">${escapeHtml(item.ar)}</small></button>`;
     }).join('')}</nav>
     <section class="rv-body" aria-label="${escapeHtml(current?.de || '')}">${body}</section>
     <button type="button" class="${done ? 'next-primary' : 'next-secondary'} rv-done" onclick="toggleReviewDone(${number},'${open}')">
       ${done ? '✓ fertig' : 'Als fertig markieren'} <span lang="ar" dir="rtl">${done ? 'خلصت القسم ده' : 'علِّم القسم كمخلَّص'}</span></button>
-    <nav class="vd-lesson-nav">${previous ? `<button type="button" class="next-secondary" onclick="go('book/${previous.n}')">‹ Lektion ${previous.n}</button>` : '<span></span>'}
-      <button type="button" class="pr-link" onclick="go('book')">Alle Lektionen</button>
-      ${next ? `<button type="button" class="next-secondary" onclick="go('book/${next.n}')">Lektion ${next.n} ›</button>` : '<span></span>'}</nav>`;
+    <nav class="vd-lesson-nav">${previous ? `<button type="button" class="next-secondary" onclick="go('${REVIEW_ROUTE}/${previous.n}')">‹ Lektion ${previous.n}</button>` : '<span></span>'}
+      <button type="button" class="pr-link" onclick="go('${REVIEW_ROUTE}')">Alle Lektionen</button>
+      ${next ? `<button type="button" class="next-secondary" onclick="go('${REVIEW_ROUTE}/${next.n}')">Lektion ${next.n} ›</button>` : '<span></span>'}</nav>`;
   if(!window.NextUI) window.scrollTo(0, 0);
 }
 
 function renderReviewExtra(id){
   if(renderLazyDataLoading('Impuls B1 · Anhang', REVIEW_LOADER, () => renderReviewExtra(id))) return;
   const extra = reviewExtra(id);
-  if(!extra){ go('book'); return; }
+  if(!extra){ go(REVIEW_ROUTE); return; }
   setTop(escapeHtml(extra.de), 'Impuls B1 · Anhang', true, 'ملحق');
   view.innerHTML = `<section class="pr-head"><small>Anhang · Seite ${extra.pages[0]}–${extra.pages[1]}</small><h2>${escapeHtml(extra.de)}</h2>
       <p class="pr-ar" lang="ar" dir="rtl">${escapeHtml(extra.ar)}</p></section>
     <section class="rv-body">${extra.blocks.map(reviewBlockHtml).join('')}</section>
-    <nav class="vd-lesson-nav"><span></span><button type="button" class="pr-link" onclick="go('book')">Alle Lektionen</button><span></span></nav>`;
+    <nav class="vd-lesson-nav"><span></span><button type="button" class="pr-link" onclick="go('${REVIEW_ROUTE}')">Alle Lektionen</button><span></span></nav>`;
   if(!window.NextUI) window.scrollTo(0, 0);
 }
 
 function routeReviewBook(hash){
-  if(hash === 'book'){ renderReviewHome(); return true; }
-  const extra = hash.match(/^book\/x\/([\w-]+)$/);
+  // the booklet moved into B1; a link to the old place still lands
+  if(hash === 'book' || hash.startsWith('book/')){ go(`b1.1/${hash}`); return true; }
+  if(!hash.startsWith('b1.1/book')) return false;
+  const path = hash.slice('b1.1/'.length);
+  if(path === 'book'){ renderReviewHome(); return true; }
+  const extra = path.match(/^book\/x\/([\w-]+)$/);
   if(extra){ renderReviewExtra(extra[1]); return true; }
-  const part = hash.match(/^book\/(\d+)\/([a-z]+)$/);
+  const part = path.match(/^book\/(\d+)\/([a-z]+)$/);
   if(part){ renderReviewLesson(Number(part[1]), part[2]); return true; }
-  const lesson = hash.match(/^book\/(\d+)$/);
+  const lesson = path.match(/^book\/(\d+)$/);
   if(lesson){ renderReviewLesson(Number(lesson[1])); return true; }
   return false;
 }

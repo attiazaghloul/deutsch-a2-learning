@@ -2246,8 +2246,11 @@ test('the Impuls B1 booklet: 30 lessons with their parts, fetched when it is ope
   }
   assert.match(readFileSync(join(jsDir, '25-review-book.js'), 'utf8'), /renderLazyDataLoading/,
     'the booklet waits for its text with the app loader');
-  assert.match(readFileSync(join(jsDir, '04-router.js'), 'utf8'), /routeReviewBook\(h\)/, 'the router knows the booklet');
-  assert.match(readFileSync(join(jsDir, '22-practice.js'), 'utf8'), /route:'book'/, 'Üben links to the booklet');
+  // it belongs to B1: the course book's own Wiederholung, so B1 is where it opens
+  const router = readFileSync(join(jsDir, '04-router.js'), 'utf8');
+  assert.match(router, /routeReviewBook\(h\)/, 'the router knows the booklet');
+  assert.match(router, /route:'b1\.1\/book'/, 'the B1 area links to the booklet');
+  assert.match(readFileSync(join(jsDir, '25-review-book.js'), 'utf8'), /REVIEW_ROUTE = 'b1\.1\/book'/);
 });
 
 test('the video text lights the line being said and keeps words in their own spans', () => {

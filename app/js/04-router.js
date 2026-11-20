@@ -64,9 +64,9 @@ function fallbackBackTarget(hash){
   if(bookVideo) return `videos/book/${bookVideo[1]}/${bookVideo[2]}`;
   if(/^#videos\/book\/[\w-]+\/\d+$/.test(h)) return path.split('/').slice(0,3).join('/');
   if(/^#videos\//.test(h)) return 'videos';
-  // the booklet: a lesson belongs to the booklet, the booklet to Üben
-  if(h==='#book') return 'practice';
-  if(h.startsWith('#book/')) return 'book';
+  // the booklet: a lesson belongs to the booklet, the booklet to B1
+  if(h==='#b1.1/book') return 'b1.1';
+  if(h.startsWith('#b1.1/book/')) return 'b1.1/book';
   if(h==='#practice') return '';
   if(/^#bausteine\//.test(h)) return 'bausteine';
   if(h==='#bausteine') return '';
@@ -111,7 +111,7 @@ function applyLevelTheme(hash){
   const practiceLevel=hash.match(/^(?:practice\/\w+|videos)\/(a1|a2|b1)\b/)?.[1];
   const isA1=hash==='a1'||hash.startsWith('a1/')||practiceLevel==='a1';
   const isB1=hash==='b1.1'||hash.startsWith('b1.1/')||practiceLevel==='b1';
-  const isA2=hash==='a2'||hash.startsWith('a2/')||['dict','full-dict','verbs','phrases','listen','exam','podcast','games','word-search','favorites','review','progress','practice','my-words','videos','book'].includes(hash)||practiceLevel==='a2'
+  const isA2=hash==='a2'||hash.startsWith('a2/')||['dict','full-dict','verbs','phrases','listen','exam','podcast','games','word-search','favorites','review','progress','practice','my-words','videos'].includes(hash)||practiceLevel==='a2'
     ||/^(k|g)\d+/.test(hash);
   document.body.classList.toggle('level-a1',isA1);
   document.body.classList.toggle('level-b1',isB1);
@@ -755,6 +755,7 @@ const A2_SECTIONS=[
 
 const B1_SECTIONS=[
   {route:'b1.1/lessons',icon:'1',title:'Lektionen',text:'Zwölf vollständige Kapitel (B1.1 + B1.2) mit Wortschatz, Lesen, Grammatik, Sprechen und Quiz.',ar:'اتناشر وحدة كاملة (B1.1 وB1.2) مع الكلمات والقراءة والقواعد والمحادثة والاختبارات.'},
+  {route:'b1.1/book',icon:'📘',title:'Impuls B1 · Wiederholung',text:'Das Begleitheft zum Kursbuch: 30 Lektionen mit Wortschatz, Lesetexten, Grammatik, Redemitteln, Prüfungstraining und Übungen.',ar:'ملزمة المراجعة على كتاب Impuls B1: 30 درس بمفرداتها ونصوصها وقواعدها وتعبيراتها وتمارينها.'},
   {route:'train',icon:'🧠',title:'Wort-Trainer',text:'Wörter mit System lernen: erkennen, hören, schreiben – mit Wiederholung zur richtigen Zeit.',ar:'حفظ الكلمات بنظام التكرار المتباعد.'},
   {route:'bausteine',icon:'▦',title:'Satzbaukasten',text:'Satzmuster, Konnektoren, W-Fragen, Präpositionen, Verben mit Kasus und Nomen nach Artikel.',ar:'القواعد الثابتة: ترتيب الجملة، أدوات الربط، حروف الجر، الأفعال المنعكسة والداتيف.'},
   {route:'b1.1/dict',icon:'W',title:'Wörterbuch',text:'Alle B1-Wörter (B1.1 + B1.2) mit Suche, Beispielen und Kapitelfilter.',ar:'قاموس كل كلمات B1.1 وB1.2.'},
