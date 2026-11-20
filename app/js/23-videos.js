@@ -241,11 +241,86 @@ function stopVideoPlayer(){
   videoTicker=null;
   videoLoop=null;
   videoPauseEvery=0;
+  videoNextPause=0;
   videoPausedCue=-1;
+  videoTranscriptTouched=0;
   videoTranscript=null;
   try{ videoPlayer?.destroy(); }catch{}
   videoPlayer=null;
 }
+
+function videoFullscreenActive(stage){
+  return document.fullscreenElement===stage||stage.hasAttribute('data-expanded');
+}
+
+function syncVideoFullscreen(stage){
+  const active=videoFullscreenActive(stage);
+  const button=stage.querySelector('[data-video-fullscreen]');
+  const label=active?'Vollbild beenden':'Vollbild mit Text';
+  button.setAttribute('aria-pressed',String(active));
+  button.setAttribute('aria-label',label);
+  button.title=label;
+  button.querySelector('.vd-fullscreen-label').textContent=label;
+  const list=stage.querySelector('.vd-tr-list');
+  const line=list.querySelector('.vd-cue.is-active');
+  if(line&&transcriptView().follow){
+    requestAnimationFrame(()=>list.scrollTo({top:Math.max(0,line.offsetTop-list.clientHeight*.28)}));
+  }
+}
+
+async function toggleVideoFullscreen(stage){
+  if(stage.hasAttribute('data-expanded')){
+    stage.removeAttribute('data-expanded');
+  }else if(document.fullscreenElement===stage){
+    await document.exitFullscreen?.();
+  }else{
+    // iPhone Safari and some embedded browsers cannot fullscreen an HTML
+    // element. Keep the iframe and its transcript together in the viewport.
+    try{
+      if(!document.fullscreenEnabled||!stage.requestFullscreen) throw new Error('Fullscreen unavailable');
+      await stage.requestFullscreen();
+    }catch{
+      if(stage.isConnected) stage.setAttribute('data-expanded','');
+    }
+  }
+  if(stage.isConnected) syncVideoFullscreen(stage);
+}
+
+function syncVideoPlaybackControls(page,player,state){
+  const select=page.querySelector('[data-video-speed]');
+  const speed=player.getPlaybackRate?.()||1;
+  const supported=[...new Set([...(player.getAvailablePlaybackRates?.()||[]),speed])].sort((a,b)=>a-b);
+  const signature=supported.join(',');
+  if(select.dataset.rates!==signature){
+    select.replaceChildren(...supported.map(rate=>new Option(rate+'×',String(rate))));
+    select.dataset.rates=signature;
+  }
+  select.value=String(speed);
+  select.disabled=supported.length<2;
+  page.querySelector('[data-video-cmd="slower"]').disabled=speed<=supported[0];
+  page.querySelector('[data-video-cmd="faster"]').disabled=speed>=supported.at(-1);
+  const play=page.querySelector('[data-video-cmd="toggle"]');
+  const playing=state===1;
+  play.textContent=playing?'❚❚':'▶';
+  play.setAttribute('aria-label',playing?'Pause':'Abspielen');
+  play.title=playing?'Pause':'Abspielen';
+  page.querySelectorAll('[data-video-ready]').forEach(button=>{ button.disabled=false; });
+}
+
+document.addEventListener('fullscreenchange',()=>{
+  const stage=document.querySelector('.vd-player-page .vd-stage');
+  if(stage) syncVideoFullscreen(stage);
+});
+
+document.addEventListener('keydown',event=>{
+  if(event.key!=='Escape'||event.defaultPrevented) return;
+  const stage=document.querySelector('.vd-stage[data-expanded]');
+  if(stage){
+    event.preventDefault();
+    toggleVideoFullscreen(stage);
+    stage.querySelector('[data-video-fullscreen]').focus();
+  }
+});
 
 function renderVideoPlayer(key){
   stopVideoPlayer();
@@ -256,28 +331,38 @@ function renderVideoPlayer(key){
   setTop('Video',escapeHtml(item.title),true,'فيديو');
   view.innerHTML=`<div class="vd-player-page" data-video-key="${escapeHtml(key)}">
     <div class="vd-stage">
-      <div class="vd-frame"><div id="videoFrame"></div><div class="vd-offline" id="videoOffline" hidden><p lang="ar" dir="rtl">الفيديو مش بيحمّل — اتأكد من النت.</p><a class="next-secondary" href="${youtubeUrl}" target="_blank" rel="noopener">Auf YouTube öffnen</a></div></div>
+      <div class="vd-media">
+        <div class="vd-frame"><div id="videoFrame"></div><div class="vd-offline" id="videoOffline" hidden><p lang="ar" dir="rtl">الفيديو مش بيحمّل — اتأكد من النت.</p><a class="next-secondary" href="${youtubeUrl}" target="_blank" rel="noopener">Auf YouTube öffnen</a></div></div>
+        <div class="vd-toolbar" aria-label="Videosteuerung">
+          <div class="vd-toolbar-group" role="group" aria-label="Wiedergabe">
+            <button type="button" data-video-cmd="back5" data-video-ready disabled aria-label="5 Sekunden zurück" title="5 Sekunden zurück">↶<small>5</small></button>
+            <button type="button" class="vd-play" data-video-cmd="toggle" data-video-ready disabled aria-label="Abspielen" title="Abspielen">▶</button>
+            <button type="button" data-video-cmd="repeat" data-video-ready disabled aria-label="Aktuellen Satz wiederholen" title="Aktuellen Satz wiederholen">↻<span class="vd-repeat-label"> Satz</span></button>
+          </div>
+          <div class="vd-toolbar-group vd-speed" role="group" aria-label="Geschwindigkeit">
+            <button type="button" data-video-cmd="slower" disabled aria-label="Langsamer" title="Langsamer">−</button>
+            <select data-video-speed disabled aria-label="Geschwindigkeit"><option value="1">1×</option></select>
+            <button type="button" data-video-cmd="faster" disabled aria-label="Schneller" title="Schneller">+</button>
+          </div>
+          <button type="button" class="vd-fullscreen" data-video-fullscreen aria-pressed="false" aria-label="Vollbild mit Text" title="Vollbild mit Text"><span aria-hidden="true">⛶</span><span class="vd-fullscreen-label">Vollbild mit Text</span></button>
+        </div>
+      </div>
       ${transcriptPanelHtml()}
     </div>
     <div class="vd-title"><div><small>${escapeHtml(item.channel||'YouTube')} · ${escapeHtml(item.kind||'Video')}${item.length?` · <span lang="ar" dir="rtl">${escapeHtml(item.length)}</span>`:''}</small><h2>${escapeHtml(item.title)}</h2>${item.book&&item.ar?`<p class="vd-title-ar" lang="ar" dir="rtl">${escapeHtml(item.ar)}</p>`:''}</div>
       <button type="button" class="next-secondary" data-video-watched aria-pressed="${Boolean(saved.watched)}">${saved.watched?'✓ Gesehen':'Als gesehen markieren'}</button></div>
     ${item.book?videoBookContext(item):''}
-    <div class="vd-controls" role="group" aria-label="Lernsteuerung">
-      <button type="button" data-video-cmd="back5">⟲ 5 s</button>
-      <button type="button" data-video-cmd="toggle">⏯</button>
-      <button type="button" data-video-cmd="repeat" title="Die letzten Sekunden noch einmal">↺ Satz</button>
-      <span class="vd-sep"></span>
-      ${[.5,.75,1,1.25].map(rate=>`<button type="button" data-video-rate="${rate}" aria-pressed="${rate===1}">${rate}×</button>`).join('')}
-    </div>
-    <div class="vd-controls" role="group" aria-label="Wiederholen">
-      <button type="button" data-video-cmd="loopA">A</button>
-      <button type="button" data-video-cmd="loopB">B</button>
+    <details class="pr-help vd-tools"><summary>Wiederholen &amp; Untertitel <span lang="ar" dir="rtl">التكرار والترجمة</span></summary>
+    <div class="vd-controls" role="group" aria-label="Wiederholen und Untertitel">
+      <button type="button" data-video-cmd="loopA">A setzen</button>
+      <button type="button" data-video-cmd="loopB">B setzen</button>
       <button type="button" data-video-cmd="loopClear" hidden>A–B aus</button>
       <span class="vd-loop" id="videoLoopLabel">A–B: Abschnitt wiederholen</span>
       <span class="vd-sep"></span>
       <label class="vd-pause">Pause <select data-video-pause><option value="0">aus</option><option value="cue">nach jedem Satz</option>${[4,6,8,12].map(n=>`<option value="${n}">alle ${n} s</option>`).join('')}</select></label>
       <button type="button" data-video-cmd="captions">Untertitel DE</button>
     </div>
+    </details>
     <details class="pr-help" open><summary>So lernst du mit Videos <span lang="ar" dir="rtl">طريقة المذاكرة بالفيديو</span></summary>
       <ol lang="ar" dir="rtl"><li><b>اتفرج مرة من غير ترجمة</b> وحاول تفهم الفكرة العامة.</li><li><b>شغّل الترجمة الألماني</b> (Untertitel DE) واكتب الكلمات الجديدة تحت.</li><li><b>اختار جزء قصير</b> بـ A و B، أو خلي الفيديو يقف كل ٦ ثواني، وقول الكلام وراه (شادوينج).</li><li><b>بطّأ السرعة</b> لـ 0.75× لو الكلام سريع.</li></ol></details>
     <section class="vd-notes"><h3>Wörter aus dem Video <small lang="ar" dir="rtl">كلمات جديدة</small></h3>
@@ -291,14 +376,20 @@ function renderVideoPlayer(key){
   </div>`;
   saveVideoState(key,entry=>{ entry.opened=Date.now(); });
   loadYouTubeApi().then(YT=>{
-    if(!document.querySelector(`[data-video-key="${CSS.escape(key)}"]`)) return;
-    const playerVars={rel:0,playsinline:1,modestbranding:1,hl:'de',cc_lang_pref:'de',start:Math.floor(saved.time||0)};
+    const page=document.querySelector(`[data-video-key="${CSS.escape(key)}"]`);
+    if(!page) return;
+    const playerVars={rel:0,playsinline:1,fs:0,modestbranding:1,hl:'de',cc_lang_pref:'de',start:Math.floor(saved.time||0)};
     if(item.list){ playerVars.listType='playlist'; playerVars.list=item.list; }
     videoPlayer=new YT.Player('videoFrame',{
       host:'https://www.youtube-nocookie.com',
       videoId:item.yt||undefined,
       playerVars,
-      events:{onError:()=>{ $('#videoOffline').hidden=false; }}
+      events:{
+        onReady:({target})=>{ if(page.isConnected) syncVideoPlaybackControls(page,target,target.getPlayerState?.()); },
+        onStateChange:({target,data})=>{ if(page.isConnected) syncVideoPlaybackControls(page,target,data); },
+        onPlaybackRateChange:({target})=>{ if(page.isConnected) syncVideoPlaybackControls(page,target,target.getPlayerState?.()); },
+        onError:()=>{ const offline=page.querySelector('#videoOffline'); if(offline) offline.hidden=false; }
+      }
     });
     videoTicker=setInterval(()=>videoTick(key),150);
   }).catch(()=>{ const offline=$('#videoOffline'); if(offline) offline.hidden=false; });
@@ -467,7 +558,22 @@ document.addEventListener('click',event=>{
   if(!page) return;
   const key=page.dataset.videoKey;
   const player=videoPlayer;
+  if(event.target.closest('[data-video-fullscreen]')){
+    const button=event.target.closest('[data-video-fullscreen]');
+    if(button.dataset.pending) return;
+    button.dataset.pending='true';
+    toggleVideoFullscreen(page.querySelector('.vd-stage'))
+      .catch(()=>{})
+      .finally(()=>{ delete button.dataset.pending; });
+    return;
+  }
   const command=event.target.closest('[data-video-cmd]')?.dataset.videoCmd;
+  if(command==='slower'||command==='faster'){
+    const select=page.querySelector('[data-video-speed]');
+    const option=select.options[select.selectedIndex+(command==='slower'?-1:1)];
+    if(option) player?.setPlaybackRate?.(Number(option.value));
+    return;
+  }
   if(command&&player?.getCurrentTime){
     const time=player.getCurrentTime();
     if(command==='back5') player.seekTo(Math.max(0,time-5),true);
@@ -495,12 +601,6 @@ document.addEventListener('click',event=>{
   }
   const toggle=event.target.closest('[data-transcript-toggle]');
   if(toggle){ setTranscriptView(toggle.dataset.transcriptToggle,toggle.getAttribute('aria-pressed')!=='true'); return; }
-  const rate=event.target.closest('[data-video-rate]');
-  if(rate&&player?.setPlaybackRate){
-    player.setPlaybackRate(Number(rate.dataset.videoRate));
-    page.querySelectorAll('[data-video-rate]').forEach(button=>button.setAttribute('aria-pressed',String(button===rate)));
-    return;
-  }
   const watched=event.target.closest('[data-video-watched]');
   if(watched){
     const on=watched.getAttribute('aria-pressed')!=='true';
@@ -527,6 +627,13 @@ document.addEventListener('click',event=>{
 },{passive:true,capture:true}));
 
 document.addEventListener('change',event=>{
+  if(event.target.matches('[data-video-speed]')){
+    videoPlayer?.setPlaybackRate?.(Number(event.target.value));
+    // YouTube confirms the actual rate asynchronously.
+    const speed=videoPlayer?.getPlaybackRate?.();
+    if(speed) event.target.value=String(speed);
+    return;
+  }
   if(event.target.matches('[data-video-pause]')){
     const value=event.target.value;
     videoPauseEvery=value==='cue'?'cue':Number(value);

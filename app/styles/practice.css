@@ -240,11 +240,63 @@
 /* hidden German stays in place, blurred: a tap shows that line */
 .vd-transcript[data-hide-de] .vd-cue:not(.is-shown) .vd-cue-de{filter:blur(7px);user-select:none;cursor:pointer}
 .vd-transcript[data-hide-de][data-hide-ar] .vd-cue:not(.is-shown):not(.is-active){display:none}
-@media (min-width:1000px){
-  .vd-stage{grid-template-columns:minmax(0,3fr) minmax(320px,2fr);align-items:stretch}
-  /* the text adds nothing to the row's height: the video sets it */
+/* Video and text share a stage so the same player stays mounted in fullscreen. */
+#app:has(.vd-player-page){max-width:1500px}
+.vd-media{min-width:0;display:flex;flex-direction:column;gap:8px}
+.vd-toolbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px;padding:6px;background:var(--card);border:1px solid var(--line);border-radius:calc(14px*var(--shape,1))}
+.vd-toolbar-group{display:flex;align-items:center;gap:4px}
+.vd-toolbar button,.vd-toolbar select{display:inline-flex;align-items:center;justify-content:center;gap:3px;min-width:44px;height:44px;padding:0 8px;border:1px solid var(--line);border-radius:calc(9px*var(--shape,1));color:var(--ink);background:var(--bg);font:inherit;font-weight:750;cursor:pointer;white-space:nowrap}
+.vd-toolbar button small{font-size:12px}
+.vd-toolbar select{width:65px;padding-inline:5px;font-size:14px;font-variant-numeric:tabular-nums}
+.vd-toolbar .vd-play,.vd-toolbar .vd-fullscreen[aria-pressed="true"]{color:#fff;background:var(--nbg-green-d,var(--green-d));border-color:transparent}
+.vd-toolbar button:disabled,.vd-toolbar select:disabled{opacity:.55;cursor:default}
+.vd-toolbar :focus-visible,.vd-tr-toggles :focus-visible,.vd-cue-time:focus-visible{outline:2px solid var(--nbg-green-d,var(--green-d));outline-offset:-2px}
+.vd-toolbar .vd-fullscreen{gap:6px;border-color:var(--nbg-green-d,var(--green-d));font-size:13px}
+.vd-fullscreen>span:first-child{font-size:21px;line-height:1}
+.vd-tools .vd-controls{margin:8px 0 0}
+.vd-tr-list{min-height:0}
+.vd-tr-bar{flex:none}
+.vd-tr-toggles button{min-height:40px}
+
+@media (min-width:840px){
+  .vd-stage{grid-template-columns:minmax(0,1.6fr) minmax(300px,1fr);align-items:stretch}
   .vd-stage .vd-transcript{contain:size}
   .vd-stage .vd-tr-list{max-height:none;flex:1}
+}
+@media (max-width:839px){
+  .vd-cue-de{font-size:17px}
+  .vd-cue-ar{font-size:15px}
+  .vd-cue-time{min-height:35px}
+  .vd-tr-toggles button{min-height:44px}
+}
+@media (max-width:620px){
+  .vd-toolbar button{min-width:40px;padding:0 6px}
+  .vd-toolbar select{width:56px}
+  .vd-repeat-label,.vd-fullscreen-label{display:none}
+}
+.vd-stage:is(:fullscreen,[data-expanded]){
+  box-sizing:border-box;width:100%;height:100vh;height:100dvh;
+  padding:max(8px,env(safe-area-inset-top)) max(8px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left));
+  background:var(--bg);overflow:hidden;
+  grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);
+}
+.vd-stage[data-expanded]{position:fixed;inset:0;z-index:10000}
+/* Keep the fixed fallback above the shell's route transition layer. */
+#view:has(.vd-stage[data-expanded]){view-transition-name:none}
+body:has(.vd-stage[data-expanded]) :is(.app-bottom-nav,.app-rail,header.topbar,footer.fnote),
+.vd-player-page:has(.vd-stage[data-expanded]) > :not(.vd-stage){visibility:hidden}
+html:has(.vd-stage[data-expanded]),body:has(.vd-stage[data-expanded]){overflow:hidden;overscroll-behavior:none}
+.vd-stage:is(:fullscreen,[data-expanded]) .vd-frame{max-height:48dvh}
+.vd-stage:is(:fullscreen,[data-expanded]) .vd-transcript{contain:size}
+.vd-stage:is(:fullscreen,[data-expanded]) .vd-tr-list{max-height:none;flex:1}
+@media (min-width:540px) and (orientation:landscape){
+  .vd-stage:is(:fullscreen,[data-expanded]){grid-template-columns:minmax(0,1.65fr) minmax(210px,1fr);grid-template-rows:minmax(0,1fr)}
+  .vd-stage:is(:fullscreen,[data-expanded]) .vd-media{min-height:0}
+  .vd-stage:is(:fullscreen,[data-expanded]) .vd-frame{flex:1;min-height:0;max-height:none;aspect-ratio:auto}
+  .vd-stage:is(:fullscreen,[data-expanded]) .vd-toolbar{flex:none}
+}
+@media (max-height:420px) and (orientation:landscape){
+  .vd-stage:is(:fullscreen,[data-expanded]) .vd-fullscreen-label{display:none}
 }
 
 @media (max-width:600px){
