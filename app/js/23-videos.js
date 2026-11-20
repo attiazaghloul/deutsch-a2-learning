@@ -81,8 +81,8 @@ function parseYouTubeLink(value){
 // key <book>-<lesson>-k<n> (kurz) or -l<n> (länger).
 function bookVideos(book){
   return book.lessons.flatMap(lesson=>[['short','k','Kurz'],['long','l','Länger']].flatMap(([group,mark,kind])=>
-    lesson[group].map(([yt,title,ar,length],index)=>({
-      key:`${book.id}-${lesson.n}-${mark}${index+1}`,level:'book',yt,title,ar,length,kind,
+    lesson[group].map(([yt,title,ar,length,keySuffix],index)=>({
+      key:`${book.id}-${lesson.n}-${mark}${index+1}${keySuffix ? `-${keySuffix}` : ""}`,level:'book',yt,title,ar,length,kind,
       channel:title.match(/\(([^()]+)\)\s*$/)?.[1]||'YouTube',book:book.id,lesson:lesson.n,group
     }))));
 }

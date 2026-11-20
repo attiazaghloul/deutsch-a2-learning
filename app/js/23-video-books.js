@@ -3,7 +3,7 @@
    its topic, short ones first, then longer documentaries. The videos play in
    the app's player with their text (data_videos/<id>.json, made by
    scripts/fetch_video_transcripts.py, which reads the ids from this file).
-   A video is [YouTube id, title, what it is about in Arabic, length]. */
+   A video is [YouTube id, title, what it is about in Arabic, length, optional progress key suffix]. */
 
 const VIDEO_BOOKS=[
   {id:'impuls-b1',title:'Impuls B1',subtitle:'Lektion 1–15',level:'b1',
@@ -73,7 +73,7 @@ const VIDEO_BOOKS=[
         short:[
           ['MUK69giVQJA','Was taugt das Deutschlandticket wirklich?','التذكرة والمناخ','']],
         long:[
-          ['xY131QrSWjQ','NDR – Das Experiment: Leben ohne Plastik','عيلة من 7 أفراد 4 أسابيع من غير بلاستيك','≈ 45 د']]},
+          ['NSc3lnBpaKY','Leben ohne Plastik (WDR · Die Maus)','عائلة تحاول تقليل استخدام البلاستيك في حياتها اليومية','≈ 6 د','wdr']]},
       {n:8,de:'Prävention ist die beste Therapie',ar:'الوقاية أحسن علاج',
         words:['die Prävention','vorbeugen','der Bluthochdruck','der Bewegungsmangel','der Lebensstil'],
         short:[
@@ -98,7 +98,7 @@ const VIDEO_BOOKS=[
           ['DvxLUYgRrQM','Kann ich alle Sprachen lernen? (Quarks)','إيه اللي العلم بيقوله','قصير/متوسط'],
           ['RYpcyzasvGY','Sprachen lernen: App vs. Lehrer','تجربة 10 ساعات بطريقتين لتعلم السويدي','قصير/متوسط']],
         long:[
-          ['AGFfuGf0mas','Yourope: Welche Sprache spricht Europa?','اللغات في أوروبا','متوسط'],
+          ['Y_8VbBOjJJw','Wie lange dauert es, Deutsch zu lernen? (Easy German)','تجارب متعلمين وطرق تساعد على تعلّم الألمانية','','easy-german'],
           ['W_-AViUeEYo','Der Traum vom Turm zu Babel','الإنسان ممكن يتعلم كام لغة؟','متوسط']]},
       {n:11,de:'Der Name liegt mir auf der Zunge',ar:'الاسم على طرف لساني (الذاكرة)',
         words:['das Gedächtnis','sich etwas merken','die Ablenkung','das Multitasking','die Aufmerksamkeit'],
