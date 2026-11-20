@@ -236,7 +236,11 @@ function loadYouTubeApi(){
   return youTubeApiLoad;
 }
 
+let stopVideoLayout=null;
+
 function stopVideoPlayer(){
+  stopVideoLayout?.();
+  stopVideoLayout=null;
   clearInterval(videoTicker);
   videoTicker=null;
   videoLoop=null;
@@ -322,6 +326,131 @@ document.addEventListener('keydown',event=>{
   }
 });
 
+const VIDEO_LAYOUT_KEY='videoPlayerLayout';
+const VIDEO_LAYOUT_DEFAULT={font:0,width:62,height:null,swapped:false};
+
+function videoLayoutValue(value,min,max,fallback){
+  return Number.isFinite(value)?Math.min(max,Math.max(min,Math.round(value))):fallback;
+}
+
+function readVideoLayout(){
+  try{
+    const saved=JSON.parse(localStorage.getItem(VIDEO_LAYOUT_KEY)||'{}')||{};
+    return {
+      font:videoLayoutValue(saved.font,-2,6,0),
+      width:videoLayoutValue(saved.width,30,75,62),
+      height:videoLayoutValue(saved.height,16,78,null),
+      swapped:saved.swapped===true
+    };
+  }catch{ return {...VIDEO_LAYOUT_DEFAULT}; }
+}
+
+function initVideoLayout(stage){
+  const divider=stage.querySelector('[data-video-divider]');
+  const frame=stage.querySelector('.vd-frame');
+  const controls=stage.querySelector('.vd-layout-controls');
+  const list=stage.querySelector('.vd-tr-list');
+  let layout=readVideoLayout();
+  let drag=null;
+  const isWide=()=>getComputedStyle(divider).cursor==='col-resize';
+  const viewportHeight=()=>window.innerHeight;
+  const currentHeight=()=>frame.getBoundingClientRect().height/viewportHeight()*100;
+  const limits=wide=>wide?[30,75]:[16,videoFullscreenActive(stage)?58:78];
+  const availableWidth=()=>{
+    const style=getComputedStyle(stage);
+    return stage.clientWidth-parseFloat(style.paddingLeft)-parseFloat(style.paddingRight);
+  };
+  const value=wide=>Math.round(wide?frame.getBoundingClientRect().width/availableWidth()*100:currentHeight());
+  const syncDivider=()=>{
+    const wide=isWide();
+    const [min,max]=limits(wide);
+    divider.setAttribute('aria-orientation',wide?'vertical':'horizontal');
+    divider.setAttribute('aria-valuemin',String(min));
+    divider.setAttribute('aria-valuemax',String(max));
+    divider.setAttribute('aria-valuenow',String(videoLayoutValue(value(wide),min,max,min)));
+  };
+  const apply=()=>{
+    stage.style.setProperty('--vd-font-adjust',layout.font*2+'px');
+    stage.style.setProperty('--vd-media-width',layout.width+'%');
+    if(layout.height===null) stage.style.removeProperty('--vd-video-height');
+    else stage.style.setProperty('--vd-video-height',layout.height+'dvh');
+    stage.toggleAttribute('data-swapped',layout.swapped);
+    controls.querySelector('[data-video-layout="smaller"]').disabled=layout.font<=-2;
+    controls.querySelector('[data-video-layout="larger"]').disabled=layout.font>=6;
+    controls.querySelector('[data-video-layout="swap"]').setAttribute('aria-pressed',String(layout.swapped));
+    syncDivider();
+  };
+  const save=()=>{
+    try{ localStorage.setItem(VIDEO_LAYOUT_KEY,JSON.stringify(layout)); }catch{}
+    const line=list.querySelector('.vd-cue.is-active');
+    if(line&&transcriptView().follow&&Date.now()-videoTranscriptTouched>5000){
+      list.scrollTop=Math.max(0,line.offsetTop-list.clientHeight*.28);
+    }
+  };
+  const resize=(wide,next)=>{
+    const [min,max]=limits(wide);
+    layout[wide?'width':'height']=videoLayoutValue(next,min,max,min);
+    apply();
+  };
+
+  controls.addEventListener('click',event=>{
+    const operation=event.target.closest('[data-video-layout]')?.dataset.videoLayout;
+    if(operation==='smaller') layout.font--;
+    else if(operation==='larger') layout.font++;
+    else if(operation==='swap') layout.swapped=!layout.swapped;
+    else if(operation==='reset') layout={...VIDEO_LAYOUT_DEFAULT};
+    else return;
+    apply();
+    save();
+  });
+  divider.addEventListener('pointerdown',event=>{
+    if(!event.isPrimary||event.button!==0) return;
+    const wide=isWide();
+    drag={
+      id:event.pointerId,wide,
+      start:wide?event.clientX:event.clientY,
+      size:value(wide),
+      span:wide?availableWidth():viewportHeight()
+    };
+    divider.setPointerCapture(event.pointerId);
+  });
+  divider.addEventListener('pointermove',event=>{
+    if(drag?.id!==event.pointerId) return;
+    const point=drag.wide?event.clientX:event.clientY;
+    const delta=(point-drag.start)/drag.span*100*(layout.swapped?-1:1);
+    if(point!==drag.start||drag.moved){
+      drag.moved=true;
+      resize(drag.wide,drag.size+delta);
+    }
+  });
+  const finish=event=>{
+    if(drag?.id!==event.pointerId) return;
+    if(drag.moved) save();
+    drag=null;
+  };
+  divider.addEventListener('lostpointercapture',finish);
+  divider.addEventListener('keydown',event=>{
+    const wide=isWide();
+    const back=wide?'ArrowLeft':'ArrowUp';
+    const forward=wide?'ArrowRight':'ArrowDown';
+    const [min,max]=limits(wide);
+    let next;
+    if(event.key==='Home') next=min;
+    else if(event.key==='End') next=max;
+    else if(event.key===back||event.key===forward){
+      next=value(wide)+(event.key===back?-3:3)*(layout.swapped?-1:1);
+    }else return;
+    event.preventDefault();
+    resize(wide,next);
+    save();
+  });
+  // ResizeObserver is scoped to this page and disconnected when the route changes.
+  const observer=new ResizeObserver(syncDivider);
+  observer.observe(stage);
+  stopVideoLayout=()=>observer.disconnect();
+  apply();
+}
+
 function renderVideoPlayer(key){
   stopVideoPlayer();
   const item=allVideos().find(entry=>entry.key===key);
@@ -347,6 +476,7 @@ function renderVideoPlayer(key){
           <button type="button" class="vd-fullscreen" data-video-fullscreen aria-pressed="false" aria-label="Vollbild mit Text" title="Vollbild mit Text"><span aria-hidden="true">⛶</span><span class="vd-fullscreen-label">Vollbild mit Text</span></button>
         </div>
       </div>
+      <div class="vd-divider" data-video-divider role="separator" tabindex="0" aria-controls="videoTranscript" aria-label="Video- und Textbereich anpassen" title="Ziehen, um Video und Text anzupassen"></div>
       ${transcriptPanelHtml()}
     </div>
     <div class="vd-title"><div><small>${escapeHtml(item.channel||'YouTube')} · ${escapeHtml(item.kind||'Video')}${item.length?` · <span lang="ar" dir="rtl">${escapeHtml(item.length)}</span>`:''}</small><h2>${escapeHtml(item.title)}</h2>${item.book&&item.ar?`<p class="vd-title-ar" lang="ar" dir="rtl">${escapeHtml(item.ar)}</p>`:''}</div>
@@ -374,6 +504,7 @@ function renderVideoPlayer(key){
       ${item.custom?`<button type="button" class="pr-link" data-video-remove>Dieses Video aus meiner Liste entfernen</button>`:''}
     </section>
   </div>`;
+  initVideoLayout(view.querySelector('.vd-stage'));
   saveVideoState(key,entry=>{ entry.opened=Date.now(); });
   loadYouTubeApi().then(YT=>{
     const page=document.querySelector(`[data-video-key="${CSS.escape(key)}"]`);
@@ -430,6 +561,12 @@ function transcriptPanelHtml(){
     <div class="vd-tr-bar">
       <b>Text <small lang="ar" dir="rtl">النص</small></b>
       <span class="vd-tr-toggles">${toggle('de','Deutsch')}${toggle('ar','عربي',' lang="ar"')}${toggle('follow','Mitlaufen')}</span>
+    </div>
+    <div class="vd-layout-controls" role="group" aria-label="Text und Layout">
+      <button type="button" data-video-layout="smaller" title="Schrift verkleinern" aria-label="Schrift verkleinern">A−</button>
+      <button type="button" data-video-layout="larger" title="Schrift vergrößern" aria-label="Schrift vergrößern">A+</button>
+      <button type="button" data-video-layout="swap" aria-pressed="false" title="Video und Text tauschen" aria-label="Video und Text tauschen"><span class="vd-swap-icon" aria-hidden="true"></span></button>
+      <button type="button" data-video-layout="reset" title="Ansicht zurücksetzen" aria-label="Ansicht zurücksetzen">↶</button>
     </div>
     <div class="vd-tr-list" id="videoTranscriptList"><p class="vd-tr-note">…</p></div>
   </section>`;
