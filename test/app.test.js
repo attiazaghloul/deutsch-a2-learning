@@ -2180,6 +2180,35 @@ test('video links in any YouTube form become a video or a playlist', () => {
   for (const level of ['a1', 'a2', 'b1']) assert.ok(library.some(match => match[2] === level), `${level} has videos`);
 });
 
+test('the Impuls B1 videos: 15 lessons, each with short and longer videos that play in the app', () => {
+  const context = vm.createContext({});
+  vm.runInContext(`${readFileSync(join(jsDir, '23-video-books.js'), 'utf8')}\n${functionSource('bookVideos')}\nthis.VIDEO_BOOKS=VIDEO_BOOKS;this.bookVideos=bookVideos;`, context);
+  const book = context.VIDEO_BOOKS.find(entry => entry.id === 'impuls-b1');
+  assert.deepEqual([...book.lessons.map(lesson => lesson.n)], Array.from({ length: 15 }, (_, i) => i + 1));
+  const videos = context.bookVideos(book);
+  assert.equal(videos.length, 71);
+  assert.equal(new Set(videos.map(item => item.yt)).size, 71, 'every video once');
+  assert.equal(new Set(videos.map(item => item.key)).size, 71, 'keys are unique');
+  for (const item of videos) {
+    assert.match(item.yt, /^[\w-]{11}$/, item.title);
+    assert.ok(item.title && /[\u0600-\u06ff]/.test(item.ar), `${item.yt} has a title and Arabic`);
+  }
+  for (const lesson of book.lessons) {
+    assert.ok(lesson.short.length && lesson.long.length && lesson.words.length >= 5, `Lektion ${lesson.n}`);
+    assert.ok(/[\u0600-\u06ff]/.test(lesson.ar), `Lektion ${lesson.n} has an Arabic title`);
+  }
+  const first = videos[0];
+  assert.equal(first.key, 'impuls-b1-1-k1');
+  assert.equal(first.yt, 'JBa3Fr84lm4');
+  assert.equal(videos.find(item => item.yt === 'ilCrpuVDAgE').channel, 'NDR Nordreportage');
+  assert.equal(videos.find(item => item.yt === 'ilCrpuVDAgE').key, 'impuls-b1-1-l1');
+  const fetcher = readFileSync(join(root, 'scripts', 'fetch_video_transcripts.py'), 'utf8');
+  assert.match(fetcher, /23-video-books\.js/, 'the transcript fetcher reads the book videos');
+  const html = readFileSync(join(root, 'app', 'index.html'), 'utf8');
+  assert.ok(html.indexOf('js/23-video-books.js') > 0 && html.indexOf('js/23-video-books.js') < html.indexOf('js/23-videos.js'));
+  assert.ok(readFileSync(join(root, 'app', 'sw.js'), 'utf8').includes("'js/23-video-books.js'"), 'precached');
+});
+
 test('the video text lights the line being said and keeps words in their own spans', () => {
   const { transcriptCueAt, transcriptCueHtml } = loadFunctions(['transcriptCueAt', 'transcriptCueHtml', 'escapeHtml', 'formatVideoTime']);
   const cues = [{ s: 1, e: 3, de: 'Hallo!' }, { s: 3.2, e: 6, de: 'Wie geht es dir?' }, { s: 20, e: 22, de: 'Tschüss.' }];
@@ -2202,6 +2231,9 @@ test('the Üben routes are wired into the router, the menu and the back button',
   assert.equal(fallbackBackTarget('practice/shadow/a2/7'), 'practice/shadow/a2');
   assert.equal(fallbackBackTarget('practice/diktat/b1'), 'practice');
   assert.equal(fallbackBackTarget('videos/play/nico-a1'), 'videos');
+  assert.equal(fallbackBackTarget('videos/play/impuls-b1-3-l2'), 'videos/book/impuls-b1/3');
+  assert.equal(fallbackBackTarget('videos/book/impuls-b1/3'), 'videos/book/impuls-b1');
+  assert.equal(fallbackBackTarget('videos/book/impuls-b1'), 'videos');
   assert.equal(fallbackBackTarget('videos'), 'practice');
   assert.equal(fallbackBackTarget('my-words'), 'practice');
   assert.equal(fallbackBackTarget('practice'), '');

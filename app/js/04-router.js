@@ -59,6 +59,10 @@ function fallbackBackTarget(hash){
   if(/^#practice\/dialog\/(a1|a2|b1)\/\d+\/\d+$/.test(h)) return path.split('/').slice(0,4).join('/');
   if(/^#practice\/\w+\/(a1|a2|b1)\/\d+$/.test(h)) return path.split('/').slice(0,3).join('/');
   if(/^#practice\/\w+/.test(h)||h==='#my-words'||h==='#videos') return 'practice';
+  // a course book's video plays inside its lesson, a lesson inside its book
+  const bookVideo=h.match(/^#videos\/play\/(impuls-b1)-(\d+)-/);
+  if(bookVideo) return `videos/book/${bookVideo[1]}/${bookVideo[2]}`;
+  if(/^#videos\/book\/[\w-]+\/\d+$/.test(h)) return path.split('/').slice(0,3).join('/');
   if(/^#videos\//.test(h)) return 'videos';
   if(h==='#practice') return '';
   if(/^#bausteine\//.test(h)) return 'bausteine';

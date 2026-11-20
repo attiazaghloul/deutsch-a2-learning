@@ -77,8 +77,23 @@ function parseYouTubeLink(value){
   return list?{list:list[1]}:null;
 }
 
+// The videos of a course book (js/23-video-books.js) as player items:
+// key <book>-<lesson>-k<n> (kurz) or -l<n> (länger).
+function bookVideos(book){
+  return book.lessons.flatMap(lesson=>[['short','k','Kurz'],['long','l','Länger']].flatMap(([group,mark,kind])=>
+    lesson[group].map(([yt,title,ar,length],index)=>({
+      key:`${book.id}-${lesson.n}-${mark}${index+1}`,level:'book',yt,title,ar,length,kind,
+      channel:title.match(/\(([^()]+)\)\s*$/)?.[1]||'YouTube',book:book.id,lesson:lesson.n,group
+    }))));
+}
+
 function allVideos(){
-  return [...VIDEO_LIBRARY,...customVideos().map(item=>({...item,custom:true,level:'mine'}))];
+  const books=(typeof VIDEO_BOOKS==='undefined'?[]:VIDEO_BOOKS).flatMap(bookVideos);
+  return [...VIDEO_LIBRARY,...books,...customVideos().map(item=>({...item,custom:true,level:'mine'}))];
+}
+
+function findVideoBook(id){
+  return (typeof VIDEO_BOOKS==='undefined'?[]:VIDEO_BOOKS).find(book=>book.id===id)||null;
 }
 
 function videoThumb(item){
@@ -89,10 +104,12 @@ function renderVideoList(filter='all'){
   const state=readVideoState();
   setTop('Videos','Sehen und verstehen',true,'فيديوهات');
   const filters=[['all','Alle'],['a1','A1'],['a2','A2'],['b1','B1'],['mine','Meine']];
-  const items=allVideos().filter(item=>filter==='all'||item.level===filter||(item.level==='all'&&filter!=='mine'));
+  const items=allVideos().filter(item=>item.level!=='book'&&(filter==='all'||item.level===filter||(item.level==='all'&&filter!=='mine')));
+  const books=(typeof VIDEO_BOOKS==='undefined'?[]:VIDEO_BOOKS).filter(book=>filter==='all'||filter===book.level);
   view.innerHTML=`<section class="pr-head"><h2>Videos zum Deutschlernen</h2><p>Filme und Serien für Lernende. Langsamer abspielen, Sätze wiederholen, Wörter notieren – und nach jedem Satz pausieren, um nachzusprechen.</p>
       <p class="pr-ar" lang="ar" dir="rtl">اتفرج على أفلام ومسلسلات معمولة للمتعلمين: بطّأ السرعة، كرّر الجمل، اكتب الكلمات الجديدة، وخلي الفيديو يقف بعد كل جملة عشان تقولها وراه.</p></section>
     <nav class="pr-level-tabs" aria-label="Filter">${filters.map(([id,label])=>`<button type="button" onclick="go('${id==='all'?'videos':`videos/${id}`}')" ${id===filter?'aria-current="page"':''}>${label}</button>`).join('')}</nav>
+    ${books.map(book=>videoBookBanner(book,state)).join('')}
     <form class="vd-add" data-video-add><label for="videoLink"><b>Eigenes Video hinzufügen</b> <small lang="ar" dir="rtl">ضيف أي فيديو من يوتيوب</small></label>
       <div><input id="videoLink" type="url" inputmode="url" placeholder="YouTube-Link einfügen …" autocomplete="off"><button type="submit" class="next-primary">Hinzufügen</button></div></form>
     ${items.length?`<div class="vd-grid">${items.map(item=>{
@@ -103,6 +120,97 @@ function renderVideoList(filter='all'){
       </button>`;
     }).join('')}</div>`:`<div class="review-empty"><h2>Noch keine eigenen Videos</h2><p lang="ar" dir="rtl">انسخ لينك أي فيديو ألماني من يوتيوب وحطّه فوق.</p></div>`}
     <p class="pr-note" lang="ar" dir="rtl">الفيديوهات محتاجة نت. النوتس والكلمات بتتحفظ على جهازك.</p>`;
+}
+
+function videoBookProgress(book,state=readVideoState()){
+  const keys=bookVideos(book).map(item=>item.key);
+  return {done:keys.filter(key=>state[key]?.watched).length,total:keys.length};
+}
+
+function videoBookBanner(book,state){
+  const progress=videoBookProgress(book,state);
+  return `<button type="button" class="vd-book-banner" onclick="go('videos/book/${book.id}')">
+    <span class="vd-book-cover" aria-hidden="true"><b>${escapeHtml(book.title)}</b><small>${escapeHtml(book.subtitle)}</small></span>
+    <span class="vd-book-body"><small>Zum Kursbuch · ${book.lessons.length} Lektionen · ${progress.total} Videos</small>
+      <b>${escapeHtml(book.title)} · ${escapeHtml(book.subtitle)}</b>
+      <span>${escapeHtml(book.text)}</span><span lang="ar" dir="rtl">${escapeHtml(book.ar)}</span>
+      <span class="vd-book-meter"><i style="width:${Math.round(progress.done/progress.total*100)}%"></i></span>
+      <small>${progress.done} von ${progress.total} gesehen</small></span>
+  </button>`;
+}
+
+function renderVideoBook(id){
+  const book=findVideoBook(id);
+  if(!book){ go('videos'); return; }
+  const state=readVideoState();
+  const videos=bookVideos(book);
+  setTop(escapeHtml(book.title),escapeHtml(book.subtitle),true,'كتاب');
+  view.innerHTML=`<section class="pr-head vd-book-head"><small>Videos zum Kursbuch</small><h2>${escapeHtml(book.title)} · ${escapeHtml(book.subtitle)}</h2><p>${escapeHtml(book.text)}</p>
+      <p class="pr-ar" lang="ar" dir="rtl">${escapeHtml(book.ar)}</p></section>
+    <details class="pr-help"><summary>So lernst du mit den Videos <span lang="ar" dir="rtl">طريقة المذاكرة</span></summary>
+      <ol lang="ar" dir="rtl">${book.method.map(step=>`<li>${escapeHtml(step)}</li>`).join('')}</ol></details>
+    <ol class="vd-lessons">${book.lessons.map(lesson=>{
+      const own=videos.filter(item=>item.lesson===lesson.n);
+      const done=own.filter(item=>state[item.key]?.watched).length;
+      return `<li><button type="button" class="vd-lesson-row" onclick="go('videos/book/${book.id}/${lesson.n}')">
+        <span class="vd-lesson-num">${lesson.n}</span>
+        <span class="vd-lesson-text"><b>${escapeHtml(lesson.de)}</b><span lang="ar" dir="rtl">${escapeHtml(lesson.ar)}</span></span>
+        <span class="vd-lesson-count${done===own.length?' is-done':''}">${done?`${done}/`:''}${own.length} <small>Videos</small></span>
+      </button></li>`;
+    }).join('')}</ol>`;
+}
+
+function videoBookCard(item,saved){
+  return `<button type="button" class="vd-card vd-card-row" onclick="go('videos/play/${item.key}')">
+    <span class="vd-thumb"><img src="${videoThumb(item)}" alt="" loading="lazy" onerror="this.remove()">${saved.watched?'<span class="vd-done">✓ gesehen</span>':''}${saved.time&&!saved.watched?`<span class="vd-resume">▶ ${formatVideoTime(saved.time)}</span>`:''}</span>
+    <span class="vd-body"><small>${escapeHtml(item.channel)}${item.length?` · <span lang="ar" dir="rtl">${escapeHtml(item.length)}</span>`:''}</small><b>${escapeHtml(item.title)}</b><span lang="ar" dir="rtl">${escapeHtml(item.ar)}</span></span>
+  </button>`;
+}
+
+function renderVideoBookLesson(id,number){
+  const book=findVideoBook(id);
+  const lesson=book?.lessons.find(entry=>entry.n===number);
+  if(!lesson){ go(book?`videos/book/${id}`:'videos'); return; }
+  const state=readVideoState();
+  const videos=bookVideos(book).filter(item=>item.lesson===number);
+  const group=(name,title,ar)=>{
+    const list=videos.filter(item=>item.group===name);
+    return list.length?`<section class="vd-group vd-group-${name}"><h3>${title} <small lang="ar" dir="rtl">${ar}</small></h3>
+      <div class="vd-list">${list.map(item=>videoBookCard(item,state[item.key]||{})).join('')}</div></section>`:'';
+  };
+  const previous=book.lessons.find(entry=>entry.n===number-1),next=book.lessons.find(entry=>entry.n===number+1);
+  setTop(`Lektion ${number}`,escapeHtml(book.title),true,`الدرس ${number}`);
+  view.innerHTML=`<section class="pr-head vd-book-head"><small>${escapeHtml(book.title)} · Lektion ${number}</small><h2>${escapeHtml(lesson.de)}</h2>
+      <p class="pr-ar" lang="ar" dir="rtl">الدرس ${number}: ${escapeHtml(lesson.ar)}</p></section>
+    ${videoWordsHtml(lesson)}
+    ${group('short','Kurze Videos','فيديوهات قصيرة')}
+    ${group('long','Längere Videos','فيديوهات أطول')}
+    <nav class="vd-lesson-nav">${previous?`<button type="button" class="next-secondary" onclick="go('videos/book/${book.id}/${previous.n}')">‹ Lektion ${previous.n}</button>`:'<span></span>'}
+      <button type="button" class="pr-link" onclick="go('videos/book/${book.id}')">Alle Lektionen</button>
+      ${next?`<button type="button" class="next-secondary" onclick="go('videos/book/${book.id}/${next.n}')">Lektion ${next.n} ›</button>`:'<span></span>'}</nav>
+    <p class="pr-note" lang="ar" dir="rtl">تحت كل فيديو هتلاقي النص الألماني والترجمة العربي ماشيين مع الكلام. دوس على أي كلمة عشان تشوف معناها.</p>`;
+}
+
+// The lesson's words: plain text, so a tap translates a word.
+function videoWordsHtml(lesson){
+  return `<section class="vd-words" aria-label="Wortschatz"><b>Wortschatz <small lang="ar" dir="rtl">كلمات الدرس</small></b>
+    <p lang="de">${lesson.words.map(word=>`<span class="vd-word-chip">${escapeHtml(word)}</span>`).join(' ')}</p></section>`;
+}
+
+// Under the player of a book video: its lesson, its words, and the videos before and after it.
+function videoBookContext(item){
+  const book=findVideoBook(item.book);
+  const lesson=book?.lessons.find(entry=>entry.n===item.lesson);
+  if(!lesson) return '';
+  const videos=bookVideos(book);
+  const index=videos.findIndex(entry=>entry.key===item.key);
+  const previous=videos[index-1],next=videos[index+1];
+  return `<div class="vd-book-context">
+    <button type="button" class="pr-link" onclick="go('videos/book/${book.id}/${lesson.n}')">‹ ${escapeHtml(book.title)} · Lektion ${lesson.n}: ${escapeHtml(lesson.de)}</button>
+    ${videoWordsHtml(lesson)}
+    <nav class="vd-lesson-nav">${previous?`<button type="button" class="next-secondary" onclick="go('videos/play/${previous.key}')" title="${escapeHtml(previous.title)}">‹ Vorheriges Video</button>`:'<span></span>'}
+      ${next?`<button type="button" class="next-primary" onclick="go('videos/play/${next.key}')" title="${escapeHtml(next.title)}">Nächstes Video ›</button>`:'<span></span>'}</nav>
+  </div>`;
 }
 
 function formatVideoTime(seconds){
@@ -151,8 +259,9 @@ function renderVideoPlayer(key){
       <div class="vd-frame"><div id="videoFrame"></div><div class="vd-offline" id="videoOffline" hidden><p lang="ar" dir="rtl">الفيديو مش بيحمّل — اتأكد من النت.</p><a class="next-secondary" href="${youtubeUrl}" target="_blank" rel="noopener">Auf YouTube öffnen</a></div></div>
       ${transcriptPanelHtml()}
     </div>
-    <div class="vd-title"><div><small>${escapeHtml(item.channel||'YouTube')} · ${escapeHtml(item.kind||'Video')}</small><h2>${escapeHtml(item.title)}</h2></div>
+    <div class="vd-title"><div><small>${escapeHtml(item.channel||'YouTube')} · ${escapeHtml(item.kind||'Video')}${item.length?` · <span lang="ar" dir="rtl">${escapeHtml(item.length)}</span>`:''}</small><h2>${escapeHtml(item.title)}</h2>${item.book&&item.ar?`<p class="vd-title-ar" lang="ar" dir="rtl">${escapeHtml(item.ar)}</p>`:''}</div>
       <button type="button" class="next-secondary" data-video-watched aria-pressed="${Boolean(saved.watched)}">${saved.watched?'✓ Gesehen':'Als gesehen markieren'}</button></div>
+    ${item.book?videoBookContext(item):''}
     <div class="vd-controls" role="group" aria-label="Lernsteuerung">
       <button type="button" data-video-cmd="back5">⟲ 5 s</button>
       <button type="button" data-video-cmd="toggle">⏯</button>
@@ -463,11 +572,15 @@ document.addEventListener('submit',async event=>{
 
 window.addEventListener('hashchange',()=>{ if(!location.hash.startsWith('#videos/play/')) stopVideoPlayer(); });
 
-// Router entry: videos, videos/<filter>, videos/play/<key>.
+// Router entry: videos, videos/<filter>, videos/book/<book>[/<lesson>], videos/play/<key>.
 function routeVideos(hash){
   if(hash==='videos'){ stopVideoPlayer(); renderVideoList(); return true; }
   const filter=hash.match(/^videos\/(a1|a2|b1|mine)$/);
   if(filter){ stopVideoPlayer(); renderVideoList(filter[1]); return true; }
+  const book=hash.match(/^videos\/book\/([\w-]+)$/);
+  if(book){ stopVideoPlayer(); renderVideoBook(book[1]); return true; }
+  const lesson=hash.match(/^videos\/book\/([\w-]+)\/(\d+)$/);
+  if(lesson){ stopVideoPlayer(); renderVideoBookLesson(lesson[1],Number(lesson[2])); return true; }
   const play=hash.match(/^videos\/play\/([\w-]+)$/);
   if(play){ renderVideoPlayer(play[1]); return true; }
   return false;
