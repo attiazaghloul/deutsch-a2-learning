@@ -2186,9 +2186,11 @@ test('the Impuls B1 videos: 15 lessons, each with short and longer videos that p
   const book = context.VIDEO_BOOKS.find(entry => entry.id === 'impuls-b1');
   assert.deepEqual([...book.lessons.map(lesson => lesson.n)], Array.from({ length: 15 }, (_, i) => i + 1));
   const videos = context.bookVideos(book);
-  assert.equal(videos.length, 71);
-  assert.equal(new Set(videos.map(item => item.yt)).size, 71, 'every video once');
-  assert.equal(new Set(videos.map(item => item.key)).size, 71, 'keys are unique');
+  // 64, not 71: seven of the book's videos are private or blocked in the
+  // learner's country, so they were dropped from the lessons.
+  assert.equal(videos.length, 64);
+  assert.equal(new Set(videos.map(item => item.yt)).size, 64, 'every video once');
+  assert.equal(new Set(videos.map(item => item.key)).size, 64, 'keys are unique');
   for (const item of videos) {
     assert.match(item.yt, /^[\w-]{11}$/, item.title);
     assert.ok(item.title && /[\u0600-\u06ff]/.test(item.ar), `${item.yt} has a title and Arabic`);

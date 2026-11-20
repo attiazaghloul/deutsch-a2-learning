@@ -88,6 +88,105 @@ def auto_cues(events):
     return cues
 
 
+# A subtitle line ends where the picture changes, not where a sentence does, so
+# a line often carries half a sentence, or the end of one and the start of the
+# next. Half a sentence is hard to read along and impossible to translate, so
+# the lines are joined and cut again at the sentence ends.
+SENTENCE_MARKS = ".!?…"
+AFTER_SENTENCE = " 	\"'“”)]"
+ABBREVIATIONS = ("z. B.", "u. a.", "d. h.", "bzw.", "ca.", "usw.", "etc.", "Nr.", "Dr.", "Prof.",
+                 "vgl.", "inkl.", "mind.", "max.", "Abb.", "S.")
+
+
+def ends_sentence(text, position):
+    """Whether the sentence mark here really ends a sentence, and is not the dot
+    of an abbreviation, of an initial or of a numbered item."""
+    following = text[position + 1:position + 2]
+    if following and following not in AFTER_SENTENCE:
+        return False
+    head = text[:position + 1]
+    if text[position] != "." :
+        return True
+    if any(head.endswith(short) for short in ABBREVIATIONS):
+        return False
+    letter = head[-2:-1]
+    alone = len(head) < 3 or not head[-3:-2].isalnum()
+    return not (letter.isdigit() or (letter.isalpha() and alone))
+
+
+def timed_pieces(cues):
+    """The cues as timed pieces: one per word where the words carry a time,
+    otherwise one for the whole line."""
+    pieces = []
+    for cue in cues:
+        words = cue.get("w") or []
+        if words:
+            for index, (start, word) in enumerate(words):
+                end = words[index + 1][0] if index + 1 < len(words) else cue["e"]
+                pieces.append({"s": start, "e": max(end, start + 0.1), "text": word, "timed": True})
+        elif cue["de"].strip():
+            pieces.append({"s": cue["s"], "e": cue["e"], "text": cue["de"].strip(), "timed": False})
+    return pieces
+
+
+def sentence_cues(cues):
+    """Re-cut the lines into whole sentences. Lines that carry no sentence marks
+    at all are left alone: the older automatic captions have neither marks nor
+    capitals, and nothing here can tell where their sentences end."""
+    pieces = timed_pieces(cues)
+    if not pieces:
+        return cues
+    joined, spans = "", []
+    for piece in pieces:
+        if joined:
+            joined += " "
+        spans.append((len(joined), len(joined) + len(piece["text"])))
+        joined += piece["text"]
+
+    cuts = [position + 1 for position, mark in enumerate(joined)
+            if mark in SENTENCE_MARKS and ends_sentence(joined, position)]
+    if len(cuts) < max(len(cues) * 0.25, 2):
+        return cues
+    if cuts[-1] < len(joined):
+        cuts.append(len(joined))
+
+    def piece_at(position):
+        """The piece a character belongs to."""
+        for index, (low, high) in enumerate(spans):
+            if low <= position < high:
+                return index, low, high
+        return len(pieces) - 1, spans[-1][0], spans[-1][1]
+
+    def time_at(position, end):
+        """The time of a character. A line of its own carries no word times, so
+        the time is taken from how far into the line the character sits."""
+        index, low, high = piece_at(position)
+        piece = pieces[index]
+        if piece["timed"]:
+            return piece["e"] if end else piece["s"]
+        share = (position + (1 if end else 0) - low) / max(high - low, 1)
+        return piece["s"] + min(max(share, 0), 1) * (piece["e"] - piece["s"])
+
+    out, start = [], 0
+    for cut in cuts:
+        sentence = joined[start:cut].strip()
+        if not sentence:
+            continue
+        first = start + (len(joined[start:cut]) - len(joined[start:cut].lstrip()))
+        last = cut - (len(joined[start:cut]) - len(joined[start:cut].rstrip())) - 1
+        begin, finish = time_at(first, False), time_at(last, True)
+        if out:
+            begin = max(begin, out[-1]["s"])
+        line = {"s": round(begin, 2), "e": round(max(finish, begin + 0.4), 2), "de": sentence}
+        words = [[round(piece["s"], 2), piece["text"]] for piece, (low, high) in zip(pieces, spans)
+                 if piece["timed"] and first <= low and high <= last + 1]
+        if words:
+            line["w"] = words
+        out.append(line)
+        start = cut
+    return out
+
+
 def attach_arabic(cues, arabic):
     for cue in cues:
         best, overlap = None, 0.0
@@ -122,6 +221,7 @@ def main():
         else:
             print(f"{video}: no German subtitles", flush=True)
             continue
+        cues = sentence_cues(cues)
         # translated Arabic is cut like YouTube's lines, not like the lines
         # cut here from automatic German, so it would land on the wrong line;
         # the app translates those lines itself

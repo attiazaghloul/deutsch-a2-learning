@@ -50,9 +50,7 @@ const VIDEO_BOOKS=[
           ['4SAS2ZC30kI','Gewürzgurken im Check (Marktcheck SWR)','اختبار ماركات مقابل Eigenmarken',''],
           ['xbiCofgK704','Bis zu 30 Prozent sparen','مقارنة الأسعار من كتالوجات السوبرماركت','']],
         long:[
-          ['4w_NeuuWfzg','stern TV Inside: Hinter den Kulissen der Discounter und Supermärkte','كواليس السوبرماركت','1:29 س'],
-          ['LIQjYVmDpmo','Markt – die ganze Sendung (NDR)','فيها Mogelpackungen وألاعيب الأسعار','≈ 45 د'],
-          ['XZmkowqhEuk','Lebensmittelpreise: Geht es wirklich nicht günstiger?','العروض اللي بتخدع','متوسط']]},
+          ['4w_NeuuWfzg','stern TV Inside: Hinter den Kulissen der Discounter und Supermärkte','كواليس السوبرماركت','1:29 س']]},
       {n:5,de:'Deutsches Essen probieren',ar:'تجربة الأكل الألماني',
         words:['die Mahlzeit','der Gastarbeiter','der Imbiss','der Geschmack','würzig','das Abendbrot'],
         short:[
@@ -73,11 +71,9 @@ const VIDEO_BOOKS=[
       {n:7,de:'Nachhaltigkeit im Alltag',ar:'الاستدامة في الحياة اليومية',
         words:['der Einwegbecher','Müll vermeiden','CO2 einsparen','das Deutschlandticket','der Klimawandel'],
         short:[
-          ['_vFy4Bal-yA','Einweg- vs. Mehrwegbecher (Ökochecker SWR)','أكواب الاستخدام الواحد ضد الأكواب المتكررة',''],
           ['MUK69giVQJA','Was taugt das Deutschlandticket wirklich?','التذكرة والمناخ','']],
         long:[
-          ['xY131QrSWjQ','NDR – Das Experiment: Leben ohne Plastik','عيلة من 7 أفراد 4 أسابيع من غير بلاستيك','≈ 45 د'],
-          ['jbsl3_tDXBQ','Zero Waste – Leben ohne Müll','الحياة من غير زبالة','متوسط']]},
+          ['xY131QrSWjQ','NDR – Das Experiment: Leben ohne Plastik','عيلة من 7 أفراد 4 أسابيع من غير بلاستيك','≈ 45 د']]},
       {n:8,de:'Prävention ist die beste Therapie',ar:'الوقاية أحسن علاج',
         words:['die Prävention','vorbeugen','der Bluthochdruck','der Bewegungsmangel','der Lebensstil'],
         short:[
@@ -90,7 +86,6 @@ const VIDEO_BOOKS=[
       {n:9,de:'Wenn der Ernstfall eintritt',ar:'لما تحصل حالة طوارئ',
         words:['der Notruf','die Leitstelle','die Unfallstelle sichern','Erste Hilfe leisten','Ruhe bewahren'],
         short:[
-          ['hRYBa5nvBng','Feuerwehr-Leitstelle: Der erste Kontaktpunkt bei Notfällen','إيه اللي بيحصل لما تتصل بـ 112',''],
           ['l8V1mMvhsT4','ADAC How To: Unfallstelle absichern','أول خطوة: Ruhe bewahren',''],
           ['gnoG7zY7vb8','Erste Hilfe kann Leben retten – Teil 1','الإسعافات الأولية','']],
         long:[
@@ -116,7 +111,6 @@ const VIDEO_BOOKS=[
       {n:12,de:'Persönlichkeitsentwicklung fördern',ar:'تنمية الشخصية',
         words:['die Komfortzone','das Selbstvertrauen','sich weiterentwickeln','der Rückschlag','die Empathie'],
         short:[
-          ['tu64Q152mi4','Können wir uns ändern?','هل الشخصية ثابتة ولا بتتغير؟','قصير/متوسط'],
           ['KU6i8UUuJk8','Mehr Mut mit dem 4-Zonen-Modell','أخصائي نفسي عن Komfortzone','']],
         long:[
           ['19JLvumSQGA','Persönlichkeit: Kann ich ein anderer Mensch werden?','الشخصية وإزاي بتتقاس وتتغير','متوسط'],
@@ -132,8 +126,7 @@ const VIDEO_BOOKS=[
       {n:14,de:'Schule früher und heute',ar:'المدرسة زمان ودلوقتي',
         words:['streng','die Autorität','der Lehrkräftemangel','die Digitalisierung','die Lehrkraft'],
         short:[
-          ['7j2DY_Wx2T8','Vom Schulbuch zum iPad (NDR Doku)','من المدرس الصارم للمدرس المتعاطف','متوسط'],
-          ['sO8xymKpNxQ','Schulchaos: Warum gibt es nicht genügend Lehrer? (ZDFzoom)','نقص المدرسين','≈ 30 د']],
+          ['7j2DY_Wx2T8','Vom Schulbuch zum iPad (NDR Doku)','من المدرس الصارم للمدرس المتعاطف','متوسط']],
         long:[
           ['Owc9JFq7i34','Der Lehrerberuf in den 50er Jahren (Dokumentation 1959)','تقرير أصلي من سنة 1959','متوسط'],
           ['UEFprMoZZeU','Brennpunkt Schule: Tagebuch einer Lehrerin','مدرّسة بكاميرا على راسها جوه الفصل','متوسط'],

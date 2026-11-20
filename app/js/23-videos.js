@@ -376,8 +376,10 @@ async function loadVideoTranscript(id){
   }
   current.cues=data.cues;
   const list=$('#videoTranscriptList');
+  const note=data.ar==='translated'?'الترجمة العربي آلية من يوتيوب — ممكن تبقى مش دقيقة.'
+    :data.ar==='ai'?'الترجمة العربي مكتوبة بالمعنى سطر بسطر، مش ترجمة آلية حرفية.':'';
   list.innerHTML=data.cues.map(transcriptCueHtml).join('')
-    +(data.ar==='translated'?'<p class="vd-tr-note" lang="ar" dir="rtl">الترجمة العربي آلية من يوتيوب — ممكن تبقى مش دقيقة.</p>':'');
+    +(note?`<p class="vd-tr-note" lang="ar" dir="rtl">${note}</p>`:'');
   if(videoPlayer?.getCurrentTime) syncTranscript(videoPlayer.getCurrentTime());
 }
 
