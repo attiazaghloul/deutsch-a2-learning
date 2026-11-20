@@ -5,7 +5,8 @@ YouTube is not reachable from every machine, so
     pip install yt-dlp
     python scripts/fetch_video_transcripts.py
 
-For every video in app/js/23-videos.js it writes app/data_videos/<id>.json:
+For every video in app/js/23-videos.js and app/js/23-video-books.js that has
+no text yet (--all: every video) it writes app/data_videos/<id>.json:
     {"id", "de": "manual"|"auto", "ar": "manual"|"translated"|null,
      "cues": [{"s": start, "e": end, "de": text, "ar": text?, "w": [[t, word], ...]?}]}
 Manual subtitles come first. Automatic German captions carry a time for every
@@ -25,8 +26,10 @@ OUT = ROOT / "app" / "data_videos"
 
 
 def video_ids():
-    source = (ROOT / "app" / "js" / "23-videos.js").read_text(encoding="utf-8")
-    return sorted(set(re.findall(r"yt:'([\w-]{11})'", source)))
+    """The videos of the library (yt:'...') and of the course books (['...',)."""
+    library = (ROOT / "app" / "js" / "23-videos.js").read_text(encoding="utf-8")
+    books = (ROOT / "app" / "js" / "23-video-books.js").read_text(encoding="utf-8")
+    return sorted(set(re.findall(r"yt:'([\w-]{11})'", library)) | set(re.findall(r"\['([\w-]{11})',", books)))
 
 
 def fetch(video, langs, auto):
@@ -97,8 +100,12 @@ def attach_arabic(cues, arabic):
 
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
-    done = 0
+    done = tried = 0
+    every = "--all" in sys.argv
     for video in video_ids():
+        if not every and (OUT / f"{video}.json").exists():
+            continue
+        tried += 1
         fetch(video, "de.*,ar.*", auto=False)
         manual_de = sorted(WORK.glob(f"{video}.manual.de*.json3"))
         manual_ar = sorted(WORK.glob(f"{video}.manual.ar*.json3"))
@@ -124,8 +131,8 @@ def main():
         (OUT / f"{video}.json").write_text(json.dumps(payload, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
         print(f"{video}: {len(cues)} lines ({kind}), Arabic: {payload['ar']}", flush=True)
         done += 1
-    print(f"{done} transcripts")
-    if not done:
+    print(f"{done} of {tried} transcripts")
+    if tried and not done:
         sys.exit(1)
 
 

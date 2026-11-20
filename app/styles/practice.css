@@ -166,6 +166,50 @@
 .vd-notes textarea{width:100%;font:inherit;padding:10px 12px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:calc(10px*var(--shape,1));resize:vertical}
 .vd-youtube{color:var(--green-d);font-weight:700}
 
+/* videos that go with a course book (js/23-video-books.js) */
+.vd-book-banner{display:flex;gap:14px;align-items:stretch;width:100%;text-align:start;font:inherit;color:var(--ink);cursor:pointer;padding:12px;margin:0 0 14px;
+  background:var(--card);border:1px solid var(--line);border-radius:calc(16px*var(--shape,1));box-shadow:0 1px 0 var(--line)}
+.vd-book-banner:hover{border-color:var(--nbg-green-d,var(--green-d))}
+.vd-book-cover{flex:none;width:92px;min-height:122px;display:flex;flex-direction:column;justify-content:flex-end;gap:2px;padding:10px;color:#fff;
+  border-radius:calc(10px*var(--shape,1));background:linear-gradient(160deg,#2c5a86 0%,#1f3b5c 100%)}
+.vd-book-cover b{font-size:18px;line-height:1.1}
+.vd-book-cover small{font-size:11px;opacity:.85}
+.vd-book-body{display:flex;flex-direction:column;gap:4px;min-width:0}
+.vd-book-body small{color:var(--ink-2);font-size:12px;font-weight:700}
+.vd-book-body b{font-size:17px;line-height:1.3}
+.vd-book-body span{color:var(--ink-2);font-size:13.5px;line-height:1.5}
+.vd-book-body span[lang="ar"],.vd-title-ar{font-family:"Cairo","Tahoma",sans-serif}
+.vd-book-meter{display:block;height:6px;margin-top:4px;border-radius:99px;background:var(--line);overflow:hidden}
+.vd-book-meter i{display:block;height:100%;background:var(--nbg-green-d,var(--green-d))}
+.vd-book-head small{color:var(--ink-2);font-weight:700;font-size:12.5px}
+.vd-lessons{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:8px}
+.vd-lesson-row{display:flex;align-items:center;gap:12px;width:100%;text-align:start;font:inherit;color:var(--ink);cursor:pointer;padding:12px;
+  background:var(--card);border:1px solid var(--line);border-radius:calc(14px*var(--shape,1))}
+.vd-lesson-row:hover{border-color:var(--nbg-green-d,var(--green-d))}
+.vd-lesson-num{flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;font-weight:800;color:#fff;background:#2c5a86}
+.vd-lesson-text{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.vd-lesson-text b{font-size:15.5px;line-height:1.35}
+.vd-lesson-text span{align-self:flex-start;font-family:"Cairo","Tahoma",sans-serif;color:var(--ink-2);font-size:13.5px}
+.vd-lesson-count{flex:none;font-weight:800;font-size:14px;color:var(--ink-2);white-space:nowrap}
+.vd-lesson-count small{font-weight:700;font-size:11px}
+.vd-lesson-count.is-done{color:var(--nbg-green-d,var(--green-d))}
+.vd-words{margin:4px 0 14px;padding:10px 12px;background:var(--card);border:1px solid var(--line);border-radius:calc(14px*var(--shape,1))}
+.vd-words b small{font-family:"Cairo","Tahoma",sans-serif;color:var(--ink-2);font-weight:400}
+.vd-words p{margin-top:8px;display:flex;flex-wrap:wrap;gap:6px}
+.vd-word-chip{padding:5px 10px;border-radius:999px;background:var(--bg);border:1px solid var(--line);font-weight:700;font-size:14px}
+.vd-group{margin:0 0 16px}
+.vd-group h3{font-size:16px;margin:0 0 8px;padding:8px 12px;border-radius:calc(10px*var(--shape,1));background:color-mix(in srgb,#2c5a86 14%,transparent)}
+.vd-group-long h3{background:color-mix(in srgb,#e0a325 20%,transparent)}
+.vd-group h3 small{font-family:"Cairo","Tahoma",sans-serif;font-weight:700;color:var(--ink-2)}
+.vd-list{display:grid;gap:10px}
+.vd-card-row{flex-direction:row;align-items:stretch}
+.vd-card-row .vd-thumb{flex:none;width:min(42%,220px);aspect-ratio:16/9;align-self:flex-start}
+.vd-card-row .vd-body{flex:1;min-width:0;padding:10px 12px}
+.vd-lesson-nav{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:14px 0 4px}
+.vd-book-context{margin:0 0 10px}
+.vd-book-context>.pr-link{display:block;margin:0 0 8px;text-align:start}
+.vd-title-ar{color:var(--ink-2);margin-top:4px;line-height:1.6}
+
 /* the text under the video (js/23-videos.js): large, the line being said lit */
 .vd-stage{display:grid;gap:10px}
 .vd-transcript{display:flex;flex-direction:column;min-height:0;background:var(--card);border:1px solid var(--line);border-radius:calc(16px*var(--shape,1));overflow:hidden}
@@ -208,6 +252,9 @@
   .pr-actions.compact{grid-template-columns:repeat(3,1fr)}
   .vd-add div{flex-direction:column}
   .vd-sep{display:none}
+  .vd-book-cover{width:72px;min-height:100px}
+  .vd-card-row .vd-thumb{width:40%}
+  .vd-card-row .vd-body b{font-size:14px}
 }
 @media (prefers-reduced-motion:reduce){
   .pr-recording{animation:none}
