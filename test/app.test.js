@@ -2236,7 +2236,38 @@ test('the Impuls B1 booklet: 30 lessons with their parts, fetched when it is ope
   assert.ok(book.lessons[0].ar.startsWith('النقل لبرلين'), 'an Arabic title reads from its first word');
   assert.deepEqual([...book.extras.map(extra => extra.id)], ['grammatik-blick', 'fehler', 'loesungen']);
 
-  // 846 KB of text: it is fetched when the booklet is opened, not at startup
+  const pronouns = book.lessons[0].parts.grammatik.find(block => block.t === 'table');
+  assert.deepEqual([...pronouns.headers], ['', 'ich', 'du', 'er/sie/es', 'wir', 'ihr', 'sie/Sie']);
+  assert.deepEqual([...pronouns.rows[0]], ['Akkusativ', 'mich', 'dich', 'sich', 'uns', 'euch', 'sich']);
+  assert.deepEqual([...pronouns.rows[1]], ['Dativ', 'mir', 'dir', 'sich', 'uns', 'euch', 'sich']);
+  const overview = book.extras[0].blocks[0];
+  assert.equal(overview.t, 'table');
+  assert.deepEqual([...new Set(overview.rows.map(row => Number(row[0])))],
+    Array.from({ length: 30 }, (_, index) => index + 1));
+
+  const exerciseGroups = blocks => {
+    const groups = new Map();
+    let items;
+    for (const block of blocks) {
+      const id = block.t === 'h' && block.de.match(/^Übung (\d+\.\d+)\b/)?.[1];
+      if (id) {
+        items = [];
+        groups.set(id, items);
+      } else if (block.t === 'question' || block.t === 'solution') {
+        assert.ok(items, 'numbered items belong to an exercise');
+        items.push(block.number);
+      }
+    }
+    return groups;
+  };
+  const answers = exerciseGroups(book.extras.find(extra => extra.id === 'loesungen').blocks);
+  for (const lesson of book.lessons) {
+    for (const [id, questions] of exerciseGroups(lesson.parts.uebungen)) {
+      assert.deepEqual(answers.get(id), questions, `Lösung ${id} follows the question order`);
+    }
+  }
+
+  // The text is fetched when the booklet is opened, not at startup
   assert.doesNotMatch(html, /<script[^>]+data_impuls_review\.js/, 'the text must not block startup');
   assert.ok(readFileSync(join(appDir, 'index.html'), 'utf8').includes('js/25-review-book.js'), 'the view ships with the app');
   assert.match(readFileSync(join(jsDir, '01-core.js'), 'utf8'), /review:'data_impuls_review\.js\?v=/);

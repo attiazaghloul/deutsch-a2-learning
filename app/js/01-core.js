@@ -127,7 +127,7 @@ const LAZY_SCRIPTS={
   speechA2:'data_speech_clean.js?v=speech-clean-10',
   speechA1:'data_speech_a1.js?v=a1-fixed-voices-5',
   speechB1:'data_speech_b1.js?v=b1-voices-1',
-  review:'data_impuls_review.js?v=impuls-review-1'
+  review:'data_impuls_review.js?v=impuls-review-2'
 };
 const lazyScriptLoads=new Map();
 function loadScriptOnce(src){

@@ -540,6 +540,14 @@
     transitionRoute,syncFavorite,addMistake,addWordsToReview,parseBackup,dailyPlan,toast,icons,routeLabel,lessonProgress,lessonNext,lessonStart
   };
 
-  route();
-  requestAnimationFrame(centerActiveNavigation);
+  function startNavigation(){
+    route();
+    requestAnimationFrame(centerActiveNavigation);
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', startNavigation, {once:true});
+  }else{
+    startNavigation();
+  }
 })();
