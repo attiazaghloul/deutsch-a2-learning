@@ -15,7 +15,6 @@ import pymupdf
 
 ARABIC = re.compile(r"[\u0600-\u06ff\ufb50-\ufdff\ufe70-\ufeff]")
 LETTERS = re.compile(r"[a-zA-ZäöüÄÖÜß]")
-BLUE = "2f5da8"
 WHITE = 0xffffff
 ANSWER = 1472842
 LABEL = 3104168
@@ -199,13 +198,16 @@ def word_table(rows, boxes, group):
 def grammar_tables(rows, boxes):
     groups = defaultdict(set)
     for x0,y0,x1,y1,color in boxes:
-        if color==BLUE and 12<y1-y0<44 and x1-x0<390:
+        if color and 12<y1-y0<44 and x1-x0<390:
             groups[y0,y1].add((x0,x1))
     for (top,head_end), cells in sorted(groups.items()):
         cells = sorted(cells)
         if len(cells)<2 or cells[0][0]>42 or cells[-1][1]<553 or any(abs(a[1]-b[0])>1 for a,b in zip(cells,cells[1:])):
             continue
-        heads = [join_lines(column_lines(band(rows,top,head_end),*cell)) for cell in cells]
+        head_rows = band(rows,top,head_end)
+        if not head_rows or any(s[3] != WHITE for _, spans in head_rows for s in spans if s[5].strip()):
+            continue
+        heads = [cell_text(column_lines(head_rows,*cell)) for cell in cells]
         if sum(bool(x) for x in heads)<2:
             continue
         # The border of the first table cell is enough to identify
@@ -237,7 +239,7 @@ def block_rows(rows, section):
                 # Split them at the language edge, while keeping mixed examples RTL.
                 german_start = next((i for i,s in enumerate(chunk) if rtl(s)), 0)
                 first = chunk[:german_start]
-                if first and all(s[3]==LABEL for s in first) and join_spans(first).endswith("·"):
+                if first and len({s[3] for s in chunk if s[5].strip()}) == 1 and join_spans(first).endswith("·"):
                     german.append((join_spans(first).rstrip(" ·"), first))
                     chunk = chunk[german_start:]
                 arabic.append(a_text(chunk))
@@ -254,15 +256,29 @@ def block_rows(rows, section):
         shades = {s[3] for s in gs}
         wrong = " ".join(join_spans([s for s in chunk if s[3]==WRONG]) for _,chunk in german).strip()
         correct = " ".join(join_spans([s for s in chunk if s[3]==ANSWER]) for _,chunk in german).strip()
+        # A number badge and its text can differ by a fraction of a point.
+        # Keep step markers on the corresponding German line.
+        if section == "grammatik" and re.search(r"\s\d{1,2}$", de):
+            badges = [s for _, chunk in german for s in chunk if s[0] < 75 and s[5].strip().isdigit()]
+            if badges:
+                body, badge = de.rsplit(" ", 1)
+                if badge == badges[0][5].strip():
+                    de = badge + " " + body
         number = re.match(r"^(\d{1,2})\.?\s+(?=\S)", de)
-        heading = (size>=10.45 and bool(de) and not number and "___" not in de
+        dual_heading = bool(de and ar and de.isupper() and size < 8)
+        heading = (dual_heading or size>=10.45 and bool(de) and not number and "___" not in de
                    or bool(de) and shades=={LABEL} and not re.match(r"^(Wann|Beispiel)\b",de))
         speaker = None
         if section == "rollenspiele" and len(german) > 1:
             name, prefix = german[0]
-            if prefix[0][0] < 43 and prefix[-1][1] < 102 and all(s[3] == LABEL for s in prefix):
+            if (prefix[0][0] < 43 and prefix[-1][1] < 102
+                    and 102 <= german[1][1][0][0] <= 108
+                    and len(name) <= 26 and LETTERS.search(name)
+                    and prefix[0][3] != german[1][1][0][3]):
                 speaker = name
-        if speaker:
+        if section == "rollenspiele" and len(german) == 2 and re.fullmatch(r"\d{4}", german[0][0]) and german[0][0] == german[1][0]:
+            item = dict(t="h",de=german[0][0],ar=ar)
+        elif speaker:
             item = dict(t="dialogue",speaker=speaker,de=" ".join(s for s,_ in german[1:]),ar=ar)
         elif section in {"uebungen","lesetext"} and number:
             item = dict(t="question",number=int(number[1]),de=de[number.end():],ar=ar)

@@ -2236,6 +2236,9 @@ test('the Impuls B1 booklet: 30 lessons with their parts, fetched when it is ope
   assert.ok(book.lessons[0].ar.startsWith('النقل لبرلين'), 'an Arabic title reads from its first word');
   assert.deepEqual([...book.extras.map(extra => extra.id)], ['grammatik-blick', 'fehler', 'loesungen']);
 
+  for (const lesson of book.lessons) {
+    assert.ok(lesson.parts.grammatik.some(block => block.t === 'table'), `Lektion ${lesson.n} retains its grammar table`);
+  }
   const pronouns = book.lessons[0].parts.grammatik.find(block => block.t === 'table');
   assert.deepEqual([...pronouns.headers], ['', 'ich', 'du', 'er/sie/es', 'wir', 'ihr', 'sie/Sie']);
   assert.deepEqual([...pronouns.rows[0]], ['Akkusativ', 'mich', 'dich', 'sich', 'uns', 'euch', 'sich']);
